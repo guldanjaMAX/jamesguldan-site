@@ -1,0 +1,5 @@
+name = "jamesguldan-site"
+compatibility_date = "2026-01-27"
+
+[assets]
+directory = "./"
