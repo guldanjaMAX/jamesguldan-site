@@ -1,0 +1,39 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&amp;display=swap');
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#1A1918"/>
+  
+  <!-- Accent bar -->
+  <rect x="0" y="0" width="8" height="630" fill="#C4785A"/>
+  
+  <!-- Main text -->
+  <text x="80" y="200" font-family="Georgia, serif" font-size="64" font-weight="600" fill="#FFFFFE">
+    For founders who are done
+  </text>
+  <text x="80" y="280" font-family="Georgia, serif" font-size="64" font-weight="600" fill="#FFFFFE">
+    being the smartest
+  </text>
+  <text x="80" y="360" font-family="Georgia, serif" font-size="64" font-weight="600" fill="#FFFFFE">
+    person in the room.
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="80" y="440" font-family="Georgia, serif" font-size="28" fill="#8A8784">
+    Business consulting for $2M–$10M founders
+  </text>
+  
+  <!-- Name -->
+  <text x="80" y="560" font-family="Georgia, serif" font-size="32" font-weight="500" fill="#C4785A">
+    James Guldan
+  </text>
+  
+  <!-- URL -->
+  <text x="1120" y="560" font-family="Georgia, serif" font-size="24" fill="#5C5956" text-anchor="end">
+    jamesguldan.com
+  </text>
+</svg>

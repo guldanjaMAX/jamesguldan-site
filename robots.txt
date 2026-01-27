@@ -1,0 +1,7 @@
+# robots.txt for jamesguldan.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://jamesguldan.com/sitemap.xml
