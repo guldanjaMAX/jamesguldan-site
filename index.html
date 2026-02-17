@@ -1821,6 +1821,7 @@
             emailSubject.value = nameInput.value + ' - Event Company Inquiry from JamesGuldan.com';
             
             const submitBtn = form.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Submitting...';
             submitBtn.disabled = true;
 
@@ -1841,13 +1842,27 @@
                 const result = await response.json();
                 
                 if (result.success) {
-                    console.log('Form submitted successfully');
+                    window.location.href = 'https://jamescalendar.com';
+                } else {
+                    submitBtn.textContent = 'Something went wrong. Try again.';
+                    submitBtn.style.background = '#c0392b';
+                    submitBtn.disabled = false;
+                    console.error('Web3Forms error:', result);
+                    setTimeout(function() {
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '';
+                    }, 4000);
                 }
             } catch (error) {
-                console.error('Error:', error);
+                submitBtn.textContent = 'Connection error. Try again.';
+                submitBtn.style.background = '#c0392b';
+                submitBtn.disabled = false;
+                console.error('Fetch error:', error);
+                setTimeout(function() {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                }, 4000);
             }
-            
-            window.location.href = 'https://jamescalendar.com';
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
