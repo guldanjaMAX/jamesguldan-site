@@ -1750,6 +1750,10 @@
                     <textarea id="challenge" name="challenge" required placeholder="Where are you losing people? What part of the attendee journey feels broken or generic?"></textarea>
                 </div>
                 
+                <div class="form-group" style="display: flex; justify-content: center;">
+                    <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+                </div>
+                
                 <button type="submit" class="form-submit">Go to Next Step and Schedule a Call →</button>
             </form>
         </div>
@@ -1817,6 +1821,13 @@
                 revenueWarning.classList.add('active');
                 return;
             }
+
+            // Check hCaptcha is completed
+            const hCaptchaResponse = form.querySelector('textarea[name=h-captcha-response]');
+            if (!hCaptchaResponse || !hCaptchaResponse.value) {
+                alert('Please complete the captcha before submitting.');
+                return;
+            }
             
             emailSubject.value = nameInput.value + ' - Event Company Inquiry from JamesGuldan.com';
             
@@ -1876,5 +1887,6 @@
         });
     </script>
 
+    <script src="https://web3forms.com/client/script.js" async defer></script>
 </body>
 </html>
