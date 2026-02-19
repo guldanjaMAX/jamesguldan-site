@@ -790,6 +790,163 @@
         }
 
         /* How It Works */
+
+        /* The Third Option */
+        .third-option-section {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .third-option-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+            pointer-events: none;
+        }
+
+        .third-option-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .third-option-inner .section-eyebrow {
+            margin-bottom: 40px;
+        }
+
+        .narrative-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 28px;
+        }
+
+        .narrative-text.bold-intro {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        .narrative-text .accent {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .narrative-text em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.15em;
+            color: var(--text-primary);
+        }
+
+        .cost-comparison {
+            margin: 48px 0;
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .cost-comparison::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 40px;
+            right: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .cost-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cost-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .cost-row.highlight {
+            border-bottom: none;
+            padding-top: 24px;
+        }
+
+        .cost-label {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+        }
+
+        .cost-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .cost-row.highlight .cost-label {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .cost-row.highlight .cost-value {
+            color: var(--accent);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .narrative-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 48px 0;
+            opacity: 0.4;
+        }
+
+        .case-study-box {
+            margin: 48px 0;
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-accent);
+            border-radius: 16px;
+        }
+
+        .case-study-box .cs-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .case-study-box p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .case-study-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .case-study-box .accent {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* How It Works */
         .how-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -1352,6 +1509,9 @@
             .warning-buttons { flex-direction: column; }
             .about-photos { flex-direction: column; }
             .about-photo img { height: 250px; }
+            .cost-comparison, .case-study-box { padding: 28px 20px; }
+            .cost-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .third-option-section { padding: 80px 0; }
         }
     </style>
 </head>
@@ -1662,12 +1822,55 @@
         </div>
     </section>
 
+    <!-- The Third Option -->
+    <section class="third-option-section">
+        <div class="container">
+            <div class="third-option-inner">
+                <div class="section-eyebrow">The Third Option</div>
+                
+                <p class="narrative-text bold-intro">I ran a marketing agency for 15 years. The person you met in the pitch meeting is not the person doing your work.</p>
+
+                <p class="narrative-text">That's not a secret. That's just how agencies operate. The A team sells you. The B team executes. Leadership spends their time reading, strategizing, staying sharp. The execution team? They're trying to get through a task list for 47 clients. Your event landing page is somewhere in the middle of that list.</p>
+
+                <p class="narrative-text">I'm not knocking agencies. I built one. I love them. But if you're running events, you need landing pages for every single one, email sequences, ad creative, prospect targeting, post event follow up. And the person handling all of that for you is also handling it for 46 other companies. Yours is not their only event next Thursday.</p>
+
+                <p class="narrative-text">So you think, okay, I'll build an internal team. By the time you hire a marketing lead, a designer, a developer, and a project manager you're at $350K+ and you've launched a whole HR department before your next event is even announced.</p>
+
+                <div class="cost-comparison">
+                    <div class="cost-row">
+                        <span class="cost-label">Build an internal marketing team</span>
+                        <span class="cost-value">$350K+/yr</span>
+                    </div>
+                    <div class="cost-row">
+                        <span class="cost-label">Hire an agency (hope the junior remembers your name)</span>
+                        <span class="cost-value">$240K/yr</span>
+                    </div>
+                    <div class="cost-row highlight">
+                        <span class="cost-label">Me. All of me. On your team.</span>
+                        <span class="cost-value">$60K/yr</span>
+                    </div>
+                </div>
+
+                <p class="narrative-text"><span class="accent">15+ years running that agency. Over $1B in client revenue.</span> I've consulted for Tony Robbins, Dean Graziosi, Peter Diamandis, and Frank Kern. And somewhere along the way I realized the best thing I could do was stop running the agency and just sit next to the founder and go <em>"yeah... that's broken. Let me fix it."</em></p>
+
+                <div class="narrative-divider"></div>
+
+                <div class="case-study-box">
+                    <div class="cs-label">What This Looks Like in Practice</div>
+                    <p>One event company was using a mix of internal and agency resources to build landing pages for every event. Weeks of turnaround. Thousands of dollars each time. I taught their team to build event landing pages with AI in under an hour. Same quality. Fraction of the cost. They don't need an agency for that anymore.</p>
+                    <p>Then we went after the real money. I showed them how to use AI to pull in everything available on their prospects. Registration data, purchase history, social profiles, engagement patterns. Before the event, AI scores every single person so your sales team knows exactly who to prioritize and what to say. After the event, same thing for follow up. No more guessing. No more treating a first timer the same as someone who's attended four times and bought twice.</p>
+                    <p>And when it worked? <span class="accent">I trained their team to run it without me.</span> Because I don't want to be your marketing department. I want to make your marketing department dangerous and then move on to the next bottleneck.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="bg-dark">
         <div class="container">
             <div class="section-header">
                 <div class="section-eyebrow">Working Together</div>
                 <h2>Two ways to get started</h2>
-                <p>It starts with an audit. If the fit is right, it becomes ongoing infrastructure.</p>
+                <p>It starts with an audit. If the fit is right, I become the marketing and sales brain your event company is missing.</p>
             </div>
             
             <div class="offers-grid">
@@ -1686,12 +1889,13 @@
                 
                 <div class="offer-card featured">
                     <div class="offer-name">Ongoing AI Optimization</div>
-                    <p class="offer-description">Everything in the Audit, plus continued strategic partnership. I stay on to refine your tools, review your data, and sharpen the aim as your community grows.</p>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--accent); margin-bottom: 4px;">$5K<span style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/month</span></div>
+                    <p class="offer-description">Everything in the Audit, plus me on your team. I stay on to refine your tools, review your data, train your people, and move to the next bottleneck.</p>
                     <ul class="offer-includes">
                         <li>Everything in the AI Audit</li>
                         <li>Ongoing tool refinement</li>
                         <li>Monthly data review</li>
-                        <li>Segmentation optimization</li>
+                        <li>Team training and enablement</li>
                         <li>Strategic advisory access</li>
                     </ul>
                     <a href="#apply" class="offer-cta">Apply Now</a>
@@ -1704,7 +1908,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>See if we're a fit</h2>
-                <p>Takes 30 seconds. I personally read every response.</p>
+                <p>Takes 30 seconds. I personally read every response. No pitch. No 47 slide deck. Just a conversation.</p>
             </div>
             
             <form class="qualification-form" id="qualificationForm">
