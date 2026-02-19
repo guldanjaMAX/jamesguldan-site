@@ -202,6 +202,30 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "How long is a typical engagement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The AI Audit is a focused engagement, usually 3 to 4 weeks. Ongoing optimization is month to month with no long term contracts. Most clients stay because the ROI is obvious, not because they're locked in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with virtual events or only in person?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both, and hybrid. The principles are the same: understand who your attendees are, personalize their journey, and use AI to do it at scale. The tools adapt to your format."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes this different from hiring an AI marketing agency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An agency assigns you to their B team. James is the A team and the only team. You get 15 years of psychology and marketing expertise paired with custom AI tools, not a junior strategist running your account between 46 others."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Who does James Guldan work with?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -210,26 +234,10 @@
         },
         {
           "@type": "Question",
-          "name": "What does James Guldan do?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "James combines 15+ years of human psychology expertise with AI to help event companies hyper personalize their marketing and sales. He audits sales calls, maps attendee journeys, builds custom AI tools for segmentation and personalization, and provides ongoing optimization. The approach shifts event marketing from generic broadcast to precision targeting."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "What results has James Guldan achieved?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "James has generated over $1 billion in revenue for clients, helped 13 companies achieve 1,000%+ growth, and worked with the biggest names in the event space including Tony Robbins, Peter Diamandis, Dean Graziosi, and the Dalai Lama."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does AI improve event sales?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "AI enables event companies to move from one size fits all marketing to hyper personalized communication. By analyzing sales calls, attendee behavior, and engagement signals, AI can segment audiences based on actual need and deliver messaging that makes every person feel like the experience was designed specifically for them."
+            "text": "James has generated over $1 billion in revenue for clients, helped 13 companies achieve 1,000 percent plus growth, and worked with the biggest names in the event space including Tony Robbins, Peter Diamandis, Dean Graziosi, and the Dalai Lama."
           }
         }
       ]
@@ -624,8 +632,9 @@
         }
 
         .symptom-icon {
-            font-size: 1.5rem;
+            color: var(--accent);
             margin-bottom: 16px;
+            opacity: 0.8;
         }
 
         .symptom-card p {
@@ -1008,8 +1017,22 @@
 
         .testimonial-author {
             display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-author img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border);
+        }
+
+        .testimonial-author-info {
+            display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
 
         .testimonial-author strong {
@@ -1266,6 +1289,39 @@
         .offer-cta:hover {
             background: var(--accent);
             color: var(--bg-primary);
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .faq-grid {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 28px 0;
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-question {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            cursor: default;
+        }
+
+        .faq-answer {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
         }
 
         /* Form */
@@ -1576,6 +1632,7 @@
                     <img src="frank-kern-logo.svg" alt="Frank Kern">
                     <img src="dalai-lama-logo.svg" alt="The Dalai Lama">
                 </div>
+                <div style="text-align: center; margin-top: 16px; font-size: 0.8rem; color: var(--text-muted);">All of whom run large scale live and virtual events</div>
             </div>
         </div>
     </div>
@@ -1590,15 +1647,15 @@
             
             <div class="problem-symptoms">
                 <div class="symptom-card">
-                    <div class="symptom-icon">📡</div>
+                    <div class="symptom-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
                     <p>Your marketing treats a first time attendee and a three year community member exactly the same way.</p>
                 </div>
                 <div class="symptom-card">
-                    <div class="symptom-icon">🔇</div>
+                    <div class="symptom-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div>
                     <p>Your sales calls follow the same script regardless of whether someone is exploring or ready to commit.</p>
                 </div>
                 <div class="symptom-card">
-                    <div class="symptom-icon">🚪</div>
+                    <div class="symptom-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
                     <p>People attend your event once, have a great experience, and then disappear. The onboarding ends at the ticket purchase.</p>
                 </div>
             </div>
@@ -1628,28 +1685,18 @@
                 <div class="pillar-card">
                     <div class="pillar-number">01 / Community</div>
                     <h3>Optimize Your Community</h3>
-                    <p>Make your event community stickier, more engaged, and more valuable so people don't just attend once and disappear. AI identifies engagement patterns and helps you create touchpoints that feel personal at scale.</p>
+                    <p>Make your event community stickier, more engaged, and more valuable so people don't just attend once and disappear. AI identifies who's disengaging before they leave, surfaces the members most likely to upgrade, and helps you create touchpoints that feel personal at scale.</p>
                 </div>
                 <div class="pillar-card">
                     <div class="pillar-number">02 / Onboarding</div>
                     <h3>Optimize Your Onboarding</h3>
-                    <p>The journey from "I just heard about this" to "I'm all in and telling my friends" should feel intentional and personal, not one size fits all. AI maps the ideal path for each attendee based on who they actually are.</p>
+                    <p>The journey from "I just heard about this" to "I'm all in and telling my friends" should feel intentional and personal. AI maps the ideal path for each attendee based on who they actually are, whether that's a first time registrant or a four time buyer who hasn't upgraded yet.</p>
                 </div>
                 <div class="pillar-card">
                     <div class="pillar-number">03 / Connection</div>
                     <h3>Optimize Your Connection</h3>
-                    <p>Use AI to hyper segment your audience so that every touchpoint, every email, every conversation feels like it was designed for that specific person. Not sprayed at a list. Aimed at a human.</p>
+                    <p>Before your event, AI scores every prospect so your sales team knows exactly who to prioritize and what to say. After the event, same thing for follow up. No more treating a first timer the same as someone who's attended four times and bought twice.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="sniper-section">
-        <div class="container">
-            <div class="sniper-content">
-                <div class="section-eyebrow">The Philosophy</div>
-                <p class="sniper-quote">"The old way of marketing was a shotgun. Everyone could do it. <span class="accent">I'm suggesting you pick up a sniper."</span></p>
-                <p class="sniper-detail">AI is about to make generalized marketing effortless. Every company will be able to blast messages at scale. The competitive advantage shifts to the people who use AI not to say more, but to know more about who they're talking to and what that person actually needs.</p>
             </div>
         </div>
     </section>
@@ -1790,32 +1837,44 @@
                 <div class="testimonial-card">
                     <p class="testimonial-text">"James helped us build an eight figure company from scratch. He's one of the few people in the online business world who understands how to sell, as well as the tech required to scale a business to that level. If you have a chance to work with him, I'd do it in a heartbeat."</p>
                     <div class="testimonial-author">
-                        <strong>Mike Dillard</strong>
-                        <span>8 Figure Entrepreneur</span>
+                        <img src="mikedillard.jpg" alt="Mike Dillard" loading="lazy">
+                        <div class="testimonial-author-info">
+                            <strong>Mike Dillard</strong>
+                            <span>8 Figure Entrepreneur</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
                     <p class="testimonial-text">"James is pretty much the Alex Hormozi of offers. Not to mention his heart is as big as his brain. He deeply cares for everyone around him and acts with utmost care and integrity. He's been in the trenches and can speak from experience, not theory."</p>
                     <div class="testimonial-author">
-                        <strong>Gareth Hermann</strong>
-                        <span>Agency Founder</span>
+                        <img src="GarethHerman.jpg" alt="Gareth Hermann" loading="lazy">
+                        <div class="testimonial-author-info">
+                            <strong>Gareth Hermann</strong>
+                            <span>Agency Founder</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
                     <p class="testimonial-text">"Thanks to his help, we raised $1.1 million for a solo, never before attempted, coast to coast crossing of Antarctica. He literally helped me achieve the impossible."</p>
                     <div class="testimonial-author">
-                        <strong>Akshay Nanavati</strong>
-                        <span>Explorer &amp; Author</span>
+                        <img src="akshay.jpg" alt="Akshay Nanavati" loading="lazy">
+                        <div class="testimonial-author-info">
+                            <strong>Akshay Nanavati</strong>
+                            <span>Explorer &amp; Author</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-card">
                     <p class="testimonial-text">"James is one of the best living marketers, generating not millions but BILLIONS for his clients. This is a singular opportunity, don't miss it."</p>
                     <div class="testimonial-author">
-                        <strong>Brad Hart</strong>
-                        <span>Investor &amp; Entrepreneur</span>
+                        <img src="bradhart.jpg" alt="Brad Hart" loading="lazy">
+                        <div class="testimonial-author-info">
+                            <strong>Brad Hart</strong>
+                            <span>Investor &amp; Entrepreneur</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1826,7 +1885,7 @@
     <section class="third-option-section">
         <div class="container">
             <div class="third-option-inner">
-                <div class="section-eyebrow">The Third Option</div>
+                <div class="section-eyebrow">The Real Math</div>
                 
                 <p class="narrative-text bold-intro">I ran a marketing agency for 15 years. The person you met in the pitch meeting is not the person doing your work.</p>
 
@@ -1899,6 +1958,38 @@
                         <li>Strategic advisory access</li>
                     </ul>
                     <a href="#apply" class="offer-cta">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">Questions</div>
+                <h2>Before you fill out the form</h2>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">How long is a typical engagement?</div>
+                    <div class="faq-answer">The AI Audit is a focused engagement, usually 3 to 4 weeks. Ongoing optimization is month to month with no long term contracts. Most clients stay because the ROI is obvious, not because they're locked in.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">We only run 3 to 4 events per year. Is this still worth it?</div>
+                    <div class="faq-answer">Absolutely. Fewer events means each one carries more weight. The AI tools and segmentation strategies we build work year round on your community and sales process, not just during event weeks.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you work with virtual events or only in person?</div>
+                    <div class="faq-answer">Both, and hybrid. The principles are the same: understand who your attendees are, personalize their journey, and use AI to do it at scale. The tools adapt to your format.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What size team do we need for this to work?</div>
+                    <div class="faq-answer">You don't need a large team. Part of what I do is build tools and systems your existing team can run. I've done this with companies where one person handles all the marketing. The AI does the heavy lifting.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What makes this different from hiring an AI marketing agency?</div>
+                    <div class="faq-answer">An agency assigns you to their B team. I'm the A team and the only team. You get 15 years of psychology and marketing expertise paired with custom AI tools, not a junior strategist running your account between 46 others.</div>
                 </div>
             </div>
         </div>
