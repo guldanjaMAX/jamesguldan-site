@@ -329,24 +329,12 @@
             .nav-cta { padding: 12px 28px; font-size: 0.9rem; }
         }
 
-        /* Hero */
+        /* Hero - Full screen background photo */
         .hero {
             padding: 0;
             position: relative;
             overflow: hidden;
-            min-height: min(calc(100vh - 64px), 700px);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: 5%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(191, 109, 42, 0.07) 0%, rgba(191, 109, 42, 0.02) 40%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
+            min-height: min(calc(100vh - 64px), 740px);
         }
 
         .hero::after {
@@ -357,14 +345,64 @@
             right: 0;
             height: 1px;
             background: var(--border);
+            z-index: 5;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 560px;
-            gap: 24px;
-            align-items: end;
-            min-height: min(calc(100vh - 64px), 700px);
+        /* Background photo - full bleed, anchored bottom-right */
+        .hero-bg-photo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 65%;
+            z-index: 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg-photo img {
+            height: 100%;
+            width: auto;
+            max-height: 100%;
+            object-fit: contain;
+            object-position: bottom center;
+            filter: drop-shadow(-8px 0 40px rgba(0,0,0,0.06));
+        }
+
+        /* Gradient overlay: cream fading to transparent over the photo */
+        .hero-bg-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -5%;
+            bottom: 0;
+            width: 55%;
+            background: linear-gradient(to right, var(--bg-primary) 20%, rgba(253,252,250,0.85) 50%, rgba(253,252,250,0) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Subtle warm glow behind the photo */
+        .hero-bg-photo::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(191, 109, 42, 0.06) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 3;
+            min-height: min(calc(100vh - 64px), 740px);
+            display: flex;
+            align-items: center;
         }
 
         .hero-eyebrow {
@@ -373,18 +411,18 @@
             text-transform: uppercase;
             letter-spacing: 0.15em;
             color: var(--accent);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             font-family: 'DM Sans', sans-serif;
         }
 
         .hero-content {
-            padding: 80px 0 60px;
+            max-width: 560px;
             position: relative;
             z-index: 2;
         }
 
         .hero-content h1 {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .hero-content h1 .serif-italic {
@@ -392,11 +430,11 @@
         }
 
         .hero-subtitle {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            margin-bottom: 28px;
+            margin-bottom: 32px;
             max-width: 480px;
-            line-height: 1.7;
+            line-height: 1.75;
         }
 
         .hero-cta {
@@ -405,7 +443,7 @@
             gap: 10px;
             background: var(--text-primary);
             color: var(--bg-primary);
-            padding: 16px 32px;
+            padding: 18px 36px;
             text-decoration: none;
             font-family: 'DM Sans', sans-serif;
             font-size: 1rem;
@@ -426,36 +464,6 @@
 
         .hero-cta:hover svg {
             transform: translateX(4px);
-        }
-
-        .hero-image {
-            position: relative;
-            align-self: end;
-            z-index: 1;
-        }
-
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(191, 109, 42, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .hero-image img {
-            width: 100%;
-            max-width: 560px;
-            height: auto;
-            display: block;
-            position: relative;
-            z-index: 1;
-            margin: 0 auto;
-            filter: drop-shadow(0 4px 30px rgba(0,0,0,0.08));
         }
 
         /* Proof bar */
@@ -1514,36 +1522,39 @@
 
         /* Responsive */
         @media (max-width: 1050px) {
-            .hero-grid {
-                grid-template-columns: 1fr 420px;
+            .hero-bg-photo {
+                width: 55%;
             }
-            .hero-image img {
-                max-width: 420px;
+            .hero-bg-photo::before {
+                width: 65%;
             }
         }
         @media (max-width: 900px) {
             .hero {
                 min-height: auto;
             }
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 0;
+            .hero-inner {
                 min-height: auto;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .hero-bg-photo {
+                position: relative;
+                width: 100%;
+                height: 320px;
+                order: -1;
+            }
+            .hero-bg-photo::before {
+                display: none;
             }
             .hero-content {
-                padding: 60px 0 32px;
                 text-align: center;
+                max-width: 100%;
+                padding: 32px 0 48px;
             }
             .hero-subtitle {
                 margin-left: auto;
                 margin-right: auto;
-            }
-            .hero-image {
-                max-width: 360px;
-                margin: 0 auto;
-            }
-            .hero-image img {
-                max-width: 360px;
             }
             .proof-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1573,7 +1584,8 @@
 
         @media (max-width: 600px) {
             section { padding: 70px 0; }
-            .hero-content { padding: 40px 0 24px; }
+            .hero-content { padding: 24px 0 32px; }
+            .hero-bg-photo { height: 280px; }
             h1 { font-size: 1.75rem; }
             .proof-grid { grid-template-columns: repeat(2, 1fr); }
             .worked-with-logos { gap: 24px 32px; }
@@ -1603,8 +1615,11 @@
     </nav>
 
     <section class="hero">
+        <div class="hero-bg-photo fade-in delay-2">
+            <img src="james-hero.png" alt="James Guldan - AI Powered Offer Testing">
+        </div>
         <div class="container">
-            <div class="hero-grid">
+            <div class="hero-inner">
                 <div class="hero-content fade-in">
                     <div class="hero-eyebrow">AI Powered Offer Testing</div>
                     <h1>Your offer strategy is a shotgun. <span class="serif-italic accent">I'll make it a sniper.</span></h1>
@@ -1615,9 +1630,6 @@
                         Book a Call
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                </div>
-                <div class="hero-image fade-in delay-2">
-                    <img src="james-hero.png" alt="James Guldan - AI Powered Offer Testing">
                 </div>
             </div>
         </div>
