@@ -1811,6 +1811,234 @@
             .nav-text-link { display: none; }
             .hero-cta-secondary { display: none; }
         }
+
+        /* Deep Work Interview Preview Section */
+        .dwi-preview {
+            padding: 100px 0;
+            background: #1A1A1A;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dwi-preview::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(191, 109, 42, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .dwi-preview .section-eyebrow {
+            color: var(--accent);
+            border-color: rgba(191, 109, 42, 0.3);
+        }
+
+        .dwi-preview h2 {
+            color: #FDFCFA;
+            margin-bottom: 16px;
+        }
+
+        .dwi-preview .dwi-subtitle {
+            color: rgba(253, 252, 250, 0.6);
+            font-size: 1.05rem;
+            max-width: 640px;
+            margin-bottom: 56px;
+        }
+
+        .dwi-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .dwi-questions-panel {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+        }
+
+        .dwi-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .dwi-panel-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            color: rgba(253, 252, 250, 0.4);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .dwi-panel-badge {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.72rem;
+            color: var(--accent);
+            background: rgba(191, 109, 42, 0.12);
+            padding: 4px 12px;
+            border-radius: 100px;
+            letter-spacing: 0.02em;
+        }
+
+        .dwi-question {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            opacity: 0;
+            transform: translateY(12px);
+            animation: dwiFadeIn 0.5s ease forwards;
+        }
+
+        .dwi-question:last-child {
+            border-bottom: none;
+        }
+
+        .dwi-question:nth-child(1) { animation-delay: 0.2s; }
+        .dwi-question:nth-child(2) { animation-delay: 0.5s; }
+        .dwi-question:nth-child(3) { animation-delay: 0.8s; }
+        .dwi-question:nth-child(4) { animation-delay: 1.1s; }
+        .dwi-question:nth-child(5) { animation-delay: 1.4s; }
+
+        @keyframes dwiFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dwi-q-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.72rem;
+            color: rgba(253, 252, 250, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .dwi-q-text {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: rgba(253, 252, 250, 0.85);
+            line-height: 1.5;
+        }
+
+        .dwi-q-text .accent-word {
+            color: var(--accent);
+        }
+
+        .dwi-deliverables {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .dwi-deliverable {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            transition: border-color 0.3s ease;
+        }
+
+        .dwi-deliverable:hover {
+            border-color: rgba(191, 109, 42, 0.2);
+        }
+
+        .dwi-d-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: rgba(191, 109, 42, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dwi-d-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .dwi-d-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #FDFCFA;
+            margin-bottom: 4px;
+        }
+
+        .dwi-d-desc {
+            font-size: 0.82rem;
+            color: rgba(253, 252, 250, 0.5);
+            line-height: 1.5;
+        }
+
+        .dwi-cta-row {
+            margin-top: 48px;
+            text-align: center;
+        }
+
+        .dwi-cta-row .dwi-note {
+            font-size: 0.82rem;
+            color: rgba(253, 252, 250, 0.4);
+            margin-top: 12px;
+            font-style: italic;
+            font-family: 'Fraunces', Georgia, serif;
+        }
+
+        @media (max-width: 900px) {
+            .dwi-layout {
+                grid-template-columns: 1fr;
+            }
+            .dwi-preview { padding: 80px 0; }
+        }
+
+        @media (max-width: 600px) {
+            .dwi-preview { padding: 60px 0; }
+            .dwi-questions-panel { padding: 20px; }
+            .dwi-deliverable { padding: 16px; }
+        }
+
+        /* Offer Card Icons */
+        .offer-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(191, 109, 42, 0.08);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .offer-card.featured .offer-icon {
+            background: rgba(191, 109, 42, 0.15);
+        }
+
+        .offer-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -1942,6 +2170,90 @@
                 <p class="shift-detail">You've probably tried the agencies, the courses, the masterminds. And they probably helped, a little. But something still feels off. The brand doesn't quite fit. The offers don't reflect what you actually do best. And you can feel it in every sales conversation that should have closed but didn't.</p>
                 <p class="shift-detail" style="margin-top: 20px;">That gap between who you are and how your business shows up in the world? That's the thing nobody can see from the inside. It's why your coach keeps saying "you're undercharging" but can't tell you what to charge for. It's why your website feels wrong even though the copy is "good."</p>
                 <p class="shift-detail" style="margin-top: 20px;">That's why the Deep Work Interview pulls apart your entire business in two hours and gives you empirical, researched answers about what niche you could dominate. Named competitors. Pricing data. A credibility score. Three structured offers. Not theory. Not inspiration. Answers you can act on today. And if you want someone to sit next to you and actually build the thing? I do that too.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Work Interview Preview -->
+    <section class="dwi-preview">
+        <div class="container">
+            <div class="section-header" style="text-align: left;">
+                <div class="section-eyebrow">Inside the Interview</div>
+                <h2>These are the questions <em class="serif-italic" style="color: var(--accent);">nobody else will ask you.</em></h2>
+                <p class="dwi-subtitle">Two hours. No small talk. No warm up exercises. Just the questions that cut straight to the thing you've been avoiding about your business.</p>
+            </div>
+
+            <div class="dwi-layout">
+                <div class="dwi-questions-panel">
+                    <div class="dwi-panel-header">
+                        <span class="dwi-panel-title">AI Deep Work Session</span>
+                        <span class="dwi-panel-badge">Active Session</span>
+                    </div>
+                    <div class="dwi-question">
+                        <div class="dwi-q-label">Session 1 of 4</div>
+                        <div class="dwi-q-text">"If money weren't a factor, what work would you <span class="accent-word">refuse to stop doing?</span>"</div>
+                    </div>
+                    <div class="dwi-question">
+                        <div class="dwi-q-label">Session 2 of 4</div>
+                        <div class="dwi-q-text">"Who specifically needs what <span class="accent-word">only you</span> can offer, and why haven't they found you yet?"</div>
+                    </div>
+                    <div class="dwi-question">
+                        <div class="dwi-q-label">Session 3 of 4</div>
+                        <div class="dwi-q-text">"What truth about your business have you been <span class="accent-word">avoiding?</span>"</div>
+                    </div>
+                    <div class="dwi-question">
+                        <div class="dwi-q-label">Session 4 of 4</div>
+                        <div class="dwi-q-text">"If you had to rebuild from scratch knowing everything you know now, <span class="accent-word">what would you do differently?</span>"</div>
+                    </div>
+                    <div class="dwi-question">
+                        <div class="dwi-q-label">Deep Dive</div>
+                        <div class="dwi-q-text">"Name the three competitors you <span class="accent-word">secretly respect.</span> Now tell me what they do that you don't."</div>
+                    </div>
+                </div>
+
+                <div class="dwi-deliverables">
+                    <div class="dwi-deliverable">
+                        <div class="dwi-d-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </div>
+                        <div>
+                            <div class="dwi-d-title">Named Competitors + Gap Analysis</div>
+                            <div class="dwi-d-desc">Real competitors in your space, researched and ranked. Where they're strong, where they're weak, and exactly where you fit.</div>
+                        </div>
+                    </div>
+                    <div class="dwi-deliverable">
+                        <div class="dwi-d-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div>
+                            <div class="dwi-d-title">Pricing Data + Offer Architecture</div>
+                            <div class="dwi-d-desc">What the market actually pays. Three structured offers at different price points, built from your unique strengths.</div>
+                        </div>
+                    </div>
+                    <div class="dwi-deliverable">
+                        <div class="dwi-d-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <div>
+                            <div class="dwi-d-title">Complete Website Blueprint</div>
+                            <div class="dwi-d-desc">Every section, headline, and CTA written. Copy you can actually use today. Not a wireframe. A working blueprint.</div>
+                        </div>
+                    </div>
+                    <div class="dwi-deliverable">
+                        <div class="dwi-d-icon">
+                            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div>
+                            <div class="dwi-d-title">Credibility Score + Positioning</div>
+                            <div class="dwi-d-desc">A scored assessment of your authority markers. What's working, what's missing, and the fastest path to category dominance.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dwi-cta-row">
+                <a href="https://deepwork.jamesguldan.com" class="hero-cta" style="display: inline-flex;">Start the Deep Work Interview <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <p class="dwi-note">Free. Two hours. The same process I used to charge $5,000 for.</p>
             </div>
         </div>
     </section>
@@ -2134,6 +2446,9 @@
 
             <div class="offers-grid">
                 <div class="offer-card">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
                     <div class="offer-number">01</div>
                     <div class="offer-name">The Deep Work Interview</div>
                     <div class="offer-price">Free</div>
@@ -2144,6 +2459,9 @@
                 </div>
 
                 <div class="offer-card">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
                     <div class="offer-number">02</div>
                     <div class="offer-name">Site In Sixty</div>
                     <div class="offer-price">$27</div>
@@ -2153,6 +2471,9 @@
                 </div>
 
                 <div class="offer-card featured">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
                     <div class="offer-number">03</div>
                     <div class="offer-name">The Deep Work</div>
                     <div class="offer-price">$5,000<span style="font-size: 0.6em; color: var(--text-muted);">/mo</span></div>
