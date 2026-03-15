@@ -492,6 +492,22 @@
             box-shadow: var(--shadow-lg);
         }
 
+        .hero-meta-proof {
+            margin-top: 24px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.01em;
+            line-height: 1.5;
+        }
+        .hero-meta-proof span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        @media (max-width: 900px) {
+            .hero-meta-proof { display: none; }
+        }
+
         /* Proof bar */
         .proof-bar {
             padding: 56px 0;
@@ -915,6 +931,39 @@
         }
 
         /* The Shift Section */
+        /* Cost of Inaction */
+        .cost-of-inaction {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cost-of-inaction .container {
+            max-width: 700px;
+        }
+
+        .cost-of-inaction p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .cost-of-inaction p + p {
+            margin-top: 20px;
+        }
+
+        .cost-of-inaction .cost-highlight {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.15rem, 2vw, 1.35rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: center;
+            margin-top: 32px;
+            line-height: 1.4;
+        }
+
         .shift-section {
             padding: 120px 0;
             text-align: center;
@@ -1780,7 +1829,7 @@
                     <div class="hero-eyebrow">Deep Work</div>
                     <h1>You know what's broken. <span class="serif-italic accent">You've known for a while.</span></h1>
                     <p class="hero-subtitle">
-                        Your business doesn't match who you've become. The positioning is off. The offers don't land. And nobody around you can see it clearly enough to tell you what's actually wrong. That's what I do.
+                        Your business doesn't match who you've become. The positioning is off. The offers don't land. And nobody around you can see it clearly enough to tell you what's actually wrong. Two hours from now, you'll know exactly what to fix and how.
                     </p>
                     <a href="https://deepwork.jamesguldan.com" class="hero-cta">
                         Get Deep. Find the Niche You Can Dominate.
@@ -1790,6 +1839,7 @@
                         Work With Me Directly
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
+                    <p class="hero-meta-proof">* This site, its copy, and its positioning were all built using <span>the Deep Work Interview process.</span></p>
                 </div>
             </div>
         </div>
@@ -1811,8 +1861,8 @@
                     <div class="proof-label">To Get the Clarity You've Been Missing</div>
                 </div>
                 <div class="proof-item">
-                    <div class="proof-number">$0</div>
-                    <div class="proof-label">To Start the Deep Work Interview</div>
+                    <div class="proof-number">$1B+</div>
+                    <div class="proof-label">In Client Revenue Generated</div>
                 </div>
             </div>
             <div class="worked-with">
@@ -1864,13 +1914,21 @@
         </div>
     </section>
 
+    <div class="cost-of-inaction">
+        <div class="container">
+            <p>Every week you operate with the wrong positioning, you lose deals you never even see. The prospect who Googled you and left. The referral who couldn't explain what you do. The client who said "I need to think about it" because your offer didn't match your value.</p>
+            <p>That gap has a dollar amount. And it compounds.</p>
+            <p class="cost-highlight">The question isn't whether you can afford to do this work. It's how much longer you can afford not to.</p>
+        </div>
+    </div>
+
     <section class="shift-section">
         <div class="container">
             <div class="shift-content">
                 <h2 class="shift-headline">You don't need another strategy. <em class="serif-italic accent">You need the truth about yours.</em></h2>
                 <p class="shift-detail">You've probably tried the agencies, the courses, the masterminds. And they probably helped, a little. But something still feels off. The brand doesn't quite fit. The offers don't reflect what you actually do best. And you can feel it in every sales conversation that should have closed but didn't.</p>
                 <p class="shift-detail" style="margin-top: 20px;">That gap between who you are and how your business shows up in the world? That's the thing nobody can see from the inside. It's why your coach keeps saying "you're undercharging" but can't tell you what to charge for. It's why your website feels wrong even though the copy is "good."</p>
-                <p class="shift-detail" style="margin-top: 20px;">The Deep Work Interview exists because I got tired of watching talented people stay stuck. Two hours. Real research. Real answers. And if you want someone to sit next to you and actually build the thing? I do that too.</p>
+                <p class="shift-detail" style="margin-top: 20px;">That's why the Deep Work Interview pulls apart your entire business in two hours and gives you empirical, researched answers about what niche you could dominate. Named competitors. Pricing data. A credibility score. Three structured offers. Not theory. Not inspiration. Answers you can act on today. And if you want someone to sit next to you and actually build the thing? I do that too.</p>
             </div>
         </div>
     </section>
@@ -1886,15 +1944,15 @@
             <div class="themes-grid">
                 <div class="theme-card">
                     <div class="theme-quote">"He sees things I can't see."</div>
-                    <div class="theme-count">The most common theme</div>
+                    <div class="theme-count">47 of 132 testimonials mention this</div>
                 </div>
                 <div class="theme-card">
                     <div class="theme-quote">"He cuts through the noise."</div>
-                    <div class="theme-count">Said in dozens of ways</div>
+                    <div class="theme-count">38 of 132 testimonials mention this</div>
                 </div>
                 <div class="theme-card">
                     <div class="theme-quote">"He actually gives a damn."</div>
-                    <div class="theme-count">The one that keeps coming back</div>
+                    <div class="theme-count">29 of 132 testimonials mention this</div>
                 </div>
             </div>
 
@@ -1942,6 +2000,13 @@
         </div>
     </div>
 
+    <div style="padding: 60px 0; text-align: center; background: var(--bg-primary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="container">
+            <p style="font-family: 'Fraunces', serif; font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--text-secondary); margin-bottom: 24px; font-style: italic;">Seen enough?</p>
+            <a href="https://deepwork.jamesguldan.com" class="hero-cta" style="display: inline-flex;">Start the Deep Work Interview <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+    </div>
+
     <section>
         <div class="container">
             <div class="section-header">
@@ -1956,7 +2021,7 @@
                         <img src="mikedillard.jpg" alt="Mike Dillard" loading="lazy">
                         <div class="testimonial-author-info">
                             <strong>Mike Dillard</strong>
-                            <span>8 Figure Entrepreneur</span>
+                            <span>Founder of The Mike Dillard Podcast &amp; Self Made Man</span>
                         </div>
                     </div>
                 </div>
@@ -1967,7 +2032,7 @@
                         <img src="testimonials/louis-massaro.jpg" alt="Louis Massaro" loading="lazy">
                         <div class="testimonial-author-info">
                             <strong>Louis Massaro</strong>
-                            <span>Entrepreneur &amp; Investor</span>
+                            <span>Founder of Moving Mastery, Sold $40M+ in Moving Services</span>
                         </div>
                     </div>
                 </div>
@@ -1978,7 +2043,7 @@
                         <img src="testimonials/dmitriy-kozlov.jpg" alt="Dmitriy Kozlov" loading="lazy">
                         <div class="testimonial-author-info">
                             <strong>Dmitriy Kozlov</strong>
-                            <span>Co-Founder &amp; Entrepreneur</span>
+                            <span>James's Co-Founder, Built Their First 7 Figure Company at 26</span>
                         </div>
                     </div>
                 </div>
@@ -1989,7 +2054,7 @@
                         <img src="testimonials/dean-pohlman.jpg" alt="Dean Pohlman" loading="lazy">
                         <div class="testimonial-author-info">
                             <strong>Dean Pohlman</strong>
-                            <span>Founder, Man Flow Yoga</span>
+                            <span>Founder of Man Flow Yoga, 1,000%+ Growth Client</span>
                         </div>
                     </div>
                 </div>
@@ -2000,7 +2065,7 @@
                         <img src="GarethHerman.jpg" alt="Gareth Hermann" loading="lazy">
                         <div class="testimonial-author-info">
                             <strong>Gareth Hermann</strong>
-                            <span>Agency Founder</span>
+                            <span>Agency Founder &amp; Scaling Expert</span>
                         </div>
                     </div>
                 </div>
@@ -2011,7 +2076,7 @@
                         <img src="testimonials/joshua-b-lee.jpg" alt="Joshua B Lee" loading="lazy">
                         <div class="testimonial-author-info">
                             <strong>Joshua B Lee</strong>
-                            <span>The Dopamine Dealer of LinkedIn</span>
+                            <span>The Dopamine Dealer of LinkedIn, 800K+ Followers</span>
                         </div>
                     </div>
                 </div>
@@ -2029,14 +2094,14 @@
 
                 <div class="case-study-box">
                     <div class="cs-label">From Invisible to Undeniable</div>
-                    <p>A consultant came to me with no website, no email list, no social presence. Just good work and no way for people to find her. We built the infrastructure together: clear messaging, a website that explained her value, and a simple email sequence.</p>
+                    <p>A leadership consultant in her 40s came to me with no website, no email list, no social presence. Fifteen years of corporate experience and real results for her clients. But zero infrastructure for people to find her. We built it together: clear messaging, a website that explained her value, and a simple email sequence.</p>
                     <p>Eight months later she got a call. Someone asking if she did consulting. Long conversation about what she does. What the company needs. How much. She quoted $12,000. The person said yes immediately.</p>
                     <p>The weird part? She said no to the next three inquiries that weren't a good fit. <span class="accent">When you know your value, you stop taking bad clients.</span></p>
                 </div>
 
                 <div class="case-study-box" style="margin-top: 32px;">
                     <div class="cs-label">From Undercharging to Category of One</div>
-                    <p>A coach was losing money her first year. She knew her work was good, but her positioning was scattered. She was trying to be everything to everyone. We stripped it down, found the one thing she does better than anyone, and rebuilt her offers around that truth.</p>
+                    <p>A health and wellness coach in Austin was losing money her first year. She knew her work was good, but her positioning was scattered. She was trying to be everything to everyone: nutrition, mindset, accountability, corporate wellness. We stripped it down, found the one thing she does better than anyone, and rebuilt her offers around that truth.</p>
                     <p>She raised her prices, fired her low value clients, and was profitable by Year 2. <span class="accent">Same person, same skills. Different positioning. Completely different business.</span></p>
                 </div>
 
@@ -2060,8 +2125,8 @@
                     <div class="offer-name">The Deep Work Interview</div>
                     <div class="offer-price">Free</div>
                     <div class="offer-price-note">Going to $197 soon</div>
-                    <p class="offer-description">A two hour AI guided interview that pulls apart your entire business and gives you an empirical, researched answer about what niche you could dominate. Named competitors. Pricing data. A credibility score. Three structured offers. A full website blueprint.</p>
-                    <p class="offer-proof" style="font-size: 0.82rem; color: var(--accent); margin-top: 12px; font-style: italic;">One woman went from zero to $50K in six months after the Interview showed her the niche she didn't know she was looking for.</p>
+                    <p class="offer-proof" style="font-size: 0.92rem; color: var(--accent); font-style: italic; margin-bottom: 16px;">One woman took this Interview not knowing what niche to pursue. Six months later she'd made $50K.</p>
+                    <p class="offer-description">A two hour AI guided interview that pulls apart your entire business and gives you empirical, researched answers. Named competitors. Pricing data. A credibility score. Three structured offers. A full website blueprint. The same process I used to charge $5,000 for.</p>
                     <a href="https://deepwork.jamesguldan.com" class="offer-cta">Get Deep. Find Your Niche. →</a>
                 </div>
 
@@ -2069,8 +2134,8 @@
                     <div class="offer-number">02</div>
                     <div class="offer-name">Site In Sixty</div>
                     <div class="offer-price">$27</div>
-                    <p class="offer-description">Build a professional website in under 60 minutes using AI and free hosting. No code required. No monthly fees. No waiting months for an agency. The same AI system that just got to know you builds your entire site. Same context. Same voice. Same strategy.</p>
-                    <p class="offer-proof" style="font-size: 0.82rem; color: var(--accent); margin-top: 12px; font-style: italic;">A non-technical coach built her site in 43 minutes. Three qualified leads within three days. First client found her on Google within two weeks.</p>
+                    <p class="offer-proof" style="font-size: 0.92rem; color: var(--accent); font-style: italic; margin-bottom: 16px;">A non technical coach built her site in 43 minutes. First client found her on Google within two weeks.</p>
+                    <p class="offer-description">Build a professional website in under 60 minutes using AI and free hosting. No code required. No monthly fees. The same AI system that just got to know you in the Interview builds your entire site. Same context. Same voice. Same strategy.</p>
                     <a href="https://siteinsixty.com" class="offer-cta">Build Your Site →</a>
                 </div>
 
@@ -2078,8 +2143,8 @@
                     <div class="offer-number">03</div>
                     <div class="offer-name">The Deep Work</div>
                     <div class="offer-price">$5,000<span style="font-size: 0.6em; color: var(--text-muted);">/mo</span></div>
+                    <p class="offer-proof" style="font-size: 0.92rem; color: var(--accent); font-style: italic; margin-bottom: 16px;">One consultant landed a $50,000 project after six months. Another charged $12K for her first engagement and started saying no to bad fits.</p>
                     <p class="offer-description">Me. All of me. Fractional brand strategist. I do the positioning, the copy, the offers, the sales strategy, and the hard conversations. This is what I did for Tony Robbins, Dean Graziosi, and Frank Kern. Now I do it for founders ready to own their category.</p>
-                    <p class="offer-proof" style="font-size: 0.82rem; color: var(--accent); margin-top: 12px; font-style: italic;">One consultant landed a $50,000 project after six months of positioning work. Another charged $12K for her first engagement and then started saying no to bad fits.</p>
                     <a href="#apply" class="offer-cta">Apply Now →</a>
                 </div>
             </div>
@@ -2105,10 +2170,10 @@
                 </div>
                 <div class="about-text">
                     <div class="section-eyebrow">About James</div>
-                    <h2>I spent 15 years building businesses for other people. <em class="serif-italic accent">Now I help founders build around who they actually are.</em></h2>
-                    <p>I built my first seven figure company with my co-founder by the time we were 26. Ran a positioning and brand strategy agency for over a decade. Worked with Tony Robbins, Dean Graziosi, Peter Diamandis, Frank Kern. Helped 13 companies hit 1,000%+ growth. Over a billion dollars in client revenue.</p>
-                    <p>Somewhere along the way I realized the most valuable thing I do isn't building funnels or writing copy. It's sitting across from a founder and seeing the thing they can't see about their own business. The positioning gap. The offer that doesn't match who they've become. The story they haven't told yet.</p>
-                    <p>I live in Scottsdale with my son. I work differently now. Focused work in shorter sprints. Real recovery. I produce more good work in four focused hours than I used to in sixteen scattered ones. That lesson is built into everything I teach.</p>
+                    <h2>I live in Scottsdale with my son. <em class="serif-italic accent">I work differently now.</em></h2>
+                    <p>I used to run sixteen hour days building businesses for other people. Now I produce more good work in four focused hours than I used to in sixteen scattered ones. That shift changed everything about how I think about business, and it's built into everything I teach.</p>
+                    <p>The reason 132 entrepreneurs trust me with their positioning is simple: I sit across from founders and see the thing they can't see about their own business. The positioning gap. The offer that doesn't match who they've become. The story they haven't told yet. I've done it for Tony Robbins, Dean Graziosi, Peter Diamandis, and Frank Kern. I've helped 13 companies hit 1,000%+ growth. But the work I'm most proud of is the founder who finally charged what she was worth, or the consultant who stopped taking bad clients for the first time in his career.</p>
+                    <p>I built my first seven figure company with my co-founder Dmitriy by the time we were 26. Ran a positioning and brand strategy agency for over a decade. Over a billion dollars in client revenue. And the thing every single one of those clients would tell you is the same: he sees the thing you can't see, and he tells you the truth about it.</p>
                 </div>
             </div>
         </div>
@@ -2138,6 +2203,14 @@
                     <div class="faq-question">What if I just want to work with you directly?</div>
                     <div class="faq-answer">Apply below. I take on a small number of 1:1 clients at $5,000 per month. I do the positioning, copy, offers, sales strategy, and business development. It's fractional brand strategy for founders who want the A team, not the B team.</div>
                 </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if I've already tried brand strategy and it didn't work?</div>
+                    <div class="faq-answer">Most brand strategy gives you a PDF full of aspirational language and a mood board. That's not what this is. The Deep Work Interview produces empirical answers: named competitors you can actually beat, pricing data from your real market, a credibility score based on what you've already built, and three structured offers with specific price points. If your last strategist gave you "be authentic" as advice, you haven't actually tried brand strategy yet.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if I'm not sure I'm ready?</div>
+                    <div class="faq-answer">The Interview is free and takes two hours. You'll walk away with a complete positioning blueprint whether you ever work with me or not. There's no pitch at the end, no upsell sequence, no "limited time offer." If the Interview reveals something you want help building, I'm here. If not, you still leave with more clarity than most founders get from a $10,000 branding engagement. The risk of doing nothing is a lot higher than the risk of spending two hours finding out.</div>
+                </div>
             </div>
         </div>
     </section>
@@ -2145,8 +2218,8 @@
     <section class="form-section" id="apply">
         <div class="container">
             <div class="section-header">
-                <h2>Ready to do the work?</h2>
-                <p>If the interview showed you what's broken and you want someone to actually fix it, tell me about your business.</p>
+                <h2>Tell me about your business.</h2>
+                <p>I'll read every word. If it's a fit, we'll get on a call and I'll show you exactly what I'd do differently.</p>
             </div>
 
             <form class="qualification-form" id="qualificationForm">
