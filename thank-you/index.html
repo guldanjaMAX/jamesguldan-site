@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're In | James Guldan</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #FDFCFA;
+            --bg-secondary: #F5F3F0;
+            --text-primary: #1A1A1A;
+            --text-secondary: #555;
+            --text-muted: #888;
+            --accent: #BF6D2A;
+            --border: #E8E4DF;
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 700px; margin: 0 auto; padding: 0 24px; }
+
+        .serif-italic { font-family: 'Fraunces', serif; font-style: italic; }
+        .accent { color: var(--accent); }
+
+        nav {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        nav .container { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; }
+        .logo { text-decoration: none; }
+        .logo img { height: 32px; width: auto; }
+
+        .thank-you-hero {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+        .thank-you-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+        .thank-you-hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .steps {
+            padding: 40px 0 80px;
+        }
+        .step {
+            padding: 32px;
+            background: white;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: border-color 0.2s ease;
+        }
+        .step:hover { border-color: var(--accent); }
+        .step-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .step h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .step-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 100px;
+            transition: all 0.2s ease;
+        }
+        .step-link:hover { background: var(--accent); transform: translateY(-1px); }
+
+        .help-note {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .help-note a { color: var(--accent); text-decoration: none; }
+
+        .product-section { display: none; }
+        .product-section.active { display: block; }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        footer a { color: var(--text-muted); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/logo.svg" alt="James Guldan" height="32">
+            </a>
+        </div>
+    </nav>
+
+    <section class="thank-you-hero">
+        <div class="container">
+            <h1>You're in. <em class="serif-italic accent">Let's go.</em></h1>
+            <p id="heroSubtext">Here's everything you need to get started. Bookmark this page so you can come back to it.</p>
+        </div>
+    </section>
+
+    <section class="steps">
+        <div class="container">
+
+            <div class="product-section" id="bundle-steps">
+                <div class="step">
+                    <div class="step-number">Step 1</div>
+                    <h3>Start the Deep Work Interview</h3>
+                    <p>This is a two hour AI guided conversation that will pull apart your business and give you a complete positioning blueprint. Set aside time, find a quiet spot, and answer honestly. The more real you are, the better the output.</p>
+                    <a href="https://deepwork.jamesguldan.com" class="step-link">Start the Interview →</a>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">Step 2</div>
+                    <h3>Build your site with Site In Sixty</h3>
+                    <p>After the interview, use Site In Sixty to turn your positioning blueprint into a live website. The AI already knows your story, your offers, and your voice. No code required. No monthly fees.</p>
+                    <a href="https://siteinsixty.com/thank-you" class="step-link">Build Your Site →</a>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">Step 3</div>
+                    <h3>Schedule your strategy call with James</h3>
+                    <p>Once you've completed the interview (ideally before the call), schedule your 1 hour session with James. He'll review your blueprint, pressure test your offers, and give you the honest truth about what he sees.</p>
+                    <a href="https://calendly.com/jamesguldan/deep-work-strategy" class="step-link">Schedule Your Call →</a>
+                </div>
+            </div>
+
+            <div class="product-section" id="site-in-sixty-steps">
+                <div class="step">
+                    <div class="step-number">Step 1</div>
+                    <h3>Complete the Deep Work Interview first</h3>
+                    <p>If you haven't already, start with the free Deep Work Interview. It builds the positioning blueprint that Site In Sixty uses to create your website. Without it, you're building a site without a foundation.</p>
+                    <a href="https://deepwork.jamesguldan.com" class="step-link">Start the Interview →</a>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">Step 2</div>
+                    <h3>Build your site</h3>
+                    <p>Follow the guide to build a professional website in under 60 minutes using AI and free Cloudflare hosting. The AI uses everything from your Deep Work Interview to write your copy and structure your pages.</p>
+                    <a href="https://siteinsixty.com/thank-you" class="step-link">Access Site In Sixty →</a>
+                </div>
+            </div>
+
+            <div class="product-section" id="default-steps">
+                <div class="step">
+                    <div class="step-number">Your next step</div>
+                    <h3>Start the Deep Work Interview</h3>
+                    <p>Begin your two hour AI guided interview to get a complete positioning blueprint for your business.</p>
+                    <a href="https://deepwork.jamesguldan.com" class="step-link">Start the Interview →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="help-note">
+        <div class="container">
+            <p>Questions? Email <a href="mailto:james@jamesguldan.com">james@jamesguldan.com</a> and I'll get back to you personally.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p><a href="/">James Guldan</a> · <a href="https://deepwork.jamesguldan.com">Deep Work Interview</a> · <a href="https://siteinsixty.com">Site In Sixty</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const product = params.get('product');
+
+        const validProducts = ['bundle', 'site-in-sixty'];
+        const activeProduct = validProducts.includes(product) ? product : 'default';
+
+        document.getElementById(`${activeProduct}-steps`).classList.add('active');
+
+        const heroTexts = {
+            'bundle': 'You just got the Deep Work Interview, Site In Sixty, and a strategy call with James. Here\'s how to get the most out of all three.',
+            'site-in-sixty': 'You\'ve got Site In Sixty. Here\'s how to get started building your website.',
+            'default': 'Here\'s everything you need to get started. Bookmark this page so you can come back to it.'
+        };
+        document.getElementById('heroSubtext').textContent = heroTexts[activeProduct];
+    </script>
+</body>
+</html>
