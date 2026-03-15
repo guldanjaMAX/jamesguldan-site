@@ -334,7 +334,8 @@
             padding: 0;
             position: relative;
             overflow: hidden;
-            min-height: min(calc(100vh - 64px), 740px);
+            height: min(calc(100vh - 80px), 640px);
+            max-height: calc(100vh - 80px);
         }
 
         .hero::after {
@@ -400,7 +401,8 @@
         .hero-inner {
             position: relative;
             z-index: 3;
-            min-height: min(calc(100vh - 64px), 740px);
+            height: min(calc(100vh - 80px), 640px);
+            max-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
         }
@@ -411,7 +413,7 @@
             text-transform: uppercase;
             letter-spacing: 0.15em;
             color: var(--accent);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             font-family: 'DM Sans', sans-serif;
         }
 
@@ -430,11 +432,11 @@
         }
 
         .hero-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--text-secondary);
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             max-width: 480px;
-            line-height: 1.75;
+            line-height: 1.7;
         }
 
         .hero-cta {
@@ -590,8 +592,94 @@
             font-family: 'DM Sans', sans-serif;
         }
 
-        /* Problem Section */
+        /* Problem Section - "The Pattern" */
         .problem-section {
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            background: #0F0F0F;
+            color: #FDFCFA;
+        }
+
+        .problem-section::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(191, 109, 42, 0.15) 0%, rgba(191, 109, 42, 0.03) 40%, transparent 70%);
+            animation: patternPulse 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .problem-section::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(191, 109, 42, 0.1) 0%, transparent 60%);
+            animation: patternPulse 8s ease-in-out 4s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes patternPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .pattern-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(191, 109, 42, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(191, 109, 42, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
+            pointer-events: none;
+        }
+
+        .pattern-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(191, 109, 42, 0.2), transparent);
+            pointer-events: none;
+        }
+
+        .pattern-line-1 {
+            top: 25%;
+            left: 0;
+            right: 0;
+            animation: lineSlide 12s linear infinite;
+        }
+
+        .pattern-line-2 {
+            top: 50%;
+            left: 0;
+            right: 0;
+            animation: lineSlide 12s linear 3s infinite;
+            opacity: 0.5;
+        }
+
+        .pattern-line-3 {
+            top: 75%;
+            left: 0;
+            right: 0;
+            animation: lineSlide 12s linear 6s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes lineSlide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .problem-inner {
+            position: relative;
+            z-index: 2;
             padding: 110px 0;
         }
 
@@ -602,11 +690,12 @@
 
         .problem-intro h2 {
             margin-bottom: 24px;
+            color: #FDFCFA;
         }
 
         .problem-lead {
             font-size: 1.15rem;
-            color: var(--text-secondary);
+            color: rgba(253, 252, 250, 0.6);
             margin-bottom: 12px;
         }
 
@@ -618,17 +707,36 @@
         }
 
         .symptom-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(191, 109, 42, 0.15);
             border-radius: 16px;
             padding: 36px 28px;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .symptom-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .symptom-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(191, 109, 42, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(191, 109, 42, 0.05);
+        }
+
+        .symptom-card:hover::before {
+            opacity: 1;
         }
 
         .symptom-icon {
@@ -642,14 +750,37 @@
             line-height: 1.7;
         }
 
+        .symptom-card p:first-child {
+            color: #FDFCFA;
+        }
+
+        .symptom-card p:last-child {
+            color: rgba(253, 252, 250, 0.6);
+        }
+
         .problem-truth {
             text-align: center;
             padding: 64px 40px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-accent);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(191, 109, 42, 0.2);
             border-radius: 20px;
             margin-bottom: 60px;
-            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-truth::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(191, 109, 42, 0.3), transparent 40%, transparent 60%, rgba(191, 109, 42, 0.15));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            padding: 1px;
+            pointer-events: none;
         }
 
         .truth-label {
@@ -666,6 +797,7 @@
             font-size: clamp(1.35rem, 2.5vw, 1.75rem);
             max-width: 600px;
             margin: 0 auto;
+            color: #FDFCFA;
         }
 
         .solution-block {
@@ -1606,6 +1738,7 @@
 
         @media (max-width: 600px) {
             section { padding: 70px 0; }
+            .problem-inner { padding: 70px 0; }
             .hero-content { padding: 24px 0 32px; }
             .hero-bg-photo { height: 280px; }
             h1 { font-size: 1.75rem; }
@@ -1632,7 +1765,7 @@
             </a>
             <div style="display: flex; align-items: center; gap: 28px;">
                 <a href="testimonials.html" class="nav-text-link" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">Testimonials</a>
-                <a href="https://deepwork.jamesguldan.com" class="nav-cta">Find Your Niche</a>
+                <a href="https://deepwork.jamesguldan.com" class="nav-cta">Start the Deep Work</a>
             </div>
         </div>
     </nav>
@@ -1647,14 +1780,14 @@
                     <div class="hero-eyebrow">Deep Work</div>
                     <h1>You know what's broken. <span class="serif-italic accent">You've known for a while.</span></h1>
                     <p class="hero-subtitle">
-                        I sit with entrepreneurs who've outgrown their business and rebuild it around who they actually are. Brand strategy, offer architecture, and the hard conversations nobody else will have with you.
+                        Your business doesn't match who you've become. The positioning is off. The offers don't land. And nobody around you can see it clearly enough to tell you what's actually wrong. That's what I do.
                     </p>
                     <a href="https://deepwork.jamesguldan.com" class="hero-cta">
-                        Find the Niche You Can Dominate
+                        Get Deep. Find the Niche You Can Dominate.
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                     <a href="#apply" class="hero-cta-secondary">
-                        Work With Me
+                        Work With Me Directly
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
@@ -1666,24 +1799,24 @@
         <div class="container">
             <div class="proof-grid">
                 <div class="proof-item">
-                    <div class="proof-number">$1B+</div>
-                    <div class="proof-label">Client Revenue Generated</div>
-                </div>
-                <div class="proof-item">
-                    <div class="proof-number">15+</div>
-                    <div class="proof-label">Years Studying Human Psychology at Scale</div>
+                    <div class="proof-number">132</div>
+                    <div class="proof-label">Entrepreneurs Who Found Their Niche</div>
                 </div>
                 <div class="proof-item">
                     <div class="proof-number">13</div>
-                    <div class="proof-label">Companies to 1,000% plus Growth</div>
+                    <div class="proof-label">Companies Grew 1,000%+ After Repositioning</div>
                 </div>
                 <div class="proof-item">
-                    <div class="proof-number">INC 500</div>
-                    <div class="proof-label">Clients on the List</div>
+                    <div class="proof-number">2 hrs</div>
+                    <div class="proof-label">To Get the Clarity You've Been Missing</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">$0</div>
+                    <div class="proof-label">To Start the Deep Work Interview</div>
                 </div>
             </div>
             <div class="worked-with">
-                <div class="worked-with-label">Trusted by the biggest names in business</div>
+                <div class="worked-with-label">Built positioning for</div>
                 <div class="worked-with-logos">
                     <img src="tony-robbins-logo.svg" alt="Tony Robbins">
                     <img src="xprize-logo.svg" alt="Peter Diamandis (Abundance360)">
@@ -1696,35 +1829,37 @@
     </div>
 
     <section class="problem-section">
-        <div class="container">
-            <div class="problem-intro">
-                <div class="section-eyebrow">The Pattern</div>
-                <h2>Everyone who comes to me has the same problem.</h2>
-            </div>
-
-            <div class="problem-symptoms">
-                <div class="symptom-card">
-                    <p><strong>You've Outgrown Your Brand</strong></p>
-                    <p>You built something that worked. Then you grew. Now your website, your offers, and your positioning reflect the person you were two years ago. Not who you are now.</p>
+        <div class="pattern-grid-bg"></div>
+        <div class="pattern-line pattern-line-1"></div>
+        <div class="pattern-line pattern-line-2"></div>
+        <div class="pattern-line pattern-line-3"></div>
+        <div class="problem-inner">
+            <div class="container">
+                <div class="problem-intro">
+                    <div class="section-eyebrow">The Pattern</div>
+                    <h2>Everyone who comes to me has the same problem.</h2>
                 </div>
-                <div class="symptom-card">
-                    <p><strong>You're Stuck Between Identities</strong></p>
-                    <p>The old you built the business. The new you knows it needs to change. But you can't see what comes next because you're standing too close to it.</p>
-                </div>
-                <div class="symptom-card">
-                    <p><strong>Nobody Will Tell You The Truth</strong></p>
-                    <p>Your team agrees with you. Your friends encourage you. Your coach validates you. Nobody sits across from you and says "that's the thing that's broken."</p>
-                </div>
-            </div>
 
-            <div class="problem-truth">
-                <div class="truth-label">The Quote</div>
-                <h3>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</h3>
-            </div>
+                <div class="problem-symptoms">
+                    <div class="symptom-card">
+                        <p><strong>You've Outgrown Your Brand</strong></p>
+                        <p>You built something that worked. Then you grew. Now your website, your offers, and your positioning reflect the person you were two years ago. Not who you are now.</p>
+                    </div>
+                    <div class="symptom-card">
+                        <p><strong>You're Stuck Between Identities</strong></p>
+                        <p>The old you built the business. The new you knows it needs to change. But you can't see what comes next because you're standing too close to it.</p>
+                    </div>
+                    <div class="symptom-card">
+                        <p><strong>Nobody Will Tell You The Truth</strong></p>
+                        <p>Your team agrees with you. Your friends encourage you. Your coach validates you. Nobody sits across from you and says "that's the thing that's broken."</p>
+                    </div>
+                </div>
 
-            <div class="solution-block" style="text-align: left; max-width: 100%;">
-                <p style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 16px;">Said by</p>
-                <p style="font-size: 1rem; font-weight: 500; color: var(--text-primary);">Joshua B Lee</p>
+                <div class="problem-truth">
+                    <div class="truth-label">The Quote</div>
+                    <h3>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</h3>
+                    <p style="font-size: 0.9rem; color: rgba(253,252,250,0.5); margin-top: 20px;">Joshua B Lee</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1732,10 +1867,10 @@
     <section class="shift-section">
         <div class="container">
             <div class="shift-content">
-                <h2 class="shift-headline">The real problem is never the funnel. <em class="serif-italic accent">It's the story underneath it.</em></h2>
-                <p class="shift-detail">Most entrepreneurs hire agencies to fix symptoms. Better ads. More content. A new website. But if the foundation is wrong, if your positioning doesn't match who you actually are, none of it works.</p>
-                <p class="shift-detail" style="margin-top: 20px;">I start with the foundation. The identity. The brand truth. Once that's clear, everything else builds itself. I've watched it happen hundreds of times: a coach who was losing money her first year raised her prices, fired her low value clients, and was profitable by Year 2. A consultant who had no online presence built clarity around who he actually helps, and six months later was booking $1,000 consultations and saying no to bad fits.</p>
-                <p class="shift-detail" style="margin-top: 20px;">The product was always good. People just didn't know about it. That's the shift I help you make.</p>
+                <h2 class="shift-headline">You don't need another strategy. <em class="serif-italic accent">You need the truth about yours.</em></h2>
+                <p class="shift-detail">You've probably tried the agencies, the courses, the masterminds. And they probably helped, a little. But something still feels off. The brand doesn't quite fit. The offers don't reflect what you actually do best. And you can feel it in every sales conversation that should have closed but didn't.</p>
+                <p class="shift-detail" style="margin-top: 20px;">That gap between who you are and how your business shows up in the world? That's the thing nobody can see from the inside. It's why your coach keeps saying "you're undercharging" but can't tell you what to charge for. It's why your website feels wrong even though the copy is "good."</p>
+                <p class="shift-detail" style="margin-top: 20px;">The Deep Work Interview exists because I got tired of watching talented people stay stuck. Two hours. Real research. Real answers. And if you want someone to sit next to you and actually build the thing? I do that too.</p>
             </div>
         </div>
     </section>
@@ -1884,45 +2019,30 @@
         </div>
     </section>
 
-    <!-- The Third Option -->
+    <!-- What Changes -->
     <section class="third-option-section">
         <div class="container">
             <div class="third-option-inner">
-                <div class="section-eyebrow">The Real Math</div>
+                <div class="section-eyebrow">What Changes</div>
 
-                <p class="narrative-text bold-intro">I spent 15 years building a positioning and brand strategy practice. That experience is built into everything I do now.</p>
-
-                <p class="narrative-text">Most founders think brand strategy is a luxury. It's not. It's the foundation that everything else sits on. But here's what nobody tells you: most brand strategists are salespeople dressed up as consultants. They'll spend three months interviewing your team, charge you $50K, give you a 40 page PDF you'll never look at, and disappear.</p>
-
-                <p class="narrative-text">Meanwhile you're stuck holding a report while your positioning is still unclear and your offers don't reflect who you actually are.</p>
-
-                <p class="narrative-text">So you think about hiring someone to do it for you full time. By the time you find the right person, negotiate, onboard them, and get them up to speed, you've spent months and $100K+ before they can even start being useful.</p>
-
-                <div class="cost-comparison">
-                    <div class="cost-row">
-                        <span class="cost-label">Hire a full time brand strategist</span>
-                        <span class="cost-value">$120K to $180K/yr</span>
-                    </div>
-                    <div class="cost-row">
-                        <span class="cost-label">Hire a brand agency (you get the B team)</span>
-                        <span class="cost-value">$100K to $300K/yr</span>
-                    </div>
-                    <div class="cost-row highlight">
-                        <span class="cost-label">Work with me directly</span>
-                        <span class="cost-value">$5,000/mo</span>
-                    </div>
-                </div>
-
-                <p class="narrative-text"><span class="accent">15+ years of offer architecture and psychology expertise. $1B+ in client revenue.</span> I've built positioning for Tony Robbins, Dean Graziosi, Peter Diamandis, and Frank Kern. And somewhere along the way I realized the best thing I could do was stop running an agency and just sit next to you and go <em>"yeah... that's broken. Let me fix it."</em></p>
-
-                <div class="narrative-divider"></div>
+                <p class="narrative-text bold-intro">This is what happens when you stop guessing and start building from who you actually are.</p>
 
                 <div class="case-study-box">
-                    <div class="cs-label">What This Looks Like in Practice</div>
+                    <div class="cs-label">From Invisible to Undeniable</div>
                     <p>A consultant came to me with no website, no email list, no social presence. Just good work and no way for people to find her. We built the infrastructure together: clear messaging, a website that explained her value, and a simple email sequence.</p>
                     <p>Eight months later she got a call. Someone asking if she did consulting. Long conversation about what she does. What the company needs. How much. She quoted $12,000. The person said yes immediately.</p>
-                    <p>The weird part? She said no to the next three inquiries that weren't a good fit. <span class="accent">Turns out when you know your value, you stop taking bad clients.</span> That's what clarity does when it's right.</p>
+                    <p>The weird part? She said no to the next three inquiries that weren't a good fit. <span class="accent">When you know your value, you stop taking bad clients.</span></p>
                 </div>
+
+                <div class="case-study-box" style="margin-top: 32px;">
+                    <div class="cs-label">From Undercharging to Category of One</div>
+                    <p>A coach was losing money her first year. She knew her work was good, but her positioning was scattered. She was trying to be everything to everyone. We stripped it down, found the one thing she does better than anyone, and rebuilt her offers around that truth.</p>
+                    <p>She raised her prices, fired her low value clients, and was profitable by Year 2. <span class="accent">Same person, same skills. Different positioning. Completely different business.</span></p>
+                </div>
+
+                <p class="narrative-text" style="margin-top: 48px;">Most founders think the answer is more: more ads, more content, a new funnel, another launch. But the real problem is almost never the execution. It's the foundation underneath it. If your positioning doesn't match who you've become, nothing built on top of it will work the way it should.</p>
+
+                <p class="narrative-text">That's the shift. Not doing more. <em>Becoming clearer.</em> And that clarity changes everything: what you charge, who you attract, what you say no to, and how fast people say yes.</p>
             </div>
         </div>
     </section>
@@ -1942,7 +2062,7 @@
                     <div class="offer-price-note">Going to $197 soon</div>
                     <p class="offer-description">A two hour AI guided interview that pulls apart your entire business and gives you an empirical, researched answer about what niche you could dominate. Named competitors. Pricing data. A credibility score. Three structured offers. A full website blueprint.</p>
                     <p class="offer-proof" style="font-size: 0.82rem; color: var(--accent); margin-top: 12px; font-style: italic;">One woman went from zero to $50K in six months after the Interview showed her the niche she didn't know she was looking for.</p>
-                    <a href="https://deepwork.jamesguldan.com" class="offer-cta">Find the Niche You Can Dominate →</a>
+                    <a href="https://deepwork.jamesguldan.com" class="offer-cta">Get Deep. Find Your Niche. →</a>
                 </div>
 
                 <div class="offer-card">
