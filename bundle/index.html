@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Deep Work Bundle | James Guldan</title>
+    <meta name="description" content="Deep Work Interview + Site In Sixty + 1 Hour Strategy Call with James. Find your niche, build your site, get a real plan. $67.">
+    <meta property="og:title" content="The Deep Work Bundle | James Guldan">
+    <meta property="og:description" content="Everything you need to find your niche, build your site, and get a real plan. $67.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #FDFCFA;
+            --bg-secondary: #F5F3F0;
+            --text-primary: #1A1A1A;
+            --text-secondary: #555;
+            --text-muted: #888;
+            --accent: #BF6D2A;
+            --accent-light: rgba(191, 109, 42, 0.08);
+            --border: #E8E4DF;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .serif-italic { font-family: 'Fraunces', serif; font-style: italic; }
+        .accent { color: var(--accent); }
+
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(253,252,250,0.95);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+        nav .container { display: flex; align-items: center; justify-content: space-between; }
+        .logo { text-decoration: none; display: flex; align-items: center; }
+        .logo img { height: 24px; width: auto; }
+        .nav-cta {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            padding: 10px 22px;
+            text-decoration: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 100px;
+            transition: all 0.2s ease;
+        }
+        .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+        @media (min-width: 600px) {
+            nav { padding: 20px 0; }
+            .logo img { height: 32px; }
+            .nav-cta { padding: 12px 28px; font-size: 0.9rem; }
+        }
+
+        .bundle-hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .bundle-hero .container { max-width: 800px; }
+        .bundle-eyebrow {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .bundle-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+        .bundle-hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-section { padding: 0 0 80px; }
+        .pricing-card {
+            max-width: 680px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 48px 40px;
+            box-shadow: var(--shadow-lg), 0 0 0 1px var(--accent-light);
+        }
+        .pricing-includes { list-style: none; margin-bottom: 40px; }
+        .pricing-includes li {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+        .pricing-includes li:last-child { border-bottom: none; }
+        .pricing-includes .item-name { font-weight: 600; }
+        .pricing-includes .item-value {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            text-decoration: line-through;
+        }
+        .pricing-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 28px 0;
+            border-top: 2px solid var(--text-primary);
+            margin-bottom: 32px;
+        }
+        .pricing-total .total-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .pricing-total .total-price {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .checkout-form { display: flex; flex-direction: column; gap: 16px; }
+        .checkout-form input[type="email"] {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-secondary);
+            transition: border-color 0.2s ease;
+        }
+        .checkout-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
+        .checkout-btn {
+            width: 100%;
+            padding: 18px 36px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 100px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .checkout-btn:hover { background: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .checkout-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .guarantee-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+
+        .details-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .details-section .container { max-width: 800px; }
+        .details-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+        .detail-block {
+            margin-bottom: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid var(--border);
+        }
+        .detail-block:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+        .detail-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .detail-block h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .detail-block p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; }
+        .detail-proof {
+            margin-top: 16px;
+            font-style: italic;
+            color: var(--accent);
+            font-size: 0.95rem;
+        }
+
+        .guarantee-section { padding: 80px 0; }
+        .guarantee-section .container { max-width: 700px; text-align: center; }
+        .guarantee-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .guarantee-section p { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; }
+        .guarantee-badge {
+            display: inline-block;
+            margin-top: 32px;
+            padding: 12px 28px;
+            border: 2px solid var(--accent);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .faq-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+        }
+        .faq-section .container { max-width: 700px; }
+        .faq-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+        .faq-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
+        .faq-answer { color: var(--text-secondary); line-height: 1.75; }
+
+        .final-cta { padding: 80px 0; text-align: center; }
+        .final-cta .container { max-width: 600px; }
+        .final-cta h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .final-cta p { color: var(--text-secondary); margin-bottom: 32px; font-size: 1.05rem; }
+        .final-cta .checkout-btn { display: inline-block; width: auto; padding: 18px 48px; }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        footer a { color: var(--text-muted); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+
+        @media (max-width: 600px) {
+            .bundle-hero { padding: 60px 0 40px; }
+            .pricing-card { padding: 32px 24px; }
+            .pricing-includes li { flex-direction: column; align-items: flex-start; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/logo.svg" alt="James Guldan" height="28">
+            </a>
+            <a href="https://deepwork.jamesguldan.com" class="nav-cta">Start the Deep Work</a>
+        </div>
+    </nav>
+
+    <section class="bundle-hero">
+        <div class="container">
+            <div class="bundle-eyebrow">The Deep Work Bundle</div>
+            <h1>Find your niche. Build your site. <em class="serif-italic accent">Get a real plan.</em></h1>
+            <p class="subtitle">The complete system for entrepreneurs who are done guessing and ready to build a business that matches who they actually are. Three products. One price. Everything you need.</p>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="pricing-card">
+            <ul class="pricing-includes">
+                <li>
+                    <span class="item-name">The Deep Work Interview</span>
+                    <span class="item-value">$197 value</span>
+                </li>
+                <li>
+                    <span class="item-name">Site In Sixty</span>
+                    <span class="item-value">$27 value</span>
+                </li>
+                <li>
+                    <span class="item-name">1 Hour Strategy Call with James</span>
+                    <span class="item-value">$500 value</span>
+                </li>
+            </ul>
+
+            <div class="pricing-total">
+                <span class="total-label">You pay</span>
+                <span class="total-price">$67</span>
+            </div>
+
+            <form class="checkout-form" id="checkoutForm">
+                <input type="email" id="email" name="email" required placeholder="Your email address" autocomplete="email">
+                <button type="submit" class="checkout-btn" id="checkoutBtn">Get the Bundle &#8594;</button>
+            </form>
+
+            <p class="guarantee-note">100% money back guarantee. Complete the interview and build the site. If you don't walk away with more clarity than anything else you've tried, email james@jamesguldan.com for a full refund. No questions, no forms, no hoops.</p>
+        </div>
+    </section>
+
+    <section class="details-section">
+        <div class="container">
+            <h2>What's inside</h2>
+
+            <div class="detail-block">
+                <div class="detail-number">Included 01</div>
+                <h3>The Deep Work Interview</h3>
+                <p>A two hour AI guided interview that pulls apart your entire business and gives you empirical, researched answers. Named competitors you can actually beat. Pricing data from your real market. A credibility score based on what you've already built. Three structured offers with specific price points. A full website blueprint. The same process James used to charge $5,000 for, now powered by AI.</p>
+                <p class="detail-proof">One woman took this interview not knowing what niche to pursue. Six months later she'd made $50K.</p>
+            </div>
+
+            <div class="detail-block">
+                <div class="detail-number">Included 02</div>
+                <h3>Site In Sixty</h3>
+                <p>Build a professional website in under 60 minutes using AI and free hosting. No code required. No monthly fees. The AI system that just got to know you in the Interview builds your entire site. Same context. Same voice. Same strategy. You finish the interview with a plan and a live website, not a to-do list.</p>
+                <p class="detail-proof">A non-technical coach built her site in 43 minutes. First client found her on Google within two weeks.</p>
+            </div>
+
+            <div class="detail-block">
+                <div class="detail-number">Included 03</div>
+                <h3>1 Hour Strategy Call with James</h3>
+                <p>After you complete the Interview and build your site, you get one hour with James to go deeper. He'll review your positioning blueprint, pressure test your offers, and tell you the truth about what he sees. This is the same conversation people pay $5,000 per month to have. You get your first hour for the cost of a nice dinner.</p>
+                <p class="detail-proof">132 entrepreneurs have worked with James. The most common thing they say: "He sees things I can't see."</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee-section">
+        <div class="container">
+            <h2>The Deep Work Guarantee</h2>
+            <p>Complete the full interview. Build the site. Get on the call. If you don't walk away with more clarity about your business than you've gotten from anything else you've tried, email james@jamesguldan.com and I'll refund every penny. No questions, no forms, no hoops. I've done this for 132 entrepreneurs. I know what happens when someone actually does the work.</p>
+            <div class="guarantee-badge">100% Money Back Guarantee</div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2>Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">What happens after I buy?</div>
+                <div class="faq-answer">You'll get immediate access to the Deep Work Interview and Site In Sixty. Complete the interview at your own pace (most people finish in one sitting). Build your site right after. Then you'll receive a link to schedule your 1 hour call with James.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I schedule the strategy call?</div>
+                <div class="faq-answer">After purchase, you'll receive a scheduling link. James asks that you complete the Deep Work Interview before your call so he can review your blueprint and make the hour as valuable as possible.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What if I've already done the Deep Work Interview?</div>
+                <div class="faq-answer">Even better. You already have your blueprint. The bundle gives you Site In Sixty to build on that foundation plus the strategy call to go deeper with James. Your $67 still gets you $527 in value.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is this a subscription?</div>
+                <div class="faq-answer">No. One payment of $67. You keep access to everything forever. No recurring charges, no upsell sequence, no bait and switch.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What if I want to work with James beyond the call?</div>
+                <div class="faq-answer">James takes on a small number of 1:1 clients at $5,000 per month. If the strategy call reveals that you'd benefit from ongoing work together, he'll tell you. If it doesn't, he'll tell you that too. There's no pressure. The call is genuinely about giving you the best hour of strategy you've ever had.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What's the refund policy?</div>
+                <div class="faq-answer">Complete the interview and build the site. If you don't feel like you got more clarity than anything else you've tried, email james@jamesguldan.com for a full refund. No questions asked. James has done this for 132 entrepreneurs and hasn't had a single refund request yet.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>$724 in value. <em class="serif-italic accent">$67.</em></h2>
+            <p>Most people spend more than this on a logo they'll replace in six months. This gives you your positioning, your site, and a real plan.</p>
+            <button class="checkout-btn" onclick="document.getElementById('email').focus(); window.scrollTo({top: 0, behavior: 'smooth'});">Get the Bundle &#8594;</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><a href="/">James Guldan</a> &middot; <a href="https://deepwork.jamesguldan.com">Deep Work Interview</a> &middot; <a href="https://siteinsixty.com">Site In Sixty</a></p>
+            <p style="margin-top: 12px;">A Deep Work product by James Guldan</p>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('checkoutForm');
+        const btn = document.getElementById('checkoutBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            btn.disabled = true;
+            btn.textContent = 'Loading...';
+
+            try {
+                const response = await fetch('/api/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email,
+                        priceId: 'price_1TB5AzFArNSFW9mBrF1j3EKA',
+                        productSlug: 'bundle'
+                    }),
+                });
+
+                if (!response.ok) throw new Error('Checkout failed');
+
+                const data = await response.json();
+                window.location.href = data.url;
+            } catch (error) {
+                alert('Error creating checkout. Please try again or email james@jamesguldan.com');
+                btn.disabled = false;
+                btn.textContent = 'Get the Bundle \u2192';
+            }
+        });
+    </script>
+</body>
+</html>
