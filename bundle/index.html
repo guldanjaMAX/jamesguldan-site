@@ -488,6 +488,9 @@
         const form = document.getElementById('checkoutForm');
         const btn = document.getElementById('checkoutBtn');
 
+        // Backup: Stripe Payment Link (works even if serverless function is down)
+        const FALLBACK_PAYMENT_URL = 'https://buy.stripe.com/8x25kDcd89T4btRgOZ6c003';
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -496,6 +499,9 @@
             btn.textContent = 'Loading...';
 
             try {
+                const controller = new AbortController();
+                const timeout = setTimeout(() => controller.abort(), 8000); // 8s timeout
+
                 const response = await fetch('/api/create-checkout', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -504,16 +510,19 @@
                         priceId: 'price_1TB5AzFArNSFW9mBrF1j3EKA',
                         productSlug: 'bundle'
                     }),
+                    signal: controller.signal,
                 });
+
+                clearTimeout(timeout);
 
                 if (!response.ok) throw new Error('Checkout failed');
 
                 const data = await response.json();
                 window.location.href = data.url;
             } catch (error) {
-                alert('Error creating checkout. Please try again or email james@jamesguldan.com');
-                btn.disabled = false;
-                btn.textContent = 'Get the Bundle →';
+                // Fallback: redirect to Stripe Payment Link directly
+                console.warn('Primary checkout failed, using fallback payment link:', error.message);
+                window.location.href = `${FALLBACK_PAYMENT_URL}?prefilled_email=${encodeURIComponent(email)}`;
             }
         });
     </script>
