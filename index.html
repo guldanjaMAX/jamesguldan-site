@@ -334,7 +334,7 @@
             padding: 0;
             position: relative;
             overflow: hidden;
-            height: min(calc(100vh - 80px), 700px);
+            height: min(calc(100vh - 80px), 640px);
             max-height: calc(100vh - 80px);
         }
 
@@ -401,7 +401,7 @@
         .hero-inner {
             position: relative;
             z-index: 3;
-            height: min(calc(100vh - 80px), 700px);
+            height: min(calc(100vh - 80px), 640px);
             max-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
@@ -493,7 +493,12 @@
         }
 
         .hero-meta-proof {
-            margin-top: 24px;
+            padding: 14px 0;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+        .hero-meta-proof p {
             font-size: 0.78rem;
             color: var(--text-muted);
             font-family: 'DM Sans', sans-serif;
@@ -1735,9 +1740,12 @@
         }
         @media (max-width: 900px) {
             .hero {
+                height: auto;
+                max-height: none;
                 min-height: auto;
             }
             .hero-inner {
+                height: auto;
                 min-height: auto;
                 flex-direction: column;
                 align-items: stretch;
@@ -1839,11 +1847,16 @@
                         Work With Me Directly
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <p class="hero-meta-proof">* This site, its copy, and its positioning were all built using <span>the Deep Work Interview process.</span></p>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="hero-meta-proof">
+        <div class="container">
+            <p>* This site, its copy, and its positioning were all built using <span>the Deep Work Interview process.</span></p>
+        </div>
+    </div>
 
     <div class="proof-bar">
         <div class="container">
