@@ -36,6 +36,7 @@
         .serif-italic { font-family: 'Fraunces', serif; font-style: italic; }
         .accent { color: var(--accent); }
 
+        /* Nav */
         nav {
             padding: 20px 0;
             border-bottom: 1px solid var(--border);
@@ -44,6 +45,7 @@
         .logo { text-decoration: none; }
         .logo img { height: 32px; width: auto; }
 
+        /* Main */
         .thank-you-hero {
             padding: 80px 0 40px;
             text-align: center;
@@ -61,6 +63,7 @@
             line-height: 1.75;
         }
 
+        /* Steps */
         .steps {
             padding: 40px 0 80px;
         }
@@ -118,6 +121,7 @@
         }
         .help-note a { color: var(--accent); text-decoration: none; }
 
+        /* Product-specific sections hidden by default */
         .product-section { display: none; }
         .product-section.active { display: block; }
 
@@ -151,51 +155,54 @@
     <section class="steps">
         <div class="container">
 
+            <!-- BUNDLE steps -->
             <div class="product-section" id="bundle-steps">
                 <div class="step">
                     <div class="step-number">Step 1</div>
                     <h3>Start the Deep Work Interview</h3>
                     <p>This is a two hour AI guided conversation that will pull apart your business and give you a complete positioning blueprint. Set aside time, find a quiet spot, and answer honestly. The more real you are, the better the output.</p>
-                    <a href="https://deepwork.jamesguldan.com" class="step-link">Start the Interview &#8594;</a>
+                    <a href="https://deepwork.jamesguldan.com" class="step-link">Start the Interview →</a>
                 </div>
 
                 <div class="step">
                     <div class="step-number">Step 2</div>
                     <h3>Build your site with Site In Sixty</h3>
                     <p>After the interview, use Site In Sixty to turn your positioning blueprint into a live website. The AI already knows your story, your offers, and your voice. No code required. No monthly fees.</p>
-                    <a href="https://siteinsixty.com/thank-you" class="step-link">Build Your Site &#8594;</a>
+                    <a href="https://siteinsixty.com/thank-you" class="step-link">Build Your Site →</a>
                 </div>
 
                 <div class="step">
                     <div class="step-number">Step 3</div>
                     <h3>Schedule your strategy call with James</h3>
                     <p>Once you've completed the interview (ideally before the call), schedule your 1 hour session with James. He'll review your blueprint, pressure test your offers, and give you the honest truth about what he sees. The calendar defaults to 60 minutes but you can adjust if needed.</p>
-                    <a href="https://jamescalendar.com" class="step-link">Schedule Your Call &#8594;</a>
+                    <a href="https://jamescalendar.com" class="step-link">Schedule Your Call →</a>
                 </div>
             </div>
 
+            <!-- SITE IN SIXTY steps -->
             <div class="product-section" id="site-in-sixty-steps">
                 <div class="step">
                     <div class="step-number">Step 1</div>
                     <h3>Complete the Deep Work Interview first</h3>
                     <p>If you haven't already, start with the free Deep Work Interview. It builds the positioning blueprint that Site In Sixty uses to create your website. Without it, you're building a site without a foundation.</p>
-                    <a href="https://deepwork.jamesguldan.com" class="step-link">Start the Interview &#8594;</a>
+                    <a href="https://deepwork.jamesguldan.com" class="step-link">Start the Interview →</a>
                 </div>
 
                 <div class="step">
                     <div class="step-number">Step 2</div>
                     <h3>Build your site</h3>
                     <p>Follow the guide to build a professional website in under 60 minutes using AI and free Cloudflare hosting. The AI uses everything from your Deep Work Interview to write your copy and structure your pages.</p>
-                    <a href="https://siteinsixty.com/thank-you" class="step-link">Access Site In Sixty &#8594;</a>
+                    <a href="https://siteinsixty.com/thank-you" class="step-link">Access Site In Sixty →</a>
                 </div>
             </div>
 
+            <!-- DEFAULT / FALLBACK steps -->
             <div class="product-section" id="default-steps">
                 <div class="step">
                     <div class="step-number">Your next step</div>
                     <h3>Start the Deep Work Interview</h3>
                     <p>Begin your two hour AI guided interview to get a complete positioning blueprint for your business.</p>
-                    <a href="https://deepwork.jamesguldan.com" class="step-link">Start the Interview &#8594;</a>
+                    <a href="https://deepwork.jamesguldan.com" class="step-link">Start the Interview →</a>
                 </div>
             </div>
         </div>
@@ -209,19 +216,23 @@
 
     <footer>
         <div class="container">
-            <p><a href="/">James Guldan</a> &middot; <a href="https://deepwork.jamesguldan.com">Deep Work Interview</a> &middot; <a href="https://siteinsixty.com">Site In Sixty</a></p>
+            <p><a href="/">James Guldan</a> · <a href="https://deepwork.jamesguldan.com">Deep Work Interview</a> · <a href="https://siteinsixty.com">Site In Sixty</a></p>
+            <p style="margin-top: 12px;"><a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a></p>
         </div>
     </footer>
 
     <script>
+        // Detect which product was purchased from URL params
         const params = new URLSearchParams(window.location.search);
         const product = params.get('product');
 
+        // Show the right steps
         const validProducts = ['bundle', 'site-in-sixty'];
         const activeProduct = validProducts.includes(product) ? product : 'default';
 
         document.getElementById(`${activeProduct}-steps`).classList.add('active');
 
+        // Customize hero text based on product
         const heroTexts = {
             'bundle': 'You just got the Deep Work Interview, Site In Sixty, and a strategy call with James. Here\'s how to get the most out of all three.',
             'site-in-sixty': 'You\'ve got Site In Sixty. Here\'s how to get started building your website.',

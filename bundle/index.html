@@ -42,6 +42,7 @@
         .serif-italic { font-family: 'Fraunces', serif; font-style: italic; }
         .accent { color: var(--accent); }
 
+        /* Nav */
         nav {
             padding: 16px 0;
             border-bottom: 1px solid var(--border);
@@ -73,6 +74,7 @@
             .nav-cta { padding: 12px 28px; font-size: 0.9rem; }
         }
 
+        /* Hero */
         .bundle-hero {
             padding: 80px 0 60px;
             text-align: center;
@@ -102,7 +104,10 @@
             margin: 0 auto;
         }
 
-        .pricing-section { padding: 0 0 80px; }
+        /* Pricing card */
+        .pricing-section {
+            padding: 0 0 80px;
+        }
         .pricing-card {
             max-width: 680px;
             margin: 0 auto;
@@ -112,7 +117,10 @@
             padding: 48px 40px;
             box-shadow: var(--shadow-lg), 0 0 0 1px var(--accent-light);
         }
-        .pricing-includes { list-style: none; margin-bottom: 40px; }
+        .pricing-includes {
+            list-style: none;
+            margin-bottom: 40px;
+        }
         .pricing-includes li {
             padding: 16px 0;
             border-bottom: 1px solid var(--border);
@@ -150,7 +158,12 @@
             color: var(--accent);
         }
 
-        .checkout-form { display: flex; flex-direction: column; gap: 16px; }
+        /* Checkout form */
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
         .checkout-form input[type="email"] {
             width: 100%;
             padding: 16px 20px;
@@ -161,7 +174,10 @@
             background: var(--bg-secondary);
             transition: border-color 0.2s ease;
         }
-        .checkout-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
+        .checkout-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
         .checkout-btn {
             width: 100%;
             padding: 18px 36px;
@@ -186,6 +202,7 @@
             line-height: 1.6;
         }
 
+        /* What you get */
         .details-section {
             padding: 80px 0;
             background: var(--bg-secondary);
@@ -221,7 +238,11 @@
             font-weight: 700;
             margin-bottom: 12px;
         }
-        .detail-block p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; }
+        .detail-block p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
         .detail-proof {
             margin-top: 16px;
             font-style: italic;
@@ -229,7 +250,10 @@
             font-size: 0.95rem;
         }
 
-        .guarantee-section { padding: 80px 0; }
+        /* Guarantee */
+        .guarantee-section {
+            padding: 80px 0;
+        }
         .guarantee-section .container { max-width: 700px; text-align: center; }
         .guarantee-section h2 {
             font-family: 'Outfit', sans-serif;
@@ -237,7 +261,11 @@
             font-weight: 700;
             margin-bottom: 24px;
         }
-        .guarantee-section p { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; }
+        .guarantee-section p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
         .guarantee-badge {
             display: inline-block;
             margin-top: 32px;
@@ -249,6 +277,7 @@
             color: var(--accent);
         }
 
+        /* FAQ */
         .faq-section {
             padding: 80px 0;
             background: var(--bg-secondary);
@@ -262,12 +291,26 @@
             margin-bottom: 48px;
             text-align: center;
         }
-        .faq-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
+        .faq-item {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+        }
         .faq-item:last-child { border-bottom: none; }
-        .faq-question { font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
-        .faq-answer { color: var(--text-secondary); line-height: 1.75; }
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .faq-answer {
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
 
-        .final-cta { padding: 80px 0; text-align: center; }
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            text-align: center;
+        }
         .final-cta .container { max-width: 600px; }
         .final-cta h2 {
             font-family: 'Outfit', sans-serif;
@@ -275,9 +318,18 @@
             font-weight: 700;
             margin-bottom: 16px;
         }
-        .final-cta p { color: var(--text-secondary); margin-bottom: 32px; font-size: 1.05rem; }
-        .final-cta .checkout-btn { display: inline-block; width: auto; padding: 18px 48px; }
+        .final-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+        .final-cta .checkout-btn {
+            display: inline-block;
+            width: auto;
+            padding: 18px 48px;
+        }
 
+        /* Footer */
         footer {
             padding: 40px 0;
             border-top: 1px solid var(--border);
@@ -288,6 +340,7 @@
         footer a { color: var(--text-muted); text-decoration: none; }
         footer a:hover { color: var(--accent); }
 
+        /* Mobile */
         @media (max-width: 600px) {
             .bundle-hero { padding: 60px 0 40px; }
             .pricing-card { padding: 32px 24px; }
@@ -337,10 +390,10 @@
 
             <form class="checkout-form" id="checkoutForm">
                 <input type="email" id="email" name="email" required placeholder="Your email address" autocomplete="email">
-                <button type="submit" class="checkout-btn" id="checkoutBtn">Get the Bundle &#8594;</button>
+                <button type="submit" class="checkout-btn" id="checkoutBtn">Get the Bundle →</button>
             </form>
 
-            <p class="guarantee-note">100% money back guarantee. Complete the interview and build the site. If you don't walk away with more clarity than anything else you've tried, email james@jamesguldan.com for a full refund. No questions, no forms, no hoops.</p>
+            <p class="guarantee-note">100% money back guarantee within 30 days. Complete the interview and build the site. If you don't walk away with more clarity than anything else you've tried, email james@jamesguldan.com for a full refund. No questions, no forms, no hoops.</p>
         </div>
     </section>
 
@@ -374,7 +427,7 @@
     <section class="guarantee-section">
         <div class="container">
             <h2>The Deep Work Guarantee</h2>
-            <p>Complete the full interview. Build the site. Get on the call. If you don't walk away with more clarity about your business than you've gotten from anything else you've tried, email james@jamesguldan.com and I'll refund every penny. No questions, no forms, no hoops. I've done this for 132 entrepreneurs. I know what happens when someone actually does the work.</p>
+            <p>Complete the full interview. Build the site. Get on the call. If within 30 days you don't walk away with more clarity about your business than you've gotten from anything else you've tried, email james@jamesguldan.com and I'll refund every penny. No questions, no forms, no hoops. I've done this for 132 entrepreneurs. I know what happens when someone actually does the work.</p>
             <div class="guarantee-badge">100% Money Back Guarantee</div>
         </div>
     </section>
@@ -410,7 +463,7 @@
 
             <div class="faq-item">
                 <div class="faq-question">What's the refund policy?</div>
-                <div class="faq-answer">Complete the interview and build the site. If you don't feel like you got more clarity than anything else you've tried, email james@jamesguldan.com for a full refund. No questions asked. James has done this for 132 entrepreneurs and hasn't had a single refund request yet.</div>
+                <div class="faq-answer">Complete the interview and build the site. If within 30 days you don't feel like you got more clarity than anything else you've tried, email james@jamesguldan.com for a full refund. No questions asked. James has done this for 132 entrepreneurs and hasn't had a single refund request yet.</div>
             </div>
         </div>
     </section>
@@ -419,14 +472,15 @@
         <div class="container">
             <h2>$724 in value. <em class="serif-italic accent">$67.</em></h2>
             <p>Most people spend more than this on a logo they'll replace in six months. This gives you your positioning, your site, and a real plan.</p>
-            <button class="checkout-btn" onclick="document.getElementById('email').focus(); window.scrollTo({top: 0, behavior: 'smooth'});">Get the Bundle &#8594;</button>
+            <button class="checkout-btn" onclick="document.getElementById('email').focus(); window.scrollTo({top: 0, behavior: 'smooth'});">Get the Bundle →</button>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p><a href="/">James Guldan</a> &middot; <a href="https://deepwork.jamesguldan.com">Deep Work Interview</a> &middot; <a href="https://siteinsixty.com">Site In Sixty</a></p>
-            <p style="margin-top: 12px;">A Deep Work product by James Guldan</p>
+            <p><a href="/">James Guldan</a> · <a href="https://deepwork.jamesguldan.com">Deep Work Interview</a> · <a href="https://siteinsixty.com">Site In Sixty</a></p>
+            <p style="margin-top: 12px;"><a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a></p>
+            <p style="margin-top: 8px; font-size: 0.8rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5;">Results vary. Testimonials reflect individual experiences and are not guarantees of specific outcomes. Our products are educational and strategic in nature.</p>
         </div>
     </footer>
 
@@ -459,7 +513,7 @@
             } catch (error) {
                 alert('Error creating checkout. Please try again or email james@jamesguldan.com');
                 btn.disabled = false;
-                btn.textContent = 'Get the Bundle \u2192';
+                btn.textContent = 'Get the Bundle →';
             }
         });
     </script>
