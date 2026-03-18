@@ -91,9 +91,16 @@
             --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        html { scroll-behavior: smooth; font-size: 18px; }
+        html {
+            scroll-behavior: smooth;
+            font-size: 18px;
+        }
 
         body {
             font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -113,14 +120,36 @@
             letter-spacing: -0.03em;
         }
 
-        h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; }
-        h2 { font-size: clamp(1.75rem, 3.5vw, 2.25rem); }
-        p { color: var(--text-secondary); }
-        .accent { color: var(--accent); }
-        .serif-italic { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400; }
+        h1 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+        }
 
-        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+        h2 {
+            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+        }
 
+        p {
+            color: var(--text-secondary);
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        .serif-italic {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation (matching homepage) */
         nav {
             padding: 16px 0;
             background: rgba(253, 252, 250, 0.85);
@@ -132,10 +161,29 @@
             border-bottom: 1px solid var(--border);
         }
 
-        nav .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-        .logo { display: flex; align-items: center; flex-shrink: 0; }
-        .logo img { height: 24px; width: auto; }
-        .nav-links { display: flex; align-items: center; gap: 28px; }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 24px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
 
         .nav-links a {
             color: var(--text-secondary);
@@ -145,8 +193,14 @@
             transition: color 0.2s ease;
         }
 
-        .nav-links a:hover { color: var(--accent); }
-        .nav-links a.active { color: var(--accent); font-weight: 600; }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
 
         .nav-cta {
             background: var(--text-primary);
@@ -162,7 +216,11 @@
             flex-shrink: 0;
         }
 
-        .nav-cta:hover { background: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .nav-cta:hover {
+            background: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
 
         @media (min-width: 600px) {
             nav { padding: 20px 0; }
@@ -170,6 +228,7 @@
             .nav-cta { padding: 12px 28px; font-size: 0.9rem; }
         }
 
+        /* Page Header */
         .page-header {
             padding: 64px 0 48px;
             text-align: center;
@@ -177,7 +236,9 @@
             background: var(--bg-secondary);
         }
 
-        .page-header h1 { margin-bottom: 16px; }
+        .page-header h1 {
+            margin-bottom: 16px;
+        }
 
         .page-header p {
             font-size: 1.1rem;
@@ -197,12 +258,23 @@
             transition: gap 0.2s ease;
         }
 
-        .back-link:hover { gap: 12px; }
-        .back-link svg { stroke: var(--accent); }
+        .back-link:hover {
+            gap: 12px;
+        }
 
-        .testimonials-section { padding: 60px 0 80px; }
+        .back-link svg {
+            stroke: var(--accent);
+        }
 
-        .testimonials-masonry { columns: 3; column-gap: 24px; }
+        /* Testimonials Grid */
+        .testimonials-section {
+            padding: 60px 0 80px;
+        }
+
+        .testimonials-masonry {
+            columns: 3;
+            column-gap: 24px;
+        }
 
         .testimonial-item {
             break-inside: avoid;
@@ -221,9 +293,16 @@
             transform: translateY(-2px);
         }
 
-        .testimonial-item img { width: 100%; height: auto; display: block; }
+        .testimonial-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-        .testimonial-text { padding: 28px 28px 24px; }
+        /* Text testimonial card */
+        .testimonial-text {
+            padding: 28px 28px 24px;
+        }
 
         .testimonial-text .quote-mark {
             font-family: 'Fraunces', Georgia, serif;
@@ -259,7 +338,10 @@
             color: var(--text-primary);
         }
 
-        .testimonial-text .attribution .role { font-size: 0.78rem; color: var(--text-muted); }
+        .testimonial-text .attribution .role {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
 
         .testimonial-text .tag {
             display: inline-block;
@@ -275,6 +357,7 @@
             border-radius: 100px;
         }
 
+        /* CTA Section */
         .cta-section {
             padding: 80px 0;
             background: var(--bg-secondary);
@@ -282,7 +365,10 @@
             border-top: 1px solid var(--border);
         }
 
-        .cta-section h2 { color: var(--text-primary); margin-bottom: 16px; }
+        .cta-section h2 {
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
 
         .cta-section p {
             color: var(--text-secondary);
@@ -307,13 +393,33 @@
             transition: all 0.3s ease;
         }
 
-        .cta-button:hover { background: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-        .cta-button svg { transition: transform 0.25s ease; }
-        .cta-button:hover svg { transform: translateX(4px); }
+        .cta-button:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
 
-        footer { padding: 50px 0 40px; border-top: 1px solid var(--border); text-align: center; }
+        .cta-button svg {
+            transition: transform 0.25s ease;
+        }
 
-        .footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 20px; }
+        .cta-button:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px 0 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 20px;
+        }
 
         .footer-links a {
             color: var(--text-secondary);
@@ -322,15 +428,32 @@
             transition: color 0.2s ease;
         }
 
-        .footer-links a:hover { color: var(--accent); }
-        footer p { font-size: 0.8rem; color: var(--text-muted); }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
 
-        @media (max-width: 900px) { .testimonials-masonry { columns: 2; } }
+        footer p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .testimonials-masonry {
+                columns: 2;
+            }
+        }
 
         @media (max-width: 600px) {
-            .testimonials-masonry { columns: 1; }
-            .page-header { padding: 48px 0 36px; }
-            .nav-links a:not(.nav-cta) { display: none; }
+            .testimonials-masonry {
+                columns: 1;
+            }
+            .page-header {
+                padding: 48px 0 36px;
+            }
+            .nav-links a:not(.nav-cta) {
+                display: none;
+            }
         }
     </style>
 </head>
