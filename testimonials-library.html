@@ -861,32 +861,19 @@ function renderCards(testimonials) {
     return;
   }
 
-  const isPending = t => t.format !== 'screenshot' && (
-    !t.quote || t.quote.trim() === '' ||
-    t.tags.includes('pending-approval') ||
-    t.tags.includes('needs-screenshot') ||
-    t.tags.includes('needs-content')
-  );
+  const isPending = t => t.format !== 'screenshot' && (!t.quote || t.quote.trim() === '' || t.tags.includes('needs-screenshot') || t.tags.includes('needs-content'));
   const isPlaced = t => t.tags.includes('currently-placed');
-  const isScreenshot = t => t.format === 'screenshot';
 
   const cards = testimonials.map(t => {
     const pending = isPending(t);
     const placed = isPlaced(t);
     const isVideo = t.format === 'video';
-    const screenshot = isScreenshot(t);
+    const isScreenshot = t.format === 'screenshot';
     const photo = PHOTOS[t.name];
 
-    // Screenshot cards: just show the image, clean and simple
-    if (screenshot && t.file_repo) {
-      return `<div class="card card-screenshot">
-        <img
-          src="https://jamesguldan.com/${t.file_repo}"
-          alt="Facebook testimonial screenshot"
-          loading="lazy"
-          style="width:100%;height:auto;display:block;border-radius:8px;"
-          onerror="this.closest('.card').style.display='none'"
-        >
+    if (isScreenshot && t.file_repo) {
+      return `<div class="card" style="padding:0;overflow:hidden;">
+        <img src="https://jamesguldan.com/${t.file_repo}" alt="Facebook testimonial screenshot" loading="lazy" style="width:100%;height:auto;display:block;" onerror="this.closest('.card').style.display='none'">
       </div>`;
     }
 
