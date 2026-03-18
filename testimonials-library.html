@@ -677,6 +677,7 @@
   <button class="filter-btn" data-filter="sis" onclick="setFilter('sis', this)">SIS</button>
   <button class="filter-btn" data-filter="general" onclick="setFilter('general', this)">General</button>
   <button class="filter-btn" data-filter="video" onclick="setFilter('video', this)">Video only</button>
+  <button class="filter-btn" data-filter="screenshot" onclick="setFilter('screenshot', this)">Screenshots</button>
   <button class="filter-btn" data-filter="pending" onclick="setFilter('pending', this)">Pending</button>
 </div>
 
@@ -825,13 +826,16 @@ function renderStageGrid(counts) {
 }
 
 function renderStats(testimonials) {
-  const active = testimonials.filter(t => t.active && t.quote).length;
-  const pending = testimonials.filter(t => !t.quote || t.quote.trim() === '').length;
+  const screenshots = testimonials.filter(t => t.format === 'screenshot').length;
+  const text = testimonials.filter(t => t.format !== 'screenshot' && t.active && t.quote).length;
+  const pending = testimonials.filter(t => t.format !== 'screenshot' && (!t.quote || t.quote.trim() === '')).length;
   const videos = testimonials.filter(t => t.format === 'video').length;
   document.getElementById('statsBar').innerHTML = `
-    <div class="stat"><span class="stat-dot active"></span> <strong>${active}</strong> active</div>
-    <div class="stat"><span class="stat-dot pending"></span> <strong>${pending}</strong> pending approval</div>
+    <div class="stat"><span class="stat-dot active"></span> <strong>${text}</strong> text/video</div>
     <div class="stat"><span class="stat-dot video"></span> <strong>${videos}</strong> video</div>
+    <div class="stat"><span class="stat-dot" style="background:#8B7EC8"></span> <strong>${screenshots}</strong> screenshots</div>
+    <div class="stat"><span class="stat-dot pending"></span> <strong>${pending}</strong> pending</div>
+    <div class="stat" style="margin-left:auto;font-weight:700;color:var(--text-primary)">Total: ${testimonials.length}</div>
   `;
 }
 
@@ -844,7 +848,8 @@ function getFilteredTestimonials() {
   else if (activeFilter === 'sis') list = list.filter(t => t.product === 'sis' || t.funnel_stages.some(s => s.startsWith('sis')));
   else if (activeFilter === 'general') list = list.filter(t => t.product === 'general');
   else if (activeFilter === 'video') list = list.filter(t => t.format === 'video');
-  else if (activeFilter === 'pending') list = list.filter(t => !t.quote || t.quote.trim() === '' || t.tags.includes('pending-approval') || t.tags.includes('needs-screenshot'));
+  else if (activeFilter === 'screenshot') list = list.filter(t => t.format === 'screenshot');
+  else if (activeFilter === 'pending') list = list.filter(t => t.format !== 'screenshot' && (!t.quote || t.quote.trim() === '' || t.tags.includes('pending-approval') || t.tags.includes('needs-screenshot')));
   return list;
 }
 
@@ -856,14 +861,34 @@ function renderCards(testimonials) {
     return;
   }
 
-  const isPending = t => !t.quote || t.quote.trim() === '' || t.tags.includes('needs-screenshot') || t.tags.includes('needs-content');
+  const isPending = t => t.format !== 'screenshot' && (
+    !t.quote || t.quote.trim() === '' ||
+    t.tags.includes('pending-approval') ||
+    t.tags.includes('needs-screenshot') ||
+    t.tags.includes('needs-content')
+  );
   const isPlaced = t => t.tags.includes('currently-placed');
+  const isScreenshot = t => t.format === 'screenshot';
 
   const cards = testimonials.map(t => {
     const pending = isPending(t);
     const placed = isPlaced(t);
     const isVideo = t.format === 'video';
+    const screenshot = isScreenshot(t);
     const photo = PHOTOS[t.name];
+
+    // Screenshot cards: just show the image, clean and simple
+    if (screenshot && t.file_repo) {
+      return `<div class="card card-screenshot">
+        <img
+          src="https://jamesguldan.com/${t.file_repo}"
+          alt="Facebook testimonial screenshot"
+          loading="lazy"
+          style="width:100%;height:auto;display:block;border-radius:8px;"
+          onerror="this.closest('.card').style.display='none'"
+        >
+      </div>`;
+    }
 
     const badges = [
       isVideo ? `<span class="badge badge-video">▶ Video</span>` : '',
