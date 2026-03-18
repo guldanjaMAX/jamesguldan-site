@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials Library | James Guldan</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #BF6D2A;
+    --accent-hover: #D4883F;
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #111111;
+    --bg-card: #161616;
+    --bg-card-hover: #1C1C1C;
+    --text-primary: #F5F0EB;
+    --text-secondary: #A89F95;
+    --text-muted: #6B6560;
+    --border: rgba(191,109,42,0.15);
+    --border-soft: rgba(255,255,255,0.06);
+    --green: #4CAF50;
+    --yellow: #F5A623;
+    --red: #E05252;
+    --max-width: 1200px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .header-left h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .header-left p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .add-btn:hover { background: var(--accent-hover); }
+
+  /* COVERAGE DASHBOARD */
+  .dashboard {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 32px 32px 0;
+  }
+
+  .dashboard-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .stage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .stage-pill {
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .stage-pill:hover, .stage-pill.active {
+    border-color: var(--accent);
+    background: rgba(191,109,42,0.08);
+  }
+
+  .stage-pill .stage-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .stage-pill .stage-count {
+    font-size: 1.6rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    margin-top: 4px;
+    line-height: 1;
+  }
+
+  .stage-pill .stage-count.empty { color: var(--red); }
+  .stage-pill .stage-count.thin { color: var(--yellow); }
+  .stage-pill .stage-count.good { color: var(--green); }
+
+  .stage-pill .stage-bar {
+    height: 3px;
+    background: var(--border-soft);
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+
+  .stage-pill .stage-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent);
+    transition: width 0.6s ease;
+  }
+
+  /* FILTERS */
+  .filters {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 32px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-right: 4px;
+  }
+
+  .filter-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    color: var(--text-secondary);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(191,109,42,0.08);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 32px 20px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .stat strong { color: var(--text-primary); }
+
+  .stat-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .stat-dot.active { background: var(--green); }
+  .stat-dot.pending { background: var(--yellow); }
+  .stat-dot.video { background: #5B9EF5; }
+
+  /* GRID */
+  .grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    columns: 3;
+    column-gap: 20px;
+  }
+
+  @media (max-width: 1100px) { .grid { columns: 2; } }
+  @media (max-width: 680px) { .grid { columns: 1; } }
+
+  .card {
+    break-inside: avoid;
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .card:hover {
+    border-color: rgba(191,109,42,0.3);
+    background: var(--bg-card-hover);
+  }
+
+  .card.pending {
+    border-style: dashed;
+    border-color: rgba(245,166,35,0.3);
+    opacity: 0.75;
+  }
+
+  .card.video {
+    border-color: rgba(91,158,245,0.2);
+  }
+
+  /* CARD BADGES */
+  .card-badges {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .badge-video { background: rgba(91,158,245,0.15); color: #5B9EF5; }
+  .badge-pending { background: rgba(245,166,35,0.15); color: var(--yellow); }
+  .badge-placed { background: rgba(76,175,80,0.15); color: var(--green); }
+  .badge-product {
+    background: rgba(191,109,42,0.12);
+    color: var(--accent);
+  }
+
+  /* QUOTE */
+  .card-quote {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+    position: relative;
+    padding-left: 16px;
+  }
+
+  .card-quote::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -4px;
+    font-size: 2rem;
+    color: var(--accent);
+    font-style: normal;
+    line-height: 1;
+    opacity: 0.6;
+  }
+
+  .pending-quote {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 18px;
+    padding: 12px;
+    background: rgba(245,166,35,0.06);
+    border-radius: 8px;
+    border-left: 3px solid var(--yellow);
+  }
+
+  /* RESULT CALLOUT */
+  .result-callout {
+    background: rgba(191,109,42,0.08);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  /* AUTHOR */
+  .card-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(191,109,42,0.2);
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-family: 'Outfit', sans-serif;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .author-name {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .author-title {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  /* STAGES */
+  .card-stages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .stage-tag {
+    font-size: 0.68rem;
+    padding: 3px 7px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text-muted);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    border: 1px solid var(--border-soft);
+  }
+
+  .stage-tag.highlight {
+    background: rgba(191,109,42,0.1);
+    color: var(--accent);
+    border-color: rgba(191,109,42,0.2);
+  }
+
+  /* VIDEO THUMBNAIL */
+  .video-thumb {
+    position: relative;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+  }
+
+  .video-thumb img {
+    width: 100%;
+    display: block;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .video-thumb:hover img { opacity: 0.9; }
+
+  .video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(191,109,42,0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-play svg { margin-left: 3px; }
+
+  /* PLACEMENT NOTES TOGGLE */
+  .notes-toggle {
+    margin-top: 12px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    padding: 0;
+  }
+
+  .notes-toggle:hover { color: var(--accent); }
+
+  .notes-content {
+    display: none;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.03);
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+
+  .notes-content.open { display: block; }
+
+  /* EMPTY/LOADING */
+  .loading {
+    max-width: var(--max-width);
+    margin: 80px auto;
+    text-align: center;
+    color: var(--text-muted);
+  }
+
+  .loading-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid var(--border-soft);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .empty-stage {
+    border: 2px dashed rgba(224,82,82,0.3);
+    border-radius: 14px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+    break-inside: avoid;
+  }
+
+  .empty-stage p {
+    color: var(--red);
+    opacity: 0.6;
+    font-size: 0.85rem;
+    margin-top: 8px;
+  }
+
+  /* MODAL FOR ADD */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 24px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-group textarea { min-height: 100px; resize: vertical; }
+
+  .stage-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .stage-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .stage-checkbox input { width: auto; }
+
+  .stage-checkbox span {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: flex-end;
+  }
+
+  .btn-cancel {
+    background: none;
+    border: 1px solid var(--border-soft);
+    color: var(--text-secondary);
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .btn-save {
+    background: var(--accent);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-save:hover { background: var(--accent-hover); }
+
+  .form-msg {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-top: 12px;
+    display: none;
+  }
+
+  .form-msg.success { background: rgba(76,175,80,0.15); color: var(--green); display: block; }
+  .form-msg.error { background: rgba(224,82,82,0.15); color: var(--red); display: block; }
+
+  @media (max-width: 680px) {
+    .header { padding: 20px; }
+    .dashboard, .filters, .stats-bar, .grid { padding-left: 16px; padding-right: 16px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Testimonials Library</h1>
+    <p>Live from database &mdash; updates automatically when new ones are added</p>
+  </div>
+  <div class="header-right">
+    <button class="add-btn" onclick="openModal()">+ Add Testimonial</button>
+  </div>
+</div>
+
+<div class="dashboard">
+  <div class="dashboard-title">Funnel Stage Coverage</div>
+  <div class="stage-grid" id="stageGrid">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<div class="filters">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">All</button>
+  <button class="filter-btn" data-filter="dwi" onclick="setFilter('dwi', this)">DWI</button>
+  <button class="filter-btn" data-filter="sis" onclick="setFilter('sis', this)">SIS</button>
+  <button class="filter-btn" data-filter="general" onclick="setFilter('general', this)">General</button>
+  <button class="filter-btn" data-filter="video" onclick="setFilter('video', this)">Video only</button>
+  <button class="filter-btn" data-filter="pending" onclick="setFilter('pending', this)">Pending</button>
+</div>
+
+<div class="stats-bar" id="statsBar"></div>
+
+<div id="mainContent">
+  <div class="loading">
+    <div class="loading-spinner"></div>
+    <p>Loading testimonials&hellip;</p>
+  </div>
+</div>
+
+<!-- ADD TESTIMONIAL MODAL -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal">
+    <h2>Add New Testimonial</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" id="f-name" placeholder="e.g. Re Perez">
+      </div>
+      <div class="form-group">
+        <label>Format</label>
+        <select id="f-format">
+          <option value="text">Text</option>
+          <option value="video">Video</option>
+          <option value="screenshot">Screenshot</option>
+          <option value="audio">Audio</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" id="f-title" placeholder="e.g. Founder">
+      </div>
+      <div class="form-group">
+        <label>Company</label>
+        <input type="text" id="f-company" placeholder="e.g. The Story Engine">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Website</label>
+        <input type="text" id="f-website" placeholder="https://...">
+      </div>
+      <div class="form-group">
+        <label>Product</label>
+        <select id="f-product">
+          <option value="general">General</option>
+          <option value="dwi">DWI</option>
+          <option value="sis">SIS</option>
+          <option value="call">Strategy Call</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Quote (pull quote) *</label>
+      <textarea id="f-quote" placeholder="The best 1-2 sentence version..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>Result</label>
+      <input type="text" id="f-result" placeholder="e.g. Built a live site in 30 minutes">
+    </div>
+    <div class="form-group">
+      <label>Date Received</label>
+      <input type="date" id="f-date">
+    </div>
+    <div class="form-group">
+      <label>Funnel Stages</label>
+      <div class="stage-checkboxes">
+        <label class="stage-checkbox"><input type="checkbox" value="awareness"> <span>awareness</span></label>
+        <label class="stage-checkbox"><input type="checkbox" value="dwi_sales"> <span>dwi_sales</span></label>
+        <label class="stage-checkbox"><input type="checkbox" value="dwi_post_purchase"> <span>dwi_post_purchase</span></label>
+        <label class="stage-checkbox"><input type="checkbox" value="sis_pitch"> <span>sis_pitch</span></label>
+        <label class="stage-checkbox"><input type="checkbox" value="sis_sales"> <span>sis_sales</span></label>
+        <label class="stage-checkbox"><input type="checkbox" value="sis_post_purchase"> <span>sis_post_purchase</span></label>
+        <label class="stage-checkbox"><input type="checkbox" value="call_pitch"> <span>call_pitch</span></label>
+        <label class="stage-checkbox"><input type="checkbox" value="call_sales"> <span>call_sales</span></label>
+        <label class="stage-checkbox"><input type="checkbox" value="call_post_purchase"> <span>call_post_purchase</span></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Placement Notes</label>
+      <textarea id="f-notes" placeholder="Where should this go? Why? What makes it special?"></textarea>
+    </div>
+    <div id="formMsg" class="form-msg"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="submitTestimonial()">Save Testimonial</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = 'https://testimonials-worker.james-d13.workers.dev';
+const ADMIN_KEY = 'dwi-admin-2026-jg';
+
+const STAGE_META = {
+  awareness:          { label: 'Awareness', desc: 'Ads, social, landing pages' },
+  dwi_sales:          { label: 'DWI Sales', desc: 'DWI sales page' },
+  dwi_post_purchase:  { label: 'DWI Post-Buy', desc: 'Thank-you, Emails 1-4' },
+  sis_pitch:          { label: 'SIS Pitch', desc: 'Emails 5-8, upsell section' },
+  sis_sales:          { label: 'SIS Sales', desc: 'SIS sales page' },
+  sis_post_purchase:  { label: 'SIS Post-Buy', desc: 'SIS thank-you page' },
+  call_pitch:         { label: 'Call Pitch', desc: 'Emails 9-12' },
+  call_sales:         { label: 'Call Sales', desc: 'Booking/sales page' },
+  call_post_purchase: { label: 'Call Post-Buy', desc: 'Post-call follow up' },
+};
+
+const PHOTOS = {
+  'Megan Hunter':   'testimonials/megan-hunter.jpg',
+  'Louis Massaro':  'testimonials/louis-massaro.jpg',
+  'Dmitriy Kozlov': 'testimonials/dmitriy-kozlov.jpg',
+  'Dean Pohlman':   'testimonials/dean-pohlman.jpg',
+};
+
+let allTestimonials = [];
+let stageCounts = {};
+let activeFilter = 'all';
+let activeStage = null;
+
+function initials(name) {
+  return name.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
+}
+
+function colorClass(count) {
+  if (count === 0) return 'empty';
+  if (count <= 1) return 'thin';
+  return 'good';
+}
+
+function renderStageGrid(counts) {
+  const max = Math.max(...Object.values(counts), 1);
+  const grid = document.getElementById('stageGrid');
+  grid.innerHTML = Object.entries(STAGE_META).map(([key, meta]) => {
+    const c = counts[key] || 0;
+    const pct = Math.round((c / max) * 100);
+    const cls = colorClass(c);
+    return `<div class="stage-pill ${activeStage === key ? 'active' : ''}" onclick="toggleStage('${key}')">
+      <div class="stage-name">${meta.label}</div>
+      <div class="stage-count ${cls}">${c}</div>
+      <div class="stage-bar"><div class="stage-bar-fill" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join('');
+}
+
+function renderStats(testimonials) {
+  const active = testimonials.filter(t => t.active && t.quote).length;
+  const pending = testimonials.filter(t => !t.quote || t.quote.trim() === '').length;
+  const videos = testimonials.filter(t => t.format === 'video').length;
+  document.getElementById('statsBar').innerHTML = `
+    <div class="stat"><span class="stat-dot active"></span> <strong>${active}</strong> active</div>
+    <div class="stat"><span class="stat-dot pending"></span> <strong>${pending}</strong> pending approval</div>
+    <div class="stat"><span class="stat-dot video"></span> <strong>${videos}</strong> video</div>
+  `;
+}
+
+function getFilteredTestimonials() {
+  let list = allTestimonials;
+  if (activeStage) {
+    list = list.filter(t => t.funnel_stages.includes(activeStage));
+  }
+  if (activeFilter === 'dwi') list = list.filter(t => t.product === 'dwi' || t.funnel_stages.some(s => s.startsWith('dwi')));
+  else if (activeFilter === 'sis') list = list.filter(t => t.product === 'sis' || t.funnel_stages.some(s => s.startsWith('sis')));
+  else if (activeFilter === 'general') list = list.filter(t => t.product === 'general');
+  else if (activeFilter === 'video') list = list.filter(t => t.format === 'video');
+  else if (activeFilter === 'pending') list = list.filter(t => !t.quote || t.quote.trim() === '' || t.tags.includes('pending-approval') || t.tags.includes('needs-screenshot'));
+  return list;
+}
+
+function renderCards(testimonials) {
+  const container = document.getElementById('mainContent');
+
+  if (testimonials.length === 0) {
+    container.innerHTML = `<div style="max-width:var(--max-width);margin:60px auto;padding:0 32px;text-align:center;color:var(--text-muted)">No testimonials match this filter.</div>`;
+    return;
+  }
+
+  const isPending = t => !t.quote || t.quote.trim() === '' || t.tags.includes('needs-screenshot') || t.tags.includes('needs-content');
+  const isPlaced = t => t.tags.includes('currently-placed');
+
+  const cards = testimonials.map(t => {
+    const pending = isPending(t);
+    const placed = isPlaced(t);
+    const isVideo = t.format === 'video';
+    const photo = PHOTOS[t.name];
+
+    const badges = [
+      isVideo ? `<span class="badge badge-video">▶ Video</span>` : '',
+      pending ? `<span class="badge badge-pending">Pending Approval</span>` : '',
+      placed ? `<span class="badge badge-placed">✓ Live</span>` : '',
+      `<span class="badge badge-product">${t.product.toUpperCase()}</span>`,
+    ].filter(Boolean).join('');
+
+    const avatarInner = photo
+      ? `<img src="${photo}" alt="${t.name}" onerror="this.parentElement.innerHTML='${initials(t.name)}'">`
+      : initials(t.name);
+
+    const quoteSection = pending
+      ? `<div class="pending-quote">⏳ ${t.placement_notes?.split('.')[0] || 'Quote pending — needs follow-up.'}</div>`
+      : `<div class="card-quote">${t.quote}</div>`;
+
+    const resultSection = t.result && !pending
+      ? `<div class="result-callout">→ ${t.result}</div>` : '';
+
+    const videoThumb = isVideo && t.file_repo
+      ? `<div class="video-thumb" onclick="window.open('https://deepwork.jamesguldan.com/${t.file_repo}','_blank')">
+          <img src="https://deepwork.jamesguldan.com/${t.file_repo.replace('.mp4','-thumbnail.jpg')}" alt="Video thumbnail" onerror="this.style.display='none'">
+          <div class="video-play"><svg width="16" height="16" viewBox="0 0 16 16" fill="white"><polygon points="4,2 14,8 4,14"/></svg></div>
+        </div>` : '';
+
+    const stageChips = t.funnel_stages.length
+      ? `<div class="card-stages">${t.funnel_stages.map(s => `<span class="stage-tag ${activeStage === s ? 'highlight' : ''}">${STAGE_META[s]?.label || s}</span>`).join('')}</div>`
+      : '';
+
+    const notesBtn = t.placement_notes
+      ? `<button class="notes-toggle" onclick="toggleNotes(this)">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 3h10M1 6h7M1 9h5"/></svg>
+          Placement notes
+        </button>
+        <div class="notes-content">${t.placement_notes}</div>` : '';
+
+    return `<div class="card ${pending ? 'pending' : ''} ${isVideo ? 'video' : ''}">
+      <div class="card-badges">${badges}</div>
+      ${videoThumb}
+      ${quoteSection}
+      ${resultSection}
+      <div class="card-author">
+        <div class="author-avatar">${avatarInner}</div>
+        <div>
+          <div class="author-name">${t.name}</div>
+          <div class="author-title">${[t.title, t.company].filter(Boolean).join(', ') || '—'}</div>
+        </div>
+      </div>
+      ${stageChips}
+      ${notesBtn}
+    </div>`;
+  }).join('');
+
+  container.innerHTML = `<div class="grid">${cards}</div>`;
+}
+
+function toggleNotes(btn) {
+  const content = btn.nextElementSibling;
+  content.classList.toggle('open');
+  btn.textContent = content.classList.contains('open') ? '▲ Hide notes' : '▼ Placement notes';
+}
+
+function setFilter(filter, btn) {
+  activeFilter = filter;
+  activeStage = null;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderStageGrid(stageCounts);
+  renderCards(getFilteredTestimonials());
+}
+
+function toggleStage(stage) {
+  activeStage = activeStage === stage ? null : stage;
+  activeFilter = 'all';
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('[data-filter="all"]').classList.add('active');
+  renderStageGrid(stageCounts);
+  renderCards(getFilteredTestimonials());
+}
+
+async function loadData() {
+  try {
+    const [testimonialsRes, stagesRes] = await Promise.all([
+      fetch(`${API}/testimonials?include_inactive=false`),
+      fetch(`${API}/stages`),
+    ]);
+    const testimonialsData = await testimonialsRes.json();
+    const stagesData = await stagesRes.json();
+
+    allTestimonials = testimonialsData.testimonials || [];
+    stageCounts = stagesData.stages || {};
+
+    renderStageGrid(stageCounts);
+    renderStats(allTestimonials);
+    renderCards(getFilteredTestimonials());
+  } catch (err) {
+    document.getElementById('mainContent').innerHTML = `<div class="loading"><p style="color:var(--red)">Failed to load testimonials. Check that the API is live.</p></div>`;
+  }
+}
+
+// ADD TESTIMONIAL MODAL
+function openModal() {
+  document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
+  document.getElementById('addModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('addModal').classList.remove('open');
+  document.getElementById('formMsg').className = 'form-msg';
+}
+
+async function submitTestimonial() {
+  const name = document.getElementById('f-name').value.trim();
+  const quote = document.getElementById('f-quote').value.trim();
+  const product = document.getElementById('f-product').value;
+
+  if (!name || !quote) {
+    showMsg('Name and quote are required.', 'error');
+    return;
+  }
+
+  const stages = [...document.querySelectorAll('.stage-checkbox input:checked')].map(c => c.value);
+
+  const payload = {
+    name,
+    title: document.getElementById('f-title').value.trim() || null,
+    company: document.getElementById('f-company').value.trim() || null,
+    website: document.getElementById('f-website').value.trim() || null,
+    format: document.getElementById('f-format').value,
+    quote,
+    result: document.getElementById('f-result').value.trim() || null,
+    product,
+    funnel_stages: stages,
+    placement_notes: document.getElementById('f-notes').value.trim() || null,
+    date_received: document.getElementById('f-date').value || null,
+  };
+
+  try {
+    const res = await fetch(`${API}/testimonials`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Key': ADMIN_KEY },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (data.success) {
+      showMsg('Testimonial saved!', 'success');
+      setTimeout(() => { closeModal(); loadData(); }, 1200);
+    } else {
+      showMsg(data.error || 'Something went wrong.', 'error');
+    }
+  } catch (e) {
+    showMsg('Network error. Try again.', 'error');
+  }
+}
+
+function showMsg(msg, type) {
+  const el = document.getElementById('formMsg');
+  el.textContent = msg;
+  el.className = `form-msg ${type}`;
+}
+
+// Close modal on overlay click
+document.getElementById('addModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+loadData();
+</script>
+</body>
+</html>
