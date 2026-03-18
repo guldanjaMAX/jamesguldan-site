@@ -896,9 +896,10 @@ function renderCards(testimonials) {
       ? `<div class="result-callout">→ ${t.result}</div>` : '';
 
     const videoThumb = isVideo && t.file_repo
-      ? `<div class="video-thumb" onclick="window.open('https://deepwork.jamesguldan.com/${t.file_repo}','_blank')">
-          <img src="https://deepwork.jamesguldan.com/${t.file_repo.replace('.mp4','-thumbnail.jpg')}" alt="Video thumbnail" onerror="this.style.display='none'">
-          <div class="video-play"><svg width="16" height="16" viewBox="0 0 16 16" fill="white"><polygon points="4,2 14,8 4,14"/></svg></div>
+      ? `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
+          <video controls preload="metadata" style="width:100%;display:block;border-radius:8px;max-height:240px;">
+            <source src="https://jamesguldan.com/${t.file_repo}" type="video/mp4">
+          </video>
         </div>` : '';
 
     const stageChips = t.funnel_stages.length
