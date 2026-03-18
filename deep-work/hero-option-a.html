@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Work Interview - Option A: The Fade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFCFA;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Canvas for geometry */
+        #geometryCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px;
+            background: #FDFCFA;
+        }
+
+        .nav-logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c4703f;
+        }
+
+        .nav-cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-cta:hover {
+            background: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 60px 48px;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Left side - Text */
+        .hero-text {
+            flex: 0 0 40%;
+            padding-right: 60px;
+            z-index: 3;
+        }
+
+        .eyebrow {
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c4703f;
+            margin-bottom: 20px;
+        }
+
+        .headline {
+            font-family: 'Outfit', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+
+        .headline-accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #c4703f;
+        }
+
+        .body-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+
+        .cta-button {
+            background: #1a1a1a;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 40px;
+        }
+
+        .cta-button:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .price-line {
+            font-size: 13px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* Right side - Photo with fade gradient */
+        .hero-visual {
+            flex: 1;
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: -200px;
+        }
+
+        .photo-wrapper {
+            position: relative;
+            width: 600px;
+            height: 600px;
+        }
+
+        .photo-gradient {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 300px;
+            background: linear-gradient(to right, #FDFCFA 0%, transparent 100%);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .hero-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            right: -100px;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        /* Geometry mandala behind photo */
+        .geometry-bg {
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            right: -150px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        /* Video card - floating glassmorphism */
+        .video-card {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            z-index: 6;
+            border: 1px solid rgba(196, 112, 63, 0.2);
+        }
+
+        .video-card video {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 40px 32px;
+            }
+
+            .hero-container {
+                flex-direction: column;
+            }
+
+            .hero-text {
+                flex: 1;
+                padding-right: 0;
+                margin-bottom: 60px;
+            }
+
+            .headline {
+                font-size: 48px;
+            }
+
+            .hero-visual {
+                flex: 1;
+                margin-right: 0;
+                height: 400px;
+            }
+
+            .photo-wrapper {
+                width: 400px;
+                height: 400px;
+            }
+
+            .geometry-bg {
+                width: 500px;
+                height: 500px;
+            }
+
+            .video-card {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 16px 24px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 20px 24px;
+                min-height: auto;
+            }
+
+            .headline {
+                font-size: 32px;
+            }
+
+            .body-text {
+                font-size: 14px;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .photo-wrapper {
+                width: 300px;
+                height: 300px;
+            }
+
+            .video-card {
+                width: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="geometryCanvas"></canvas>
+
+    <nav>
+        <div class="nav-logo">JAMES GULDAN</div>
+        <div style="flex: 1;"></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><button class="nav-cta">Get Access — $67</button></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <div class="eyebrow">Deep Work</div>
+                <h1 class="headline">
+                    You know what's broken. <span class="headline-accent">You've known for a while.</span>
+                </h1>
+                <p class="body-text">
+                    Your business doesn't match who you've become. The positioning is off. The offers don't land. And nobody around you can see it clearly enough to tell you what's actually wrong. Two hours from now, you'll know exactly what to fix and how.
+                </p>
+                <button class="cta-button">Start the Deep Work Interview →</button>
+                <div class="price-line">$67. Two hours. The same process I used to charge $5,000 for.</div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="photo-wrapper">
+                    <svg class="geometry-bg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <g id="flowerOfLife">
+                                <circle cx="200" cy="200" r="100" fill="none" stroke="rgba(196,112,63,0.3)" stroke-width="1"/>
+                                <circle cx="150" cy="150" r="50" fill="none" stroke="rgba(196,112,63,0.25)" stroke-width="0.8"/>
+                                <circle cx="250" cy="150" r="50" fill="none" stroke="rgba(196,112,63,0.25)" stroke-width="0.8"/>
+                                <circle cx="150" cy="250" r="50" fill="none" stroke="rgba(196,112,63,0.25)" stroke-width="0.8"/>
+                                <circle cx="250" cy="250" r="50" fill="none" stroke="rgba(196,112,63,0.25)" stroke-width="0.8"/>
+                                <circle cx="200" cy="200" r="30" fill="none" stroke="rgba(196,112,63,0.3)" stroke-width="1"/>
+                            </g>
+                        </defs>
+                        <use href="#flowerOfLife"/>
+                    </svg>
+                    <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan" class="hero-image">
+                    <div class="photo-gradient"></div>
+                </div>
+
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animated sacred geometry canvas
+        const canvas = document.getElementById('geometryCanvas');
+        const ctx = canvas.getContext('2d');
+        let animationFrameId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        function drawFlowerOfLife(x, y, radius, rotation, opacity) {
+            ctx.save();
+            ctx.globalAlpha = opacity;
+            ctx.translate(x, y);
+            ctx.rotate(rotation);
+
+            ctx.strokeStyle = `rgba(196, 112, 63, 0.15)`;
+            ctx.lineWidth = 1;
+
+            // Central circle
+            ctx.beginPath();
+            ctx.arc(0, 0, radius, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Petal circles
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * Math.PI) / 3;
+                const px = Math.cos(angle) * radius;
+                const py = Math.sin(angle) * radius;
+                ctx.beginPath();
+                ctx.arc(px, py, radius, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            ctx.restore();
+        }
+
+        function drawHexagon(x, y, size, rotation, opacity) {
+            ctx.save();
+            ctx.globalAlpha = opacity;
+            ctx.translate(x, y);
+            ctx.rotate(rotation);
+
+            ctx.strokeStyle = `rgba(196, 112, 63, 0.1)`;
+            ctx.lineWidth = 1;
+
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * Math.PI) / 3;
+                const px = Math.cos(angle) * size;
+                const py = Math.sin(angle) * size;
+                if (i === 0) ctx.moveTo(px, py);
+                else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        function animate(time) {
+            ctx.fillStyle = '#FDFCFA';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const t = time * 0.00005;
+
+            // Large mandala
+            drawFlowerOfLife(canvas.width * 0.75, canvas.height * 0.5, 150, t, 0.08);
+
+            // Smaller mandalas
+            drawFlowerOfLife(canvas.width * 0.2, canvas.height * 0.3, 80, -t * 0.8, 0.06);
+            drawFlowerOfLife(canvas.width * 0.85, canvas.height * 0.2, 60, t * 1.2, 0.05);
+
+            // Hexagons
+            drawHexagon(canvas.width * 0.3, canvas.height * 0.7, 40, t * 0.6, 0.05);
+            drawHexagon(canvas.width * 0.7, canvas.height * 0.75, 50, -t * 0.5, 0.04);
+
+            animationFrameId = requestAnimationFrame(animate);
+        }
+
+        animate(0);
+
+        // Cleanup
+        window.addEventListener('beforeunload', () => {
+            cancelAnimationFrame(animationFrameId);
+        });
+    </script>
+</body>
+</html>
