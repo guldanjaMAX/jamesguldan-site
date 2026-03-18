@@ -97,35 +97,45 @@
 <a href="#main-content" class="skip-link">Skip to content</a>
 
 <!-- Hero -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-label">By James Guldan</div>
-    <h1>The Deep Work <em>Interview</em></h1>
-    <p class="hero-sub">A two hour AI conversation that does what nobody in your life will do for you. It asks the questions you have been avoiding, finds the answers you could not see, and builds the entire blueprint you need to finally stop guessing and start building.</p>
-    <div class="hero-meta">
-      <span><span class="dot"></span>90 to 120 minutes</span>
-      <span><span class="dot"></span>Powered by Claude AI</span>
-      <span><span class="dot"></span>Your pace, your words</span>
-    </div>
-    <a href="https://buy.stripe.com/dRmfZh4KG5COapN9mx6c005" class="hero-cta">Get Instant Access</a>
-    <span class="hero-free" style="font-size:1.3rem;font-weight:600;color:var(--text-primary);">$67 <span style="font-size:0.85rem;font-weight:400;color:var(--text-secondary);">one time. Instant access. No subscription.</span></span>
-  </div>
-</section>
-<!-- Sales Video -->
-<section style="max-width:720px;margin:0 auto;padding:0 24px 48px;">
-  <div style="position:relative;border-radius:12px;overflow:hidden;background:#000;border:1px solid rgba(191,109,42,0.15);aspect-ratio:16/9;">
-    <video id="sales-video" controls preload="metadata" poster="https://jamesguldan.com/deep-work/video-poster.jpg" style="width:100%;height:100%;object-fit:contain;">
-      <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
-    </video>
-    <div id="video-overlay" onclick="document.getElementById('sales-video').play();this.style.display='none';" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(0,0,0,0.3);">
-      <div style="width:72px;height:72px;border-radius:50%;background:rgba(191,109,42,0.9);display:flex;align-items:center;justify-content:center;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+<section class="hero" style="padding:80px 0 60px;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+    <!-- Left: Copy -->
+    <div>
+      <div class="hero-label" style="margin-bottom:16px;">By James Guldan</div>
+      <h1 style="margin-bottom:20px;">The Deep Work <em>Interview</em></h1>
+      <p class="hero-sub" style="max-width:460px;margin:0 0 28px;">A two hour AI conversation that does what nobody in your life will do for you. It asks the questions you have been avoiding, finds the answers you could not see, and builds the entire blueprint you need to finally stop guessing and start building.</p>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px;">
+        <span style="font-size:0.85rem;color:var(--text-muted);">90 to 120 minutes</span>
+        <span style="font-size:0.85rem;color:var(--text-muted);">&middot;</span>
+        <span style="font-size:0.85rem;color:var(--text-muted);">Powered by Claude AI</span>
+        <span style="font-size:0.85rem;color:var(--text-muted);">&middot;</span>
+        <span style="font-size:0.85rem;color:var(--text-muted);">Your pace, your words</span>
       </div>
+      <a href="https://buy.stripe.com/dRmfZh4KG5COapN9mx6c005" class="hero-cta" style="margin-bottom:12px;">Get Instant Access</a>
+      <div style="font-size:1.3rem;font-weight:600;color:var(--text-primary);">$67 <span style="font-size:0.85rem;font-weight:400;color:var(--text-secondary);">one time. Instant access. No subscription.</span></div>
+    </div>
+    <!-- Right: Video -->
+    <div>
+      <div style="position:relative;border-radius:12px;overflow:hidden;background:#000;border:1px solid rgba(191,109,42,0.15);aspect-ratio:16/9;">
+        <video id="sales-video" controls preload="metadata" poster="https://jamesguldan.com/deep-work/video-poster.jpg" style="width:100%;height:100%;object-fit:contain;">
+          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+        </video>
+        <div id="video-overlay" onclick="document.getElementById('sales-video').play();this.style.display='none';" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(0,0,0,0.3);">
+          <div style="width:72px;height:72px;border-radius:50%;background:rgba(191,109,42,0.9);display:flex;align-items:center;justify-content:center;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center;color:var(--text-muted);font-size:0.78rem;margin-top:10px;font-style:italic;">2 min &middot; Hear the story behind Deep Work directly from James</p>
     </div>
   </div>
-  <p style="text-align:center;color:#6B6560;font-size:0.82rem;margin-top:12px;">2 minutes. Watch before you decide.</p>
+  <!-- Mobile responsive: stack on small screens -->
+  <style>
+    @media (max-width: 768px) {
+      .hero > div:first-child { grid-template-columns: 1fr !important; }
+    }
+  </style>
 </section>
-
 
 <!-- Anchor Nav -->
 <nav class="anchor-nav" id="top">
