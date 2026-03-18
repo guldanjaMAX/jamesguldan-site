@@ -97,107 +97,102 @@
 <a href="#main-content" class="skip-link">Skip to content</a>
 
 <!-- Hero -->
-<section class="hero" style="padding:80px 0 60px;overflow:hidden;">
+<section class="hero" style="display:grid !important;min-height:auto !important;padding:80px 0 60px !important;overflow:hidden;">
   <style>
+    .hero.dwi-split {
+      display:grid !important;
+      grid-template-columns:1fr !important;
+      min-height:auto !important;
+      align-items:center !important;
+      padding:80px 0 60px !important;
+    }
     .dwi-hero-grid {
       max-width:1100px;margin:0 auto;padding:0 32px;
-      display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+      display:grid !important;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;
+      position:relative;z-index:1;
     }
-    .dwi-hero-left { text-align:left; }
-    .dwi-hero-left h1 { text-align:left; }
-    .dwi-hero-left .hero-sub { text-align:left;max-width:440px;margin:0 0 24px; }
+    .dwi-hero-left h1 { text-align:left !important;margin-bottom:20px; }
+    .dwi-hero-left .hero-label { text-align:left !important;margin-bottom:20px; }
+    .dwi-hero-left .hero-sub { text-align:left !important;max-width:420px;margin:0 0 28px !important;font-size:1.05rem; }
 
     /* Animated geometric shapes */
-    .video-frame { position:relative;padding:24px; }
-    .geo { position:absolute;border:1px solid rgba(191,109,42,0.3);pointer-events:none; }
+    .vid-wrap { position:relative;padding:28px; }
+    .g { position:absolute;pointer-events:none;border:1px solid rgba(191,109,42,0.25); }
+    .g1 { width:140px;height:140px;top:-20px;right:-20px;border-radius:4px;animation:gs 20s linear infinite; }
+    .g2 { width:90px;height:90px;bottom:-14px;left:-14px;border-radius:50%;border-width:2px;border-color:rgba(191,109,42,0.2);animation:gp 4s ease-in-out infinite; }
+    .g3 { width:180px;height:180px;top:50%;right:-36px;transform:translateY(-50%) rotate(45deg);border-color:rgba(191,109,42,0.1);animation:gr 30s linear infinite; }
+    .g4 { width:50px;height:50px;bottom:24%;left:-18px;border-radius:2px;border-color:rgba(191,109,42,0.2);animation:gf 6s ease-in-out infinite; }
+    .g5 { width:220px;height:220px;top:-48px;left:50%;transform:translateX(-50%) rotate(30deg);border-color:rgba(191,109,42,0.06);animation:gs 28s linear infinite; }
+    .g6 { width:36px;height:36px;bottom:-6px;right:28%;border-radius:50%;border-width:2px;border-color:rgba(191,109,42,0.3);animation:gp 3s ease-in-out infinite 1s; }
+    .g7 { width:100px;height:100px;top:20%;left:-24px;border-radius:0;border-color:rgba(191,109,42,0.15);transform:rotate(60deg);animation:gs 22s linear infinite reverse; }
+    .gd { position:absolute;width:5px;height:5px;border-radius:50%;background:rgba(191,109,42,0.35);pointer-events:none; }
+    .gd1 { top:6px;left:35%;animation:gp 3s ease-in-out infinite 0.5s; }
+    .gd2 { bottom:10px;right:18%;animation:gp 4s ease-in-out infinite; }
+    .gd3 { top:45%;left:-6px;animation:gp 3.5s ease-in-out infinite 1.5s; }
+    .gd4 { top:15%;right:10%;animation:gp 5s ease-in-out infinite 0.8s; }
 
-    .geo-1 {
-      width:120px;height:120px;top:-16px;right:-16px;
-      border-radius:4px;transform:rotate(15deg);
-      animation:geo-spin 20s linear infinite;
-    }
-    .geo-2 {
-      width:80px;height:80px;bottom:-12px;left:-12px;
-      border-radius:50%;border-width:2px;border-color:rgba(191,109,42,0.2);
-      animation:geo-pulse 4s ease-in-out infinite;
-    }
-    .geo-3 {
-      width:160px;height:160px;top:50%;right:-32px;transform:translateY(-50%) rotate(45deg);
-      border-color:rgba(191,109,42,0.12);border-width:1px;
-      animation:geo-spin-reverse 30s linear infinite;
-    }
-    .geo-4 {
-      width:60px;height:60px;bottom:20%;left:-20px;
-      border-radius:2px;border-color:rgba(191,109,42,0.25);
-      animation:geo-float 6s ease-in-out infinite;
-    }
-    .geo-5 {
-      width:200px;height:200px;top:-40px;left:50%;transform:translateX(-50%) rotate(30deg);
-      border-color:rgba(191,109,42,0.08);border-width:1px;
-      animation:geo-spin 25s linear infinite;
-    }
-    .geo-6 {
-      width:40px;height:40px;bottom:-8px;right:30%;
-      border-radius:50%;border-width:2px;border-color:rgba(191,109,42,0.3);
-      animation:geo-pulse 3s ease-in-out infinite 1s;
-    }
-    .geo-dot {
-      position:absolute;width:6px;height:6px;border-radius:50%;
-      background:rgba(191,109,42,0.4);pointer-events:none;
-    }
-    .geo-dot-1 { top:8px;left:40%;animation:geo-pulse 3s ease-in-out infinite 0.5s; }
-    .geo-dot-2 { bottom:12px;right:20%;animation:geo-pulse 4s ease-in-out infinite; }
-    .geo-dot-3 { top:40%;left:-8px;animation:geo-pulse 3.5s ease-in-out infinite 1.5s; }
+    @keyframes gs { from{transform:rotate(0deg)}to{transform:rotate(360deg)} }
+    @keyframes gr { from{transform:translateY(-50%) rotate(0deg)}to{transform:translateY(-50%) rotate(-360deg)} }
+    @keyframes gp { 0%,100%{opacity:0.3;transform:scale(1)}50%{opacity:1;transform:scale(1.1)} }
+    @keyframes gf { 0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(10deg)} }
 
-    @keyframes geo-spin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
-    @keyframes geo-spin-reverse { from { transform:translateY(-50%) rotate(0deg); } to { transform:translateY(-50%) rotate(-360deg); } }
-    @keyframes geo-pulse { 0%,100% { opacity:0.3;transform:scale(1); } 50% { opacity:1;transform:scale(1.08); } }
-    @keyframes geo-float { 0%,100% { transform:translateY(0) rotate(0deg); } 50% { transform:translateY(-12px) rotate(8deg); } }
-
-    .video-inner {
-      position:relative;border-radius:12px;overflow:hidden;
-      background:#000;border:1px solid rgba(191,109,42,0.25);
-      aspect-ratio:16/9;z-index:1;
-      box-shadow:0 8px 40px rgba(191,109,42,0.12), 0 0 0 1px rgba(191,109,42,0.1);
+    .vid-box {
+      position:relative;border-radius:14px;overflow:hidden;
+      background:#000;z-index:1;
+      border:1px solid rgba(191,109,42,0.3);
+      box-shadow:0 12px 48px rgba(191,109,42,0.15), 0 0 80px rgba(191,109,42,0.05);
+      aspect-ratio:16/9;
     }
+    .vid-play {
+      position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+      cursor:pointer;background:rgba(0,0,0,0.2);transition:background 0.3s;
+    }
+    .vid-play:hover { background:rgba(0,0,0,0.1); }
+    .vid-play-btn {
+      width:76px;height:76px;border-radius:50%;
+      background:rgba(191,109,42,0.9);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 4px 24px rgba(191,109,42,0.5);
+      transition:transform 0.2s;
+    }
+    .vid-play:hover .vid-play-btn { transform:scale(1.06); }
 
-    @media (max-width: 768px) {
+    @media (max-width:768px) {
       .dwi-hero-grid { grid-template-columns:1fr !important;gap:32px; }
-      .dwi-hero-left { text-align:center; }
-      .dwi-hero-left h1 { text-align:center; }
-      .dwi-hero-left .hero-sub { text-align:center;margin:0 auto 24px; }
-      .video-frame { padding:16px; }
-      .geo-3,.geo-5 { display:none; }
+      .dwi-hero-left h1,.dwi-hero-left .hero-label,.dwi-hero-left .hero-sub { text-align:center !important; }
+      .dwi-hero-left .hero-sub { margin:0 auto 24px !important; }
+      .vid-wrap { padding:16px; }
+      .g3,.g5,.g7 { display:none; }
     }
   </style>
 
   <div class="dwi-hero-grid">
-    <!-- Left: Copy -->
     <div class="dwi-hero-left">
-      <div class="hero-label" style="margin-bottom:16px;text-align:left;">By James Guldan</div>
-      <h1 style="margin-bottom:20px;">The Deep Work <em>Interview</em></h1>
+      <div class="hero-label">By James Guldan</div>
+      <h1>The Deep Work <em>Interview</em></h1>
       <p class="hero-sub">The AI interview that finally tells you who you are, what to build, and how to sell it.</p>
       <a href="https://buy.stripe.com/dRmfZh4KG5COapN9mx6c005" class="hero-cta" style="margin-bottom:16px;">Get Instant Access</a>
-      <div style="font-size:1.4rem;font-weight:700;color:var(--text-primary);margin-bottom:4px;">$67</div>
+      <div style="font-family:Inter,sans-serif;font-size:1.5rem;font-weight:800;color:var(--text-primary);margin-bottom:2px;">$67</div>
       <div style="font-size:0.82rem;color:var(--text-muted);">One time. Instant access. No subscription.</div>
     </div>
-    <!-- Right: Video with animated geometric shapes -->
-    <div class="video-frame">
-      <div class="geo geo-1"></div>
-      <div class="geo geo-2"></div>
-      <div class="geo geo-3"></div>
-      <div class="geo geo-4"></div>
-      <div class="geo geo-5"></div>
-      <div class="geo geo-6"></div>
-      <div class="geo-dot geo-dot-1"></div>
-      <div class="geo-dot geo-dot-2"></div>
-      <div class="geo-dot geo-dot-3"></div>
-      <div class="video-inner">
-        <video id="sales-video" controls preload="metadata" poster="https://jamesguldan.com/deep-work/video-poster.jpg" style="width:100%;height:100%;object-fit:contain;">
+    <div class="vid-wrap">
+      <div class="g g1"></div>
+      <div class="g g2"></div>
+      <div class="g g3"></div>
+      <div class="g g4"></div>
+      <div class="g g5"></div>
+      <div class="g g6"></div>
+      <div class="g g7"></div>
+      <div class="gd gd1"></div>
+      <div class="gd gd2"></div>
+      <div class="gd gd3"></div>
+      <div class="gd gd4"></div>
+      <div class="vid-box">
+        <video id="sv" controls preload="metadata" poster="https://jamesguldan.com/deep-work/video-poster.jpg" style="width:100%;height:100%;object-fit:contain;">
           <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
         </video>
-        <div id="video-overlay" onclick="document.getElementById('sales-video').play();this.style.display='none';" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(0,0,0,0.25);">
-          <div style="width:72px;height:72px;border-radius:50%;background:rgba(191,109,42,0.9);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);box-shadow:0 4px 20px rgba(191,109,42,0.4);">
+        <div class="vid-play" onclick="document.getElementById('sv').play();this.style.display='none';">
+          <div class="vid-play-btn">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="8,4 20,12 8,20"/></svg>
           </div>
         </div>
