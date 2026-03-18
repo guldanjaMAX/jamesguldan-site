@@ -793,6 +793,8 @@ const PHOTOS = {
   'Louis Massaro':  'testimonials/louis-massaro.jpg',
   'Dmitriy Kozlov': 'testimonials/dmitriy-kozlov.jpg',
   'Dean Pohlman':   'testimonials/dean-pohlman.jpg',
+  'Re Perez':       'testimonials/re-perez.jpg',
+  'Kyle Gray':      'testimonials/kyle-gray.jpg',
 };
 
 let allTestimonials = [];
@@ -895,12 +897,21 @@ function renderCards(testimonials) {
     const resultSection = t.result && !pending
       ? `<div class="result-callout">→ ${t.result}</div>` : '';
 
-    const videoThumb = isVideo && t.file_repo
-      ? `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
+    let videoThumb = '';
+    if (isVideo) {
+      if (t.file_repo) {
+        videoThumb = `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
           <video controls preload="metadata" style="width:100%;display:block;border-radius:8px;max-height:240px;">
             <source src="https://jamesguldan.com/${t.file_repo}" type="video/mp4">
           </video>
-        </div>` : '';
+        </div>`;
+      } else if (t.source_url && t.source_url.includes('drive.google.com')) {
+        const embedUrl = t.source_url.replace('/view', '/preview').replace('/edit', '/preview');
+        videoThumb = `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
+          <iframe src="${embedUrl}" allow="autoplay" style="width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:8px;" title="${t.name} testimonial video"></iframe>
+        </div>`;
+      }
+    }
 
     const stageChips = t.funnel_stages.length
       ? `<div class="card-stages">${t.funnel_stages.map(s => `<span class="stage-tag ${activeStage === s ? 'highlight' : ''}">${STAGE_META[s]?.label || s}</span>`).join('')}</div>`
@@ -1047,3 +1058,4 @@ loadData();
 </script>
 </body>
 </html>
+
