@@ -111,6 +111,21 @@
     <span class="hero-free" style="font-size:1.3rem;font-weight:600;color:var(--text-primary);">$67 <span style="font-size:0.85rem;font-weight:400;color:var(--text-secondary);">one time. Instant access. No subscription.</span></span>
   </div>
 </section>
+<!-- Sales Video -->
+<section style="max-width:720px;margin:0 auto;padding:0 24px 48px;">
+  <div style="position:relative;border-radius:12px;overflow:hidden;background:#000;border:1px solid rgba(191,109,42,0.15);aspect-ratio:16/9;">
+    <video id="sales-video" controls preload="metadata" poster="https://jamesguldan.com/deep-work/video-poster.jpg" style="width:100%;height:100%;object-fit:contain;">
+      <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+    </video>
+    <div id="video-overlay" onclick="document.getElementById('sales-video').play();this.style.display='none';" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(0,0,0,0.3);">
+      <div style="width:72px;height:72px;border-radius:50%;background:rgba(191,109,42,0.9);display:flex;align-items:center;justify-content:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+    </div>
+  </div>
+  <p style="text-align:center;color:#6B6560;font-size:0.82rem;margin-top:12px;">2 minutes. Watch before you decide.</p>
+</section>
+
 
 <!-- Anchor Nav -->
 <nav class="anchor-nav" id="top">
