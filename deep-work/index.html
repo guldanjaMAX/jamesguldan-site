@@ -184,7 +184,7 @@ body {
 .hero {
   position: relative;
   z-index: 1;
-  background: var(--bg);
+  background: transparent;
   padding: 60px 40px 0;
   overflow: hidden;
   min-height: 85vh;
@@ -1457,7 +1457,7 @@ details[open] summary::after { content: '\2212'; }
       const x = px * W;
       const y = py * H;
       const rot = t * speed + phase;
-      const alpha = 0.055 + 0.025 * Math.sin(t * 0.7 + phase);
+      const alpha = 0.10 + 0.05 * Math.sin(t * 0.7 + phase);
 
       if (type === 'hex') {
         poly(x, y, size, 6, rot, alpha);
