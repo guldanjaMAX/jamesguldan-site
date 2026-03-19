@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Work Interview — Option B: The Stage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; --nav-h: 64px; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    #geo { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+
+    nav { position: relative; z-index: 10; height: var(--nav-h); display: flex; justify-content: space-between; align-items: center; padding: 0 48px; background: var(--bg); }
+    .nav-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; color: #666; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-btn { background: var(--text); color: #fff; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .nav-btn:hover { background: #333; }
+
+    .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: hidden; z-index: 2; }
+
+    /* Photo — wider (38%) to give James more stage presence */
+    .hero-photo {
+      position: absolute;
+      left: 38%; right: 0; top: 0; bottom: 0;
+      display: flex; align-items: flex-end; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-photo img { max-height: 100%; width: auto; display: block; }
+
+    /* Pulsing ring around the video */
+    .vid-ring {
+      position: absolute;
+      bottom: 6.5%; left: 50%; transform: translateX(-50%);
+      width: 400px; height: 248px;
+      border: 1.5px solid rgba(196,112,63,.45);
+      border-radius: 18px;
+      animation: pulse 2.8s ease-in-out infinite;
+      pointer-events: none; z-index: 3;
+    }
+    .vid-ring2 {
+      position: absolute;
+      bottom: 5.5%; left: 50%; transform: translateX(-50%);
+      width: 436px; height: 276px;
+      border: 1px solid rgba(196,112,63,.2);
+      border-radius: 22px;
+      animation: pulse 2.8s ease-in-out infinite .5s;
+      pointer-events: none; z-index: 3;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:translateX(-50%) scale(1);}50%{opacity:.4;transform:translateX(-50%) scale(1.03);} }
+
+    .vid-float {
+      position: absolute;
+      bottom: 8%; left: 50%; transform: translateX(-50%);
+      z-index: 4; width: 360px;
+      border-radius: 14px; overflow: hidden; background: #000;
+      border: 2.5px solid rgba(255,255,255,0.9);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.25);
+    }
+    .vid-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
+    .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+
+    /* Text */
+    .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .hero-text { max-width: 500px; }
+    .eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .accent-bar { width: 32px; height: 3px; background: var(--accent); margin-bottom: 24px; border-radius: 2px; }
+    h1 { font-family: 'Outfit',sans-serif; font-size: clamp(36px, 4vw, 58px); font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
+    h1 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); display: block; }
+    .sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 32px; }
+    .proof { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #888; margin-bottom: 28px; }
+    .proof-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .cta-btn { display: inline-block; background: var(--text); color: #fff; text-decoration: none; padding: 16px 32px; border-radius: 50px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; margin-bottom: 14px; transition: background .2s, transform .15s; }
+    .cta-btn:hover { background: #333; transform: translateY(-2px); }
+    .price { font-size: 13px; color: #777; }
+    .price strong { color: var(--text); }
+
+    .option-tag { position: fixed; top: 12px; right: 16px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 20px; z-index: 100; text-transform: uppercase; }
+
+    @media (max-width: 860px) {
+      nav { padding: 0 24px; } .nav-links { display: none; }
+      .hero { height: auto; }
+      .hero-photo { position: relative; left: auto; right: auto; height: 60vw; }
+      .hero-text-wrap { padding: 32px 24px; height: auto; }
+      .hero-text { max-width: 100%; }
+      .vid-float { width: 200px; bottom: 10%; }
+      .vid-ring, .vid-ring2 { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="geo"></canvas>
+  <div class="option-tag">Option B — The Stage</div>
+  <nav>
+    <div class="nav-logo">JAMES GULDAN</div>
+    <ul class="nav-links">
+      <li><a href="#">About</a></li><li><a href="#">Process</a></li><li><a href="#">FAQ</a></li>
+      <li><button class="nav-btn">Get Access — $67</button></li>
+    </ul>
+  </nav>
+  <section class="hero">
+    <div class="hero-photo">
+      <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
+      <div class="vid-ring"></div>
+      <div class="vid-ring2"></div>
+      <div class="vid-float">
+        <video controls preload="metadata">
+          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+        </video>
+        <div class="vid-label">2 min · The story behind Deep Work</div>
+      </div>
+    </div>
+    <div class="hero-text-wrap">
+      <div class="hero-text">
+        <div class="eyebrow">Deep Work Interview</div>
+        <div class="accent-bar"></div>
+        <h1>You know what's broken. <em>You've known for a while.</em></h1>
+        <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
+        <div class="proof"><div class="proof-dot"></div>The same process James used to charge $5,000 per session for</div>
+        <button class="cta-btn">Start the Deep Work Interview →</button>
+        <p class="price"><strong>$67.</strong> Two hours. One session. Everything changes.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    const canvas=document.getElementById('geo'),ctx=canvas.getContext('2d');
+    function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+    resize();addEventListener('resize',resize);
+    function tri(x,y,r,rot,a){ctx.save();ctx.globalAlpha=a;ctx.strokeStyle='rgba(196,112,63,1)';ctx.lineWidth=.8;ctx.translate(x,y);ctx.rotate(rot);ctx.beginPath();ctx.moveTo(0,-r);ctx.lineTo(r*.866,r*.5);ctx.lineTo(-r*.866,r*.5);ctx.closePath();ctx.stroke();ctx.restore();}
+    function hex(x,y,r,rot,a){ctx.save();ctx.globalAlpha=a;ctx.strokeStyle='rgba(196,112,63,1)';ctx.lineWidth=.8;ctx.translate(x,y);ctx.rotate(rot);ctx.beginPath();for(let i=0;i<6;i++){const ang=i*Math.PI/3;i===0?ctx.moveTo(Math.cos(ang)*r,Math.sin(ang)*r):ctx.lineTo(Math.cos(ang)*r,Math.sin(ang)*r);}ctx.closePath();ctx.stroke();ctx.restore();}
+    function frame(ts){
+      ctx.fillStyle='#FDFCFA';ctx.fillRect(0,0,canvas.width,canvas.height);
+      const t=ts*.00005,w=canvas.width,h=canvas.height;
+      for(let i=0;i<5;i++){const c=(t*100+i*80)%(h+60);tri(w*.18+Math.sin(t+i)*50,h-c,26+i*4,t*(i%2?1:-1),.05-i*.007);tri(w*.82+Math.cos(t+i)*50,h-c,22+i*4,-t*(i%2?1:-1),.045-i*.007);}
+      hex(w*.5,h*.12,46,t*.5,.04);hex(w*.08,h*.55,34,-t*.8,.035);hex(w*.92,h*.65,38,t*.9,.035);hex(w*.45,h*.88,50,t,.04);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  </script>
+</body>
+</html>

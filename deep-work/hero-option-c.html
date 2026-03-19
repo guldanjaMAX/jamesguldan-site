@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Work Interview — Option C: The Editorial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; --nav-h: 64px; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    #geo { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+
+    nav { position: relative; z-index: 10; height: var(--nav-h); display: flex; justify-content: space-between; align-items: center; padding: 0 48px; background: var(--bg); }
+    .nav-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; color: #666; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-btn { background: var(--text); color: #fff; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .nav-btn:hover { background: #333; }
+
+    .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: hidden; z-index: 2; }
+
+    /* Photo — standard 42% */
+    .hero-photo { position: absolute; left: 42%; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+    .hero-photo img { max-height: 100%; width: auto; display: block; }
+    .vid-float { position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%); z-index: 4; width: 360px; border-radius: 14px; overflow: hidden; background: #000; border: 2.5px solid rgba(255,255,255,0.9); box-shadow: 0 12px 48px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.08); }
+    .vid-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
+    .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+
+    /* Text — editorial treatment */
+    .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .hero-text { max-width: 500px; }
+    .eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .v-rule { width: 2px; height: 44px; background: linear-gradient(to bottom, var(--accent), transparent); margin-bottom: 18px; border-radius: 1px; }
+    h1 { font-family: 'Outfit',sans-serif; font-size: clamp(34px, 3.5vw, 52px); font-weight: 700; line-height: 1.2; margin-bottom: 18px; }
+    h1 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
+    .sub { font-size: 15px; line-height: 1.75; color: #555; margin-bottom: 22px; }
+
+    /* Stats row */
+    .stats { display: flex; gap: 24px; margin-bottom: 28px; padding: 16px 0; border-top: 1px solid #EAE7E2; border-bottom: 1px solid #EAE7E2; }
+    .stat-num { font-family: 'Outfit',sans-serif; font-size: 22px; font-weight: 700; color: var(--accent); line-height: 1; }
+    .stat-desc { font-size: 10px; color: #999; font-weight: 500; text-transform: uppercase; letter-spacing: .5px; line-height: 1.4; margin-top: 3px; }
+
+    .cta-btn { display: inline-block; background: var(--text); color: #fff; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; margin-bottom: 12px; transition: background .2s, transform .15s; }
+    .cta-btn:hover { background: #333; transform: translateY(-2px); }
+    .price { font-size: 13px; color: #777; }
+    .price strong { color: var(--text); }
+
+    .option-tag { position: fixed; top: 12px; right: 16px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 20px; z-index: 100; text-transform: uppercase; }
+
+    @media (max-width: 860px) {
+      nav { padding: 0 24px; } .nav-links { display: none; }
+      .hero { height: auto; }
+      .hero-photo { position: relative; left: auto; right: auto; height: 60vw; }
+      .hero-text-wrap { padding: 32px 24px; height: auto; }
+      .hero-text { max-width: 100%; }
+      .vid-float { width: 200px; bottom: 10%; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="geo"></canvas>
+  <div class="option-tag">Option C — The Editorial</div>
+  <nav>
+    <div class="nav-logo">JAMES GULDAN</div>
+    <ul class="nav-links">
+      <li><a href="#">About</a></li><li><a href="#">Process</a></li><li><a href="#">FAQ</a></li>
+      <li><button class="nav-btn">Get Access — $67</button></li>
+    </ul>
+  </nav>
+  <section class="hero">
+    <div class="hero-photo">
+      <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
+      <div class="vid-float">
+        <video controls preload="metadata">
+          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+        </video>
+        <div class="vid-label">2 min · The story behind Deep Work</div>
+      </div>
+    </div>
+    <div class="hero-text-wrap">
+      <div class="hero-text">
+        <div class="eyebrow">Deep Work Interview</div>
+        <div class="v-rule"></div>
+        <h1>You know what's broken. <em>You've known for a while.</em></h1>
+        <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix.</p>
+        <div class="stats">
+          <div><div class="stat-num">2 hrs</div><div class="stat-desc">Deep dive<br>session</div></div>
+          <div><div class="stat-num">$67</div><div class="stat-desc">Was $5,000<br>per session</div></div>
+          <div><div class="stat-num">1 call</div><div class="stat-desc">Clear answers<br>guaranteed</div></div>
+        </div>
+        <button class="cta-btn">Start the Deep Work Interview →</button>
+        <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    const canvas=document.getElementById('geo'),ctx=canvas.getContext('2d');
+    function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+    resize();addEventListener('resize',resize);
+    const nodes=Array.from({length:16},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}));
+    function frame(){
+      ctx.fillStyle='#FDFCFA';ctx.fillRect(0,0,canvas.width,canvas.height);
+      nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>canvas.width)n.vx*=-1;if(n.y<0||n.y>canvas.height)n.vy*=-1;});
+      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+        const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<260){ctx.save();ctx.globalAlpha=(1-d/260)*.065;ctx.strokeStyle='rgba(196,112,63,1)';ctx.lineWidth=.8;ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.stroke();ctx.restore();}
+      }
+      nodes.forEach(n=>{ctx.save();ctx.globalAlpha=.25;ctx.fillStyle='rgba(196,112,63,1)';ctx.beginPath();ctx.arc(n.x,n.y,2,0,Math.PI*2);ctx.fill();ctx.restore();});
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  </script>
+</body>
+</html>
