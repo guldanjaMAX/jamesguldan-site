@@ -244,8 +244,16 @@
     /* TESTIMONIALS */
     .test-section { position: relative; z-index: 2; padding: 120px 48px; background: #F9F6F2; }
     .test-featured-video { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: #0d0c0b; border-radius: 16px; overflow: hidden; margin-bottom: 32px; box-shadow: 0 8px 48px rgba(0,0,0,.18); }
-    .test-video-wrap { overflow: hidden; max-height: 420px; }
+    .test-video-wrap { overflow: hidden; max-height: 420px; position: relative; }
     .test-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-overlay { position: absolute; inset: 0; z-index: 2; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(13,12,11,.82) 0%, rgba(13,12,11,.45) 50%, rgba(196,112,63,.25) 100%); transition: opacity 0.4s ease; }
+    .video-overlay.hidden { opacity: 0; pointer-events: none; }
+    .video-overlay-play { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.15); backdrop-filter: blur(8px); border: 2px solid rgba(255,255,255,.35); display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, background 0.2s ease; }
+    .video-overlay:hover .video-overlay-play { transform: scale(1.1); background: rgba(196,112,63,.45); border-color: rgba(196,112,63,.7); }
+    .video-overlay-play svg { width: 28px; height: 28px; fill: #fff; margin-left: 3px; }
+    .video-overlay-label { margin-top: 16px; font-family: 'Outfit',sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.7); }
+    .video-overlay-name { margin-top: 6px; font-family: 'Playfair Display',serif; font-size: 18px; color: #fff; font-weight: 400; }
+    .video-overlay-tag { margin-top: auto; margin-bottom: 16px; padding: 6px 14px; background: rgba(196,112,63,.2); border: 1px solid rgba(196,112,63,.4); border-radius: 20px; font-family: 'Outfit',sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
     .test-video-content { padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
     .test-video-stars { color: var(--accent); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
     .test-video-quote { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,.82); font-style: italic; margin-bottom: 28px; font-family: 'Playfair Display',serif; }
@@ -337,6 +345,10 @@
       .test-section { padding: 72px 20px; }
       .test-featured-video { grid-template-columns: 1fr; }
       .test-video-wrap { max-height: 260px; }
+      .video-overlay-play { width: 56px; height: 56px; }
+      .video-overlay-play svg { width: 22px; height: 22px; }
+      .video-overlay-name { font-size: 15px; }
+      .video-overlay-label { font-size: 10px; }
       .test-video-content { padding: 28px 24px; }
       .test-grid { grid-template-columns: 1fr; }
       .how-section { padding: 72px 20px; }
@@ -775,6 +787,12 @@
         <video controls preload="metadata">
           <source src="videos/greg-pignataro-testimonial.mp4" type="video/mp4">
         </video>
+        <div class="video-overlay" onclick="var v=this.parentElement.querySelector('video');this.classList.add('hidden');v.play();">
+          <div class="video-overlay-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+          <div class="video-overlay-label">Watch Testimonial</div>
+          <div class="video-overlay-name">Greg Pignataro</div>
+          <div class="video-overlay-tag">Filmed on Necker Island</div>
+        </div>
       </div>
       <div class="test-video-content">
         <div class="test-video-stars">★★★★★</div>
