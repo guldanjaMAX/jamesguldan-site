@@ -7,114 +7,94 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --bg: #FDFCFA;
-      --accent: #c4703f;
-      --text: #1a1a1a;
-    }
+    :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; --nav-h: 64px; }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
+    /* Geometry canvas behind everything */
     #geo { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 
     nav {
-      position: relative; z-index: 10;
+      position: relative; z-index: 10; height: var(--nav-h);
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 48px;
-      background: var(--bg);
+      padding: 0 48px; background: var(--bg);
     }
     .nav-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 2px; }
     .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
-    .nav-links a { text-decoration: none; color: #666; font-size: 14px; font-weight: 500; }
+    .nav-links a { text-decoration: none; color: #666; font-size: 14px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--accent); }
-    .nav-btn { background: var(--text); color: #fff; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .nav-btn { background: var(--text); color: #fff; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background .2s; }
     .nav-btn:hover { background: #333; }
 
-    /* HERO — exact same structure as jamesguldan.com */
+    /* ===== HERO — exact jamesguldan.com structure ===== */
     .hero {
-      position: relative; z-index: 2;
-      padding: 40px 48px 0;
-      min-height: calc(100vh - 64px);
-    }
-    .hero-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: end;
-      min-height: calc(100vh - 104px);
+      position: relative;
+      height: calc(100vh - var(--nav-h));
+      overflow: hidden;
+      z-index: 2;
     }
 
-    /* Left text */
-    .hero-left { padding-bottom: 80px; }
-    .eyebrow {
-      font-family: 'Outfit', sans-serif;
-      font-size: 11px; font-weight: 600; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+    /* Photo — absolutely positioned, right side */
+    .hero-photo {
+      position: absolute;
+      left: 42%; right: 0; top: 0; bottom: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
     }
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(38px, 4vw, 58px);
-      font-weight: 700; line-height: 1.2; margin-bottom: 20px;
+    .hero-photo img {
+      max-height: 100%;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.05));
     }
-    h1 em { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--accent); }
-    .sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 36px; max-width: 460px; }
-    .cta-btn {
-      display: inline-block; background: var(--text); color: #fff;
-      text-decoration: none; padding: 16px 32px; border-radius: 50px;
-      font-size: 14px; font-weight: 600; border: none; cursor: pointer;
-      margin-bottom: 14px; transition: background 0.2s, transform 0.15s;
+    /* Fade: gradient bleeds text into photo on the left edge */
+    .hero-photo-fade {
+      position: absolute;
+      left: 0; top: 0; bottom: 0; width: 45%;
+      background: linear-gradient(to right, var(--bg) 20%, transparent 100%);
+      pointer-events: none; z-index: 1;
     }
+
+    /* Video float — inside photo div, over James */
+    .vid-float {
+      position: absolute;
+      bottom: 8%; left: 50%; transform: translateX(-50%);
+      z-index: 4; width: 360px;
+      border-radius: 14px; overflow: hidden; background: #000;
+      border: 2.5px solid rgba(255,255,255,0.9);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.08);
+    }
+    .vid-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
+    .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: 0.7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+
+    /* Text — left side, in normal flow above photo */
+    .hero-text-wrap {
+      position: relative; z-index: 3;
+      display: flex; align-items: center;
+      height: 100%;
+      max-width: 1280px; margin: 0 auto; padding: 0 48px;
+    }
+    .hero-text { max-width: 520px; }
+    .eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    h1 { font-family: 'Outfit',sans-serif; font-size: clamp(36px, 3.8vw, 56px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+    h1 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
+    .sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 36px; }
+    .cta-btn { display: inline-block; background: var(--text); color: #fff; text-decoration: none; padding: 16px 32px; border-radius: 50px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; margin-bottom: 14px; transition: background .2s, transform .15s; }
     .cta-btn:hover { background: #333; transform: translateY(-2px); }
     .price { font-size: 13px; color: #777; }
     .price strong { color: var(--text); }
 
-    /* Right — photo + video overlay (exact jamesguldan.com approach) */
-    .hero-photo-wrap {
-      position: relative;
-      display: flex; align-items: flex-end; justify-content: center;
-    }
-    .hero-cutout {
-      display: block;
-      width: 260%; max-width: 260%;
-      object-fit: contain;
-      position: relative; z-index: 1;
-      filter: drop-shadow(0 12px 48px rgba(0,0,0,0.06));
-      margin-left: -80%;
-    }
-    /* Fade gradient: left side of photo area bleeds into page bg */
-    .photo-fade {
-      position: absolute;
-      left: -60px; top: 0; bottom: 0; width: 50%;
-      background: linear-gradient(to right, var(--bg) 25%, transparent 100%);
-      z-index: 2; pointer-events: none;
-    }
-    .hero-video-float {
-      position: absolute;
-      bottom: 5%; left: 50%; transform: translateX(-50%);
-      z-index: 4; width: 380px;
-      border-radius: 14px; overflow: hidden;
-      background: #000;
-      border: 2.5px solid rgba(255,255,255,0.9);
-      box-shadow: 0 12px 48px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.08);
-    }
-    .hero-video-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
-    .vid-label {
-      background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9);
-      text-align: center; padding: 8px 12px;
-      font-size: 0.7rem; font-family: 'Outfit',sans-serif;
-      font-weight: 500; letter-spacing: 0.04em;
-    }
-
     .option-tag { position: fixed; top: 12px; right: 16px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 20px; z-index: 100; text-transform: uppercase; }
 
     @media (max-width: 860px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .hero { padding: 32px 24px 0; min-height: auto; }
-      .hero-inner { grid-template-columns: 1fr; gap: 24px; }
-      .hero-left { padding-bottom: 0; text-align: center; }
-      .hero-cutout { max-height: 50vh; }
-      .hero-video-float { width: 200px; bottom: 12%; }
+      nav { padding: 0 24px; } .nav-links { display: none; }
+      .hero { height: auto; min-height: 100vw; }
+      .hero-photo { position: relative; left: auto; right: auto; height: 60vw; margin-bottom: 0; }
+      .hero-photo-fade { display: none; }
+      .hero-text-wrap { padding: 32px 24px; height: auto; }
+      .hero-text { max-width: 100%; }
+      .vid-float { width: 200px; bottom: 10%; }
     }
   </style>
 </head>
@@ -133,24 +113,26 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-left">
+    <!-- Right: big photo + video (absolutely positioned) -->
+    <div class="hero-photo">
+      <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
+      <div class="hero-photo-fade"></div>
+      <div class="vid-float">
+        <video controls preload="metadata">
+          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+        </video>
+        <div class="vid-label">2 min · The story behind Deep Work</div>
+      </div>
+    </div>
+
+    <!-- Left: text in normal flow -->
+    <div class="hero-text-wrap">
+      <div class="hero-text">
         <div class="eyebrow">Deep Work Interview</div>
         <h1>You know what's broken. <em>You've known for a while.</em></h1>
         <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
         <button class="cta-btn">Start the Deep Work Interview →</button>
         <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
-      </div>
-
-      <div class="hero-photo-wrap">
-        <img class="hero-cutout" src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
-        <div class="photo-fade"></div>
-        <div class="hero-video-float">
-          <video controls preload="metadata">
-            <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
-          </video>
-          <div class="vid-label">2 min · The story behind Deep Work</div>
-        </div>
       </div>
     </div>
   </section>
@@ -160,32 +142,25 @@
     const ctx = canvas.getContext('2d');
     function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
     resize(); addEventListener('resize', resize);
-
     function flowerOfLife(x, y, r, rot, alpha) {
       ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = 'rgba(196,112,63,1)'; ctx.lineWidth = 0.8;
       ctx.translate(x, y); ctx.rotate(rot);
       ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI*2); ctx.stroke();
-      for (let i = 0; i < 6; i++) {
-        const a = i * Math.PI / 3;
-        ctx.beginPath(); ctx.arc(Math.cos(a)*r, Math.sin(a)*r, r, 0, Math.PI*2); ctx.stroke();
-      }
+      for (let i=0;i<6;i++){const a=i*Math.PI/3;ctx.beginPath();ctx.arc(Math.cos(a)*r,Math.sin(a)*r,r,0,Math.PI*2);ctx.stroke();}
       ctx.restore();
     }
-    function hexagon(x, y, r, rot, alpha) {
+    function hex(x, y, r, rot, alpha) {
       ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = 'rgba(196,112,63,1)'; ctx.lineWidth = 0.8;
       ctx.translate(x, y); ctx.rotate(rot); ctx.beginPath();
-      for (let i = 0; i < 6; i++) { const a = i*Math.PI/3; i===0?ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r):ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r); }
+      for(let i=0;i<6;i++){const a=i*Math.PI/3;i===0?ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r):ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r);}
       ctx.closePath(); ctx.stroke(); ctx.restore();
     }
     function frame(ts) {
-      ctx.fillStyle = '#FDFCFA'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-      const t = ts * 0.00004, w = canvas.width, h = canvas.height;
-      flowerOfLife(w*0.82, h*0.45, 120, t, 0.06);
-      flowerOfLife(w*0.12, h*0.22, 70, -t*0.8, 0.045);
-      flowerOfLife(w*0.9, h*0.15, 50, t*1.3, 0.035);
-      hexagon(w*0.6, h*0.82, 42, t*0.7, 0.04);
-      hexagon(w*0.22, h*0.78, 32, -t*0.6, 0.035);
-      hexagon(w*0.48, h*0.1, 28, t, 0.03);
+      ctx.fillStyle = '#FDFCFA'; ctx.fillRect(0,0,canvas.width,canvas.height);
+      const t=ts*0.00004,w=canvas.width,h=canvas.height;
+      flowerOfLife(w*.82,h*.45,120,t,.06); flowerOfLife(w*.12,h*.2,70,-t*.8,.045);
+      flowerOfLife(w*.9,h*.15,50,t*1.3,.035);
+      hex(w*.6,h*.82,42,t*.7,.04); hex(w*.22,h*.78,32,-t*.6,.035); hex(w*.48,h*.1,28,t,.03);
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);

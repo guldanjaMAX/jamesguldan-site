@@ -7,17 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; }
+    :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; --nav-h: 64px; }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
-
     #geo { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 
     nav {
-      position: relative; z-index: 10;
+      position: relative; z-index: 10; height: var(--nav-h);
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 48px;
-      background: rgba(253,252,250,0.8);
-      backdrop-filter: blur(8px);
+      padding: 0 48px;
+      background: rgba(253,252,250,0.85);
+      backdrop-filter: blur(10px);
     }
     .nav-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 2px; }
     .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
@@ -26,127 +25,133 @@
     .nav-btn { background: var(--text); color: #fff; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; }
     .nav-btn:hover { background: #333; }
 
-    /* HERO — wider photo col (40/60 split so James takes more space) */
-    .hero { position: relative; z-index: 2; padding: 40px 48px 0; min-height: calc(100vh - 64px); }
-    .hero-inner {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: 42% 58%;
-      align-items: end;
-      min-height: calc(100vh - 104px);
-    }
+    .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: hidden; z-index: 2; }
 
-    /* Left — centered/editorial with a decorative divider element */
-    .hero-left { padding-bottom: 80px; }
-    .eyebrow {
-      font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 600;
-      letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+    /* Photo — widest at 34% left offset, James fills maximum space */
+    .hero-photo {
+      position: absolute;
+      left: 34%; right: 0; top: 0; bottom: 0;
+      display: flex; align-items: flex-end; justify-content: center;
+      overflow: hidden;
     }
-    /* Geometric divider */
-    .geo-divider {
-      display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
-    }
-    .geo-line { flex: 1; height: 1px; background: rgba(196,112,63,0.3); max-width: 40px; }
-    .geo-hex {
-      width: 14px; height: 14px; background: none;
-      border: 1.5px solid var(--accent); transform: rotate(45deg); opacity: 0.7;
-    }
+    .hero-photo img { max-height: 100%; width: auto; display: block; }
 
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(36px, 3.6vw, 54px);
-      font-weight: 700; line-height: 1.2; margin-bottom: 20px;
+    /* Stacked sacred geometry rings behind the video */
+    .vid-halo {
+      position: absolute;
+      bottom: 6%; left: 50%; transform: translateX(-50%);
+      width: 480px; height: 300px;
+      border: 1px solid rgba(196,112,63,.18);
+      border-radius: 20px;
+      animation: halo 3.5s ease-in-out infinite;
+      pointer-events: none; z-index: 3;
     }
-    h1 em { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--accent); }
-    .sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 36px; max-width: 420px; }
-    .cta-btn {
-      display: inline-block; background: var(--text); color: #fff;
-      text-decoration: none; padding: 16px 32px; border-radius: 50px;
-      font-size: 14px; font-weight: 600; border: none; cursor: pointer;
-      margin-bottom: 14px; transition: background 0.2s, transform 0.15s;
+    .vid-halo2 {
+      position: absolute;
+      bottom: 5%; left: 50%; transform: translateX(-50%);
+      width: 520px; height: 330px;
+      border: 1px solid rgba(196,112,63,.1);
+      border-radius: 24px;
+      animation: halo 3.5s ease-in-out infinite .7s;
+      pointer-events: none; z-index: 3;
     }
+    @keyframes halo { 0%,100%{opacity:1;transform:translateX(-50%) scale(1);}50%{opacity:.3;transform:translateX(-50%) scale(1.025);} }
+
+    .vid-float {
+      position: absolute;
+      bottom: 8%; left: 50%; transform: translateX(-50%);
+      z-index: 4; width: 400px;
+      border-radius: 14px; overflow: hidden; background: #000;
+      border: 2.5px solid rgba(255,255,255,0.9);
+      box-shadow: 0 16px 64px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08);
+    }
+    .vid-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
+    .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+
+    /* Text — left side */
+    .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .hero-text { max-width: 480px; }
+    .eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+
+    /* Geo divider — diamond motif */
+    .geo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+    .geo-line { height: 1px; width: 36px; background: rgba(196,112,63,0.35); }
+    .geo-diamond { width: 10px; height: 10px; border: 1.5px solid var(--accent); transform: rotate(45deg); opacity: 0.75; flex-shrink: 0; }
+    .geo-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; flex-shrink: 0; }
+
+    h1 { font-family: 'Outfit',sans-serif; font-size: clamp(36px, 3.6vw, 54px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+    h1 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
+    .sub { font-size: 15px; line-height: 1.75; color: #555; margin-bottom: 32px; }
+
+    /* Session details strip */
+    .details { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
+    .detail-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #888; }
+    .detail-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    .cta-btn { display: inline-block; background: var(--text); color: #fff; text-decoration: none; padding: 16px 32px; border-radius: 50px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; margin-bottom: 14px; transition: background .2s, transform .15s; }
     .cta-btn:hover { background: #333; transform: translateY(-2px); }
     .price { font-size: 13px; color: #777; }
     .price strong { color: var(--text); }
 
-    /* Right — photo even bigger because the col is 58%; video at chest level */
-    .hero-photo-wrap { position: relative; display: flex; align-items: flex-end; justify-content: center; }
-    .hero-cutout {
-      display: block; width: 200%; max-width: 200%;
-      object-fit: contain; position: relative; z-index: 1;
-      filter: drop-shadow(0 16px 60px rgba(0,0,0,0.07));
-      margin-left: -50%;
-    }
-    .hero-video-float {
-      position: absolute;
-      bottom: 5%; left: 50%; transform: translateX(-50%);
-      z-index: 4; width: 400px;
-      border-radius: 14px; overflow: hidden; background: #000;
-      border: 2.5px solid rgba(255,255,255,0.9);
-      box-shadow: 0 12px 48px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.08);
-    }
-    .hero-video-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
-    .vid-label {
-      background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9);
-      text-align: center; padding: 8px 12px;
-      font-size: 0.7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: 0.04em;
-    }
-
     .option-tag { position: fixed; top: 12px; right: 16px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 20px; z-index: 100; text-transform: uppercase; }
 
     @media (max-width: 860px) {
-      nav { padding: 16px 24px; } .nav-links { display: none; }
-      .hero { padding: 32px 24px 0; min-height: auto; }
-      .hero-inner { grid-template-columns: 1fr; gap: 24px; }
-      .hero-left { padding-bottom: 0; }
-      .hero-cutout { max-height: 50vh; }
-      .hero-video-float { width: 200px; bottom: 12%; }
+      nav { padding: 0 24px; } .nav-links { display: none; }
+      .hero { height: auto; }
+      .hero-photo { position: relative; left: auto; right: auto; height: 60vw; }
+      .hero-text-wrap { padding: 32px 24px; height: auto; }
+      .hero-text { max-width: 100%; }
+      .vid-float { width: 210px; bottom: 10%; }
+      .vid-halo, .vid-halo2 { display: none; }
     }
   </style>
 </head>
 <body>
   <canvas id="geo"></canvas>
   <div class="option-tag">Option D — The Immersive</div>
-
   <nav>
     <div class="nav-logo">JAMES GULDAN</div>
     <ul class="nav-links">
-      <li><a href="#">About</a></li>
-      <li><a href="#">Process</a></li>
-      <li><a href="#">FAQ</a></li>
+      <li><a href="#">About</a></li><li><a href="#">Process</a></li><li><a href="#">FAQ</a></li>
       <li><button class="nav-btn">Get Access — $67</button></li>
     </ul>
   </nav>
-
   <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-left">
+    <div class="hero-photo">
+      <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
+      <div class="vid-halo"></div>
+      <div class="vid-halo2"></div>
+      <div class="vid-float">
+        <video controls preload="metadata">
+          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+        </video>
+        <div class="vid-label">2 min · The story behind Deep Work</div>
+      </div>
+    </div>
+    <div class="hero-text-wrap">
+      <div class="hero-text">
         <div class="eyebrow">Deep Work Interview</div>
-        <div class="geo-divider">
+        <div class="geo-row">
           <div class="geo-line"></div>
-          <div class="geo-hex"></div>
+          <div class="geo-dot"></div>
+          <div class="geo-diamond"></div>
+          <div class="geo-dot"></div>
           <div class="geo-line"></div>
         </div>
         <h1>You know what's broken. <em>You've known for a while.</em></h1>
-        <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
-        <button class="cta-btn">Start the Deep Work Interview →</button>
-        <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
-      </div>
-
-      <div class="hero-photo-wrap">
-        <img class="hero-cutout" src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
-        <div class="hero-video-float">
-          <video controls preload="metadata">
-            <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
-          </video>
-          <div class="vid-label">2 min · The story behind Deep Work</div>
+        <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll have complete clarity on what to change and exactly how.</p>
+        <div class="details">
+          <div class="detail-item"><div class="detail-dot"></div>2 hour deep dive session</div>
+          <div class="detail-item"><div class="detail-dot"></div>Same process James charged $5,000 for</div>
+          <div class="detail-item"><div class="detail-dot"></div>Clear answers guaranteed</div>
         </div>
+        <button class="cta-btn">Start the Deep Work Interview →</button>
+        <p class="price"><strong>$67.</strong> Two hours. Everything changes.</p>
       </div>
     </div>
   </section>
-
   <script>
-    const canvas = document.getElementById('geo');
-    const ctx = canvas.getContext('2d');
+    const canvas = document.getElementById('geo'), ctx = canvas.getContext('2d');
     function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
     resize(); addEventListener('resize', resize);
 
@@ -158,13 +163,9 @@
         const a = i*Math.PI/3;
         ctx.beginPath(); ctx.arc(Math.cos(a)*r, Math.sin(a)*r, r, 0, Math.PI*2); ctx.stroke();
       }
-      // inner ring
-      for (let i = 0; i < 6; i++) {
-        const a = i*Math.PI/3;
-        ctx.beginPath(); ctx.arc(Math.cos(a)*r*0.5, Math.sin(a)*r*0.5, r*0.3, 0, Math.PI*2); ctx.stroke();
-      }
       ctx.restore();
     }
+
     function vesica(x, y, r, rot, alpha) {
       ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = 'rgba(196,112,63,1)'; ctx.lineWidth = 0.7;
       ctx.translate(x, y); ctx.rotate(rot);
@@ -172,29 +173,38 @@
       ctx.beginPath(); ctx.arc(-r/2, 0, r, 0, Math.PI*2); ctx.stroke();
       ctx.restore();
     }
+
     function hexagon(x, y, r, rot, alpha) {
       ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = 'rgba(196,112,63,1)'; ctx.lineWidth = 0.7;
       ctx.translate(x, y); ctx.rotate(rot); ctx.beginPath();
-      for (let i = 0; i < 6; i++) { const a=i*Math.PI/3; i===0?ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r):ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r); }
+      for (let i = 0; i < 6; i++) { const a = i*Math.PI/3; i===0 ? ctx.moveTo(Math.cos(a)*r, Math.sin(a)*r) : ctx.lineTo(Math.cos(a)*r, Math.sin(a)*r); }
       ctx.closePath(); ctx.stroke(); ctx.restore();
     }
+
     function frame(ts) {
-      ctx.fillStyle = '#FDFCFA'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       const t = ts * 0.00004, w = canvas.width, h = canvas.height;
-      // Dense multi-layer geometry concentrated on right side (where James is)
-      flowerOfLife(w*0.85, h*0.42, 110, t*0.5, 0.065);
-      flowerOfLife(w*0.65, h*0.15, 65, -t*0.4, 0.05);
-      flowerOfLife(w*0.92, h*0.75, 80, t*0.6, 0.05);
-      vesica(w*0.72, h*0.65, 55, t*0.7, 0.055);
-      vesica(w*0.78, h*0.25, 60, -t*0.65, 0.05);
-      hexagon(w*0.55, h*0.5, 45, t, 0.04);
-      hexagon(w*0.1, h*0.35, 38, -t*0.9, 0.04);
-      hexagon(w*0.15, h*0.75, 42, t*1.1, 0.04);
-      hexagon(w*0.45, h*0.85, 35, t*0.8, 0.035);
+
+      // Dense geometry concentrated on right side where James is
+      flowerOfLife(w*0.82, h*0.4, 115, t*0.5, 0.065);
+      flowerOfLife(w*0.62, h*0.14, 68, -t*0.4, 0.05);
+      flowerOfLife(w*0.94, h*0.72, 82, t*0.6, 0.05);
+
+      vesica(w*0.72, h*0.62, 58, t*0.7, 0.055);
+      vesica(w*0.78, h*0.23, 62, -t*0.65, 0.05);
+      vesica(w*0.55, h*0.82, 44, t*0.8, 0.04);
+
+      hexagon(w*0.5, h*0.5, 46, t, 0.038);
+      hexagon(w*0.1, h*0.3, 36, -t*0.9, 0.038);
+      hexagon(w*0.18, h*0.72, 40, t*1.1, 0.038);
+      hexagon(w*0.42, h*0.88, 34, t*0.8, 0.032);
+
+      // Orbiting hexagons around main flower
       for (let i = 0; i < 4; i++) {
-        const a = i*Math.PI/2 + t*0.08;
-        hexagon(w*0.82 + Math.cos(a)*160, h*0.5 + Math.sin(a)*130, 30, t*(1+i*0.2), 0.03);
+        const a = i*Math.PI/2 + t*0.09;
+        hexagon(w*0.82 + Math.cos(a)*155, h*0.45 + Math.sin(a)*120, 28, t*(1 + i*0.2), 0.028);
       }
+
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
