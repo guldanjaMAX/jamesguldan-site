@@ -25,13 +25,13 @@
 
     /* HERO DESKTOP */
     .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: hidden; z-index: 2; }
-    .hero-photo { position: absolute; left: 42%; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+    .hero-photo { position: absolute; left: 36%; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
     .hero-photo img { max-height: 100%; width: auto; display: block; }
     .hero-photo-fade { position: absolute; left: 0; top: 0; bottom: 0; width: 45%; background: linear-gradient(to right, var(--bg) 20%, transparent 100%); pointer-events: none; z-index: 1; }
-    .vid-halo { position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); width: 440px; height: 278px; border: 1px solid rgba(196,112,63,.22); border-radius: 20px; animation: halo 3.2s ease-in-out infinite; pointer-events: none; z-index: 3; }
-    .vid-halo2 { position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%); width: 488px; height: 310px; border: 1px solid rgba(196,112,63,.12); border-radius: 24px; animation: halo 3.2s ease-in-out infinite .75s; pointer-events: none; z-index: 3; }
-    @keyframes halo { 0%,100%{opacity:1;transform:translateX(-50%) scale(1);}50%{opacity:.25;transform:translateX(-50%) scale(1.03);} }
-    .vid-float { position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%); z-index: 4; width: 380px; border-radius: 14px; overflow: hidden; background: #000; border: 2.5px solid rgba(255,255,255,0.9); box-shadow: 0 12px 48px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.08); }
+    .vid-halo { position: absolute; bottom: 5%; right: 4%; left: auto; transform: none; width: 336px; height: 214px; border: 1px solid rgba(196,112,63,.22); border-radius: 16px; animation: halo 3.2s ease-in-out infinite; pointer-events: none; z-index: 3; }
+    .vid-halo2 { position: absolute; bottom: 3.5%; right: 2.2%; left: auto; transform: none; width: 374px; height: 244px; border: 1px solid rgba(196,112,63,.12); border-radius: 20px; animation: halo 3.2s ease-in-out infinite .75s; pointer-events: none; z-index: 3; }
+    @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
+    .vid-float { position: absolute; bottom: 7%; right: 6%; left: auto; transform: none; z-index: 4; width: 296px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
     .vid-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
@@ -71,18 +71,18 @@
     .mobile-hero-text .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 12px; }
 
     /* CREDIBILITY */
-    .cred-section { position: relative; z-index: 2; padding: 64px 48px; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cred-section { position: relative; z-index: 2; padding: 72px 48px; background: #eeeae4; }
     .cred-inner { max-width: 1080px; margin: 0 auto; }
-    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 56px; }
-    .stat-item { padding: 32px 24px; text-align: center; border-right: 1px solid var(--border); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); margin-bottom: 0; }
+    .stat-item { padding: 36px 28px; text-align: center; border-right: 1px solid rgba(0,0,0,0.1); }
     .stat-item:last-child { border-right: none; }
-    .stat-num { font-family: 'Outfit',sans-serif; font-size: 48px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+    .stat-num { font-family: 'Outfit',sans-serif; font-size: 52px; font-weight: 700; line-height: 1; margin-bottom: 10px; color: var(--text); }
     .stat-num span { color: var(--accent); }
-    .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; line-height: 1.5; }
-    .logos-row { text-align: center; }
-    .logos-intro { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 24px; }
-    .logos-list { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; }
-    .logo-name { font-family: 'Playfair Display',serif; font-style: italic; font-size: 18px; color: #bbb; transition: color .25s; }
+    .stat-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; line-height: 1.6; }
+    .logos-row { text-align: center; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 44px; margin-top: 44px; }
+    .logos-intro { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 22px; }
+    .logos-list { display: flex; justify-content: center; align-items: center; gap: 56px; flex-wrap: wrap; }
+    .logo-name { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #b0a89e; transition: color .25s; }
     .logo-name:hover { color: var(--text); }
 
     /* WHAT THIS IS */
@@ -97,17 +97,40 @@
     .wti-quote-attr strong { display: block; font-size: 13px; font-weight: 600; }
     .wti-quote-attr span { font-size: 11px; color: var(--muted); }
 
-    /* Questions Graphic */
-    .questions-graphic { background: #faf8f5; border: 1px solid var(--border); border-radius: 20px; padding: 24px; overflow: hidden; position: relative; }
-    .qg-header { display: flex; align-items: center; gap: 6px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-    .qg-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .qg-title { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-left: 6px; }
-    .q-item { margin-bottom: 16px; }
-    .q-phase { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); opacity: .8; margin-bottom: 6px; }
-    .q-bubble { background: #fff; border: 1px solid var(--border); border-radius: 4px 14px 14px 14px; padding: 12px 16px; font-size: 13.5px; line-height: 1.6; color: var(--text); box-shadow: 0 2px 12px rgba(0,0,0,.04); }
-    .q-item:nth-child(odd) .q-bubble { border-radius: 14px 4px 14px 14px; }
-    .qg-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(transparent, #faf8f5); pointer-events: none; border-radius: 0 0 20px 20px; }
-    .qg-count { text-align: center; font-size: 12px; color: var(--muted); padding-top: 10px; font-style: italic; }
+    /* Session Questions Panel */
+    .session-panel { background: #0d0c0b; border-radius: 20px; padding: 32px 28px; overflow: hidden; }
+    .session-eyebrow { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.7); display: block; margin-bottom: 28px; }
+    .session-q { margin-bottom: 0; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .session-q:first-of-type { padding-top: 0; }
+    .session-q:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .session-label { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 10px; }
+    .session-quote { font-family: 'Playfair Display',serif; font-style: italic; font-size: clamp(15px, 1.5vw, 18px); line-height: 1.55; color: rgba(255,255,255,.82); }
+    .session-quote em { color: var(--accent); font-style: italic; }
+    .session-footer { font-size: 11px; color: rgba(255,255,255,.2); text-align: center; padding-top: 20px; margin-top: 8px; letter-spacing: 1.5px; }
+
+    /* SAMPLE OUTPUT */
+    .sample-output { margin-top: 72px; background: #0d0c0b; border-radius: 24px; overflow: hidden; }
+    .sample-output-header { background: #1a1917; padding: 16px 28px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .sample-traffic-lights { display: flex; gap: 7px; }
+    .stl { width: 12px; height: 12px; border-radius: 50%; }
+    .sample-file-name { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: rgba(255,255,255,.3); text-transform: uppercase; margin-left: 8px; }
+    .sample-doc { padding: 48px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .sample-block { border-left: 2px solid rgba(196,112,63,.4); padding-left: 20px; margin-bottom: 32px; }
+    .sample-block:last-child { margin-bottom: 0; }
+    .sample-block-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 10px; }
+    .sample-block-content { font-size: 13.5px; line-height: 1.7; color: rgba(255,255,255,.65); }
+    .sample-block-content strong { color: rgba(255,255,255,.9); font-weight: 600; }
+    .sample-divider { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 28px 0; }
+    .sample-score-row { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
+    .sample-score-bar { flex: 1; height: 4px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; }
+    .sample-score-fill { height: 100%; background: linear-gradient(to right, var(--accent), #e8956a); border-radius: 2px; }
+    .sample-score-num { font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 700; color: var(--accent); }
+    .sample-offer-row { display: flex; gap: 12px; margin-top: 12px; }
+    .sample-offer-pill { background: rgba(196,112,63,.12); border: 1px solid rgba(196,112,63,.25); border-radius: 8px; padding: 10px 14px; flex: 1; }
+    .sample-offer-tier { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 4px; }
+    .sample-offer-price { font-family: 'Outfit',sans-serif; font-size: 18px; font-weight: 700; color: #fff; }
+    .sample-offer-name { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 3px; }
+    .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(255,255,255,.2); border-top: 1px solid rgba(255,255,255,.05); font-style: italic; }
 
     /* PROCESS */
     .process-section { position: relative; z-index: 2; padding: 120px 48px; background: #0d0c0b; overflow: hidden; }
@@ -203,7 +226,7 @@
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stat-item:nth-child(2) { border-right: none; }
       .stat-item:nth-child(3),
-      .stat-item:nth-child(4) { border-top: 1px solid var(--border); }
+      .stat-item:nth-child(4) { border-top: 1px solid rgba(0,0,0,.1); }
       .stat-item:nth-child(4) { border-right: none; }
       .logos-list { gap: 20px; }
       .wti-section { padding: 64px 20px; }
@@ -212,6 +235,8 @@
       .phases-grid { grid-template-columns: 1fr 1fr; }
       .wyg-section { padding: 72px 20px; }
       .deliverables-grid { grid-template-columns: 1fr; }
+      .sample-doc { grid-template-columns: 1fr; padding: 28px 24px; gap: 0; }
+      .sample-offer-row { flex-direction: column; gap: 8px; }
       .test-section { padding: 72px 20px; }
       .test-grid { grid-template-columns: 1fr; }
       .how-section { padding: 72px 20px; }
@@ -326,45 +351,39 @@
       <div class="wti-quote">
         <p>"I spent all day on this. Better than working with business coaches I've paid to talk with me on the phone. I have real clarity on the next direction."</p>
         <div class="wti-quote-attr">
-          <img src="https://d22pfkzzdr45n7.cloudfront.net/videos/4634/22-05-2023/Chris_Van_Loan_Sr__IWJX9RY1.jpg" alt="Chris Van Loan" onerror="this.style.background='#ddd'">
+          <img src="https://d22pfkzzdr45n7.cloudfront.net/videos/4634/22-05-2023/Chris_Van_Loan_Sr__IWJX9RY1.jpg" alt="Chris Van Loan Sr." onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan&background=c4703f&color=fff&size=92'">
           <div>
-            <strong>Chris Van Loan</strong>
-            <span>Creative Director & Strategic Media Partner</span>
+            <strong>Chris Van Loan Sr.</strong>
+            <span>Creative Director &amp; Strategic Media Partner</span>
           </div>
         </div>
       </div>
     </div>
     <div class="wti-right">
-      <div class="questions-graphic">
-        <div class="qg-header">
-          <div class="qg-dot" style="background:#ff5f57"></div>
-          <div class="qg-dot" style="background:#febc2e"></div>
-          <div class="qg-dot" style="background:#28c840"></div>
-          <span class="qg-title">Deep Work Interview — Sample Questions</span>
+      <div class="session-panel">
+        <span class="session-eyebrow">Inside the Interview</span>
+        <div class="session-q">
+          <div class="session-label">Session 1 of 4</div>
+          <div class="session-quote">"If money weren't a factor, what work would you <em>refuse to stop doing?</em>"</div>
         </div>
-        <div class="q-item">
-          <div class="q-phase">Phase 01 — Your Story</div>
-          <div class="q-bubble">"Walk me through the pivots that led you here. Not the polished version — the real one. What happened that you haven't told people?"</div>
+        <div class="session-q">
+          <div class="session-label">Session 2 of 4</div>
+          <div class="session-quote">"Who specifically needs what <em>only you</em> can offer, and why haven't they found you yet?"</div>
         </div>
-        <div class="q-item">
-          <div class="q-phase">Phase 02 — Your Expertise</div>
-          <div class="q-bubble">"What do you do so naturally it doesn't feel like work — but clients would pay $10,000 to understand how you think?"</div>
+        <div class="session-q">
+          <div class="session-label">Session 3 of 4</div>
+          <div class="session-quote">"What truth about your business have you been <em>avoiding?</em>"</div>
         </div>
-        <div class="q-item">
-          <div class="q-phase">Phase 03 — Your Beliefs</div>
-          <div class="q-bubble">"What's the thing you believe about your industry that most people think is wrong? The hill you'd die on?"</div>
+        <div class="session-q">
+          <div class="session-label">Session 4 of 4</div>
+          <div class="session-quote">"If you had to rebuild from scratch knowing everything you know now, <em>what would you do differently?</em>"</div>
         </div>
-        <div class="q-item">
-          <div class="q-phase">Phase 04 — Your People</div>
-          <div class="q-bubble">"Describe your dream client at 11pm on a Tuesday. What are they scrolling through? What are they ashamed to admit they're still stuck on?"</div>
+        <div class="session-q">
+          <div class="session-label">Deep Dive</div>
+          <div class="session-quote">"Name the three competitors you secretly respect. Now tell me what they do <em>that you don't.</em>"</div>
         </div>
-        <div class="q-item">
-          <div class="q-phase">Phase 06 — Market & Niche</div>
-          <div class="q-bubble">"Name three people doing what you do. Now tell me exactly why someone would choose you over each of them. Be ruthlessly specific."</div>
-        </div>
-        <div class="qg-fade"></div>
+        <div class="session-footer">8 phases &nbsp;·&nbsp; 50+ questions &nbsp;·&nbsp; 2 hours</div>
       </div>
-      <div class="qg-count">8 phases · 50+ questions · 2 hours</div>
     </div>
   </div>
 </section>
@@ -415,6 +434,78 @@
   </div>
 </section>
 
+<!-- SAMPLE OUTPUT PREVIEW -->
+<div style="max-width:1100px;margin:64px auto 0;padding:0 48px;">
+  <div class="section-eyebrow" style="text-align:center;margin-bottom:12px;">Sample Output</div>
+  <p style="text-align:center;font-size:15px;color:#777;max-width:520px;margin:0 auto 36px;line-height:1.7;">This is what the actual document looks like. Your version will be built around your story, your market, and your specific positioning gap.</p>
+  <div class="sample-output">
+    <div class="sample-output-header">
+      <div class="sample-traffic-lights">
+        <div class="stl" style="background:#ff5f57"></div>
+        <div class="stl" style="background:#febc2e"></div>
+        <div class="stl" style="background:#28c840"></div>
+      </div>
+      <span class="sample-file-name">Brand Blueprint — Sarah Chen — Deep Work Interview Output</span>
+    </div>
+    <div class="sample-doc">
+      <div>
+        <div class="sample-block">
+          <div class="sample-block-label">Positioning Statement</div>
+          <div class="sample-block-content"><strong>"Sarah Chen is the only leadership coach who uses 12 years at McKinsey to help burned-out executives redesign their careers without sacrificing income or identity."</strong></div>
+        </div>
+        <hr class="sample-divider">
+        <div class="sample-block">
+          <div class="sample-block-label">Ideal Client — Vivid Portrait</div>
+          <div class="sample-block-content">Marcus, 44. SVP at a tech company. At 11pm on a Tuesday he's scrolling LinkedIn watching people 10 years younger get promoted around him. His wife knows something's off. He tells people he's "evaluating options." He's too proud to admit he doesn't know what comes next. <strong>He has never paid less than $500/hr for advice.</strong></div>
+        </div>
+        <hr class="sample-divider">
+        <div class="sample-block">
+          <div class="sample-block-label">Credibility Score</div>
+          <div class="sample-block-content">Your background scores a <strong>7.4 out of 10</strong> for category authority. The gap: no published case studies with named outcomes. Fix this in 90 days.</div>
+          <div class="sample-score-row">
+            <div class="sample-score-bar"><div class="sample-score-fill" style="width:74%"></div></div>
+            <div class="sample-score-num">7.4</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sample-block">
+          <div class="sample-block-label">Three-Tier Offer Structure</div>
+          <div class="sample-block-content" style="margin-bottom:12px;">Each offer is named, priced, and built with specific deliverables.</div>
+          <div class="sample-offer-row">
+            <div class="sample-offer-pill">
+              <div class="sample-offer-tier">Entry</div>
+              <div class="sample-offer-price">$297</div>
+              <div class="sample-offer-name">Career Clarity Audit</div>
+            </div>
+            <div class="sample-offer-pill">
+              <div class="sample-offer-tier">Core</div>
+              <div class="sample-offer-price">$3,500</div>
+              <div class="sample-offer-name">Transition Sprint</div>
+            </div>
+            <div class="sample-offer-pill">
+              <div class="sample-offer-tier">Premium</div>
+              <div class="sample-offer-price">$18K</div>
+              <div class="sample-offer-name">Full Rebuild</div>
+            </div>
+          </div>
+        </div>
+        <hr class="sample-divider">
+        <div class="sample-block">
+          <div class="sample-block-label">Competitor Analysis (excerpt)</div>
+          <div class="sample-block-content">Compared against 5 named competitors. <strong>Your gap:</strong> nobody in your space combines McKinsey credibility with emotional intelligence. You could own "the strategist who actually understands the human side." Charge accordingly.</div>
+        </div>
+        <hr class="sample-divider">
+        <div class="sample-block">
+          <div class="sample-block-label">Homepage Headline — Option 1 of 5</div>
+          <div class="sample-block-content"><strong>"You built a career everyone admires. Now you need someone who'll tell you the truth about what comes next."</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="sample-caption">This is a dramatized example. Your output is built entirely from your answers — specific to your story, market, and positioning gap.</div>
+  </div>
+</div>
+
 <!-- TESTIMONIALS -->
 <section class="test-section" id="stories">
   <div class="test-inner">
@@ -443,8 +534,8 @@
         <div class="test-stars">★★★★★</div>
         <p class="test-quote">"I spent all day on this. Better than working with business coaches I've paid to talk with me on the phone. I have real clarity on the next direction."</p>
         <div class="test-author">
-          <img class="test-photo" src="https://d22pfkzzdr45n7.cloudfront.net/videos/4634/22-05-2023/Chris_Van_Loan_Sr__IWJX9RY1.jpg" alt="Chris Van Loan" onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan&background=EAE7E2&color=555&size=92'">
-          <div><div class="test-name">Chris Van Loan</div><div class="test-title">Creative Director & Strategic Media Partner</div></div>
+          <img class="test-photo" src="https://d22pfkzzdr45n7.cloudfront.net/videos/4634/22-05-2023/Chris_Van_Loan_Sr__IWJX9RY1.jpg" alt="Chris Van Loan Sr." onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan&background=c4703f&color=fff&size=92'">
+          <div><div class="test-name">Chris Van Loan Sr.</div><div class="test-title">Creative Director &amp; Strategic Media Partner</div></div>
         </div>
       </div>
       <div class="test-card">
