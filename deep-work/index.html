@@ -1042,14 +1042,16 @@
     style.textContent = [
       '#order-backdrop{display:none;position:fixed;inset:0;z-index:9998;background:rgba(26,26,26,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .3s ease;opacity:0}',
       '#order-backdrop.visible{opacity:1}',
-      '#order-popup{display:none;position:fixed;z-index:9999;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);max-width:520px;width:92%;max-height:90vh;overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 32px 80px rgba(0,0,0,.35);font-family:Inter,sans-serif;transition:transform .35s cubic-bezier(.2,.9,.3,1),opacity .3s ease;opacity:0}',
-      '#order-popup.visible{transform:translate(-50%,-50%) scale(1);opacity:1}',
-      '.op-header{padding:28px 32px 0;text-align:center}',
+      '#order-popup{display:none;position:fixed;z-index:9999;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);max-width:520px;width:92%;max-height:90vh;background:#fff;border-radius:16px;box-shadow:0 32px 80px rgba(0,0,0,.35);font-family:Inter,sans-serif;transition:transform .35s cubic-bezier(.2,.9,.3,1),opacity .3s ease;opacity:0;flex-direction:column;overflow:hidden}',
+      '#order-popup.visible{transform:translate(-50%,-50%) scale(1);opacity:1;display:flex}',
+      '.op-header{padding:28px 32px 0;text-align:center;flex-shrink:0}',
       '.op-header h3{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 4px}',
       '.op-header p{font-size:13px;color:#888;margin:0;font-weight:400}',
       '.op-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;color:#aaa;cursor:pointer;padding:4px 8px;line-height:1;transition:color .2s}',
       '.op-close:hover{color:#1a1a1a}',
-      '.op-body{padding:20px 32px 28px}',
+      '.op-body{display:flex;flex-direction:column;overflow:hidden;flex:1;min-height:0}',
+      '.op-scroll{overflow-y:auto;flex:1;min-height:0;padding:20px 32px 0}',
+      '.op-footer{flex-shrink:0;padding:0 32px 24px;background:#fff}',
       '.op-main-item{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:#faf8f5;border-radius:10px;margin-bottom:16px;border:2px solid #c4703f}',
       '.op-main-item .op-item-name{font-weight:700;font-size:15px;color:#1a1a1a}',
       '.op-main-item .op-item-desc{font-size:12px;color:#777;margin-top:2px}',
@@ -1076,7 +1078,7 @@
       '@keyframes opspin{to{transform:rotate(360deg)}}',
       '.op-trust{text-align:center;margin-top:14px;font-size:11px;color:#bbb;font-weight:400}',
       '.op-guarantee{text-align:center;margin-top:10px;font-size:11.5px;color:#999;font-weight:500}',
-      '@media(max-width:560px){#order-popup{width:96%;border-radius:12px}.op-header{padding:22px 20px 0}.op-body{padding:16px 20px 24px}.op-main-item{padding:14px 14px}.op-bump{padding:14px 14px 14px 46px}.op-bump input{left:14px}}',
+      '@media(max-width:560px){#order-popup{width:96%;border-radius:12px}.op-header{padding:22px 20px 0}.op-scroll{padding:14px 20px 0}.op-footer{padding:0 20px 20px}.op-main-item{padding:14px 14px}.op-bump{padding:14px 14px 14px 46px}.op-bump input{left:14px}}',
     ].join('');
     document.head.appendChild(style);
 
@@ -1094,6 +1096,7 @@
       + '<p>Complete your Deep Work session</p>'
       + '</div>'
       + '<div class="op-body">'
+      + '<div class="op-scroll">'
       // Main item
       + '<div class="op-main-item">'
       + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Blueprint</div><div class="op-item-desc">2hr AI positioning session + full blueprint</div></div>'
@@ -1115,16 +1118,18 @@
       + '<div class="op-bump-desc">Private strategy session to walk through your blueprint, pressure test your offers, and map your first 90 days. The same call founders paid $5,000 for.</div>'
       + '<div class="op-bump-price">+ $130</div>'
       + '</div>'
-      // Divider + Total
+      + '</div>'
+      // Sticky footer — always visible
+      + '<div class="op-footer">'
       + '<div class="op-divider"></div>'
       + '<div class="op-total-row">'
       + '<div><div class="op-total-label">Total today</div><span class="op-total-savings" id="op-savings">Save $134</span></div>'
       + '<div style="text-align:right"><span class="op-total-original" id="op-original"></span><span class="op-total-amount" id="op-total">$67</span></div>'
       + '</div>'
-      // CTA
       + '<button class="op-pay-btn" id="op-pay">Complete Purchase</button>'
       + '<div class="op-guarantee">7 day satisfaction guarantee. If the process does not deliver, email James and he will make it right.</div>'
       + '<div class="op-trust">Powered by Stripe &middot; 256 bit encryption</div>'
+      + '</div>'
       + '</div>';
     document.body.appendChild(popup);
 
