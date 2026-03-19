@@ -246,14 +246,14 @@
     .test-featured-video { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: #0d0c0b; border-radius: 16px; overflow: hidden; margin-bottom: 32px; box-shadow: 0 8px 48px rgba(0,0,0,.18); }
     .test-video-wrap { overflow: hidden; max-height: 420px; position: relative; }
     .test-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .video-overlay { position: absolute; inset: 0; z-index: 2; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(13,12,11,.82) 0%, rgba(13,12,11,.45) 50%, rgba(196,112,63,.25) 100%); transition: opacity 0.4s ease; }
+    .video-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; z-index: 2; background: linear-gradient(135deg, rgba(13,12,11,.72) 0%, rgba(13,12,11,.38) 100%); transition: opacity .4s; }
     .video-overlay.hidden { opacity: 0; pointer-events: none; }
-    .video-overlay-play { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.15); backdrop-filter: blur(8px); border: 2px solid rgba(255,255,255,.35); display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, background 0.2s ease; }
-    .video-overlay:hover .video-overlay-play { transform: scale(1.1); background: rgba(196,112,63,.45); border-color: rgba(196,112,63,.7); }
+    .video-overlay-play { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1.5px solid rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; transition: transform .25s, background .25s; }
+    .video-overlay:hover .video-overlay-play { transform: scale(1.08); background: rgba(255,255,255,.2); }
     .video-overlay-play svg { width: 28px; height: 28px; fill: #fff; margin-left: 3px; }
-    .video-overlay-label { margin-top: 16px; font-family: 'Outfit',sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.7); }
-    .video-overlay-name { margin-top: 6px; font-family: 'Playfair Display',serif; font-size: 18px; color: #fff; font-weight: 400; }
-    .video-overlay-tag { margin-top: auto; margin-bottom: 16px; padding: 6px 14px; background: rgba(196,112,63,.2); border: 1px solid rgba(196,112,63,.4); border-radius: 20px; font-family: 'Outfit',sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+    .video-overlay-label { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; color: rgba(255,255,255,.55); margin-bottom: 4px; }
+    .video-overlay-name { font-family: 'Playfair Display',serif; font-size: 18px; color: #fff; font-weight: 600; margin-bottom: 6px; }
+    .video-overlay-tag { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); background: rgba(196,112,63,.13); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(196,112,63,.22); }
     .test-video-content { padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
     .test-video-stars { color: var(--accent); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
     .test-video-quote { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,.82); font-style: italic; margin-bottom: 28px; font-family: 'Playfair Display',serif; }
@@ -784,15 +784,15 @@
     <!-- GREG PIGNATARO — FEATURED VIDEO TESTIMONIAL (filmed on Necker Island) -->
     <div class="test-featured-video">
       <div class="test-video-wrap">
-        <video controls preload="metadata">
-          <source src="videos/greg-pignataro-testimonial.mp4" type="video/mp4">
-        </video>
         <div class="video-overlay" onclick="var v=this.parentElement.querySelector('video');this.classList.add('hidden');v.play();">
           <div class="video-overlay-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
           <div class="video-overlay-label">Watch Testimonial</div>
           <div class="video-overlay-name">Greg Pignataro</div>
           <div class="video-overlay-tag">Filmed on Necker Island</div>
         </div>
+        <video controls preload="metadata">
+          <source src="videos/greg-pignataro-testimonial.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="test-video-content">
         <div class="test-video-stars">★★★★★</div>
@@ -897,7 +897,7 @@
 <footer>
   <div class="footer-logo">JAMES GULDAN</div>
   <div class="footer-links">
-    <a href="mailto:james@jamesguldan.com">james@jamesguldan.com</a>
+    <a href="/cdn-cgi/l/email-protection#d5bfb4b8b0a695bfb4b8b0a6b2a0b9b1b4bbfbb6bab8"><span class="__cf_email__" data-cfemail="593338343c2a193338343c2a3e2c353d3837773a3634">[email&#160;protected]</span></a>
     <a href="https://jamesguldan.com">jamesguldan.com</a>
     <a href="/privacy">Privacy Policy</a>
     <a href="/terms">Terms of Service</a>
@@ -906,7 +906,7 @@
   <div class="footer-copy" style="margin-top:8px; font-size:11px; opacity:0.5; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.6;">Results vary. Testimonials reflect individual experiences and are not a guarantee of outcome. Individual results depend on your background, effort, and implementation.</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // MAIN GEO CANVAS (desktop background)
   const canvas = document.getElementById('geo'), ctx = canvas.getContext('2d');
   function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
@@ -1042,14 +1042,16 @@
     style.textContent = [
       '#order-backdrop{display:none;position:fixed;inset:0;z-index:9998;background:rgba(26,26,26,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .3s ease;opacity:0}',
       '#order-backdrop.visible{opacity:1}',
-      '#order-popup{display:none;position:fixed;z-index:9999;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);max-width:520px;width:92%;max-height:90vh;overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 32px 80px rgba(0,0,0,.35);font-family:Inter,sans-serif;transition:transform .35s cubic-bezier(.2,.9,.3,1),opacity .3s ease;opacity:0}',
-      '#order-popup.visible{transform:translate(-50%,-50%) scale(1);opacity:1}',
-      '.op-header{padding:28px 32px 0;text-align:center}',
+      '#order-popup{display:none;position:fixed;z-index:9999;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);max-width:520px;width:92%;max-height:90vh;background:#fff;border-radius:16px;box-shadow:0 32px 80px rgba(0,0,0,.35);font-family:Inter,sans-serif;transition:transform .35s cubic-bezier(.2,.9,.3,1),opacity .3s ease;opacity:0;flex-direction:column;overflow:hidden}',
+      '#order-popup.visible{transform:translate(-50%,-50%) scale(1);opacity:1;display:flex}',
+      '.op-header{padding:28px 32px 0;text-align:center;flex-shrink:0}',
       '.op-header h3{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 4px}',
       '.op-header p{font-size:13px;color:#888;margin:0;font-weight:400}',
       '.op-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;color:#aaa;cursor:pointer;padding:4px 8px;line-height:1;transition:color .2s}',
       '.op-close:hover{color:#1a1a1a}',
-      '.op-body{padding:20px 32px 28px}',
+      '.op-body{display:flex;flex-direction:column;overflow:hidden;flex:1;min-height:0}',
+      '.op-scroll{overflow-y:auto;flex:1;min-height:0;padding:20px 32px 0}',
+      '.op-footer{flex-shrink:0;padding:0 32px 24px;background:#fff}',
       '.op-main-item{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:#faf8f5;border-radius:10px;margin-bottom:16px;border:2px solid #c4703f}',
       '.op-main-item .op-item-name{font-weight:700;font-size:15px;color:#1a1a1a}',
       '.op-main-item .op-item-desc{font-size:12px;color:#777;margin-top:2px}',
@@ -1076,7 +1078,7 @@
       '@keyframes opspin{to{transform:rotate(360deg)}}',
       '.op-trust{text-align:center;margin-top:14px;font-size:11px;color:#bbb;font-weight:400}',
       '.op-guarantee{text-align:center;margin-top:10px;font-size:11.5px;color:#999;font-weight:500}',
-      '@media(max-width:560px){#order-popup{width:96%;border-radius:12px}.op-header{padding:22px 20px 0}.op-body{padding:16px 20px 24px}.op-main-item{padding:14px 14px}.op-bump{padding:14px 14px 14px 46px}.op-bump input{left:14px}}',
+      '@media(max-width:560px){#order-popup{width:96%;border-radius:12px}.op-header{padding:22px 20px 0}.op-scroll{padding:14px 20px 0}.op-footer{padding:0 20px 20px}.op-main-item{padding:14px 14px}.op-bump{padding:14px 14px 14px 46px}.op-bump input{left:14px}}',
     ].join('');
     document.head.appendChild(style);
 
@@ -1094,6 +1096,7 @@
       + '<p>Complete your Deep Work session</p>'
       + '</div>'
       + '<div class="op-body">'
+      + '<div class="op-scroll">'
       // Main item
       + '<div class="op-main-item">'
       + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Blueprint</div><div class="op-item-desc">2hr AI positioning session + full blueprint</div></div>'
@@ -1115,16 +1118,18 @@
       + '<div class="op-bump-desc">Private strategy session to walk through your blueprint, pressure test your offers, and map your first 90 days. The same call founders paid $5,000 for.</div>'
       + '<div class="op-bump-price">+ $130</div>'
       + '</div>'
-      // Divider + Total
+      + '</div>'
+      // Sticky footer — always visible
+      + '<div class="op-footer">'
       + '<div class="op-divider"></div>'
       + '<div class="op-total-row">'
       + '<div><div class="op-total-label">Total today</div><span class="op-total-savings" id="op-savings">Save $134</span></div>'
       + '<div style="text-align:right"><span class="op-total-original" id="op-original"></span><span class="op-total-amount" id="op-total">$67</span></div>'
       + '</div>'
-      // CTA
       + '<button class="op-pay-btn" id="op-pay">Complete Purchase</button>'
       + '<div class="op-guarantee">7 day satisfaction guarantee. If the process does not deliver, email James and he will make it right.</div>'
       + '<div class="op-trust">Powered by Stripe &middot; 256 bit encryption</div>'
+      + '</div>'
       + '</div>';
     document.body.appendChild(popup);
 
@@ -1183,7 +1188,7 @@
       cbCall.checked = false;
       updateTotal();
       backdrop.style.display = 'block';
-      popup.style.display = 'block';
+      popup.style.display = 'flex';
       document.body.style.overflow = 'hidden';
       requestAnimationFrame(function() {
         backdrop.classList.add('visible');
