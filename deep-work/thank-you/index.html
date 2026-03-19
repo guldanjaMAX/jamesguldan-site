@@ -368,38 +368,33 @@
   <div class="eyebrow">Purchase Confirmed</div>
   <h1>You just made the best decision<br>you'll make <em>all year.</em></h1>
   <p class="hero-sub">Your Deep Work Process is ready. Two hours from now, you'll have the clarity, positioning, and complete brand blueprint that most entrepreneurs spend years searching for.</p>
-  <p class="hero-receipt">A receipt has been sent to your email. Bookmark this page for easy access.</p>
+  <p class="hero-receipt">A receipt and magic login link have been sent to your email.</p>
 </div>
 
-<!-- NEXT STEPS -->
+<!-- START SESSION CTA -->
 <div class="steps-section">
-  <div class="steps-label">Your Next Steps</div>
+  <div class="steps-label">Your Next Step</div>
 
-  <div class="step-card">
-    <div class="step-num">01</div>
-    <div>
-      <h3>Open Claude</h3>
-      <p>Go to claude.ai and start a new conversation. You'll need a Claude Pro account ($20/month) for the full two-hour session. If you prefer talking over typing, Claude supports voice mode too.</p>
-      <a href="https://claude.ai" target="_blank" class="step-btn">Open Claude →</a>
-    </div>
+  <div style="text-align:center; max-width:560px; margin:0 auto;">
+    <a href="https://app.jamesguldan.com" class="step-btn" style="display:inline-block; padding:18px 48px; font-size:17px; margin-bottom:20px;">Start Your Deep Work Session →</a>
+    <p style="color:var(--muted); font-size:14px; line-height:1.6;">Your session is ready and waiting. Click above to begin, or use the magic link we just sent to your email to access it later from any device.</p>
   </div>
 
-  <div class="step-card">
-    <div class="step-num">02</div>
-    <div>
-      <h3>Start the Clarity Exercise</h3>
-      <p>Copy the full Deep Work Process below and paste it as your first message in Claude. This is your two-hour brand strategy session. Think of it as sitting down with the most focused strategist you've ever worked with.</p>
-      <a href="#" class="step-btn" id="copy-prompt-btn" onclick="copyPrompt(event)">Copy the Process →</a>
-      <div class="step-note" id="copy-status">Click to copy the full Deep Work Process to your clipboard.</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-top:40px; max-width:700px; margin-left:auto; margin-right:auto;">
+    <div style="text-align:center;">
+      <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:32px; color:var(--accent);">01</div>
+      <p style="font-weight:600; margin:8px 0 4px;">Fill in your details</p>
+      <p style="color:var(--muted); font-size:13px; line-height:1.5;">Your website, competitors, and a few context questions (2 min)</p>
     </div>
-  </div>
-
-  <div class="step-card">
-    <div class="step-num">03</div>
-    <div>
-      <h3>Get Centered, Then Answer Honestly</h3>
-      <p>Before you start, take a few deep breaths. Close your other tabs. Put your phone face down. The more present and vulnerable you are, the more powerful the output becomes. Answer like you're talking to your most trusted advisor.</p>
-      <div class="step-note">Pro tip: block two uninterrupted hours in your calendar. Treat this like the most important meeting of the quarter.</div>
+    <div style="text-align:center;">
+      <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:32px; color:var(--accent);">02</div>
+      <p style="font-weight:600; margin:8px 0 4px;">Have the conversation</p>
+      <p style="color:var(--muted); font-size:13px; line-height:1.5;">Your AI strategist will guide you through 7 phases of deep brand work</p>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:32px; color:var(--accent);">03</div>
+      <p style="font-weight:600; margin:8px 0 4px;">Get your blueprint</p>
+      <p style="color:var(--muted); font-size:13px; line-height:1.5;">Walk away with positioning, offers, copy, and visual direction</p>
     </div>
   </div>
 </div>
@@ -447,7 +442,7 @@
     </div>
     <div class="upsell-price-context">One time · Only available right now at this price</div>
 
-    <a href="https://buy.stripe.com/strategy-call-upsell" class="upsell-btn">Add the Strategy Call →</a>
+    <a href="https://app.jamesguldan.com/buy/call" class="upsell-btn">Add the Strategy Call →</a>
     <div class="upsell-trust">Powered by Stripe · Charged separately · 7-day satisfaction guarantee</div>
 
     <div class="upsell-skip" onclick="document.getElementById('upsell').style.display='none'; document.getElementById('post-upsell').style.display='block';">No thanks, I'll do the process on my own</div>
@@ -550,23 +545,7 @@
   });
 })();
 
-// COPY PROMPT functionality
-function copyPrompt(e) {
-  e.preventDefault();
-  // This will be replaced with the actual Deep Work prompt
-  const prompt = 'The Deep Work Process will be loaded here from your purchase access.';
-
-  navigator.clipboard.writeText(prompt).then(() => {
-    document.getElementById('copy-status').textContent = 'Copied to clipboard! Now paste it into Claude.';
-    document.getElementById('copy-status').style.color = '#c4703f';
-    document.getElementById('copy-prompt-btn').textContent = 'Copied! ✓';
-    setTimeout(() => {
-      document.getElementById('copy-prompt-btn').textContent = 'Copy the Process →';
-      document.getElementById('copy-status').textContent = 'Click to copy the full Deep Work Process to your clipboard.';
-      document.getElementById('copy-status').style.color = '';
-    }, 4000);
-  });
-}
+// No clipboard needed — users go directly to app.jamesguldan.com
 </script>
 
 </body>
