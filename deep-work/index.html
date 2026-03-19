@@ -196,6 +196,15 @@
 
     /* TESTIMONIALS */
     .test-section { position: relative; z-index: 2; padding: 120px 48px; background: #F9F6F2; }
+    .test-featured-video { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: #0d0c0b; border-radius: 16px; overflow: hidden; margin-bottom: 32px; box-shadow: 0 8px 48px rgba(0,0,0,.18); }
+    .test-video-wrap { overflow: hidden; max-height: 420px; }
+    .test-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .test-video-content { padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .test-video-stars { color: var(--accent); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
+    .test-video-quote { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,.82); font-style: italic; margin-bottom: 28px; font-family: 'Playfair Display',serif; }
+    .test-video-name { font-weight: 700; font-size: 15px; color: #fff; font-family: 'Outfit',sans-serif; }
+    .test-video-title { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 3px; }
+    .test-video-result { font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(196,112,63,.25); line-height: 1.6; }
     .test-inner { max-width: 1100px; margin: 0 auto; }
     .test-header { text-align: center; margin-bottom: 64px; }
     .test-header h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 2.8vw, 40px); font-weight: 700; }
@@ -277,6 +286,9 @@
       .sample-doc { grid-template-columns: 1fr; padding: 28px 24px; gap: 0; }
       .sample-offer-row { flex-direction: column; gap: 8px; }
       .test-section { padding: 72px 20px; }
+      .test-featured-video { grid-template-columns: 1fr; }
+      .test-video-wrap { max-height: 260px; }
+      .test-video-content { padding: 28px 24px; }
       .test-grid { grid-template-columns: 1fr; }
       .how-section { padding: 72px 20px; }
       .final-cta { padding: 72px 20px; }
@@ -702,20 +714,38 @@
       <div class="section-eyebrow">Stories</div>
       <h2>People who coach for a living say this exercise changed <em>their life.</em></h2>
     </div>
+    <!-- GREG PIGNATARO — FEATURED VIDEO TESTIMONIAL (filmed on Necker Island) -->
+    <div class="test-featured-video">
+      <div class="test-video-wrap">
+        <video controls preload="metadata">
+          <source src="videos/greg-pignataro-testimonial.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="test-video-content">
+        <div class="test-video-stars">★★★★★</div>
+        <p class="test-video-quote">"I had never intended to do any sort of personal brand work. No sooner after James and I completed the initial process than I spontaneously received an invitation to be a guest facilitator at a retreat on Necker Island. Pretty powerful lining up of opportunities."</p>
+        <div>
+          <div class="test-video-name">Greg Pignataro</div>
+          <div class="test-video-title">Entrepreneur &amp; Guest Facilitator</div>
+          <div class="test-video-result">Direct result: Invited to facilitate at Richard Branson&rsquo;s Necker Island retreat — within weeks of completing the process.</div>
+        </div>
+      </div>
+    </div>
+
     <div class="test-grid">
       <div class="test-card">
         <div class="test-stars">★★★★★</div>
         <p class="test-quote">"It was definitely a commitment, but worth every minute. I've done extensive interviews like this for clients as I was building their branding and messaging, but I enjoyed having this thread myself. Not only did I get to see the dots connect in real time, but I had the thread to continue to add to and work with. This tool was very valuable."</p>
         <div class="test-author">
-          <img class="test-photo" src="https://ui-avatars.com/api/?name=Juliet+Wright&background=EAE7E2&color=555&size=92" alt="Juliet Wright">
-          <div><div class="test-name">Juliet Wright</div><div class="test-title">Branding & Messaging Consultant</div></div>
+          <img class="test-photo" src="images/juliet-wright.jpg" alt="Juliet Wright" style="object-fit:cover;" onerror="this.src='https://ui-avatars.com/api/?name=Juliet+Wright&background=EAE7E2&color=555&size=92'">
+          <div><div class="test-name">Juliet Wright</div><div class="test-title">Branding &amp; Messaging Consultant</div></div>
         </div>
       </div>
       <div class="test-card">
         <div class="test-stars">★★★★★</div>
         <p class="test-quote">"The Deep Work process gave me clarity and conviction. It confirmed what I suspected about my positioning and gave me the language I was missing to articulate it. Worth every minute."</p>
         <div class="test-author">
-          <img class="test-photo" src="https://ui-avatars.com/api/?name=RE+Perez&background=EAE7E2&color=555&size=92" alt="RE Perez">
+          <img class="test-photo" src="images/re-perez.jpg" alt="Re Perez" style="object-fit:cover;" onerror="this.src='https://ui-avatars.com/api/?name=RE+Perez&background=EAE7E2&color=555&size=92'">
           <div><div class="test-name">Re Perez</div><div class="test-title">Founder, Higher Love</div></div>
         </div>
       </div>
@@ -723,7 +753,7 @@
         <div class="test-stars">★★★★★</div>
         <p class="test-quote">"I spent all day on this. Better than working with business coaches I've paid to talk with me on the phone. I have real clarity on the next direction."</p>
         <div class="test-author">
-          <img class="test-photo" src="images/chris-van-loan.jpg" alt="Chris Van Loan III" onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan+III&background=c4703f&color=fff&size=92'">
+          <img class="test-photo" src="images/chris-van-loan.jpg" alt="Chris Van Loan III" style="object-fit:cover;" onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan+III&background=c4703f&color=fff&size=92'">
           <div><div class="test-name">Chris Van Loan III</div><div class="test-title">Creative Director &amp; Strategic Media Partner</div></div>
         </div>
       </div>
@@ -731,8 +761,8 @@
         <div class="test-stars">★★★★★</div>
         <p class="test-quote">"It showed me things about my own brand I hadn't been able to see for a long time. Even as someone who builds brands professionally, this revealed blind spots I'd been carrying for years."</p>
         <div class="test-author">
-          <img class="test-photo" src="https://ui-avatars.com/api/?name=Kyle+Gray&background=EAE7E2&color=555&size=92" alt="Kyle Gray">
-          <div><div class="test-name">Kyle Gray</div><div class="test-title">Speech, Writing & Storytelling Consultant</div></div>
+          <img class="test-photo" src="images/kyle-gray.jpg" alt="Kyle Gray" style="object-fit:cover;" onerror="this.src='https://ui-avatars.com/api/?name=Kyle+Gray&background=EAE7E2&color=555&size=92'">
+          <div><div class="test-name">Kyle Gray</div><div class="test-title">Speech, Writing &amp; Storytelling Consultant</div></div>
         </div>
       </div>
       <div class="test-card">
