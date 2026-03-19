@@ -1017,6 +1017,61 @@
     window.addEventListener('resize', drawAnnotations);
   })();
 
+  // ── STRIPE CHECKOUT ──────────────────────────────────────
+  (function() {
+    // Checkout overlay
+    var overlay = document.createElement('div');
+    overlay.id = 'checkout-overlay';
+    overlay.innerHTML = '<div class="checkout-spinner"><div class="spinner-ring"></div><div class="spinner-text">Preparing your checkout...</div></div>';
+    overlay.style.cssText = 'display:none;position:fixed;inset:0;z-index:9999;background:rgba(26,26,26,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;';
+    document.body.appendChild(overlay);
+
+    var style = document.createElement('style');
+    style.textContent = '.checkout-spinner{text-align:center}.spinner-ring{width:48px;height:48px;border:3px solid rgba(255,255,255,.15);border-top-color:#c4703f;border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.spinner-text{font-family:Inter,sans-serif;font-size:15px;color:rgba(255,255,255,.7);font-weight:500;letter-spacing:.3px}';
+    document.head.appendChild(style);
+
+    var isProcessing = false;
+
+    function startCheckout(e) {
+      e.preventDefault();
+      if (isProcessing) return;
+      isProcessing = true;
+      overlay.style.display = 'flex';
+
+      fetch('https://app.jamesguldan.com/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tier: 'blueprint' })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error('No checkout URL returned');
+        }
+      })
+      .catch(function(err) {
+        console.error('Checkout error:', err);
+        overlay.style.display = 'none';
+        isProcessing = false;
+        alert('Something went wrong starting checkout. Please try again.');
+      });
+    }
+
+    // Attach to all CTA buttons
+    document.querySelectorAll('.cta-btn, .cta-btn-light, .nav-btn').forEach(function(btn) {
+      if (btn.href && btn.href.indexOf('buy/blueprint') !== -1) {
+        btn.addEventListener('click', startCheckout);
+      }
+    });
+
+    // Also catch any remaining buy links
+    document.querySelectorAll('a[href*="buy/blueprint"]').forEach(function(link) {
+      link.addEventListener('click', startCheckout);
+    });
+  })();
+
 </script>
 </body>
 </html>
