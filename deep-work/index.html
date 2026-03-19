@@ -85,8 +85,8 @@
     h1 { font-family: 'Outfit',sans-serif; font-size: clamp(36px, 3.8vw, 56px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
     h1 em, h2 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
     .hero-sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 36px; }
-    .cta-btn { display: inline-block; background: var(--text); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; margin-bottom: 14px; transition: background .2s, transform .15s; font-family: 'Inter',sans-serif; }
-    .cta-btn:hover { background: #333; transform: translateY(-2px); }
+    .cta-btn { display: inline-block; background: var(--text); color: #fff; padding: 18px 40px; border-radius: 50px; font-size: 15px; font-weight: 700; border: none; cursor: pointer; margin-bottom: 14px; transition: all .25s ease; font-family: 'Inter',sans-serif; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 4px 20px rgba(0,0,0,.15); }
+    .cta-btn:hover { background: #c4703f; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(196,112,63,.35); color: #fff; }
     .price-note { font-size: 13px; color: #777; }
     .price-note strong { color: var(--text); }
     .section-eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
@@ -286,8 +286,8 @@
     .final-price { font-family: 'Outfit',sans-serif; font-size: 60px; font-weight: 700; color: #fff; margin-bottom: 8px; }
     .final-price sup { font-size: 24px; vertical-align: super; }
     .final-sub { font-size: 13px; color: rgba(255,255,255,.35); margin-bottom: 32px; }
-    .cta-btn-light { background: #fff; color: var(--text); padding: 18px 40px; border-radius: 50px; font-size: 15px; font-weight: 700; border: none; cursor: pointer; display: inline-block; transition: transform .15s, box-shadow .15s; font-family: 'Inter',sans-serif; }
-    .cta-btn-light:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.25); }
+    .cta-btn-light { background: #fff; color: var(--text); padding: 20px 48px; border-radius: 50px; font-size: 16px; font-weight: 700; border: none; cursor: pointer; display: inline-block; transition: all .25s ease; font-family: 'Inter',sans-serif; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 4px 24px rgba(255,255,255,.15); }
+    .cta-btn-light:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(255,255,255,.3); background: #c4703f; color: #fff; }
     .final-trust { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 16px; }
     .anchor-price-wrap { margin-bottom: 8px; }
     .anchor-price-original { font-family: 'Outfit',sans-serif; font-size: 22px; color: rgba(255,255,255,.3); text-decoration: line-through; margin-bottom: 4px; display: block; }
@@ -359,7 +359,7 @@
     <li><a href="#process">The Process</a></li>
     <li><a href="#what-you-get">What You Get</a></li>
     <li><a href="#stories">Stories</a></li>
-    <li><button class="nav-btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">Get Clear Now</button></li>
+    <li><a href="https://app.jamesguldan.com/buy/blueprint" class="nav-btn" style="text-decoration:none;">Get Clear Now</a></li>
   </ul>
 </nav>
 
@@ -383,7 +383,7 @@
       <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
       <h1>Two hours from now, everything will be <em>different.</em></h1>
       <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
-      <button class="cta-btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">Get Clear Now →</button>
+      <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn">Get Clear Now →</a>
       <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
     </div>
   </div>
@@ -412,7 +412,7 @@
     <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
     <h1>Two hours from now, everything will be <em>different.</em></h1>
     <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
-    <button class="cta-btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">Get Clear Now →</button>
+    <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn">Get Clear Now →</a>
     <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
   </div>
 </div>
@@ -574,7 +574,7 @@
           <div class="proc3-phase-pill">08 The Synthesis</div>
         </div>
         <p class="proc3-footer-note">Three of eight phases shown. The full conversation covers every dimension of your positioning and synthesizes it into a complete brand blueprint.</p>
-        <button class="cta-btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">Start the Clarity Exercise &rarr;</button>
+        <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn">Start the Clarity Exercise →</a>
         <p class="proc3-footer-price">$67 one time &nbsp;&middot;&nbsp; instant access &nbsp;&middot;&nbsp; no subscription</p>
       </div>
     </div>
