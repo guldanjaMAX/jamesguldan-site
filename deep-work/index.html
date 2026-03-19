@@ -1208,7 +1208,7 @@
       fetch('https://app.jamesguldan.com/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tiers: tiers })
+        body: JSON.stringify({ tier: tiers[0], tiers: tiers })
       })
       .then(function(r) { return r.json(); })
       .then(function(data) {
