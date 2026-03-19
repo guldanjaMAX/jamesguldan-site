@@ -132,38 +132,67 @@
     .sample-offer-name { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 3px; }
     .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(255,255,255,.2); border-top: 1px solid rgba(255,255,255,.05); font-style: italic; }
 
-    /* PROCESS */
-    .process-section { position: relative; z-index: 2; padding: 120px 48px; background: #0d0c0b; overflow: hidden; }
-    #process-canvas { position: absolute; inset: 0; pointer-events: none; }
-    .process-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
-    .process-header { text-align: center; margin-bottom: 72px; }
-    .process-header .section-eyebrow { color: rgba(196,112,63,.8); }
-    .process-header h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 3vw, 44px); font-weight: 700; line-height: 1.25; color: #fff; }
-    .process-header h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); }
-    .process-header p { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,.45); max-width: 580px; margin: 16px auto 0; }
-    .phases-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
-    .phase-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); padding: 28px 22px; transition: background .3s, border-color .3s; position: relative; overflow: hidden; }
-    .phase-card:hover { background: rgba(196,112,63,.08); border-color: rgba(196,112,63,.25); }
-    .phase-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, transparent, rgba(196,112,63,.6), transparent); opacity: 0; transition: opacity .3s; }
-    .phase-card:hover::before { opacity: 1; }
-    .phase-num { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; color: rgba(196,112,63,.6); margin-bottom: 12px; }
-    .phase-name { font-family: 'Outfit',sans-serif; font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 10px; }
-    .phase-desc { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,.4); }
-    .process-cta { text-align: center; margin-top: 56px; }
-    .process-cta p { color: rgba(255,255,255,.35); font-size: 13px; margin-top: 12px; }
+    /* PROCESS V3 — Transcript Chat */
+    .proc3-section { position: relative; z-index: 2; padding: 120px 48px; background: var(--bg); }
+    .proc3-inner { max-width: 800px; margin: 0 auto; }
+    .proc3-header { text-align: center; margin-bottom: 64px; }
+    .proc3-h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px,3.2vw,46px); font-weight: 700; color: var(--text); line-height: 1.15; margin: 12px 0 14px; }
+    .proc3-h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); font-weight: 400; }
+    .proc3-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 440px; margin: 0 auto; }
+    .proc3-chat { background: #fff; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 40px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04); }
+    .proc3-chat-header { padding: 14px 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: rgba(253,252,250,.9); }
+    .proc3-chat-status { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; box-shadow: 0 0 6px rgba(34,197,94,.5); }
+    .proc3-chat-title { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(26,26,26,.4); }
+    .proc3-messages { padding: 36px 28px 12px; display: flex; flex-direction: column; gap: 0; }
+    .proc3-exchange { margin-bottom: 44px; }
+    .proc3-exchange:last-child { margin-bottom: 0; }
+    .proc3-phase-divider { text-align: center; margin-bottom: 26px; position: relative; }
+    .proc3-phase-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border); }
+    .proc3-phase-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); background: #fff; padding: 0 14px; position: relative; display: inline-block; }
+    .proc3-ai-msg { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; opacity: 0; transform: translateY(14px); transition: opacity .55s cubic-bezier(.22,1,.36,1), transform .55s cubic-bezier(.22,1,.36,1); }
+    .proc3-ai-msg.visible { opacity: 1; transform: translateY(0); }
+    .proc3-ai-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(196,112,63,.1); border: 1px solid rgba(196,112,63,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .proc3-ai-icon { width: 11px; height: 11px; border: 1.5px solid var(--accent); transform: rotate(45deg); opacity: .75; }
+    .proc3-ai-bubble { background: #F7F4F0; border: 1px solid rgba(0,0,0,.05); border-radius: 4px 16px 16px 16px; padding: 16px 20px; max-width: 88%; }
+    .proc3-ai-text { font-size: 15px; line-height: 1.74; color: var(--text); }
+    .proc3-user-msg { display: flex; justify-content: flex-end; align-items: flex-start; margin-bottom: 14px; opacity: 0; transform: translateY(14px); transition: opacity .55s cubic-bezier(.22,1,.36,1), transform .55s cubic-bezier(.22,1,.36,1); }
+    .proc3-user-msg.visible { opacity: 1; transform: translateY(0); }
+    .proc3-user-bubble { background: rgba(196,112,63,.08); border: 1px solid rgba(196,112,63,.15); border-radius: 16px 4px 16px 16px; padding: 16px 20px; max-width: 84%; }
+    .proc3-user-text { font-size: 14.5px; line-height: 1.74; color: rgba(26,26,26,.72); font-style: italic; }
+    @keyframes proc3bounce { 0%,60%,100%{transform:translateY(0);} 30%{transform:translateY(-5px);} }
+    .proc3-footer { padding: 28px 28px 32px; border-top: 1px solid var(--border); background: rgba(253,252,250,.7); text-align: center; }
+    .proc3-phases-wrap { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 18px; }
+    .proc3-phase-pill { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(26,26,26,.38); background: rgba(0,0,0,.03); border: 1px solid rgba(0,0,0,.07); border-radius: 20px; padding: 5px 10px; }
+    .proc3-footer-note { font-size: 12.5px; color: var(--muted); line-height: 1.7; max-width: 440px; margin: 0 auto 24px; }
+    .proc3-footer-price { font-size: 12px; color: rgba(26,26,26,.35); margin-top: 10px; }
 
     /* WHAT YOU GET */
-    .wyg-section { position: relative; z-index: 2; padding: 120px 48px; }
-    .wyg-inner { max-width: 1100px; margin: 0 auto; }
-    .wyg-header { text-align: center; margin-bottom: 64px; }
-    .wyg-header h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 2.8vw, 42px); font-weight: 700; }
-    .wyg-header p { font-size: 16px; color: var(--muted); margin-top: 12px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7; }
-    .deliverables-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-    .del-card { border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: border-color .2s, box-shadow .2s; }
-    .del-card:hover { border-color: rgba(196,112,63,.4); box-shadow: 0 8px 32px rgba(196,112,63,.06); }
-    .del-num { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--accent); margin-bottom: 12px; }
-    .del-name { font-family: 'Outfit',sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 10px; }
-    .del-desc { font-size: 13px; line-height: 1.7; color: var(--muted); }
+    .wyg-section { position: relative; z-index: 2; padding: 120px 0; background: #0d0c0b; overflow: hidden; }
+    .wyg-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .wyg-header { text-align: center; margin-bottom: 80px; }
+    .wyg-header .section-eyebrow { color: rgba(196,112,63,.8); }
+    .wyg-header h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 2.8vw, 42px); font-weight: 700; color: #fff; }
+    .wyg-header h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); }
+    .wyg-header p { font-size: 16px; color: rgba(255,255,255,.4); margin-top: 12px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
+    /* ANNOTATION LAYOUT */
+    .ann-wrap { position: relative; display: grid; grid-template-columns: 52% 1fr; gap: 0 56px; align-items: start; }
+    .ann-svg { position: absolute; inset: 0; pointer-events: none; z-index: 3; overflow: visible; }
+    .ann-doc { background: #1b1a18; border: 1px solid rgba(255,255,255,.1); border-radius: 16px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.04); position: relative; z-index: 2; }
+    .ann-doc-chrome { display: flex; align-items: center; gap: 7px; padding: 14px 18px; background: #252320; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .ann-chrome-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+    .ann-doc-label-text { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.18); margin-left: 8px; }
+    .ann-doc-section { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.05); }
+    .ann-doc-section:last-child { border-bottom: none; }
+    .ann-ds-label { font-family: 'Outfit',sans-serif; font-size: 8.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 5px; }
+    .ann-ds-content { font-size: 11px; line-height: 1.6; color: rgba(255,255,255,.28); }
+    .ann-labels { display: flex; flex-direction: column; padding-top: 44px; position: relative; z-index: 2; gap: 0; }
+    .ann-label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .ann-label:last-child { border-bottom: none; }
+    .ann-label-body { flex: 1; }
+    .ann-label-badge { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: rgba(196,112,63,.85); background: rgba(196,112,63,.1); border: 1px solid rgba(196,112,63,.22); border-radius: 5px; padding: 5px 8px; flex-shrink: 0; margin-top: 1px; white-space: nowrap; }
+    .ann-label-title { font-family: 'Outfit',sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,.9); margin-bottom: 4px; line-height: 1.2; }
+    .ann-label-desc { font-size: 12px; line-height: 1.65; color: rgba(255,255,255,.38); }
 
     /* TESTIMONIALS */
     .test-section { position: relative; z-index: 2; padding: 120px 48px; background: #F9F6F2; }
@@ -231,9 +260,16 @@
       .logos-list { gap: 20px; }
       .wti-section { padding: 64px 20px; }
       .wti-inner { grid-template-columns: 1fr; gap: 40px; }
-      .process-section { padding: 72px 20px; }
-      .phases-grid { grid-template-columns: 1fr 1fr; }
+      .proc3-section { padding: 72px 20px; }
+      .proc3-messages { padding: 24px 16px 8px; }
+      .proc3-footer { padding: 20px 16px 28px; }
       .wyg-section { padding: 72px 20px; }
+      .ann-wrap { grid-template-columns: 1fr !important; }
+      .ann-doc { display: none; }
+      .ann-svg { display: none; }
+      .ann-labels { padding-top: 0; }
+      .ann-label { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06) !important; }
+      .ann-label:last-child { border-bottom: none !important; }
       .deliverables-grid { grid-template-columns: 1fr; }
       .sample-doc { grid-template-columns: 1fr; padding: 28px 24px; gap: 0; }
       .sample-offer-row { flex-direction: column; gap: 8px; }
@@ -244,7 +280,8 @@
       footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px 20px; }
     }
     @media (max-width: 480px) {
-      .phases-grid { grid-template-columns: 1fr; }
+      .proc3-ai-bubble { max-width: 95%; }
+      .proc3-user-bubble { max-width: 92%; }
     }
   </style>
 </head>
@@ -266,7 +303,7 @@
 <!-- HERO DESKTOP -->
 <section class="hero">
   <div class="hero-photo">
-    <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
+    <img src="images/james-hero.png" alt="James Guldan" loading="eager">
     <div class="hero-photo-fade"></div>
     <div class="vid-halo"></div>
     <div class="vid-halo2"></div>
@@ -351,9 +388,9 @@
       <div class="wti-quote">
         <p>"I spent all day on this. Better than working with business coaches I've paid to talk with me on the phone. I have real clarity on the next direction."</p>
         <div class="wti-quote-attr">
-          <img src="https://d22pfkzzdr45n7.cloudfront.net/videos/4634/22-05-2023/Chris_Van_Loan_Sr__IWJX9RY1.jpg" alt="Chris Van Loan Sr." onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan&background=c4703f&color=fff&size=92'">
+          <img src="images/chris-van-loan.jpg" alt="Chris Van Loan III" onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan+III&background=c4703f&color=fff&size=92'">
           <div>
-            <strong>Chris Van Loan Sr.</strong>
+            <strong>Chris Van Loan III</strong>
             <span>Creative Director &amp; Strategic Media Partner</span>
           </div>
         </div>
@@ -389,28 +426,90 @@
 </section>
 
 <!-- THE PROCESS -->
-<section class="process-section" id="process">
-  <canvas id="process-canvas"></canvas>
-  <div class="process-inner">
-    <div class="process-header">
-      <div class="section-eyebrow">The Process</div>
-      <h2>Eight phases. <em>One conversation.</em></h2>
-      <p>The AI walks you through each phase naturally. You won't feel the transitions. It just feels like sitting across from someone who asks exactly the right question at exactly the right time.</p>
+<section class="proc3-section" id="process">
+  <div class="proc3-inner">
+
+    <div class="proc3-header">
+      <div class="eyebrow">The Process</div>
+      <h2 class="proc3-h2">The conversation that<br><em>changes everything.</em></h2>
+      <p class="proc3-sub">Eight phases. The AI asks the questions nobody else does.</p>
     </div>
-    <div class="phases-grid">
-      <div class="phase-card"><div class="phase-num">PHASE 01</div><div class="phase-name">Your Story</div><div class="phase-desc">Where you came from. The pivots. The defining moments that shaped everything. The origin of your authority.</div></div>
-      <div class="phase-card"><div class="phase-num">PHASE 02</div><div class="phase-name">Your Expertise</div><div class="phase-desc">What you're genuinely exceptional at. The proof. The credentials. And a quiet audit of what's still missing.</div></div>
-      <div class="phase-card"><div class="phase-num">PHASE 03</div><div class="phase-name">Your Beliefs</div><div class="phase-desc">The most important phase. The hill you die on. Your unpopular opinions. Where every great brand is actually born.</div></div>
-      <div class="phase-card"><div class="phase-num">PHASE 04</div><div class="phase-name">Your People</div><div class="phase-desc">Dream client psychographics. Who energizes you and who drains you. The transformation. Their words, not yours.</div></div>
-      <div class="phase-card"><div class="phase-num">PHASE 05</div><div class="phase-name">Voice & Visual</div><div class="phase-desc">How you communicate plus everything a designer needs: colors, typography, photography direction, layout. No templates.</div></div>
-      <div class="phase-card"><div class="phase-num">PHASE 06</div><div class="phase-name">Market & Niche</div><div class="phase-desc">Real competitive research. Named competitors. Pricing data. Where you have credibility now and where you could own the conversation.</div></div>
-      <div class="phase-card"><div class="phase-num">PHASE 07</div><div class="phase-name">Your Offers</div><div class="phase-desc">High ticket, mid ticket, low ticket — named, priced, and structured with specific deliverables and the logic that moves someone up the ladder.</div></div>
-      <div class="phase-card"><div class="phase-num">PHASE 08</div><div class="phase-name">The Synthesis</div><div class="phase-desc">Everything pulled into a seven-part blueprint that becomes the foundation your entire business is built on from this point forward.</div></div>
+
+    <div class="proc3-chat">
+      <div class="proc3-chat-header">
+        <div class="proc3-chat-status"></div>
+        <div class="proc3-chat-title">Deep Work Interview &nbsp;&middot;&nbsp; Session in Progress</div>
+      </div>
+
+      <div class="proc3-messages">
+
+        <!-- Exchange 1 -->
+        <div class="proc3-exchange">
+          <div class="proc3-phase-divider"><span class="proc3-phase-label">Phase 01 &nbsp;&middot;&nbsp; Your Story</span></div>
+          <div class="proc3-ai-msg" data-reveal>
+            <div class="proc3-ai-avatar"><div class="proc3-ai-icon"></div></div>
+            <div class="proc3-ai-bubble">
+              <p class="proc3-ai-text">Let&rsquo;s start where it actually started. Not the polished version &mdash; the real one. Walk me through the moment that made you the person who does this work.</p>
+            </div>
+          </div>
+          <div class="proc3-user-msg" data-reveal>
+            <div class="proc3-user-bubble">
+              <p class="proc3-user-text">Honestly? I almost shut my first agency down at 28. No clients, credit cards maxed, about three weeks from walking away. Then I figured out how to position what I was actually good at &mdash; and the whole business changed in 90 days. That&rsquo;s what I teach now.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exchange 2 -->
+        <div class="proc3-exchange">
+          <div class="proc3-phase-divider"><span class="proc3-phase-label">Phase 03 &nbsp;&middot;&nbsp; Your Beliefs</span></div>
+          <div class="proc3-ai-msg" data-reveal>
+            <div class="proc3-ai-avatar"><div class="proc3-ai-icon"></div></div>
+            <div class="proc3-ai-bubble">
+              <p class="proc3-ai-text">What do you believe that most people in your space are fundamentally wrong about? Give me the real answer &mdash; not the one you&rsquo;d put on LinkedIn.</p>
+            </div>
+          </div>
+          <div class="proc3-user-msg" data-reveal>
+            <div class="proc3-user-bubble">
+              <p class="proc3-user-text">That niching down means turning clients away. Most coaches think specificity costs them business. The opposite is true. The more specific you are, the more you can charge &mdash; and the better the clients you attract.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exchange 3 -->
+        <div class="proc3-exchange">
+          <div class="proc3-phase-divider"><span class="proc3-phase-label">Phase 06 &nbsp;&middot;&nbsp; Market &amp; Niche</span></div>
+          <div class="proc3-ai-msg" data-reveal>
+            <div class="proc3-ai-avatar"><div class="proc3-ai-icon"></div></div>
+            <div class="proc3-ai-bubble">
+              <p class="proc3-ai-text">You&rsquo;ve described your competitors. Where are you genuinely better &mdash; and where are you still catching up?</p>
+            </div>
+          </div>
+          <div class="proc3-user-msg" data-reveal>
+            <div class="proc3-user-bubble">
+              <p class="proc3-user-text">Better: the depth I go on connecting story to offer. I&rsquo;ve never met anyone who does it at this level. Catching up: my SEO is honestly terrible. I know it. It&rsquo;s next.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="proc3-footer">
+        <div class="proc3-phases-wrap">
+          <div class="proc3-phase-pill">01 Your Story</div>
+          <div class="proc3-phase-pill">02 Your Expertise</div>
+          <div class="proc3-phase-pill">03 Your Beliefs</div>
+          <div class="proc3-phase-pill">04 Your People</div>
+          <div class="proc3-phase-pill">05 Voice &amp; Visual</div>
+          <div class="proc3-phase-pill">06 Market &amp; Niche</div>
+          <div class="proc3-phase-pill">07 Your Offers</div>
+          <div class="proc3-phase-pill">08 The Synthesis</div>
+        </div>
+        <p class="proc3-footer-note">Three of eight phases shown. The full interview covers every dimension of your positioning and synthesizes it into a complete brand blueprint.</p>
+        <button class="cta-btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">Start the Deep Work Interview &rarr;</button>
+        <p class="proc3-footer-price">$67 one time &nbsp;&middot;&nbsp; instant access &nbsp;&middot;&nbsp; no subscription</p>
+      </div>
     </div>
-    <div class="process-cta">
-      <button class="cta-btn" onclick="document.getElementById('final-cta').scrollIntoView({behavior:'smooth'})">Start the Deep Work Interview →</button>
-      <p>$67 one time · instant access · no subscription</p>
-    </div>
+
   </div>
 </section>
 
@@ -420,17 +519,104 @@
     <div class="wyg-header">
       <div class="section-eyebrow">What You Walk Away With</div>
       <h2>A complete blueprint. Not a <em>summary.</em></h2>
-      <p>Most brand exercises give you an insight and a feeling. The Deep Work Interview gives you a seven-part document you can hand to a designer, a copywriter, or use yourself to build everything from scratch.</p>
+      <p>Seven distinct documents. Each one specific to your story, your market, and your exact positioning gap.</p>
     </div>
-    <div class="deliverables-grid">
-      <div class="del-card"><div class="del-num">01</div><div class="del-name">Brand Foundation</div><div class="del-desc">Your story as a compelling narrative, expertise with proof points, worldview as messaging pillars, and brand guidelines — hex codes, font pairings, photography direction, layout guidance.</div></div>
-      <div class="del-card"><div class="del-num">02</div><div class="del-name">Ideal Avatar</div><div class="del-desc">Not a demographics list. A vivid narrative portrait with a name. What keeps them up at night. Their internal dialogue, trigger event, objections, and budget.</div></div>
-      <div class="del-card"><div class="del-num">03</div><div class="del-name">Niche Domination Analysis</div><div class="del-desc">Your specific positioning in one sentence. Named competitors with pricing. A credibility score from 1 to 10 with an honest explanation of the gap.</div></div>
-      <div class="del-card"><div class="del-num">04</div><div class="del-name">Three-Tier Offer Structure</div><div class="del-desc">High, mid, and low ticket — each named, priced, and built out with specific deliverables, step-by-step process, outcomes, and ascension logic.</div></div>
-      <div class="del-card"><div class="del-num">05</div><div class="del-name">Website Blueprint with Real Copy</div><div class="del-desc">Full site structure with a complete homepage outline — actual headlines, CTA text, problem copy, solution copy, about section, FAQ, and footer CTA.</div></div>
-      <div class="del-card"><div class="del-num">06</div><div class="del-name">Gap Analysis</div><div class="del-desc">An honest assessment of what you're missing, each gap rated by urgency with specific next steps. Plus a priority roadmap of the top 10 things to do in the next 30 to 90 days.</div></div>
-      <div class="del-card"><div class="del-num">07</div><div class="del-name">Headlines & Positioning</div><div class="del-desc">Five headline options in your voice. The one-liner that makes people put down their drink. A 30-second elevator pitch that actually sounds like you instead of a LinkedIn bio you wrote at 11pm.</div></div>
-    </div>
+
+    <div class="ann-wrap" id="ann-wrap">
+      <svg class="ann-svg" id="ann-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+
+      <!-- LEFT: Document mockup -->
+      <div class="ann-doc" id="ann-doc">
+        <div class="ann-doc-chrome">
+          <span class="ann-chrome-dot" style="background:#FF5F57"></span>
+          <span class="ann-chrome-dot" style="background:#FEBC2E"></span>
+          <span class="ann-chrome-dot" style="background:#28C840"></span>
+          <span class="ann-doc-label-text">Brand Blueprint — Deep Work Interview</span>
+        </div>
+        <div class="ann-doc-section" id="dsec-1">
+          <div class="ann-ds-label">01 &nbsp;Brand Foundation</div>
+          <div class="ann-ds-content">"James Guldan positioned as Brand Strategy Authority. Core narrative: 'systems over hustle' — 15 years building 7-figure businesses for service founders. Visual direction: warm copper accents, Outfit typeface, deep neutral palette."</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-2">
+          <div class="ann-ds-label">02 &nbsp;Ideal Avatar</div>
+          <div class="ann-ds-content">"Marcus T., 38. Revenue $180K–$320K. Trigger event: 'I've built something real but nobody outside my network knows it exists.' Primary objection: Has he worked with someone like me?"</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-3">
+          <div class="ann-ds-label">03 &nbsp;Niche Analysis</div>
+          <div class="ann-ds-content">"Primary niche: B2B brand strategy for service businesses. Credibility score: 7.2/10. Top positioning gap: no SEO footprint for core strategic keywords. Three named competitors with real pricing included."</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-4">
+          <div class="ann-ds-label">04 &nbsp;Offer Structure</div>
+          <div class="ann-ds-content">"TIER 1 — Deep Work Interview $67. TIER 2 — Brand Build Sprint $2,400. TIER 3 — Done-With-You Retainer $4,200/mo. Each named, priced, and built with specific deliverables and ascension logic."</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-5">
+          <div class="ann-ds-label">05 &nbsp;Website Blueprint</div>
+          <div class="ann-ds-content">"HERO: 'Finally, a brand that sounds like you.' PROBLEM: Most founders have the results but not the words. SOLUTION: One interview, seven documents. Full copy for every section — not a wireframe."</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-6">
+          <div class="ann-ds-label">06 &nbsp;Gap Analysis</div>
+          <div class="ann-ds-content">"Priority 1 (urgency 9/10): Zero LinkedIn presence for target keywords. Priority 2 (8/10): No email nurture sequence post-purchase. Top 10 actions ranked by impact for the next 30 to 90 days."</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-7">
+          <div class="ann-ds-label">07 &nbsp;Headlines &amp; Positioning</div>
+          <div class="ann-ds-content">"ONE-LINER: 'I help service businesses turn buried expertise into a brand that books premium clients.' Five headline options in your voice. The 30-second pitch that actually sounds like you."</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Annotation labels -->
+      <div class="ann-labels" id="ann-labels">
+        <div class="ann-label" id="ala-1">
+          <div class="ann-label-badge">01</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Brand Foundation</div>
+            <div class="ann-label-desc">Your story, expertise, worldview, and visual direction — everything a designer needs to build from day one.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-2">
+          <div class="ann-label-badge">02</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Ideal Avatar</div>
+            <div class="ann-label-desc">A vivid portrait with a name, internal dialogue, trigger event, real objections, and actual budget — not a demographics list.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-3">
+          <div class="ann-label-badge">03</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Niche Domination Analysis</div>
+            <div class="ann-label-desc">Your positioning in one sentence, named competitors with real pricing, and an honest credibility score with a gap explanation.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-4">
+          <div class="ann-label-badge">04</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Three-Tier Offer Structure</div>
+            <div class="ann-label-desc">High, mid, and low ticket — each named, priced, and built with the logic that moves someone up the ladder.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-5">
+          <div class="ann-label-badge">05</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Website Blueprint with Real Copy</div>
+            <div class="ann-label-desc">Actual headlines, CTA text, problem copy, solution copy, about section, FAQ, and footer CTA — not a wireframe.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-6">
+          <div class="ann-label-badge">06</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Gap Analysis</div>
+            <div class="ann-label-desc">What you're missing, rated by urgency, with specific next steps and a priority roadmap for the next 30 to 90 days.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-7">
+          <div class="ann-label-badge">07</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Headlines &amp; Positioning</div>
+            <div class="ann-label-desc">Five headline options in your voice, the one-liner that makes people stop, and a 30-second pitch that actually sounds like you.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end ann-wrap -->
   </div>
 </section>
 
@@ -534,8 +720,8 @@
         <div class="test-stars">★★★★★</div>
         <p class="test-quote">"I spent all day on this. Better than working with business coaches I've paid to talk with me on the phone. I have real clarity on the next direction."</p>
         <div class="test-author">
-          <img class="test-photo" src="https://d22pfkzzdr45n7.cloudfront.net/videos/4634/22-05-2023/Chris_Van_Loan_Sr__IWJX9RY1.jpg" alt="Chris Van Loan Sr." onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan&background=c4703f&color=fff&size=92'">
-          <div><div class="test-name">Chris Van Loan Sr.</div><div class="test-title">Creative Director &amp; Strategic Media Partner</div></div>
+          <img class="test-photo" src="images/chris-van-loan.jpg" alt="Chris Van Loan III" onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan+III&background=c4703f&color=fff&size=92'">
+          <div><div class="test-name">Chris Van Loan III</div><div class="test-title">Creative Director &amp; Strategic Media Partner</div></div>
         </div>
       </div>
       <div class="test-card">
@@ -544,6 +730,14 @@
         <div class="test-author">
           <img class="test-photo" src="https://ui-avatars.com/api/?name=Kyle+Gray&background=EAE7E2&color=555&size=92" alt="Kyle Gray">
           <div><div class="test-name">Kyle Gray</div><div class="test-title">Speech, Writing & Storytelling Consultant</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"Phenomenal prompt engineering. It felt like I&rsquo;d paid for a one on one session with Tony Robbins. We went deep and the outcome was stellar with some rewording and reimagining of my key offer. Thank you."</p>
+        <div class="test-author">
+          <img class="test-photo" src="images/ross-tompkins.jpg" alt="Ross Tompkins" style="object-fit:cover;">
+          <div><div class="test-name">Ross Tompkins</div><div class="test-title">Coach &amp; Business Strategist</div></div>
         </div>
       </div>
     </div>
@@ -619,14 +813,24 @@
       requestAnimationFrame(frameMobile); }
     requestAnimationFrame(frameMobile); }
 
-  // PROCESS CANVAS (dark section)
-  const pc = document.getElementById('process-canvas');
-  if(pc){ const pctx=pc.getContext('2d'); function rp(){pc.width=pc.parentElement.offsetWidth||800;pc.height=pc.parentElement.offsetHeight||600;} rp();addEventListener('resize',rp);
-    function frameProcess(ts){ pctx.clearRect(0,0,pc.width,pc.height);const t=ts*.00002,w=pc.width,h=pc.height;pctx.strokeStyle='rgba(196,112,63,1)';pctx.lineWidth=.7;
-      function pf(x,y,r,rot,a){ pctx.save();pctx.globalAlpha=a;pctx.translate(x,y);pctx.rotate(rot);pctx.beginPath();pctx.arc(0,0,r,0,Math.PI*2);pctx.stroke();for(let i=0;i<6;i++){const ang=i*Math.PI/3;pctx.beginPath();pctx.arc(Math.cos(ang)*r,Math.sin(ang)*r,r,0,Math.PI*2);pctx.stroke();}pctx.restore(); }
-      pf(w*.08,h*.3,140,t,.08);pf(w*.92,h*.7,120,-t*.8,.07);pf(w*.5,h*.1,70,t*1.2,.05);pf(w*.5,h*.9,70,-t*1.1,.05);
-      requestAnimationFrame(frameProcess); }
-    requestAnimationFrame(frameProcess); }
+  // PROCESS V3 — Transcript reveal via IntersectionObserver
+  (function() {
+    var msgs = document.querySelectorAll('[data-reveal]');
+    if (!msgs.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+    msgs.forEach(function(m, i) {
+      // Stagger: user replies delay slightly after AI messages
+      m.style.transitionDelay = (i % 2 === 1 ? '140ms' : '0ms');
+      obs.observe(m);
+    });
+  })();
 
   // CTA CANVAS
   const cc = document.getElementById('cta-canvas');
@@ -636,6 +840,88 @@
       cf(w*.04,h*.5,120,t,.13);cf(w*.96,h*.5,120,-t,.13);cf(w*.5,h*.5,80,t*.7,.07);
       requestAnimationFrame(frameCta); }
     requestAnimationFrame(frameCta); }
+
+  // ANNOTATION CONNECTOR LINES (Concept B — Technical Annotation)
+  function drawAnnotations() {
+    var svg = document.getElementById('ann-svg');
+    var wrap = document.getElementById('ann-wrap');
+    if (!svg || !wrap) return;
+    svg.innerHTML = '';
+    var wr = wrap.getBoundingClientRect();
+    if (wr.width === 0) return;
+    svg.setAttribute('width', wr.width);
+    svg.setAttribute('height', wr.height);
+    svg.setAttribute('viewBox', '0 0 ' + wr.width + ' ' + wr.height);
+    var ns = 'http://www.w3.org/2000/svg';
+    var defs = document.createElementNS(ns, 'defs');
+    var mka = document.createElementNS(ns, 'marker');
+    mka.setAttribute('id','ana'); mka.setAttribute('markerWidth','8');
+    mka.setAttribute('markerHeight','8'); mka.setAttribute('refX','7');
+    mka.setAttribute('refY','4'); mka.setAttribute('orient','auto');
+    var ap = document.createElementNS(ns, 'path');
+    ap.setAttribute('d','M0,1.5 L7,4 L0,6.5 Z');
+    ap.setAttribute('fill','rgba(196,112,63,0.7)');
+    mka.appendChild(ap); defs.appendChild(mka);
+    svg.appendChild(defs);
+    for (var i = 1; i <= 7; i++) {
+      var docEl = document.getElementById('dsec-' + i);
+      var lblEl = document.getElementById('ala-' + i);
+      if (!docEl || !lblEl) continue;
+      var dr = docEl.getBoundingClientRect();
+      var lr2 = lblEl.getBoundingClientRect();
+      var x1 = dr.right - wr.left;
+      var y1 = (dr.top + dr.bottom) / 2 - wr.top;
+      var x2 = lr2.left - wr.left;
+      var y2 = (lr2.top + lr2.bottom) / 2 - wr.top;
+      var midX = x1 + (x2 - x1) * 0.5;
+      var r = 6;
+      var pathD;
+      if (Math.abs(y2 - y1) < 4) {
+        pathD = 'M ' + x1 + ',' + y1 + ' H ' + x2;
+      } else {
+        var sign = y2 > y1 ? 1 : -1;
+        pathD = 'M ' + x1 + ',' + y1 +
+          ' H ' + (midX - r) +
+          ' Q ' + midX + ',' + y1 + ' ' + midX + ',' + (y1 + sign * r) +
+          ' V ' + (y2 - sign * r) +
+          ' Q ' + midX + ',' + y2 + ' ' + (midX + r) + ',' + y2 +
+          ' H ' + x2;
+      }
+      var path = document.createElementNS(ns, 'path');
+      path.setAttribute('d', pathD);
+      path.setAttribute('stroke', 'rgba(196,112,63,0.45)');
+      path.setAttribute('stroke-width', '1.5');
+      path.setAttribute('fill', 'none');
+      path.setAttribute('marker-end', 'url(#ana)');
+      svg.appendChild(path);
+      var dot = document.createElementNS(ns, 'circle');
+      dot.setAttribute('cx', x1);
+      dot.setAttribute('cy', y1);
+      dot.setAttribute('r', '3');
+      dot.setAttribute('fill', 'rgba(196,112,63,0.65)');
+      svg.appendChild(dot);
+    }
+  }
+  // Robust init: IntersectionObserver + retry on load
+  (function() {
+    var drawn = false;
+    if (window.IntersectionObserver) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting && !drawn) { drawAnnotations(); drawn = true; } });
+      }, { threshold: 0.05 });
+      var el = document.getElementById('ann-wrap');
+      if (el) obs.observe(el);
+    }
+    var retries = 0;
+    function retryDraw() {
+      var wrap = document.getElementById('ann-wrap');
+      if (wrap && wrap.getBoundingClientRect().width > 0) { drawAnnotations(); drawn = true; }
+      else if (retries++ < 12) { setTimeout(retryDraw, 250); }
+    }
+    window.addEventListener('load', function() { setTimeout(retryDraw, 100); });
+    window.addEventListener('resize', drawAnnotations);
+  })();
+
 </script>
 </body>
 </html>
