@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deep Work Interview — Option A: The Fade</title>
+  <title>Deep Work Interview — Hero</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,11 +56,32 @@
       pointer-events: none; z-index: 1;
     }
 
+    /* Animated halo rings from Option D */
+    .vid-halo {
+      position: absolute;
+      bottom: 6%; left: 50%; transform: translateX(-50%);
+      width: 440px; height: 278px;
+      border: 1px solid rgba(196,112,63,.22);
+      border-radius: 20px;
+      animation: halo 3.2s ease-in-out infinite;
+      pointer-events: none; z-index: 3;
+    }
+    .vid-halo2 {
+      position: absolute;
+      bottom: 5%; left: 50%; transform: translateX(-50%);
+      width: 488px; height: 310px;
+      border: 1px solid rgba(196,112,63,.12);
+      border-radius: 24px;
+      animation: halo 3.2s ease-in-out infinite .75s;
+      pointer-events: none; z-index: 3;
+    }
+    @keyframes halo { 0%,100%{opacity:1;transform:translateX(-50%) scale(1);}50%{opacity:.25;transform:translateX(-50%) scale(1.03);} }
+
     /* Video float — inside photo div, over James */
     .vid-float {
       position: absolute;
       bottom: 8%; left: 50%; transform: translateX(-50%);
-      z-index: 4; width: 360px;
+      z-index: 4; width: 380px;
       border-radius: 14px; overflow: hidden; background: #000;
       border: 2.5px solid rgba(255,255,255,0.9);
       box-shadow: 0 12px 48px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.08);
@@ -76,7 +97,13 @@
       max-width: 1280px; margin: 0 auto; padding: 0 48px;
     }
     .hero-text { max-width: 520px; }
-    .eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+
+    /* Diamond geo divider from Option D */
+    .geo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+    .geo-line { height: 1px; width: 36px; background: rgba(196,112,63,0.35); }
+    .geo-diamond { width: 10px; height: 10px; border: 1.5px solid var(--accent); transform: rotate(45deg); opacity: 0.75; flex-shrink: 0; }
+    .geo-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; flex-shrink: 0; }
     h1 { font-family: 'Outfit',sans-serif; font-size: clamp(36px, 3.8vw, 56px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
     h1 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
     .sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 36px; }
@@ -100,7 +127,6 @@
 </head>
 <body>
   <canvas id="geo"></canvas>
-  <div class="option-tag">Option A — The Fade</div>
 
   <nav>
     <div class="nav-logo">JAMES GULDAN</div>
@@ -117,6 +143,8 @@
     <div class="hero-photo">
       <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
       <div class="hero-photo-fade"></div>
+      <div class="vid-halo"></div>
+      <div class="vid-halo2"></div>
       <div class="vid-float">
         <video controls preload="metadata">
           <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
@@ -129,6 +157,13 @@
     <div class="hero-text-wrap">
       <div class="hero-text">
         <div class="eyebrow">Deep Work Interview</div>
+        <div class="geo-row">
+          <div class="geo-line"></div>
+          <div class="geo-dot"></div>
+          <div class="geo-diamond"></div>
+          <div class="geo-dot"></div>
+          <div class="geo-line"></div>
+        </div>
         <h1>You know what's broken. <em>You've known for a while.</em></h1>
         <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
         <button class="cta-btn">Start the Deep Work Interview →</button>
@@ -156,7 +191,7 @@
       ctx.closePath(); ctx.stroke(); ctx.restore();
     }
     function frame(ts) {
-      ctx.fillStyle = '#FDFCFA'; ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.clearRect(0,0,canvas.width,canvas.height);
       const t=ts*0.00004,w=canvas.width,h=canvas.height;
       flowerOfLife(w*.82,h*.45,120,t,.06); flowerOfLife(w*.12,h*.2,70,-t*.8,.045);
       flowerOfLife(w*.9,h*.15,50,t*1.3,.035);
