@@ -360,7 +360,7 @@
     <li><a href="#process">The Process</a></li>
     <li><a href="#what-you-get">What You Get</a></li>
     <li><a href="#stories">Stories</a></li>
-    <li><a href="https://app.jamesguldan.com/buy/blueprint" class="nav-btn" style="text-decoration:none;">Get Clear Now</a></li>
+    <li><a href="#checkout" data-checkout="blueprint" class="nav-btn" style="text-decoration:none;">Get Clear Now</a></li>
   </ul>
 </nav>
 
@@ -384,7 +384,7 @@
       <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
       <h1>Two hours from now, everything will be <em>different.</em></h1>
       <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
-      <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn">Get Clear Now →</a>
+      <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
       <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
     </div>
   </div>
@@ -413,7 +413,7 @@
     <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
     <h1>Two hours from now, everything will be <em>different.</em></h1>
     <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
-    <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn">Get Clear Now →</a>
+    <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
     <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
   </div>
 </div>
@@ -575,7 +575,7 @@
           <div class="proc3-phase-pill">08 The Synthesis</div>
         </div>
         <p class="proc3-footer-note">Three of eight phases shown. The full conversation covers every dimension of your positioning and synthesizes it into a complete brand blueprint.</p>
-        <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn">Start the Clarity Exercise →</a>
+        <a href="#checkout" data-checkout="blueprint" class="cta-btn">Start the Clarity Exercise →</a>
         <p class="proc3-footer-price">$67 one time &nbsp;&middot;&nbsp; instant access &nbsp;&middot;&nbsp; no subscription</p>
       </div>
     </div>
@@ -870,7 +870,7 @@
       <div class="final-price"><sup>$</sup>67</div>
     </div>
     <div class="final-sub">One time · Instant access · Keep everything forever</div>
-    <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn-light" style="display:inline-block;">Get Clear Now →</a>
+    <a href="#checkout" data-checkout="blueprint" class="cta-btn-light" style="display:inline-block;">Get Clear Now →</a>
     <div class="final-trust">Powered by Stripe · Secure checkout · 7-day satisfaction guarantee</div>
   </div>
 </section>
@@ -1059,16 +1059,9 @@
       });
     }
 
-    // Attach to all CTA buttons
-    document.querySelectorAll('.cta-btn, .cta-btn-light, .nav-btn').forEach(function(btn) {
-      if (btn.href && btn.href.indexOf('buy/blueprint') !== -1) {
-        btn.addEventListener('click', startCheckout);
-      }
-    });
-
-    // Also catch any remaining buy links
-    document.querySelectorAll('a[href*="buy/blueprint"]').forEach(function(link) {
-      link.addEventListener('click', startCheckout);
+    // Attach to all checkout buttons
+    document.querySelectorAll('a[data-checkout]').forEach(function(btn) {
+      btn.addEventListener('click', startCheckout);
     });
   })();
 
