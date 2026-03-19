@@ -360,7 +360,7 @@
     <li><a href="#process">The Process</a></li>
     <li><a href="#what-you-get">What You Get</a></li>
     <li><a href="#stories">Stories</a></li>
-    <li><a href="https://app.jamesguldan.com/buy/blueprint" class="nav-btn" style="text-decoration:none;">Get Clear Now</a></li>
+    <li><a href="#checkout" data-checkout="blueprint" class="nav-btn" style="text-decoration:none;">Get Clear Now</a></li>
   </ul>
 </nav>
 
@@ -384,7 +384,7 @@
       <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
       <h1>Two hours from now, everything will be <em>different.</em></h1>
       <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
-      <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn">Get Clear Now →</a>
+      <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
       <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
     </div>
   </div>
@@ -413,7 +413,7 @@
     <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
     <h1>Two hours from now, everything will be <em>different.</em></h1>
     <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
-    <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn">Get Clear Now →</a>
+    <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
     <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
   </div>
 </div>
@@ -575,7 +575,7 @@
           <div class="proc3-phase-pill">08 The Synthesis</div>
         </div>
         <p class="proc3-footer-note">Three of eight phases shown. The full conversation covers every dimension of your positioning and synthesizes it into a complete brand blueprint.</p>
-        <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn">Start the Clarity Exercise →</a>
+        <a href="#checkout" data-checkout="blueprint" class="cta-btn">Start the Clarity Exercise →</a>
         <p class="proc3-footer-price">$67 one time &nbsp;&middot;&nbsp; instant access &nbsp;&middot;&nbsp; no subscription</p>
       </div>
     </div>
@@ -870,7 +870,7 @@
       <div class="final-price"><sup>$</sup>67</div>
     </div>
     <div class="final-sub">One time · Instant access · Keep everything forever</div>
-    <a href="https://app.jamesguldan.com/buy/blueprint" class="cta-btn-light" style="display:inline-block;">Get Clear Now →</a>
+    <a href="#checkout" data-checkout="blueprint" class="cta-btn-light" style="display:inline-block;">Get Clear Now →</a>
     <div class="final-trust">Powered by Stripe · Secure checkout · 7-day satisfaction guarantee</div>
   </div>
 </section>
@@ -1015,6 +1015,54 @@
     }
     window.addEventListener('load', function() { setTimeout(retryDraw, 100); });
     window.addEventListener('resize', drawAnnotations);
+  })();
+
+  // ── STRIPE CHECKOUT ──────────────────────────────────────
+  (function() {
+    // Checkout overlay
+    var overlay = document.createElement('div');
+    overlay.id = 'checkout-overlay';
+    overlay.innerHTML = '<div class="checkout-spinner"><div class="spinner-ring"></div><div class="spinner-text">Preparing your checkout...</div></div>';
+    overlay.style.cssText = 'display:none;position:fixed;inset:0;z-index:9999;background:rgba(26,26,26,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;';
+    document.body.appendChild(overlay);
+
+    var style = document.createElement('style');
+    style.textContent = '.checkout-spinner{text-align:center}.spinner-ring{width:48px;height:48px;border:3px solid rgba(255,255,255,.15);border-top-color:#c4703f;border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.spinner-text{font-family:Inter,sans-serif;font-size:15px;color:rgba(255,255,255,.7);font-weight:500;letter-spacing:.3px}';
+    document.head.appendChild(style);
+
+    var isProcessing = false;
+
+    function startCheckout(e) {
+      e.preventDefault();
+      if (isProcessing) return;
+      isProcessing = true;
+      overlay.style.display = 'flex';
+
+      fetch('https://app.jamesguldan.com/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tier: 'blueprint' })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error('No checkout URL returned');
+        }
+      })
+      .catch(function(err) {
+        console.error('Checkout error:', err);
+        overlay.style.display = 'none';
+        isProcessing = false;
+        alert('Something went wrong starting checkout. Please try again.');
+      });
+    }
+
+    // Attach to all checkout buttons
+    document.querySelectorAll('a[data-checkout]').forEach(function(btn) {
+      btn.addEventListener('click', startCheckout);
+    });
   })();
 
 </script>
