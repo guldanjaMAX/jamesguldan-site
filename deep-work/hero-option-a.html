@@ -114,14 +114,33 @@
 
     .option-tag { position: fixed; top: 12px; right: 16px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 20px; z-index: 100; text-transform: uppercase; }
 
+    /* Mobile video block — shown only on small screens, sits below CTA */
+    .vid-mobile { display: none; }
+    .vid-mobile-inner {
+      border-radius: 14px; overflow: hidden; background: #000;
+      border: 2px solid rgba(0,0,0,0.12);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+    }
+    .vid-mobile-inner video { width: 100%; display: block; aspect-ratio: 16/9; }
+    .vid-mobile-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: 0.7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+
     @media (max-width: 860px) {
       nav { padding: 0 24px; } .nav-links { display: none; }
-      .hero { height: auto; min-height: 100vw; }
-      .hero-photo { position: relative; left: auto; right: auto; height: 60vw; margin-bottom: 0; }
+      .hero { height: auto; }
+      /* Photo fills top, tall crop showing James */
+      .hero-photo { position: relative; left: auto; right: auto; height: 72vw; overflow: hidden; justify-content: center; }
+      .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; max-height: none; }
       .hero-photo-fade { display: none; }
-      .hero-text-wrap { padding: 32px 24px; height: auto; }
+      /* Hide desktop video + halos on mobile */
+      .vid-float, .vid-halo, .vid-halo2 { display: none; }
+      .hero-text-wrap { padding: 28px 24px 40px; height: auto; }
       .hero-text { max-width: 100%; }
-      .vid-float { width: 200px; bottom: 10%; }
+      h1 { font-size: clamp(30px, 8vw, 42px); }
+      .sub { font-size: 15px; margin-bottom: 28px; }
+      .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 16px; }
+      /* Show mobile video below CTA */
+      .vid-mobile { display: block; margin-bottom: 16px; }
+      .price { margin-bottom: 8px; }
     }
   </style>
 </head>
@@ -167,6 +186,14 @@
         <h1>You know what's broken. <em>You've known for a while.</em></h1>
         <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
         <button class="cta-btn">Start the Deep Work Interview →</button>
+        <div class="vid-mobile">
+          <div class="vid-mobile-inner">
+            <video controls preload="metadata">
+              <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+            </video>
+            <div class="vid-mobile-label">2 min · The story behind Deep Work</div>
+          </div>
+        </div>
         <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
       </div>
     </div>
