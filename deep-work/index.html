@@ -59,8 +59,8 @@
     .nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
     .nav-links a { color: var(--muted); font-size: 13px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
-    .nav-btn { background: var(--text); color: #fff; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Inter',sans-serif; transition: background .2s; }
-    .nav-btn:hover { background: #333; }
+    .nav-btn { display: inline-block; background: var(--text); color: #fff !important; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Inter',sans-serif; transition: all .25s ease; text-decoration: none !important; }
+    .nav-btn:hover { background: #c4703f; color: #fff !important; }
 
     /* HERO DESKTOP */
     .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: hidden; z-index: 2; }
@@ -125,7 +125,8 @@
     .logo-name:hover { color: var(--text); }
     .cred-proof { max-width: 720px; margin: 48px auto 0; text-align: center; }
     .cred-proof-quote { font-family: 'Playfair Display',serif; font-style: italic; font-size: clamp(16px, 1.6vw, 20px); line-height: 1.65; color: var(--text); margin-bottom: 16px; }
-    .cred-proof-attr { font-family: 'Outfit',sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: var(--muted); }
+    .cred-proof-attr { display: flex; align-items: center; justify-content: center; gap: 12px; font-family: 'Outfit',sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: var(--muted); }
+    .cred-proof-attr img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(196,112,63,.3); }
     .cred-proof-attr span { color: var(--accent); }
     .cred-anchor { margin-top: 36px; }
     .cred-anchor p { font-size: 14px; color: #777; line-height: 1.7; }
@@ -437,7 +438,7 @@
     </div>
     <div class="cred-proof">
       <div class="cred-proof-quote">"It felt like I'd paid for a one on one session with Tony Robbins. We went deep and the outcome was stellar."</div>
-      <div class="cred-proof-attr">Ross Tompkins <span>&mdash;</span> Coach &amp; Business Strategist</div>
+      <div class="cred-proof-attr"><img src="images/ross-tompkins.jpg" alt="Ross Tompkins" onerror="this.src='https://ui-avatars.com/api/?name=Ross+Tompkins&background=c4703f&color=fff&size=92'">Ross Tompkins <span>&mdash;</span> Coach &amp; Business Strategist</div>
       <div class="cred-anchor">
         <p>This is the same process coaches and consultants paid <strong>$5,000</strong> to go through with James directly. Now it runs in two hours, guided by AI trained on 15 years of his positioning methodology.</p>
       </div>
