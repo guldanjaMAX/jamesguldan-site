@@ -1,497 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Work Interview - Option B: The Stage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Work Interview — Option B: The Stage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FDFCFA;
-            color: #1a1a1a;
-            overflow-x: hidden;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FDFCFA;
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
 
-        /* Canvas for geometry */
-        #geometryCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
+    #geo {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        /* Navigation */
-        nav {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 48px;
-            background: #FDFCFA;
-        }
+    nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: #FDFCFA;
+    }
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #666;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #c4703f; }
+    .nav-btn {
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: #333; }
 
-        .nav-logo {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: 2px;
-            color: #1a1a1a;
-        }
+    /* 3-col stage layout: text | photo | video */
+    .hero {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 2fr 2.5fr 1.8fr;
+      align-items: end;
+      min-height: calc(100vh - 64px);
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 48px 0;
+      gap: 0;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            list-style: none;
-        }
+    /* Left text col */
+    .hero-text {
+      padding-bottom: 60px;
+      padding-right: 32px;
+    }
+    .eyebrow {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c4703f;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(32px, 3vw, 50px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    h1 em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: #c4703f;
+      display: block;
+    }
+    .sub {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #555;
+      margin-bottom: 32px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 14px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cta-btn:hover { background: #333; transform: translateY(-2px); }
+    .price {
+      font-size: 13px;
+      color: #777;
+    }
+    .price strong { color: #1a1a1a; }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+    /* Center photo col — photo rises from the bottom */
+    .hero-photo {
+      position: relative;
+      align-self: end;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .hero-photo img {
+      display: block;
+      height: 560px;
+      width: auto;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+    }
+    /* Subtle spotlight circle behind photo */
+    .photo-glow {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(ellipse, rgba(196,112,63,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 1;
+    }
 
-        .nav-links a:hover {
-            color: #c4703f;
-        }
+    /* Right video col */
+    .hero-video {
+      padding-bottom: 60px;
+      padding-left: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    /* Pulsing ring around video */
+    .ring-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pulse-ring {
+      position: absolute;
+      inset: -18px;
+      border: 2px solid rgba(196,112,63,0.5);
+      border-radius: 12px;
+      animation: pulse 2.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .pulse-ring2 {
+      position: absolute;
+      inset: -32px;
+      border: 1px solid rgba(196,112,63,0.25);
+      border-radius: 16px;
+      animation: pulse 2.5s ease-in-out infinite 0.4s;
+      pointer-events: none;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.04); }
+    }
+    .vid-inner {
+      width: 100%;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      border: 1px solid rgba(196,112,63,0.2);
+      position: relative;
+      z-index: 2;
+    }
+    .vid-inner video {
+      width: 100%;
+      display: block;
+    }
+    .vid-label {
+      font-size: 12px;
+      color: #888;
+      font-weight: 500;
+    }
+    .vid-caption {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+      max-width: 240px;
+    }
+    .vid-caption strong { color: #c4703f; }
 
-        .nav-cta {
-            background: #1a1a1a;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-        }
+    /* Option label */
+    .option-tag {
+      position: fixed;
+      top: 12px;
+      right: 16px;
+      background: #c4703f;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 100;
+      text-transform: uppercase;
+    }
 
-        .nav-cta:hover {
-            background: #333;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            z-index: 2;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 60px 48px;
-        }
-
-        .hero-container {
-            width: 100%;
-            max-width: 1400px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Center photo container */
-        .stage-photo {
-            position: relative;
-            width: 500px;
-            height: 600px;
-            flex-shrink: 0;
-            z-index: 3;
-        }
-
-        .stage-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* Left side - Text overlaid on photo area */
-        .hero-text {
-            position: absolute;
-            left: -300px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 420px;
-            z-index: 4;
-        }
-
-        .eyebrow {
-            font-family: 'Outfit', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #c4703f;
-            margin-bottom: 20px;
-        }
-
-        .headline {
-            font-family: 'Outfit', sans-serif;
-            font-size: 56px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            color: #1a1a1a;
-            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
-        }
-
-        .headline-accent {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 400;
-            color: #c4703f;
-        }
-
-        .body-text {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 40px;
-            max-width: 420px;
-            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.6);
-        }
-
-        .cta-button {
-            background: #1a1a1a;
-            color: white;
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-block;
-            transition: background 0.3s, transform 0.2s;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 40px;
-        }
-
-        .cta-button:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
-
-        .price-line {
-            font-size: 13px;
-            color: #555;
-            font-weight: 500;
-            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
-        }
-
-        /* Right side - Video with pulsing ring */
-        .video-wrapper {
-            position: absolute;
-            top: 60px;
-            right: -280px;
-            width: 280px;
-            z-index: 5;
-        }
-
-        .video-ring {
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            border: 3px solid #c4703f;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulseRing 2s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        @keyframes pulseRing {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.1);
-                opacity: 0.5;
-            }
-        }
-
-        .video-card {
-            position: relative;
-            width: 280px;
-            background: white;
-            border-radius: 8px;
-            padding: 8px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(196, 112, 63, 0.3);
-            z-index: 6;
-        }
-
-        .video-card video {
-            width: 100%;
-            display: block;
-            border-radius: 4px;
-        }
-
-        /* Geometry - ascending triangles and hexagons */
-        .geometry-grid {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .hero {
-                padding: 40px 32px;
-            }
-
-            .hero-text {
-                position: relative;
-                left: 0;
-                top: 0;
-                transform: none;
-                width: 100%;
-                margin-bottom: 60px;
-            }
-
-            .stage-photo {
-                width: 400px;
-                height: 480px;
-            }
-
-            .video-wrapper {
-                position: relative;
-                top: auto;
-                right: auto;
-                width: 240px;
-                margin-top: 40px;
-            }
-
-            .video-ring {
-                width: 280px;
-                height: 280px;
-            }
-
-            .video-card {
-                width: 240px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .headline {
-                font-size: 48px;
-            }
-
-            .body-text {
-                font-size: 14px;
-            }
-
-            .stage-photo {
-                width: 300px;
-                height: 360px;
-            }
-
-            .video-wrapper {
-                width: 200px;
-            }
-
-            .video-ring {
-                width: 240px;
-                height: 240px;
-            }
-
-            .video-card {
-                width: 200px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            nav {
-                padding: 16px 24px;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .nav-links {
-                gap: 20px;
-            }
-
-            .hero {
-                padding: 20px 24px;
-            }
-
-            .headline {
-                font-size: 32px;
-            }
-
-            .stage-photo {
-                width: 240px;
-                height: 280px;
-            }
-
-            .video-wrapper {
-                width: 180px;
-            }
-
-            .video-card {
-                width: 180px;
-            }
-
-            .video-ring {
-                width: 220px;
-                height: 220px;
-            }
-        }
-    </style>
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        min-height: auto;
+        padding: 32px 24px;
+        gap: 40px;
+        align-items: start;
+      }
+      .hero-text { padding-right: 0; padding-bottom: 0; order: 1; }
+      .hero-photo { order: 2; }
+      .hero-photo img { height: 360px; }
+      .hero-video { padding-left: 0; padding-bottom: 0; order: 3; }
+      .ring-wrap { justify-content: flex-start; }
+    }
+  </style>
 </head>
 <body>
-    <canvas id="geometryCanvas"></canvas>
+  <canvas id="geo"></canvas>
+  <div class="option-tag">Option B — The Stage</div>
 
-    <nav>
-        <div class="nav-logo">JAMES GULDAN</div>
-        <div style="flex: 1;"></div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><button class="nav-cta">Get Access — $67</button></li>
-        </ul>
-    </nav>
+  <nav>
+    <div class="nav-logo">JAMES GULDAN</div>
+    <ul class="nav-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Process</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><button class="nav-btn">Get Access — $67</button></li>
+    </ul>
+  </nav>
 
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-text">
-                <div class="eyebrow">Deep Work</div>
-                <h1 class="headline">
-                    You know what's broken. <span class="headline-accent">You've known for a while.</span>
-                </h1>
-                <p class="body-text">
-                    Your business doesn't match who you've become. The positioning is off. The offers don't land. And nobody around you can see it clearly enough to tell you what's actually wrong. Two hours from now, you'll know exactly what to fix and how.
-                </p>
-                <button class="cta-button">Start the Deep Work Interview →</button>
-                <div class="price-line">$67. Two hours. The same process I used to charge $5,000 for.</div>
-            </div>
+  <section class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">Deep Work Interview</div>
+      <h1>You know what's broken. <em>You've known for a while.</em></h1>
+      <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
+      <button class="cta-btn">Start the Deep Work Interview →</button>
+      <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
+    </div>
 
-            <div class="stage-photo">
-                <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan on stage">
-            </div>
+    <div class="hero-photo">
+      <div class="photo-glow"></div>
+      <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan">
+    </div>
 
-            <div class="video-wrapper">
-                <div class="video-ring"></div>
-                <div class="video-card">
-                    <video controls preload="metadata">
-                        <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
+    <div class="hero-video">
+      <div class="ring-wrap">
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring2"></div>
+        <div class="vid-inner">
+          <video controls preload="metadata">
+            <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+          </video>
         </div>
-    </section>
+      </div>
+      <div class="vid-label">2 min · The story behind Deep Work</div>
+      <p class="vid-caption"><strong>"The same process</strong> I used to charge $5,000 for — now available for $67."</p>
+    </div>
+  </section>
 
-    <script>
-        // Animated sacred geometry canvas - Ascending energy
-        const canvas = document.getElementById('geometryCanvas');
-        const ctx = canvas.getContext('2d');
-        let animationFrameId;
+  <script>
+    const canvas = document.getElementById('geo');
+    const ctx = canvas.getContext('2d');
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+    function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+    resize();
+    addEventListener('resize', resize);
 
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+    function triangle(x, y, size, rot, alpha) {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = 'rgba(196,112,63,1)';
+      ctx.lineWidth = 0.8;
+      ctx.translate(x, y); ctx.rotate(rot);
+      ctx.beginPath();
+      ctx.moveTo(0, -size);
+      ctx.lineTo(size * 0.866, size * 0.5);
+      ctx.lineTo(-size * 0.866, size * 0.5);
+      ctx.closePath(); ctx.stroke();
+      ctx.restore();
+    }
 
-        function drawTriangle(x, y, size, rotation, opacity) {
-            ctx.save();
-            ctx.globalAlpha = opacity;
-            ctx.translate(x, y);
-            ctx.rotate(rotation);
+    function hexagon(x, y, r, rot, alpha) {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = 'rgba(196,112,63,1)';
+      ctx.lineWidth = 0.8;
+      ctx.translate(x, y); ctx.rotate(rot);
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const a = i * Math.PI / 3;
+        i === 0 ? ctx.moveTo(Math.cos(a)*r, Math.sin(a)*r) : ctx.lineTo(Math.cos(a)*r, Math.sin(a)*r);
+      }
+      ctx.closePath(); ctx.stroke();
+      ctx.restore();
+    }
 
-            ctx.strokeStyle = `rgba(196, 112, 63, 0.15)`;
-            ctx.lineWidth = 1;
+    function frame(ts) {
+      ctx.fillStyle = '#FDFCFA';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const t = ts * 0.00005;
+      const w = canvas.width, h = canvas.height;
 
-            ctx.beginPath();
-            ctx.moveTo(0, -size);
-            ctx.lineTo(size, size);
-            ctx.lineTo(-size, size);
-            ctx.closePath();
-            ctx.stroke();
+      /* Ascending triangles from bottom */
+      for (let i = 0; i < 6; i++) {
+        const cycle = (t * 120 + i * 90) % (h + 80);
+        const yp = h - cycle;
+        triangle(w * 0.22 + Math.sin(t + i) * 60, yp, 28 + i * 4, t * (i%2 ? 1 : -1), 0.055 - i * 0.006);
+        triangle(w * 0.78 + Math.cos(t + i) * 60, yp, 24 + i * 4, -t * (i%2 ? 1 : -1), 0.05 - i * 0.006);
+      }
 
-            ctx.restore();
-        }
+      hexagon(w * 0.5, h * 0.15, 50, t * 0.5, 0.05);
+      hexagon(w * 0.1, h * 0.6, 38, -t * 0.8, 0.04);
+      hexagon(w * 0.9, h * 0.7, 42, t * 0.9, 0.04);
+      hexagon(w * 0.5, h * 0.85, 55, t, 0.035);
 
-        function drawHexagon(x, y, size, rotation, opacity) {
-            ctx.save();
-            ctx.globalAlpha = opacity;
-            ctx.translate(x, y);
-            ctx.rotate(rotation);
-
-            ctx.strokeStyle = `rgba(196, 112, 63, 0.12)`;
-            ctx.lineWidth = 1;
-
-            ctx.beginPath();
-            for (let i = 0; i < 6; i++) {
-                const angle = (i * Math.PI) / 3;
-                const px = Math.cos(angle) * size;
-                const py = Math.sin(angle) * size;
-                if (i === 0) ctx.moveTo(px, py);
-                else ctx.lineTo(px, py);
-            }
-            ctx.closePath();
-            ctx.stroke();
-
-            ctx.restore();
-        }
-
-        function animate(time) {
-            ctx.fillStyle = '#FDFCFA';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            const t = time * 0.00006;
-
-            // Ascending triangles from bottom to top
-            for (let i = 0; i < 8; i++) {
-                const yPos = canvas.height - (i * 120 + (t * 150) % 120);
-                const xPos = canvas.width * 0.3 + Math.sin(t + i) * 80;
-                drawTriangle(xPos, yPos, 30 + i * 5, t * (i % 2 === 0 ? 1 : -1), 0.08 - i * 0.01);
-            }
-
-            // Ascending triangles on the right
-            for (let i = 0; i < 8; i++) {
-                const yPos = canvas.height - (i * 120 + (t * 150) % 120);
-                const xPos = canvas.width * 0.7 + Math.sin(t + i) * 80;
-                drawTriangle(xPos, yPos, 35 + i * 4, t * (i % 2 === 0 ? -1 : 1), 0.07 - i * 0.01);
-            }
-
-            // Hexagons scattered
-            drawHexagon(canvas.width * 0.2, canvas.height * 0.3, 40, t, 0.06);
-            drawHexagon(canvas.width * 0.8, canvas.height * 0.6, 50, -t * 0.8, 0.05);
-            drawHexagon(canvas.width * 0.5, canvas.height * 0.2, 35, t * 0.5, 0.05);
-            drawHexagon(canvas.width * 0.6, canvas.height * 0.8, 45, -t, 0.06);
-
-            animationFrameId = requestAnimationFrame(animate);
-        }
-
-        animate(0);
-
-        window.addEventListener('beforeunload', () => {
-            cancelAnimationFrame(animationFrameId);
-        });
-    </script>
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  </script>
 </body>
 </html>

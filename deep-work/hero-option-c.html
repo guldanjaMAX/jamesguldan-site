@@ -1,443 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Work Interview - Option C: The Editorial Grid</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Work Interview — Option C: The Editorial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FDFCFA;
-            color: #1a1a1a;
-            overflow-x: hidden;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FDFCFA;
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
 
-        /* Canvas for geometry */
-        #geometryCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
+    #geo {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        /* Navigation */
-        nav {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 48px;
-            background: #FDFCFA;
-        }
+    nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: #FDFCFA;
+    }
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #666;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #c4703f; }
+    .nav-btn {
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: #333; }
 
-        .nav-logo {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: 2px;
-            color: #1a1a1a;
-        }
+    /* 2-col editorial grid */
+    .hero {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 48% 52%;
+      align-items: center;
+      min-height: calc(100vh - 64px);
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 48px;
+      gap: 48px;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            list-style: none;
-        }
+    /* Left: text */
+    .hero-left {}
+    .eyebrow {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c4703f;
+      margin-bottom: 20px;
+    }
+    /* Thin vertical accent line */
+    .rule {
+      width: 2px;
+      height: 40px;
+      background: #c4703f;
+      margin-bottom: 20px;
+      opacity: 0.6;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(34px, 3.2vw, 52px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    h1 em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: #c4703f;
+    }
+    .sub {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #555;
+      margin-bottom: 32px;
+    }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+    /* Inline stats row */
+    .stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 36px;
+      padding: 20px 0;
+      border-top: 1px solid #ece9e4;
+      border-bottom: 1px solid #ece9e4;
+    }
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #c4703f;
+      line-height: 1;
+    }
+    .stat-desc {
+      font-size: 11px;
+      color: #888;
+      font-weight: 500;
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-        .nav-links a:hover {
-            color: #c4703f;
-        }
+    .cta-btn {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 14px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cta-btn:hover { background: #333; transform: translateY(-2px); }
+    .price {
+      font-size: 13px;
+      color: #777;
+    }
+    .price strong { color: #1a1a1a; }
 
-        .nav-cta {
-            background: #1a1a1a;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-        }
+    /* Right: stacked cards */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-        .nav-cta:hover {
-            background: #333;
-        }
+    .card {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border: 1px solid rgba(196,112,63,0.12);
+      background: #fff;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 36px rgba(0,0,0,0.11);
+    }
 
-        /* Hero Section */
-        .hero {
-            position: relative;
-            z-index: 2;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 60px 48px;
-        }
+    /* Photo card — tall enough to show James well */
+    .photo-card {
+      height: 360px;
+      background: #F7F5F2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .photo-card img {
+      height: 115%;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: -10px;
+    }
 
-        .hero-container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 45% 55%;
-            gap: 60px;
-            align-items: center;
-        }
+    /* Video card */
+    .video-card {
+      background: #1a1a1a;
+    }
+    .video-card video {
+      width: 100%;
+      display: block;
+      max-height: 200px;
+      object-fit: cover;
+    }
+    .video-meta {
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .video-meta span {
+      font-size: 12px;
+      color: #999;
+      font-weight: 500;
+    }
+    .vid-badge {
+      background: rgba(196,112,63,0.2);
+      color: #c4703f;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
 
-        /* Left column - Text */
-        .hero-text {
-            z-index: 3;
-        }
+    /* Option label */
+    .option-tag {
+      position: fixed;
+      top: 12px;
+      right: 16px;
+      background: #c4703f;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 100;
+      text-transform: uppercase;
+    }
 
-        .eyebrow {
-            font-family: 'Outfit', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #c4703f;
-            margin-bottom: 20px;
-        }
-
-        .headline {
-            font-family: 'Outfit', sans-serif;
-            font-size: 56px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            color: #1a1a1a;
-        }
-
-        .headline-accent {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 400;
-            color: #c4703f;
-        }
-
-        .body-text {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 40px;
-        }
-
-        .cta-button {
-            background: #1a1a1a;
-            color: white;
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-block;
-            transition: background 0.3s, transform 0.2s;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 40px;
-        }
-
-        .cta-button:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
-
-        .price-line {
-            font-size: 13px;
-            color: #555;
-            font-weight: 500;
-        }
-
-        /* Right column - Photo and Video stack */
-        .hero-visual {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            z-index: 3;
-        }
-
-        .visual-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(196, 112, 63, 0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .visual-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.12);
-        }
-
-        .photo-card {
-            height: 480px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f9f8f7;
-        }
-
-        .photo-card img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .video-card {
-            height: 320px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #1a1a1a;
-        }
-
-        .video-card video {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero {
-                padding: 40px 32px;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .headline {
-                font-size: 48px;
-            }
-
-            .photo-card {
-                height: 400px;
-            }
-
-            .video-card {
-                height: 280px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            nav {
-                padding: 16px 24px;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .nav-links {
-                gap: 20px;
-            }
-
-            .hero {
-                padding: 20px 24px;
-            }
-
-            .headline {
-                font-size: 32px;
-            }
-
-            .body-text {
-                font-size: 14px;
-            }
-
-            .photo-card {
-                height: 300px;
-            }
-
-            .video-card {
-                height: 220px;
-            }
-        }
-    </style>
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 32px 24px;
+        gap: 36px;
+      }
+      .stats { gap: 20px; }
+      .photo-card { height: 300px; }
+    }
+  </style>
 </head>
 <body>
-    <canvas id="geometryCanvas"></canvas>
+  <canvas id="geo"></canvas>
+  <div class="option-tag">Option C — The Editorial</div>
 
-    <nav>
-        <div class="nav-logo">JAMES GULDAN</div>
-        <div style="flex: 1;"></div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><button class="nav-cta">Get Access — $67</button></li>
-        </ul>
-    </nav>
+  <nav>
+    <div class="nav-logo">JAMES GULDAN</div>
+    <ul class="nav-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Process</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><button class="nav-btn">Get Access — $67</button></li>
+    </ul>
+  </nav>
 
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-text">
-                <div class="eyebrow">Deep Work</div>
-                <h1 class="headline">
-                    You know what's broken. <span class="headline-accent">You've known for a while.</span>
-                </h1>
-                <p class="body-text">
-                    Your business doesn't match who you've become. The positioning is off. The offers don't land. And nobody around you can see it clearly enough to tell you what's actually wrong. Two hours from now, you'll know exactly what to fix and how.
-                </p>
-                <button class="cta-button">Start the Deep Work Interview →</button>
-                <div class="price-line">$67. Two hours. The same process I used to charge $5,000 for.</div>
-            </div>
+  <section class="hero">
+    <div class="hero-left">
+      <div class="eyebrow">Deep Work Interview</div>
+      <div class="rule"></div>
+      <h1>You know what's broken. <em>You've known for a while.</em></h1>
+      <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
 
-            <div class="hero-visual">
-                <div class="visual-card photo-card">
-                    <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan">
-                </div>
-                <div class="visual-card video-card">
-                    <video controls preload="metadata">
-                        <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
+      <div class="stats">
+        <div>
+          <div class="stat-num">2 hrs</div>
+          <div class="stat-desc">Deep dive<br>session</div>
         </div>
-    </section>
+        <div>
+          <div class="stat-num">$67</div>
+          <div class="stat-desc">Was $5,000<br>per session</div>
+        </div>
+        <div>
+          <div class="stat-num">1 call</div>
+          <div class="stat-desc">Clear answers<br>guaranteed</div>
+        </div>
+      </div>
 
-    <script>
-        // Animated constellation/network effect
-        const canvas = document.getElementById('geometryCanvas');
-        const ctx = canvas.getContext('2d');
-        let animationFrameId;
+      <button class="cta-btn">Start the Deep Work Interview →</button>
+      <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
+    </div>
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+    <div class="hero-right">
+      <div class="card photo-card">
+        <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan">
+      </div>
+      <div class="card video-card">
+        <video controls preload="metadata">
+          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+        </video>
+        <div class="video-meta">
+          <span>2 min · The story behind Deep Work</span>
+          <span class="vid-badge">Watch</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const canvas = document.getElementById('geo');
+    const ctx = canvas.getContext('2d');
+
+    function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+    resize();
+    addEventListener('resize', resize);
+
+    /* Constellation / network nodes */
+    const nodes = Array.from({length: 14}, () => ({
+      x: Math.random() * innerWidth,
+      y: Math.random() * innerHeight,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+    }));
+
+    function frame() {
+      ctx.fillStyle = '#FDFCFA';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      nodes.forEach(n => {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+      });
+
+      /* draw connections */
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const d = Math.sqrt(dx*dx + dy*dy);
+          if (d < 260) {
+            ctx.save();
+            ctx.globalAlpha = (1 - d/260) * 0.07;
+            ctx.strokeStyle = 'rgba(196,112,63,1)';
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+            ctx.restore();
+          }
         }
+      }
 
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+      /* draw dots */
+      nodes.forEach(n => {
+        ctx.save();
+        ctx.globalAlpha = 0.3;
+        ctx.fillStyle = 'rgba(196,112,63,1)';
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 2, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+      });
 
-        // Create floating nodes
-        const nodes = [];
-        const nodeCount = 12;
-
-        class Node {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.baseX = x;
-                this.baseY = y;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                // Subtle attraction to base position
-                const dx = this.baseX - this.x;
-                const dy = this.baseY - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance > 150) {
-                    this.vx += (dx / distance) * 0.001;
-                    this.vy += (dy / distance) * 0.001;
-                }
-
-                // Boundaries
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-                // Damping
-                this.vx *= 0.99;
-                this.vy *= 0.99;
-            }
-
-            draw(context) {
-                context.fillStyle = `rgba(196, 112, 63, 0.4)`;
-                context.beginPath();
-                context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                context.fill();
-            }
-        }
-
-        // Initialize nodes
-        for (let i = 0; i < nodeCount; i++) {
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height;
-            nodes.push(new Node(x, y));
-        }
-
-        function drawConnections() {
-            ctx.strokeStyle = `rgba(196, 112, 63, 0.08)`;
-            ctx.lineWidth = 1;
-
-            for (let i = 0; i < nodes.length; i++) {
-                for (let j = i + 1; j < nodes.length; j++) {
-                    const dx = nodes[i].x - nodes[j].x;
-                    const dy = nodes[i].y - nodes[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 250) {
-                        ctx.globalAlpha = 1 - distance / 250;
-                        ctx.beginPath();
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            ctx.globalAlpha = 1;
-        }
-
-        function animate(time) {
-            ctx.fillStyle = '#FDFCFA';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Update and draw nodes
-            nodes.forEach(node => {
-                node.update();
-                node.draw(ctx);
-            });
-
-            // Draw connections between nearby nodes
-            drawConnections();
-
-            animationFrameId = requestAnimationFrame(animate);
-        }
-
-        animate(0);
-
-        window.addEventListener('beforeunload', () => {
-            cancelAnimationFrame(animationFrameId);
-        });
-
-        // Redraw constellation on resize
-        window.addEventListener('resize', () => {
-            nodes.length = 0;
-            for (let i = 0; i < nodeCount; i++) {
-                const x = Math.random() * canvas.width;
-                const y = Math.random() * canvas.height;
-                nodes.push(new Node(x, y));
-            }
-        });
-    </script>
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  </script>
 </body>
 </html>

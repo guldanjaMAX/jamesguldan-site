@@ -1,490 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Work Interview - Option D: The Immersive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Work Interview — Option D: The Immersive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FDFCFA;
-            color: #1a1a1a;
-            overflow-x: hidden;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FDFCFA;
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
 
-        /* Background photo - ghosted */
-        .hero-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://jamesguldan.com/james-hero.png');
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.13;
-            z-index: 0;
-            pointer-events: none;
-        }
+    /* Ghosted background photo — z-index 0 */
+    .hero-bg {
+      position: fixed;
+      inset: 0;
+      background: url('https://jamesguldan.com/james-hero.png') center/contain no-repeat;
+      opacity: 0.07;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-        /* Canvas for geometry */
-        #geometryCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
+    /* Canvas draws geometry OVER ghost photo but stays transparent */
+    #geo {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
 
-        /* Navigation */
-        nav {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 48px;
-            background: rgba(253, 252, 250, 0.7);
-            backdrop-filter: blur(5px);
-        }
+    nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: rgba(253,252,250,0.75);
+      backdrop-filter: blur(6px);
+    }
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #666;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #c4703f; }
+    .nav-btn {
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: #333; }
 
-        .nav-logo {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: 2px;
-            color: #1a1a1a;
-        }
+    /* Full-screen centered hero */
+    .hero {
+      position: relative;
+      z-index: 2;
+      min-height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            list-style: none;
-        }
+    .hero-inner {
+      max-width: 820px;
+      width: 100%;
+    }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+    .eyebrow {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c4703f;
+      margin-bottom: 28px;
+    }
 
-        .nav-links a:hover {
-            color: #c4703f;
-        }
+    /* Decorative divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .divider-line {
+      width: 48px;
+      height: 1px;
+      background: rgba(196,112,63,0.4);
+    }
+    .divider-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #c4703f;
+      opacity: 0.6;
+    }
 
-        .nav-cta {
-            background: #1a1a1a;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-        }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+    h1 em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: #c4703f;
+      display: block;
+    }
+    .sub {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 48px;
+      max-width: 660px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-        .nav-cta:hover {
-            background: #333;
-        }
+    /* Video centered and prominent */
+    .vid-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .vid-box {
+      width: min(500px, 90vw);
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.14);
+      border: 1px solid rgba(196,112,63,0.2);
+    }
+    .vid-box video { width: 100%; display: block; }
+    .vid-footer {
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .vid-footer span {
+      font-size: 12px;
+      color: #999;
+      font-weight: 500;
+    }
+    .vid-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
 
-        /* Hero Section */
-        .hero {
-            position: relative;
-            z-index: 2;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 48px;
-            text-align: center;
-        }
+    .cta-btn {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      text-decoration: none;
+      padding: 17px 40px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 16px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cta-btn:hover { background: #333; transform: translateY(-2px); }
+    .price {
+      font-size: 14px;
+      color: #777;
+    }
+    .price strong { color: #1a1a1a; }
 
-        .hero-content {
-            max-width: 900px;
-            position: relative;
-            z-index: 3;
-        }
+    /* Option label */
+    .option-tag {
+      position: fixed;
+      top: 12px;
+      right: 16px;
+      background: #c4703f;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 100;
+      text-transform: uppercase;
+    }
 
-        .eyebrow {
-            font-family: 'Outfit', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #c4703f;
-            margin-bottom: 30px;
-        }
-
-        .headline {
-            font-family: 'Outfit', sans-serif;
-            font-size: 72px;
-            font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-            letter-spacing: -1px;
-        }
-
-        .headline-accent {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 400;
-            color: #c4703f;
-            display: block;
-        }
-
-        .body-text {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 60px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Video - centered and prominent */
-        .video-wrapper {
-            margin-bottom: 60px;
-            position: relative;
-            z-index: 4;
-            display: flex;
-            justify-content: center;
-        }
-
-        .video-container {
-            width: 500px;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(196, 112, 63, 0.2);
-        }
-
-        .video-container video {
-            width: 100%;
-            display: block;
-        }
-
-        /* CTA Section */
-        .cta-button {
-            background: #1a1a1a;
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-block;
-            transition: background 0.3s, transform 0.2s;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 40px;
-        }
-
-        .cta-button:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
-
-        .price-line {
-            font-size: 14px;
-            color: #555;
-            font-weight: 500;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero {
-                padding: 40px 32px;
-            }
-
-            .headline {
-                font-size: 56px;
-            }
-
-            .body-text {
-                font-size: 16px;
-            }
-
-            .video-container {
-                width: 400px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .headline {
-                font-size: 48px;
-            }
-
-            .body-text {
-                font-size: 15px;
-            }
-
-            .video-container {
-                width: 320px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            nav {
-                padding: 16px 24px;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .nav-links {
-                gap: 20px;
-            }
-
-            .hero {
-                padding: 20px 24px;
-                min-height: auto;
-            }
-
-            .headline {
-                font-size: 32px;
-            }
-
-            .body-text {
-                font-size: 14px;
-                margin-bottom: 40px;
-            }
-
-            .video-container {
-                width: 100%;
-                max-width: 280px;
-            }
-
-            .video-wrapper {
-                margin-bottom: 40px;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 40px 20px; }
+      h1 { letter-spacing: -0.5px; }
+      .sub { font-size: 15px; margin-bottom: 36px; }
+      .vid-wrap { margin-bottom: 36px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="hero-bg"></div>
-    <canvas id="geometryCanvas"></canvas>
+  <div class="hero-bg"></div>
+  <canvas id="geo"></canvas>
+  <div class="option-tag">Option D — The Immersive</div>
 
-    <nav>
-        <div class="nav-logo">JAMES GULDAN</div>
-        <div style="flex: 1;"></div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><button class="nav-cta">Get Access — $67</button></li>
-        </ul>
-    </nav>
+  <nav>
+    <div class="nav-logo">JAMES GULDAN</div>
+    <ul class="nav-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Process</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><button class="nav-btn">Get Access — $67</button></li>
+    </ul>
+  </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="eyebrow">Deep Work</div>
-            <h1 class="headline">
-                You know what's broken.<br>
-                <span class="headline-accent">You've known for a while.</span>
-            </h1>
-            <p class="body-text">
-                Your business doesn't match who you've become. The positioning is off. The offers don't land. And nobody around you can see it clearly enough to tell you what's actually wrong. Two hours from now, you'll know exactly what to fix and how.
-            </p>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Deep Work Interview</div>
 
-            <div class="video-wrapper">
-                <div class="video-container">
-                    <video controls preload="metadata">
-                        <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-line"></div>
+      </div>
 
-            <button class="cta-button">Start the Deep Work Interview →</button>
-            <div class="price-line">$67. Two hours. The same process I used to charge $5,000 for.</div>
+      <h1>
+        You know what's broken.
+        <em>You've known for a while.</em>
+      </h1>
+      <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix — and how.</p>
+
+      <div class="vid-wrap">
+        <div class="vid-box">
+          <video controls preload="metadata">
+            <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+          </video>
+          <div class="vid-footer">
+            <span>2 min · The story behind Deep Work</span>
+            <span class="vid-name">James Guldan</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <script>
-        // Dense, intricate sacred geometry with parallax depth
-        const canvas = document.getElementById('geometryCanvas');
-        const ctx = canvas.getContext('2d');
-        let animationFrameId;
+      <button class="cta-btn">Start the Deep Work Interview →</button>
+      <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
+    </div>
+  </section>
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+  <script>
+    const canvas = document.getElementById('geo');
+    const ctx = canvas.getContext('2d');
 
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+    function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+    resize();
+    addEventListener('resize', resize);
 
-        function drawVesicaPiscis(x, y, size, rotation, opacity, speed) {
-            ctx.save();
-            ctx.globalAlpha = opacity;
-            ctx.translate(x, y);
-            ctx.rotate(rotation);
+    function flowerOfLife(x, y, r, rot, alpha) {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = 'rgba(196,112,63,1)';
+      ctx.lineWidth = 0.7;
+      ctx.translate(x, y); ctx.rotate(rot);
+      ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI*2); ctx.stroke();
+      for (let i = 0; i < 6; i++) {
+        const a = i * Math.PI / 3;
+        ctx.beginPath(); ctx.arc(Math.cos(a)*r, Math.sin(a)*r, r, 0, Math.PI*2); ctx.stroke();
+      }
+      /* inner ring */
+      for (let i = 0; i < 6; i++) {
+        const a = i * Math.PI / 3;
+        ctx.beginPath(); ctx.arc(Math.cos(a)*r*0.5, Math.sin(a)*r*0.5, r*0.3, 0, Math.PI*2); ctx.stroke();
+      }
+      ctx.restore();
+    }
 
-            ctx.strokeStyle = `rgba(196, 112, 63, 0.2)`;
-            ctx.lineWidth = 0.8;
+    function vesica(x, y, r, rot, alpha) {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = 'rgba(196,112,63,1)';
+      ctx.lineWidth = 0.7;
+      ctx.translate(x, y); ctx.rotate(rot);
+      ctx.beginPath(); ctx.arc(r/2, 0, r, 0, Math.PI*2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(-r/2, 0, r, 0, Math.PI*2); ctx.stroke();
+      ctx.restore();
+    }
 
-            // Two overlapping circles
-            ctx.beginPath();
-            ctx.arc(size / 2, 0, size, 0, Math.PI * 2);
-            ctx.stroke();
+    function hexagon(x, y, r, rot, alpha) {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = 'rgba(196,112,63,1)';
+      ctx.lineWidth = 0.7;
+      ctx.translate(x, y); ctx.rotate(rot);
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const a = i * Math.PI / 3;
+        i === 0 ? ctx.moveTo(Math.cos(a)*r, Math.sin(a)*r) : ctx.lineTo(Math.cos(a)*r, Math.sin(a)*r);
+      }
+      ctx.closePath(); ctx.stroke();
+      ctx.restore();
+    }
 
-            ctx.beginPath();
-            ctx.arc(-size / 2, 0, size, 0, Math.PI * 2);
-            ctx.stroke();
+    function frame(ts) {
+      /* clearRect keeps canvas transparent so ghosted photo shows through */
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const t = ts * 0.00004;
+      const cx = canvas.width / 2, cy = canvas.height / 2;
 
-            ctx.restore();
-        }
+      /* Geometry radiates from center outward */
+      flowerOfLife(cx, cy, 90, t * 0.5, 0.08);
+      flowerOfLife(cx - 280, cy - 180, 65, -t * 0.4, 0.055);
+      flowerOfLife(cx + 320, cy + 140, 75, t * 0.55, 0.055);
 
-        function drawFlowerOfLife(x, y, radius, rotation, opacity, speed) {
-            ctx.save();
-            ctx.globalAlpha = opacity;
-            ctx.translate(x, y);
-            ctx.rotate(rotation);
+      vesica(cx - 160, cy + 230, 55, t * 0.7, 0.065);
+      vesica(cx + 200, cy - 210, 60, -t * 0.65, 0.06);
 
-            ctx.strokeStyle = `rgba(196, 112, 63, 0.18)`;
-            ctx.lineWidth = 0.8;
+      hexagon(cx + 140, cy + 90, 45, t, 0.05);
+      hexagon(cx - 230, cy + 10, 50, -t * 0.9, 0.05);
+      hexagon(cx + 10, cy - 280, 40, t * 1.1, 0.045);
+      hexagon(cx + 280, cy + 270, 48, -t * 0.8, 0.045);
 
-            // Central circle
-            ctx.beginPath();
-            ctx.arc(0, 0, radius, 0, Math.PI * 2);
-            ctx.stroke();
+      /* outer ring of hexagons */
+      for (let i = 0; i < 4; i++) {
+        const a = i * Math.PI / 2 + t * 0.1;
+        hexagon(cx + Math.cos(a)*340, cy + Math.sin(a)*280, 36, t*(1+i*0.15), 0.035);
+      }
 
-            // Petal circles
-            for (let i = 0; i < 6; i++) {
-                const angle = (i * Math.PI) / 3;
-                const px = Math.cos(angle) * radius;
-                const py = Math.sin(angle) * radius;
-                ctx.beginPath();
-                ctx.arc(px, py, radius, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-
-            // Inner pattern
-            for (let i = 0; i < 6; i++) {
-                const angle = (i * Math.PI) / 3;
-                const px = Math.cos(angle) * radius * 0.5;
-                const py = Math.sin(angle) * radius * 0.5;
-                ctx.beginPath();
-                ctx.arc(px, py, radius * 0.3, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-
-            ctx.restore();
-        }
-
-        function drawHexagon(x, y, size, rotation, opacity, speed) {
-            ctx.save();
-            ctx.globalAlpha = opacity;
-            ctx.translate(x, y);
-            ctx.rotate(rotation);
-
-            ctx.strokeStyle = `rgba(196, 112, 63, 0.15)`;
-            ctx.lineWidth = 0.8;
-
-            ctx.beginPath();
-            for (let i = 0; i < 6; i++) {
-                const angle = (i * Math.PI) / 3;
-                const px = Math.cos(angle) * size;
-                const py = Math.sin(angle) * size;
-                if (i === 0) ctx.moveTo(px, py);
-                else ctx.lineTo(px, py);
-            }
-            ctx.closePath();
-            ctx.stroke();
-
-            ctx.restore();
-        }
-
-        function drawStar(x, y, size, rotation, opacity, speed) {
-            ctx.save();
-            ctx.globalAlpha = opacity;
-            ctx.translate(x, y);
-            ctx.rotate(rotation);
-
-            ctx.strokeStyle = `rgba(196, 112, 63, 0.15)`;
-            ctx.lineWidth = 0.8;
-
-            const spikes = 5;
-            const step = Math.PI / spikes;
-
-            ctx.beginPath();
-            for (let i = 0; i < spikes * 2; i++) {
-                const angle = i * step;
-                const rad = i % 2 === 0 ? size : size * 0.5;
-                const px = Math.cos(angle) * rad;
-                const py = Math.sin(angle) * rad;
-                if (i === 0) ctx.moveTo(px, py);
-                else ctx.lineTo(px, py);
-            }
-            ctx.closePath();
-            ctx.stroke();
-
-            ctx.restore();
-        }
-
-        function animate(time) {
-            ctx.fillStyle = '#FDFCFA';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            const t = time * 0.00004;
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-
-            // Layer 1 - Slow rotating flower of life patterns
-            drawFlowerOfLife(centerX, centerY, 100, t * 0.5, 0.12, 0.5);
-            drawFlowerOfLife(centerX - 300, centerY - 200, 80, -t * 0.4, 0.08, 0.4);
-            drawFlowerOfLife(centerX + 350, centerY + 150, 90, t * 0.6, 0.09, 0.6);
-
-            // Layer 2 - Vesica Piscis
-            drawVesicaPiscis(centerX - 200, centerY + 250, 60, t * 0.8, 0.1, 0.8);
-            drawVesicaPiscis(centerX + 250, centerY - 200, 70, -t * 0.7, 0.08, 0.7);
-
-            // Layer 3 - Hexagons at different speeds
-            drawHexagon(centerX + 150, centerY + 100, 50, t, 0.08, 1);
-            drawHexagon(centerX - 250, centerY, 60, -t * 0.9, 0.07, 0.9);
-            drawHexagon(centerX, centerY - 300, 45, t * 1.1, 0.06, 1.1);
-            drawHexagon(centerX + 300, centerY + 300, 55, -t * 0.8, 0.07, 0.8);
-
-            // Layer 4 - Stars
-            drawStar(centerX - 100, centerY - 100, 40, t * 1.2, 0.07, 1.2);
-            drawStar(centerX + 200, centerY + 200, 50, -t * 1, 0.08, 1);
-            drawStar(centerX, centerY + 150, 35, t * 0.9, 0.06, 0.9);
-
-            // Layer 5 - Additional scattered geometries
-            for (let i = 0; i < 4; i++) {
-                const angle = (i * Math.PI) / 2;
-                const distance = 350;
-                const x = centerX + Math.cos(angle) * distance;
-                const y = centerY + Math.sin(angle) * distance;
-                drawHexagon(x, y, 40, t * (1 + i * 0.2), 0.05, 1 + i * 0.2);
-            }
-
-            animationFrameId = requestAnimationFrame(animate);
-        }
-
-        animate(0);
-
-        window.addEventListener('beforeunload', () => {
-            cancelAnimationFrame(animationFrameId);
-        });
-    </script>
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  </script>
 </body>
 </html>
