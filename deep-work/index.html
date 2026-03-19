@@ -879,7 +879,7 @@
 <footer>
   <div class="footer-logo">JAMES GULDAN</div>
   <div class="footer-links">
-    <a href="mailto:james@jamesguldan.com">james@jamesguldan.com</a>
+    <a href="/cdn-cgi/l/email-protection#d5bfb4b8b0a695bfb4b8b0a6b2a0b9b1b4bbfbb6bab8"><span class="__cf_email__" data-cfemail="593338343c2a193338343c2a3e2c353d3837773a3634">[email&#160;protected]</span></a>
     <a href="https://jamesguldan.com">jamesguldan.com</a>
     <a href="/privacy">Privacy Policy</a>
     <a href="/terms">Terms of Service</a>
@@ -888,7 +888,7 @@
   <div class="footer-copy" style="margin-top:8px; font-size:11px; opacity:0.5; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.6;">Results vary. Testimonials reflect individual experiences and are not a guarantee of outcome. Individual results depend on your background, effort, and implementation.</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // MAIN GEO CANVAS (desktop background)
   const canvas = document.getElementById('geo'), ctx = canvas.getContext('2d');
   function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
@@ -1208,7 +1208,7 @@
       fetch('https://app.jamesguldan.com/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tiers: tiers })
+        body: JSON.stringify({ tier: tiers[0], tiers: tiers })
       })
       .then(function(r) { return r.json(); })
       .then(function(data) {
