@@ -7,222 +7,114 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #FDFCFA;
-      color: #1a1a1a;
-      overflow-x: hidden;
+    :root {
+      --bg: #FDFCFA;
+      --accent: #c4703f;
+      --text: #1a1a1a;
     }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-    /* Canvas draws behind everything */
-    #geo {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
+    #geo { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 
     nav {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: relative; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 20px 48px;
-      background: #FDFCFA;
+      background: var(--bg);
     }
-    .nav-logo {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 2px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #666;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: #c4703f; }
-    .nav-btn {
-      background: #1a1a1a;
-      color: #fff;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+    .nav-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; color: #666; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-btn { background: var(--text); color: #fff; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; }
     .nav-btn:hover { background: #333; }
 
-    /* Hero */
+    /* HERO — exact same structure as jamesguldan.com */
     .hero {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 45% 55%;
-      align-items: center;
+      position: relative; z-index: 2;
+      padding: 40px 48px 0;
       min-height: calc(100vh - 64px);
+    }
+    .hero-inner {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 40px 48px;
-      gap: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      min-height: calc(100vh - 104px);
     }
 
-    /* Left: text */
-    .hero-left {
-      padding-right: 48px;
-    }
+    /* Left text */
+    .hero-left { padding-bottom: 80px; }
     .eyebrow {
       font-family: 'Outfit', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #c4703f;
-      margin-bottom: 20px;
+      font-size: 11px; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
     }
     h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(36px, 3.5vw, 56px);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      color: #1a1a1a;
+      font-size: clamp(38px, 4vw, 58px);
+      font-weight: 700; line-height: 1.2; margin-bottom: 20px;
     }
-    h1 em {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 400;
-      color: #c4703f;
-    }
-    .sub {
-      font-size: 16px;
-      line-height: 1.75;
-      color: #555;
-      margin-bottom: 36px;
-      max-width: 440px;
-    }
+    h1 em { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--accent); }
+    .sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 36px; max-width: 460px; }
     .cta-btn {
-      display: inline-block;
-      background: #1a1a1a;
-      color: #fff;
-      text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      margin-bottom: 16px;
-      transition: background 0.2s, transform 0.15s;
+      display: inline-block; background: var(--text); color: #fff;
+      text-decoration: none; padding: 16px 32px; border-radius: 50px;
+      font-size: 14px; font-weight: 600; border: none; cursor: pointer;
+      margin-bottom: 14px; transition: background 0.2s, transform 0.15s;
     }
     .cta-btn:hover { background: #333; transform: translateY(-2px); }
-    .price {
-      font-size: 13px;
-      color: #777;
-    }
-    .price strong { color: #1a1a1a; }
+    .price { font-size: 13px; color: #777; }
+    .price strong { color: var(--text); }
 
-    /* Right: photo + video float */
-    .hero-right {
+    /* Right — photo + video overlay (exact jamesguldan.com approach) */
+    .hero-photo-wrap {
       position: relative;
-      height: 580px;
-      overflow: hidden;
+      display: flex; align-items: flex-end; justify-content: center;
     }
-    .hero-right img {
-      position: absolute;
-      right: -40px;
-      bottom: 0;
-      height: 110%;
-      width: auto;
-      object-fit: contain;
-      pointer-events: none;
-      user-select: none;
-    }
-    /* gradient fades photo into left */
-    .fade {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 55%;
-      background: linear-gradient(to right, #FDFCFA 30%, transparent 100%);
-      z-index: 2;
-      pointer-events: none;
-    }
-    /* Video card floats bottom-left of photo area */
-    .vid-card {
-      position: absolute;
-      bottom: 28px;
-      left: 24px;
-      width: 300px;
-      z-index: 4;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(12px);
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      border: 1px solid rgba(196,112,63,0.22);
-    }
-    .vid-card video {
-      width: 100%;
+    .hero-cutout {
       display: block;
-      border-radius: 7px;
+      width: 260%; max-width: 260%;
+      object-fit: contain;
+      position: relative; z-index: 1;
+      filter: drop-shadow(0 12px 48px rgba(0,0,0,0.06));
+      margin-left: -80%;
     }
+    /* Fade gradient: left side of photo area bleeds into page bg */
+    .photo-fade {
+      position: absolute;
+      left: -60px; top: 0; bottom: 0; width: 50%;
+      background: linear-gradient(to right, var(--bg) 25%, transparent 100%);
+      z-index: 2; pointer-events: none;
+    }
+    .hero-video-float {
+      position: absolute;
+      bottom: 5%; left: 50%; transform: translateX(-50%);
+      z-index: 4; width: 380px;
+      border-radius: 14px; overflow: hidden;
+      background: #000;
+      border: 2.5px solid rgba(255,255,255,0.9);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.08);
+    }
+    .hero-video-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
     .vid-label {
-      font-size: 11px;
-      color: #888;
-      padding: 6px 4px 2px;
-      text-align: center;
-      font-weight: 500;
+      background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9);
+      text-align: center; padding: 8px 12px;
+      font-size: 0.7rem; font-family: 'Outfit',sans-serif;
+      font-weight: 500; letter-spacing: 0.04em;
     }
 
-    /* Option label */
-    .option-tag {
-      position: fixed;
-      top: 12px;
-      right: 16px;
-      background: #c4703f;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      z-index: 100;
-      text-transform: uppercase;
-    }
+    .option-tag { position: fixed; top: 12px; right: 16px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 20px; z-index: 100; text-transform: uppercase; }
 
-    @media (max-width: 900px) {
+    @media (max-width: 860px) {
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding: 32px 24px;
-        gap: 40px;
-      }
-      .hero-left { padding-right: 0; }
-      .hero-right {
-        height: 360px;
-        overflow: hidden;
-      }
-      .hero-right img {
-        right: 0;
-        height: 105%;
-      }
-      .vid-card { width: 240px; bottom: 16px; left: 16px; }
+      .hero { padding: 32px 24px 0; min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+      .hero-left { padding-bottom: 0; text-align: center; }
+      .hero-cutout { max-height: 50vh; }
+      .hero-video-float { width: 200px; bottom: 12%; }
     }
   </style>
 </head>
@@ -241,22 +133,24 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-left">
-      <div class="eyebrow">Deep Work Interview</div>
-      <h1>You know what's broken. <em>You've known for a while.</em></h1>
-      <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
-      <button class="cta-btn">Start the Deep Work Interview →</button>
-      <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
-    </div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="eyebrow">Deep Work Interview</div>
+        <h1>You know what's broken. <em>You've known for a while.</em></h1>
+        <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
+        <button class="cta-btn">Start the Deep Work Interview →</button>
+        <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
+      </div>
 
-    <div class="hero-right">
-      <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan">
-      <div class="fade"></div>
-      <div class="vid-card">
-        <video controls preload="metadata">
-          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
-        </video>
-        <div class="vid-label">2 min · The story behind Deep Work</div>
+      <div class="hero-photo-wrap">
+        <img class="hero-cutout" src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
+        <div class="photo-fade"></div>
+        <div class="hero-video-float">
+          <video controls preload="metadata">
+            <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+          </video>
+          <div class="vid-label">2 min · The story behind Deep Work</div>
+        </div>
       </div>
     </div>
   </section>
@@ -264,21 +158,12 @@
   <script>
     const canvas = document.getElementById('geo');
     const ctx = canvas.getContext('2d');
-
-    function resize() {
-      canvas.width = innerWidth;
-      canvas.height = innerHeight;
-    }
-    resize();
-    addEventListener('resize', resize);
+    function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+    resize(); addEventListener('resize', resize);
 
     function flowerOfLife(x, y, r, rot, alpha) {
-      ctx.save();
-      ctx.globalAlpha = alpha;
-      ctx.strokeStyle = 'rgba(196,112,63,1)';
-      ctx.lineWidth = 0.8;
-      ctx.translate(x, y);
-      ctx.rotate(rot);
+      ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = 'rgba(196,112,63,1)'; ctx.lineWidth = 0.8;
+      ctx.translate(x, y); ctx.rotate(rot);
       ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI*2); ctx.stroke();
       for (let i = 0; i < 6; i++) {
         const a = i * Math.PI / 3;
@@ -286,35 +171,21 @@
       }
       ctx.restore();
     }
-
     function hexagon(x, y, r, rot, alpha) {
-      ctx.save();
-      ctx.globalAlpha = alpha;
-      ctx.strokeStyle = 'rgba(196,112,63,1)';
-      ctx.lineWidth = 0.8;
-      ctx.translate(x, y); ctx.rotate(rot);
-      ctx.beginPath();
-      for (let i = 0; i < 6; i++) {
-        const a = i * Math.PI / 3;
-        i === 0 ? ctx.moveTo(Math.cos(a)*r, Math.sin(a)*r) : ctx.lineTo(Math.cos(a)*r, Math.sin(a)*r);
-      }
-      ctx.closePath(); ctx.stroke();
-      ctx.restore();
+      ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = 'rgba(196,112,63,1)'; ctx.lineWidth = 0.8;
+      ctx.translate(x, y); ctx.rotate(rot); ctx.beginPath();
+      for (let i = 0; i < 6; i++) { const a = i*Math.PI/3; i===0?ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r):ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r); }
+      ctx.closePath(); ctx.stroke(); ctx.restore();
     }
-
     function frame(ts) {
-      ctx.fillStyle = '#FDFCFA';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      const t = ts * 0.00004;
-      const w = canvas.width, h = canvas.height;
-
-      flowerOfLife(w*0.78, h*0.5, 130, t, 0.07);
-      flowerOfLife(w*0.15, h*0.25, 70, -t*0.8, 0.05);
-      flowerOfLife(w*0.88, h*0.2, 55, t*1.2, 0.04);
-      hexagon(w*0.65, h*0.8, 45, t*0.7, 0.04);
-      hexagon(w*0.25, h*0.75, 35, -t*0.6, 0.035);
-      hexagon(w*0.5, h*0.15, 30, t, 0.03);
-
+      ctx.fillStyle = '#FDFCFA'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const t = ts * 0.00004, w = canvas.width, h = canvas.height;
+      flowerOfLife(w*0.82, h*0.45, 120, t, 0.06);
+      flowerOfLife(w*0.12, h*0.22, 70, -t*0.8, 0.045);
+      flowerOfLife(w*0.9, h*0.15, 50, t*1.3, 0.035);
+      hexagon(w*0.6, h*0.82, 42, t*0.7, 0.04);
+      hexagon(w*0.22, h*0.78, 32, -t*0.6, 0.035);
+      hexagon(w*0.48, h*0.1, 28, t, 0.03);
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);

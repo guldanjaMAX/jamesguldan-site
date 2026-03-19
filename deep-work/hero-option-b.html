@@ -7,259 +7,120 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #FDFCFA;
-      color: #1a1a1a;
-      overflow-x: hidden;
-    }
-
-    #geo {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
+    #geo { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 
     nav {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 48px;
-      background: #FDFCFA;
+      position: relative; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 48px; background: var(--bg);
     }
-    .nav-logo {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 2px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #666;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: #c4703f; }
-    .nav-btn {
-      background: #1a1a1a;
-      color: #fff;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+    .nav-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; color: #666; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-btn { background: var(--text); color: #fff; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; }
     .nav-btn:hover { background: #333; }
 
-    /* 3-col stage layout: text | photo | video */
-    .hero {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 34% 40% 26%;
-      align-items: center;
-      min-height: calc(100vh - 64px);
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 48px;
-      gap: 0;
+    /* HERO */
+    .hero { position: relative; z-index: 2; padding: 40px 48px 0; min-height: calc(100vh - 64px); }
+    .hero-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: end;
+      min-height: calc(100vh - 104px);
     }
 
-    /* Left text col */
-    .hero-text {
-      padding-right: 32px;
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
+    /* Left — bolder/more dramatic text treatment */
+    .hero-left { padding-bottom: 80px; }
     .eyebrow {
-      font-family: 'Outfit', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #c4703f;
-      margin-bottom: 20px;
+      font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
     }
+    /* Accent bar */
+    .accent-bar { width: 32px; height: 3px; background: var(--accent); margin-bottom: 24px; border-radius: 2px; }
+
     h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(26px, 2.4vw, 42px);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 20px;
+      font-size: clamp(40px, 4.5vw, 64px);
+      font-weight: 700; line-height: 1.1; margin-bottom: 24px;
     }
-    h1 em {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 400;
-      color: #c4703f;
-      display: block;
+    h1 em { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--accent); display: block; }
+    .sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 40px; max-width: 440px; }
+
+    /* Subtle social proof line */
+    .proof {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 12px; color: #888; margin-bottom: 28px;
     }
-    .sub {
-      font-size: 15px;
-      line-height: 1.75;
-      color: #555;
-      margin-bottom: 32px;
-    }
+    .proof-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
     .cta-btn {
-      display: inline-block;
-      background: #1a1a1a;
-      color: #fff;
-      text-decoration: none;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      margin-bottom: 14px;
-      transition: background 0.2s, transform 0.15s;
+      display: inline-block; background: var(--text); color: #fff;
+      text-decoration: none; padding: 17px 36px; border-radius: 50px;
+      font-size: 15px; font-weight: 600; border: none; cursor: pointer;
+      margin-bottom: 14px; transition: background 0.2s, transform 0.15s;
     }
     .cta-btn:hover { background: #333; transform: translateY(-2px); }
-    .price {
-      font-size: 13px;
-      color: #777;
-    }
-    .price strong { color: #1a1a1a; }
+    .price { font-size: 13px; color: #777; }
+    .price strong { color: var(--text); }
 
-    /* Center photo col — photo rises from the bottom */
-    .hero-photo {
-      position: relative;
-      align-self: end;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      height: 100%;
-      min-height: calc(100vh - 64px);
+    /* Right — same big photo, video floats higher (more toward chest area) */
+    .hero-photo-wrap { position: relative; display: flex; align-items: flex-end; justify-content: center; }
+    .hero-cutout {
+      display: block; width: 270%; max-width: 270%;
+      object-fit: contain; position: relative; z-index: 1;
+      filter: drop-shadow(0 16px 56px rgba(0,0,0,0.07));
+      margin-left: -85%;
     }
-    .hero-photo img {
-      display: block;
-      height: 92%;
-      width: auto;
-      object-fit: contain;
-      position: relative;
-      z-index: 2;
-      max-height: 600px;
-    }
-    /* Subtle spotlight circle behind photo */
-    .photo-glow {
+    /* Pulsing ring behind the video player */
+    .video-ring {
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(ellipse, rgba(196,112,63,0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      z-index: 1;
+      bottom: 12%; left: 50%; transform: translateX(-50%);
+      width: 420px; height: 260px;
+      border: 1.5px solid rgba(196,112,63,0.4);
+      border-radius: 18px;
+      animation: pulse 2.8s ease-in-out infinite;
+      z-index: 3; pointer-events: none;
     }
+    .video-ring2 {
+      position: absolute;
+      bottom: 10.5%; left: 50%; transform: translateX(-50%);
+      width: 460px; height: 290px;
+      border: 1px solid rgba(196,112,63,0.18);
+      border-radius: 22px;
+      animation: pulse 2.8s ease-in-out infinite 0.5s;
+      z-index: 3; pointer-events: none;
+    }
+    @keyframes pulse { 0%,100% { opacity:1; transform: translateX(-50%) scale(1); } 50% { opacity:0.4; transform: translateX(-50%) scale(1.03); } }
 
-    /* Right video col */
-    .hero-video {
-      padding-left: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    /* Pulsing ring around video */
-    .ring-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .pulse-ring {
+    .hero-video-float {
       position: absolute;
-      inset: -18px;
-      border: 2px solid rgba(196,112,63,0.5);
-      border-radius: 12px;
-      animation: pulse 2.5s ease-in-out infinite;
-      pointer-events: none;
+      bottom: 14%; left: 50%; transform: translateX(-50%);
+      z-index: 4; width: 380px;
+      border-radius: 14px; overflow: hidden; background: #000;
+      border: 2.5px solid rgba(255,255,255,0.9);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.25);
     }
-    .pulse-ring2 {
-      position: absolute;
-      inset: -32px;
-      border: 1px solid rgba(196,112,63,0.25);
-      border-radius: 16px;
-      animation: pulse 2.5s ease-in-out infinite 0.4s;
-      pointer-events: none;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.04); }
-    }
-    .vid-inner {
-      width: 100%;
-      background: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-      border: 1px solid rgba(196,112,63,0.2);
-      position: relative;
-      z-index: 2;
-    }
-    .vid-inner video {
-      width: 100%;
-      display: block;
-    }
+    .hero-video-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
     .vid-label {
-      font-size: 12px;
-      color: #888;
-      font-weight: 500;
-    }
-    .vid-caption {
-      font-size: 13px;
-      color: #555;
-      line-height: 1.5;
-      max-width: 240px;
-    }
-    .vid-caption strong { color: #c4703f; }
-
-    /* Option label */
-    .option-tag {
-      position: fixed;
-      top: 12px;
-      right: 16px;
-      background: #c4703f;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      z-index: 100;
-      text-transform: uppercase;
+      background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9);
+      text-align: center; padding: 8px 12px;
+      font-size: 0.7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: 0.04em;
     }
 
-    @media (max-width: 960px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .hero {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        min-height: auto;
-        padding: 32px 24px;
-        gap: 40px;
-        align-items: start;
-      }
-      .hero-text { padding-right: 0; padding-top: 0; padding-bottom: 0; order: 1; }
-      .hero-photo { order: 2; min-height: 320px; }
-      .hero-photo img { height: 320px; max-height: 320px; }
-      .hero-video { padding-left: 0; order: 3; }
-      .ring-wrap { justify-content: flex-start; }
+    .option-tag { position: fixed; top: 12px; right: 16px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 20px; z-index: 100; text-transform: uppercase; }
+
+    @media (max-width: 860px) {
+      nav { padding: 16px 24px; } .nav-links { display: none; }
+      .hero { padding: 32px 24px 0; min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+      .hero-left { padding-bottom: 0; }
+      .hero-cutout { max-height: 50vh; }
+      .hero-video-float { width: 200px; bottom: 14%; }
+      .video-ring, .video-ring2 { display: none; }
     }
   </style>
 </head>
@@ -278,90 +139,61 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-text">
-      <div class="eyebrow">Deep Work Interview</div>
-      <h1>You know what's broken. <em>You've known for a while.</em></h1>
-      <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
-      <button class="cta-btn">Start the Deep Work Interview →</button>
-      <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
-    </div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="eyebrow">Deep Work Interview</div>
+        <div class="accent-bar"></div>
+        <h1>You know what's broken. <em>You've known for a while.</em></h1>
+        <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
+        <div class="proof"><div class="proof-dot"></div> The same process James used to charge $5,000 per session for</div>
+        <button class="cta-btn">Start the Deep Work Interview →</button>
+        <p class="price"><strong>$67.</strong> Two hours. One session. Everything changes.</p>
+      </div>
 
-    <div class="hero-photo">
-      <div class="photo-glow"></div>
-      <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan">
-    </div>
-
-    <div class="hero-video">
-      <div class="ring-wrap">
-        <div class="pulse-ring"></div>
-        <div class="pulse-ring2"></div>
-        <div class="vid-inner">
+      <div class="hero-photo-wrap">
+        <img class="hero-cutout" src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
+        <div class="video-ring"></div>
+        <div class="video-ring2"></div>
+        <div class="hero-video-float">
           <video controls preload="metadata">
             <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
           </video>
+          <div class="vid-label">2 min · The story behind Deep Work</div>
         </div>
       </div>
-      <div class="vid-label">2 min · The story behind Deep Work</div>
-      <p class="vid-caption"><strong>"The same process</strong> I used to charge $5,000 for — now available for $67."</p>
     </div>
   </section>
 
   <script>
     const canvas = document.getElementById('geo');
     const ctx = canvas.getContext('2d');
-
     function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
-    resize();
-    addEventListener('resize', resize);
+    resize(); addEventListener('resize', resize);
 
-    function triangle(x, y, size, rot, alpha) {
-      ctx.save();
-      ctx.globalAlpha = alpha;
-      ctx.strokeStyle = 'rgba(196,112,63,1)';
-      ctx.lineWidth = 0.8;
-      ctx.translate(x, y); ctx.rotate(rot);
-      ctx.beginPath();
-      ctx.moveTo(0, -size);
-      ctx.lineTo(size * 0.866, size * 0.5);
-      ctx.lineTo(-size * 0.866, size * 0.5);
-      ctx.closePath(); ctx.stroke();
-      ctx.restore();
+    function triangle(x, y, r, rot, alpha) {
+      ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = 'rgba(196,112,63,1)'; ctx.lineWidth = 0.8;
+      ctx.translate(x, y); ctx.rotate(rot); ctx.beginPath();
+      ctx.moveTo(0, -r); ctx.lineTo(r*0.866, r*0.5); ctx.lineTo(-r*0.866, r*0.5);
+      ctx.closePath(); ctx.stroke(); ctx.restore();
     }
-
     function hexagon(x, y, r, rot, alpha) {
-      ctx.save();
-      ctx.globalAlpha = alpha;
-      ctx.strokeStyle = 'rgba(196,112,63,1)';
-      ctx.lineWidth = 0.8;
-      ctx.translate(x, y); ctx.rotate(rot);
-      ctx.beginPath();
-      for (let i = 0; i < 6; i++) {
-        const a = i * Math.PI / 3;
-        i === 0 ? ctx.moveTo(Math.cos(a)*r, Math.sin(a)*r) : ctx.lineTo(Math.cos(a)*r, Math.sin(a)*r);
-      }
-      ctx.closePath(); ctx.stroke();
-      ctx.restore();
+      ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = 'rgba(196,112,63,1)'; ctx.lineWidth = 0.8;
+      ctx.translate(x, y); ctx.rotate(rot); ctx.beginPath();
+      for (let i = 0; i < 6; i++) { const a = i*Math.PI/3; i===0?ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r):ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r); }
+      ctx.closePath(); ctx.stroke(); ctx.restore();
     }
-
     function frame(ts) {
-      ctx.fillStyle = '#FDFCFA';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      const t = ts * 0.00005;
-      const w = canvas.width, h = canvas.height;
-
-      /* Ascending triangles from bottom */
-      for (let i = 0; i < 6; i++) {
-        const cycle = (t * 120 + i * 90) % (h + 80);
-        const yp = h - cycle;
-        triangle(w * 0.22 + Math.sin(t + i) * 60, yp, 28 + i * 4, t * (i%2 ? 1 : -1), 0.055 - i * 0.006);
-        triangle(w * 0.78 + Math.cos(t + i) * 60, yp, 24 + i * 4, -t * (i%2 ? 1 : -1), 0.05 - i * 0.006);
+      ctx.fillStyle = '#FDFCFA'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const t = ts * 0.00005, w = canvas.width, h = canvas.height;
+      for (let i = 0; i < 5; i++) {
+        const cycle = (t * 100 + i * 80) % (h + 60);
+        triangle(w*0.18 + Math.sin(t+i)*50, h - cycle, 26+i*4, t*(i%2?1:-1), 0.05-i*0.007);
+        triangle(w*0.82 + Math.cos(t+i)*50, h - cycle, 22+i*4, -t*(i%2?1:-1), 0.045-i*0.007);
       }
-
-      hexagon(w * 0.5, h * 0.15, 50, t * 0.5, 0.05);
-      hexagon(w * 0.1, h * 0.6, 38, -t * 0.8, 0.04);
-      hexagon(w * 0.9, h * 0.7, 42, t * 0.9, 0.04);
-      hexagon(w * 0.5, h * 0.85, 55, t, 0.035);
-
+      hexagon(w*0.5, h*0.12, 46, t*0.5, 0.04);
+      hexagon(w*0.08, h*0.55, 34, -t*0.8, 0.035);
+      hexagon(w*0.92, h*0.65, 38, t*0.9, 0.035);
+      hexagon(w*0.45, h*0.88, 50, t, 0.04);
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);

@@ -7,257 +7,106 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #FDFCFA;
-      color: #1a1a1a;
-      overflow-x: hidden;
-    }
-
-    #geo {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
+    #geo { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 
     nav {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 48px;
-      background: #FDFCFA;
+      position: relative; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 48px; background: var(--bg);
     }
-    .nav-logo {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 2px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #666;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: #c4703f; }
-    .nav-btn {
-      background: #1a1a1a;
-      color: #fff;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+    .nav-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; color: #666; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-btn { background: var(--text); color: #fff; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; }
     .nav-btn:hover { background: #333; }
 
-    /* 2-col editorial grid */
-    .hero {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 48% 52%;
-      align-items: center;
-      min-height: calc(100vh - 64px);
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 40px 48px;
-      gap: 48px;
+    /* HERO */
+    .hero { position: relative; z-index: 2; padding: 40px 48px 0; min-height: calc(100vh - 64px); }
+    .hero-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: end;
+      min-height: calc(100vh - 104px);
     }
 
-    /* Left: text */
-    .hero-left {}
+    /* Left — editorial treatment with thin rule and stats */
+    .hero-left { padding-bottom: 80px; }
     .eyebrow {
-      font-family: 'Outfit', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #c4703f;
-      margin-bottom: 20px;
+      font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
     }
-    /* Thin vertical accent line */
-    .rule {
-      width: 2px;
-      height: 40px;
-      background: #c4703f;
+    /* Thin vertical rule */
+    .v-rule {
+      width: 2px; height: 48px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
       margin-bottom: 20px;
-      opacity: 0.6;
+      border-radius: 1px;
     }
     h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(34px, 3.2vw, 52px);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 20px;
+      font-size: clamp(36px, 3.8vw, 56px);
+      font-weight: 700; line-height: 1.2; margin-bottom: 20px;
     }
-    h1 em {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-weight: 400;
-      color: #c4703f;
-    }
-    .sub {
-      font-size: 15px;
-      line-height: 1.75;
-      color: #555;
-      margin-bottom: 32px;
-    }
+    h1 em { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; color: var(--accent); }
+    .sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 28px; max-width: 460px; }
 
-    /* Inline stats row */
+    /* Stats row */
     .stats {
-      display: flex;
-      gap: 32px;
-      margin-bottom: 36px;
-      padding: 20px 0;
-      border-top: 1px solid #ece9e4;
-      border-bottom: 1px solid #ece9e4;
+      display: flex; gap: 28px; margin-bottom: 32px;
+      padding: 18px 0;
+      border-top: 1px solid #EAE7E2;
+      border-bottom: 1px solid #EAE7E2;
     }
-    .stat-num {
-      font-family: 'Outfit', sans-serif;
-      font-size: 26px;
-      font-weight: 700;
-      color: #c4703f;
-      line-height: 1;
-    }
-    .stat-desc {
-      font-size: 11px;
-      color: #888;
-      font-weight: 500;
-      line-height: 1.4;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+    .stat-num { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent); line-height: 1; }
+    .stat-desc { font-size: 11px; color: #999; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4; margin-top: 3px; }
 
     .cta-btn {
-      display: inline-block;
-      background: #1a1a1a;
-      color: #fff;
-      text-decoration: none;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      margin-bottom: 14px;
-      transition: background 0.2s, transform 0.15s;
+      display: inline-block; background: var(--text); color: #fff;
+      text-decoration: none; padding: 16px 32px; border-radius: 50px;
+      font-size: 14px; font-weight: 600; border: none; cursor: pointer;
+      margin-bottom: 14px; transition: background 0.2s, transform 0.15s;
     }
     .cta-btn:hover { background: #333; transform: translateY(-2px); }
-    .price {
-      font-size: 13px;
-      color: #777;
-    }
-    .price strong { color: #1a1a1a; }
+    .price { font-size: 13px; color: #777; }
+    .price strong { color: var(--text); }
 
-    /* Right: stacked cards */
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+    /* Right — same big photo + video, video positioned center-chest */
+    .hero-photo-wrap { position: relative; display: flex; align-items: flex-end; justify-content: center; }
+    .hero-cutout {
+      display: block; width: 260%; max-width: 260%;
+      object-fit: contain; position: relative; z-index: 1;
+      filter: drop-shadow(0 12px 48px rgba(0,0,0,0.06));
+      margin-left: -80%;
     }
-
-    .card {
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-      border: 1px solid rgba(196,112,63,0.12);
-      background: #fff;
-      transition: transform 0.25s, box-shadow 0.25s;
+    .hero-video-float {
+      position: absolute;
+      bottom: 5%; left: 50%; transform: translateX(-50%);
+      z-index: 4; width: 380px;
+      border-radius: 14px; overflow: hidden; background: #000;
+      border: 2.5px solid rgba(255,255,255,0.9);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.08);
     }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 36px rgba(0,0,0,0.11);
-    }
-
-    /* Photo card — tall enough to show James well */
-    .photo-card {
-      height: 360px;
-      background: #F7F5F2;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .photo-card img {
-      height: 115%;
-      width: auto;
-      object-fit: contain;
-      margin-bottom: -10px;
+    .hero-video-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
+    .vid-label {
+      background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9);
+      text-align: center; padding: 8px 12px;
+      font-size: 0.7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: 0.04em;
     }
 
-    /* Video card */
-    .video-card {
-      background: #1a1a1a;
-    }
-    .video-card video {
-      width: 100%;
-      display: block;
-      max-height: 200px;
-      object-fit: cover;
-    }
-    .video-meta {
-      padding: 10px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .video-meta span {
-      font-size: 12px;
-      color: #999;
-      font-weight: 500;
-    }
-    .vid-badge {
-      background: rgba(196,112,63,0.2);
-      color: #c4703f;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 3px 8px;
-      border-radius: 20px;
-      text-transform: uppercase;
-    }
+    .option-tag { position: fixed; top: 12px; right: 16px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 20px; z-index: 100; text-transform: uppercase; }
 
-    /* Option label */
-    .option-tag {
-      position: fixed;
-      top: 12px;
-      right: 16px;
-      background: #c4703f;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      z-index: 100;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 960px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding: 32px 24px;
-        gap: 36px;
-      }
-      .stats { gap: 20px; }
-      .photo-card { height: 300px; }
+    @media (max-width: 860px) {
+      nav { padding: 16px 24px; } .nav-links { display: none; }
+      .hero { padding: 32px 24px 0; min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+      .hero-left { padding-bottom: 0; }
+      .stats { gap: 16px; }
+      .hero-cutout { max-height: 50vh; }
+      .hero-video-float { width: 200px; bottom: 12%; }
     }
   </style>
 </head>
@@ -276,42 +125,28 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-left">
-      <div class="eyebrow">Deep Work Interview</div>
-      <div class="rule"></div>
-      <h1>You know what's broken. <em>You've known for a while.</em></h1>
-      <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
-
-      <div class="stats">
-        <div>
-          <div class="stat-num">2 hrs</div>
-          <div class="stat-desc">Deep dive<br>session</div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="eyebrow">Deep Work Interview</div>
+        <div class="v-rule"></div>
+        <h1>You know what's broken. <em>You've known for a while.</em></h1>
+        <p class="sub">Your business doesn't match who you've become. The positioning is off. The offers don't land. Two hours from now, you'll know exactly what to fix and how.</p>
+        <div class="stats">
+          <div><div class="stat-num">2 hrs</div><div class="stat-desc">Deep dive<br>session</div></div>
+          <div><div class="stat-num">$67</div><div class="stat-desc">Was $5,000<br>per session</div></div>
+          <div><div class="stat-num">1 call</div><div class="stat-desc">Clear answers<br>guaranteed</div></div>
         </div>
-        <div>
-          <div class="stat-num">$67</div>
-          <div class="stat-desc">Was $5,000<br>per session</div>
-        </div>
-        <div>
-          <div class="stat-num">1 call</div>
-          <div class="stat-desc">Clear answers<br>guaranteed</div>
-        </div>
+        <button class="cta-btn">Start the Deep Work Interview →</button>
+        <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
       </div>
 
-      <button class="cta-btn">Start the Deep Work Interview →</button>
-      <p class="price"><strong>$67.</strong> Two hours. The same process I used to charge $5,000 for.</p>
-    </div>
-
-    <div class="hero-right">
-      <div class="card photo-card">
-        <img src="https://jamesguldan.com/james-hero.png" alt="James Guldan">
-      </div>
-      <div class="card video-card">
-        <video controls preload="metadata">
-          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
-        </video>
-        <div class="video-meta">
-          <span>2 min · The story behind Deep Work</span>
-          <span class="vid-badge">Watch</span>
+      <div class="hero-photo-wrap">
+        <img class="hero-cutout" src="https://jamesguldan.com/james-hero.png" alt="James Guldan" loading="eager">
+        <div class="hero-video-float">
+          <video controls preload="metadata">
+            <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+          </video>
+          <div class="vid-label">2 min · The story behind Deep Work</div>
         </div>
       </div>
     </div>
@@ -320,60 +155,36 @@
   <script>
     const canvas = document.getElementById('geo');
     const ctx = canvas.getContext('2d');
-
     function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
-    resize();
-    addEventListener('resize', resize);
+    resize(); addEventListener('resize', resize);
 
-    /* Constellation / network nodes */
-    const nodes = Array.from({length: 14}, () => ({
-      x: Math.random() * innerWidth,
-      y: Math.random() * innerHeight,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
+    const nodes = Array.from({length: 16}, () => ({
+      x: Math.random() * innerWidth, y: Math.random() * innerHeight,
+      vx: (Math.random()-0.5)*0.35, vy: (Math.random()-0.5)*0.35
     }));
 
     function frame() {
-      ctx.fillStyle = '#FDFCFA';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+      ctx.fillStyle = '#FDFCFA'; ctx.fillRect(0, 0, canvas.width, canvas.height);
       nodes.forEach(n => {
         n.x += n.vx; n.y += n.vy;
-        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+        if (n.x<0||n.x>canvas.width) n.vx*=-1;
+        if (n.y<0||n.y>canvas.height) n.vy*=-1;
       });
-
-      /* draw connections */
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const d = Math.sqrt(dx*dx + dy*dy);
-          if (d < 260) {
-            ctx.save();
-            ctx.globalAlpha = (1 - d/260) * 0.07;
-            ctx.strokeStyle = 'rgba(196,112,63,1)';
-            ctx.lineWidth = 0.8;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.stroke();
-            ctx.restore();
-          }
+      for (let i = 0; i < nodes.length; i++) for (let j = i+1; j < nodes.length; j++) {
+        const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y, d=Math.sqrt(dx*dx+dy*dy);
+        if (d < 260) {
+          ctx.save(); ctx.globalAlpha = (1-d/260)*0.065;
+          ctx.strokeStyle = 'rgba(196,112,63,1)'; ctx.lineWidth = 0.8;
+          ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.stroke();
+          ctx.restore();
         }
       }
-
-      /* draw dots */
       nodes.forEach(n => {
-        ctx.save();
-        ctx.globalAlpha = 0.3;
+        ctx.save(); ctx.globalAlpha = 0.25;
         ctx.fillStyle = 'rgba(196,112,63,1)';
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, 2, 0, Math.PI*2);
-        ctx.fill();
+        ctx.beginPath(); ctx.arc(n.x, n.y, 2, 0, Math.PI*2); ctx.fill();
         ctx.restore();
       });
-
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
