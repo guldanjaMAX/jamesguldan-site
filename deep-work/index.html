@@ -47,7 +47,7 @@
   <meta name="twitter:description" content="One conversation. Two hours. A complete brand blueprint — clarity, positioning, and a full website outline with real copy. The same process coaches paid $5,000 for, now $67.">
   <meta name="twitter:image" content="https://jamesguldan.com/og-image.png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; --muted: #666; --border: #EAE7E2; --nav-h: 64px; }
@@ -73,8 +73,11 @@
     .vid-halo { position: absolute; bottom: 5%; right: 4%; left: auto; transform: none; width: 336px; height: 214px; border: 1px solid rgba(196,112,63,.22); border-radius: 16px; animation: halo 3.2s ease-in-out infinite; pointer-events: none; z-index: 3; }
     .vid-halo2 { position: absolute; bottom: 3.5%; right: 2.2%; left: auto; transform: none; width: 374px; height: 244px; border: 1px solid rgba(196,112,63,.12); border-radius: 20px; animation: halo 3.2s ease-in-out infinite .75s; pointer-events: none; z-index: 3; }
     @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
-    .vid-float { position: absolute; bottom: 7%; right: 6%; left: auto; transform: none; z-index: 4; width: 296px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
-    .vid-float video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: contain; }
+    .vid-float { position: absolute; bottom: 4%; right: 5%; left: auto; transform: none; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
+    .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
+    .hero-arrow-label { position: absolute; bottom: 44%; right: 14%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
+    .hero-arrow-label svg { width: 52px; opacity: 0.85; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
     .hero-text { max-width: 520px; }
@@ -321,6 +324,7 @@
       nav { padding: 0 20px; } .nav-links { display: none; }
       .hero { display: none; }
       .mobile-hero-video { display: block; }
+      .hero-arrow-label { display: none; }
       .cred-section { padding: 48px 20px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stat-item:nth-child(2) { border-right: none; }
@@ -388,9 +392,17 @@
     <div class="vid-halo2"></div>
     <div class="vid-float">
       <video controls preload="metadata">
-        <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+        <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
       </video>
-      <div class="vid-label">2 min · The story behind the Deep Work Process</div>
+      <div class="vid-label">5 min · The Deep Work Process explained</div>
+    <div class="hero-arrow-label">
+      <span>Hear my story</span>
+      <svg viewBox="0 0 55 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8,6 C10,18 18,38 28,55 C34,65 40,72 48,78" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+        <path d="M48,78 L37,74" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+        <path d="M48,78 L46,66" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+      </svg>
+    </div>
     </div>
   </div>
   <div class="hero-text-wrap">
@@ -416,9 +428,9 @@
     <div class="mobile-vid-inner">
       <div class="mobile-vid-player">
         <video controls preload="metadata">
-          <source src="https://jamesguldan.com/deep-work/james-dwi-intro.mp4" type="video/mp4">
+          <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
         </video>
-        <div class="mobile-vid-caption">2 min · The story behind the Deep Work Process</div>
+        <div class="mobile-vid-caption">5 min · The Deep Work Process explained</div>
       </div>
     </div>
   </div>
