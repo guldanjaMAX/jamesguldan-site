@@ -2,12 +2,1663 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=https://deepwork.jamesguldan.com/">
-  <link rel="canonical" href="https://deepwork.jamesguldan.com/">
-  <title>Deep Work Process — Redirecting...</title>
-  <script>window.location.replace("https://deepwork.jamesguldan.com/");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Stripe.js (load early for fastest checkout) -->
+  <script src="https://js.stripe.com/v3/" async></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCD0E6KVCV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DCD0E6KVCV');
+  </script>
+
+  <!-- Primary Meta Tags -->
+  <title>Deep Work Process — Get Clear in 2 Hours | James Guldan</title>
+  <meta name="title" content="Deep Work Process — Get Clear in 2 Hours | James Guldan">
+  <meta name="description" content="One conversation. Two hours. A complete brand blueprint with the clarity you've been waiting for. The same process coaches paid $5,000 for — now $67.">
+  <meta name="author" content="James Guldan">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jamesguldan.com/deep-work/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jamesguldan.com/deep-work/">
+  <meta property="og:title" content="Two hours from now, everything will be different.">
+  <meta property="og:description" content="One conversation. Two hours. A complete brand blueprint — clarity, positioning, and a full website outline with real copy. The same process coaches paid $5,000 for, now $67.">
+  <meta property="og:image" content="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/og-deepwork.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="James Guldan">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://jamesguldan.com/deep-work/">
+  <meta name="twitter:title" content="Two hours from now, everything will be different.">
+  <meta name="twitter:description" content="One conversation. Two hours. A complete brand blueprint — clarity, positioning, and a full website outline with real copy. The same process coaches paid $5,000 for, now $67.">
+  <meta name="twitter:image" content="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/og-deepwork.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #FDFCFA; --accent: #c4703f; --text: #1a1a1a; --muted: #666; --border: #EAE7E2; --nav-h: 64px; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    #geo { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; height: var(--nav-h); display: flex; justify-content: space-between; align-items: center; padding: 0 48px; background: rgba(253,252,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 2.5px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: 13px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-btn { display: inline-block; background: var(--text); color: #fff !important; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Inter',sans-serif; transition: all .25s ease; text-decoration: none !important; }
+    .nav-btn:hover { background: #c4703f; color: #fff !important; }
+
+    /* HERO DESKTOP */
+    .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: hidden; z-index: 2; }
+    .hero-photo { position: absolute; left: 36%; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+    .hero-photo img { max-height: 100%; width: auto; display: block; }
+    .hero-photo-fade { position: absolute; left: 0; top: 0; bottom: 0; width: 45%; background: linear-gradient(to right, var(--bg) 20%, transparent 100%); pointer-events: none; z-index: 1; }
+    .vid-halo { position: absolute; bottom: 5%; right: 4%; left: auto; transform: none; width: 336px; height: 214px; border: 1px solid rgba(196,112,63,.22); border-radius: 16px; animation: halo 3.2s ease-in-out infinite; pointer-events: none; z-index: 3; }
+    .vid-halo2 { position: absolute; bottom: 3.5%; right: 2.2%; left: auto; transform: none; width: 374px; height: 244px; border: 1px solid rgba(196,112,63,.12); border-radius: 20px; animation: halo 3.2s ease-in-out infinite .75s; pointer-events: none; z-index: 3; }
+    @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
+    .vid-float { position: absolute; bottom: 4%; right: 5%; left: auto; transform: none; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
+    .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
+    .hero-arrow-label { position: absolute; bottom: 26%; right: 7%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
+    .hero-arrow-label svg { width: 52px; opacity: 0.85; }
+    .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+    .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .hero-text { max-width: 520px; }
+
+    /* Shared text styles */
+    .eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .geo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+    .geo-line { height: 1px; width: 36px; background: rgba(196,112,63,0.35); }
+    .geo-diamond { width: 10px; height: 10px; border: 1.5px solid var(--accent); transform: rotate(45deg); opacity: 0.75; flex-shrink: 0; }
+    .geo-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; flex-shrink: 0; }
+    h1 { font-family: 'Outfit',sans-serif; font-size: clamp(36px, 3.8vw, 56px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+    h1 em, h2 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
+    .hero-sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 36px; }
+    .cta-btn { display: inline-block; background: var(--text); color: #fff; padding: 18px 40px; border-radius: 50px; font-size: 15px; font-weight: 700; border: none; cursor: pointer; margin-bottom: 14px; transition: all .25s ease; font-family: 'Inter',sans-serif; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 4px 20px rgba(0,0,0,.15); }
+    .cta-btn:hover { background: #c4703f; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(196,112,63,.35); color: #fff; }
+    .price-note { font-size: 13px; color: #777; }
+    .price-note strong { color: var(--text); }
+    .section-eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+
+    /* MOBILE HERO */
+    .mobile-hero-video { display: none; }
+    .mobile-vid-canvas-wrap { position: relative; width: 100%; background: #0d0c0b; overflow: hidden; padding-bottom: 20px; }
+    #mobile-geo { position: absolute; inset: 0; pointer-events: none; }
+    .mobile-vid-rings { position: absolute; inset: 0; z-index: 1; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+    .mobile-ring { position: absolute; border-radius: 20px; border: 1px solid rgba(196,112,63,.25); animation: mring 3s ease-in-out infinite; }
+    .mobile-ring:nth-child(2) { animation-delay: .8s; border-color: rgba(196,112,63,.12); }
+    @keyframes mring { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.2;transform:scale(1.03);} }
+    .mobile-vid-inner { position: relative; z-index: 2; padding: 28px 20px 0; }
+    .mobile-vid-player { border-radius: 14px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,.12); box-shadow: 0 20px 80px rgba(0,0,0,.6); }
+    .mobile-vid-player video { width: 100%; display: block; aspect-ratio: 16/9; }
+    .mobile-vid-caption { background: rgba(0,0,0,.9); color: rgba(255,255,255,.8); text-align: center; padding: 8px; font-size: .68rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+    .mobile-bottom-fade { height: 40px; background: linear-gradient(to bottom, #0d0c0b, var(--bg)); }
+    .mobile-hero-text { padding: 24px 24px 40px; }
+    .mobile-hero-text h1 { font-size: clamp(28px, 8vw, 40px); margin-bottom: 16px; }
+    .mobile-hero-text .hero-sub { font-size: 15px; margin-bottom: 28px; }
+    .mobile-hero-text .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 12px; }
+
+    /* CREDIBILITY */
+    .cred-section { position: relative; z-index: 2; padding: 72px 48px; background: #eeeae4; }
+    .cred-inner { max-width: 1080px; margin: 0 auto; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); margin-bottom: 0; }
+    .stat-item { padding: 36px 28px; text-align: center; border-right: 1px solid rgba(0,0,0,0.1); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Outfit',sans-serif; font-size: 52px; font-weight: 700; line-height: 1; margin-bottom: 10px; color: var(--text); }
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; line-height: 1.6; }
+    .logos-row { text-align: center; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 44px; margin-top: 44px; }
+    .logos-intro { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 22px; }
+    .logos-list { display: flex; justify-content: center; align-items: center; gap: 56px; flex-wrap: wrap; }
+    .logo-name { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #b0a89e; transition: color .25s; }
+    .logo-name:hover { color: var(--text); }
+    .cred-proof { max-width: 720px; margin: 48px auto 0; text-align: center; }
+    .cred-proof-quote { font-family: 'Playfair Display',serif; font-style: italic; font-size: clamp(16px, 1.6vw, 20px); line-height: 1.65; color: var(--text); margin-bottom: 16px; }
+    .cred-proof-attr { display: flex; align-items: center; justify-content: center; gap: 12px; font-family: 'Outfit',sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: var(--muted); }
+    .cred-proof-attr img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(196,112,63,.3); }
+    .cred-proof-attr span { color: var(--accent); }
+    .cred-anchor { margin-top: 36px; }
+    .cred-anchor p { font-size: 14px; color: #777; line-height: 1.7; }
+    .cred-anchor strong { color: var(--text); font-weight: 600; }
+
+    /* WHAT THIS IS */
+    .wti-section { position: relative; z-index: 2; padding: 120px 48px; }
+    .wti-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .wti-left h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 2.8vw, 42px); font-weight: 700; line-height: 1.25; margin-bottom: 24px; }
+    .wti-left p { font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 18px; }
+    .wti-quote { background: #F5F1EC; border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 20px 24px; margin-top: 32px; }
+    .wti-quote p { font-size: 14px; line-height: 1.7; color: #555; font-style: italic; margin-bottom: 14px; }
+    .wti-quote-attr { display: flex; align-items: center; gap: 12px; }
+    .wti-quote-attr img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: var(--border); flex-shrink: 0; }
+    .wti-quote-attr strong { display: block; font-size: 13px; font-weight: 600; }
+    .wti-quote-attr span { font-size: 11px; color: var(--muted); }
+
+    /* Session Questions Panel */
+    .session-panel { background: #0d0c0b; border-radius: 20px; padding: 32px 28px; overflow: hidden; }
+    .session-eyebrow { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.7); display: block; margin-bottom: 28px; }
+    .session-q { margin-bottom: 0; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .session-q:first-of-type { padding-top: 0; }
+    .session-q:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .session-label { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 10px; }
+    .session-quote { font-family: 'Playfair Display',serif; font-style: italic; font-size: clamp(15px, 1.5vw, 18px); line-height: 1.55; color: rgba(255,255,255,.82); }
+    .session-quote em { color: var(--accent); font-style: italic; }
+    .session-footer { font-size: 11px; color: rgba(255,255,255,.2); text-align: center; padding-top: 20px; margin-top: 8px; letter-spacing: 1.5px; }
+
+    /* SAMPLE OUTPUT */
+    .sample-output { margin-top: 72px; background: #0d0c0b; border-radius: 24px; overflow: hidden; }
+    .sample-output-header { background: #1a1917; padding: 16px 28px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .sample-traffic-lights { display: flex; gap: 7px; }
+    .stl { width: 12px; height: 12px; border-radius: 50%; }
+    .sample-file-name { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: rgba(255,255,255,.3); text-transform: uppercase; margin-left: 8px; }
+    .sample-doc { padding: 48px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .sample-block { border-left: 2px solid rgba(196,112,63,.4); padding-left: 20px; margin-bottom: 32px; }
+    .sample-block:last-child { margin-bottom: 0; }
+    .sample-block-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 10px; }
+    .sample-block-content { font-size: 13.5px; line-height: 1.7; color: rgba(255,255,255,.65); }
+    .sample-block-content strong { color: rgba(255,255,255,.9); font-weight: 600; }
+    .sample-divider { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 28px 0; }
+    .sample-score-row { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
+    .sample-score-bar { flex: 1; height: 4px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; }
+    .sample-score-fill { height: 100%; background: linear-gradient(to right, var(--accent), #e8956a); border-radius: 2px; }
+    .sample-score-num { font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 700; color: var(--accent); }
+    .sample-offer-row { display: flex; gap: 12px; margin-top: 12px; }
+    .sample-offer-pill { background: rgba(196,112,63,.12); border: 1px solid rgba(196,112,63,.25); border-radius: 8px; padding: 10px 14px; flex: 1; }
+    .sample-offer-tier { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 4px; }
+    .sample-offer-price { font-family: 'Outfit',sans-serif; font-size: 18px; font-weight: 700; color: #fff; }
+    .sample-offer-name { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 3px; }
+    .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(255,255,255,.2); border-top: 1px solid rgba(255,255,255,.05); font-style: italic; }
+
+    /* PROCESS V3 — Transcript Chat */
+    .proc3-section { position: relative; z-index: 2; padding: 120px 48px; background: var(--bg); }
+    .proc3-inner { max-width: 800px; margin: 0 auto; }
+    .proc3-header { text-align: center; margin-bottom: 64px; }
+    .proc3-h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px,3.2vw,46px); font-weight: 700; color: var(--text); line-height: 1.15; margin: 12px 0 14px; }
+    .proc3-h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); font-weight: 400; }
+    .proc3-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 440px; margin: 0 auto; }
+    .proc3-chat { background: #fff; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 40px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04); }
+    .proc3-chat-header { padding: 14px 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: rgba(253,252,250,.9); }
+    .proc3-chat-status { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; box-shadow: 0 0 6px rgba(34,197,94,.5); }
+    .proc3-chat-title { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(26,26,26,.4); }
+    .proc3-messages { padding: 36px 28px 12px; display: flex; flex-direction: column; gap: 0; }
+    .proc3-exchange { margin-bottom: 44px; }
+    .proc3-exchange:last-child { margin-bottom: 0; }
+    .proc3-phase-divider { text-align: center; margin-bottom: 26px; position: relative; }
+    .proc3-phase-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border); }
+    .proc3-phase-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); background: #fff; padding: 0 14px; position: relative; display: inline-block; }
+    .proc3-ai-msg { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; opacity: 0; transform: translateY(14px); transition: opacity .55s cubic-bezier(.22,1,.36,1), transform .55s cubic-bezier(.22,1,.36,1); }
+    .proc3-ai-msg.visible { opacity: 1; transform: translateY(0); }
+    .proc3-ai-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(196,112,63,.1); border: 1px solid rgba(196,112,63,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .proc3-ai-icon { width: 11px; height: 11px; border: 1.5px solid var(--accent); transform: rotate(45deg); opacity: .75; }
+    .proc3-ai-bubble { background: #F7F4F0; border: 1px solid rgba(0,0,0,.05); border-radius: 4px 16px 16px 16px; padding: 16px 20px; max-width: 88%; }
+    .proc3-ai-text { font-size: 15px; line-height: 1.74; color: var(--text); }
+    .proc3-user-msg { display: flex; justify-content: flex-end; align-items: flex-start; margin-bottom: 14px; opacity: 0; transform: translateY(14px); transition: opacity .55s cubic-bezier(.22,1,.36,1), transform .55s cubic-bezier(.22,1,.36,1); }
+    .proc3-user-msg.visible { opacity: 1; transform: translateY(0); }
+    .proc3-user-bubble { background: rgba(196,112,63,.08); border: 1px solid rgba(196,112,63,.15); border-radius: 16px 4px 16px 16px; padding: 16px 20px; max-width: 84%; }
+    .proc3-user-text { font-size: 14.5px; line-height: 1.74; color: rgba(26,26,26,.72); font-style: italic; }
+    @keyframes proc3bounce { 0%,60%,100%{transform:translateY(0);} 30%{transform:translateY(-5px);} }
+    .proc3-footer { padding: 28px 28px 32px; border-top: 1px solid var(--border); background: rgba(253,252,250,.7); text-align: center; }
+    .proc3-phases-wrap { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 18px; }
+    .proc3-phase-pill { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(26,26,26,.38); background: rgba(0,0,0,.03); border: 1px solid rgba(0,0,0,.07); border-radius: 20px; padding: 5px 10px; }
+    .proc3-footer-note { font-size: 12.5px; color: var(--muted); line-height: 1.7; max-width: 440px; margin: 0 auto 24px; }
+    .proc3-footer-price { font-size: 12px; color: rgba(26,26,26,.35); margin-top: 10px; }
+
+    /* WHAT YOU GET */
+    .wyg-section { position: relative; z-index: 2; padding: 120px 0; background: #0d0c0b; overflow: hidden; }
+    .wyg-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .wyg-header { text-align: center; margin-bottom: 80px; }
+    .wyg-header .section-eyebrow { color: rgba(196,112,63,.8); }
+    .wyg-header h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 2.8vw, 42px); font-weight: 700; color: #fff; }
+    .wyg-header h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); }
+    .wyg-header p { font-size: 16px; color: rgba(255,255,255,.4); margin-top: 12px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
+    /* ANNOTATION LAYOUT */
+    .ann-wrap { position: relative; display: grid; grid-template-columns: 52% 1fr; gap: 0 56px; align-items: start; }
+    .ann-svg { position: absolute; inset: 0; pointer-events: none; z-index: 3; overflow: visible; }
+    .ann-doc { background: #1b1a18; border: 1px solid rgba(255,255,255,.1); border-radius: 16px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.04); position: relative; z-index: 2; }
+    .ann-doc-chrome { display: flex; align-items: center; gap: 7px; padding: 14px 18px; background: #252320; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .ann-chrome-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+    .ann-doc-label-text { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.18); margin-left: 8px; }
+    .ann-doc-section { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.05); }
+    .ann-doc-section:last-child { border-bottom: none; }
+    .ann-ds-label { font-family: 'Outfit',sans-serif; font-size: 8.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 5px; }
+    .ann-ds-content { font-size: 11px; line-height: 1.6; color: rgba(255,255,255,.28); }
+    .ann-labels { display: flex; flex-direction: column; padding-top: 44px; position: relative; z-index: 2; gap: 0; }
+    .ann-label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .ann-label:last-child { border-bottom: none; }
+    .ann-label-body { flex: 1; }
+    .ann-label-badge { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: rgba(196,112,63,.85); background: rgba(196,112,63,.1); border: 1px solid rgba(196,112,63,.22); border-radius: 5px; padding: 5px 8px; flex-shrink: 0; margin-top: 1px; white-space: nowrap; }
+    .ann-label-title { font-family: 'Outfit',sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,.9); margin-bottom: 4px; line-height: 1.2; }
+    .ann-label-desc { font-size: 12px; line-height: 1.65; color: rgba(255,255,255,.38); }
+
+    /* TESTIMONIALS */
+    .test-section { position: relative; z-index: 2; padding: 120px 48px; background: #F9F6F2; }
+    .test-featured-video { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: #0d0c0b; border-radius: 16px; overflow: hidden; margin-bottom: 32px; box-shadow: 0 8px 48px rgba(0,0,0,.18); }
+    .test-video-wrap { overflow: hidden; max-height: 420px; position: relative; }
+    .test-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; z-index: 2; background: linear-gradient(135deg, rgba(13,12,11,.72) 0%, rgba(13,12,11,.38) 100%); transition: opacity .4s; }
+    .video-overlay.hidden { opacity: 0; pointer-events: none; }
+    .video-overlay-play { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1.5px solid rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; transition: transform .25s, background .25s; }
+    .video-overlay:hover .video-overlay-play { transform: scale(1.08); background: rgba(255,255,255,.2); }
+    .video-overlay-play svg { width: 28px; height: 28px; fill: #fff; margin-left: 3px; }
+    .video-overlay-label { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; color: rgba(255,255,255,.55); margin-bottom: 4px; }
+    .video-overlay-name { font-family: 'Playfair Display',serif; font-size: 18px; color: #fff; font-weight: 600; margin-bottom: 6px; }
+    .video-overlay-tag { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); background: rgba(196,112,63,.13); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(196,112,63,.22); }
+    .test-video-content { padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .test-video-stars { color: var(--accent); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
+    .test-video-quote { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,.82); font-style: italic; margin-bottom: 28px; font-family: 'Playfair Display',serif; }
+    .test-video-name { font-weight: 700; font-size: 15px; color: #fff; font-family: 'Outfit',sans-serif; }
+    .test-video-title { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 3px; }
+    .test-video-result { font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(196,112,63,.25); line-height: 1.6; }
+    .test-inner { max-width: 1100px; margin: 0 auto; }
+    .test-header { text-align: center; margin-bottom: 64px; }
+    .test-header h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 2.8vw, 40px); font-weight: 700; }
+    .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .test-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+    .test-stars { color: var(--accent); font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
+    .test-quote { font-size: 15px; line-height: 1.75; color: var(--text); margin-bottom: 24px; font-style: italic; }
+    .test-author { display: flex; align-items: center; gap: 14px; }
+    .test-photo { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; background: var(--border); flex-shrink: 0; }
+    .test-name { font-weight: 600; font-size: 14px; }
+    .test-title { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .test-cta { text-align: center; margin-top: 40px; }
+    .test-cta a { font-size: 13px; color: var(--accent); font-weight: 600; border-bottom: 1px solid rgba(196,112,63,.4); padding-bottom: 2px; }
+
+    /* HOW TO */
+    .how-section { position: relative; z-index: 2; padding: 120px 48px; }
+    .how-inner { max-width: 900px; margin: 0 auto; }
+    .how-header { text-align: center; margin-bottom: 64px; }
+    .how-header h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 2.8vw, 42px); font-weight: 700; }
+    .how-step { display: grid; grid-template-columns: 56px 1fr; gap: 24px; padding: 32px 0; border-bottom: 1px solid var(--border); }
+    .how-step:last-child { border-bottom: none; }
+    .step-num { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 16px; color: var(--accent); flex-shrink: 0; }
+    .step-content h3 { font-family: 'Outfit',sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .step-content p { font-size: 15px; line-height: 1.75; color: var(--muted); }
+
+    /* FINAL CTA */
+    .final-cta { position: relative; z-index: 2; padding: 120px 48px; background: var(--text); overflow: hidden; }
+    #cta-canvas { position: absolute; inset: 0; pointer-events: none; }
+    .final-cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; text-align: center; }
+    .final-cta h2 { font-family: 'Outfit',sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 20px; }
+    .final-cta h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); }
+    .final-cta p { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,.55); margin-bottom: 40px; }
+    .final-price { font-family: 'Outfit',sans-serif; font-size: 60px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .final-price sup { font-size: 24px; vertical-align: super; }
+    .final-sub { font-size: 13px; color: rgba(255,255,255,.35); margin-bottom: 32px; }
+    .cta-btn-light { background: #fff; color: var(--text); padding: 20px 48px; border-radius: 50px; font-size: 16px; font-weight: 700; border: none; cursor: pointer; display: inline-block; transition: all .25s ease; font-family: 'Inter',sans-serif; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 4px 24px rgba(255,255,255,.15); }
+    .cta-btn-light:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(255,255,255,.3); background: #c4703f; color: #fff; }
+    .final-trust { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 16px; }
+    .anchor-price-wrap { margin-bottom: 8px; }
+    .anchor-price-original { font-family: 'Outfit',sans-serif; font-size: 22px; color: rgba(255,255,255,.3); text-decoration: line-through; margin-bottom: 4px; display: block; }
+    .launch-badge { display: inline-block; background: rgba(196,112,63,.25); border: 1px solid rgba(196,112,63,.5); color: var(--accent); font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 16px; }
+
+    /* FOOTER */
+    footer { position: relative; z-index: 2; padding: 32px 48px; background: #0a0909; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; color: rgba(255,255,255,.5); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,.3); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.2); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .phases-grid { grid-template-columns: repeat(2,1fr); }
+      .deliverables-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 860px) {
+      nav { padding: 0 20px; } .nav-links { display: none; }
+      .hero { display: none; }
+      .mobile-hero-video { display: block; }
+      .hero-arrow-label { display: none; }
+      .cred-section { padding: 48px 20px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3),
+      .stat-item:nth-child(4) { border-top: 1px solid rgba(0,0,0,.1); }
+      .stat-item:nth-child(4) { border-right: none; }
+      .logos-list { gap: 20px; }
+      .cred-proof { margin-top: 36px; }
+      .cred-proof-quote { font-size: 17px; }
+      .wti-section { padding: 64px 20px; }
+      .wti-inner { grid-template-columns: 1fr; gap: 40px; }
+      .proc3-section { padding: 72px 20px; }
+      .proc3-messages { padding: 24px 16px 8px; }
+      .proc3-footer { padding: 20px 16px 28px; }
+      .wyg-section { padding: 72px 20px; }
+      .ann-wrap { grid-template-columns: 1fr !important; }
+      .ann-doc { display: none; }
+      .ann-svg { display: none; }
+      .ann-labels { padding-top: 0; }
+      .ann-label { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06) !important; }
+      .ann-label:last-child { border-bottom: none !important; }
+      .deliverables-grid { grid-template-columns: 1fr; }
+      .sample-doc { grid-template-columns: 1fr; padding: 28px 24px; gap: 0; }
+      .sample-offer-row { flex-direction: column; gap: 8px; }
+      .test-section { padding: 72px 20px; }
+      .test-featured-video { grid-template-columns: 1fr; }
+      .test-video-wrap { max-height: 260px; }
+      .video-overlay-play { width: 56px; height: 56px; }
+      .video-overlay-play svg { width: 22px; height: 22px; }
+      .video-overlay-name { font-size: 15px; }
+      .video-overlay-label { font-size: 10px; }
+      .test-video-content { padding: 28px 24px; }
+      .test-grid { grid-template-columns: 1fr; }
+      .how-section { padding: 72px 20px; }
+      .final-cta { padding: 72px 20px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px 20px; }
+    }
+    @media (max-width: 480px) {
+      .proc3-ai-bubble { max-width: 95%; }
+      .proc3-user-bubble { max-width: 92%; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Deep Work Process",
+    "description": "One conversation. Two hours. A complete brand blueprint with clarity, positioning, and a full website outline with real copy. The same process coaches paid $5,000 for, now $67.",
+    "image": "https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/og-deepwork.png",
+    "url": "https://jamesguldan.com/deep-work/",
+    "brand": {
+      "@type": "Brand",
+      "name": "James Guldan"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "67.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://buy.stripe.com/28o3fP3Ym4JX3XW288"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "James Guldan",
+      "url": "https://jamesguldan.com"
+    }
+  }
+  </script>
 </head>
 <body>
-  <p>Redirecting to <a href="https://deepwork.jamesguldan.com/">deepwork.jamesguldan.com</a>...</p>
+<canvas id="geo"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">James Guldan</div>
+  <ul class="nav-links">
+    <li><a href="#what-this-is">What This Is</a></li>
+    <li><a href="#process">The Process</a></li>
+    <li><a href="#what-you-get">What You Get</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#checkout" data-checkout="blueprint" class="nav-btn" style="text-decoration:none;">Get Clear Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO DESKTOP -->
+<section class="hero">
+  <div class="hero-photo">
+    <img src="images/james-hero.png" alt="James Guldan" loading="eager">
+    <div class="hero-photo-fade"></div>
+    <div class="vid-halo"></div>
+    <div class="vid-halo2"></div>
+    <div class="vid-float">
+      <video controls preload="metadata">
+        <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
+      </video>
+      <div class="vid-label">5 min · The Deep Work Process explained</div>
+    <div class="hero-arrow-label">
+      <span>Hear my story</span>
+      <svg viewBox="0 0 55 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8,6 C10,18 18,38 28,55 C34,65 40,72 48,78" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+        <path d="M48,78 L37,74" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+        <path d="M48,78 L46,66" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    </div>
+  </div>
+  <div class="hero-text-wrap">
+    <div class="hero-text">
+      <div class="eyebrow">Deep Work Process</div>
+      <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
+      <h1>Two hours from now, everything will be <em>different.</em></h1>
+      <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
+      <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
+      <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HERO MOBILE — no photo, video is the star -->
+<div class="mobile-hero-video">
+  <div class="mobile-vid-canvas-wrap">
+    <canvas id="mobile-geo"></canvas>
+    <div class="mobile-vid-rings">
+      <div class="mobile-ring" style="width:calc(100% - 24px);aspect-ratio:16/10;"></div>
+      <div class="mobile-ring" style="width:calc(100% - 8px);aspect-ratio:16/10;"></div>
+    </div>
+    <div class="mobile-vid-inner">
+      <div class="mobile-vid-player">
+        <video controls preload="metadata">
+          <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
+        </video>
+        <div class="mobile-vid-caption">5 min · The Deep Work Process explained</div>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-bottom-fade"></div>
+  <div class="mobile-hero-text">
+    <div class="eyebrow">Deep Work Process</div>
+    <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
+    <h1>Two hours from now, everything will be <em>different.</em></h1>
+    <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
+    <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
+    <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
+  </div>
+</div>
+
+<!-- CREDIBILITY -->
+<section class="cred-section">
+  <div class="cred-inner">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-num">15<span>yrs</span></div><div class="stat-label">Building 7 Figure Businesses for Service Founders</div></div>
+      <div class="stat-item"><div class="stat-num">132</div><div class="stat-label">Entrepreneurs Who Found Their Niche</div></div>
+      <div class="stat-item"><div class="stat-num">13</div><div class="stat-label">Companies Grew 1,000%+ After Repositioning</div></div>
+      <div class="stat-item"><div class="stat-num">$1<span>B+</span></div><div class="stat-label">In Client Revenue Generated</div></div>
+    </div>
+    <div class="logos-row">
+      <div class="logos-intro">Positioned brands alongside</div>
+      <div class="logos-list">
+        <span class="logo-name">Tony Robbins</span>
+        <span class="logo-name">Abundance360</span>
+        <span class="logo-name">Dean Graziosi</span>
+        <span class="logo-name">Frank Kern</span>
+      </div>
+    </div>
+    <div class="cred-proof">
+      <div class="cred-proof-quote">"It felt like I'd paid for a one on one session with Tony Robbins. We went deep and the outcome was stellar."</div>
+      <div class="cred-proof-attr"><img src="images/ross-tompkins.jpg" alt="Ross Tompkins" onerror="this.src='https://ui-avatars.com/api/?name=Ross+Tompkins&background=c4703f&color=fff&size=92'">Ross Tompkins <span>&mdash;</span> Coach &amp; Business Strategist</div>
+      <div class="cred-anchor">
+        <p>This is the same process coaches and consultants paid <strong>$5,000</strong> to go through with James directly. Now it runs in two hours, guided by AI trained on 15 years of his positioning methodology.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THIS IS -->
+<section class="wti-section" id="what-this-is">
+  <div class="wti-inner">
+    <div class="wti-left">
+      <div class="section-eyebrow">What This Is</div>
+      <h2>You don't have a strategy problem. You have a <em>mirror problem.</em></h2>
+      <p>Every coach and consultant I've ever talked to knows exactly what's broken. They can feel it in their chest every time a prospect goes quiet. Every time a sales call doesn't close. Every time they refresh their inbox hoping today is different.</p>
+      <p>The problem isn't strategy. The problem is that nobody in your life will sit with you for two uninterrupted hours and ask you the right questions without an agenda. Without trying to sell you something. Without filtering you through their own framework.</p>
+      <p>I built this process working with some of the most well-known coaches and experts in the world — people who paid $5,000 for the output you can have today for less than the cost of a dinner out. One honest conversation, in the privacy of your home, to get the truth you know you need to hear. Named competitors, pricing data, a credibility score from 1 to 10, and the exact market opportunity your background sets you up for.</p>
+      <div class="wti-quote">
+        <p>"I spent all day on this. Better than working with business coaches I've paid to talk with me on the phone. I have real clarity on the next direction."</p>
+        <div class="wti-quote-attr">
+          <img src="images/chris-van-loan.jpg" alt="Chris Van Loan III" onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan+III&background=c4703f&color=fff&size=92'">
+          <div>
+            <strong>Chris Van Loan III</strong>
+            <span>Creative Director &amp; Strategic Media Partner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wti-right">
+      <div class="session-panel">
+        <span class="session-eyebrow">Inside the Process</span>
+        <div class="session-q">
+          <div class="session-label">Session 1 of 4</div>
+          <div class="session-quote">"If money weren't a factor, what work would you <em>refuse to stop doing?</em>"</div>
+        </div>
+        <div class="session-q">
+          <div class="session-label">Session 2 of 4</div>
+          <div class="session-quote">"Who specifically needs what <em>only you</em> can offer, and why haven't they found you yet?"</div>
+        </div>
+        <div class="session-q">
+          <div class="session-label">Session 3 of 4</div>
+          <div class="session-quote">"What truth about your business have you been <em>avoiding?</em>"</div>
+        </div>
+        <div class="session-q">
+          <div class="session-label">Session 4 of 4</div>
+          <div class="session-quote">"If you had to rebuild from scratch knowing everything you know now, <em>what would you do differently?</em>"</div>
+        </div>
+        <div class="session-q">
+          <div class="session-label">Deep Dive</div>
+          <div class="session-quote">"Name the three competitors you secretly respect. Now tell me what they do <em>that you don't.</em>"</div>
+        </div>
+        <div class="session-footer">8 phases &nbsp;·&nbsp; 50+ questions &nbsp;·&nbsp; 2 hours</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROCESS -->
+<section class="proc3-section" id="process">
+  <div class="proc3-inner">
+
+    <div class="proc3-header">
+      <div class="eyebrow">The Process</div>
+      <h2 class="proc3-h2">The conversation that<br><em>changes everything.</em></h2>
+      <p class="proc3-sub">Eight phases. The AI asks the questions nobody else does.</p>
+    </div>
+
+    <div class="proc3-chat">
+      <div class="proc3-chat-header">
+        <div class="proc3-chat-status"></div>
+        <div class="proc3-chat-title">Deep Work Process &nbsp;&middot;&nbsp; Session in Progress</div>
+      </div>
+
+      <div class="proc3-messages">
+
+        <!-- Exchange 1 -->
+        <div class="proc3-exchange">
+          <div class="proc3-phase-divider"><span class="proc3-phase-label">Phase 01 &nbsp;&middot;&nbsp; Your Story</span></div>
+          <div class="proc3-ai-msg" data-reveal>
+            <div class="proc3-ai-avatar"><div class="proc3-ai-icon"></div></div>
+            <div class="proc3-ai-bubble">
+              <p class="proc3-ai-text">Let&rsquo;s start where it actually started. Not the polished version &mdash; the real one. Walk me through the moment that made you the person who does this work.</p>
+            </div>
+          </div>
+          <div class="proc3-user-msg" data-reveal>
+            <div class="proc3-user-bubble">
+              <p class="proc3-user-text">Honestly? I almost shut my first agency down at 28. No clients, credit cards maxed, about three weeks from walking away. Then I figured out how to position what I was actually good at &mdash; and the whole business changed in 90 days. That&rsquo;s what I teach now.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exchange 2 -->
+        <div class="proc3-exchange">
+          <div class="proc3-phase-divider"><span class="proc3-phase-label">Phase 03 &nbsp;&middot;&nbsp; Your Beliefs</span></div>
+          <div class="proc3-ai-msg" data-reveal>
+            <div class="proc3-ai-avatar"><div class="proc3-ai-icon"></div></div>
+            <div class="proc3-ai-bubble">
+              <p class="proc3-ai-text">What do you believe that most people in your space are fundamentally wrong about? Give me the real answer &mdash; not the one you&rsquo;d put on LinkedIn.</p>
+            </div>
+          </div>
+          <div class="proc3-user-msg" data-reveal>
+            <div class="proc3-user-bubble">
+              <p class="proc3-user-text">That niching down means turning clients away. Most coaches think specificity costs them business. The opposite is true. The more specific you are, the more you can charge &mdash; and the better the clients you attract.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exchange 3 -->
+        <div class="proc3-exchange">
+          <div class="proc3-phase-divider"><span class="proc3-phase-label">Phase 06 &nbsp;&middot;&nbsp; Market &amp; Niche</span></div>
+          <div class="proc3-ai-msg" data-reveal>
+            <div class="proc3-ai-avatar"><div class="proc3-ai-icon"></div></div>
+            <div class="proc3-ai-bubble">
+              <p class="proc3-ai-text">You&rsquo;ve described your competitors. Where are you genuinely better &mdash; and where are you still catching up?</p>
+            </div>
+          </div>
+          <div class="proc3-user-msg" data-reveal>
+            <div class="proc3-user-bubble">
+              <p class="proc3-user-text">Better: the depth I go on connecting story to offer. I&rsquo;ve never met anyone who does it at this level. Catching up: my SEO is honestly terrible. I know it. It&rsquo;s next.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="proc3-footer">
+        <div class="proc3-phases-wrap">
+          <div class="proc3-phase-pill">01 Your Story</div>
+          <div class="proc3-phase-pill">02 Your Expertise</div>
+          <div class="proc3-phase-pill">03 Your Beliefs</div>
+          <div class="proc3-phase-pill">04 Your People</div>
+          <div class="proc3-phase-pill">05 Voice &amp; Visual</div>
+          <div class="proc3-phase-pill">06 Market &amp; Niche</div>
+          <div class="proc3-phase-pill">07 Your Offers</div>
+          <div class="proc3-phase-pill">08 The Synthesis</div>
+        </div>
+        <p class="proc3-footer-note">Three of eight phases shown. The full conversation covers every dimension of your positioning and synthesizes it into a complete brand blueprint.</p>
+        <a href="#checkout" data-checkout="blueprint" class="cta-btn">Start the Clarity Exercise →</a>
+        <p class="proc3-footer-price">$67 one time &nbsp;&middot;&nbsp; instant access &nbsp;&middot;&nbsp; no subscription</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="wyg-section" id="what-you-get">
+  <div class="wyg-inner">
+    <div class="wyg-header">
+      <div class="section-eyebrow">What You Walk Away With</div>
+      <h2>A complete blueprint. Not a <em>summary.</em></h2>
+      <p>Seven distinct documents. Each one specific to your story, your market, and your exact positioning gap.</p>
+    </div>
+
+    <div class="ann-wrap" id="ann-wrap">
+      <svg class="ann-svg" id="ann-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+
+      <!-- LEFT: Document mockup -->
+      <div class="ann-doc" id="ann-doc">
+        <div class="ann-doc-chrome">
+          <span class="ann-chrome-dot" style="background:#FF5F57"></span>
+          <span class="ann-chrome-dot" style="background:#FEBC2E"></span>
+          <span class="ann-chrome-dot" style="background:#28C840"></span>
+          <span class="ann-doc-label-text">Brand Blueprint — Deep Work Interview</span>
+        </div>
+        <div class="ann-doc-section" id="dsec-1">
+          <div class="ann-ds-label">01 &nbsp;Brand Foundation</div>
+          <div class="ann-ds-content">"James Guldan positioned as Brand Strategy Authority. Core narrative: 'systems over hustle' — 15 years building 7-figure businesses for service founders. Visual direction: warm copper accents, Outfit typeface, deep neutral palette."</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-2">
+          <div class="ann-ds-label">02 &nbsp;Ideal Avatar</div>
+          <div class="ann-ds-content">"Marcus T., 38. Revenue $180K–$320K. Trigger event: 'I've built something real but nobody outside my network knows it exists.' Primary objection: Has he worked with someone like me?"</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-3">
+          <div class="ann-ds-label">03 &nbsp;Niche Analysis</div>
+          <div class="ann-ds-content">"Primary niche: B2B brand strategy for service businesses. Credibility score: 7.2/10. Top positioning gap: no SEO footprint for core strategic keywords. Three named competitors with real pricing included."</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-4">
+          <div class="ann-ds-label">04 &nbsp;Offer Structure</div>
+          <div class="ann-ds-content">"TIER 1 — Deep Work Interview $67. TIER 2 — Brand Build Sprint $2,400. TIER 3 — Done-With-You Retainer $4,200/mo. Each named, priced, and built with specific deliverables and ascension logic."</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-5">
+          <div class="ann-ds-label">05 &nbsp;Website Blueprint</div>
+          <div class="ann-ds-content">"HERO: 'Finally, a brand that sounds like you.' PROBLEM: Most founders have the results but not the words. SOLUTION: One interview, seven documents. Full copy for every section — not a wireframe."</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-6">
+          <div class="ann-ds-label">06 &nbsp;Gap Analysis</div>
+          <div class="ann-ds-content">"Priority 1 (urgency 9/10): Zero LinkedIn presence for target keywords. Priority 2 (8/10): No email nurture sequence post-purchase. Top 10 actions ranked by impact for the next 30 to 90 days."</div>
+        </div>
+        <div class="ann-doc-section" id="dsec-7">
+          <div class="ann-ds-label">07 &nbsp;Headlines &amp; Positioning</div>
+          <div class="ann-ds-content">"ONE-LINER: 'I help service businesses turn buried expertise into a brand that books premium clients.' Five headline options in your voice. The 30-second pitch that actually sounds like you."</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Annotation labels -->
+      <div class="ann-labels" id="ann-labels">
+        <div class="ann-label" id="ala-1">
+          <div class="ann-label-badge">01</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Brand Foundation</div>
+            <div class="ann-label-desc">Your story, expertise, worldview, and visual direction — everything a designer needs to build from day one.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-2">
+          <div class="ann-label-badge">02</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Ideal Avatar</div>
+            <div class="ann-label-desc">A vivid portrait with a name, internal dialogue, trigger event, real objections, and actual budget — not a demographics list.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-3">
+          <div class="ann-label-badge">03</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Niche Domination Analysis</div>
+            <div class="ann-label-desc">Your positioning in one sentence, named competitors with real pricing, and an honest credibility score with a gap explanation.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-4">
+          <div class="ann-label-badge">04</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Three-Tier Offer Structure</div>
+            <div class="ann-label-desc">High, mid, and low ticket — each named, priced, and built with the logic that moves someone up the ladder.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-5">
+          <div class="ann-label-badge">05</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Website Blueprint with Real Copy</div>
+            <div class="ann-label-desc">Actual headlines, CTA text, problem copy, solution copy, about section, FAQ, and footer CTA — not a wireframe.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-6">
+          <div class="ann-label-badge">06</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Gap Analysis</div>
+            <div class="ann-label-desc">What you're missing, rated by urgency, with specific next steps and a priority roadmap for the next 30 to 90 days.</div>
+          </div>
+        </div>
+        <div class="ann-label" id="ala-7">
+          <div class="ann-label-badge">07</div>
+          <div class="ann-label-body">
+            <div class="ann-label-title">Headlines &amp; Positioning</div>
+            <div class="ann-label-desc">Five headline options in your voice, the one-liner that makes people stop, and a 30-second pitch that actually sounds like you.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end ann-wrap -->
+  </div>
+</section>
+
+<!-- SAMPLE OUTPUT PREVIEW -->
+<div style="max-width:1100px;margin:64px auto 0;padding:0 48px;">
+  <div class="section-eyebrow" style="text-align:center;margin-bottom:12px;">Sample Output</div>
+  <p style="text-align:center;font-size:15px;color:#777;max-width:520px;margin:0 auto 36px;line-height:1.7;">This is what the actual document looks like. Your version will be built around your story, your market, and your specific positioning gap.</p>
+  <div class="sample-output">
+    <div class="sample-output-header">
+      <div class="sample-traffic-lights">
+        <div class="stl" style="background:#ff5f57"></div>
+        <div class="stl" style="background:#febc2e"></div>
+        <div class="stl" style="background:#28c840"></div>
+      </div>
+      <span class="sample-file-name">Brand Blueprint — Sarah Chen — Deep Work Interview Output</span>
+    </div>
+    <div class="sample-doc">
+      <div>
+        <div class="sample-block">
+          <div class="sample-block-label">Positioning Statement</div>
+          <div class="sample-block-content"><strong>"Sarah Chen is the only leadership coach who uses 12 years at McKinsey to help burned-out executives redesign their careers without sacrificing income or identity."</strong></div>
+        </div>
+        <hr class="sample-divider">
+        <div class="sample-block">
+          <div class="sample-block-label">Ideal Client — Vivid Portrait</div>
+          <div class="sample-block-content">Marcus, 44. SVP at a tech company. At 11pm on a Tuesday he's scrolling LinkedIn watching people 10 years younger get promoted around him. His wife knows something's off. He tells people he's "evaluating options." He's too proud to admit he doesn't know what comes next. <strong>He has never paid less than $500/hr for advice.</strong></div>
+        </div>
+        <hr class="sample-divider">
+        <div class="sample-block">
+          <div class="sample-block-label">Credibility Score</div>
+          <div class="sample-block-content">Your background scores a <strong>7.4 out of 10</strong> for category authority. The gap: no published case studies with named outcomes. Fix this in 90 days.</div>
+          <div class="sample-score-row">
+            <div class="sample-score-bar"><div class="sample-score-fill" style="width:74%"></div></div>
+            <div class="sample-score-num">7.4</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sample-block">
+          <div class="sample-block-label">Three-Tier Offer Structure</div>
+          <div class="sample-block-content" style="margin-bottom:12px;">Each offer is named, priced, and built with specific deliverables.</div>
+          <div class="sample-offer-row">
+            <div class="sample-offer-pill">
+              <div class="sample-offer-tier">Entry</div>
+              <div class="sample-offer-price">$297</div>
+              <div class="sample-offer-name">Career Clarity Audit</div>
+            </div>
+            <div class="sample-offer-pill">
+              <div class="sample-offer-tier">Core</div>
+              <div class="sample-offer-price">$3,500</div>
+              <div class="sample-offer-name">Transition Sprint</div>
+            </div>
+            <div class="sample-offer-pill">
+              <div class="sample-offer-tier">Premium</div>
+              <div class="sample-offer-price">$18K</div>
+              <div class="sample-offer-name">Full Rebuild</div>
+            </div>
+          </div>
+        </div>
+        <hr class="sample-divider">
+        <div class="sample-block">
+          <div class="sample-block-label">Competitor Analysis (excerpt)</div>
+          <div class="sample-block-content">Compared against 5 named competitors. <strong>Your gap:</strong> nobody in your space combines McKinsey credibility with emotional intelligence. You could own "the strategist who actually understands the human side." Charge accordingly.</div>
+        </div>
+        <hr class="sample-divider">
+        <div class="sample-block">
+          <div class="sample-block-label">Homepage Headline — Option 1 of 5</div>
+          <div class="sample-block-content"><strong>"You built a career everyone admires. Now you need someone who'll tell you the truth about what comes next."</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="sample-caption">This is a dramatized example. Your output is built entirely from your answers — specific to your story, market, and positioning gap.</div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="test-section" id="stories">
+  <div class="test-inner">
+    <div class="test-header">
+      <div class="section-eyebrow">Stories</div>
+      <h2>People who coach for a living say this exercise changed <em>their life.</em></h2>
+    </div>
+    <!-- GREG PIGNATARO — FEATURED VIDEO TESTIMONIAL (filmed on Necker Island) -->
+    <div class="test-featured-video">
+      <div class="test-video-wrap">
+        <div class="video-overlay" onclick="var v=this.parentElement.querySelector('video');this.classList.add('hidden');v.play();">
+          <div class="video-overlay-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+          <div class="video-overlay-label">Watch Testimonial</div>
+          <div class="video-overlay-name">Greg Pignataro</div>
+          <div class="video-overlay-tag">Filmed on Necker Island</div>
+        </div>
+        <video controls preload="metadata">
+          <source src="videos/greg-pignataro-testimonial.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="test-video-content">
+        <div class="test-video-stars">★★★★★</div>
+        <p class="test-video-quote">"I had never intended to do any sort of personal brand work. No sooner after James and I completed the initial process than I spontaneously received an invitation to be a guest facilitator at a retreat on Necker Island. Pretty powerful lining up of opportunities."</p>
+        <div>
+          <div class="test-video-name">Greg Pignataro</div>
+          <div class="test-video-title">Entrepreneur &amp; Guest Facilitator</div>
+          <div class="test-video-result">Direct result: Invited to facilitate at Richard Branson&rsquo;s Necker Island retreat — within weeks of completing the process.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"It was definitely a commitment, but worth every minute. I've done extensive interviews like this for clients as I was building their branding and messaging, but I enjoyed having this thread myself. Not only did I get to see the dots connect in real time, but I had the thread to continue to add to and work with. This tool was very valuable."</p>
+        <div class="test-author">
+          <img class="test-photo" src="images/juliet-wright.jpg" alt="Juliet Wright" style="object-fit:cover;" onerror="this.src='https://ui-avatars.com/api/?name=Juliet+Wright&background=EAE7E2&color=555&size=92'">
+          <div><div class="test-name">Juliet Wright</div><div class="test-title">Branding &amp; Messaging Consultant</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"The Deep Work process gave me clarity and conviction. It confirmed what I suspected about my positioning and gave me the language I was missing to articulate it. Worth every minute."</p>
+        <div class="test-author">
+          <img class="test-photo" src="images/re-perez.jpg" alt="Re Perez" style="object-fit:cover;" onerror="this.src='https://ui-avatars.com/api/?name=RE+Perez&background=EAE7E2&color=555&size=92'">
+          <div><div class="test-name">Re Perez</div><div class="test-title">Founder, Higher Love</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"I spent all day on this. Better than working with business coaches I've paid to talk with me on the phone. I have real clarity on the next direction."</p>
+        <div class="test-author">
+          <img class="test-photo" src="images/chris-van-loan.jpg" alt="Chris Van Loan III" style="object-fit:cover;" onerror="this.src='https://ui-avatars.com/api/?name=Chris+Van+Loan+III&background=c4703f&color=fff&size=92'">
+          <div><div class="test-name">Chris Van Loan III</div><div class="test-title">Creative Director &amp; Strategic Media Partner</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"It showed me things about my own brand I hadn't been able to see for a long time. Even as someone who builds brands professionally, this revealed blind spots I'd been carrying for years."</p>
+        <div class="test-author">
+          <img class="test-photo" src="images/kyle-gray.jpg" alt="Kyle Gray" style="object-fit:cover;" onerror="this.src='https://ui-avatars.com/api/?name=Kyle+Gray&background=EAE7E2&color=555&size=92'">
+          <div><div class="test-name">Kyle Gray</div><div class="test-title">Speech, Writing &amp; Storytelling Consultant</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"Phenomenal prompt engineering. It felt like I&rsquo;d paid for a one on one session with Tony Robbins. We went deep and the outcome was stellar with some rewording and reimagining of my key offer. Thank you."</p>
+        <div class="test-author">
+          <img class="test-photo" src="images/ross-tompkins.jpg" alt="Ross Tompkins" style="object-fit:cover;">
+          <div><div class="test-name">Ross Tompkins</div><div class="test-title">Coach &amp; Business Strategist</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="test-cta">
+      <a href="https://jamesguldan.com" target="_blank">Read all 132 unedited testimonials →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO DO IT -->
+<section class="how-section">
+  <div class="how-inner">
+    <div class="how-header">
+      <div class="section-eyebrow">How It Works</div>
+      <h2>Three steps. Two hours. <em>One clear path.</em></h2>
+    </div>
+    <div class="how-step">
+      <div class="step-num">1</div>
+      <div class="step-content"><h3>Purchase and Start Immediately</h3><p>The moment your payment completes, you are taken directly into your personal Deep Work session. No downloads. No setup. No extra accounts to create. Just you and a two hour conversation that changes everything.</p></div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">2</div>
+      <div class="step-content"><h3>Have the Conversation</h3><p>Your session is guided by AI trained on 15 years of James's positioning methodology. It asks the questions a world class brand strategist would ask, in the order they need to be asked. Close your other tabs, put your phone face down, and answer like you are talking to your most trusted advisor. The more present and vulnerable you are, the more powerful the output becomes.</p></div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">3</div>
+      <div class="step-content"><h3>Walk Away With Your Blueprint</h3><p>When the conversation ends, you will have a complete brand blueprint: your positioning, your messaging, three priced offers, and a full website outline with real copy. Everything is saved in your session and a magic link is sent to your email so you can come back to it anytime.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="final-cta">
+  <canvas id="cta-canvas"></canvas>
+  <div class="final-cta-inner">
+    <div class="section-eyebrow" style="color:rgba(196,112,63,.7)">Get Clear</div>
+    <h2>Two hours from now, everything will be <em>different.</em></h2>
+    <p>You'll have a complete brand blueprint, three priced offers, a full website outline with real copy, and a roadmap that finally makes the next step obvious.</p>
+    <div class="anchor-price-wrap">
+      <span class="anchor-price-original">$297</span>
+      <div class="launch-badge">Launch Week Pricing</div>
+      <div class="final-price"><sup>$</sup>67</div>
+    </div>
+    <div class="final-sub">One time · Instant access · Keep everything forever</div>
+    <a href="#checkout" data-checkout="blueprint" class="cta-btn-light" style="display:inline-block;">Get Clear Now →</a>
+    <div class="final-trust">Powered by Stripe · Secure checkout · 7-day satisfaction guarantee</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">JAMES GULDAN</div>
+  <div class="footer-links">
+    <a href="/cdn-cgi/l/email-protection#d5bfb4b8b0a695bfb4b8b0a6b2a0b9b1b4bbfbb6bab8"><span class="__cf_email__" data-cfemail="593338343c2a193338343c2a3e2c353d3837773a3634">[email&#160;protected]</span></a>
+    <a href="https://jamesguldan.com">jamesguldan.com</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Service</a>
+  </div>
+  <div class="footer-copy">© 2026 James Guldan. All rights reserved.</div>
+  <div class="footer-copy" style="margin-top:8px; font-size:11px; opacity:0.5; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.6;">Results vary. Testimonials reflect individual experiences and are not a guarantee of outcome. Individual results depend on your background, effort, and implementation.</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // MAIN GEO CANVAS (desktop background)
+  const canvas = document.getElementById('geo'), ctx = canvas.getContext('2d');
+  function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+  resize(); addEventListener('resize', resize);
+  function flowerOfLife(c,x,y,r,rot,a){ c.save();c.globalAlpha=a;c.strokeStyle='rgba(196,112,63,1)';c.lineWidth=.8;c.translate(x,y);c.rotate(rot);c.beginPath();c.arc(0,0,r,0,Math.PI*2);c.stroke();for(let i=0;i<6;i++){const ang=i*Math.PI/3;c.beginPath();c.arc(Math.cos(ang)*r,Math.sin(ang)*r,r,0,Math.PI*2);c.stroke();}c.restore(); }
+  function hex(c,x,y,r,rot,a){ c.save();c.globalAlpha=a;c.strokeStyle='rgba(196,112,63,1)';c.lineWidth=.8;c.translate(x,y);c.rotate(rot);c.beginPath();for(let i=0;i<6;i++){const ang=i*Math.PI/3;i===0?c.moveTo(Math.cos(ang)*r,Math.sin(ang)*r):c.lineTo(Math.cos(ang)*r,Math.sin(ang)*r);}c.closePath();c.stroke();c.restore(); }
+  function frameMain(ts){ ctx.clearRect(0,0,canvas.width,canvas.height);const t=ts*.00004,w=canvas.width,h=canvas.height;flowerOfLife(ctx,w*.82,h*.45,120,t,.06);flowerOfLife(ctx,w*.12,h*.2,70,-t*.8,.045);flowerOfLife(ctx,w*.9,h*.15,50,t*1.3,.035);hex(ctx,w*.6,h*.82,42,t*.7,.04);hex(ctx,w*.22,h*.78,32,-t*.6,.035);hex(ctx,w*.48,h*.1,28,t,.03);requestAnimationFrame(frameMain); }
+  requestAnimationFrame(frameMain);
+
+  // MOBILE GEO CANVAS (dark video background)
+  const mc = document.getElementById('mobile-geo');
+  if(mc){ const mctx=mc.getContext('2d'); function rmg(){mc.width=mc.parentElement.offsetWidth||400;mc.height=mc.parentElement.offsetHeight||300;} rmg();addEventListener('resize',rmg);
+    function frameMobile(ts){ mctx.clearRect(0,0,mc.width,mc.height);const t=ts*.00003,w=mc.width,h=mc.height;mctx.strokeStyle='rgba(196,112,63,1)';mctx.lineWidth=.7;
+      function mf(x,y,r,rot,a){ mctx.save();mctx.globalAlpha=a;mctx.translate(x,y);mctx.rotate(rot);mctx.beginPath();mctx.arc(0,0,r,0,Math.PI*2);mctx.stroke();for(let i=0;i<6;i++){const ang=i*Math.PI/3;mctx.beginPath();mctx.arc(Math.cos(ang)*r,Math.sin(ang)*r,r,0,Math.PI*2);mctx.stroke();}mctx.restore(); }
+      mf(w*.5,h*.5,Math.min(w,h)*.3,t*.4,.12); mf(w*.05,h*.1,Math.min(w,h)*.1,-t*.6,.08); mf(w*.95,h*.9,Math.min(w,h)*.1,t*.5,.08);
+      for(let i=0;i<6;i++){ const a=i*Math.PI/3+t*.6; mctx.save();mctx.globalAlpha=.06;mctx.translate(w*.5+Math.cos(a)*w*.38,h*.5+Math.sin(a)*h*.38);mctx.rotate(a);mctx.beginPath();for(let j=0;j<6;j++){const ja=j*Math.PI/3;j===0?mctx.moveTo(Math.cos(ja)*18,Math.sin(ja)*18):mctx.lineTo(Math.cos(ja)*18,Math.sin(ja)*18);}mctx.closePath();mctx.strokeStyle='rgba(196,112,63,1)';mctx.lineWidth=.6;mctx.stroke();mctx.restore(); }
+      requestAnimationFrame(frameMobile); }
+    requestAnimationFrame(frameMobile); }
+
+  // PROCESS V3 — Transcript reveal via IntersectionObserver
+  (function() {
+    var msgs = document.querySelectorAll('[data-reveal]');
+    if (!msgs.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+    msgs.forEach(function(m, i) {
+      // Stagger: user replies delay slightly after AI messages
+      m.style.transitionDelay = (i % 2 === 1 ? '140ms' : '0ms');
+      obs.observe(m);
+    });
+  })();
+
+  // CTA CANVAS
+  const cc = document.getElementById('cta-canvas');
+  if(cc){ const cctx=cc.getContext('2d'); function rc(){cc.width=cc.parentElement.offsetWidth||800;cc.height=cc.parentElement.offsetHeight||600;} rc();addEventListener('resize',rc);
+    function frameCta(ts){ cctx.clearRect(0,0,cc.width,cc.height);const t=ts*.00002,w=cc.width,h=cc.height;cctx.strokeStyle='rgba(196,112,63,1)';cctx.lineWidth=.6;
+      function cf(x,y,r,rot,a){ cctx.save();cctx.globalAlpha=a;cctx.translate(x,y);cctx.rotate(rot);cctx.beginPath();cctx.arc(0,0,r,0,Math.PI*2);cctx.stroke();for(let i=0;i<6;i++){const ang=i*Math.PI/3;cctx.beginPath();cctx.arc(Math.cos(ang)*r,Math.sin(ang)*r,r,0,Math.PI*2);cctx.stroke();}cctx.restore(); }
+      cf(w*.04,h*.5,120,t,.13);cf(w*.96,h*.5,120,-t,.13);cf(w*.5,h*.5,80,t*.7,.07);
+      requestAnimationFrame(frameCta); }
+    requestAnimationFrame(frameCta); }
+
+  // ANNOTATION CONNECTOR LINES (Concept B — Technical Annotation)
+  function drawAnnotations() {
+    var svg = document.getElementById('ann-svg');
+    var wrap = document.getElementById('ann-wrap');
+    if (!svg || !wrap) return;
+    svg.innerHTML = '';
+    var wr = wrap.getBoundingClientRect();
+    if (wr.width === 0) return;
+    svg.setAttribute('width', wr.width);
+    svg.setAttribute('height', wr.height);
+    svg.setAttribute('viewBox', '0 0 ' + wr.width + ' ' + wr.height);
+    var ns = 'http://www.w3.org/2000/svg';
+    var defs = document.createElementNS(ns, 'defs');
+    var mka = document.createElementNS(ns, 'marker');
+    mka.setAttribute('id','ana'); mka.setAttribute('markerWidth','8');
+    mka.setAttribute('markerHeight','8'); mka.setAttribute('refX','7');
+    mka.setAttribute('refY','4'); mka.setAttribute('orient','auto');
+    var ap = document.createElementNS(ns, 'path');
+    ap.setAttribute('d','M0,1.5 L7,4 L0,6.5 Z');
+    ap.setAttribute('fill','rgba(196,112,63,0.7)');
+    mka.appendChild(ap); defs.appendChild(mka);
+    svg.appendChild(defs);
+    for (var i = 1; i <= 7; i++) {
+      var docEl = document.getElementById('dsec-' + i);
+      var lblEl = document.getElementById('ala-' + i);
+      if (!docEl || !lblEl) continue;
+      var dr = docEl.getBoundingClientRect();
+      var lr2 = lblEl.getBoundingClientRect();
+      var x1 = dr.right - wr.left;
+      var y1 = (dr.top + dr.bottom) / 2 - wr.top;
+      var x2 = lr2.left - wr.left;
+      var y2 = (lr2.top + lr2.bottom) / 2 - wr.top;
+      var midX = x1 + (x2 - x1) * 0.5;
+      var r = 6;
+      var pathD;
+      if (Math.abs(y2 - y1) < 4) {
+        pathD = 'M ' + x1 + ',' + y1 + ' H ' + x2;
+      } else {
+        var sign = y2 > y1 ? 1 : -1;
+        pathD = 'M ' + x1 + ',' + y1 +
+          ' H ' + (midX - r) +
+          ' Q ' + midX + ',' + y1 + ' ' + midX + ',' + (y1 + sign * r) +
+          ' V ' + (y2 - sign * r) +
+          ' Q ' + midX + ',' + y2 + ' ' + (midX + r) + ',' + y2 +
+          ' H ' + x2;
+      }
+      var path = document.createElementNS(ns, 'path');
+      path.setAttribute('d', pathD);
+      path.setAttribute('stroke', 'rgba(196,112,63,0.45)');
+      path.setAttribute('stroke-width', '1.5');
+      path.setAttribute('fill', 'none');
+      path.setAttribute('marker-end', 'url(#ana)');
+      svg.appendChild(path);
+      var dot = document.createElementNS(ns, 'circle');
+      dot.setAttribute('cx', x1);
+      dot.setAttribute('cy', y1);
+      dot.setAttribute('r', '3');
+      dot.setAttribute('fill', 'rgba(196,112,63,0.65)');
+      svg.appendChild(dot);
+    }
+  }
+  // Robust init: IntersectionObserver + retry on load
+  (function() {
+    var drawn = false;
+    if (window.IntersectionObserver) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting && !drawn) { drawAnnotations(); drawn = true; } });
+      }, { threshold: 0.05 });
+      var el = document.getElementById('ann-wrap');
+      if (el) obs.observe(el);
+    }
+    var retries = 0;
+    function retryDraw() {
+      var wrap = document.getElementById('ann-wrap');
+      if (wrap && wrap.getBoundingClientRect().width > 0) { drawAnnotations(); drawn = true; }
+      else if (retries++ < 12) { setTimeout(retryDraw, 250); }
+    }
+    window.addEventListener('load', function() { setTimeout(retryDraw, 100); });
+    window.addEventListener('resize', drawAnnotations);
+  })();
+
+  // ── STRIPE CHECKOUT POPUP ──────────────────────────────────
+  (function() {
+    // Inject popup styles
+    var style = document.createElement('style');
+    style.textContent = [
+      '#order-backdrop{display:none;position:fixed;inset:0;z-index:9998;background:rgba(26,26,26,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .3s ease;opacity:0}',
+      '#order-backdrop.visible{opacity:1}',
+      '#order-popup{display:none;position:fixed;z-index:9999;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);max-width:520px;width:92%;max-height:90vh;background:#fff;border-radius:16px;box-shadow:0 32px 80px rgba(0,0,0,.35);font-family:Inter,sans-serif;transition:transform .35s cubic-bezier(.2,.9,.3,1),opacity .3s ease;opacity:0;flex-direction:column;overflow:hidden}',
+      '#order-popup.visible{transform:translate(-50%,-50%) scale(1);opacity:1;display:flex}',
+      '.op-header{padding:28px 32px 0;text-align:center;flex-shrink:0}',
+      '.op-header h3{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 4px}',
+      '.op-header p{font-size:13px;color:#888;margin:0;font-weight:400}',
+      '.op-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;color:#aaa;cursor:pointer;padding:4px 8px;line-height:1;transition:color .2s}',
+      '.op-close:hover{color:#1a1a1a}',
+      '.op-body{display:flex;flex-direction:column;overflow:hidden;flex:1;min-height:0}',
+      '.op-scroll{overflow-y:auto;flex:1;min-height:0;padding:20px 32px 0}',
+      '.op-footer{flex-shrink:0;padding:0 32px 24px;background:#fff}',
+      '.op-main-item{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:#faf8f5;border-radius:10px;margin-bottom:16px;border:2px solid #c4703f}',
+      '.op-main-item .op-item-name{font-weight:700;font-size:15px;color:#1a1a1a}',
+      '.op-main-item .op-item-desc{font-size:12px;color:#777;margin-top:2px}',
+      '.op-main-item .op-item-price{font-weight:800;font-size:20px;color:#1a1a1a;white-space:nowrap}',
+      '.op-main-item .op-included{font-size:10px;font-weight:700;color:#c4703f;text-transform:uppercase;letter-spacing:1.5px}',
+      '.op-bump{position:relative;padding:18px 18px 18px 52px;background:#fff;border:2px dashed #e0dbd4;border-radius:10px;margin-bottom:12px;cursor:pointer;transition:all .25s ease;user-select:none}',
+      '.op-bump:hover{border-color:#c4703f;background:#fffcf8}',
+      '.op-bump.checked{border-color:#c4703f;border-style:solid;background:#fffcf8}',
+      '.op-bump input{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:18px;height:18px;accent-color:#c4703f;cursor:pointer}',
+      '.op-bump-tag{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#fff;background:#c4703f;padding:3px 8px;border-radius:4px;margin-bottom:6px}',
+      '.op-bump .op-bump-title{font-weight:700;font-size:14px;color:#1a1a1a;margin-bottom:4px}',
+      '.op-bump .op-bump-desc{font-size:12.5px;color:#666;line-height:1.55}',
+      '.op-bump .op-bump-price{font-weight:800;font-size:15px;color:#c4703f;margin-top:6px}',
+      '.op-divider{height:1px;background:#eee;margin:20px 0}',
+      '.op-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}',
+      '.op-total-label{font-size:14px;color:#888;font-weight:500}',
+      '.op-total-savings{font-size:11px;color:#c4703f;font-weight:700;background:#fff5ed;padding:3px 10px;border-radius:20px;display:none}',
+      '.op-total-amount{font-family:Outfit,sans-serif;font-size:28px;font-weight:800;color:#1a1a1a}',
+      '.op-total-original{font-size:14px;color:#aaa;text-decoration:line-through;margin-right:8px;display:none}',
+      '.op-pay-btn{display:block;width:100%;padding:18px;background:#1a1a1a;color:#fff;border:none;border-radius:50px;font-size:16px;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;transition:all .25s ease;letter-spacing:.3px;box-shadow:0 4px 20px rgba(0,0,0,.15)}',
+      '.op-pay-btn:hover{background:#c4703f;transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,112,63,.35)}',
+      '.op-pay-btn.loading{pointer-events:none;opacity:.7}',
+      '.op-pay-btn .btn-spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:opspin .7s linear infinite;vertical-align:middle;margin-right:8px}',
+      '@keyframes opspin{to{transform:rotate(360deg)}}',
+      '.op-trust{text-align:center;margin-top:14px;font-size:11px;color:#bbb;font-weight:400}',
+      '.op-guarantee{text-align:center;margin-top:10px;font-size:11.5px;color:#999;font-weight:500}',
+      '@media(max-width:560px){#order-popup{width:96%;border-radius:12px}.op-header{padding:22px 20px 0}.op-scroll{padding:14px 20px 0}.op-footer{padding:0 20px 20px}.op-main-item{padding:14px 14px}.op-bump{padding:14px 14px 14px 46px}.op-bump input{left:14px}}',
+      /* ── Payment view ── */
+      '.op-payment-view{display:none;flex-direction:column;overflow:hidden;flex:1;min-height:0}',
+      '.op-pay-scroll{overflow-y:auto;flex:1;min-height:0;padding:20px 32px 0}',
+      '.op-pay-footer{flex-shrink:0;padding:0 32px 24px;background:#fff}',
+      '.op-order-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#faf8f5;border-radius:10px;margin-bottom:18px;border:1.5px solid #e8e2d9}',
+      '.op-order-bar-label{font-size:13px;color:#777;font-weight:500}',
+      '.op-order-bar-price{font-weight:800;font-size:18px;color:#1a1a1a;font-family:Outfit,sans-serif}',
+      '.op-field{margin-bottom:16px}',
+      '.op-field label{display:block;font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}',
+      '.op-field input{width:100%;box-sizing:border-box;padding:13px 14px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:15px;font-family:Outfit,sans-serif;color:#1a1a1a;outline:none;transition:border-color .2s,box-shadow .2s}',
+      '.op-field input:focus{border-color:#c4703f;box-shadow:0 0 0 3px rgba(196,112,63,.12)}',
+      '.op-field input.error{border-color:#e53e3e}',
+      '#stripe-element{min-height:44px;margin-bottom:4px}',
+      '.op-pay-error{background:#fff5f5;border:1px solid #fed7d7;color:#c53030;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:14px;line-height:1.5;display:none}',
+      '.op-back-btn{background:none;border:none;color:#bbb;font-size:12px;cursor:pointer;padding:6px 0 0;width:100%;text-align:center;font-family:Outfit,sans-serif;transition:color .2s;display:block}',
+      '.op-back-btn:hover{color:#c4703f}',
+      /* ── Success view ── */
+      '.op-success-view{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 32px 36px;flex:1}',
+      '.op-success-icon{width:68px;height:68px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:30px}',
+      '.op-success-view h3{font-family:Outfit,sans-serif;font-size:24px;font-weight:700;color:#1a1a1a;margin:0 0 10px}',
+      '.op-success-view p{font-size:14px;color:#555;margin:0 0 6px;line-height:1.65}',
+      '.op-success-view .op-success-email{font-weight:700;color:#1a1a1a}',
+      '.op-success-view .op-success-sub{font-size:12px;color:#aaa;margin-top:4px}',
+      '.op-success-cta{display:inline-block;margin-top:26px;padding:15px 36px;background:#1a1a1a;color:#fff;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:background .2s;font-family:Inter,sans-serif}',
+      '.op-success-cta:hover{background:#c4703f}',
+      '@keyframes opcheckbounce{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}',
+      '.op-success-icon{animation:opcheckbounce .5s cubic-bezier(.2,.9,.3,1) .1s both}',
+      '.op-loading-view{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 32px;flex:1;gap:20px}',
+      '.op-session-spinner{width:48px;height:48px;border:3px solid #e5e7eb;border-top-color:#c4703f;border-radius:50%;animation:opspin .8s linear infinite;flex-shrink:0}',
+      '.op-loading-view h3{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;color:#1a1a1a;margin:0}',
+      '.op-loading-view p{font-size:14px;color:#888;margin:0;line-height:1.65}',
+    ].join('');
+    document.head.appendChild(style);
+
+    // Create backdrop
+    var backdrop = document.createElement('div');
+    backdrop.id = 'order-backdrop';
+    document.body.appendChild(backdrop);
+
+    // Create popup
+    var popup = document.createElement('div');
+    popup.id = 'order-popup';
+    popup.innerHTML = '<button class="op-close" aria-label="Close" id="op-close-btn">&times;</button>'
+
+      /* ── STEP 1: Order selection ── */
+      + '<div class="op-header" id="op-header">'
+      + '<h3 id="op-header-title">Your Order</h3>'
+      + '<p id="op-header-sub">Complete your Deep Work session</p>'
+      + '</div>'
+      + '<div class="op-body" id="op-order-body">'
+      + '<div class="op-scroll">'
+      + '<div class="op-main-item">'
+      + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Blueprint</div><div class="op-item-desc">2hr AI positioning session + full blueprint</div></div>'
+      + '<div class="op-item-price">$67</div>'
+      + '</div>'
+      + '<div class="op-bump" id="bump-site">'
+      + '<input type="checkbox" id="cb-site">'
+      + '<div class="op-bump-tag">Most Popular</div>'
+      + '<div class="op-bump-title">Add a Done For You Website</div>'
+      + '<div class="op-bump-desc">After your session, AI takes your blueprint and builds your entire site with real copy, real structure, and deploys it live. No code. No designers. No waiting weeks.</div>'
+      + '<div class="op-bump-price">+ $130</div>'
+      + '</div>'
+      + '<div class="op-bump" id="bump-call">'
+      + '<input type="checkbox" id="cb-call">'
+      + '<div class="op-bump-tag">Go Deeper</div>'
+      + '<div class="op-bump-title">Add a 1:1 Call with James</div>'
+      + '<div class="op-bump-desc">Private strategy session to walk through your blueprint, pressure test your offers, and map your first 90 days. The same call founders paid $5,000 for.</div>'
+      + '<div class="op-bump-price">+ $130</div>'
+      + '</div>'
+      + '</div>'
+      + '<div class="op-footer">'
+      + '<div class="op-divider"></div>'
+      + '<div class="op-total-row">'
+      + '<div><div class="op-total-label">Total today</div><span class="op-total-savings" id="op-savings">Save $134</span></div>'
+      + '<div style="text-align:right"><span class="op-total-original" id="op-original"></span><span class="op-total-amount" id="op-total">$67</span></div>'
+      + '</div>'
+      + '<button class="op-pay-btn" id="op-pay">Complete Purchase</button>'
+      + '<div class="op-guarantee">7 day satisfaction guarantee. If the process does not deliver, email James and he will make it right.</div>'
+      + '<div class="op-trust">Powered by Stripe &middot; 256 bit encryption</div>'
+      + '</div>'
+      + '</div>'
+
+      /* ── STEP 2: Payment form ── */
+      + '<div class="op-payment-view" id="op-payment-view">'
+      + '<div class="op-pay-scroll">'
+      + '<div class="op-order-bar"><span class="op-order-bar-label" id="op-order-bar-label">Deep Work Blueprint</span><span class="op-order-bar-price" id="op-order-bar-price">$67</span></div>'
+      + '<div class="op-field"><label for="op-email">Email address</label><input type="email" id="op-email" placeholder="you@example.com" autocomplete="email" required /></div>'
+      + '<div id="stripe-element"></div>'
+      + '</div>'
+      + '<div class="op-pay-footer">'
+      + '<div class="op-pay-error" id="op-pay-error"></div>'
+      + '<form id="op-pay-form"><button type="submit" class="op-pay-btn" id="op-pay-submit"><span id="op-pay-spinner" class="btn-spinner" style="display:none"></span><span class="btn-text">Pay $67</span></button></form>'
+      + '<div class="op-guarantee">7 day guarantee &middot; Cancel anytime &middot; Instant access</div>'
+      + '<button class="op-back-btn" id="op-back-btn">← Change order</button>'
+      + '</div>'
+      + '</div>'
+
+      /* ── STEP 3: Loading (magic link generation) ── */
+      + '<div class="op-loading-view" id="op-loading-view">'
+      + '<div class="op-session-spinner"></div>'
+      + '<h3>Securing your session&#8230;</h3>'
+      + '<p>Generating your personal magic link.<br>This only takes a moment.</p>'
+      + '</div>'
+
+      /* ── STEP 4: Success ── */
+      + '<div class="op-success-view" id="op-success-view">'
+      + '<div class="op-success-icon">✓</div>'
+      + '<h3>You&#39;re in!</h3>'
+      + '<p id="op-success-headline">Taking you to your session now&#8230;</p>'
+      + '<a href="https://app.jamesguldan.com" id="op-start-session" class="op-success-cta" target="_blank" rel="noopener">Start the Interview &#8594;</a>'
+      + '<p class="op-success-sub">Your magic link is on its way to <span class="op-success-email" id="op-success-email">your email</span> so you can return anytime.</p>'
+      + '</div>';
+    document.body.appendChild(popup);
+
+    // ── Pricing ─────────────────────────────────────────────────────────────
+    var BASE = 67, BUMP_SITE = 130, BUMP_CALL = 130, FULL_SITE = 197, FULL_CALL = 197;
+    var cbSite   = document.getElementById('cb-site');
+    var cbCall   = document.getElementById('cb-call');
+    var bumpSite = document.getElementById('bump-site');
+    var bumpCall = document.getElementById('bump-call');
+    var totalEl  = document.getElementById('op-total');
+    var originalEl = document.getElementById('op-original');
+    var savingsEl  = document.getElementById('op-savings');
+
+    function getTotal() {
+      var t = BASE;
+      if (cbSite.checked) t += BUMP_SITE;
+      if (cbCall.checked) t += BUMP_CALL;
+      return t;
+    }
+
+    function updateTotal() {
+      var total = getTotal();
+      totalEl.textContent = '$' + total;
+      if (cbSite.checked && cbCall.checked) {
+        originalEl.textContent = '$' + (BASE + FULL_SITE + FULL_CALL);
+        originalEl.style.display = 'inline';
+        savingsEl.style.display = 'inline-block';
+      } else {
+        originalEl.style.display = 'none';
+        savingsEl.style.display = 'none';
+      }
+      bumpSite.classList.toggle('checked', cbSite.checked);
+      bumpCall.classList.toggle('checked', cbCall.checked);
+    }
+
+    bumpSite.addEventListener('click', function(e) { if (e.target !== cbSite) cbSite.checked = !cbSite.checked; updateTotal(); });
+    bumpCall.addEventListener('click', function(e) { if (e.target !== cbCall) cbCall.checked = !cbCall.checked; updateTotal(); });
+    cbSite.addEventListener('change', updateTotal);
+    cbCall.addEventListener('change', updateTotal);
+
+    // ── Popup open / close ───────────────────────────────────────────────────
+    function openPopup(e) {
+      if (e) e.preventDefault();
+      cbSite.checked = false;
+      cbCall.checked = false;
+      updateTotal();
+      showStep('order');
+      backdrop.style.display = 'block';
+      popup.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function() {
+        backdrop.classList.add('visible');
+        popup.classList.add('visible');
+      });
+    }
+
+    var canClosePopup = true;
+    function closePopup() {
+      if (!canClosePopup) return;
+      backdrop.classList.remove('visible');
+      popup.classList.remove('visible');
+      document.body.style.overflow = '';
+      setTimeout(function() {
+        backdrop.style.display = 'none';
+        popup.style.display = 'none';
+        resetPaymentView();
+      }, 350);
+    }
+
+    document.getElementById('op-close-btn').addEventListener('click', closePopup);
+    backdrop.addEventListener('click', closePopup);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
+
+    // ── Step management ──────────────────────────────────────────────────────
+    function showStep(step) {
+      var orderBody   = document.getElementById('op-order-body');
+      var paymentView = document.getElementById('op-payment-view');
+      var loadingView = document.getElementById('op-loading-view');
+      var successView = document.getElementById('op-success-view');
+      var header      = document.getElementById('op-header');
+      var headerTitle = document.getElementById('op-header-title');
+      var headerSub   = document.getElementById('op-header-sub');
+
+      orderBody.style.display   = step === 'order'   ? 'flex' : 'none';
+      paymentView.style.display = step === 'payment' ? 'flex' : 'none';
+      loadingView.style.display = step === 'loading' ? 'flex' : 'none';
+      successView.style.display = step === 'success' ? 'flex' : 'none';
+
+      if (step === 'order') {
+        header.style.display = '';
+        headerTitle.textContent = 'Your Order';
+        headerSub.textContent   = 'Complete your Deep Work session';
+      } else if (step === 'payment') {
+        header.style.display = '';
+        headerTitle.textContent = 'Secure Checkout';
+        headerSub.textContent   = '256-bit encryption · Powered by Stripe';
+      } else if (step === 'loading') {
+        header.style.display = 'none';
+        canClosePopup = false;
+      } else if (step === 'success') {
+        header.style.display = 'none';
+        canClosePopup = false; // prevent accidental close after payment
+      }
+    }
+
+    // ── Stripe state ─────────────────────────────────────────────────────────
+    var stripeInstance   = null;
+    var stripeElements   = null;
+    var stripePayEl      = null;
+    var currentPiId      = null;
+    var currentPiEmail   = '';
+    var currentTiers     = ['blueprint'];
+
+    function resetPaymentView() {
+      canClosePopup = true;
+      if (stripePayEl) { try { stripePayEl.unmount(); } catch(e){} }
+      stripePayEl    = null;
+      stripeElements = null;
+      currentPiId    = null;
+      currentPiEmail = '';
+      document.getElementById('op-email').value = '';
+      document.getElementById('stripe-element').innerHTML = '';
+      hidePayError();
+      setPayLoading(false);
+    }
+
+    // ── "Complete Purchase" → go to payment step ─────────────────────────────
+    document.getElementById('op-pay').addEventListener('click', function() {
+      var tiers = ['blueprint'];
+      if (cbSite.checked) tiers.push('site');
+      if (cbCall.checked) tiers.push('call');
+      currentTiers = tiers;
+
+      // Update order summary bar
+      var labels = ['Deep Work Blueprint'];
+      if (cbSite.checked) labels.push('+ Website');
+      if (cbCall.checked) labels.push('+ Strategy Call');
+      var totalText = '$' + getTotal();
+      document.getElementById('op-order-bar-label').textContent = labels.join(' ');
+      document.getElementById('op-order-bar-price').textContent = totalText;
+      document.querySelector('#op-pay-submit .btn-text').textContent = 'Pay ' + totalText;
+
+      showStep('payment');
+      initStripePaymentElement(tiers);
+    });
+
+    // ── Back button ──────────────────────────────────────────────────────────
+    document.getElementById('op-back-btn').addEventListener('click', function() {
+      showStep('order');
+      resetPaymentView();
+    });
+
+    // ── Init Stripe Payment Element ──────────────────────────────────────────
+    function initStripePaymentElement(tiers) {
+      var mountEl = document.getElementById('stripe-element');
+      mountEl.innerHTML = '<div style="text-align:center;padding:24px 0;color:#aaa;font-size:13px">'
+        + '<span style="display:inline-block;width:20px;height:20px;border:2px solid #e5e7eb;border-top-color:#c4703f;border-radius:50%;animation:opspin .7s linear infinite;vertical-align:middle;margin-right:8px"></span>'
+        + 'Loading payment form…</div>';
+
+      fetch('https://app.jamesguldan.com/api/create-payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tiers: tiers })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data.clientSecret) throw new Error(data.error || 'Could not initialize payment');
+        currentPiId = data.paymentIntentId;
+
+        if (!stripeInstance) {
+          if (!data.publishableKey) throw new Error('Payment provider not configured. Please contact support.');
+          stripeInstance = Stripe(data.publishableKey);
+        }
+
+        var appearance = {
+          theme: 'flat',
+          variables: {
+            colorPrimary:     '#c4703f',
+            colorBackground:  '#ffffff',
+            colorText:        '#1a1a1a',
+            colorDanger:      '#e53e3e',
+            fontFamily:       '"Outfit", "Inter", system-ui, sans-serif',
+            borderRadius:     '8px',
+            spacingUnit:      '4px',
+            fontSizeBase:     '15px',
+          },
+          rules: {
+            '.Input': { border: '1.5px solid #e5e7eb', boxShadow: 'none', padding: '12px 14px', fontSize: '15px' },
+            '.Input:focus': { border: '1.5px solid #c4703f', boxShadow: '0 0 0 3px rgba(196,112,63,.12)' },
+            '.Input--invalid': { border: '1.5px solid #e53e3e' },
+            '.Label': { fontWeight: '600', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.8px', color: '#555', marginBottom: '6px' },
+            '.Tab': { border: '1.5px solid #e5e7eb', boxShadow: 'none' },
+            '.Tab--selected': { border: '1.5px solid #c4703f', color: '#c4703f', boxShadow: 'none' },
+            '.Tab--selected:focus': { boxShadow: '0 0 0 3px rgba(196,112,63,.12)' },
+            '.Error': { fontSize: '12.5px', marginTop: '6px' },
+          }
+        };
+
+        var prefillEmail = (document.getElementById('op-email') || {}).value || '';
+        stripeElements = stripeInstance.elements({
+          clientSecret: data.clientSecret,
+          appearance: appearance,
+          fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap' }],
+          defaultValues: prefillEmail ? { billingDetails: { email: prefillEmail } } : undefined,
+        });
+
+        mountEl.innerHTML = '';
+        stripePayEl = stripeElements.create('payment', {
+          layout: { type: 'tabs', defaultCollapsed: false },
+          fields: { billingDetails: { email: 'never' } },
+          wallets: { applePay: 'auto', googlePay: 'auto' },
+        });
+        stripePayEl.mount(mountEl);
+
+        stripePayEl.on('loaderstart', function() {
+          setTimeout(function() { document.getElementById('op-email').focus(); }, 150);
+        });
+      })
+      .catch(function(err) {
+        console.error('Stripe init error:', err);
+        mountEl.innerHTML = '';
+        showPayError(err.message || 'Failed to load payment form. Please refresh and try again.');
+      });
+    }
+
+    // ── Pay form submit ───────────────────────────────────────────────────────
+    document.getElementById('op-pay-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!stripeElements || !stripeInstance) {
+        showPayError('Payment form is still loading. Please wait a moment and try again.');
+        return;
+      }
+
+      var emailInput = document.getElementById('op-email');
+      var email = emailInput.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailInput.classList.add('error');
+        emailInput.focus();
+        showPayError('Please enter a valid email address so we can send your access link.');
+        return;
+      }
+      emailInput.classList.remove('error');
+      currentPiEmail = email;
+
+      setPayLoading(true);
+      hidePayError();
+
+      stripeInstance.confirmPayment({
+        elements: stripeElements,
+        confirmParams: {
+          return_url: window.location.origin + window.location.pathname + '?pi_return=1&pi=' + (currentPiId || ''),
+          payment_method_data: { billing_details: { email: email } },
+        },
+        redirect: 'if_required',
+      })
+      .then(function(result) {
+        if (result.error) {
+          setPayLoading(false);
+          var code = result.error.code || '';
+          var type = result.error.type || '';
+          var msg = result.error.message || 'Payment failed. Please try a different card.';
+          // Friendly messages for common decline codes
+          if (code === 'card_declined' || code === 'do_not_honor' || code === 'generic_decline')
+            msg = 'Your card was declined. Please try a different payment method.';
+          if (code === 'insufficient_funds')
+            msg = 'Insufficient funds on this card. Please try a different one.';
+          if (code === 'expired_card')
+            msg = 'Your card has expired. Please use an updated card.';
+          if (code === 'incorrect_cvc' || code === 'invalid_cvc')
+            msg = 'Incorrect security code (CVC). Please double-check and try again.';
+          if (code === 'incorrect_number' || code === 'invalid_number')
+            msg = 'Your card number doesn&#39;t look right. Please check it and try again.';
+          if (code === 'processing_error')
+            msg = 'Your bank had a temporary issue processing this. Please try again in a moment.';
+          if (code === 'card_velocity_exceed')
+            msg = 'Too many attempts on this card. Please wait a few minutes or try a different card.';
+          if (type === 'validation_error')
+            msg = result.error.message || 'Please check your card details and try again.';
+          showPayError(msg);
+        } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+          fulfillAndShowSuccess(email);
+        } else if (result.paymentIntent && result.paymentIntent.status === 'requires_action') {
+          // 3DS mid-flow — confirmPayment should handle this, but just in case
+          setPayLoading(false);
+          showPayError('Your bank requires additional verification. Please follow the prompt.');
+        } else {
+          setPayLoading(false);
+          showPayError('Unexpected payment state. Please contact james@jamesguldan.com if you were charged.');
+        }
+      })
+      .catch(function(err) {
+        setPayLoading(false);
+        var msg = 'An unexpected error occurred. Please try again.';
+        if (err && (err.message || '').toLowerCase().includes('network'))
+          msg = 'Network error — please check your connection and try again.';
+        showPayError(msg);
+        console.error('confirmPayment error:', err);
+      });
+    });
+
+    // Clear error styling on email re-type + keep Stripe elements in sync
+    document.getElementById('op-email').addEventListener('input', function() {
+      this.classList.remove('error');
+      hidePayError();
+      if (stripeElements && this.value.trim()) {
+        try { stripeElements.update({ defaultValues: { billingDetails: { email: this.value.trim() } } }); } catch(e) {}
+      }
+    });
+
+    // ── Fulfillment + success ────────────────────────────────────────────────
+    function fulfillAndShowSuccess(email) {
+      // Show loading spinner while we generate the magic link
+      showStep('loading');
+      setPayLoading(false);
+
+      fetch('https://app.jamesguldan.com/api/fulfill-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paymentIntentId: currentPiId, email: email, tiers: currentTiers })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.sessionUrl) {
+          // Got the magic link — show success briefly then auto-redirect
+          showSuccess(email, data.sessionUrl, true);
+          setTimeout(function() {
+            window.location.href = data.sessionUrl;
+          }, 2500);
+        } else {
+          // No session URL — show success with manual button as fallback
+          showSuccess(email, null, false);
+        }
+      })
+      .catch(function(err) {
+        // Payment succeeded — webhook handles fulfillment as backup
+        console.error('Fulfill error (webhook backup active):', err);
+        showSuccess(email, null, false);
+      });
+    }
+
+    function showSuccess(email, sessionUrl, autoRedirecting) {
+      var emailEl = document.getElementById('op-success-email');
+      if (emailEl) emailEl.textContent = email || 'your email';
+      var cta = document.getElementById('op-start-session');
+      var headline = document.getElementById('op-success-headline');
+      if (cta && sessionUrl) {
+        cta.href = sessionUrl;
+        if (headline) headline.textContent = 'Taking you to your session now\u2026';
+      } else {
+        if (headline) headline.textContent = 'Click below to start your session right now.';
+      }
+      showStep('success');
+    }
+
+    // ── Helpers ──────────────────────────────────────────────────────────────
+    function showPayError(msg) {
+      var err = document.getElementById('op-pay-error');
+      err.textContent = msg;
+      err.style.display = 'block';
+      err.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hidePayError() {
+      var err = document.getElementById('op-pay-error');
+      err.style.display = 'none';
+      err.textContent = '';
+    }
+
+    function setPayLoading(loading) {
+      var btn     = document.getElementById('op-pay-submit');
+      var spinner = document.getElementById('op-pay-spinner');
+      var text    = btn.querySelector('.btn-text');
+      btn.disabled = loading;
+      btn.style.pointerEvents = loading ? 'none' : '';
+      spinner.style.display   = loading ? 'inline-block' : 'none';
+      text.textContent = loading ? 'Processing…' : ('Pay $' + getTotal());
+    }
+
+    // ── Handle 3DS / bank redirect return ────────────────────────────────────
+    (function checkPiReturn() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('pi_return') !== '1') return;
+      var piId = params.get('pi') || '';
+      window.history.replaceState({}, '', window.location.pathname);
+      if (!piId) return;
+      // Open popup in payment view → show loading → fulfill
+      fetch('https://app.jamesguldan.com/api/payment-status?pi=' + piId)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.status === 'succeeded') {
+            // Open popup and show success after 3DS redirect
+            backdrop.style.display = 'block';
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            backdrop.classList.add('visible');
+            popup.classList.add('visible');
+            currentPiId    = piId;
+            currentPiEmail = data.email || '';
+            currentTiers   = (data.tiers || 'blueprint').split(',');
+            if (data.sessionUrl) {
+              showSuccess(data.email || '', data.sessionUrl);
+            } else {
+              fulfillAndShowSuccess(data.email || '');
+            }
+          } else if (data.status === 'requires_payment_method') {
+            // 3DS failed — reopen popup at payment step so they can retry
+            backdrop.style.display = 'block';
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            backdrop.classList.add('visible');
+            popup.classList.add('visible');
+            currentPiId  = piId;
+            currentTiers = (data.tiers || 'blueprint').split(',');
+            showStep('payment');
+            showPayError('Authentication failed or was cancelled. Please try again.');
+          }
+        })
+        .catch(function(e) {
+          console.error('pi_return check failed:', e);
+        });
+    })();
+
+    // ── Attach CTA buttons ───────────────────────────────────────────────────
+    document.querySelectorAll('a[data-checkout]').forEach(function(btn) {
+      btn.addEventListener('click', openPopup);
+    });
+  })();
+
+</script>
 </body>
 </html>
