@@ -1375,10 +1375,12 @@
           }
         };
 
+        var userEmail = (document.getElementById('op-email') || {}).value || '';
         stripeElements = stripeInstance.elements({
           clientSecret: data.clientSecret,
           appearance: appearance,
           fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap' }],
+          defaultValues: { billingDetails: { email: userEmail } },
         });
 
         mountEl.innerHTML = '';
@@ -1483,10 +1485,9 @@
 
     // ── Fulfillment + success ────────────────────────────────────────────────
     function fulfillAndShowSuccess(email) {
-      // Show success immediately with fallback URL — don&#39;t make the user wait
-      showSuccess(email, null);
+      // Show spinner while we generate the magic link
+      showStep('loading');
 
-      // Then fire fulfillment in the background and upgrade the link if we get a session URL
       fetch('https://app.jamesguldan.com/api/fulfill-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1494,15 +1495,17 @@
       })
       .then(function(r) { return r.json(); })
       .then(function(data) {
-        if (data.sessionUrl) {
-          var cta = document.getElementById('op-start-session');
-          if (cta) cta.href = data.sessionUrl;
-        }
+        var sessionUrl = data.sessionUrl || 'https://app.jamesguldan.com';
+        showSuccess(email, sessionUrl);
+        // Auto-redirect after a brief thank-you moment
+        setTimeout(function() { window.location.href = sessionUrl; }, 3500);
       })
       .catch(function(err) {
-        // Payment succeeded — webhook will handle fulfillment as backup
-        // Button still points to app.jamesguldan.com so user can get in
-        console.error('Fulfill error (webhook backup active):', err);
+        console.error('Fulfill error:', err);
+        // Payment succeeded — send them to the app and they can log in there
+        var fallback = 'https://app.jamesguldan.com';
+        showSuccess(email, fallback);
+        setTimeout(function() { window.location.href = fallback; }, 3500);
       });
     }
 
