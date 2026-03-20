@@ -163,6 +163,18 @@
 
     /* SAMPLE OUTPUT */
     .sample-output { margin-top: 72px; background: #0d0c0b; border-radius: 24px; overflow: hidden; }
+    .gif-loader { position: relative; width: 100%; max-width: 800px; margin: 0 auto; aspect-ratio: 800/560; background: #0d0c0b; overflow: hidden; }
+    .gif-loader .gif-shimmer { position: absolute; inset: 0; background: linear-gradient(110deg, #0d0c0b 30%, #1a1917 50%, #0d0c0b 70%); background-size: 200% 100%; animation: gifShimmer 1.8s ease-in-out infinite; }
+    .gif-loader .gif-shimmer-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+    .gif-shimmer-label { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,112,63,.5); }
+    .gif-shimmer-bar { width: 48px; height: 3px; border-radius: 2px; background: rgba(196,112,63,.2); overflow: hidden; }
+    .gif-shimmer-bar::after { content: ''; display: block; width: 50%; height: 100%; background: rgba(196,112,63,.5); border-radius: 2px; animation: gifBarSlide 1.2s ease-in-out infinite; }
+    @keyframes gifShimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    @keyframes gifBarSlide { 0%,100% { transform: translateX(0); } 50% { transform: translateX(150%); } }
+    .gif-loader img { position: relative; z-index: 1; width: 100%; display: block; opacity: 0; transition: opacity .5s ease; }
+    .gif-loader img.gif-loaded { opacity: 1; }
+    .gif-loader.loaded .gif-shimmer,
+    .gif-loader.loaded .gif-shimmer-content { display: none; }
     .sample-output-header { background: #1a1917; padding: 16px 28px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,.06); }
     .sample-traffic-lights { display: flex; gap: 7px; }
     .stl { width: 12px; height: 12px; border-radius: 50%; }
@@ -807,8 +819,24 @@
       <span class="sample-file-name">Brand Guide — Nora Ellis Consulting — Deep Work Interview Output</span>
     </div>
     <div style="padding:0;display:flex;justify-content:center;background:#0d0c0b;">
-      <img src="sample-brand-guide-scroll.gif" alt="Sample Brand Guide scrolling through all sections" style="width:100%;max-width:800px;display:block;" loading="lazy">
+      <div class="gif-loader" id="gifLoader">
+        <div class="gif-shimmer"></div>
+        <div class="gif-shimmer-content">
+          <div class="gif-shimmer-label">Loading preview</div>
+          <div class="gif-shimmer-bar"></div>
+        </div>
+        <img alt="Sample Brand Guide scrolling through all sections">
+      </div>
     </div>
+    <script>
+    (function(){
+      var loader = document.getElementById('gifLoader');
+      var img = loader.querySelector('img');
+      img.onload = function(){ img.classList.add('gif-loaded'); loader.classList.add('loaded'); };
+      // Start loading after a tiny delay so the shimmer shows first
+      setTimeout(function(){ img.src = 'sample-brand-guide-scroll.gif'; }, 100);
+    })();
+    </script>
     <div class="sample-caption">A fictional example built the exact same way yours will be. 11 sections including SWOT analysis, competitor grading, revenue model, content pillars, and a 90 day authority roadmap. Every word comes from the conversation. Nothing is templated.</div>
   </div>
 </div>
@@ -1977,21 +2005,4 @@
     }
   }
 
-  sendBtn.addEventListener('click', send);
-  input.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      send();
-    }
-  });
-
-  // Auto-resize textarea
-  input.addEventListener('input', function() {
-    this.style.height = 'auto';
-    this.style.height = Math.min(this.scrollHeight, 100) + 'px';
-  });
-})();
-
-  </script>
-</body>
-</html>
+  sendBtn.addEventListener('cli
