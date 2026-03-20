@@ -99,18 +99,11 @@
 
     /* MOBILE HERO */
     .mobile-hero-video { display: none; }
-    .mobile-vid-canvas-wrap { position: relative; width: 100%; background: #0d0c0b; overflow: hidden; padding-bottom: 20px; }
-    #mobile-geo { position: absolute; inset: 0; pointer-events: none; }
-    .mobile-vid-rings { position: absolute; inset: 0; z-index: 1; pointer-events: none; display: flex; align-items: center; justify-content: center; }
-    .mobile-ring { position: absolute; border-radius: 20px; border: 1px solid rgba(196,112,63,.25); animation: mring 3s ease-in-out infinite; }
-    .mobile-ring:nth-child(2) { animation-delay: .8s; border-color: rgba(196,112,63,.12); }
-    @keyframes mring { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.2;transform:scale(1.03);} }
-    .mobile-vid-inner { position: relative; z-index: 2; padding: 16px 20px 0; }
-    .mobile-vid-player { border-radius: 14px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,.12); box-shadow: 0 20px 80px rgba(0,0,0,.6); }
-    .mobile-vid-player video { width: 100%; display: block; aspect-ratio: 16/9; }
-    .mobile-vid-caption { background: rgba(0,0,0,.9); color: rgba(255,255,255,.8); text-align: center; padding: 8px; font-size: .68rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
-    .mobile-bottom-fade { height: 24px; background: linear-gradient(to bottom, #0d0c0b, var(--bg)); }
-    .mobile-hero-text { padding: 16px 20px 28px; }
+    .mobile-hero-photo-wrap { position: relative; width: 100%; min-height: 420px; overflow: hidden; }
+    .mobile-hero-photo-bg { position: absolute; inset: 0; }
+    .mobile-hero-photo-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .mobile-hero-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, var(--bg) 0%, rgba(247,244,240,.85) 35%, rgba(247,244,240,.4) 60%, transparent 100%); z-index: 1; }
+    .mobile-hero-text { position: relative; z-index: 2; padding: 16px 20px 28px; }
     .mobile-hero-text h1 { font-size: clamp(28px, 8vw, 40px); margin-bottom: 12px; }
     .mobile-hero-text .hero-sub { font-size: 15px; margin-bottom: 20px; }
     .mobile-hero-text .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 12px; }
@@ -163,18 +156,33 @@
 
     /* SAMPLE OUTPUT */
     .sample-output { margin-top: 72px; background: #0d0c0b; border-radius: 24px; overflow: hidden; }
-    .gif-loader { position: relative; width: 100%; max-width: 800px; margin: 0 auto; aspect-ratio: 800/560; background: #0d0c0b; overflow: hidden; }
-    .gif-loader .gif-shimmer { position: absolute; inset: 0; background: linear-gradient(110deg, #0d0c0b 30%, #1a1917 50%, #0d0c0b 70%); background-size: 200% 100%; animation: gifShimmer 1.8s ease-in-out infinite; }
-    .gif-loader .gif-shimmer-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
-    .gif-shimmer-label { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,112,63,.5); }
-    .gif-shimmer-bar { width: 48px; height: 3px; border-radius: 2px; background: rgba(196,112,63,.2); overflow: hidden; }
-    .gif-shimmer-bar::after { content: ''; display: block; width: 50%; height: 100%; background: rgba(196,112,63,.5); border-radius: 2px; animation: gifBarSlide 1.2s ease-in-out infinite; }
-    @keyframes gifShimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-    @keyframes gifBarSlide { 0%,100% { transform: translateX(0); } 50% { transform: translateX(150%); } }
-    .gif-loader img { position: relative; z-index: 1; width: 100%; display: block; opacity: 0; transition: opacity .5s ease; }
-    .gif-loader img.gif-loaded { opacity: 1; }
-    .gif-loader.loaded .gif-shimmer,
-    .gif-loader.loaded .gif-shimmer-content { display: none; }
+    .sample-tabs { display: flex; gap: 0; padding: 0 28px; background: #141311; border-bottom: 1px solid rgba(255,255,255,.06); overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+    .sample-tabs::-webkit-scrollbar { display: none; }
+    .sample-tab { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 14px 18px; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; transition: color .25s, border-color .25s; }
+    .sample-tab:hover { color: rgba(255,255,255,.55); }
+    .sample-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .sample-doc-view { padding: 40px 48px; min-height: 340px; }
+    .sample-doc-section { display: none; animation: sampleFadeIn .35s ease; }
+    .sample-doc-section.active { display: block; }
+    @keyframes sampleFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .sdoc-label { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .sdoc-title { font-family: 'Outfit',sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+    .sdoc-subtitle { font-size: 13px; color: rgba(255,255,255,.35); margin-bottom: 28px; line-height: 1.6; }
+    .sdoc-content { font-size: 14.5px; line-height: 1.85; color: rgba(255,255,255,.7); }
+    .sdoc-content strong { color: #fff; font-weight: 600; }
+    .sdoc-quote { border-left: 3px solid var(--accent); padding: 16px 20px; margin: 20px 0; background: rgba(196,112,63,.06); border-radius: 0 8px 8px 0; font-style: italic; color: rgba(255,255,255,.6); font-size: 14px; line-height: 1.8; }
+    .sdoc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    .sdoc-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; padding: 20px; }
+    .sdoc-card-label { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .sdoc-card-value { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.7; }
+    .sdoc-nav-hint { text-align: center; margin-top: 24px; font-size: 11px; color: rgba(255,255,255,.2); letter-spacing: 1px; }
+    @media (max-width: 600px) {
+      .sample-doc-view { padding: 24px 20px; min-height: 280px; }
+      .sample-tabs { padding: 0 16px; }
+      .sample-tab { font-size: 10px; padding: 12px 12px; }
+      .sdoc-title { font-size: 18px; }
+      .sdoc-grid { grid-template-columns: 1fr; }
+    }
     .sample-output-header { background: #1a1917; padding: 16px 28px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,.06); }
     .sample-traffic-lights { display: flex; gap: 7px; }
     .stl { width: 12px; height: 12px; border-radius: 50%; }
@@ -336,6 +344,7 @@
       nav { padding: 0 20px; } .nav-links { display: none; }
       .hero { display: none; }
       .mobile-hero-video { display: block; }
+      .mobile-hero-photo-wrap { display: flex; flex-direction: column; justify-content: flex-end; }
       .hero-arrow-label { display: none; }
       .cred-section { padding: 48px 20px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
@@ -505,31 +514,19 @@
   </div>
 </section>
 
-<!-- HERO MOBILE — no photo, video is the star -->
+<!-- HERO MOBILE — photo background -->
 <div class="mobile-hero-video">
-  <div class="mobile-vid-canvas-wrap">
-    <canvas id="mobile-geo"></canvas>
-    <div class="mobile-vid-rings">
-      <div class="mobile-ring" style="width:calc(100% - 24px);aspect-ratio:16/10;"></div>
-      <div class="mobile-ring" style="width:calc(100% - 8px);aspect-ratio:16/10;"></div>
+  <div class="mobile-hero-photo-wrap">
+    <div class="mobile-hero-photo-bg"><img src="images/james-hero.png" alt="James Guldan" loading="eager"></div>
+    <div class="mobile-hero-photo-overlay"></div>
+    <div class="mobile-hero-text">
+      <div class="eyebrow">Deep Work Process</div>
+      <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
+      <h1>Work through it in sections. Leave with a plan that makes everything <em>clear.</em></h1>
+      <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
+      <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
+      <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
     </div>
-    <div class="mobile-vid-inner">
-      <div class="mobile-vid-player">
-        <video controls preload="metadata">
-          <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
-        </video>
-        <div class="mobile-vid-caption">5 min · The Deep Work Process explained</div>
-      </div>
-    </div>
-  </div>
-  <div class="mobile-bottom-fade"></div>
-  <div class="mobile-hero-text">
-    <div class="eyebrow">Deep Work Process</div>
-    <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
-    <h1>Work through it in sections. Leave with a plan that makes everything <em>clear.</em></h1>
-    <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
-    <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
-    <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
   </div>
 </div>
 
@@ -818,23 +815,145 @@
       </div>
       <span class="sample-file-name">Brand Guide — Nora Ellis Consulting — Deep Work Interview Output</span>
     </div>
-    <div style="padding:0;display:flex;justify-content:center;background:#0d0c0b;">
-      <div class="gif-loader" id="gifLoader">
-        <div class="gif-shimmer"></div>
-        <div class="gif-shimmer-content">
-          <div class="gif-shimmer-label">Loading preview</div>
-          <div class="gif-shimmer-bar"></div>
+    <div class="sample-tabs" id="sampleTabs">
+      <div class="sample-tab active" data-tab="0">Brand Foundation</div>
+      <div class="sample-tab" data-tab="1">Ideal Avatar</div>
+      <div class="sample-tab" data-tab="2">Niche Analysis</div>
+      <div class="sample-tab" data-tab="3">Offer Structure</div>
+      <div class="sample-tab" data-tab="4">Website Copy</div>
+      <div class="sample-tab" data-tab="5">Gap Analysis</div>
+    </div>
+    <div class="sample-doc-view" id="sampleDocView">
+
+      <div class="sample-doc-section active" data-section="0">
+        <div class="sdoc-label">Section 01 of 11</div>
+        <div class="sdoc-title">Brand Foundation</div>
+        <div class="sdoc-subtitle">Who you are, what you stand for, and the worldview that makes your work different.</div>
+        <div class="sdoc-content">
+          <div class="sdoc-quote">"I spent 12 years building marketing agencies for other people before I realized I was solving the wrong problem. The real gap was not execution. It was clarity. Every founder I worked with had the skills. None of them had the positioning."</div>
+          <div class="sdoc-grid">
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Core Worldview</div>
+              <div class="sdoc-card-value">Most service businesses fail at marketing because they skip positioning. You cannot out-execute a confused message.</div>
+            </div>
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Brand Voice</div>
+              <div class="sdoc-card-value">Direct. No fluff. Conversational but never casual. Speaks like someone who has been in the room, not read about it.</div>
+            </div>
+          </div>
         </div>
-        <img alt="Sample Brand Guide scrolling through all sections">
+        <div class="sdoc-nav-hint">Click any tab above to explore the full document</div>
       </div>
+
+      <div class="sample-doc-section" data-section="1">
+        <div class="sdoc-label">Section 02 of 11</div>
+        <div class="sdoc-title">Ideal Client Avatar</div>
+        <div class="sdoc-subtitle">A vivid portrait with real psychology, not a demographics list.</div>
+        <div class="sdoc-content">
+          <div class="sdoc-grid">
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Meet "Marcus"</div>
+              <div class="sdoc-card-value"><strong>Marcus Chen, 41, Portland.</strong> Runs a consulting practice doing $180K/yr. Has 6 years of experience and strong client results but cannot articulate why someone should choose him over 50 other consultants. Keeps lowering his price because he does not know how to sell the value.</div>
+            </div>
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Internal Dialogue</div>
+              <div class="sdoc-card-value">"I know I am good at this. I just cannot explain it in a way that makes people want to pay what it is worth. Every time I write my website copy it sounds generic."</div>
+            </div>
+          </div>
+          <div class="sdoc-quote">"His trigger event: He just lost a $40K contract to a competitor with half his experience but a sharper message. That is when he starts searching."</div>
+        </div>
+      </div>
+
+      <div class="sample-doc-section" data-section="2">
+        <div class="sdoc-label">Section 03 of 11</div>
+        <div class="sdoc-title">Niche Domination Analysis</div>
+        <div class="sdoc-subtitle">Competitor pricing, positioning gaps, and your credibility score.</div>
+        <div class="sdoc-content">
+          <div class="sdoc-grid">
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Positioning Statement</div>
+              <div class="sdoc-card-value">"I help service business founders who have the skills but not the message turn their buried expertise into a premium brand that books clients without chasing."</div>
+            </div>
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Credibility Score</div>
+              <div class="sdoc-card-value"><strong>7.2 / 10</strong> — Strong client results and real experience. Gap: no public thought leadership, no signature framework name, website undersells by 60%.</div>
+            </div>
+          </div>
+          <div class="sdoc-quote">"Competitor A charges $4,500 for brand strategy with a 6 week timeline. Competitor B charges $2,200 but delivers a template. You sit in the middle with deeper methodology but zero visibility."</div>
+        </div>
+      </div>
+
+      <div class="sample-doc-section" data-section="3">
+        <div class="sdoc-label">Section 04 of 11</div>
+        <div class="sdoc-title">Three Tier Offer Structure</div>
+        <div class="sdoc-subtitle">High, mid, and entry level offers with pricing logic and ascension path.</div>
+        <div class="sdoc-content">
+          <div class="sdoc-grid">
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Tier 1 — "The Full Rebrand"</div>
+              <div class="sdoc-card-value"><strong>$12,000</strong> — 8 week engagement. Complete brand strategy, messaging, website copy, content calendar, and 90 day launch plan. For founders ready to go all in.</div>
+            </div>
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Tier 2 — "The Positioning Sprint"</div>
+              <div class="sdoc-card-value"><strong>$3,500</strong> — 2 week intensive. Brand foundation, avatar, niche analysis, and offer structure. For founders who know the direction but need the language.</div>
+            </div>
+          </div>
+          <div class="sdoc-quote">"Tier 3 (entry): A $497 Brand Clarity Audit. One deliverable, one hour review call. Designed to give immediate value and open the door to Tier 2."</div>
+        </div>
+      </div>
+
+      <div class="sample-doc-section" data-section="4">
+        <div class="sdoc-label">Section 05 of 11</div>
+        <div class="sdoc-title">Website Blueprint with Real Copy</div>
+        <div class="sdoc-subtitle">Not wireframes. Actual headlines, CTAs, and section copy ready to use.</div>
+        <div class="sdoc-content">
+          <div class="sdoc-grid">
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Hero Headline</div>
+              <div class="sdoc-card-value">"Stop Competing on Price. Start Owning Your Category." — Subhead: "Brand strategy for service founders who are tired of being the best kept secret in their market."</div>
+            </div>
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Problem Section</div>
+              <div class="sdoc-card-value">"You have the results. The case studies. The testimonials. But when someone asks what you do, the answer still does not land. That gap between your skills and your message is costing you six figures a year."</div>
+            </div>
+          </div>
+          <div class="sdoc-quote">"CTA: 'Book a Brand Clarity Call' — not 'Schedule a Consultation.' Every word is chosen to lower the commitment threshold and raise curiosity."</div>
+        </div>
+      </div>
+
+      <div class="sample-doc-section" data-section="5">
+        <div class="sdoc-label">Section 06 of 11</div>
+        <div class="sdoc-title">Gap Analysis &amp; 90 Day Roadmap</div>
+        <div class="sdoc-subtitle">What is missing, ranked by urgency, with a clear action plan.</div>
+        <div class="sdoc-content">
+          <div class="sdoc-grid">
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Priority 1 — Urgency 9/10</div>
+              <div class="sdoc-card-value"><strong>Zero LinkedIn presence for target keywords.</strong> Action: Publish 3x/week for 90 days using the content pillars from Section 08. Reposition headline and about section within 48 hours.</div>
+            </div>
+            <div class="sdoc-card">
+              <div class="sdoc-card-label">Priority 2 — Urgency 8/10</div>
+              <div class="sdoc-card-value"><strong>No email nurture sequence post purchase.</strong> Action: Build a 5 email welcome series using the brand voice from Section 01. Focus on the trigger event from the avatar profile.</div>
+            </div>
+          </div>
+          <div class="sdoc-quote">"Top 10 actions ranked by impact. Each one tied to a specific section of this document so nothing lives in a vacuum."</div>
+        </div>
+      </div>
+
     </div>
     <script>
     (function(){
-      var loader = document.getElementById('gifLoader');
-      var img = loader.querySelector('img');
-      img.onload = function(){ img.classList.add('gif-loaded'); loader.classList.add('loaded'); };
-      // Start loading after a tiny delay so the shimmer shows first
-      setTimeout(function(){ img.src = 'sample-brand-guide-scroll.gif'; }, 100);
+      var tabs = document.querySelectorAll('#sampleTabs .sample-tab');
+      var sections = document.querySelectorAll('#sampleDocView .sample-doc-section');
+      tabs.forEach(function(tab){
+        tab.addEventListener('click', function(){
+          var idx = this.getAttribute('data-tab');
+          tabs.forEach(function(t){ t.classList.remove('active'); });
+          sections.forEach(function(s){ s.classList.remove('active'); });
+          this.classList.add('active');
+          document.querySelector('[data-section="'+idx+'"]').classList.add('active');
+        });
+      });
     })();
     </script>
     <div class="sample-caption">A fictional example built the exact same way yours will be. 11 sections including SWOT analysis, competitor grading, revenue model, content pillars, and a 90 day authority roadmap. Every word comes from the conversation. Nothing is templated.</div>
@@ -1004,7 +1123,7 @@
       </div>
       <div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 28px;">
         <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">This is not for you if</div>
-        <p style="font-size:14.5px;line-height:1.8;color:var(--muted);">You are looking for a done for you branding agency. You want someone else to do the thinking. You are brand new and have not worked with any clients yet. You need logo design, color palettes, or visual identity work. This is strategic positioning, not graphic design.</p>
+        <p style="font-size:14.5px;line-height:1.8;color:var(--muted);">You want someone else to do the thinking for you. You are brand new and have not worked with any clients yet. You need logo design, color palettes, or visual identity work. This is strategic positioning, not graphic design.</p>
       </div>
     </div>
 
@@ -1277,15 +1396,15 @@
       + '<div class="op-bump" id="bump-site">'
       + '<input type="checkbox" id="cb-site">'
       + '<div class="op-bump-tag">Most Popular</div>'
-      + '<div class="op-bump-title">Add a Done For You Website</div>'
-      + '<div class="op-bump-desc">After your session, AI takes your blueprint and builds your entire site with real copy, real structure, and deploys it live. No code. No designers. No waiting weeks.</div>'
+      + '<div class="op-bump-title">Add an AI Generated Launch Page</div>'
+      + '<div class="op-bump-desc">Your blueprint gets turned into a single page website with real copy, real structure, and a live URL. Think of it as your positioning brought to life fast so you can start sending traffic while you build the real thing.</div>'
       + '<div class="op-bump-price">+ $130</div>'
       + '</div>'
       + '<div class="op-bump" id="bump-call">'
       + '<input type="checkbox" id="cb-call">'
       + '<div class="op-bump-tag">Go Deeper</div>'
-      + '<div class="op-bump-title">Add a 1:1 Call with James</div>'
-      + '<div class="op-bump-desc">Private strategy session to walk through your blueprint, pressure test your offers, and map your first 90 days. The same call founders paid $5,000 for.</div>'
+      + '<div class="op-bump-title">Add a 1:1 Blueprint Review with James</div>'
+      + '<div class="op-bump-desc">30 minute call where James walks through your completed blueprint with you, pressure tests your positioning, and tells you exactly what to do first. Not coaching. Just a sharp set of eyes on your plan.</div>'
       + '<div class="op-bump-price">+ $130</div>'
       + '</div>'
       + '</div>'
