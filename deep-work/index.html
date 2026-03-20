@@ -1109,6 +1109,10 @@
       '.op-success-cta:hover{background:#c4703f}',
       '@keyframes opcheckbounce{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}',
       '.op-success-icon{animation:opcheckbounce .5s cubic-bezier(.2,.9,.3,1) .1s both}',
+      '.op-session-loading{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 32px;flex:1;gap:20px}',
+      '.op-session-loading p{font-size:15px;color:#555;margin:0;font-family:Outfit,sans-serif}',
+      '.op-session-spinner{width:44px;height:44px;border:3px solid #f0e8e0;border-top-color:#c4703f;border-radius:50%;animation:opspin .8s linear infinite}',
+      '@keyframes opspin{to{transform:rotate(360deg)}}',
     ].join('');
     document.head.appendChild(style);
 
@@ -1173,6 +1177,13 @@
       + '<div class="op-guarantee">7 day guarantee &middot; Cancel anytime &middot; Instant access</div>'
       + '<button class="op-back-btn" id="op-back-btn">← Change order</button>'
       + '</div>'
+      + '</div>'
+
+      /* ── STEP 3: Success ── */
+      /* ── STEP 2b: Loading (magic link in progress) ── */
+      + '<div class="op-session-loading" id="op-session-loading">'
+      + '<div class="op-session-spinner"></div>'
+      + '<p>Setting up your session&hellip;</p>'
       + '</div>'
 
       /* ── STEP 3: Success ── */
@@ -1257,15 +1268,17 @@
 
     // ── Step management ──────────────────────────────────────────────────────
     function showStep(step) {
-      var orderBody   = document.getElementById('op-order-body');
-      var paymentView = document.getElementById('op-payment-view');
-      var successView = document.getElementById('op-success-view');
-      var header      = document.getElementById('op-header');
-      var headerTitle = document.getElementById('op-header-title');
-      var headerSub   = document.getElementById('op-header-sub');
+      var orderBody    = document.getElementById('op-order-body');
+      var paymentView  = document.getElementById('op-payment-view');
+      var loadingView  = document.getElementById('op-session-loading');
+      var successView  = document.getElementById('op-success-view');
+      var header       = document.getElementById('op-header');
+      var headerTitle  = document.getElementById('op-header-title');
+      var headerSub    = document.getElementById('op-header-sub');
 
       orderBody.style.display   = step === 'order'   ? 'flex' : 'none';
       paymentView.style.display = step === 'payment' ? 'flex' : 'none';
+      if (loadingView) loadingView.style.display = step === 'loading' ? 'flex' : 'none';
       successView.style.display = step === 'success' ? 'flex' : 'none';
 
       if (step === 'order') {
@@ -1276,7 +1289,7 @@
         header.style.display = '';
         headerTitle.textContent = 'Secure Checkout';
         headerSub.textContent   = '256-bit encryption · Powered by Stripe';
-      } else if (step === 'success') {
+      } else if (step === 'loading' || step === 'success') {
         header.style.display = 'none';
         canClosePopup = false; // prevent accidental close after payment
       }
