@@ -75,7 +75,7 @@
     @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
     .vid-float { position: absolute; bottom: 4%; right: 5%; left: auto; transform: none; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
     .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
-    .hero-arrow-label { position: absolute; bottom: 32%; right: 18%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hero-arrow-label { position: absolute; bottom: 32%; right: 19%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
     .hero-arrow-label svg { width: 52px; opacity: 0.85; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
@@ -445,15 +445,15 @@
         <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
       </video>
       <div class="vid-label">5 min · The Deep Work Process explained</div>
-    <div class="hero-arrow-label">
-      <span>Hear my story</span>
-      <svg viewBox="0 0 55 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8,6 C10,18 18,38 28,55 C34,65 40,72 48,78" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
-        <path d="M48,78 L37,74" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
-        <path d="M48,78 L46,66" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
-      </svg>
     </div>
-    </div>
+  </div>
+  <div class="hero-arrow-label">
+    <span>Hear my story</span>
+    <svg viewBox="0 0 55 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8,6 C10,18 18,38 28,55 C34,65 40,72 48,78" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+      <path d="M48,78 L37,74" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+      <path d="M48,78 L46,66" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+    </svg>
   </div>
   <div class="hero-text-wrap">
     <div class="hero-text">
@@ -1740,7 +1740,6 @@
   <!-- Deep Work Support Chat Widget -->
   <script>
 // Deep Work Support Chat Widget
-// Embed: <script src="https://support.jamesguldan.com/widget/chat-widget.js"></script>
 (function() {
   if (window.__DWSupport) return;
   window.__DWSupport = true;
