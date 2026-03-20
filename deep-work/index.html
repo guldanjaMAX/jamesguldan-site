@@ -75,7 +75,7 @@
     @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
     .vid-float { position: absolute; bottom: 4%; right: 5%; left: auto; transform: none; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
     .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
-    .hero-arrow-label { position: absolute; bottom: 32%; right: 19%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hero-arrow-label { position: absolute; bottom: 22%; right: 8%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
     .hero-arrow-label svg { width: 52px; opacity: 0.85; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
@@ -385,11 +385,37 @@
     .wnjc-bottom-text p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,.75); }
     .wnjc-bottom-text p strong { color: #fff; }
     .wnjc-bottom-cta { flex-shrink: 0; }
+
+    /* Transcript Comparison */
+    .compare-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .compare-col { border-radius: 16px; overflow: hidden; }
+    .compare-generic { background: #f0eee9; border: 1px solid var(--border); }
+    .compare-deep { background: #0d0c0b; border: 1px solid rgba(196,112,63,.25); }
+    .compare-label { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 24px; }
+    .compare-generic .compare-label { color: var(--muted); background: rgba(0,0,0,.03); border-bottom: 1px solid var(--border); }
+    .compare-deep .compare-label { color: var(--accent); background: rgba(196,112,63,.08); border-bottom: 1px solid rgba(196,112,63,.15); }
+    .compare-chat { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+    .compare-msg { border-radius: 12px; padding: 14px 18px; font-size: 13.5px; line-height: 1.7; }
+    .compare-generic .compare-user-msg { background: #fff; color: var(--text); align-self: flex-end; max-width: 88%; border: 1px solid var(--border); }
+    .compare-generic .compare-ai-msg { background: rgba(0,0,0,.04); color: var(--muted); align-self: flex-start; max-width: 88%; }
+    .compare-deep .compare-user-msg { background: rgba(196,112,63,.12); color: rgba(255,255,255,.8); align-self: flex-end; max-width: 88%; border: 1px solid rgba(196,112,63,.2); font-style: italic; }
+    .compare-deep .compare-ai-msg { background: rgba(255,255,255,.06); color: rgba(255,255,255,.7); align-self: flex-start; max-width: 88%; }
+    .compare-verdict { display: flex; align-items: flex-start; gap: 10px; padding: 16px 18px; border-radius: 12px; margin-top: 8px; font-size: 13px; line-height: 1.65; }
+    .compare-generic .compare-verdict { background: rgba(0,0,0,.03); color: var(--muted); }
+    .compare-deep .compare-verdict { background: rgba(196,112,63,.1); color: rgba(255,255,255,.85); }
+    .compare-verdict-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
     @media (max-width: 860px) {
       .wnjc-section { padding: 72px 20px; }
       .wnjc-grid { grid-template-columns: 1fr; gap: 16px; }
       .wnjc-bottom { flex-direction: column; gap: 24px; padding: 32px 24px; }
       .wnjc-bottom-cta a { display: block; text-align: center; }
+      .compare-wrap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .compare-chat { padding: 16px; gap: 10px; }
+      .compare-msg { font-size: 12.5px; padding: 12px 14px; }
+      .before-decide-grid { grid-template-columns: 1fr !important; }
+      .before-decide-section { padding: 60px 20px !important; }
     }</style>
   <script type="application/ld+json">
   {
@@ -771,71 +797,19 @@
 <div style="max-width:1100px;margin:64px auto 0;padding:0 48px;">
   <div class="section-eyebrow" style="text-align:center;margin-bottom:12px;">Sample Output</div>
   <p style="text-align:center;font-size:15px;color:#777;max-width:520px;margin:0 auto 36px;line-height:1.7;">This is what the actual document looks like. Your version will be built around your story, your market, and your specific positioning gap.</p>
-  <div class="sample-output">
+  <div class="sample-output" style="position:relative;">
     <div class="sample-output-header">
       <div class="sample-traffic-lights">
         <div class="stl" style="background:#ff5f57"></div>
         <div class="stl" style="background:#febc2e"></div>
         <div class="stl" style="background:#28c840"></div>
       </div>
-      <span class="sample-file-name">Brand Blueprint — Sarah Chen — Deep Work Interview Output</span>
+      <span class="sample-file-name">Brand Guide — Nora Ellis Consulting — Deep Work Interview Output</span>
     </div>
-    <div class="sample-doc">
-      <div>
-        <div class="sample-block">
-          <div class="sample-block-label">Your Voice, Finally Found</div>
-          <div class="sample-block-content"><strong>"Sarah Chen is the only leadership coach who uses 12 years at McKinsey to help burned-out executives redesign their careers without sacrificing income or identity."</strong><br><br>This is the sentence you've been trying to write for years. It came out of the conversation.</div>
-        </div>
-        <hr class="sample-divider">
-        <div class="sample-block">
-          <div class="sample-block-label">The Person Who Needs You Most</div>
-          <div class="sample-block-content">Marcus, 44. SVP at a tech company. At 11pm on a Tuesday he's scrolling LinkedIn watching people 10 years younger get promoted around him. His wife knows something's off. He tells people he's "evaluating options." He's too proud to admit he doesn't know what comes next. <strong>He has never paid less than $500/hr for advice. He's been waiting for someone like you.</strong></div>
-        </div>
-        <hr class="sample-divider">
-        <div class="sample-block">
-          <div class="sample-block-label">Your Authority Level — And What Changes Next</div>
-          <div class="sample-block-content">Your background puts you at a <strong>7.4 out of 10</strong> for category authority — strong enough to lead, with one gap that's fixable in 90 days. No published case studies with named outcomes. Close that gap and you're commanding top-tier rates with full confidence.</div>
-          <div class="sample-score-row">
-            <div class="sample-score-bar"><div class="sample-score-fill" style="width:74%"></div></div>
-            <div class="sample-score-num">7.4</div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="sample-block">
-          <div class="sample-block-label">Your Complete Offer Suite — Built From Your Story</div>
-          <div class="sample-block-content" style="margin-bottom:12px;">Three offers. Named, priced, and built from what you said — not templates. These came directly from your answers.</div>
-          <div class="sample-offer-row">
-            <div class="sample-offer-pill">
-              <div class="sample-offer-tier">Entry</div>
-              <div class="sample-offer-price">$297</div>
-              <div class="sample-offer-name">Career Clarity Audit</div>
-            </div>
-            <div class="sample-offer-pill">
-              <div class="sample-offer-tier">Core</div>
-              <div class="sample-offer-price">$3,500</div>
-              <div class="sample-offer-name">Transition Sprint</div>
-            </div>
-            <div class="sample-offer-pill">
-              <div class="sample-offer-tier">Premium</div>
-              <div class="sample-offer-price">$18K</div>
-              <div class="sample-offer-name">Full Rebuild</div>
-            </div>
-          </div>
-        </div>
-        <hr class="sample-divider">
-        <div class="sample-block">
-          <div class="sample-block-label">Your Unfair Advantage</div>
-          <div class="sample-block-content">After reviewing your experience and the language you used to describe your work, one thing is unmistakable: <strong>nobody in your market combines McKinsey rigor with genuine emotional intelligence.</strong> That gap belongs to you. Own it in everything you say. Stop qualifying yourself. Charge accordingly.</div>
-        </div>
-        <hr class="sample-divider">
-        <div class="sample-block">
-          <div class="sample-block-label">Your Site Headline — 5 Versions, Ready to Use</div>
-          <div class="sample-block-content"><strong>"You built a career everyone admires. Now you need someone who'll tell you the truth about what comes next."</strong><br><br>This is option 1 of 5. Each version targets a different emotional angle — same truth, different entry point.</div>
-        </div>
-      </div>
+    <div style="padding:0;display:flex;justify-content:center;background:#0d0c0b;">
+      <img src="sample-brand-guide-scroll.gif" alt="Sample Brand Guide scrolling through all sections" style="width:100%;max-width:800px;display:block;" loading="lazy">
     </div>
-    <div class="sample-caption">A dramatized example — but built the exact same way yours will be. Every word comes from the conversation. Nothing is templated.</div>
+    <div class="sample-caption">A fictional example built the exact same way yours will be. 11 sections including SWOT analysis, competitor grading, revenue model, content pillars, and a 90 day authority roadmap. Every word comes from the conversation. Nothing is templated.</div>
   </div>
 </div>
 
@@ -940,6 +914,79 @@
   </div>
 </section>
 
+<!-- A FAIR QUESTION — Transcript Comparison -->
+<section class="wnjc-section">
+  <div class="wnjc-inner">
+    <div class="wnjc-header">
+      <div class="section-eyebrow">A Fair Question</div>
+      <h2>"Can't I just do this in <em>Claude?</em>"</h2>
+      <p>You could. Here's what the two conversations actually look like side by side.</p>
+    </div>
+
+    <div class="compare-wrap">
+      <div class="compare-col compare-generic">
+        <div class="compare-label">You + Claude (blank session)</div>
+        <div class="compare-chat">
+          <div class="compare-msg compare-user-msg">"Help me with my personal brand positioning as a coach"</div>
+          <div class="compare-msg compare-ai-msg">Sure! Let's start with some basics. What kind of coaching do you do? Who is your target audience? What makes you different from other coaches?</div>
+          <div class="compare-msg compare-user-msg">"I help business owners with leadership and strategy"</div>
+          <div class="compare-msg compare-ai-msg">Great! Here are 5 positioning statement templates you can customize:<br>1. "I help [audience] achieve [result] through [method]"<br>2. "The [niche] coach for [specific audience]"<br>...</div>
+          <div class="compare-verdict">
+            <span class="compare-verdict-icon">⚠️</span>
+            <span>20 minutes later you have a template. You still do not know what to put in it.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-col compare-deep">
+        <div class="compare-label">The Deep Work Process</div>
+        <div class="compare-chat">
+          <div class="compare-msg compare-ai-msg">Tell me about a moment when you realized your old career was over. Not when you decided to leave. When you knew.</div>
+          <div class="compare-msg compare-user-msg">"It was a Tuesday. My biggest client told me I'd saved their company, and I felt nothing. That's when I knew."</div>
+          <div class="compare-msg compare-ai-msg">That numbness is the signal. You were already a strategist who could save companies, but the identity attached to it had expired. That gap between competence and meaning is exactly what your future clients are living in right now. Let's build from there.</div>
+          <div class="compare-verdict">
+            <span class="compare-verdict-icon">✦</span>
+            <span>90 minutes later you have an 11 section Brand Guide with positioning, offers, competitor analysis, a SWOT, content pillars, and a 90 day roadmap. Built from your actual words.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wnjc-bottom" style="margin-top:40px;">
+      <div class="wnjc-bottom-text">
+        <p>The difference is not the AI. The difference is the process behind it. <strong>15 years of positioning methodology, hundreds of real interviews, and a question sequence designed to pull out material you did not know you had.</strong> You could spend hours figuring out what to ask. Or you could answer honestly for 90 minutes and walk away with everything.</p>
+      </div>
+      <div class="wnjc-bottom-cta">
+        <a href="#checkout" data-checkout="blueprint" class="cta-btn-light">Get Clear Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR / OBJECTION HANDLING -->
+<section class="before-decide-section" style="position:relative;z-index:2;padding:80px 48px;background:var(--bg);">
+  <div style="max-width:800px;margin:0 auto;">
+    <div class="section-eyebrow" style="text-align:center;margin-bottom:12px;">Before You Decide</div>
+    <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:700;color:var(--text);line-height:1.25;text-align:center;margin-bottom:48px;">This is built for a specific kind of person. <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);font-weight:400;">Here's how to know if that's you.</em></h2>
+
+    <div class="before-decide-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 28px;">
+        <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#22c55e;margin-bottom:16px;">This is for you if</div>
+        <p style="font-size:14.5px;line-height:1.8;color:var(--muted);">You are a coach, consultant, or service provider who knows your work is excellent but struggles to articulate why someone should choose you over everyone else. You have been in business long enough to know the basics but cannot seem to nail the positioning. You are willing to be honest with yourself for 90 minutes.</p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 28px;">
+        <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">This is not for you if</div>
+        <p style="font-size:14.5px;line-height:1.8;color:var(--muted);">You are looking for a done for you branding agency. You want someone else to do the thinking. You are brand new and have not worked with any clients yet. You need logo design, color palettes, or visual identity work. This is strategic positioning, not graphic design.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--text);border-radius:20px;padding:40px 48px;color:#fff;">
+      <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(196,112,63,.7);margin-bottom:16px;">The math</div>
+      <p style="font-size:16px;line-height:1.8;color:rgba(255,255,255,.75);margin-bottom:0;">A brand strategist charges $5,000 to $15,000 for the same deliverables. A business coach charges $300 to $500 per hour and it takes 4 to 6 sessions to get this level of clarity. <strong style="color:#fff;">This process delivers the same depth of output for $67 during launch week.</strong> You get your Brand Guide immediately. You keep everything forever. And there is a 7 day satisfaction guarantee if the output does not meet your expectations.</p>
+    </div>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="final-cta" id="final-cta">
   <canvas id="cta-canvas"></canvas>
@@ -955,58 +1002,6 @@
     <div class="final-sub">One time · Instant access · Keep everything forever</div>
     <a href="#checkout" data-checkout="blueprint" class="cta-btn-light" style="display:inline-block;">Get Clear Now →</a>
     <div class="final-trust">Powered by Stripe · Secure checkout · 7-day satisfaction guarantee</div>
-  </div>
-</section>
-
-
-<!-- WHY NOT JUST USE CLAUDE -->
-<section class="wnjc-section">
-  <div class="wnjc-inner">
-    <div class="wnjc-header">
-      <div class="section-eyebrow">A Fair Question</div>
-      <h2>"Can't I just do this in <em>Claude?</em>"</h2>
-      <p>You could open Claude right now and ask it to help with your positioning. Here's what would be different.</p>
-    </div>
-
-    <div class="wnjc-grid">
-      <div class="wnjc-card">
-        <div class="wnjc-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <h3>Primed with 15 years of positioning data</h3>
-        <p>This isn't a blank Claude session. The process is built on hundreds of real brand interviews — refined across coaches, consultants, and founders until the output is consistently clear and usable.</p>
-      </div>
-      <div class="wnjc-card">
-        <div class="wnjc-card-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        </div>
-        <h3>Designed to extract, not just generate</h3>
-        <p>Most AI sessions produce generic output because generic questions go in. This process asks the uncomfortable questions — the ones nobody else asks — that pull out the real material you've been sitting on for years.</p>
-      </div>
-      <div class="wnjc-card">
-        <div class="wnjc-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <h3>Seven deliverables, not a transcript</h3>
-        <p>The output isn't a chat log. Seven distinct documents are generated simultaneously — your positioning statement, offer structure, ideal client portrait, website headline options, and more — each built from a unified understanding of your story.</p>
-      </div>
-      <div class="wnjc-card">
-        <div class="wnjc-card-icon">
-          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3>Tested across hundreds of real people</h3>
-        <p>Every phase, every question, every sequence has been refined across real positioning problems — coaches who'd been stuck for years, consultants who couldn't explain what they did, founders who knew their work was good but couldn't get paid what it was worth.</p>
-      </div>
-    </div>
-
-    <div class="wnjc-bottom">
-      <div class="wnjc-bottom-text">
-        <p>You'd spend the first hour figuring out what to ask. <strong>This process starts exactly where it needs to start.</strong> The questions are already written. The synthesis is already wired. You just answer honestly — and walk away with everything.</p>
-      </div>
-      <div class="wnjc-bottom-cta">
-        <a href="#checkout" data-checkout="blueprint" class="cta-btn-light">Get Clear Now →</a>
-      </div>
-    </div>
   </div>
 </section>
 
