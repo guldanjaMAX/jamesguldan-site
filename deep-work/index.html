@@ -1179,9 +1179,9 @@
       + '<div class="op-success-view" id="op-success-view">'
       + '<div class="op-success-icon">✓</div>'
       + '<h3>You&#39;re in!</h3>'
-      + '<p>Check <span class="op-success-email" id="op-success-email">your email</span> for your magic link to start the interview.</p>'
-      + '<p class="op-success-sub">Email takes 1&#8211;2 minutes. Check spam if you don&#39;t see it.</p>'
-      + '<a href="#" id="op-start-session" class="op-success-cta" style="display:none">Start the Interview →</a>'
+      + '<p>Click below to start your session right now.</p>'
+      + '<a href="https://app.jamesguldan.com" id="op-start-session" class="op-success-cta" target="_blank" rel="noopener">Start the Interview &#8594;</a>'
+      + '<p class="op-success-sub">A magic link is also on its way to <span class="op-success-email" id="op-success-email">your email</span> so you can return anytime.</p>'
       + '</div>';
     document.body.appendChild(popup);
 
@@ -1433,22 +1433,44 @@
       .then(function(result) {
         if (result.error) {
           setPayLoading(false);
+          var code = result.error.code || '';
+          var type = result.error.type || '';
           var msg = result.error.message || 'Payment failed. Please try a different card.';
-          // Friendly messages for common declines
-          if (result.error.code === 'card_declined') msg = 'Your card was declined. Please try a different payment method.';
-          if (result.error.code === 'insufficient_funds') msg = 'Insufficient funds. Please try a different card.';
-          if (result.error.code === 'expired_card') msg = 'Your card has expired. Please update your payment method.';
+          // Friendly messages for common decline codes
+          if (code === 'card_declined' || code === 'do_not_honor' || code === 'generic_decline')
+            msg = 'Your card was declined. Please try a different payment method.';
+          if (code === 'insufficient_funds')
+            msg = 'Insufficient funds on this card. Please try a different one.';
+          if (code === 'expired_card')
+            msg = 'Your card has expired. Please use an updated card.';
+          if (code === 'incorrect_cvc' || code === 'invalid_cvc')
+            msg = 'Incorrect security code (CVC). Please double-check and try again.';
+          if (code === 'incorrect_number' || code === 'invalid_number')
+            msg = 'Your card number doesn&#39;t look right. Please check it and try again.';
+          if (code === 'processing_error')
+            msg = 'Your bank had a temporary issue processing this. Please try again in a moment.';
+          if (code === 'card_velocity_exceed')
+            msg = 'Too many attempts on this card. Please wait a few minutes or try a different card.';
+          if (type === 'validation_error')
+            msg = result.error.message || 'Please check your card details and try again.';
           showPayError(msg);
         } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
           fulfillAndShowSuccess(email);
+        } else if (result.paymentIntent && result.paymentIntent.status === 'requires_action') {
+          // 3DS mid-flow — confirmPayment should handle this, but just in case
+          setPayLoading(false);
+          showPayError('Your bank requires additional verification. Please follow the prompt.');
         } else {
           setPayLoading(false);
-          showPayError('Unexpected payment state. Please contact support if you were charged.');
+          showPayError('Unexpected payment state. Please contact james@jamesguldan.com if you were charged.');
         }
       })
       .catch(function(err) {
         setPayLoading(false);
-        showPayError('An unexpected error occurred. Please try again.');
+        var msg = 'An unexpected error occurred. Please try again.';
+        if (err && (err.message || '').toLowerCase().includes('network'))
+          msg = 'Network error — please check your connection and try again.';
+        showPayError(msg);
         console.error('confirmPayment error:', err);
       });
     });
@@ -1461,6 +1483,10 @@
 
     // ── Fulfillment + success ────────────────────────────────────────────────
     function fulfillAndShowSuccess(email) {
+      // Show success immediately with fallback URL — don&#39;t make the user wait
+      showSuccess(email, null);
+
+      // Then fire fulfillment in the background and upgrade the link if we get a session URL
       fetch('https://app.jamesguldan.com/api/fulfill-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1468,22 +1494,23 @@
       })
       .then(function(r) { return r.json(); })
       .then(function(data) {
-        var sessionUrl = data.sessionUrl || null;
-        showSuccess(email, sessionUrl);
+        if (data.sessionUrl) {
+          var cta = document.getElementById('op-start-session');
+          if (cta) cta.href = data.sessionUrl;
+        }
       })
-      .catch(function() {
+      .catch(function(err) {
         // Payment succeeded — webhook will handle fulfillment as backup
-        showSuccess(email, null);
+        // Button still points to app.jamesguldan.com so user can get in
+        console.error('Fulfill error (webhook backup active):', err);
       });
     }
 
     function showSuccess(email, sessionUrl) {
-      document.getElementById('op-success-email').textContent = email;
-      if (sessionUrl) {
-        var cta = document.getElementById('op-start-session');
-        cta.href = sessionUrl;
-        cta.style.display = 'inline-block';
-      }
+      var emailEl = document.getElementById('op-success-email');
+      if (emailEl) emailEl.textContent = email || 'your email';
+      var cta = document.getElementById('op-start-session');
+      if (cta && sessionUrl) cta.href = sessionUrl;
       showStep('success');
     }
 
@@ -1523,7 +1550,7 @@
         .then(function(r) { return r.json(); })
         .then(function(data) {
           if (data.status === 'succeeded') {
-            // Open popup and show success
+            // Open popup and show success after 3DS redirect
             backdrop.style.display = 'block';
             popup.style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -1537,9 +1564,22 @@
             } else {
               fulfillAndShowSuccess(data.email || '');
             }
+          } else if (data.status === 'requires_payment_method') {
+            // 3DS failed — reopen popup at payment step so they can retry
+            backdrop.style.display = 'block';
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            backdrop.classList.add('visible');
+            popup.classList.add('visible');
+            currentPiId  = piId;
+            currentTiers = (data.tiers || 'blueprint').split(',');
+            showStep('payment');
+            showPayError('Authentication failed or was cancelled. Please try again.');
           }
         })
-        .catch(function(e) { console.error('pi_return check failed:', e); });
+        .catch(function(e) {
+          console.error('pi_return check failed:', e);
+        });
     })();
 
     // ── Attach CTA buttons ───────────────────────────────────────────────────
