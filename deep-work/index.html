@@ -1730,7 +1730,7 @@
       + '<div class="op-success-icon">✓</div>'
       + '<h3>You&#39;re in!</h3>'
       + '<p id="op-success-headline">Taking you to your session now&#8230;</p>'
-      + '<a href="https://app.jamesguldan.com" id="op-start-session" class="op-success-cta" target="_blank" rel="noopener">Start the Interview &#8594;</a>'
+      + '<a href="https://love.jamesguldan.com/app" id="op-start-session" class="op-success-cta" target="_blank" rel="noopener">Start the Interview &#8594;</a>'
       + '<p class="op-success-sub">Your magic link is on its way to <span class="op-success-email" id="op-success-email">your email</span> so you can return anytime.</p>'
       + '</div>';
     document.body.appendChild(popup);
@@ -1855,7 +1855,7 @@
         + '<span style="display:inline-block;width:20px;height:20px;border:2px solid #e5e7eb;border-top-color:#c4703f;border-radius:50%;animation:opspin .7s linear infinite;vertical-align:middle;margin-right:8px"></span>'
         + 'Loading payment form…</div>';
 
-      fetch('https://app.jamesguldan.com/api/create-payment-intent', {
+      fetch('https://love.jamesguldan.com/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tiers: tiers })
@@ -2011,7 +2011,7 @@
       showStep('loading');
       setPayLoading(false);
 
-      fetch('https://app.jamesguldan.com/api/fulfill-payment', {
+      fetch('https://love.jamesguldan.com/api/fulfill-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ paymentIntentId: currentPiId, email: email, tiers: currentTiers })
@@ -2082,7 +2082,7 @@
       window.history.replaceState({}, '', window.location.pathname);
       if (!piId) return;
       // Open popup in payment view → show loading → fulfill
-      fetch('https://app.jamesguldan.com/api/payment-status?pi=' + piId)
+      fetch('https://love.jamesguldan.com/api/payment-status?pi=' + piId)
         .then(function(r) { return r.json(); })
         .then(function(data) {
           if (data.status === 'succeeded') {
