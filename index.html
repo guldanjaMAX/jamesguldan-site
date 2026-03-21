@@ -904,6 +904,32 @@
             color: var(--accent);
         }
 
+        .pattern-personal {
+            max-width: 640px;
+            margin: 0 auto 64px;
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .pattern-personal::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            margin: 0 auto 32px;
+            opacity: 0.4;
+        }
+
+        .pattern-personal-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            line-height: 1.8;
+            color: rgba(253,252,250,0.55);
+        }
+
         .solution-block {
             text-align: center;
             max-width: 700px;
@@ -2263,8 +2289,8 @@
             <div class="container">
                 <div class="problem-intro">
                     <div class="section-eyebrow">The Pattern</div>
-                    <h2>Everyone who comes to me has the <em class="serif-italic" style="color: var(--accent);">same problem.</em></h2>
-                    <p class="problem-lead">It always starts the same way. The business is working. The revenue is there. But something feels off. You just can't name it yet.</p>
+                    <h2>I've had this conversation <em class="serif-italic" style="color: var(--accent);">132 times.</em></h2>
+                    <p class="problem-lead">Different name, different industry, different revenue number. Same feeling. The business is working. But something about it stopped fitting. You're not the first person to feel this. And you won't be the last.</p>
                 </div>
 
                 <div class="problem-symptoms">
@@ -2283,6 +2309,10 @@
                         <div class="symptom-title">Nobody Will Tell You The Truth</div>
                         <div class="symptom-desc">Your team agrees with you. Your friends encourage you. Your coach validates you. Nobody sits across from you and says "that's the thing that's broken."</div>
                     </div>
+                </div>
+
+                <div class="pattern-personal">
+                    <p class="pattern-personal-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</p>
                 </div>
 
                 <div class="problem-truth">
