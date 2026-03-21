@@ -186,7 +186,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -276,7 +276,7 @@
         /* Navigation */
         nav {
             padding: 16px 0;
-            background: rgba(253, 252, 250, 0.85);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             position: sticky;
@@ -676,20 +676,20 @@
         }
 
         /* ═══════════════════════════════════════
-           THE PATTERN — Cinematic Focus + Counter
+           THE PATTERN — Diagnosis (White Theme)
            ═══════════════════════════════════════ */
         .problem-section {
             padding: 0;
             position: relative;
             overflow: hidden;
-            background: #08080a;
-            color: #FDFCFA;
+            background: #FDFCFA;
+            color: #1a1a1a;
         }
 
-        /* Ambient floating orbs */
+        /* Subtle ambient orbs — light theme */
         .pattern-orb {
             position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
-            background: radial-gradient(circle, rgba(196,112,63,0.1), transparent 70%);
+            background: radial-gradient(circle, rgba(196,112,63,0.06), transparent 70%);
         }
         .pattern-orb-1 { width: 600px; height: 600px; top: -10%; right: -10%; animation: orbDrift 14s ease-in-out infinite; }
         .pattern-orb-2 { width: 400px; height: 400px; bottom: 15%; left: -8%; animation: orbDrift 14s ease-in-out 5s infinite; }
@@ -700,15 +700,15 @@
             66% { transform: translate(-18px,12px) scale(0.96); }
         }
 
-        /* Film grain texture */
+        /* Film grain — subtle on white */
         .pattern-grain {
-            position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.4;
+            position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.15;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
         }
 
-        /* Cinematic intro — takes 65vh */
+        /* Intro */
         .pattern-intro {
-            min-height: 65vh; display: flex; flex-direction: column;
+            min-height: 55vh; display: flex; flex-direction: column;
             align-items: center; justify-content: center;
             text-align: center; padding: 80px 24px 40px;
             position: relative; z-index: 2;
@@ -716,7 +716,7 @@
 
         .pattern-intro .section-eyebrow {
             font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em;
-            text-transform: uppercase; color: var(--accent); opacity: 0.5;
+            text-transform: uppercase; color: var(--accent); opacity: 0.6;
             margin-bottom: 24px; font-family: 'Outfit', sans-serif;
         }
 
@@ -724,7 +724,7 @@
             font-family: 'Outfit', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800; line-height: 1.08; letter-spacing: -0.04em;
-            color: #FDFCFA; margin-bottom: 24px; max-width: 720px;
+            color: #1a1a1a; margin-bottom: 24px; max-width: 720px;
         }
 
         .pattern-intro h2 em {
@@ -733,7 +733,7 @@
         }
 
         .pattern-intro .pattern-lead {
-            font-size: 1.1rem; color: rgba(253,252,250,0.35);
+            font-size: 1.1rem; color: rgba(26,26,26,0.4);
             line-height: 1.7; max-width: 500px;
         }
 
@@ -744,12 +744,12 @@
 
         /* Symptom rows — alternating layout */
         .pattern-symptom {
-            padding: 80px 24px; position: relative; z-index: 2;
+            padding: 100px 24px; position: relative; z-index: 2;
         }
 
         .pattern-symptom-inner {
             max-width: 1120px; margin: 0 auto; width: 100%;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
         }
 
         .pattern-symptom:nth-child(even) .pattern-symptom-inner {
@@ -759,139 +759,100 @@
             direction: ltr;
         }
 
-        .pattern-sym-visual {
-            text-align: center; position: relative;
-        }
-
-        .pattern-sym-num {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(8rem, 14vw, 11rem);
-            font-weight: 900; color: rgba(196,112,63,0.06);
-            line-height: 0.85; letter-spacing: -0.06em;
-        }
-
-        /* Image placeholder area — will hold generated images */
-        .pattern-sym-img {
-            width: 100%; aspect-ratio: 4/3; border-radius: 20px;
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden; position: relative;
-        }
-        .pattern-sym-img img {
-            width: 100%; height: 100%; object-fit: cover; border-radius: 20px;
-        }
-
-        .pattern-sym-content {}
-
-        /* Interview excerpt cards */
-        .pattern-excerpt {
-            margin-top: 32px;
-            padding: 28px 32px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 16px;
+        /* Diagnosis card — dark card on light background */
+        .pattern-diag-card {
+            background: #0e0e12;
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px; overflow: hidden;
             position: relative;
-            overflow: hidden;
         }
-        .pattern-excerpt::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 3px; height: 100%;
-            background: linear-gradient(180deg, var(--accent), transparent);
-            border-radius: 3px 0 0 3px;
-            opacity: 0.4;
+        .pattern-diag-card::before {
+            content: ''; position: absolute; inset: 0;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(196,112,63,0.15), transparent 40%, transparent 60%, rgba(196,112,63,0.08)) border-box;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude; -webkit-mask-composite: xor;
+            pointer-events: none;
         }
-        .excerpt-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.55rem;
-            font-weight: 700;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--accent);
-            opacity: 0.4;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .diag-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 18px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
         }
-        .excerpt-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(196,112,63,0.1);
+        .diag-title {
+            font-family: 'JetBrains Mono', 'DM Sans', monospace; font-size: 0.6rem;
+            font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+            color: rgba(253,252,250,0.3);
         }
-        .excerpt-line {
-            margin-bottom: 16px;
-            padding-left: 0;
+        .diag-case {
+            font-family: 'JetBrains Mono', 'DM Sans', monospace; font-size: 0.65rem;
+            font-weight: 500; color: var(--accent); opacity: 0.6;
         }
-        .excerpt-line:last-child {
-            margin-bottom: 0;
-        }
-        .excerpt-speaker {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+        .diag-body { padding: 28px 24px; }
+        .diag-msg { margin-bottom: 18px; }
+        .diag-msg:last-child { margin-bottom: 0; }
+        .diag-sender {
+            font-family: 'JetBrains Mono', 'DM Sans', monospace; font-size: 0.55rem;
+            font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
             margin-bottom: 6px;
         }
-        .excerpt-speaker.james {
-            color: var(--accent);
-            opacity: 0.7;
+        .diag-sender.ai { color: var(--accent); opacity: 0.7; }
+        .diag-sender.client { color: rgba(253,252,250,0.2); }
+        .diag-text {
+            font-family: 'Playfair Display', Georgia, serif; font-style: italic;
+            font-size: 0.92rem; line-height: 1.7; color: rgba(253,252,250,0.5);
         }
-        .excerpt-speaker.client {
-            color: rgba(253,252,250,0.25);
+        .diag-sender.ai + .diag-text { color: rgba(253,252,250,0.7); }
+        .diag-pause {
+            text-align: center; padding: 8px 0;
+            font-size: 0.6rem; letter-spacing: 0.3em;
+            color: rgba(253,252,250,0.1);
         }
-        .excerpt-text {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: rgba(253,252,250,0.55);
+        .diag-footer {
+            padding: 14px 24px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            display: flex; align-items: center; gap: 8px;
         }
-        .excerpt-speaker.james + .excerpt-text {
-            color: rgba(253,252,250,0.7);
+        .diag-pulse {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--accent);
+            animation: diagPulse 2s ease-in-out infinite;
         }
-        .excerpt-pause {
-            display: block;
-            text-align: center;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: rgba(253,252,250,0.12);
-            padding: 12px 0;
+        @keyframes diagPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.3); }
+        }
+        .diag-status {
+            font-family: 'JetBrains Mono', 'DM Sans', monospace; font-size: 0.55rem;
+            letter-spacing: 0.1em; color: rgba(253,252,250,0.2);
         }
 
-        @media (max-width: 900px) {
-            .pattern-excerpt {
-                padding: 20px 20px;
-                margin-top: 24px;
-            }
-        }
+        /* Problem content — dark text on white */
+        .pattern-sym-content {}
 
         .pattern-sym-step {
             font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 700;
             letter-spacing: 0.2em; text-transform: uppercase;
-            color: var(--accent); opacity: 0.5; margin-bottom: 16px;
+            color: var(--accent); opacity: 0.6; margin-bottom: 16px;
         }
 
         .pattern-sym-title {
             font-family: 'Outfit', sans-serif;
             font-size: clamp(1.5rem, 2.5vw, 2rem);
-            font-weight: 700; color: #FDFCFA;
+            font-weight: 700; color: #1a1a1a;
             margin-bottom: 20px; line-height: 1.2;
         }
 
         .pattern-sym-desc {
             font-size: 1rem; line-height: 1.85;
-            color: rgba(253,252,250,0.45); max-width: 440px;
+            color: rgba(26,26,26,0.45); max-width: 440px;
         }
 
         /* Dividers between symptoms */
         .pattern-divider {
             max-width: 1120px; margin: 0 auto; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(196,112,63,0.12), transparent);
+            background: linear-gradient(90deg, transparent, rgba(196,112,63,0.15), transparent);
             position: relative; z-index: 2;
         }
 
@@ -911,28 +872,28 @@
             font-family: 'Playfair Display', Georgia, serif;
             font-style: italic;
             font-size: clamp(1rem, 1.4vw, 1.15rem);
-            line-height: 1.85; color: rgba(253,252,250,0.45);
+            line-height: 1.85; color: rgba(26,26,26,0.4);
         }
 
-        /* Quote box */
+        /* Quote box — light theme */
         .problem-truth {
             max-width: 800px; margin: 0 auto 100px;
             text-align: center; padding: 72px 56px;
-            background: rgba(196,112,63,0.03);
-            border: 1px solid rgba(196,112,63,0.1);
+            background: rgba(196,112,63,0.04);
+            border: 1px solid rgba(196,112,63,0.12);
             border-radius: 32px; position: relative; z-index: 2;
         }
 
         .problem-truth::before {
             content: '\201C'; position: absolute; top: 20px; left: 40px;
             font-family: 'Playfair Display', serif;
-            font-size: 6rem; color: rgba(196,112,63,0.08); line-height: 1;
+            font-size: 6rem; color: rgba(196,112,63,0.1); line-height: 1;
         }
 
         .truth-label {
             font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.25em; color: var(--accent);
-            margin-bottom: 28px; opacity: 0.5;
+            margin-bottom: 28px; opacity: 0.6;
             font-family: 'Outfit', sans-serif;
         }
 
@@ -941,11 +902,11 @@
             font-style: italic; font-weight: 400;
             font-size: clamp(1.3rem, 2.2vw, 1.65rem);
             max-width: 560px; margin: 0 auto;
-            color: rgba(253,252,250,0.8); line-height: 1.65;
+            color: rgba(26,26,26,0.7); line-height: 1.65;
         }
 
         .truth-attribution {
-            font-size: 0.8rem; color: rgba(253,252,250,0.3);
+            font-size: 0.8rem; color: rgba(26,26,26,0.35);
             margin-top: 24px; font-family: 'Outfit', sans-serif;
             letter-spacing: 0.08em;
         }
@@ -960,10 +921,10 @@
                 grid-template-columns: 1fr; gap: 32px;
             }
             .pattern-symptom:nth-child(even) .pattern-symptom-inner { direction: ltr; }
-            .pattern-sym-num { font-size: 6rem; }
             .pattern-symptom { padding: 48px 24px; }
             .problem-truth { margin: 0 24px 72px; padding: 48px 28px; }
             .problem-truth::before { font-size: 4rem; left: 20px; }
+            .pattern-diag-card { margin: 0; }
         }
 
         .solution-block {
@@ -2329,105 +2290,126 @@
 
         <div class="pattern-divider"></div>
 
+        <!-- Symptom 1 — diagnosis card left, problem right -->
         <div class="pattern-symptom">
             <div class="pattern-symptom-inner">
-                <div class="pattern-sym-visual">
-                    <div class="pattern-sym-num">01</div>
+                <div class="pattern-diag-card">
+                    <div class="diag-header">
+                        <span class="diag-title">Deep Work Session</span>
+                        <span class="diag-case">Case #001</span>
+                    </div>
+                    <div class="diag-body">
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"Walk me through what happens when someone asks what you do."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"I give them the elevator pitch from three years ago. And every time I say it, I feel like I'm lying. Not because it's wrong. Because it's small."</div>
+                        </div>
+                        <div class="diag-pause">· · ·</div>
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"So the brand is accurate. It's just not you anymore."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"Exactly. And I don't know how to say the new thing yet."</div>
+                        </div>
+                    </div>
+                    <div class="diag-footer">
+                        <div class="diag-pulse"></div>
+                        <span class="diag-status">Session recording active</span>
+                    </div>
                 </div>
                 <div class="pattern-sym-content">
                     <div class="pattern-sym-step">Symptom One</div>
                     <div class="pattern-sym-title">You've Outgrown Your Brand</div>
                     <div class="pattern-sym-desc">You built something that worked. Then you grew. Now your website, your offers, and your positioning reflect the person you were two years ago. Not who you are now.</div>
-                    <div class="pattern-excerpt">
-                        <div class="excerpt-label">From an actual interview</div>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker james">James</div>
-                            <div class="excerpt-text">"Walk me through what happens when someone asks what you do."</div>
-                        </div>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker client">Client</div>
-                            <div class="excerpt-text">"I give them the elevator pitch from three years ago. And every time I say it, I feel like I'm lying. Not because it's wrong. Because it's small."</div>
-                        </div>
-                        <span class="excerpt-pause">· · ·</span>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker james">James</div>
-                            <div class="excerpt-text">"So the brand is accurate. It's just not you anymore."</div>
-                        </div>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker client">Client</div>
-                            <div class="excerpt-text">"Exactly. And I don't know how to say the new thing yet."</div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
         <div class="pattern-divider"></div>
 
+        <!-- Symptom 2 — problem left, diagnosis card right (alternates) -->
         <div class="pattern-symptom">
             <div class="pattern-symptom-inner">
-                <div class="pattern-sym-visual">
-                    <div class="pattern-sym-num">02</div>
+                <div class="pattern-diag-card">
+                    <div class="diag-header">
+                        <span class="diag-title">Deep Work Session</span>
+                        <span class="diag-case">Case #002</span>
+                    </div>
+                    <div class="diag-body">
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"Tell me about the version of your business you keep describing to people but haven't built yet."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"I know exactly what it looks like. I've pitched it a hundred times. I just... I keep going back to the old thing because it still pays the bills."</div>
+                        </div>
+                        <div class="diag-pause">· · ·</div>
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"What if the old thing is the reason the new thing can't breathe?"</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"...Yeah. I think I've known that for a while."</div>
+                        </div>
+                    </div>
+                    <div class="diag-footer">
+                        <div class="diag-pulse"></div>
+                        <span class="diag-status">Session recording active</span>
+                    </div>
                 </div>
                 <div class="pattern-sym-content">
                     <div class="pattern-sym-step">Symptom Two</div>
                     <div class="pattern-sym-title">You're Stuck Between Identities</div>
                     <div class="pattern-sym-desc">The old you built the business. The new you knows it needs to change. But you can't see what comes next because you're standing too close to it.</div>
-                    <div class="pattern-excerpt">
-                        <div class="excerpt-label">From an actual interview</div>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker james">James</div>
-                            <div class="excerpt-text">"Tell me about the version of your business you keep describing to people but haven't built yet."</div>
-                        </div>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker client">Client</div>
-                            <div class="excerpt-text">"I know exactly what it looks like. I've pitched it a hundred times. I just... I keep going back to the old thing because it still pays the bills."</div>
-                        </div>
-                        <span class="excerpt-pause">· · ·</span>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker james">James</div>
-                            <div class="excerpt-text">"What if the old thing is the reason the new thing can't breathe?"</div>
-                        </div>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker client">Client</div>
-                            <div class="excerpt-text">"...Yeah. I think I've known that for a while."</div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
         <div class="pattern-divider"></div>
 
+        <!-- Symptom 3 — diagnosis card left, problem right -->
         <div class="pattern-symptom">
             <div class="pattern-symptom-inner">
-                <div class="pattern-sym-visual">
-                    <div class="pattern-sym-num">03</div>
+                <div class="pattern-diag-card">
+                    <div class="diag-header">
+                        <span class="diag-title">Deep Work Session</span>
+                        <span class="diag-case">Case #003</span>
+                    </div>
+                    <div class="diag-body">
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"When's the last time someone in your life told you an idea was bad?"</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"I honestly can't remember. Everyone just says 'that's amazing, you should do it.'"</div>
+                        </div>
+                        <div class="diag-pause">· · ·</div>
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"So you're surrounded by people who love you. And none of them are useful."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"That's the loneliest sentence I've ever agreed with."</div>
+                        </div>
+                    </div>
+                    <div class="diag-footer">
+                        <div class="diag-pulse"></div>
+                        <span class="diag-status">Session recording active</span>
+                    </div>
                 </div>
                 <div class="pattern-sym-content">
                     <div class="pattern-sym-step">Symptom Three</div>
                     <div class="pattern-sym-title">Nobody Will Tell You The Truth</div>
                     <div class="pattern-sym-desc">Your team agrees with you. Your friends encourage you. Your coach validates you. Nobody sits across from you and says "that's the thing that's broken."</div>
-                    <div class="pattern-excerpt">
-                        <div class="excerpt-label">From an actual interview</div>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker james">James</div>
-                            <div class="excerpt-text">"When's the last time someone in your life told you an idea was bad?"</div>
-                        </div>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker client">Client</div>
-                            <div class="excerpt-text">"I honestly can't remember. Everyone just says 'that's amazing, you should do it.'"</div>
-                        </div>
-                        <span class="excerpt-pause">· · ·</span>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker james">James</div>
-                            <div class="excerpt-text">"So you're surrounded by people who love you. And none of them are useful."</div>
-                        </div>
-                        <div class="excerpt-line">
-                            <div class="excerpt-speaker client">Client</div>
-                            <div class="excerpt-text">"That's the loneliest sentence I've ever agreed with."</div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -3037,26 +3019,26 @@
             requestAnimationFrame(tick);
         }
 
-        // Trigger counter when pattern section enters viewport
-        const patternSection = document.getElementById('pattern-section');
-        if (patternSection && 'IntersectionObserver' in window) {
-            const obs = new IntersectionObserver(function(entries) {
+        // Trigger counter when the intro heading scrolls into view
+        var introHeading = document.querySelector('.pattern-intro');
+        if (introHeading && 'IntersectionObserver' in window) {
+            var obs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) { animateCounter(); obs.disconnect(); }
                 });
-            }, { threshold: 0.2 });
-            obs.observe(patternSection);
+            }, { threshold: 0.3, rootMargin: '0px 0px -50px 0px' });
+            obs.observe(introHeading);
         }
 
-        // Fade-in symptoms on scroll
-        const symptoms = document.querySelectorAll('.pattern-symptom');
+        // Fade-in symptom rows on scroll
+        var symptoms = document.querySelectorAll('.pattern-symptom');
         if (symptoms.length && 'IntersectionObserver' in window) {
             symptoms.forEach(function(s) {
                 s.style.opacity = '0';
                 s.style.transform = 'translateY(40px)';
                 s.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.23,1,0.32,1)';
             });
-            const symObs = new IntersectionObserver(function(entries) {
+            var symObs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) {
                         e.target.style.opacity = '1';
@@ -3064,37 +3046,34 @@
                         symObs.unobserve(e.target);
                     }
                 });
-            }, { threshold: 0.15 });
+            }, { threshold: 0.1 });
             symptoms.forEach(function(s) { symObs.observe(s); });
         }
 
-        // Staggered reveal for interview excerpt lines
-        var excerpts = document.querySelectorAll('.pattern-excerpt');
-        if (excerpts.length && 'IntersectionObserver' in window) {
-            excerpts.forEach(function(ex) {
-                var lines = ex.querySelectorAll('.excerpt-line, .excerpt-pause');
-                lines.forEach(function(line, i) {
-                    line.style.opacity = '0';
-                    line.style.transform = 'translateY(14px)';
-                    line.style.transition = 'opacity 0.6s cubic-bezier(0.23,1,0.32,1) ' + (i * 0.35 + 0.2) + 's, transform 0.6s cubic-bezier(0.23,1,0.32,1) ' + (i * 0.35 + 0.2) + 's';
+        // Staggered reveal for diagnosis card messages
+        var diagCards = document.querySelectorAll('.pattern-diag-card');
+        if (diagCards.length && 'IntersectionObserver' in window) {
+            diagCards.forEach(function(card) {
+                var msgs = card.querySelectorAll('.diag-msg, .diag-pause');
+                msgs.forEach(function(msg, i) {
+                    msg.style.opacity = '0';
+                    msg.style.transform = 'translateY(14px)';
+                    msg.style.transition = 'opacity 0.6s cubic-bezier(0.23,1,0.32,1) ' + (i * 0.3 + 0.2) + 's, transform 0.6s cubic-bezier(0.23,1,0.32,1) ' + (i * 0.3 + 0.2) + 's';
                 });
-                ex.querySelector('.excerpt-label').style.opacity = '0';
-                ex.querySelector('.excerpt-label').style.transition = 'opacity 0.5s ease 0.1s';
             });
-            var exObs = new IntersectionObserver(function(entries) {
+            var diagObs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
                     if (e.isIntersecting) {
-                        var lines = e.target.querySelectorAll('.excerpt-line, .excerpt-pause');
-                        e.target.querySelector('.excerpt-label').style.opacity = '1';
-                        lines.forEach(function(line) {
-                            line.style.opacity = '1';
-                            line.style.transform = 'translateY(0)';
+                        var msgs = e.target.querySelectorAll('.diag-msg, .diag-pause');
+                        msgs.forEach(function(msg) {
+                            msg.style.opacity = '1';
+                            msg.style.transform = 'translateY(0)';
                         });
-                        exObs.unobserve(e.target);
+                        diagObs.unobserve(e.target);
                     }
                 });
-            }, { threshold: 0.3 });
-            excerpts.forEach(function(ex) { exObs.observe(ex); });
+            }, { threshold: 0.2 });
+            diagCards.forEach(function(card) { diagObs.observe(card); });
         }
     })();
     </script>
