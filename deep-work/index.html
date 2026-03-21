@@ -481,46 +481,32 @@
       .how-section { padding: 72px 20px; }
       .final-cta { padding: 72px 20px; }
       footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px 20px; }
-      /* Blueprint scroll mobile */
-      .bp-page { min-height: 580px; padding: 32px 24px; margin: 0 12px 12px; }
-      .bp-title { font-size: 20px; }
-      .bp-subtitle { font-size: 14px; }
-      .bp-text { font-size: 12px; }
-      .bp-cover h3 { font-size: 28px; }
-      .bp-cover-sub { font-size: 16px; }
-      .bp-avatar-grid { grid-template-columns: 1fr; }
-      .bp-avatar-field p { font-size: 11px; }
-      .bp-swot { grid-template-columns: 1fr; gap: 10px; }
-      .bp-swot-cell { padding: 14px; }
-      .bp-swot-item { font-size: 11px; }
-      .bp-comp-table { font-size: 11px; }
-      .bp-comp-table th { font-size: 9px; padding: 8px; }
-      .bp-comp-table td { padding: 10px 8px; }
-      .bp-score-label { flex: 0 0 100px; font-size: 11px; }
-      .bp-score-val { font-size: 12px; }
-      .bp-score-overall .big-num { font-size: 40px; }
-      .bp-offers { grid-template-columns: 1fr; gap: 12px; }
-      .bp-offer-card { padding: 20px 16px; }
-      .bp-scroll-viewport { height: 440px; }
+      /* Blueprint scroll mobile — scale down to look like a PDF preview */
+      .sample-output { margin-left: -8px; margin-right: -8px; border-radius: 16px; }
+      .bp-scroll-viewport { height: 380px; }
+      .bp-scroll-track { transform: scale(0.58); transform-origin: top left; width: 172%; }
+      .bp-bar { padding: 10px 14px; }
+      .bp-filename { font-size: 10px; }
+      .sample-caption { font-size: 10px; padding: 14px 16px; }
       @keyframes blueprintScroll {
-        0% { transform: translateY(0); }
-        2% { transform: translateY(0); }
-        12% { transform: translateY(-580px); }
-        14% { transform: translateY(-580px); }
-        24% { transform: translateY(-1160px); }
-        26% { transform: translateY(-1160px); }
-        36% { transform: translateY(-1740px); }
-        38% { transform: translateY(-1740px); }
-        48% { transform: translateY(-2320px); }
-        50% { transform: translateY(-2320px); }
-        60% { transform: translateY(-2900px); }
-        62% { transform: translateY(-2900px); }
-        72% { transform: translateY(-3480px); }
-        74% { transform: translateY(-3480px); }
-        84% { transform: translateY(-4060px); }
-        86% { transform: translateY(-4060px); }
-        96% { transform: translateY(-4640px); }
-        100% { transform: translateY(-4640px); }
+        0% { transform: scale(0.58) translateY(0); }
+        2% { transform: scale(0.58) translateY(0); }
+        12% { transform: scale(0.58) translateY(-620px); }
+        14% { transform: scale(0.58) translateY(-620px); }
+        24% { transform: scale(0.58) translateY(-1240px); }
+        26% { transform: scale(0.58) translateY(-1240px); }
+        36% { transform: scale(0.58) translateY(-1860px); }
+        38% { transform: scale(0.58) translateY(-1860px); }
+        48% { transform: scale(0.58) translateY(-2480px); }
+        50% { transform: scale(0.58) translateY(-2480px); }
+        60% { transform: scale(0.58) translateY(-3100px); }
+        62% { transform: scale(0.58) translateY(-3100px); }
+        72% { transform: scale(0.58) translateY(-3720px); }
+        74% { transform: scale(0.58) translateY(-3720px); }
+        84% { transform: scale(0.58) translateY(-4340px); }
+        86% { transform: scale(0.58) translateY(-4340px); }
+        96% { transform: scale(0.58) translateY(-4960px); }
+        100% { transform: scale(0.58) translateY(-4960px); }
       }
     }
     @media (max-width: 480px) {
@@ -1608,26 +1594,13 @@
       + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Blueprint</div><div class="op-item-desc">2hr AI positioning session + full blueprint</div></div>'
       + '<div class="op-item-price">$67</div>'
       + '</div>'
-      + '<div class="op-bump" id="bump-site">'
-      + '<input type="checkbox" id="cb-site">'
-      + '<div class="op-bump-tag">Most Popular</div>'
-      + '<div class="op-bump-title">Add a Done For You Website</div>'
-      + '<div class="op-bump-desc">After your session, AI takes your blueprint and builds your entire site with real copy, real structure, and deploys it live. No code. No designers. No waiting weeks.</div>'
-      + '<div class="op-bump-price">+ $130</div>'
-      + '</div>'
-      + '<div class="op-bump" id="bump-call">'
-      + '<input type="checkbox" id="cb-call">'
-      + '<div class="op-bump-tag">Go Deeper</div>'
-      + '<div class="op-bump-title">Add a 1:1 Call with James</div>'
-      + '<div class="op-bump-desc">Private strategy session to walk through your blueprint, pressure test your offers, and map your first 90 days. The same call founders paid $5,000 for.</div>'
-      + '<div class="op-bump-price">+ $130</div>'
-      + '</div>'
+      + ''
       + '</div>'
       + '<div class="op-footer">'
       + '<div class="op-divider"></div>'
       + '<div class="op-total-row">'
-      + '<div><div class="op-total-label">Total today</div><span class="op-total-savings" id="op-savings">Save $134</span></div>'
-      + '<div style="text-align:right"><span class="op-total-original" id="op-original"></span><span class="op-total-amount" id="op-total">$67</span></div>'
+      + '<div><div class="op-total-label">Total today</div></div>'
+      + '<div style="text-align:right"><span class="op-total-amount" id="op-total">$67</span></div>'
       + '</div>'
       + '<button class="op-pay-btn" id="op-pay">Complete Purchase</button>'
       + '<div class="op-guarantee">7 day satisfaction guarantee. If the process does not deliver, email James and he will make it right.</div>'
@@ -1668,47 +1641,15 @@
     document.body.appendChild(popup);
 
     // ── Pricing ─────────────────────────────────────────────────────────────
-    var BASE = 67, BUMP_SITE = 130, BUMP_CALL = 130, FULL_SITE = 197, FULL_CALL = 197;
-    var cbSite   = document.getElementById('cb-site');
-    var cbCall   = document.getElementById('cb-call');
-    var bumpSite = document.getElementById('bump-site');
-    var bumpCall = document.getElementById('bump-call');
+    var BASE = 67;
     var totalEl  = document.getElementById('op-total');
-    var originalEl = document.getElementById('op-original');
-    var savingsEl  = document.getElementById('op-savings');
 
-    function getTotal() {
-      var t = BASE;
-      if (cbSite.checked) t += BUMP_SITE;
-      if (cbCall.checked) t += BUMP_CALL;
-      return t;
-    }
-
-    function updateTotal() {
-      var total = getTotal();
-      totalEl.textContent = '$' + total;
-      if (cbSite.checked && cbCall.checked) {
-        originalEl.textContent = '$' + (BASE + FULL_SITE + FULL_CALL);
-        originalEl.style.display = 'inline';
-        savingsEl.style.display = 'inline-block';
-      } else {
-        originalEl.style.display = 'none';
-        savingsEl.style.display = 'none';
-      }
-      bumpSite.classList.toggle('checked', cbSite.checked);
-      bumpCall.classList.toggle('checked', cbCall.checked);
-    }
-
-    bumpSite.addEventListener('click', function(e) { if (e.target !== cbSite) cbSite.checked = !cbSite.checked; updateTotal(); });
-    bumpCall.addEventListener('click', function(e) { if (e.target !== cbCall) cbCall.checked = !cbCall.checked; updateTotal(); });
-    cbSite.addEventListener('change', updateTotal);
-    cbCall.addEventListener('change', updateTotal);
+    function getTotal() { return BASE; }
+    function updateTotal() { totalEl.textContent = '$' + getTotal(); }
 
     // ── Popup open / close ───────────────────────────────────────────────────
     function openPopup(e) {
       if (e) e.preventDefault();
-      cbSite.checked = false;
-      cbCall.checked = false;
       updateTotal();
       showStep('order');
       backdrop.style.display = 'block';
@@ -1793,14 +1734,10 @@
     // ── "Complete Purchase" → go to payment step ─────────────────────────────
     document.getElementById('op-pay').addEventListener('click', function() {
       var tiers = ['blueprint'];
-      if (cbSite.checked) tiers.push('site');
-      if (cbCall.checked) tiers.push('call');
       currentTiers = tiers;
 
       // Update order summary bar
       var labels = ['Deep Work Blueprint'];
-      if (cbSite.checked) labels.push('+ Website');
-      if (cbCall.checked) labels.push('+ Strategy Call');
       var totalText = '$' + getTotal();
       document.getElementById('op-order-bar-label').textContent = labels.join(' ');
       document.getElementById('op-order-bar-price').textContent = totalText;
