@@ -65,23 +65,30 @@
     .nav-btn { display: inline-block; background: var(--text); color: #fff !important; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Inter',sans-serif; transition: all .25s ease; text-decoration: none !important; }
     .nav-btn:hover { background: #c4703f; color: #fff !important; }
 
-    /* HERO DESKTOP — Identity Gap */
-    .hero { position: relative; min-height: calc(100vh - var(--nav-h)); overflow: hidden; z-index: 2; display: flex; align-items: center; }
-    .hero-inner { max-width: 1200px; margin: 0 auto; padding: 60px 48px; width: 100%; display: flex; align-items: center; gap: 56px; }
-    .hero-left { flex: 1; max-width: 580px; }
-    .hero-right { flex: 0 0 320px; position: relative; }
-    .hero-vid-glow { position: absolute; width: 200%; height: 200%; top: -50%; left: -50%; background: radial-gradient(circle, rgba(196,112,63,0.07) 0%, transparent 60%); pointer-events: none; }
-    .hero-vid-wrap { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15); background: #000; aspect-ratio: 9/14; max-height: 420px; }
-    .hero-vid-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .hero-vid-wrap .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
-    .hero-trust { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--border); }
+    /* HERO DESKTOP */
+    .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: hidden; z-index: 2; }
+    .hero-photo { position: absolute; left: 36%; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+    .hero-photo img { max-height: 100%; width: auto; display: block; }
+    .hero-photo-fade { position: absolute; left: 0; top: 0; bottom: 0; width: 45%; background: linear-gradient(to right, var(--bg) 20%, transparent 100%); pointer-events: none; z-index: 1; }
+    .vid-halo { position: absolute; bottom: 5%; right: 4%; left: auto; transform: none; width: 336px; height: 214px; border: 1px solid rgba(196,112,63,.22); border-radius: 16px; animation: halo 3.2s ease-in-out infinite; pointer-events: none; z-index: 3; }
+    .vid-halo2 { position: absolute; bottom: 3.5%; right: 2.2%; left: auto; transform: none; width: 374px; height: 244px; border: 1px solid rgba(196,112,63,.12); border-radius: 20px; animation: halo 3.2s ease-in-out infinite .75s; pointer-events: none; z-index: 3; }
+    @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
+    .vid-float { position: absolute; bottom: 4%; right: 5%; left: auto; transform: none; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
+    .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
+    .hero-arrow-label { position: absolute; bottom: 22%; right: 8%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
+    .hero-arrow-label svg { width: 52px; opacity: 0.85; }
+    .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+    .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .hero-text { max-width: 520px; }
+    .hero-trust { display: flex; gap: 32px; padding-top: 24px; margin-top: 8px; border-top: 1px solid var(--border); }
     .hero-trust-num { font-family: 'Outfit',sans-serif; font-size: 24px; font-weight: 700; }
     .hero-trust-label { font-size: 11px; color: #999; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
-    .hero-text-wrap { display: none; }
-    .hero-photo { display: none; }
-    .hero-arrow-label { display: none; }
-    .vid-halo, .vid-halo2, .vid-float, .hero-photo-fade { display: none; }
+    /* Mobile hero photo styles */
+    .mobile-hero-photo { display: none; }
+    .mobile-hero-img-wrap { position: relative; width: 100%; overflow: hidden; max-height: 340px; }
+    .mobile-hero-img-wrap img { width: 100%; height: 340px; object-fit: cover; object-position: top center; display: block; }
+    .mobile-hero-img-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, var(--bg)); pointer-events: none; }
 
     /* Shared text styles */
     .eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
@@ -397,11 +404,16 @@
     @media (min-width: 861px) and (max-width: 1100px) {
       nav { padding: 0 28px; }
       .nav-links { gap: 20px; }
-      .hero-inner { padding: 48px 28px; gap: 32px; }
-      .hero-left { max-width: 480px; }
-      .hero-right { flex: 0 0 260px; }
+      .hero-text-wrap { padding: 0 28px; }
+      .hero-text { max-width: 440px; }
       h1 { font-size: clamp(30px, 3.2vw, 44px); }
       .hero-sub { font-size: 15px; }
+      .hero-photo { left: 40%; }
+      .vid-float { width: 160px; }
+      .vid-halo { width: 290px; height: 184px; }
+      .vid-halo2 { width: 320px; height: 210px; }
+      .hero-arrow-label { right: 5%; bottom: 24%; }
+      .hero-arrow-label span { font-size: 1rem; }
       .hero-trust { gap: 24px; }
       .hero-trust-num { font-size: 20px; }
       .cred-section { padding: 56px 28px; }
@@ -422,7 +434,8 @@
     @media (max-width: 860px) {
       nav { padding: 0 20px; } .nav-links { display: none; }
       .hero { display: none; }
-      .mobile-hero-video { display: block; }
+      .mobile-hero-photo { display: block; }
+      .mobile-hero-video { display: none; }
       .hero-arrow-label { display: none; }
       /* Mobile hero trust stats */
       .mobile-trust { display: flex; gap: 24px; padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--border); }
@@ -603,18 +616,36 @@
   </ul>
 </nav>
 
-<!-- HERO DESKTOP — Identity Gap -->
+<!-- HERO DESKTOP -->
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-left">
+  <div class="hero-photo">
+    <img src="images/james-hero.png" alt="James Guldan" loading="eager">
+    <div class="hero-photo-fade"></div>
+    <div class="vid-halo"></div>
+    <div class="vid-halo2"></div>
+    <div class="vid-float">
+      <video controls preload="metadata">
+        <source src="videos/james-deepwork-v3.mp4" type="video/mp4">
+      </video>
+      <div class="vid-label">3 min · my story</div>
+    </div>
+  </div>
+  <div class="hero-arrow-label">
+    <span>Hear my story</span>
+    <svg viewBox="0 0 55 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8,6 C10,18 18,38 28,55 C34,65 40,72 48,78" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+      <path d="M48,78 L37,74" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+      <path d="M48,78 L46,66" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="hero-text-wrap">
+    <div class="hero-text">
       <div class="eyebrow">Deep Work Process</div>
       <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
       <h1>You're great at what you do. The world just doesn't <em>know it yet.</em></h1>
       <p class="hero-sub">In 90 minutes, walk away with the positioning, the language, and the complete brand blueprint that finally makes your expertise impossible to ignore.</p>
-      <div style="display:flex;align-items:center;gap:20px;margin-bottom:40px;">
-        <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
-        <span class="price-note"><s style="color:#ccc;">$297</s>&nbsp; <strong>$67</strong> launch week</span>
-      </div>
+      <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
+      <p class="price-note"><s style="color:#ccc;">$297</s>&nbsp; <strong>$67</strong> launch week</p>
       <div class="hero-trust">
         <div>
           <div class="hero-trust-num">132</div>
@@ -630,36 +661,15 @@
         </div>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-vid-glow"></div>
-      <div class="hero-vid-wrap">
-        <video controls preload="metadata">
-          <source src="videos/james-deepwork-v3.mp4" type="video/mp4">
-        </video>
-        <div class="vid-label">3 min · my story</div>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- HERO MOBILE — no photo, video is the star -->
-<div class="mobile-hero-video">
-  <div class="mobile-vid-canvas-wrap">
-    <canvas id="mobile-geo"></canvas>
-    <div class="mobile-vid-rings">
-      <div class="mobile-ring" style="width:calc(100% - 24px);aspect-ratio:16/10;"></div>
-      <div class="mobile-ring" style="width:calc(100% - 8px);aspect-ratio:16/10;"></div>
-    </div>
-    <div class="mobile-vid-inner">
-      <div class="mobile-vid-player">
-        <video controls preload="metadata">
-          <source src="videos/james-deepwork-v3.mp4" type="video/mp4">
-        </video>
-        <div class="mobile-vid-caption">3 min · my story</div>
-      </div>
-    </div>
+<!-- HERO MOBILE — photo hero, no video -->
+<div class="mobile-hero-photo">
+  <div class="mobile-hero-img-wrap">
+    <img src="images/james-hero.png" alt="James Guldan" loading="eager">
+    <div class="mobile-hero-img-fade"></div>
   </div>
-  <div class="mobile-bottom-fade"></div>
   <div class="mobile-hero-text">
     <div class="eyebrow">Deep Work Process</div>
     <h1>You're great at what you do. The world just doesn't <em>know it yet.</em></h1>
