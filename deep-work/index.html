@@ -1904,7 +1904,7 @@
 
         mountEl.innerHTML = '';
         stripePayEl = stripeElements.create('payment', {
-          layout: { type: 'tabs', defaultCollapsed: false },
+          layout: { type: 'accordion', defaultCollapsed: false, radios: false, spacedAccordionItems: false },
           fields: { billingDetails: { email: 'never' } },
           wallets: { applePay: 'auto', googlePay: 'auto' },
         });
