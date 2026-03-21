@@ -183,27 +183,29 @@
     .bp-dot.g { background: #28c840; }
     .bp-filename { margin-left: 12px; font-size: 12px; color: rgba(255,255,255,0.5); font-family: 'SF Mono','Fira Code',monospace; }
     .bp-scroll-viewport { height: 520px; overflow: hidden; position: relative; background: #F7F4F0; }
-    .bp-scroll-track { animation: blueprintScroll 45s linear infinite; animation-delay: 1s; }
+    .bp-scroll-track { animation: blueprintScroll 55s linear infinite; animation-delay: 1s; }
     .bp-scroll-track:hover { animation-play-state: paused; }
     @keyframes blueprintScroll {
       0% { transform: translateY(0); }
-      2% { transform: translateY(0); }
-      12% { transform: translateY(-620px); }
-      14% { transform: translateY(-620px); }
-      24% { transform: translateY(-1240px); }
-      26% { transform: translateY(-1240px); }
-      36% { transform: translateY(-1860px); }
-      38% { transform: translateY(-1860px); }
-      48% { transform: translateY(-2480px); }
-      50% { transform: translateY(-2480px); }
-      60% { transform: translateY(-3100px); }
-      62% { transform: translateY(-3100px); }
-      72% { transform: translateY(-3720px); }
-      74% { transform: translateY(-3720px); }
-      84% { transform: translateY(-4340px); }
-      86% { transform: translateY(-4340px); }
-      96% { transform: translateY(-4960px); }
-      100% { transform: translateY(-4960px); }
+      1.5% { transform: translateY(0); }
+      10% { transform: translateY(-636px); }
+      11.5% { transform: translateY(-636px); }
+      20% { transform: translateY(-1272px); }
+      21.5% { transform: translateY(-1272px); }
+      30% { transform: translateY(-1908px); }
+      31.5% { transform: translateY(-1908px); }
+      40% { transform: translateY(-2544px); }
+      41.5% { transform: translateY(-2544px); }
+      50% { transform: translateY(-3180px); }
+      51.5% { transform: translateY(-3180px); }
+      60% { transform: translateY(-3816px); }
+      61.5% { transform: translateY(-3816px); }
+      70% { transform: translateY(-4452px); }
+      71.5% { transform: translateY(-4452px); }
+      80% { transform: translateY(-5088px); }
+      81.5% { transform: translateY(-5088px); }
+      90% { transform: translateY(-5724px); }
+      100% { transform: translateY(-5724px); }
     }
     .bp-page { min-height: 620px; padding: 48px 40px; background: #fff; margin: 0 20px 16px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); position: relative; }
     .bp-page-num { position: absolute; bottom: 20px; right: 28px; font-size: 11px; color: #ccc; }
@@ -436,9 +438,9 @@
       .before-decide-section { padding: 60px 28px !important; }
     }
     @media (max-width: 860px) {
-      nav { padding: 0 16px; height: 56px; } .nav-links { display: none; }
-      .mobile-nav-btn { display: inline-block; padding: 8px 18px; font-size: 12px; }
-      .nav-logo { font-size: 12px; letter-spacing: 2px; }
+      nav { padding: 0 16px; height: 52px; } .nav-links { display: none; }
+      .mobile-nav-btn { display: inline-block; padding: 8px 16px; font-size: 11px; border-radius: 50px; }
+      .nav-logo { font-size: 11px; letter-spacing: 1.5px; }
       .hero { display: none; }
       .mobile-hero-photo { display: block; }
       .mobile-hero-video { display: none; }
@@ -483,7 +485,11 @@
       .test-grid { grid-template-columns: 1fr; }
       .how-section { padding: 72px 20px; }
       .final-cta { padding: 72px 20px; }
-      footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px 20px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 20px 16px; }
+      .footer-logo { font-size: 11px; letter-spacing: 1.5px; }
+      .footer-links { flex-wrap: wrap; gap: 12px; justify-content: center; }
+      .footer-links a { font-size: 11px; }
+      .footer-copy { font-size: 10px; }
       /* Blueprint scroll mobile — scale down to look like a PDF preview */
       .sample-output { margin-left: -8px; margin-right: -8px; border-radius: 16px; }
       .bp-scroll-viewport { height: 380px; }
@@ -493,23 +499,25 @@
       .sample-caption { font-size: 10px; padding: 14px 16px; }
       @keyframes blueprintScroll {
         0% { transform: scale(0.58) translateY(0); }
-        2% { transform: scale(0.58) translateY(0); }
-        12% { transform: scale(0.58) translateY(-620px); }
-        14% { transform: scale(0.58) translateY(-620px); }
-        24% { transform: scale(0.58) translateY(-1240px); }
-        26% { transform: scale(0.58) translateY(-1240px); }
-        36% { transform: scale(0.58) translateY(-1860px); }
-        38% { transform: scale(0.58) translateY(-1860px); }
-        48% { transform: scale(0.58) translateY(-2480px); }
-        50% { transform: scale(0.58) translateY(-2480px); }
-        60% { transform: scale(0.58) translateY(-3100px); }
-        62% { transform: scale(0.58) translateY(-3100px); }
-        72% { transform: scale(0.58) translateY(-3720px); }
-        74% { transform: scale(0.58) translateY(-3720px); }
-        84% { transform: scale(0.58) translateY(-4340px); }
-        86% { transform: scale(0.58) translateY(-4340px); }
-        96% { transform: scale(0.58) translateY(-4960px); }
-        100% { transform: scale(0.58) translateY(-4960px); }
+        1.5% { transform: scale(0.58) translateY(0); }
+        10% { transform: scale(0.58) translateY(-636px); }
+        11.5% { transform: scale(0.58) translateY(-636px); }
+        20% { transform: scale(0.58) translateY(-1272px); }
+        21.5% { transform: scale(0.58) translateY(-1272px); }
+        30% { transform: scale(0.58) translateY(-1908px); }
+        31.5% { transform: scale(0.58) translateY(-1908px); }
+        40% { transform: scale(0.58) translateY(-2544px); }
+        41.5% { transform: scale(0.58) translateY(-2544px); }
+        50% { transform: scale(0.58) translateY(-3180px); }
+        51.5% { transform: scale(0.58) translateY(-3180px); }
+        60% { transform: scale(0.58) translateY(-3816px); }
+        61.5% { transform: scale(0.58) translateY(-3816px); }
+        70% { transform: scale(0.58) translateY(-4452px); }
+        71.5% { transform: scale(0.58) translateY(-4452px); }
+        80% { transform: scale(0.58) translateY(-5088px); }
+        81.5% { transform: scale(0.58) translateY(-5088px); }
+        90% { transform: scale(0.58) translateY(-5724px); }
+        100% { transform: scale(0.58) translateY(-5724px); }
       }
     }
     @media (max-width: 480px) {
@@ -1157,6 +1165,89 @@
             <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;line-height:1.3;">"Book the Boardroom Audit. In 90 minutes, you'll know exactly what's standing between you and the role you deserve."</div>
           </div>
           <div class="bp-page-num">20</div>
+        </div>
+
+        <!-- PAGE 9: BRAND GUIDE -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 8</div>
+          <div class="bp-title">Brand Identity Guide</div>
+          <p class="bp-text" style="margin-bottom:20px;">Your complete visual and verbal identity system. Everything a designer, developer, or marketer needs to represent your brand consistently across every touchpoint.</p>
+
+          <div class="bp-subtitle">Voice &amp; Tone</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+            <div style="background:#E8F5E9;border-radius:10px;padding:16px;">
+              <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2E7D32;margin-bottom:8px;">Do Sound Like</div>
+              <div style="font-size:12px;line-height:1.7;color:var(--text);">Confident but grounded. "Here's what I've seen work." Direct without being aggressive. Warm authority.</div>
+            </div>
+            <div style="background:#FCE4EC;border-radius:10px;padding:16px;">
+              <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C62828;margin-bottom:8px;">Don't Sound Like</div>
+              <div style="font-size:12px;line-height:1.7;color:var(--text);">Salesy, hype driven, or guru energy. No "crush it" or "10x your results." Avoid corporate jargon.</div>
+            </div>
+          </div>
+
+          <div class="bp-subtitle">Color Palette</div>
+          <div style="display:flex;gap:10px;margin-bottom:20px;">
+            <div style="text-align:center;">
+              <div style="width:56px;height:56px;border-radius:10px;background:#1B3A4B;margin-bottom:6px;"></div>
+              <div style="font-size:10px;color:#999;">#1B3A4B</div>
+              <div style="font-size:9px;color:#bbb;">Primary</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:56px;height:56px;border-radius:10px;background:#C4955A;margin-bottom:6px;"></div>
+              <div style="font-size:10px;color:#999;">#C4955A</div>
+              <div style="font-size:9px;color:#bbb;">Accent</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:56px;height:56px;border-radius:10px;background:#F7F4F0;border:1px solid #eee;margin-bottom:6px;"></div>
+              <div style="font-size:10px;color:#999;">#F7F4F0</div>
+              <div style="font-size:9px;color:#bbb;">Background</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:56px;height:56px;border-radius:10px;background:#2C2C2C;margin-bottom:6px;"></div>
+              <div style="font-size:10px;color:#999;">#2C2C2C</div>
+              <div style="font-size:9px;color:#bbb;">Text</div>
+            </div>
+          </div>
+
+          <div class="bp-subtitle">Typography</div>
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;margin-bottom:4px;">Outfit Bold</div>
+            <div style="font-size:11px;color:#999;margin-bottom:12px;">Headlines and section titles</div>
+            <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;margin-bottom:4px;">Inter Regular</div>
+            <div style="font-size:11px;color:#999;">Body text and descriptions</div>
+          </div>
+
+          <div class="bp-subtitle">Photography Direction</div>
+          <p class="bp-text">Natural lighting. Candid over posed. Show Sarah in action: coaching sessions, whiteboard work, speaking on stage. Warm tones. Avoid stock photography. Every image should feel like a window into a real working relationship.</p>
+          <div class="bp-page-num">23</div>
+        </div>
+
+        <!-- PAGE 10: COMMUNICATION & DELEGATION GUIDE -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 9</div>
+          <div class="bp-title">How to Communicate Your Brand to Others</div>
+          <p class="bp-text" style="margin-bottom:20px;">Use this page to brief designers, developers, copywriters, or anyone who needs to represent your brand. Copy and share directly.</p>
+
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">For Your Web Designer</div>
+            <div style="font-size:12px;line-height:1.8;color:var(--text);">"My brand is premium but approachable. Think clean lines, lots of whitespace, warm neutral tones. The site should feel like walking into a high end office, not a corporate boardroom. The copy is already written in this blueprint. Use the exact headlines. The primary audience is mid career professionals who feel stuck."</div>
+          </div>
+
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">For Your Copywriter or VA</div>
+            <div style="font-size:12px;line-height:1.8;color:var(--text);">"My voice is direct and confident but never salesy. I speak from experience, not theory. Avoid exclamation points and hype words. Every piece of content should answer the question: 'What would Sarah say to a client who asked this over coffee?' Reference the voice guide on page 23."</div>
+          </div>
+
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">For Your Social Media Manager</div>
+            <div style="font-size:12px;line-height:1.8;color:var(--text);">"Lead with the pain point, not the solution. Our audience doesn't know they need executive coaching yet. They know they feel overlooked. Speak to that feeling. Use the avatar profile on page 5 for targeting. Post formats: short stories from client transformations (anonymized), contrarian takes on leadership, behind the scenes of my process."</div>
+          </div>
+
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">For a Podcast Host or Interviewer</div>
+            <div style="font-size:12px;line-height:1.8;color:var(--text);">"I help high performers who are great at what they do but invisible in their market. My angle is that most people don't have a skills problem, they have a positioning problem. The best intro question: 'Why do the most talented people often have the weakest brands?' My bio and talking points are on pages 3 and 4."</div>
+          </div>
+          <div class="bp-page-num">25</div>
         </div>
 
       </div>
