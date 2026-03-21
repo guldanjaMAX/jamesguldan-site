@@ -81,8 +81,8 @@
     .hero-arrow-label svg { width: 52px; opacity: 0.85; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; }
-    .hero-text { max-width: 520px; padding-bottom: 24px; }
-    .hero-trust { display: flex; gap: 32px; padding-top: 24px; margin-top: 8px; border-top: 1px solid var(--border); }
+    .hero-text { max-width: 520px; padding-bottom: 0; }
+    .hero-trust { display: flex; gap: 32px; padding-top: 16px; margin-top: 6px; border-top: 1px solid var(--border); }
     .hero-trust-num { font-family: 'Outfit',sans-serif; font-size: 24px; font-weight: 700; }
     .hero-trust-label { font-size: 11px; color: #999; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
     /* Mobile hero photo styles — Option O Compact */
@@ -97,10 +97,10 @@
     .geo-line { height: 1px; width: 36px; background: rgba(196,112,63,0.35); }
     .geo-diamond { width: 10px; height: 10px; border: 1.5px solid var(--accent); transform: rotate(45deg); opacity: 0.75; flex-shrink: 0; }
     .geo-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; flex-shrink: 0; }
-    h1 { font-family: 'Outfit',sans-serif; font-size: clamp(36px, 3.8vw, 56px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+    h1 { font-family: 'Outfit',sans-serif; font-size: clamp(36px, 3.8vw, 56px); font-weight: 700; line-height: 1.15; margin-bottom: 14px; }
     h1 em, h2 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
-    .hero-sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 36px; }
-    .cta-btn { display: inline-block; background: var(--text); color: #fff; padding: 18px 40px; border-radius: 50px; font-size: 15px; font-weight: 700; border: none; cursor: pointer; margin-bottom: 14px; transition: all .25s ease; font-family: 'Inter',sans-serif; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 4px 20px rgba(0,0,0,.15); }
+    .hero-sub { font-size: 15px; line-height: 1.7; color: #555; margin-bottom: 22px; }
+    .cta-btn { display: inline-block; background: var(--text); color: #fff; padding: 16px 36px; border-radius: 50px; font-size: 15px; font-weight: 700; border: none; cursor: pointer; margin-bottom: 10px; transition: all .25s ease; font-family: 'Inter',sans-serif; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 4px 20px rgba(0,0,0,.15); }
     .cta-btn:hover { background: #c4703f; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(196,112,63,.35); color: #fff; }
     .price-note { font-size: 13px; color: #777; }
     .price-note strong { color: var(--text); }
@@ -574,7 +574,40 @@
       .compare-msg { font-size: 12.5px; padding: 12px 14px; }
       .before-decide-grid { grid-template-columns: 1fr !important; }
       .before-decide-section { padding: 60px 20px !important; }
-    }</style>
+    }
+
+    /* SITE IN SIXTY BRIDGE – Timeline Flow */
+    .sis-bridge { padding: 100px 48px; background: #F5F1EC; position: relative; z-index: 2; }
+    .sis-bridge-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .sis-bridge h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px,3vw,42px); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+    .sis-bridge h2 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
+    .sis-bridge-intro { font-size: 16px; line-height: 1.8; color: var(--muted); max-width: 580px; margin: 0 auto 56px; }
+    .timeline-flow { display: flex; align-items: stretch; gap: 0; margin-bottom: 48px; position: relative; }
+    .timeline-flow::before { content: ''; position: absolute; top: 50%; left: 60px; right: 60px; height: 1px; background: linear-gradient(90deg, var(--border), var(--accent), var(--border)); opacity: 0.4; }
+    .tf-card { flex: 1; background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 36px 28px; text-align: left; position: relative; z-index: 1; }
+    .tf-card:nth-child(2) { margin: 0 -1px; border-color: var(--accent); box-shadow: 0 8px 32px rgba(196,112,63,0.12); }
+    .tf-num { width: 32px; height: 32px; border-radius: 50%; background: rgba(196,112,63,0.08); display: flex; align-items: center; justify-content: center; font-family: 'Outfit',sans-serif; font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 18px; }
+    .tf-card:nth-child(2) .tf-num { background: var(--accent); color: #fff; }
+    .tf-label { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .tf-card:nth-child(1) .tf-label { color: #cc6b5a; }
+    .tf-card:nth-child(2) .tf-label { color: var(--accent); }
+    .tf-card:nth-child(3) .tf-label { color: #4a9e6e; }
+    .tf-card p { font-size: 14px; line-height: 1.75; color: var(--muted); }
+    .tf-arrow { position: absolute; right: -14px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; background: #F5F1EC; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; }
+    .tf-arrow svg { width: 14px; height: 14px; stroke: var(--accent); fill: none; stroke-width: 2; }
+    .sis-price-line { margin-top: 14px; font-size: 13px; color: #999; }
+    @media (max-width: 860px) {
+      .sis-bridge { padding: 72px 20px; }
+      .timeline-flow { flex-direction: column; gap: 16px; }
+      .timeline-flow::before { display: none; }
+      .tf-arrow { display: none; }
+    }
+    @media (max-width: 600px) {
+      .sis-bridge { padding: 60px 20px; }
+      .sis-bridge-intro { font-size: 15px; margin-bottom: 40px; }
+      .tf-card { padding: 28px 22px; border-radius: 16px; }
+    }
+    </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1344,7 +1377,7 @@
     </div>
     <div class="how-step">
       <div class="step-num">1</div>
-      <div class="step-content"><h3>Purchase and Start Immediately</h3><p>The moment your payment completes, you are taken directly into your personal Deep Work session. No downloads. No setup. No extra accounts to create. Just you and a two hour conversation that changes everything.</p></div>
+      <div class="step-content"><h3>Purchase and Start Immediately</h3><p>The moment your payment completes, you are taken directly into your personal Deep Work session. No downloads. No setup. No extra accounts to create. Just you and a focused conversation that changes everything.</p></div>
     </div>
     <div class="how-step">
       <div class="step-num">2</div>
@@ -1432,31 +1465,34 @@
 
 
 <!-- SITE IN SIXTY BRIDGE -->
-<section style="padding:100px 48px;background:#F5F1EC;">
-  <div style="max-width:900px;margin:0 auto;text-align:center;">
-    <div style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#c4703f;margin-bottom:20px;">What comes next</div>
-    <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:700;line-height:1.2;margin-bottom:20px;">Your blueprint is done.<br>Now give it <em style="font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:#c4703f;">a home you actually own.</em></h2>
-    <p style="font-size:16px;line-height:1.8;color:#666;max-width:620px;margin:0 auto 40px;">The blueprint tells you exactly what to say. But once you have it, the next question is always the same: how do I get this live without spending $5,000 on a developer or waiting six weeks for someone to misinterpret my vision?</p>
+<section class="sis-bridge">
+  <div class="sis-bridge-inner">
+    <div class="section-eyebrow">What comes next</div>
+    <h2>Your blueprint is done.<br>Now give it <em>a home you actually own.</em></h2>
+    <p class="sis-bridge-intro">The blueprint tells you exactly what to say. But once you have it, the next question is always the same: how do I get this live without spending $5,000 on a developer or waiting six weeks for someone to misinterpret my vision?</p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:48px;text-align:left;">
-      <div style="background:#fff;border-radius:16px;padding:28px 24px;border:1px solid #EAE7E2;">
-        <div style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:12px;">The old way</div>
-        <p style="font-size:14px;line-height:1.7;color:#555;">Brief a developer. Wait 3 weeks. Get revisions wrong. Pay $3,000. Update one headline. Pay $200. Wait another week. Your momentum is gone before your site is live.</p>
+    <div class="timeline-flow">
+      <div class="tf-card">
+        <div class="tf-num">1</div>
+        <div class="tf-label">The old way</div>
+        <p>Brief a developer. Wait 3 weeks. Get revisions wrong. Pay $3,000. Update one headline. Pay $200. Wait another week. Your momentum is gone before your site is live.</p>
+        <div class="tf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg></div>
       </div>
-      <div style="background:#fff;border-radius:16px;padding:28px 24px;border:1px solid #EAE7E2;">
-        <div style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:12px;">The new way</div>
-        <p style="font-size:14px;line-height:1.7;color:#555;">You are the creative director. Claude is your technical co-founder. Site in Sixty walks you through building a professional, indexed website from your blueprint in under 60 minutes. Free hosting. Zero developer invoices. Forever independent.</p>
+      <div class="tf-card">
+        <div class="tf-num">2</div>
+        <div class="tf-label">The new way</div>
+        <p>You are the creative director. Claude is your technical co-founder. Site in Sixty walks you through building a professional, indexed website from your blueprint in under 60 minutes. Free hosting. Zero developer invoices. Forever independent.</p>
+        <div class="tf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg></div>
       </div>
-      <div style="background:#fff;border-radius:16px;padding:28px 24px;border:1px solid #EAE7E2;">
-        <div style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:12px;">The result</div>
-        <p style="font-size:14px;line-height:1.7;color:#555;">A site that sounds like you because every word came from you. The ability to change anything, anytime, in minutes. And no one standing between your ideas and your audience.</p>
+      <div class="tf-card">
+        <div class="tf-num">3</div>
+        <div class="tf-label">The result</div>
+        <p>A site that sounds like you because every word came from you. The ability to change anything, anytime, in minutes. And no one standing between your ideas and your audience.</p>
       </div>
     </div>
 
-    <a href="/site-in-sixty/" style="display:inline-flex;align-items:center;gap:10px;background:#1a1a1a;color:#fff;padding:18px 40px;border-radius:50px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;text-decoration:none;transition:all .25s ease;">
-      Learn About Site in Sixty &nbsp;&rarr;
-    </a>
-    <p style="margin-top:14px;font-size:13px;color:#999;">$197 one time &nbsp;&middot;&nbsp; under 60 minutes &nbsp;&middot;&nbsp; free hosting forever</p>
+    <a href="/site-in-sixty/" class="cta-btn" style="text-decoration:none;">Learn About Site in Sixty &nbsp;&rarr;</a>
+    <div class="sis-price-line">$197 one time &nbsp;&middot;&nbsp; under 60 minutes &nbsp;&middot;&nbsp; free hosting forever</div>
   </div>
 </section>
 
