@@ -64,9 +64,10 @@
     .nav-links a:hover { color: var(--text); }
     .nav-btn { display: inline-block; background: var(--text); color: #fff !important; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Inter',sans-serif; transition: all .25s ease; text-decoration: none !important; }
     .nav-btn:hover { background: #c4703f; color: #fff !important; }
+    .mobile-nav-btn { display: none; }
 
     /* HERO DESKTOP */
-    .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: hidden; z-index: 2; }
+    .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: visible; z-index: 2; }
     .hero-photo { position: absolute; left: 36%; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
     .hero-photo img { max-height: 100%; width: auto; display: block; }
     .hero-photo-fade { position: absolute; left: 0; top: 0; bottom: 0; width: 45%; background: linear-gradient(to right, var(--bg) 20%, transparent 100%); pointer-events: none; z-index: 1; }
@@ -75,12 +76,20 @@
     @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
     .vid-float { position: absolute; bottom: 4%; right: 5%; left: auto; transform: none; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
     .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
-    .hero-arrow-label { position: absolute; bottom: 22%; right: 8%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hero-arrow-label { position: absolute; bottom: 42%; right: 12%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
     .hero-arrow-label svg { width: 52px; opacity: 0.85; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
-    .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
-    .hero-text { max-width: 520px; }
+    .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; }
+    .hero-text { max-width: 520px; padding-bottom: 24px; }
+    .hero-trust { display: flex; gap: 32px; padding-top: 24px; margin-top: 8px; border-top: 1px solid var(--border); }
+    .hero-trust-num { font-family: 'Outfit',sans-serif; font-size: 24px; font-weight: 700; }
+    .hero-trust-label { font-size: 11px; color: #999; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+    /* Mobile hero photo styles — Option O Compact */
+    .mobile-hero-photo { display: none; }
+    .mobile-hero-img-wrap { position: relative; width: 100%; overflow: hidden; max-height: 240px; }
+    .mobile-hero-img-wrap img { width: 100%; height: 240px; object-fit: cover; object-position: top center; display: block; }
+    .mobile-hero-img-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to bottom, transparent, var(--bg)); pointer-events: none; }
 
     /* Shared text styles */
     .eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
@@ -110,10 +119,10 @@
     .mobile-vid-player video { width: 100%; display: block; aspect-ratio: 16/9; }
     .mobile-vid-caption { background: rgba(0,0,0,.9); color: rgba(255,255,255,.8); text-align: center; padding: 8px; font-size: .68rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .mobile-bottom-fade { height: 24px; background: linear-gradient(to bottom, #0d0c0b, var(--bg)); }
-    .mobile-hero-text { padding: 12px 20px 24px; }
-    .mobile-hero-text h1 { font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; }
-    .mobile-hero-text .hero-sub { font-size: 15px; margin-bottom: 16px; }
-    .mobile-hero-text .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 12px; }
+    .mobile-hero-text { padding: 0 20px 24px; }
+    .mobile-hero-text h1 { font-size: clamp(24px, 6.5vw, 34px); margin-bottom: 10px; }
+    .mobile-hero-text .hero-sub { font-size: 13px; margin-bottom: 16px; }
+    .mobile-hero-text .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 10px; padding: 14px 28px; font-size: 14px; }
 
     /* CREDIBILITY */
     .cred-section { position: relative; z-index: 2; padding: 72px 48px; background: #eeeae4; }
@@ -161,29 +170,103 @@
     .session-quote em { color: var(--accent); font-style: italic; }
     .session-footer { font-size: 11px; color: rgba(255,255,255,.2); text-align: center; padding-top: 20px; margin-top: 8px; letter-spacing: 1.5px; }
 
-    /* SAMPLE OUTPUT — Warm Cream */
-    .sample-output { margin-top: 72px; background: #F7F4F0; border-radius: 24px; overflow: hidden; border: 1px solid #EAE7E2; }
+    /* SAMPLE OUTPUT — Scrolling Blueprint */
+    .sample-output { margin-top: 72px; background: #1a1a1a; border-radius: 24px; overflow: hidden; border: 1px solid #333; }
     .sample-output-header { background: #EFEBE5; padding: 16px 28px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #DDD8D0; }
     .sample-traffic-lights { display: flex; gap: 7px; }
     .stl { width: 12px; height: 12px; border-radius: 50%; }
     .sample-file-name { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: rgba(26,26,26,.35); text-transform: uppercase; margin-left: 8px; }
-    .sample-doc { padding: 48px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-    .sample-block { border-left: 2px solid rgba(196,112,63,.4); padding-left: 20px; margin-bottom: 32px; }
-    .sample-block:last-child { margin-bottom: 0; }
-    .sample-block-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.85); margin-bottom: 10px; }
-    .sample-block-content { font-size: 13.5px; line-height: 1.7; color: rgba(26,26,26,.6); }
-    .sample-block-content strong { color: var(--text); font-weight: 600; }
-    .sample-divider { border: none; border-top: 1px solid #DDD8D0; margin: 28px 0; }
-    .sample-score-row { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
-    .sample-score-bar { flex: 1; height: 4px; background: rgba(0,0,0,.06); border-radius: 2px; overflow: hidden; }
-    .sample-score-fill { height: 100%; background: linear-gradient(to right, var(--accent), #e8956a); border-radius: 2px; }
-    .sample-score-num { font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 700; color: var(--accent); }
-    .sample-offer-row { display: flex; gap: 12px; margin-top: 12px; }
-    .sample-offer-pill { background: rgba(196,112,63,.08); border: 1px solid rgba(196,112,63,.2); border-radius: 8px; padding: 10px 14px; flex: 1; }
-    .sample-offer-tier { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,112,63,.85); margin-bottom: 4px; }
-    .sample-offer-price { font-family: 'Outfit',sans-serif; font-size: 18px; font-weight: 700; color: var(--text); }
-    .sample-offer-name { font-size: 11px; color: rgba(26,26,26,.4); margin-top: 3px; }
-    .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(26,26,26,.35); border-top: 1px solid #DDD8D0; font-style: italic; }
+    .bp-bar { display: flex; align-items: center; padding: 12px 16px; background: #2a2a2a; gap: 8px; }
+    .bp-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .bp-dot.r { background: #ff5f57; }
+    .bp-dot.y { background: #ffbd2e; }
+    .bp-dot.g { background: #28c840; }
+    .bp-filename { margin-left: 12px; font-size: 12px; color: rgba(255,255,255,0.5); font-family: 'SF Mono','Fira Code',monospace; }
+    .bp-scroll-viewport { height: 520px; overflow: hidden; position: relative; background: #F7F4F0; }
+    .bp-scroll-track { animation: blueprintScroll 55s linear infinite; animation-delay: 1s; }
+    .bp-scroll-track:hover { animation-play-state: paused; }
+    @keyframes blueprintScroll {
+      0% { transform: translateY(0); }
+      1.5% { transform: translateY(0); }
+      10% { transform: translateY(-636px); }
+      11.5% { transform: translateY(-636px); }
+      20% { transform: translateY(-1272px); }
+      21.5% { transform: translateY(-1272px); }
+      30% { transform: translateY(-1908px); }
+      31.5% { transform: translateY(-1908px); }
+      40% { transform: translateY(-2544px); }
+      41.5% { transform: translateY(-2544px); }
+      50% { transform: translateY(-3180px); }
+      51.5% { transform: translateY(-3180px); }
+      60% { transform: translateY(-3816px); }
+      61.5% { transform: translateY(-3816px); }
+      70% { transform: translateY(-4452px); }
+      71.5% { transform: translateY(-4452px); }
+      80% { transform: translateY(-5088px); }
+      81.5% { transform: translateY(-5088px); }
+      90% { transform: translateY(-5724px); }
+      100% { transform: translateY(-5724px); }
+    }
+    .bp-page { min-height: 620px; padding: 48px 40px; background: #fff; margin: 0 20px 16px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); position: relative; }
+    .bp-page-num { position: absolute; bottom: 20px; right: 28px; font-size: 11px; color: #ccc; }
+    .bp-section-tag { display: inline-block; font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; padding: 4px 10px; background: rgba(196,112,63,0.08); border-radius: 4px; }
+    .bp-title { font-family: 'Outfit',sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 20px; line-height: 1.3; }
+    .bp-subtitle { font-family: 'Outfit',sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 12px; margin-top: 24px; color: var(--text); }
+    .bp-text { font-size: 13px; line-height: 1.8; color: #444; margin-bottom: 14px; }
+    .bp-cover { min-height: 620px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(160deg, #FDFCFA 0%, #F3EDE6 100%); }
+    .bp-cover-logo { font-family: 'Outfit',sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 40px; }
+    .bp-cover h3 { font-family: 'Outfit',sans-serif; font-size: 36px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; }
+    .bp-cover-sub { font-family: 'Playfair Display',serif; font-style: italic; font-size: 18px; color: var(--accent); margin-bottom: 40px; }
+    .bp-cover-line { width: 48px; height: 2px; background: var(--accent); margin: 28px auto; }
+    .bp-cover-meta { font-size: 12px; color: #999; line-height: 1.8; }
+    .bp-avatar-card { background: #faf9f7; border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; }
+    .bp-avatar-name { font-family: 'Outfit',sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .bp-avatar-role { font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+    .bp-avatar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+    .bp-avatar-field label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #999; margin-bottom: 4px; }
+    .bp-avatar-field p { font-size: 12px; line-height: 1.6; color: var(--text); margin: 0; }
+    .bp-swot { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+    .bp-swot-cell { border-radius: 10px; padding: 16px; }
+    .bp-swot-cell.strength { background: #E8F5E9; }
+    .bp-swot-cell.weakness { background: #FFF3E0; }
+    .bp-swot-cell.opportunity { background: #E3F2FD; }
+    .bp-swot-cell.threat { background: #FCE4EC; }
+    .bp-swot-label { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+    .bp-swot-cell.strength .bp-swot-label { color: #2E7D32; }
+    .bp-swot-cell.weakness .bp-swot-label { color: #E65100; }
+    .bp-swot-cell.opportunity .bp-swot-label { color: #1565C0; }
+    .bp-swot-cell.threat .bp-swot-label { color: #C62828; }
+    .bp-swot-item { font-size: 12px; line-height: 1.7; color: var(--text); padding: 3px 0; }
+    .bp-comp-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+    .bp-comp-table th { text-align: left; font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #999; padding: 10px 12px; border-bottom: 2px solid var(--border); }
+    .bp-comp-table td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .bp-grade { display: inline-block; width: 26px; height: 26px; border-radius: 6px; font-size: 11px; font-weight: 700; text-align: center; line-height: 26px; font-family: 'Outfit',sans-serif; }
+    .bp-grade.a { background: #E8F5E9; color: #2E7D32; }
+    .bp-grade.b { background: #FFF8E1; color: #F57F17; }
+    .bp-grade.c { background: #FCE4EC; color: #C62828; }
+    .bp-score-grid { display: grid; gap: 14px; margin: 16px 0; }
+    .bp-score-row { display: flex; align-items: center; gap: 12px; }
+    .bp-score-label { flex: 0 0 140px; font-size: 12px; font-weight: 500; text-align: right; }
+    .bp-score-bar-bg { flex: 1; height: 10px; background: #f0ece6; border-radius: 5px; overflow: hidden; }
+    .bp-score-bar { height: 100%; border-radius: 5px; }
+    .bp-score-bar.high { background: linear-gradient(90deg, #66BB6A, #43A047); }
+    .bp-score-bar.mid { background: linear-gradient(90deg, #FFA726, #FB8C00); }
+    .bp-score-bar.low { background: linear-gradient(90deg, #EF5350, #E53935); }
+    .bp-score-val { flex: 0 0 40px; font-family: 'Outfit',sans-serif; font-size: 14px; font-weight: 700; }
+    .bp-score-overall { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .bp-score-overall .big-num { font-family: 'Outfit',sans-serif; font-size: 48px; font-weight: 800; color: #FB8C00; }
+    .bp-score-overall .big-label { font-size: 12px; color: #999; margin-top: 4px; }
+    .bp-offers { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 16px 0; }
+    .bp-offer-card { border: 1px solid var(--border); border-radius: 12px; padding: 24px 16px; text-align: center; position: relative; background: #fff; }
+    .bp-offer-card.featured { border-color: var(--accent); box-shadow: 0 4px 20px rgba(196,112,63,0.12); }
+    .bp-offer-card.featured::before { content: 'Most Popular'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 9px; font-weight: 700; padding: 3px 10px; border-radius: 10px; font-family: 'Outfit',sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+    .bp-offer-tier { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #999; margin-bottom: 6px; }
+    .bp-offer-name { font-family: 'Outfit',sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .bp-offer-price { font-family: 'Outfit',sans-serif; font-size: 28px; font-weight: 800; color: var(--accent); margin-bottom: 12px; }
+    .bp-offer-items { text-align: left; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+    .bp-offer-item { font-size: 11px; line-height: 1.5; color: #555; padding: 3px 0 3px 18px; position: relative; }
+    .bp-offer-item::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(255,255,255,.4); border-top: 1px solid #333; font-style: italic; }
 
     /* PROCESS V3 — Transcript Chat */
     .proc3-section { position: relative; z-index: 2; padding: 120px 48px; background: var(--bg); }
@@ -324,16 +407,21 @@
     @media (min-width: 861px) and (max-width: 1100px) {
       nav { padding: 0 28px; }
       .nav-links { gap: 20px; }
-      .hero-text-wrap { padding: 0 28px; }
-      .hero-text { max-width: 440px; }
-      h1 { font-size: clamp(30px, 3.2vw, 44px); }
+      /* Tablet A: Split Layout — photo left 40%, text right 60% */
+      .hero { display: flex; flex-direction: row; height: auto; min-height: 540px; overflow: visible; }
+      .hero-photo { position: relative; left: auto; right: auto; top: auto; bottom: auto; width: 40%; flex-shrink: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+      .hero-photo img { max-height: 100%; width: auto; display: block; }
+      .hero-photo-fade { width: 50%; left: auto; right: 0; background: linear-gradient(to left, var(--bg) 10%, transparent 100%); }
+      .vid-float { display: none; }
+      .vid-halo { display: none; }
+      .vid-halo2 { display: none; }
+      .hero-arrow-label { display: none; }
+      .hero-text-wrap { position: relative; width: 60%; display: flex; align-items: center; padding: 40px 32px; }
+      .hero-text { max-width: none; padding-bottom: 0; }
+      h1 { font-size: clamp(28px, 3vw, 40px); }
       .hero-sub { font-size: 15px; }
-      .hero-photo { left: 40%; }
-      .vid-float { width: 160px; }
-      .vid-halo { width: 290px; height: 184px; }
-      .vid-halo2 { width: 320px; height: 210px; }
-      .hero-arrow-label { right: 5%; bottom: 24%; }
-      .hero-arrow-label span { font-size: 1rem; }
+      .hero-trust { gap: 24px; }
+      .hero-trust-num { font-size: 20px; }
       .cred-section { padding: 56px 28px; }
       .stat-num { font-size: 40px; }
       .wti-section { padding: 80px 28px; }
@@ -350,17 +438,25 @@
       .before-decide-section { padding: 60px 28px !important; }
     }
     @media (max-width: 860px) {
-      nav { padding: 0 20px; } .nav-links { display: none; }
+      nav { padding: 0 16px; height: 52px; } .nav-links { display: none; }
+      .mobile-nav-btn { display: inline-block; padding: 8px 16px; font-size: 11px; border-radius: 50px; }
+      .nav-logo { font-size: 11px; letter-spacing: 1.5px; }
       .hero { display: none; }
-      .mobile-hero-video { display: block; }
+      .mobile-hero-photo { display: block; }
+      .mobile-hero-video { display: none; }
       .hero-arrow-label { display: none; }
+      /* Mobile hero trust stats */
+      .mobile-trust { display: flex; gap: 24px; padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--border); justify-content: center; text-align: center; }
+      .mobile-trust-num { font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 700; }
+      .mobile-trust-label { font-size: 10px; color: #999; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
       .cred-section { padding: 48px 20px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stat-item:nth-child(2) { border-right: none; }
       .stat-item:nth-child(3),
       .stat-item:nth-child(4) { border-top: 1px solid rgba(0,0,0,.1); }
       .stat-item:nth-child(4) { border-right: none; }
-      .logos-list { gap: 20px; }
+      .logos-list { gap: 12px 24px; }
+      .logo-name { font-size: 13px; letter-spacing: 2px; color: var(--text); background: rgba(196,112,63,0.08); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(196,112,63,0.15); }
       .cred-proof { margin-top: 36px; }
       .cred-proof-quote { font-size: 17px; }
       .wti-section { padding: 64px 20px; }
@@ -389,7 +485,40 @@
       .test-grid { grid-template-columns: 1fr; }
       .how-section { padding: 72px 20px; }
       .final-cta { padding: 72px 20px; }
-      footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px 20px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 20px 16px; }
+      .footer-logo { font-size: 11px; letter-spacing: 1.5px; }
+      .footer-links { flex-wrap: wrap; gap: 12px; justify-content: center; }
+      .footer-links a { font-size: 11px; }
+      .footer-copy { font-size: 10px; }
+      /* Blueprint scroll mobile — scale down to look like a PDF preview */
+      .sample-output { margin-left: -8px; margin-right: -8px; border-radius: 16px; }
+      .bp-scroll-viewport { height: 380px; }
+      .bp-scroll-track { transform: scale(0.58); transform-origin: top left; width: 172%; }
+      .bp-bar { padding: 10px 14px; }
+      .bp-filename { font-size: 10px; }
+      .sample-caption { font-size: 10px; padding: 14px 16px; }
+      @keyframes blueprintScroll {
+        0% { transform: scale(0.58) translateY(0); }
+        1.5% { transform: scale(0.58) translateY(0); }
+        10% { transform: scale(0.58) translateY(-636px); }
+        11.5% { transform: scale(0.58) translateY(-636px); }
+        20% { transform: scale(0.58) translateY(-1272px); }
+        21.5% { transform: scale(0.58) translateY(-1272px); }
+        30% { transform: scale(0.58) translateY(-1908px); }
+        31.5% { transform: scale(0.58) translateY(-1908px); }
+        40% { transform: scale(0.58) translateY(-2544px); }
+        41.5% { transform: scale(0.58) translateY(-2544px); }
+        50% { transform: scale(0.58) translateY(-3180px); }
+        51.5% { transform: scale(0.58) translateY(-3180px); }
+        60% { transform: scale(0.58) translateY(-3816px); }
+        61.5% { transform: scale(0.58) translateY(-3816px); }
+        70% { transform: scale(0.58) translateY(-4452px); }
+        71.5% { transform: scale(0.58) translateY(-4452px); }
+        80% { transform: scale(0.58) translateY(-5088px); }
+        81.5% { transform: scale(0.58) translateY(-5088px); }
+        90% { transform: scale(0.58) translateY(-5724px); }
+        100% { transform: scale(0.58) translateY(-5724px); }
+      }
     }
     @media (max-width: 480px) {
       .proc3-ai-bubble { max-width: 95%; }
@@ -486,6 +615,7 @@
     <li><a href="#stories">Stories</a></li>
     <li><a href="#checkout" data-checkout="blueprint" class="nav-btn" style="text-decoration:none;">Get Clear Now</a></li>
   </ul>
+  <a href="#checkout" data-checkout="blueprint" class="nav-btn mobile-nav-btn" style="text-decoration:none;">Get Clear Now</a>
 </nav>
 
 <!-- HERO DESKTOP -->
@@ -499,54 +629,66 @@
       <video controls preload="metadata">
         <source src="videos/james-deepwork-v3.mp4" type="video/mp4">
       </video>
-      <div class="vid-label">5 min · The Deep Work Process explained</div>
+      <div class="vid-label">3 min · my story</div>
     </div>
   </div>
   <div class="hero-arrow-label">
     <span>Hear my story</span>
-    <svg viewBox="0 0 55 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8,6 C10,18 18,38 28,55 C34,65 40,72 48,78" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
-      <path d="M48,78 L37,74" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
-      <path d="M48,78 L46,66" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+    <svg viewBox="0 0 50 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M25,6 C22,24 20,42 22,58 C23,68 26,76 30,84" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+      <path d="M30,84 L22,76" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+      <path d="M30,84 L36,75" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
     </svg>
   </div>
   <div class="hero-text-wrap">
     <div class="hero-text">
-      <div class="eyebrow">Deep Work Process</div>
-      <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
-      <h1>Work through it in sections. Leave with a plan that makes everything <em>clear.</em></h1>
-      <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
+      <h1>You're great at what you do. The world just doesn't <em>know it yet.</em></h1>
+      <p class="hero-sub">In 90 minutes, walk away with the positioning, the language, and the complete brand blueprint that finally makes your expertise impossible to ignore.</p>
       <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
-      <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
+      <p class="price-note">Previously $5,000 per session · <strong>$67</strong> launch week</p>
+      <div class="hero-trust">
+        <div>
+          <div class="hero-trust-num">132</div>
+          <div class="hero-trust-label">Entrepreneurs</div>
+        </div>
+        <div>
+          <div class="hero-trust-num">$1B+</div>
+          <div class="hero-trust-label">Revenue Represented</div>
+        </div>
+        <div>
+          <div class="hero-trust-num">4.9 ★</div>
+          <div class="hero-trust-label">Average Rating</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- HERO MOBILE — no photo, video is the star -->
-<div class="mobile-hero-video">
-  <div class="mobile-vid-canvas-wrap">
-    <canvas id="mobile-geo"></canvas>
-    <div class="mobile-vid-rings">
-      <div class="mobile-ring" style="width:calc(100% - 24px);aspect-ratio:16/10;"></div>
-      <div class="mobile-ring" style="width:calc(100% - 8px);aspect-ratio:16/10;"></div>
-    </div>
-    <div class="mobile-vid-inner">
-      <div class="mobile-vid-player">
-        <video controls preload="metadata">
-          <source src="videos/james-deepwork-v3.mp4" type="video/mp4">
-        </video>
-        <div class="mobile-vid-caption">5 min · The Deep Work Process explained</div>
+<!-- HERO MOBILE — Option O Compact: photo top, everything above the fold -->
+<div class="mobile-hero-photo">
+  <div class="mobile-hero-img-wrap">
+    <img src="images/james-hero.png" alt="James Guldan" loading="eager">
+    <div class="mobile-hero-img-fade"></div>
+  </div>
+  <div class="mobile-hero-text">
+    <h1>Does your business not <em>feel like you</em> anymore?</h1>
+    <p class="hero-sub">In 90 minutes, get the positioning, the language, and the complete brand blueprint that makes your expertise impossible to ignore.</p>
+    <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
+    <p class="price-note">Previously $5,000 per session · <strong>$67</strong> launch week</p>
+    <div class="mobile-trust">
+      <div>
+        <div class="mobile-trust-num">132</div>
+        <div class="mobile-trust-label">Entrepreneurs</div>
+      </div>
+      <div>
+        <div class="mobile-trust-num">$1B+</div>
+        <div class="mobile-trust-label">Revenue</div>
+      </div>
+      <div>
+        <div class="mobile-trust-num">4.9 ★</div>
+        <div class="mobile-trust-label">Rating</div>
       </div>
     </div>
-  </div>
-  <div class="mobile-bottom-fade"></div>
-  <div class="mobile-hero-text">
-    <div class="eyebrow">Deep Work Process</div>
-    <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
-    <h1>Work through it in sections. Leave with a plan that makes everything <em>clear.</em></h1>
-    <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
-    <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
-    <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
   </div>
 </div>
 
@@ -822,23 +964,295 @@
   </div>
 </section>
 
-<!-- SAMPLE OUTPUT PREVIEW -->
+<!-- SAMPLE OUTPUT PREVIEW — Scrolling Blueprint -->
 <div style="max-width:1100px;margin:64px auto 0;padding:0 48px;">
   <div class="section-eyebrow" style="text-align:center;margin-bottom:12px;">Sample Output</div>
-  <p style="text-align:center;font-size:15px;color:#777;max-width:520px;margin:0 auto 36px;line-height:1.7;">This is what the actual document looks like. Your version will be built around your story, your market, and your specific positioning gap.</p>
+  <p style="text-align:center;font-size:15px;color:#777;max-width:560px;margin:0 auto 36px;line-height:1.7;">This is a real blueprint built for a fictional client. Your version will be built around your story, your market, and your specific positioning gap. Hover to pause.</p>
   <div class="sample-output" style="position:relative;">
-    <div class="sample-output-header">
-      <div class="sample-traffic-lights">
-        <div class="stl" style="background:#ff5f57"></div>
-        <div class="stl" style="background:#febc2e"></div>
-        <div class="stl" style="background:#28c840"></div>
+    <div class="bp-bar">
+      <div class="bp-dot r"></div>
+      <div class="bp-dot y"></div>
+      <div class="bp-dot g"></div>
+      <span class="bp-filename">sarah-mendez-consulting-brand-blueprint.pdf</span>
+    </div>
+    <div class="bp-scroll-viewport">
+      <div class="bp-scroll-track">
+
+        <!-- PAGE 1: COVER -->
+        <div class="bp-page bp-cover">
+          <div class="bp-cover-logo">Deep Work Process</div>
+          <h3>Sarah Mendez Consulting</h3>
+          <div class="bp-cover-sub">Brand &amp; Positioning Blueprint</div>
+          <div class="bp-cover-line"></div>
+          <div class="bp-cover-meta">
+            Prepared from a 94 minute Deep Work session<br>
+            March 2026<br><br>
+            <span style="color:var(--accent);font-weight:600;">11 Sections · 28 Pages · Built from your words</span>
+          </div>
+          <div class="bp-page-num">1</div>
+        </div>
+
+        <!-- PAGE 2: BRAND FOUNDATION -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 1</div>
+          <div class="bp-title">Brand Foundation</div>
+          <div class="bp-subtitle">Your Story</div>
+          <p class="bp-text">You spent 12 years climbing the engineering ladder at Meridian Software, eventually running a 40 person team as VP of Engineering. You were good at building systems, but you were exceptional at building people. The moment that changed everything was a phone call from Reena, a former direct report, calling to say she'd just been named CTO. "You saw something in me I didn't see in myself," she told you. That sentence became the foundation of everything you do now.</p>
+          <div class="bp-subtitle">Your Expertise</div>
+          <p class="bp-text">Executive presence for technical leaders. Specifically, helping women in engineering and product who have the skills to lead at the C-suite level but who are told they lack "executive presence" — a phrase that almost always means "you don't perform leadership the way men do."</p>
+          <div class="bp-subtitle">Your Worldview</div>
+          <p class="bp-text">"Technical women don't need to become someone else to lead. They need to stop apologizing for the leadership style that already works."</p>
+          <div class="bp-page-num">3</div>
+        </div>
+
+        <!-- PAGE 3: IDEAL AVATAR -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 2</div>
+          <div class="bp-title">Ideal Client Avatar</div>
+          <div class="bp-avatar-card">
+            <div class="bp-avatar-name">Priya Sharma</div>
+            <div class="bp-avatar-role">VP of Product · Series C SaaS Company · Age 38</div>
+            <div class="bp-avatar-grid">
+              <div class="bp-avatar-field">
+                <label>Internal Dialogue</label>
+                <p>"I know I can run this company. But every time I walk into the board meeting, I feel like I'm performing instead of leading."</p>
+              </div>
+              <div class="bp-avatar-field">
+                <label>Trigger Event</label>
+                <p>Passed over for Chief Product Officer despite being the obvious internal candidate. The feedback: "Not quite ready from an executive presence standpoint."</p>
+              </div>
+              <div class="bp-avatar-field">
+                <label>Real Objections</label>
+                <p>"I've read every leadership book. I don't need theory — I need someone who's sat in my exact seat and can tell me what actually works."</p>
+              </div>
+              <div class="bp-avatar-field">
+                <label>Budget &amp; Timeline</label>
+                <p>$5,000 to $10,000 for transformational coaching that results in a measurable outcome within 12 months.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bp-page-num">5</div>
+        </div>
+
+        <!-- PAGE 4: SWOT ANALYSIS -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 3</div>
+          <div class="bp-title">SWOT Analysis</div>
+          <div class="bp-swot">
+            <div class="bp-swot-cell strength">
+              <div class="bp-swot-label">Strengths</div>
+              <div class="bp-swot-item">✦ Lived experience as VP of Engineering — you've sat in the exact seat your clients sit in</div>
+              <div class="bp-swot-item">✦ 100% of clients report measurable career outcomes</div>
+              <div class="bp-swot-item">✦ Deep technical credibility that generic coaches cannot replicate</div>
+            </div>
+            <div class="bp-swot-cell weakness">
+              <div class="bp-swot-label">Weaknesses</div>
+              <div class="bp-swot-item">⚠ Brand messaging is generic ("Executive Coach") and does not reflect your specialization</div>
+              <div class="bp-swot-item">⚠ No signature framework or proprietary methodology name</div>
+              <div class="bp-swot-item">⚠ Pricing is 40 to 60% below market for the outcomes you deliver</div>
+            </div>
+            <div class="bp-swot-cell opportunity">
+              <div class="bp-swot-label">Opportunities</div>
+              <div class="bp-swot-item">◆ Corporate DEI budgets are actively funding external coaching for women in technical leadership</div>
+              <div class="bp-swot-item">◆ Speaking circuit is wide open — Women in Product, Grace Hopper all seek coaches with real VP experience</div>
+              <div class="bp-swot-item">◆ Group cohort model would 3x revenue without 3x time</div>
+            </div>
+            <div class="bp-swot-cell threat">
+              <div class="bp-swot-label">Threats</div>
+              <div class="bp-swot-item">⊘ Market saturation of generic "executive coaches" makes differentiation critical</div>
+              <div class="bp-swot-item">⊘ AI coaching tools entering the space at lower price points</div>
+              <div class="bp-swot-item">⊘ Reliance on referrals creates a single point of failure</div>
+            </div>
+          </div>
+          <div class="bp-page-num">8</div>
+        </div>
+
+        <!-- PAGE 5: COMPETITOR ANALYSIS -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 4</div>
+          <div class="bp-title">Competitor Analysis</div>
+          <table class="bp-comp-table">
+            <thead><tr><th>Competitor</th><th>Focus</th><th>Price</th><th>Grade</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:600;">Ellevate Coaching Co.</td><td>Women in executive leadership, all industries</td><td>$8K–$15K</td><td><span class="bp-grade a">A</span></td></tr>
+              <tr><td style="font-weight:600;">TechLead Coaching</td><td>Engineering managers → directors</td><td>$2K–$4K</td><td><span class="bp-grade b">B</span></td></tr>
+              <tr><td style="font-weight:600;">Presence Partners</td><td>Executive communication, mixed gender</td><td>$5K–$8K</td><td><span class="bp-grade b">B</span></td></tr>
+              <tr style="background:#faf9f7;"><td style="font-weight:600;color:var(--accent);">Sarah Mendez (You)</td><td>Technical women VP → C-suite</td><td>$3,500</td><td><span class="bp-grade c">C+</span></td></tr>
+            </tbody>
+          </table>
+          <div class="bp-subtitle">Your Positioning Gap</div>
+          <p class="bp-text">No one in your competitive set occupies the intersection of <strong>technical credibility + executive coaching + women-specific + VP-to-C-suite trajectory</strong>. You are the only coach who has personally made this transition AND coaches others through it. This is your positioning and you are not using it anywhere.</p>
+          <div class="bp-page-num">10</div>
+        </div>
+
+        <!-- PAGE 6: CREDIBILITY SCORE -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 5</div>
+          <div class="bp-title">Credibility Score</div>
+          <p class="bp-text" style="margin-bottom:24px;">How your brand appears to a first-time visitor. This is not a reflection of your talent — it is a reflection of how visible that talent is.</p>
+          <div class="bp-score-grid">
+            <div class="bp-score-row"><div class="bp-score-label">Delivery &amp; Results</div><div class="bp-score-bar-bg"><div class="bp-score-bar high" style="width:92%"></div></div><div class="bp-score-val">9.2</div></div>
+            <div class="bp-score-row"><div class="bp-score-label">Referral Strength</div><div class="bp-score-bar-bg"><div class="bp-score-bar high" style="width:71%"></div></div><div class="bp-score-val">7.1</div></div>
+            <div class="bp-score-row"><div class="bp-score-label">Online Presence</div><div class="bp-score-bar-bg"><div class="bp-score-bar mid" style="width:53%"></div></div><div class="bp-score-val">5.3</div></div>
+            <div class="bp-score-row"><div class="bp-score-label">Pricing Confidence</div><div class="bp-score-bar-bg"><div class="bp-score-bar mid" style="width:45%"></div></div><div class="bp-score-val">4.5</div></div>
+            <div class="bp-score-row"><div class="bp-score-label">Brand Clarity</div><div class="bp-score-bar-bg"><div class="bp-score-bar low" style="width:41%"></div></div><div class="bp-score-val">4.1</div></div>
+            <div class="bp-score-row"><div class="bp-score-label">Thought Leadership</div><div class="bp-score-bar-bg"><div class="bp-score-bar low" style="width:38%"></div></div><div class="bp-score-val">3.8</div></div>
+          </div>
+          <div class="bp-score-overall">
+            <div class="big-num">5.7</div>
+            <div class="big-label">Overall Credibility Score — out of 10</div>
+            <p class="bp-text" style="margin-top:12px;max-width:440px;margin-left:auto;margin-right:auto;">Your delivery is world-class. Your brand does not reflect it. The gap between 9.2 and 4.1 is the single most expensive problem in your business.</p>
+          </div>
+          <div class="bp-page-num">13</div>
+        </div>
+
+        <!-- PAGE 7: OFFER ARCHITECTURE -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 6</div>
+          <div class="bp-title">Three-Tier Offer Architecture</div>
+          <div class="bp-offers">
+            <div class="bp-offer-card">
+              <div class="bp-offer-tier">Tier 1 · Entry</div>
+              <div class="bp-offer-name">The Boardroom Audit</div>
+              <div class="bp-offer-price">$497</div>
+              <div class="bp-offer-items">
+                <div class="bp-offer-item">90 minute strategy session</div>
+                <div class="bp-offer-item">Recorded audio + action plan</div>
+                <div class="bp-offer-item">Executive presence assessment</div>
+              </div>
+            </div>
+            <div class="bp-offer-card featured">
+              <div class="bp-offer-tier">Tier 2 · Core</div>
+              <div class="bp-offer-name">The C-Suite Sprint</div>
+              <div class="bp-offer-price">$4,500</div>
+              <div class="bp-offer-items">
+                <div class="bp-offer-item">12 private coaching sessions</div>
+                <div class="bp-offer-item">Slack access between sessions</div>
+                <div class="bp-offer-item">Mock board presentations</div>
+                <div class="bp-offer-item">Monthly progress scorecards</div>
+              </div>
+            </div>
+            <div class="bp-offer-card">
+              <div class="bp-offer-tier">Tier 3 · Premium</div>
+              <div class="bp-offer-name">Leadership Residency</div>
+              <div class="bp-offer-price">$12,000</div>
+              <div class="bp-offer-items">
+                <div class="bp-offer-item">24 private sessions</div>
+                <div class="bp-offer-item">360-degree team feedback</div>
+                <div class="bp-offer-item">Board prep and rehearsal</div>
+                <div class="bp-offer-item">Direct access via voice memo</div>
+              </div>
+            </div>
+          </div>
+          <div class="bp-page-num">16</div>
+        </div>
+
+        <!-- PAGE 8: WEBSITE COPY -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 7</div>
+          <div class="bp-title">Website Copy Blueprint</div>
+          <p class="bp-text" style="margin-bottom:20px;">Real copy for every section of your website. Not a wireframe. Written in your voice, for your avatar.</p>
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Hero Headline</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;line-height:1.3;">"You have the skills to lead at the highest level. Now get the presence to match."</div>
+          </div>
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Problem Statement</div>
+            <div style="font-size:13px;line-height:1.7;color:var(--text);">You've been told you need more "executive presence." But no one can tell you what that actually means. You've watched less qualified people get promoted because they perform confidence in a way that feels inauthentic to you.</div>
+          </div>
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">CTA</div>
+            <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;line-height:1.3;">"Book the Boardroom Audit. In 90 minutes, you'll know exactly what's standing between you and the role you deserve."</div>
+          </div>
+          <div class="bp-page-num">20</div>
+        </div>
+
+        <!-- PAGE 9: BRAND GUIDE -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 8</div>
+          <div class="bp-title">Brand Identity Guide</div>
+          <p class="bp-text" style="margin-bottom:20px;">Your complete visual and verbal identity system. Everything a designer, developer, or marketer needs to represent your brand consistently across every touchpoint.</p>
+
+          <div class="bp-subtitle">Voice &amp; Tone</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+            <div style="background:#E8F5E9;border-radius:10px;padding:16px;">
+              <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2E7D32;margin-bottom:8px;">Do Sound Like</div>
+              <div style="font-size:12px;line-height:1.7;color:var(--text);">Confident but grounded. "Here's what I've seen work." Direct without being aggressive. Warm authority.</div>
+            </div>
+            <div style="background:#FCE4EC;border-radius:10px;padding:16px;">
+              <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C62828;margin-bottom:8px;">Don't Sound Like</div>
+              <div style="font-size:12px;line-height:1.7;color:var(--text);">Salesy, hype driven, or guru energy. No "crush it" or "10x your results." Avoid corporate jargon.</div>
+            </div>
+          </div>
+
+          <div class="bp-subtitle">Color Palette</div>
+          <div style="display:flex;gap:10px;margin-bottom:20px;">
+            <div style="text-align:center;">
+              <div style="width:56px;height:56px;border-radius:10px;background:#1B3A4B;margin-bottom:6px;"></div>
+              <div style="font-size:10px;color:#999;">#1B3A4B</div>
+              <div style="font-size:9px;color:#bbb;">Primary</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:56px;height:56px;border-radius:10px;background:#C4955A;margin-bottom:6px;"></div>
+              <div style="font-size:10px;color:#999;">#C4955A</div>
+              <div style="font-size:9px;color:#bbb;">Accent</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:56px;height:56px;border-radius:10px;background:#F7F4F0;border:1px solid #eee;margin-bottom:6px;"></div>
+              <div style="font-size:10px;color:#999;">#F7F4F0</div>
+              <div style="font-size:9px;color:#bbb;">Background</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:56px;height:56px;border-radius:10px;background:#2C2C2C;margin-bottom:6px;"></div>
+              <div style="font-size:10px;color:#999;">#2C2C2C</div>
+              <div style="font-size:9px;color:#bbb;">Text</div>
+            </div>
+          </div>
+
+          <div class="bp-subtitle">Typography</div>
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;margin-bottom:4px;">Outfit Bold</div>
+            <div style="font-size:11px;color:#999;margin-bottom:12px;">Headlines and section titles</div>
+            <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;margin-bottom:4px;">Inter Regular</div>
+            <div style="font-size:11px;color:#999;">Body text and descriptions</div>
+          </div>
+
+          <div class="bp-subtitle">Photography Direction</div>
+          <p class="bp-text">Natural lighting. Candid over posed. Show Sarah in action: coaching sessions, whiteboard work, speaking on stage. Warm tones. Avoid stock photography. Every image should feel like a window into a real working relationship.</p>
+          <div class="bp-page-num">23</div>
+        </div>
+
+        <!-- PAGE 10: COMMUNICATION & DELEGATION GUIDE -->
+        <div class="bp-page">
+          <div class="bp-section-tag">Section 9</div>
+          <div class="bp-title">How to Communicate Your Brand to Others</div>
+          <p class="bp-text" style="margin-bottom:20px;">Use this page to brief designers, developers, copywriters, or anyone who needs to represent your brand. Copy and share directly.</p>
+
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">For Your Web Designer</div>
+            <div style="font-size:12px;line-height:1.8;color:var(--text);">"My brand is premium but approachable. Think clean lines, lots of whitespace, warm neutral tones. The site should feel like walking into a high end office, not a corporate boardroom. The copy is already written in this blueprint. Use the exact headlines. The primary audience is mid career professionals who feel stuck."</div>
+          </div>
+
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">For Your Copywriter or VA</div>
+            <div style="font-size:12px;line-height:1.8;color:var(--text);">"My voice is direct and confident but never salesy. I speak from experience, not theory. Avoid exclamation points and hype words. Every piece of content should answer the question: 'What would Sarah say to a client who asked this over coffee?' Reference the voice guide on page 23."</div>
+          </div>
+
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">For Your Social Media Manager</div>
+            <div style="font-size:12px;line-height:1.8;color:var(--text);">"Lead with the pain point, not the solution. Our audience doesn't know they need executive coaching yet. They know they feel overlooked. Speak to that feeling. Use the avatar profile on page 5 for targeting. Post formats: short stories from client transformations (anonymized), contrarian takes on leadership, behind the scenes of my process."</div>
+          </div>
+
+          <div style="background:#faf9f7;border:1px solid var(--border);border-radius:10px;padding:20px;">
+            <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">For a Podcast Host or Interviewer</div>
+            <div style="font-size:12px;line-height:1.8;color:var(--text);">"I help high performers who are great at what they do but invisible in their market. My angle is that most people don't have a skills problem, they have a positioning problem. The best intro question: 'Why do the most talented people often have the weakest brands?' My bio and talking points are on pages 3 and 4."</div>
+          </div>
+          <div class="bp-page-num">25</div>
+        </div>
+
       </div>
-      <span class="sample-file-name">Brand Guide — Nora Ellis Consulting — Deep Work Interview Output</span>
     </div>
-    <div style="padding:0;display:flex;justify-content:center;background:#F7F4F0;">
-      <img src="sample-brand-guide-scroll.gif" alt="Sample Brand Guide scrolling through all sections" style="width:100%;max-width:800px;display:block;" loading="lazy">
-    </div>
-    <div class="sample-caption">A fictional example built the exact same way yours will be. 11 sections including SWOT analysis, competitor grading, revenue model, content pillars, and a 90 day authority roadmap. Every word comes from the conversation. Nothing is templated.</div>
+    <div class="sample-caption">This is a sample blueprint for a fictional client. Your blueprint is built entirely from your conversation — every word comes from what you share.</div>
   </div>
 </div>
 
@@ -1275,26 +1689,13 @@
       + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Blueprint</div><div class="op-item-desc">2hr AI positioning session + full blueprint</div></div>'
       + '<div class="op-item-price">$67</div>'
       + '</div>'
-      + '<div class="op-bump" id="bump-site">'
-      + '<input type="checkbox" id="cb-site">'
-      + '<div class="op-bump-tag">Most Popular</div>'
-      + '<div class="op-bump-title">Add a Done For You Website</div>'
-      + '<div class="op-bump-desc">After your session, AI takes your blueprint and builds your entire site with real copy, real structure, and deploys it live. No code. No designers. No waiting weeks.</div>'
-      + '<div class="op-bump-price">+ $130</div>'
-      + '</div>'
-      + '<div class="op-bump" id="bump-call">'
-      + '<input type="checkbox" id="cb-call">'
-      + '<div class="op-bump-tag">Go Deeper</div>'
-      + '<div class="op-bump-title">Add a 1:1 Call with James</div>'
-      + '<div class="op-bump-desc">Private strategy session to walk through your blueprint, pressure test your offers, and map your first 90 days. The same call founders paid $5,000 for.</div>'
-      + '<div class="op-bump-price">+ $130</div>'
-      + '</div>'
+      + ''
       + '</div>'
       + '<div class="op-footer">'
       + '<div class="op-divider"></div>'
       + '<div class="op-total-row">'
-      + '<div><div class="op-total-label">Total today</div><span class="op-total-savings" id="op-savings">Save $134</span></div>'
-      + '<div style="text-align:right"><span class="op-total-original" id="op-original"></span><span class="op-total-amount" id="op-total">$67</span></div>'
+      + '<div><div class="op-total-label">Total today</div></div>'
+      + '<div style="text-align:right"><span class="op-total-amount" id="op-total">$67</span></div>'
       + '</div>'
       + '<button class="op-pay-btn" id="op-pay">Complete Purchase</button>'
       + '<div class="op-guarantee">7 day satisfaction guarantee. If the process does not deliver, email James and he will make it right.</div>'
@@ -1335,47 +1736,15 @@
     document.body.appendChild(popup);
 
     // ── Pricing ─────────────────────────────────────────────────────────────
-    var BASE = 67, BUMP_SITE = 130, BUMP_CALL = 130, FULL_SITE = 197, FULL_CALL = 197;
-    var cbSite   = document.getElementById('cb-site');
-    var cbCall   = document.getElementById('cb-call');
-    var bumpSite = document.getElementById('bump-site');
-    var bumpCall = document.getElementById('bump-call');
+    var BASE = 67;
     var totalEl  = document.getElementById('op-total');
-    var originalEl = document.getElementById('op-original');
-    var savingsEl  = document.getElementById('op-savings');
 
-    function getTotal() {
-      var t = BASE;
-      if (cbSite.checked) t += BUMP_SITE;
-      if (cbCall.checked) t += BUMP_CALL;
-      return t;
-    }
-
-    function updateTotal() {
-      var total = getTotal();
-      totalEl.textContent = '$' + total;
-      if (cbSite.checked && cbCall.checked) {
-        originalEl.textContent = '$' + (BASE + FULL_SITE + FULL_CALL);
-        originalEl.style.display = 'inline';
-        savingsEl.style.display = 'inline-block';
-      } else {
-        originalEl.style.display = 'none';
-        savingsEl.style.display = 'none';
-      }
-      bumpSite.classList.toggle('checked', cbSite.checked);
-      bumpCall.classList.toggle('checked', cbCall.checked);
-    }
-
-    bumpSite.addEventListener('click', function(e) { if (e.target !== cbSite) cbSite.checked = !cbSite.checked; updateTotal(); });
-    bumpCall.addEventListener('click', function(e) { if (e.target !== cbCall) cbCall.checked = !cbCall.checked; updateTotal(); });
-    cbSite.addEventListener('change', updateTotal);
-    cbCall.addEventListener('change', updateTotal);
+    function getTotal() { return BASE; }
+    function updateTotal() { totalEl.textContent = '$' + getTotal(); }
 
     // ── Popup open / close ───────────────────────────────────────────────────
     function openPopup(e) {
       if (e) e.preventDefault();
-      cbSite.checked = false;
-      cbCall.checked = false;
       updateTotal();
       showStep('order');
       backdrop.style.display = 'block';
@@ -1460,14 +1829,10 @@
     // ── "Complete Purchase" → go to payment step ─────────────────────────────
     document.getElementById('op-pay').addEventListener('click', function() {
       var tiers = ['blueprint'];
-      if (cbSite.checked) tiers.push('site');
-      if (cbCall.checked) tiers.push('call');
       currentTiers = tiers;
 
       // Update order summary bar
       var labels = ['Deep Work Blueprint'];
-      if (cbSite.checked) labels.push('+ Website');
-      if (cbCall.checked) labels.push('+ Strategy Call');
       var totalText = '$' + getTotal();
       document.getElementById('op-order-bar-label').textContent = labels.join(' ');
       document.getElementById('op-order-bar-price').textContent = totalText;
