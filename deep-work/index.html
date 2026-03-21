@@ -1666,15 +1666,21 @@
       '.op-loading-view h3{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;color:#1a1a1a;margin:0}',
       '.op-loading-view p{font-size:14px;color:#888;margin:0;line-height:1.65}',
       /* ── Congrats view ── */
-      '.op-congrats-view{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0}',
-      '.op-congrats-inner{display:flex;flex-direction:column;align-items:center;text-align:center;padding:44px 36px 48px;width:100%}',
-      '.op-congrats-check{width:72px;height:72px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:32px;color:#22c55e;animation:opcheckbounce .5s cubic-bezier(.2,.9,.3,1) .1s both}',
-      '.op-congrats-title{font-family:Outfit,sans-serif;font-size:26px;font-weight:700;color:#1a1a1a;margin:0 0 10px}',
-      '.op-congrats-sub{font-size:14px;color:#666;margin:0 0 28px;line-height:1.65;max-width:280px}',
-      '.op-progress-wrap{width:100%;background:#f0ece6;border-radius:999px;height:8px;overflow:hidden;margin-bottom:14px}',
-      '.op-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#c4703f,#e8955a);border-radius:999px;transition:width .4s cubic-bezier(.4,0,.2,1)}',
-      '.op-progress-label{font-size:12px;color:#aaa;font-family:Outfit,sans-serif;margin:0 0 20px}',
-      '.op-congrats-fallback{font-size:13px;color:#888;margin:8px 0 0;line-height:1.65}',
+      '.op-congrats-view{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0;position:relative;overflow:hidden}',
+      '.op-confetti-canvas{position:absolute;inset:0;pointer-events:none;z-index:0}',
+      '.op-congrats-inner{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 36px 44px;width:100%;position:relative;z-index:1}',
+      '@keyframes opcheckpop{0%{transform:scale(0) rotate(-20deg);opacity:0}60%{transform:scale(1.25) rotate(5deg);opacity:1}80%{transform:scale(.92) rotate(-2deg)}100%{transform:scale(1) rotate(0deg);opacity:1}}',
+      '@keyframes opglow{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}50%{box-shadow:0 0 0 12px rgba(34,197,94,.15)}}',
+      '@keyframes opfadeslide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}',
+      '@keyframes opshimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}',
+      '.op-congrats-check{width:80px;height:80px;background:linear-gradient(135deg,#bbf7d0,#4ade80);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.15);animation:opcheckpop .6s cubic-bezier(.2,.9,.3,1) .1s both,opglow 2s ease-in-out 1s infinite;flex-shrink:0}',
+      '.op-congrats-title{font-family:Outfit,sans-serif;font-size:28px;font-weight:800;color:#1a1a1a;margin:0 0 6px;animation:opfadeslide .4s ease .5s both;letter-spacing:-.3px}',
+      '.op-congrats-tagline{font-family:Outfit,sans-serif;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#c4703f;margin:0 0 14px;animation:opfadeslide .4s ease .65s both}',
+      '.op-congrats-sub{font-size:14px;color:#666;margin:0 0 28px;line-height:1.7;max-width:270px;animation:opfadeslide .4s ease .75s both}',
+      '.op-progress-wrap{width:100%;background:#f0ece6;border-radius:999px;height:10px;overflow:hidden;margin-bottom:12px;animation:opfadeslide .4s ease .85s both}',
+      '.op-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#c4703f 0%,#f0a06a 50%,#c4703f 100%);background-size:200% 100%;border-radius:999px;transition:width .4s cubic-bezier(.4,0,.2,1);animation:opshimmer 2s linear .9s infinite}',
+      '.op-progress-label{font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:#bbb;font-family:Outfit,sans-serif;margin:0 0 0;animation:opfadeslide .4s ease .9s both}',
+      '.op-congrats-fallback{font-size:13px;color:#888;margin:18px 0 0;line-height:1.65;animation:opfadeslide .3s ease both}',
       '.op-congrats-fallback a{color:#c4703f;font-weight:600;text-decoration:underline}',
     ].join('');
     document.head.appendChild(style);
@@ -1732,16 +1738,18 @@
 
       /* ── STEP 3: Congratulations + progress bar ── */
       + '<div class="op-congrats-view" id="op-congrats-view">'
+      + '<canvas class="op-confetti-canvas" id="op-confetti-canvas"></canvas>'
       + '<div class="op-congrats-inner">'
       + '<div class="op-congrats-check">&#10003;</div>'
-      + '<h2 class="op-congrats-title">Congratulations!</h2>'
-      + '<p class="op-congrats-sub">Your payment is confirmed. Setting up your personal Deep Work session&#8230;</p>'
+      + '<h2 class="op-congrats-title">You\'re in.</h2>'
+      + '<p class="op-congrats-tagline">Your adventure starts now</p>'
+      + '<p class="op-congrats-sub">Your Deep Work session is being prepared. In minutes you\'ll have total clarity on your brand, your message, and your next move.</p>'
       + '<div class="op-progress-wrap">'
       + '<div class="op-progress-bar" id="op-progress-bar"></div>'
       + '</div>'
-      + '<p class="op-progress-label" id="op-progress-label">Creating your account&#8230;</p>'
+      + '<p class="op-progress-label" id="op-progress-label">Building your session&#8230;</p>'
       + '<p class="op-congrats-fallback" id="op-congrats-fallback" style="display:none">'
-      + 'Taking longer than expected. <a href="https://love.jamesguldan.com/app" id="op-congrats-link">Click here to enter &#8594;</a>'
+      + 'Taking a moment longer&#8230; <a href="https://love.jamesguldan.com/app" id="op-congrats-link">Click here to begin &#8594;</a>'
       + '</p>'
       + '</div>'
       + '</div>';
@@ -1824,7 +1832,59 @@
       } else if (step === 'congrats') {
         header.style.display = 'none';
         canClosePopup = false;
+        // Fire confetti burst
+        requestAnimationFrame(function() { launchConfetti(); });
       }
+    }
+
+    // ── Confetti burst ────────────────────────────────────────────────────────
+    function launchConfetti() {
+      var canvas = document.getElementById('op-confetti-canvas');
+      if (!canvas) return;
+      var W = canvas.offsetWidth, H = canvas.offsetHeight;
+      canvas.width = W; canvas.height = H;
+      var ctx = canvas.getContext('2d');
+      var colors = ['#c4703f','#f0a06a','#22c55e','#4ade80','#facc15','#fb923c','#a78bfa','#38bdf8'];
+      var pieces = [];
+      for (var i = 0; i < 90; i++) {
+        pieces.push({
+          x: W * 0.5 + (Math.random() - 0.5) * W * 0.3,
+          y: H * 0.28,
+          vx: (Math.random() - 0.5) * 9,
+          vy: -Math.random() * 8 - 3,
+          rot: Math.random() * 360,
+          rspeed: (Math.random() - 0.5) * 8,
+          w: Math.random() * 8 + 4,
+          h: Math.random() * 4 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1
+        });
+      }
+      var frame = 0;
+      var maxFrames = 90;
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (var j = 0; j < pieces.length; j++) {
+          var p = pieces[j];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.28;
+          p.vx *= 0.99;
+          p.rot += p.rspeed;
+          p.alpha = Math.max(0, 1 - frame / maxFrames);
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot * Math.PI / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        }
+        frame++;
+        if (frame < maxFrames) requestAnimationFrame(draw);
+        else ctx.clearRect(0, 0, W, H);
+      }
+      draw();
     }
 
     // ── Stripe state ─────────────────────────────────────────────────────────
