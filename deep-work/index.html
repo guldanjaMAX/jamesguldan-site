@@ -397,16 +397,13 @@
     @media (min-width: 861px) and (max-width: 1100px) {
       nav { padding: 0 28px; }
       .nav-links { gap: 20px; }
-      .hero-text-wrap { padding: 0 28px; }
-      .hero-text { max-width: 440px; }
+      .hero-inner { padding: 48px 28px; gap: 32px; }
+      .hero-left { max-width: 480px; }
+      .hero-right { flex: 0 0 260px; }
       h1 { font-size: clamp(30px, 3.2vw, 44px); }
       .hero-sub { font-size: 15px; }
-      .hero-photo { left: 40%; }
-      .vid-float { width: 160px; }
-      .vid-halo { width: 290px; height: 184px; }
-      .vid-halo2 { width: 320px; height: 210px; }
-      .hero-arrow-label { right: 5%; bottom: 24%; }
-      .hero-arrow-label span { font-size: 1rem; }
+      .hero-trust { gap: 24px; }
+      .hero-trust-num { font-size: 20px; }
       .cred-section { padding: 56px 28px; }
       .stat-num { font-size: 40px; }
       .wti-section { padding: 80px 28px; }
@@ -427,6 +424,10 @@
       .hero { display: none; }
       .mobile-hero-video { display: block; }
       .hero-arrow-label { display: none; }
+      /* Mobile hero trust stats */
+      .mobile-trust { display: flex; gap: 24px; padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--border); }
+      .mobile-trust-num { font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 700; }
+      .mobile-trust-label { font-size: 10px; color: #999; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
       .cred-section { padding: 48px 20px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stat-item:nth-child(2) { border-right: none; }
@@ -463,6 +464,47 @@
       .how-section { padding: 72px 20px; }
       .final-cta { padding: 72px 20px; }
       footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px 20px; }
+      /* Blueprint scroll mobile */
+      .bp-page { min-height: 580px; padding: 32px 24px; margin: 0 12px 12px; }
+      .bp-title { font-size: 20px; }
+      .bp-subtitle { font-size: 14px; }
+      .bp-text { font-size: 12px; }
+      .bp-cover h3 { font-size: 28px; }
+      .bp-cover-sub { font-size: 16px; }
+      .bp-avatar-grid { grid-template-columns: 1fr; }
+      .bp-avatar-field p { font-size: 11px; }
+      .bp-swot { grid-template-columns: 1fr; gap: 10px; }
+      .bp-swot-cell { padding: 14px; }
+      .bp-swot-item { font-size: 11px; }
+      .bp-comp-table { font-size: 11px; }
+      .bp-comp-table th { font-size: 9px; padding: 8px; }
+      .bp-comp-table td { padding: 10px 8px; }
+      .bp-score-label { flex: 0 0 100px; font-size: 11px; }
+      .bp-score-val { font-size: 12px; }
+      .bp-score-overall .big-num { font-size: 40px; }
+      .bp-offers { grid-template-columns: 1fr; gap: 12px; }
+      .bp-offer-card { padding: 20px 16px; }
+      .bp-scroll-viewport { height: 440px; }
+      @keyframes blueprintScroll {
+        0% { transform: translateY(0); }
+        2% { transform: translateY(0); }
+        12% { transform: translateY(-580px); }
+        14% { transform: translateY(-580px); }
+        24% { transform: translateY(-1160px); }
+        26% { transform: translateY(-1160px); }
+        36% { transform: translateY(-1740px); }
+        38% { transform: translateY(-1740px); }
+        48% { transform: translateY(-2320px); }
+        50% { transform: translateY(-2320px); }
+        60% { transform: translateY(-2900px); }
+        62% { transform: translateY(-2900px); }
+        72% { transform: translateY(-3480px); }
+        74% { transform: translateY(-3480px); }
+        84% { transform: translateY(-4060px); }
+        86% { transform: translateY(-4060px); }
+        96% { transform: translateY(-4640px); }
+        100% { transform: translateY(-4640px); }
+      }
     }
     @media (max-width: 480px) {
       .proc3-ai-bubble { max-width: 95%; }
@@ -620,11 +662,24 @@
   <div class="mobile-bottom-fade"></div>
   <div class="mobile-hero-text">
     <div class="eyebrow">Deep Work Process</div>
-    <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
     <h1>You're great at what you do. The world just doesn't <em>know it yet.</em></h1>
     <p class="hero-sub">In 90 minutes, walk away with the positioning, the language, and the complete brand blueprint that finally makes your expertise impossible to ignore.</p>
     <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
     <p class="price-note"><s style="color:#ccc;">$297</s>&nbsp; <strong>$67</strong> launch week</p>
+    <div class="mobile-trust">
+      <div>
+        <div class="mobile-trust-num">132</div>
+        <div class="mobile-trust-label">Entrepreneurs</div>
+      </div>
+      <div>
+        <div class="mobile-trust-num">$1B+</div>
+        <div class="mobile-trust-label">Revenue</div>
+      </div>
+      <div>
+        <div class="mobile-trust-num">4.9 ★</div>
+        <div class="mobile-trust-label">Rating</div>
+      </div>
+    </div>
   </div>
 </div>
 
