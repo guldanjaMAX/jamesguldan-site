@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply to Work With James | James Guldan</title>
+    <meta name="description" content="Apply for 1:1 fractional brand strategy with James Guldan. Limited spots. $5,000/month.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCD0E6KVCV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-DCD0E6KVCV');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #c4703f;
+            --bg-primary: #FDFCFA;
+            --bg-secondary: #F5F3F0;
+            --text-primary: #1a1a1a;
+            --text-secondary: #555;
+            --text-muted: #999;
+            --border: #E8E5E0;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            max-width: 1280px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .nav-back {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--accent); }
+
+        /* Page */
+        .page {
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        .page-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.55rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .page h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .page-intro {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+        }
+
+        /* Form */
+        .apply-form {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+            width: 100%;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(196, 112, 63, 0.08);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.7;
+        }
+
+        .form-submit {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 18px 40px;
+            background: var(--text-primary);
+            color: #fff;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            margin-top: 16px;
+            letter-spacing: 0.02em;
+        }
+
+        .form-submit:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-footer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        /* Result states */
+        .result-card {
+            display: none;
+            padding: 48px 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .result-card.show { display: block; }
+
+        .result-card.approved {
+            background: linear-gradient(135deg, rgba(196,112,63,0.06) 0%, rgba(196,112,63,0.02) 100%);
+            border: 1px solid rgba(196,112,63,0.12);
+        }
+
+        .result-card.review {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .result-card.redirect {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .result-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .result-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .result-card p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .result-cta {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--text-primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .result-cta:hover { background: #333; }
+
+        .result-cta.accent {
+            background: var(--accent);
+        }
+        .result-cta.accent:hover { background: #b5633a; }
+
+        /* Loading spinner */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .loading.show { display: block; }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Error */
+        .form-error {
+            display: none;
+            padding: 14px 18px;
+            background: rgba(220, 53, 69, 0.06);
+            border: 1px solid rgba(220, 53, 69, 0.15);
+            border-radius: 12px;
+            color: #dc3545;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .form-error.show { display: block; }
+
+        @media (max-width: 600px) {
+            .nav { padding: 16px 20px; }
+            .page { padding: 48px 20px 80px; }
+            .result-card { padding: 36px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="nav-logo">James Guldan</a>
+        <a href="/" class="nav-back">&larr; Back to site</a>
+    </nav>
+
+    <div class="page">
+        <div id="formSection">
+            <div class="page-eyebrow">Apply to Work Together</div>
+            <h1>Tell me about your business.</h1>
+            <p class="page-intro">I take on a small number of clients for fractional brand strategy. This isn't a sales call funnel. It's a fit check. Fill this out and I'll get back to you within 48 hours.</p>
+
+            <form class="apply-form" id="applyForm" novalidate>
+                <div class="form-group">
+                    <label class="form-label" for="name">Full name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Jane Smith" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="jane@company.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="business">What's your business?</label>
+                    <p class="form-hint">What do you do, who do you serve, and how long have you been at it?</p>
+                    <textarea id="business" name="business" class="form-textarea" placeholder="I run a consulting firm that helps..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="revenue">Current annual revenue</label>
+                    <select id="revenue" name="revenue" class="form-select" required>
+                        <option value="" disabled selected>Select a range</option>
+                        <option value="under-100k">Under $100K</option>
+                        <option value="100k-250k">$100K &ndash; $250K</option>
+                        <option value="250k-500k">$250K &ndash; $500K</option>
+                        <option value="500k-1m">$500K &ndash; $1M</option>
+                        <option value="1m-plus">$1M+</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="help">What do you need help with?</label>
+                    <p class="form-hint">Positioning, offers, pricing, sales strategy, brand, copy... what feels broken or stuck?</p>
+                    <textarea id="help" name="help" class="form-textarea" placeholder="My biggest challenge right now is..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="whynow">Why now?</label>
+                    <p class="form-hint">What's changed or what's at stake that made you fill this out today?</p>
+                    <textarea id="whynow" name="whynow" class="form-textarea" placeholder="I've been thinking about this for a while because..." required></textarea>
+                </div>
+
+                <div class="form-error" id="formError"></div>
+
+                <button type="submit" class="form-submit" id="submitBtn">Submit Application</button>
+
+                <p class="form-footer">No spam. No sales sequence. Just a real human reading your answers.</p>
+            </form>
+        </div>
+
+        <div class="loading" id="loadingState">
+            <div class="spinner"></div>
+            <p>Reviewing your application...</p>
+        </div>
+
+        <div class="result-card approved" id="resultApproved">
+            <div class="result-icon">&#10003;</div>
+            <h2>You look like a great fit.</h2>
+            <p>Based on what you've shared, I'd love to have a conversation. Pick a time on my calendar and let's talk.</p>
+            <a href="https://jamescalendar.com" class="result-cta accent" target="_blank">Book a Call &rarr;</a>
+        </div>
+
+        <div class="result-card review" id="resultReview">
+            <div class="result-icon">&#9993;</div>
+            <h2>Application received.</h2>
+            <p>Thanks for taking the time. I'm reviewing your application personally and I'll get back to you within 48 hours with next steps.</p>
+        </div>
+
+        <div class="result-card redirect" id="resultRedirect">
+            <div class="result-icon">&#10148;</div>
+            <h2>I have something better for you.</h2>
+            <p>Based on where you are right now, the Deep Work Interview will give you exactly what you need. It's the same process I use with my $5K/month clients, powered by AI, for $67. Start there and we can talk after.</p>
+            <a href="/deep-work/" class="result-cta">Start the Deep Work Interview &rarr;</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('applyForm');
+        const formSection = document.getElementById('formSection');
+        const loading = document.getElementById('loadingState');
+        const errorEl = document.getElementById('formError');
+        const submitBtn = document.getElementById('submitBtn');
+
+        const API_URL = 'https://coaching-apply.james-d13.workers.dev';
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorEl.classList.remove('show');
+
+            // Validate
+            const name = form.name.value.trim();
+            const email = form.email.value.trim();
+            const business = form.business.value.trim();
+            const revenue = form.revenue.value;
+            const help = form.help.value.trim();
+            const whynow = form.whynow.value.trim();
+
+            if (!name || !email || !business || !revenue || !help || !whynow) {
+                errorEl.textContent = 'Please fill out all fields.';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errorEl.textContent = 'Please enter a valid email address.';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            // Submit
+            submitBtn.disabled = true;
+            formSection.style.display = 'none';
+            loading.classList.add('show');
+
+            try {
+                const res = await fetch(API_URL + '/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, business, revenue, help, whynow })
+                });
+
+                const data = await res.json();
+                loading.classList.remove('show');
+
+                if (data.grade === 'A') {
+                    document.getElementById('resultApproved').classList.add('show');
+                    gtag('event', 'apply_approved', { event_category: 'coaching' });
+                } else if (data.grade === 'B') {
+                    document.getElementById('resultReview').classList.add('show');
+                    gtag('event', 'apply_review', { event_category: 'coaching' });
+                } else {
+                    document.getElementById('resultRedirect').classList.add('show');
+                    gtag('event', 'apply_redirect', { event_category: 'coaching' });
+                }
+            } catch (err) {
+                loading.classList.remove('show');
+                formSection.style.display = 'block';
+                submitBtn.disabled = false;
+                errorEl.textContent = 'Something went wrong. Please try again or email james@jamesguldan.com directly.';
+                errorEl.classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>
