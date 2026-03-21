@@ -706,6 +706,229 @@
     .timeline::before { left: 14px; }
     .tl-item::before { left: -30px; }
   }
+
+  /* ---- EXAMPLES SECTION ---- */
+  .examples {
+    padding: 88px 0;
+    background: var(--bg-secondary);
+  }
+  .examples h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .examples h2 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .examples-sub {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+  }
+
+  /* Browser chrome */
+  .browser-chrome {
+    background: #E8E4DF;
+    border-bottom: 1px solid #D4CFC9;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .browser-chrome.small {
+    padding: 6px 12px;
+  }
+  .bc-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: #C8C3BC;
+    flex-shrink: 0;
+  }
+  .bc-url {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-left: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .browser-chrome.small .bc-dot { width: 7px; height: 7px; }
+  .browser-chrome.small .bc-url { font-size: 0.68rem; }
+
+  /* Featured card */
+  .example-featured {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-solid);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .ex-featured-screenshot {
+    border-right: 1px solid var(--border-solid);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .ex-featured-screenshot img {
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    flex: 1;
+    display: block;
+  }
+  .ex-featured-body {
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .ex-badge {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    background: rgba(191,109,42,0.08);
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+    width: fit-content;
+  }
+  .ex-featured-body h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  .ex-featured-body p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .ex-featured-body blockquote {
+    background: rgba(191,109,42,0.05);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+  .ex-featured-body blockquote cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ex-stats {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .ex-stat {
+    flex: 1;
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+  }
+  .ex-stat-num {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .ex-stat-label {
+    display: block;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'Outfit', sans-serif;
+    margin-top: 2px;
+  }
+  .ex-link {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .ex-link:hover { text-decoration: underline; }
+
+  /* Compact grid */
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .ex-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-solid);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .ex-card:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .ex-card img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border-bottom: 1px solid var(--border-solid);
+  }
+  .ex-card-body {
+    padding: 18px 20px;
+  }
+  .ex-card-body h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .ex-card-body p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 720px) {
+    .example-featured { grid-template-columns: 1fr; }
+    .ex-featured-screenshot { border-right: none; border-bottom: 1px solid var(--border-solid); max-height: 240px; }
+    .examples-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .examples-grid { grid-template-columns: 1fr; }
+  }
+
 </style>
 </head>
 <body>
@@ -787,7 +1010,7 @@
       <div class="tl-item">
         <div class="tl-num">05</div>
         <div class="tl-title">Real Sites to Learn From</div>
-        <div class="tl-desc">See exactly what finished sites built with this method look like. Use them as inspiration, use the structure directly, or build something entirely your own. Either way you're starting from something real instead of zero.</div>
+        <div class="tl-desc">See exactly what finished sites built with this method look like. Tailgate Crates. Higher Love Event. JWG Enterprises. The Rooted Human. Real sites, built by real people, in under an hour. Use them as inspiration or start from the structure directly.</div>
       </div>
       <div class="tl-item">
         <div class="tl-num">06</div>
@@ -963,6 +1186,109 @@
       <div class="faq-card">
         <div class="faq-q">What if it doesn't work for me?</div>
         <div class="faq-a">Follow the modules. If your site isn't live and functional, email james@jamesguldan.com for a full refund within 30 days. No questions asked.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BUILT WITH THIS: Site Examples -->
+<section class="examples">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2>Real sites. Real people.<br><em>Built in under an hour.</em></h2>
+    <p class="examples-sub">These aren't templates. Every site below was built by a real person using this exact method. No developer. No prior experience. Just Claude, the walkthrough, and about 60 minutes.</p>
+
+    <!-- Featured card: Tailgate Crates -->
+    <div class="example-featured">
+      <div class="ex-featured-screenshot">
+        <div class="browser-chrome">
+          <span class="bc-dot"></span><span class="bc-dot"></span><span class="bc-dot"></span>
+          <span class="bc-url">tailgatecrates.com</span>
+        </div>
+        <img src="screenshots/tailgatecrates.jpg" alt="Tailgate Crates website" loading="lazy">
+      </div>
+      <div class="ex-featured-body">
+        <div class="ex-badge">Featured</div>
+        <h3>Tailgate Crates</h3>
+        <p>Vinyl records from a 40 year old warehouse. Sam had zero technical experience. He loaded the entire Site in Sixty guide into Claude and said "take me through this." About an hour later, tailgatecrates.com was live. Their brand, their story, their show schedule, customer reviews. No developer. No templates. No monthly fees.</p>
+        <blockquote>"I was literally giddy. It was so easy."<cite>Sam, Tailgate Crates</cite></blockquote>
+        <div class="ex-stats">
+          <div class="ex-stat"><span class="ex-stat-num">~1 hr</span><span class="ex-stat-label">Build Time</span></div>
+          <div class="ex-stat"><span class="ex-stat-num">$0</span><span class="ex-stat-label">Hosting Cost</span></div>
+          <div class="ex-stat"><span class="ex-stat-num">Zero</span><span class="ex-stat-label">Code Written</span></div>
+        </div>
+        <a href="https://tailgatecrates.com" target="_blank" class="ex-link">Visit tailgatecrates.com &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Compact grid -->
+    <div class="examples-grid">
+      <div class="ex-card">
+        <div class="browser-chrome small">
+          <span class="bc-dot"></span><span class="bc-dot"></span><span class="bc-dot"></span>
+          <span class="bc-url">drbalduzzi.com</span>
+        </div>
+        <img src="screenshots/balduzzi.jpg" alt="Dr. Anthony Balduzzi" loading="lazy">
+        <div class="ex-card-body">
+          <h4>Dr. Anthony Balduzzi</h4>
+          <p>Premium personal brand site with luxury nature-inspired design and a five phase methodology layout.</p>
+        </div>
+      </div>
+      <div class="ex-card">
+        <div class="browser-chrome small">
+          <span class="bc-dot"></span><span class="bc-dot"></span><span class="bc-dot"></span>
+          <span class="bc-url">higherloveevent.com</span>
+        </div>
+        <img src="screenshots/higherlove.jpg" alt="Higher Love Event" loading="lazy">
+        <div class="ex-card-body">
+          <h4>Higher Love Event</h4>
+          <p>Luxury retreat landing page with integrated ticketing and application flow for an exclusive Austin event.</p>
+        </div>
+      </div>
+      <div class="ex-card">
+        <div class="browser-chrome small">
+          <span class="bc-dot"></span><span class="bc-dot"></span><span class="bc-dot"></span>
+          <span class="bc-url">jwgenterprises.com</span>
+        </div>
+        <img src="screenshots/jwgenterprises.jpg" alt="JWG Enterprises" loading="lazy">
+        <div class="ex-card-body">
+          <h4>JWG Enterprises</h4>
+          <p>Licensed home remodeling contractor site with a quote request flow and project credibility stats.</p>
+        </div>
+      </div>
+      <div class="ex-card">
+        <div class="browser-chrome small">
+          <span class="bc-dot"></span><span class="bc-dot"></span><span class="bc-dot"></span>
+          <span class="bc-url">the5percenttalk.com</span>
+        </div>
+        <img src="screenshots/hci5percenttalk.jpg" alt="The 5% Talk" loading="lazy">
+        <div class="ex-card-body">
+          <h4>The 5% Talk</h4>
+          <p>Keynote landing page with data-driven stats, social proof from 500K+ professionals, and a direct booking flow.</p>
+        </div>
+      </div>
+      <div class="ex-card">
+        <div class="browser-chrome small">
+          <span class="bc-dot"></span><span class="bc-dot"></span><span class="bc-dot"></span>
+          <span class="bc-url">therootedhumanstudio.com</span>
+        </div>
+        <img src="screenshots/rootedhuman.jpg" alt="The Rooted Human" loading="lazy">
+        <div class="ex-card-body">
+          <h4>The Rooted Human</h4>
+          <p>Breathwork and body practices studio with class scheduling, a calming aesthetic, and a direct booking flow.</p>
+        </div>
+      </div>
+      <div class="ex-card">
+        <div class="browser-chrome small">
+          <span class="bc-dot"></span><span class="bc-dot"></span><span class="bc-dot"></span>
+          <span class="bc-url">jamesguldan.com</span>
+        </div>
+        <img src="screenshots/jamesguldan.jpg" alt="James Guldan" loading="lazy">
+        <div class="ex-card-body">
+          <h4>James Guldan</h4>
+          <p>Bold copywriting, clean conversion-focused layout, and a direct call booking flow. The site you're on right now.</p>
+        </div>
       </div>
     </div>
   </div>
