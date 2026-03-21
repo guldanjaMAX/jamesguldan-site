@@ -2018,9 +2018,13 @@
 
     // ── Fulfillment + success ────────────────────────────────────────────────
     function fulfillAndShowSuccess(email) {
-      // Show loading spinner while we generate the magic link
+      // Show a brief "you're in" screen while we call fulfill
       showStep('loading');
       setPayLoading(false);
+      var loadingH3 = document.querySelector('#op-loading-view h3');
+      var loadingP  = document.querySelector('#op-loading-view p');
+      if (loadingH3) loadingH3.textContent = 'Payment confirmed!';
+      if (loadingP)  loadingP.textContent  = 'Setting up your session\u2026';
 
       fetch('https://love.jamesguldan.com/api/fulfill-payment', {
         method: 'POST',
@@ -2030,18 +2034,15 @@
       .then(function(r) { return r.json(); })
       .then(function(data) {
         if (data.sessionUrl) {
-          // Got the magic link — show success briefly then auto-redirect
-          showSuccess(email, data.sessionUrl, true);
-          setTimeout(function() {
-            window.location.href = data.sessionUrl;
-          }, 2500);
+          // Go straight into the app — no intermediate popup
+          window.location.href = data.sessionUrl;
         } else {
-          // No session URL — show success with manual button as fallback
+          // Fallback: show manual button if we didn't get a session URL
           showSuccess(email, null, false);
         }
       })
       .catch(function(err) {
-        // Payment succeeded — webhook handles fulfillment as backup
+        // Payment succeeded — show manual button as fallback
         console.error('Fulfill error (webhook backup active):', err);
         showSuccess(email, null, false);
       });
