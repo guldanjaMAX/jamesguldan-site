@@ -913,11 +913,11 @@
         }
 
         .split-reveal-text {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic;
-            font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-            line-height: 1.8;
-            color: rgba(26, 26, 26, 0.5);
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: clamp(1rem, 1.4vw, 1.15rem);
+            line-height: 1.85;
+            color: rgba(26, 26, 26, 0.75);
             margin-bottom: 28px;
         }
 
@@ -952,7 +952,7 @@
         }
 
         .truth-photo {
-            width: 64px; height: 64px;
+            width: 88px; height: 88px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
@@ -970,10 +970,10 @@
         .truth-label { display: none; }
 
         .problem-truth h3 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic; font-weight: 400;
-            font-size: clamp(1rem, 1.4vw, 1.1rem);
-            color: rgba(26,26,26,0.4); line-height: 1.7;
+            font-family: 'Inter', sans-serif;
+            font-style: normal; font-weight: 400;
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            color: rgba(26,26,26,0.65); line-height: 1.7;
             margin: 0;
         }
 
@@ -1011,8 +1011,10 @@
             .coi-left h3 { font-size: 1.3rem; }
             .coi-right { padding: 40px 28px; }
             /* Shift mobile */
-            .shift-columns { grid-template-columns: 1fr; gap: 32px; }
-            .shift-bottom { padding: 24px 28px; }
+            .shift-columns { grid-template-columns: 1fr; gap: 0; }
+            .shift-col { border-radius: 20px 20px 0 0; padding: 32px 28px; }
+            .shift-col.right-col { border-radius: 0 0 20px 20px; border-left: 1px solid var(--border); }
+            .shift-bottom { padding: 28px; }
             /* Timeline mobile */
             .cases-timeline { padding-left: 32px; }
             .cases-card { flex-direction: column; gap: 20px; padding: 28px; }
@@ -1209,7 +1211,28 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 24px;
+            gap: 20px;
+        }
+        .coi-stat {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .coi-stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.8rem, 4vw, 3.6rem);
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+        .coi-stat-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            max-width: 180px;
         }
         .coi-right p {
             font-size: 1.05rem;
@@ -1217,13 +1240,14 @@
             color: var(--text-secondary);
         }
         .coi-right .coi-closing {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic;
-            font-size: 1.15rem;
-            color: rgba(26,26,26,0.4);
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: 0.95rem;
+            color: rgba(26,26,26,0.55);
             line-height: 1.7;
             border-left: 3px solid var(--accent);
             padding-left: 24px;
+            margin-top: 8px;
         }
 
         /* The Shift — Before/After Columns */
@@ -1232,7 +1256,7 @@
             background: linear-gradient(180deg, #F5F3F0 0%, var(--bg-primary) 100%);
         }
         .shift-inner {
-            max-width: 720px;
+            max-width: 860px;
             margin: 0 auto;
             padding: 0 24px;
             text-align: center;
@@ -1255,39 +1279,67 @@
         .shift-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
+            gap: 0;
             margin-top: 56px;
             text-align: left;
+        }
+        .shift-col {
+            padding: 40px 36px;
+            border-radius: 20px 0 0 20px;
+            background: #1a1a1a;
+        }
+        .shift-col.right-col {
+            background: var(--bg-primary);
+            border-radius: 0 20px 20px 0;
+            border: 1px solid var(--border);
+            border-left: none;
         }
         .shift-col-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.55rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 16px;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .shift-col.right-col .shift-col-label {
+            color: var(--accent);
+            border-bottom-color: rgba(196,112,63,0.15);
         }
         .shift-col p {
             font-size: 0.95rem;
             line-height: 1.8;
-            color: var(--text-secondary);
+            color: rgba(255,255,255,0.5);
         }
         .shift-col p + p { margin-top: 16px; }
-        .shift-col.right-col p { color: var(--text-primary); }
+        .shift-col.right-col p { color: var(--text-primary); font-weight: 450; }
         .shift-bottom {
             margin-top: 56px;
-            padding: 32px 40px;
-            background: rgba(196,112,63,0.04);
-            border-radius: 16px;
-            border: 1px solid rgba(196,112,63,0.1);
+            padding: 40px 48px;
+            background: linear-gradient(135deg, rgba(196,112,63,0.06) 0%, rgba(196,112,63,0.02) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(196,112,63,0.12);
             text-align: left;
+            position: relative;
+        }
+        .shift-bottom::before {
+            content: '\201C';
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.15;
+            position: absolute;
+            top: 12px;
+            left: 24px;
+            line-height: 1;
         }
         .shift-bottom p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
-            color: var(--text-secondary);
+            color: var(--text-primary);
+            position: relative;
         }
 
         .shift-content { display: none; }
@@ -2714,9 +2766,13 @@
                 </div>
             </div>
             <div class="coi-right">
-                <p>Every week you operate with the wrong positioning, you lose deals you never even see.</p>
-                <p>That gap has a dollar amount. And it compounds.</p>
-                <p class="coi-closing">Most founders never count what they never see.</p>
+                <div class="coi-stat">
+                    <div class="coi-stat-number">83%</div>
+                    <div class="coi-stat-label">of prospects decide before they ever reach out to you</div>
+                </div>
+                <p>Every week you operate with the wrong positioning, you lose deals you never even see. They land on your site, scan your offers, and leave.</p>
+                <p>That gap has a dollar amount. And it compounds. Not monthly. Weekly.</p>
+                <p class="coi-closing">Most founders never count what they never see. The ones who do? That's when everything changes.</p>
             </div>
         </div>
     </div>
