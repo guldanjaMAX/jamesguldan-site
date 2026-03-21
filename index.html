@@ -186,7 +186,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -197,13 +197,13 @@
             --text-primary: #1A1A1A;
             --text-secondary: #555555;
             --text-muted: #999999;
-            --accent: #BF6D2A;
-            --accent-hover: #A85D22;
-            --accent-soft: rgba(191, 109, 42, 0.08);
-            --accent-glow: rgba(191, 109, 42, 0.06);
+            --accent: #c4703f;
+            --accent-hover: #a85d2f;
+            --accent-soft: rgba(196, 112, 63, 0.08);
+            --accent-glow: rgba(196, 112, 63, 0.06);
             --border: rgba(0, 0, 0, 0.07);
-            --border-accent: rgba(191, 109, 42, 0.2);
-            --gradient-warm: linear-gradient(135deg, #BF6D2A, #D4954A);
+            --border-accent: rgba(196, 112, 63, 0.2);
+            --gradient-warm: linear-gradient(135deg, #c4703f, #d4954a);
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.03);
             --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
@@ -275,8 +275,8 @@
 
         /* Navigation */
         nav {
-            padding: 16px 0;
-            background: rgba(253, 252, 250, 0.85);
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             position: sticky;
@@ -299,17 +299,17 @@
         }
 
         .logo img {
-            height: 24px;
+            height: 20px;
             width: auto;
         }
 
         .nav-cta {
             background: var(--text-primary);
             color: var(--bg-primary);
-            padding: 10px 22px;
+            padding: 8px 18px;
             text-decoration: none;
             font-family: 'DM Sans', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             font-weight: 600;
             border-radius: 100px;
             transition: all 0.2s ease;
@@ -324,9 +324,9 @@
         }
 
         @media (min-width: 600px) {
-            nav { padding: 20px 0; }
-            .logo img { height: 32px; }
-            .nav-cta { padding: 12px 28px; font-size: 0.9rem; }
+            nav { padding: 12px 0; }
+            .logo img { height: 24px; }
+            .nav-cta { padding: 9px 22px; font-size: 0.82rem; }
         }
 
         /* Hero - Full screen background photo */
@@ -492,6 +492,17 @@
             box-shadow: var(--shadow-lg);
         }
 
+        /* Video float card + halos (matching deep work page) */
+        .vid-halo { position: absolute; bottom: 5%; right: 4%; width: 336px; height: 214px; border: 1px solid rgba(196,112,63,.22); border-radius: 16px; animation: halo 3.2s ease-in-out infinite; pointer-events: none; z-index: 3; }
+        .vid-halo2 { position: absolute; bottom: 3.5%; right: 2.2%; width: 374px; height: 244px; border: 1px solid rgba(196,112,63,.12); border-radius: 20px; animation: halo 3.2s ease-in-out infinite .75s; pointer-events: none; z-index: 3; }
+        @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
+        .vid-float { position: absolute; bottom: 4%; right: 5%; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
+        .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
+        .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: 0.7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+        .hero-arrow-label { position: absolute; bottom: 42%; right: 12%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: var(--accent); display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
+        .hero-arrow-label svg { width: 52px; opacity: 0.85; }
+
         .hero-meta-proof {
             padding: 14px 0;
             background: var(--bg-primary);
@@ -513,72 +524,125 @@
             .hero-meta-proof { display: none; }
         }
 
-        /* Proof bar */
+        /* Proof bar — redesigned */
         .proof-bar {
-            padding: 56px 0;
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            padding: 0;
+            background: #0e0e12;
+            position: relative;
+            overflow: hidden;
         }
 
-        .proof-grid {
+        .proof-bar::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196,112,63,0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .proof-top-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .proof-item {
             text-align: center;
+            padding: 44px 20px 36px;
+            position: relative;
         }
+
+        .proof-item::after {
+            content: '';
+            position: absolute;
+            top: 25%; bottom: 25%; right: 0;
+            width: 1px;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .proof-item:last-child::after { display: none; }
 
         .proof-number {
             font-family: 'Outfit', sans-serif;
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
+            font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: #FDFCFA;
             line-height: 1;
             margin-bottom: 8px;
+            letter-spacing: -0.03em;
+        }
+
+        .proof-number .accent-num {
+            color: var(--accent);
         }
 
         .proof-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            letter-spacing: 0.02em;
-        }
-
-        .worked-with {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border);
-        }
-
-        .worked-with-label {
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: 0.68rem;
+            color: rgba(253,252,250,0.35);
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--text-muted);
-            margin-bottom: 24px;
+            font-weight: 500;
+            line-height: 1.5;
         }
 
-        .worked-with-logos {
+        .proof-divider-line {
+            height: 1px;
+            max-width: 960px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.06) 80%, transparent);
+        }
+
+        .proof-bottom-row {
+            padding: 28px 24px 32px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .proof-bottom-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(253,252,250,0.18);
+            margin-bottom: 16px;
+        }
+
+        .proof-names {
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 40px 48px;
+            gap: 0;
+            max-width: 780px;
+            margin: 0 auto;
         }
 
-        .worked-with-logos img {
-            height: 36px;
-            width: auto;
-            opacity: 0.25;
-            transition: all 0.2s ease;
+        .proof-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(253,252,250,0.3);
+            padding: 0 20px;
+            position: relative;
+            transition: color 0.3s ease;
+            cursor: default;
         }
 
-        .worked-with-logos img:hover {
-            opacity: 0.6;
+        .proof-name:hover {
+            color: rgba(253,252,250,0.55);
+        }
+
+        .proof-name-sep {
+            width: 1px;
+            height: 12px;
+            background: rgba(253,252,250,0.1);
+            flex-shrink: 0;
         }
 
         /* Sections */
@@ -613,212 +677,335 @@
             font-family: 'DM Sans', sans-serif;
         }
 
-        /* Problem Section - "The Pattern" */
+        /* ═══════════════════════════════════════
+           THE PATTERN — Diagnosis (White Theme)
+           ═══════════════════════════════════════ */
         .problem-section {
             padding: 0;
             position: relative;
             overflow: hidden;
-            background: #0F0F0F;
-            color: #FDFCFA;
+            background: #FDFCFA;
+            color: #1a1a1a;
         }
 
-        .problem-section::before {
-            content: '';
-            position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(191, 109, 42, 0.15) 0%, rgba(191, 109, 42, 0.03) 40%, transparent 70%);
-            animation: patternPulse 8s ease-in-out infinite;
+        /* Subtle ambient orbs — light theme */
+        .pattern-orb {
+            position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+            background: radial-gradient(circle, rgba(196,112,63,0.06), transparent 70%);
+        }
+        .pattern-orb-1 { width: 600px; height: 600px; top: -10%; right: -10%; animation: orbDrift 14s ease-in-out infinite; }
+        .pattern-orb-2 { width: 400px; height: 400px; bottom: 15%; left: -8%; animation: orbDrift 14s ease-in-out 5s infinite; }
+        .pattern-orb-3 { width: 300px; height: 300px; top: 45%; left: 35%; animation: orbDrift 14s ease-in-out 9s infinite; opacity: 0.4; }
+        @keyframes orbDrift {
+            0%,100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(25px,-18px) scale(1.04); }
+            66% { transform: translate(-18px,12px) scale(0.96); }
+        }
+
+        /* Film grain — subtle on white */
+        .pattern-grain {
+            position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.15;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+
+        /* Intro */
+        .pattern-intro {
+            min-height: 55vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; padding: 80px 24px 40px;
+            position: relative; z-index: 2;
+        }
+
+        .pattern-intro .section-eyebrow {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em;
+            text-transform: uppercase; color: var(--accent); opacity: 0.6;
+            margin-bottom: 24px; font-family: 'Outfit', sans-serif;
+        }
+
+        .pattern-intro h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800; line-height: 1.08; letter-spacing: -0.04em;
+            color: #1a1a1a; margin-bottom: 24px; max-width: 720px;
+        }
+
+        .pattern-intro h2 em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic; color: var(--accent); font-weight: 400;
+        }
+
+        .pattern-intro .pattern-lead {
+            font-size: 1.1rem; color: rgba(26,26,26,0.4);
+            line-height: 1.7; max-width: 500px;
+        }
+
+        /* Animated counter */
+        .pattern-counter {
+            display: inline-block; font-variant-numeric: tabular-nums;
+        }
+
+        /* Symptom rows — alternating layout */
+        .pattern-symptom {
+            padding: 100px 24px; position: relative; z-index: 2;
+        }
+
+        .pattern-symptom-inner {
+            max-width: 1120px; margin: 0 auto; width: 100%;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+        }
+
+        .pattern-symptom.flip .pattern-symptom-inner {
+            direction: rtl;
+        }
+        .pattern-symptom.flip .pattern-symptom-inner > * {
+            direction: ltr;
+        }
+
+        /* Diagnosis card — dark card on light background */
+        .pattern-diag-card {
+            background: #0e0e12;
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 12px; overflow: hidden;
+            position: relative;
+        }
+        .pattern-diag-card::before {
+            content: ''; position: absolute; inset: 0;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(196,112,63,0.15), transparent 40%, transparent 60%, rgba(196,112,63,0.08)) border-box;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude; -webkit-mask-composite: xor;
             pointer-events: none;
         }
-
-        .problem-section::after {
-            content: '';
-            position: absolute;
-            bottom: -150px;
-            left: -150px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(191, 109, 42, 0.1) 0%, transparent 60%);
-            animation: patternPulse 8s ease-in-out 4s infinite;
-            pointer-events: none;
+        .diag-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 22px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .diag-title {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+            font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+            color: rgba(253,252,250,0.4);
+        }
+        .diag-case {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+            font-weight: 500; color: var(--accent); opacity: 0.7;
+        }
+        .diag-body { padding: 22px 22px; }
+        .diag-msg { margin-bottom: 18px; }
+        .diag-msg:last-child { margin-bottom: 0; }
+        .diag-sender {
+            font-family: 'Inter', sans-serif; font-size: 0.6rem;
+            font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .diag-sender.ai { color: var(--accent); opacity: 1; }
+        .diag-sender.client { color: rgba(253,252,250,0.45); }
+        .diag-text {
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-size: 0.88rem; line-height: 1.65; color: rgba(253,252,250,0.8);
+            font-weight: 400;
+        }
+        .diag-sender.ai + .diag-text { color: rgba(253,252,250,0.95); }
+        .diag-pause {
+            text-align: center; padding: 8px 0;
+            font-size: 0.6rem; letter-spacing: 0.3em;
+            color: rgba(253,252,250,0.2);
+        }
+        .diag-footer {
+            padding: 12px 22px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .diag-pulse {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--accent);
+            animation: diagPulse 2s ease-in-out infinite;
+        }
+        @keyframes diagPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.3); }
+        }
+        .diag-status {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.5rem;
+            letter-spacing: 0.1em; color: rgba(253,252,250,0.2);
         }
 
-        @keyframes patternPulse {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
+        /* Problem content — dark text on white */
+        .pattern-sym-content {}
+
+        .pattern-sym-step {
+            font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--accent); opacity: 0.6; margin-bottom: 16px;
         }
 
-        .pattern-grid-bg {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(191, 109, 42, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(191, 109, 42, 0.04) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
-            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
-            pointer-events: none;
+        .pattern-sym-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 700; color: #1a1a1a;
+            margin-bottom: 20px; line-height: 1.2;
         }
 
-        .pattern-line {
-            position: absolute;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(191, 109, 42, 0.2), transparent);
-            pointer-events: none;
+        .pattern-sym-desc {
+            font-size: 1rem; line-height: 1.85;
+            color: rgba(26,26,26,0.45); max-width: 440px;
         }
 
-        .pattern-line-1 {
-            top: 25%;
-            left: 0;
-            right: 0;
-            animation: lineSlide 12s linear infinite;
+        /* Dividers between symptoms */
+        .pattern-divider {
+            max-width: 1120px; margin: 0 auto; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(196,112,63,0.15), transparent);
+            position: relative; z-index: 2;
         }
 
-        .pattern-line-2 {
-            top: 50%;
-            left: 0;
-            right: 0;
-            animation: lineSlide 12s linear 3s infinite;
-            opacity: 0.5;
-        }
-
-        .pattern-line-3 {
-            top: 75%;
-            left: 0;
-            right: 0;
-            animation: lineSlide 12s linear 6s infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes lineSlide {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .problem-inner {
+        /* Split Reveal Quote Section */
+        .split-reveal {
+            display: flex;
+            align-items: stretch;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #0e0e12;
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 420px;
             position: relative;
             z-index: 2;
-            padding: 110px 0;
         }
 
-        .problem-intro {
-            max-width: 700px;
-            margin-bottom: 64px;
-        }
-
-        .problem-intro h2 {
-            margin-bottom: 24px;
-            color: #FDFCFA;
-        }
-
-        .problem-lead {
-            font-size: 1.15rem;
-            color: rgba(253, 252, 250, 0.6);
-            margin-bottom: 12px;
-        }
-
-        .problem-symptoms {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-bottom: 80px;
-        }
-
-        .symptom-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(191, 109, 42, 0.15);
-            border-radius: 16px;
-            padding: 36px 28px;
-            transition: all 0.4s ease;
+        .split-reveal-photo {
+            flex: 0 0 38%;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            background: linear-gradient(180deg, #0e0e12 0%, #1a1a22 100%);
         }
 
-        .symptom-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        .split-reveal-photo img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            object-position: bottom center;
+            filter: drop-shadow(0 0 40px rgba(196, 112, 63, 0.15));
         }
 
-        .symptom-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(191, 109, 42, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(191, 109, 42, 0.05);
+        .split-reveal-content {
+            flex: 1;
+            padding: 64px 56px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .symptom-card:hover::before {
-            opacity: 1;
-        }
-
-        .symptom-icon {
+        .split-reveal-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 16px;
             opacity: 0.7;
+            margin-bottom: 28px;
         }
 
-        .symptom-card p {
-            font-size: 0.95rem;
-            line-height: 1.7;
+        .split-reveal-text {
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+            line-height: 1.85;
+            color: rgba(253, 252, 250, 0.8);
+            margin-bottom: 36px;
         }
 
-        .symptom-card p:first-child {
-            color: #FDFCFA;
+        .split-reveal-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(253, 252, 250, 0.5);
         }
 
-        .symptom-card p:last-child {
-            color: rgba(253, 252, 250, 0.6);
+        .split-reveal-accent-line {
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            opacity: 0.4;
+            margin-bottom: 16px;
         }
 
+        @media (max-width: 768px) {
+            .split-reveal {
+                flex-direction: column;
+                border-radius: 12px;
+                margin: 0 16px;
+            }
+            .split-reveal-photo {
+                flex: none;
+                height: 280px;
+                align-items: flex-end;
+            }
+            .split-reveal-photo img {
+                max-width: 220px;
+            }
+            .split-reveal-content {
+                padding: 40px 28px 48px;
+            }
+        }
+
+        /* Quote box — light theme */
         .problem-truth {
-            text-align: center;
-            padding: 64px 40px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(191, 109, 42, 0.2);
-            border-radius: 20px;
-            margin-bottom: 60px;
-            position: relative;
-            overflow: hidden;
+            max-width: 800px; margin: 0 auto 100px;
+            text-align: center; padding: 72px 56px;
+            background: rgba(196,112,63,0.04);
+            border: 1px solid rgba(196,112,63,0.12);
+            border-radius: 32px; position: relative; z-index: 2;
         }
 
         .problem-truth::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, rgba(191, 109, 42, 0.3), transparent 40%, transparent 60%, rgba(191, 109, 42, 0.15));
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            -webkit-mask-composite: xor;
-            padding: 1px;
-            pointer-events: none;
+            content: '\201C'; position: absolute; top: 20px; left: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem; color: rgba(196,112,63,0.1); line-height: 1;
         }
 
         .truth-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-family: 'DM Sans', sans-serif;
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.25em; color: var(--accent);
+            margin-bottom: 28px; opacity: 0.6;
+            font-family: 'Outfit', sans-serif;
         }
 
         .problem-truth h3 {
-            font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-            max-width: 600px;
-            margin: 0 auto;
-            color: #FDFCFA;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic; font-weight: 400;
+            font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+            max-width: 560px; margin: 0 auto;
+            color: rgba(26,26,26,0.7); line-height: 1.65;
+        }
+
+        .truth-attribution {
+            font-size: 0.8rem; color: rgba(26,26,26,0.35);
+            margin-top: 24px; font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.08em;
+        }
+
+        .truth-attribution span { color: var(--accent); }
+
+        /* Mobile: stack symptom rows */
+        @media (max-width: 900px) {
+            .pattern-intro { min-height: auto; padding: 72px 24px 32px; }
+            .pattern-intro h2 { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+            .pattern-symptom-inner {
+                grid-template-columns: 1fr; gap: 32px;
+            }
+            .pattern-symptom.flip .pattern-symptom-inner { direction: ltr; }
+            .pattern-symptom { padding: 48px 24px; }
+            .problem-truth { margin: 0 24px 72px; padding: 48px 28px; }
+            .problem-truth::before { font-size: 4rem; left: 20px; }
+            .pattern-diag-card { margin: 0; }
         }
 
         .solution-block {
@@ -1767,6 +1954,10 @@
             .hero-bg-photo::before {
                 width: 65%;
             }
+            .vid-float { width: 150px; }
+            .vid-halo { width: 280px; height: 178px; }
+            .vid-halo2 { width: 310px; height: 204px; }
+            .hero-arrow-label { right: 5%; bottom: 38%; }
         }
         @media (max-width: 900px) {
             .hero {
@@ -1789,6 +1980,7 @@
             .hero-bg-photo::before {
                 display: none;
             }
+            .vid-float, .vid-halo, .vid-halo2, .hero-arrow-label { display: none; }
             .hero-content {
                 text-align: center;
                 max-width: 100%;
@@ -1798,11 +1990,13 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-            .proof-grid {
+            .proof-top-row {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
             }
-            .problem-symptoms,
+            .proof-item { padding: 32px 16px 24px; }
+            .proof-item:nth-child(2)::after { display: none; }
+            .proof-item:nth-child(1), .proof-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+            .proof-item:nth-child(3)::after, .proof-item:nth-child(4)::after { top: 20%; bottom: 20%; }
             .pillars-grid,
             .themes-grid,
             .offers-grid {
@@ -1825,13 +2019,13 @@
 
         @media (max-width: 600px) {
             section { padding: 70px 0; }
-            .problem-inner { padding: 70px 0; }
+            .pattern-symptom { padding: 40px 20px; }
             .hero-content { padding: 24px 0 32px; }
             .hero-bg-photo { height: 280px; }
             h1 { font-size: 1.75rem; }
-            .proof-grid { grid-template-columns: repeat(2, 1fr); }
-            .worked-with-logos { gap: 24px 32px; }
-            .worked-with-logos img { height: 28px; }
+            .proof-top-row { grid-template-columns: repeat(2, 1fr); }
+            .proof-names { gap: 10px 20px; }
+            .proof-name { font-size: 0.68rem; letter-spacing: 0.12em; }
             .warning-buttons { flex-direction: column; }
             .about-photos { flex-direction: column; }
             .about-photo img { height: 250px; }
@@ -2079,8 +2273,8 @@
                 <img src="logo.svg" alt="James Guldan" height="28">
             </a>
             <div style="display: flex; align-items: center; gap: 28px;">
-                <a href="testimonials.html" class="nav-text-link" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">Testimonials</a>
-                <a href="#ways-in" class="nav-text-link" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">Work With Me</a>
+                <a href="testimonials.html" class="nav-text-link" style="color: var(--text-secondary); text-decoration: none; font-size: 0.78rem; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">Testimonials</a>
+                <a href="#ways-in" class="nav-text-link" style="color: var(--text-secondary); text-decoration: none; font-size: 0.78rem; font-weight: 500; transition: color 0.2s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">Work With Me</a>
                 <a href="/deep-work/" class="nav-cta">Start the Deep Work</a>
             </div>
         </div>
@@ -2089,20 +2283,35 @@
     <section class="hero">
         <div class="hero-bg-photo fade-in delay-2">
             <img src="james-hero.png" alt="James Guldan - Deep Work for Entrepreneurs">
+            <div class="vid-halo"></div>
+            <div class="vid-halo2"></div>
+            <div class="vid-float">
+                <video controls preload="metadata">
+                    <source src="deep-work/videos/james-deepwork-v3.mp4" type="video/mp4">
+                </video>
+                <div class="vid-label">3 min · my story</div>
+            </div>
+        </div>
+        <div class="hero-arrow-label">
+            <span>Hear my story</span>
+            <svg viewBox="0 0 50 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25,6 C22,24 20,42 22,58 C23,68 26,76 30,84" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+                <path d="M30,84 L22,76" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+                <path d="M30,84 L36,75" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+            </svg>
         </div>
         <div class="container">
             <div class="hero-inner">
                 <div class="hero-content fade-in">
-                    <div class="hero-eyebrow">Deep Work</div>
-                    <h1>You know what's broken. <span class="serif-italic accent">You've known for a while.</span></h1>
+                    <h1>Your business is successful. So why doesn't it <span class="serif-italic accent">feel like yours</span> anymore?</h1>
                     <p class="hero-subtitle">
-                        Your business doesn't match who you've become. The positioning is off. The offers don't land. And nobody around you can see it clearly enough to tell you what's actually wrong. Two hours from now, you'll know exactly what to fix and how.
+                        You built something real. But somewhere along the way, your brand stopped reflecting who you actually are. In two hours, you'll have the positioning, the language, and the blueprint to fix it.
                     </p>
                     <a href="/deep-work/" class="hero-cta">
                         Start the Deep Work Interview
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-secondary); font-family: 'DM Sans', sans-serif;">$67. Two hours. The same process I used to charge $5,000 for.</p>
+                    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-secondary); font-family: 'Inter', sans-serif;">Previously $5,000 per session · <strong style="color:var(--text-primary);">$67</strong> launch week</p>
                 </div>
             </div>
         </div>
@@ -2115,71 +2324,195 @@
     </div>
 
     <div class="proof-bar">
-        <div class="container">
-            <div class="proof-grid">
-                <div class="proof-item">
-                    <div class="proof-number">132</div>
-                    <div class="proof-label">Entrepreneurs Who Found Their Niche</div>
-                </div>
-                <div class="proof-item">
-                    <div class="proof-number">13</div>
-                    <div class="proof-label">Companies Grew 1,000%+ After Repositioning</div>
-                </div>
-                <div class="proof-item">
-                    <div class="proof-number">2 hrs</div>
-                    <div class="proof-label">To Get the Clarity You've Been Missing</div>
-                </div>
-                <div class="proof-item">
-                    <div class="proof-number">$1B+</div>
-                    <div class="proof-label">In Client Revenue Generated</div>
-                </div>
+        <div class="proof-top-row">
+            <div class="proof-item">
+                <div class="proof-number"><span class="accent-num">132</span></div>
+                <div class="proof-label">Entrepreneurs Repositioned</div>
             </div>
-            <div class="worked-with">
-                <div class="worked-with-label">Built positioning for</div>
-                <div class="worked-with-logos">
-                    <img src="tony-robbins-logo.svg" alt="Tony Robbins">
-                    <img src="xprize-logo.svg" alt="Peter Diamandis (Abundance360)">
-                    <img src="dean-graziosi-logo.svg" alt="Dean Graziosi">
-                    <img src="frank-kern-logo.svg" alt="Frank Kern">
-                    <img src="dalai-lama-logo.svg" alt="The Dalai Lama">
-                </div>
+            <div class="proof-item">
+                <div class="proof-number">13</div>
+                <div class="proof-label">Grew 1,000%+ After</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
+                <div class="proof-label">To Total Clarity</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">40<span class="accent-num">+</span></div>
+                <div class="proof-label">Industries Repositioned</div>
+            </div>
+        </div>
+        <div class="proof-divider-line"></div>
+        <div class="proof-bottom-row">
+            <div class="proof-bottom-label">Built positioning for</div>
+            <div class="proof-names">
+                <span class="proof-name">Tony Robbins</span>
+                <span class="proof-name-sep"></span>
+                <span class="proof-name">Abundance360</span>
+                <span class="proof-name-sep"></span>
+                <span class="proof-name">Dean Graziosi</span>
+                <span class="proof-name-sep"></span>
+                <span class="proof-name">Frank Kern</span>
+                <span class="proof-name-sep"></span>
+                <span class="proof-name">The Dalai Lama</span>
             </div>
         </div>
     </div>
 
-    <section class="problem-section">
-        <div class="pattern-grid-bg"></div>
-        <div class="pattern-line pattern-line-1"></div>
-        <div class="pattern-line pattern-line-2"></div>
-        <div class="pattern-line pattern-line-3"></div>
-        <div class="problem-inner">
-            <div class="container">
-                <div class="problem-intro">
-                    <div class="section-eyebrow">The Pattern</div>
-                    <h2>Everyone who comes to me has the same problem.</h2>
-                </div>
+    <section class="problem-section" id="pattern-section">
+        <div class="pattern-orb pattern-orb-1"></div>
+        <div class="pattern-orb pattern-orb-2"></div>
+        <div class="pattern-orb pattern-orb-3"></div>
+        <div class="pattern-grain"></div>
 
-                <div class="problem-symptoms">
-                    <div class="symptom-card">
-                        <p><strong>You've Outgrown Your Brand</strong></p>
-                        <p>You built something that worked. Then you grew. Now your website, your offers, and your positioning reflect the person you were two years ago. Not who you are now.</p>
+        <div class="pattern-intro">
+            <div class="section-eyebrow">The Pattern</div>
+            <h2>I've had this conversation<br><em><span class="pattern-counter" data-target="132">0</span> times.</em></h2>
+            <p class="pattern-lead">Different name, different industry, different revenue number. Same feeling. You're not the first person to feel this.</p>
+        </div>
+
+        <div class="pattern-divider"></div>
+
+        <!-- Symptom 1 — diagnosis card left, problem right -->
+        <div class="pattern-symptom">
+            <div class="pattern-symptom-inner">
+                <div class="pattern-diag-card">
+                    <div class="diag-header">
+                        <span class="diag-title">Deep Work Session</span>
+                        <span class="diag-case">Case #001</span>
                     </div>
-                    <div class="symptom-card">
-                        <p><strong>You're Stuck Between Identities</strong></p>
-                        <p>The old you built the business. The new you knows it needs to change. But you can't see what comes next because you're standing too close to it.</p>
+                    <div class="diag-body">
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"Walk me through what happens when someone asks what you do."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"I freeze. Because I want to tell them what I'm building, where I'm going. But that's not what I actually do yet. So I just say the old thing and it feels like I'm shrinking myself."</div>
+                        </div>
+                        <div class="diag-pause">· · ·</div>
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"You're describing your vision to yourself every day. But the brand still speaks in the old language."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"Exactly. The thing I want to become has no words yet. So I just keep explaining something I've already outgrown."</div>
+                        </div>
                     </div>
-                    <div class="symptom-card">
-                        <p><strong>Nobody Will Tell You The Truth</strong></p>
-                        <p>Your team agrees with you. Your friends encourage you. Your coach validates you. Nobody sits across from you and says "that's the thing that's broken."</p>
+                    <div class="diag-footer">
+                        <div class="diag-pulse"></div>
+                        <span class="diag-status">Session recording active</span>
                     </div>
                 </div>
-
-                <div class="problem-truth">
-                    <div class="truth-label">The Quote</div>
-                    <h3>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</h3>
-                    <p style="font-size: 0.9rem; color: rgba(253,252,250,0.5); margin-top: 20px;">Joshua B Lee</p>
+                <div class="pattern-sym-content">
+                    <div class="pattern-sym-step">Symptom One</div>
+                    <div class="pattern-sym-title">You've Outgrown Your Brand</div>
+                    <div class="pattern-sym-desc">You built something that worked. Then you grew. Now your website, your offers, and your positioning reflect the person you were two years ago. Not who you are now.</div>
                 </div>
             </div>
+        </div>
+
+        <div class="pattern-divider"></div>
+
+        <!-- Symptom 2 — problem left, diagnosis card right (alternates) -->
+        <div class="pattern-symptom flip">
+            <div class="pattern-symptom-inner">
+                <div class="pattern-diag-card">
+                    <div class="diag-header">
+                        <span class="diag-title">Deep Work Session</span>
+                        <span class="diag-case">Case #002</span>
+                    </div>
+                    <div class="diag-body">
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"Tell me about the version of your business you keep describing to people but haven't built yet."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"I know exactly what it looks like. I've pitched it a hundred times. I just... I keep going back to the old thing because it still pays the bills."</div>
+                        </div>
+                        <div class="diag-pause">· · ·</div>
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"What if the old thing is the reason the new thing can't breathe?"</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"...Yeah. I think I've known that for a while."</div>
+                        </div>
+                    </div>
+                    <div class="diag-footer">
+                        <div class="diag-pulse"></div>
+                        <span class="diag-status">Session recording active</span>
+                    </div>
+                </div>
+                <div class="pattern-sym-content">
+                    <div class="pattern-sym-step">Symptom Two</div>
+                    <div class="pattern-sym-title">You're Stuck Between Identities</div>
+                    <div class="pattern-sym-desc">The old you built the business. The new you knows it needs to change. But you can't see what comes next because you're standing too close to it.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pattern-divider"></div>
+
+        <!-- Symptom 3 — diagnosis card left, problem right -->
+        <div class="pattern-symptom">
+            <div class="pattern-symptom-inner">
+                <div class="pattern-diag-card">
+                    <div class="diag-header">
+                        <span class="diag-title">Deep Work Session</span>
+                        <span class="diag-case">Case #003</span>
+                    </div>
+                    <div class="diag-body">
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"When's the last time someone told you an idea wasn't going to work?"</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"Nobody does. My team agrees with everything. My friends hype me up. Even the AI just tells me what I want to hear. Everyone's being nice. Nobody's being kind."</div>
+                        </div>
+                        <div class="diag-pause">· · ·</div>
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"So you have a hundred people cheering, and not one person willing to say the thing you actually need to hear."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"That's exactly it. And the lonelier it gets, the more I know something's off."</div>
+                        </div>
+                    </div>
+                    <div class="diag-footer">
+                        <div class="diag-pulse"></div>
+                        <span class="diag-status">Session recording active</span>
+                    </div>
+                </div>
+                <div class="pattern-sym-content">
+                    <div class="pattern-sym-step">Symptom Three</div>
+                    <div class="pattern-sym-title">Nobody Will Tell You The Truth</div>
+                    <div class="pattern-sym-desc">Your team agrees with you. Your friends encourage you. Your coach validates you. Nobody sits across from you and says "that's the thing that's broken."</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="split-reveal">
+            <div class="split-reveal-photo">
+                <img src="james-pink-shirt-cutout.png" alt="James Guldan" />
+            </div>
+            <div class="split-reveal-content">
+                <div class="split-reveal-eyebrow">Why I See It</div>
+                <p class="split-reveal-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</p>
+                <div class="split-reveal-accent-line"></div>
+                <div class="split-reveal-name">James Guldan</div>
+            </div>
+        </div>
+
+        <div class="problem-truth">
+            <div class="truth-label">What They Say</div>
+            <h3>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</h3>
+            <div class="truth-attribution"><span>Joshua B Lee</span></div>
         </div>
     </section>
 
@@ -2640,7 +2973,6 @@
                 <a href="testimonials.html">Testimonials</a>
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms &amp; Refund Policy</a>
-                <a href="https://app.jamesguldan.com" style="color:#999;font-size:12px;text-decoration:none;margin-left:16px;">Deep Work Login</a>
             </div>
             <p>&copy; 2026 James Guldan / Align Growth LLC. All rights reserved.</p>
         </div>
@@ -2753,6 +3085,97 @@
                 }
             });
         });
+    </script>
+
+    <!-- Pattern counter + scroll animations -->
+    <script>
+    (function() {
+        // Counter animation for 132
+        const counter = document.querySelector('.pattern-counter');
+        if (!counter) return;
+        const target = parseInt(counter.dataset.target);
+        let counted = false;
+
+        function animateCounter() {
+            if (counted) return;
+            counted = true;
+            const duration = 2200;
+            const start = performance.now();
+            function tick(now) {
+                const p = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
+                counter.textContent = Math.round(eased * target);
+                if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        }
+
+        // Trigger counter when the intro heading scrolls into view
+        var introHeading = document.querySelector('.pattern-intro');
+        if (introHeading && 'IntersectionObserver' in window) {
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) { animateCounter(); obs.disconnect(); }
+                });
+            }, { threshold: 0.05 });
+            obs.observe(introHeading);
+            // Fallback: if element is already in viewport when JS runs, fire immediately
+            var rect = introHeading.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                animateCounter();
+                obs.disconnect();
+            }
+        } else if (introHeading) {
+            // No IntersectionObserver support — just animate on load
+            animateCounter();
+        }
+
+        // Fade-in symptom rows on scroll
+        var symptoms = document.querySelectorAll('.pattern-symptom');
+        if (symptoms.length && 'IntersectionObserver' in window) {
+            symptoms.forEach(function(s) {
+                s.style.opacity = '0';
+                s.style.transform = 'translateY(40px)';
+                s.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.23,1,0.32,1)';
+            });
+            var symObs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) {
+                        e.target.style.opacity = '1';
+                        e.target.style.transform = 'translateY(0)';
+                        symObs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            symptoms.forEach(function(s) { symObs.observe(s); });
+        }
+
+        // Staggered reveal for diagnosis card messages
+        var diagCards = document.querySelectorAll('.pattern-diag-card');
+        if (diagCards.length && 'IntersectionObserver' in window) {
+            diagCards.forEach(function(card) {
+                var msgs = card.querySelectorAll('.diag-msg, .diag-pause');
+                msgs.forEach(function(msg, i) {
+                    msg.style.opacity = '0';
+                    msg.style.transform = 'translateY(14px)';
+                    msg.style.transition = 'opacity 0.6s cubic-bezier(0.23,1,0.32,1) ' + (i * 0.3 + 0.2) + 's, transform 0.6s cubic-bezier(0.23,1,0.32,1) ' + (i * 0.3 + 0.2) + 's';
+                });
+            });
+            var diagObs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) {
+                        var msgs = e.target.querySelectorAll('.diag-msg, .diag-pause');
+                        msgs.forEach(function(msg) {
+                            msg.style.opacity = '1';
+                            msg.style.transform = 'translateY(0)';
+                        });
+                        diagObs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            diagCards.forEach(function(card) { diagObs.observe(card); });
+        }
+    })();
     </script>
 
     <script src="https://web3forms.com/client/script.js" async defer></script>
