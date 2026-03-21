@@ -75,7 +75,7 @@
     @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
     .vid-float { position: absolute; bottom: 4%; right: 5%; left: auto; transform: none; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
     .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
-    .hero-arrow-label { position: absolute; bottom: 46%; right: 16%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hero-arrow-label { position: absolute; bottom: 22%; right: 8%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
     .hero-arrow-label svg { width: 52px; opacity: 0.85; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
@@ -99,13 +99,20 @@
 
     /* MOBILE HERO */
     .mobile-hero-video { display: none; }
-    .mobile-hero-photo-wrap { position: relative; width: 100%; min-height: 420px; overflow: hidden; }
-    .mobile-hero-photo-bg { position: absolute; inset: 0; }
-    .mobile-hero-photo-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .mobile-hero-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, var(--bg) 0%, rgba(247,244,240,.85) 35%, rgba(247,244,240,.4) 60%, transparent 100%); z-index: 1; }
-    .mobile-hero-text { position: relative; z-index: 2; padding: 16px 20px 28px; }
-    .mobile-hero-text h1 { font-size: clamp(28px, 8vw, 40px); margin-bottom: 12px; }
-    .mobile-hero-text .hero-sub { font-size: 15px; margin-bottom: 20px; }
+    .mobile-vid-canvas-wrap { position: relative; width: 100%; background: #0d0c0b; overflow: hidden; padding-bottom: 20px; }
+    #mobile-geo { position: absolute; inset: 0; pointer-events: none; }
+    .mobile-vid-rings { position: absolute; inset: 0; z-index: 1; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+    .mobile-ring { position: absolute; border-radius: 20px; border: 1px solid rgba(196,112,63,.25); animation: mring 3s ease-in-out infinite; }
+    .mobile-ring:nth-child(2) { animation-delay: .8s; border-color: rgba(196,112,63,.12); }
+    @keyframes mring { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.2;transform:scale(1.03);} }
+    .mobile-vid-inner { position: relative; z-index: 2; padding: 12px 16px 0; }
+    .mobile-vid-player { border-radius: 14px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,.12); box-shadow: 0 20px 80px rgba(0,0,0,.6); }
+    .mobile-vid-player video { width: 100%; display: block; aspect-ratio: 16/9; }
+    .mobile-vid-caption { background: rgba(0,0,0,.9); color: rgba(255,255,255,.8); text-align: center; padding: 8px; font-size: .68rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+    .mobile-bottom-fade { height: 24px; background: linear-gradient(to bottom, #0d0c0b, var(--bg)); }
+    .mobile-hero-text { padding: 12px 20px 24px; }
+    .mobile-hero-text h1 { font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; }
+    .mobile-hero-text .hero-sub { font-size: 15px; margin-bottom: 16px; }
     .mobile-hero-text .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 12px; }
 
     /* CREDIBILITY */
@@ -154,66 +161,29 @@
     .session-quote em { color: var(--accent); font-style: italic; }
     .session-footer { font-size: 11px; color: rgba(255,255,255,.2); text-align: center; padding-top: 20px; margin-top: 8px; letter-spacing: 1.5px; }
 
-    /* SAMPLE OUTPUT — auto-scroll brand guide */
-    .sample-output { margin-top: 72px; background: #0d0c0b; border-radius: 24px; overflow: hidden; }
-    .sample-scroll-frame { position: relative; height: 520px; overflow: hidden; }
-    .sample-scroll-inner { animation: brandGuideScroll 35s linear infinite; animation-delay: 1.5s; }
-    .sample-scroll-frame:hover .sample-scroll-inner { animation-play-state: paused; }
-    @keyframes brandGuideScroll {
-      0%, 3% { transform: translateY(0); }
-      95%, 100% { transform: translateY(calc(-100% + 520px)); }
-    }
-    .sample-scroll-fade-top, .sample-scroll-fade-bottom { position: absolute; left: 0; right: 0; height: 60px; z-index: 2; pointer-events: none; }
-    .sample-scroll-fade-top { top: 0; background: linear-gradient(to bottom, #0d0c0b, transparent); }
-    .sample-scroll-fade-bottom { bottom: 0; background: linear-gradient(to top, #0d0c0b, transparent); }
-    .bg-page { padding: 48px 56px; border-bottom: 1px solid rgba(255,255,255,.04); }
-    .bg-page-num { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.5); margin-bottom: 16px; }
-    .bg-page-title { font-family: 'Outfit',sans-serif; font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.3; }
-    .bg-page-sub { font-size: 13px; color: rgba(255,255,255,.3); margin-bottom: 24px; line-height: 1.6; }
-    .bg-quote { border-left: 3px solid var(--accent); padding: 14px 20px; margin: 20px 0; background: rgba(196,112,63,.05); border-radius: 0 8px 8px 0; font-style: italic; color: rgba(255,255,255,.55); font-size: 14px; line-height: 1.8; }
-    .bg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-    .bg-card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 10px; padding: 18px; }
-    .bg-card-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-    .bg-card-val { font-size: 13.5px; color: rgba(255,255,255,.6); line-height: 1.7; }
-    .bg-card-val strong { color: rgba(255,255,255,.9); font-weight: 600; }
-    .bg-score-wrap { display: flex; align-items: center; gap: 14px; margin-top: 10px; }
-    .bg-score-bar { flex: 1; height: 4px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; }
-    .bg-score-fill { height: 100%; background: linear-gradient(to right, var(--accent), #e8956a); border-radius: 2px; }
-    .bg-score-num { font-family: 'Outfit',sans-serif; font-size: 22px; font-weight: 700; color: var(--accent); }
-    .bg-tier-row { display: flex; gap: 12px; margin-top: 14px; }
-    .bg-tier { background: rgba(196,112,63,.08); border: 1px solid rgba(196,112,63,.2); border-radius: 8px; padding: 14px; flex: 1; }
-    .bg-tier-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,112,63,.6); margin-bottom: 4px; }
-    .bg-tier-price { font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 700; color: #fff; }
-    .bg-tier-name { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 3px; }
-    @media (max-width: 600px) {
-      .sample-scroll-frame { height: 400px; }
-      @keyframes brandGuideScroll { 0%, 3% { transform: translateY(0); } 95%, 100% { transform: translateY(calc(-100% + 400px)); } }
-      .bg-page { padding: 28px 20px; }
-      .bg-page-title { font-size: 19px; }
-      .bg-row { grid-template-columns: 1fr; }
-      .bg-tier-row { flex-direction: column; }
-    }
-    .sample-output-header { background: #1a1917; padding: 16px 28px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    /* SAMPLE OUTPUT — Warm Cream */
+    .sample-output { margin-top: 72px; background: #F7F4F0; border-radius: 24px; overflow: hidden; border: 1px solid #EAE7E2; }
+    .sample-output-header { background: #EFEBE5; padding: 16px 28px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #DDD8D0; }
     .sample-traffic-lights { display: flex; gap: 7px; }
     .stl { width: 12px; height: 12px; border-radius: 50%; }
-    .sample-file-name { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: rgba(255,255,255,.3); text-transform: uppercase; margin-left: 8px; }
+    .sample-file-name { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: rgba(26,26,26,.35); text-transform: uppercase; margin-left: 8px; }
     .sample-doc { padding: 48px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
     .sample-block { border-left: 2px solid rgba(196,112,63,.4); padding-left: 20px; margin-bottom: 32px; }
     .sample-block:last-child { margin-bottom: 0; }
-    .sample-block-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 10px; }
-    .sample-block-content { font-size: 13.5px; line-height: 1.7; color: rgba(255,255,255,.65); }
-    .sample-block-content strong { color: rgba(255,255,255,.9); font-weight: 600; }
-    .sample-divider { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 28px 0; }
+    .sample-block-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.85); margin-bottom: 10px; }
+    .sample-block-content { font-size: 13.5px; line-height: 1.7; color: rgba(26,26,26,.6); }
+    .sample-block-content strong { color: var(--text); font-weight: 600; }
+    .sample-divider { border: none; border-top: 1px solid #DDD8D0; margin: 28px 0; }
     .sample-score-row { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
-    .sample-score-bar { flex: 1; height: 4px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; }
+    .sample-score-bar { flex: 1; height: 4px; background: rgba(0,0,0,.06); border-radius: 2px; overflow: hidden; }
     .sample-score-fill { height: 100%; background: linear-gradient(to right, var(--accent), #e8956a); border-radius: 2px; }
     .sample-score-num { font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 700; color: var(--accent); }
     .sample-offer-row { display: flex; gap: 12px; margin-top: 12px; }
-    .sample-offer-pill { background: rgba(196,112,63,.12); border: 1px solid rgba(196,112,63,.25); border-radius: 8px; padding: 10px 14px; flex: 1; }
-    .sample-offer-tier { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 4px; }
-    .sample-offer-price { font-family: 'Outfit',sans-serif; font-size: 18px; font-weight: 700; color: #fff; }
-    .sample-offer-name { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 3px; }
-    .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(255,255,255,.2); border-top: 1px solid rgba(255,255,255,.05); font-style: italic; }
+    .sample-offer-pill { background: rgba(196,112,63,.08); border: 1px solid rgba(196,112,63,.2); border-radius: 8px; padding: 10px 14px; flex: 1; }
+    .sample-offer-tier { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,112,63,.85); margin-bottom: 4px; }
+    .sample-offer-price { font-family: 'Outfit',sans-serif; font-size: 18px; font-weight: 700; color: var(--text); }
+    .sample-offer-name { font-size: 11px; color: rgba(26,26,26,.4); margin-top: 3px; }
+    .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(26,26,26,.35); border-top: 1px solid #DDD8D0; font-style: italic; }
 
     /* PROCESS V3 — Transcript Chat */
     .proc3-section { position: relative; z-index: 2; padding: 120px 48px; background: var(--bg); }
@@ -350,11 +320,39 @@
       .phases-grid { grid-template-columns: repeat(2,1fr); }
       .deliverables-grid { grid-template-columns: 1fr 1fr; }
     }
+    /* TABLET */
+    @media (min-width: 861px) and (max-width: 1100px) {
+      nav { padding: 0 28px; }
+      .nav-links { gap: 20px; }
+      .hero-text-wrap { padding: 0 28px; }
+      .hero-text { max-width: 440px; }
+      h1 { font-size: clamp(30px, 3.2vw, 44px); }
+      .hero-sub { font-size: 15px; }
+      .hero-photo { left: 40%; }
+      .vid-float { width: 160px; }
+      .vid-halo { width: 290px; height: 184px; }
+      .vid-halo2 { width: 320px; height: 210px; }
+      .hero-arrow-label { right: 5%; bottom: 24%; }
+      .hero-arrow-label span { font-size: 1rem; }
+      .cred-section { padding: 56px 28px; }
+      .stat-num { font-size: 40px; }
+      .wti-section { padding: 80px 28px; }
+      .wti-inner { gap: 48px; }
+      .proc3-section { padding: 80px 28px; }
+      .wyg-section { padding: 80px 28px; }
+      .ann-wrap { grid-template-columns: 48% 1fr; gap: 0 32px; }
+      .test-section { padding: 80px 28px; }
+      .test-video-content { padding: 28px 24px; }
+      .test-video-quote { font-size: 14px; }
+      .how-section { padding: 80px 28px; }
+      .wnjc-section { padding: 80px 28px; }
+      .final-cta { padding: 80px 28px; }
+      .before-decide-section { padding: 60px 28px !important; }
+    }
     @media (max-width: 860px) {
       nav { padding: 0 20px; } .nav-links { display: none; }
       .hero { display: none; }
       .mobile-hero-video { display: block; }
-      .mobile-hero-photo-wrap { display: flex; flex-direction: column; justify-content: flex-end; }
       .hero-arrow-label { display: none; }
       .cred-section { padding: 48px 20px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
@@ -499,7 +497,7 @@
     <div class="vid-halo2"></div>
     <div class="vid-float">
       <video controls preload="metadata">
-        <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
+        <source src="videos/james-deepwork-v3.mp4" type="video/mp4">
       </video>
       <div class="vid-label">5 min · The Deep Work Process explained</div>
     </div>
@@ -524,17 +522,31 @@
   </div>
 </section>
 
-<!-- HERO MOBILE — photo background -->
+<!-- HERO MOBILE — no photo, video is the star -->
 <div class="mobile-hero-video">
-  <div class="mobile-hero-photo-wrap">
-    <div class="mobile-hero-photo-bg"><img src="images/james-hero.png" alt="James Guldan" loading="eager"></div>
-    <div class="mobile-hero-photo-overlay"></div>
-    <div class="mobile-hero-text">
-      <h1>Finally, <em>clarity.</em></h1>
-      <p class="hero-sub">One conversation that builds the complete positioning blueprint your business has been missing.</p>
-      <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
-      <p class="price-note">132 founders already went through this.</p>
+  <div class="mobile-vid-canvas-wrap">
+    <canvas id="mobile-geo"></canvas>
+    <div class="mobile-vid-rings">
+      <div class="mobile-ring" style="width:calc(100% - 24px);aspect-ratio:16/10;"></div>
+      <div class="mobile-ring" style="width:calc(100% - 8px);aspect-ratio:16/10;"></div>
     </div>
+    <div class="mobile-vid-inner">
+      <div class="mobile-vid-player">
+        <video controls preload="metadata">
+          <source src="videos/james-deepwork-v3.mp4" type="video/mp4">
+        </video>
+        <div class="mobile-vid-caption">5 min · The Deep Work Process explained</div>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-bottom-fade"></div>
+  <div class="mobile-hero-text">
+    <div class="eyebrow">Deep Work Process</div>
+    <div class="geo-row"><div class="geo-line"></div><div class="geo-dot"></div><div class="geo-diamond"></div><div class="geo-dot"></div><div class="geo-line"></div></div>
+    <h1>Work through it in sections. Leave with a plan that makes everything <em>clear.</em></h1>
+    <p class="hero-sub">Finally, unmatched clarity and a complete blueprint to get you on track with confidence. One conversation — in the privacy of your home — to get the truth you know you need to hear.</p>
+    <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
+    <p class="price-note">The same process coaches paid <strong>$5,000</strong> for — available today.</p>
   </div>
 </div>
 
@@ -823,143 +835,10 @@
       </div>
       <span class="sample-file-name">Brand Guide — Nora Ellis Consulting — Deep Work Interview Output</span>
     </div>
-    <div class="sample-scroll-frame">
-      <div class="sample-scroll-fade-top"></div>
-      <div class="sample-scroll-inner">
-
-        <!-- Brand Foundation -->
-        <div class="bg-page">
-          <div class="bg-page-num">Section 01 of 11</div>
-          <div class="bg-page-title">Brand Foundation</div>
-          <div class="bg-page-sub">Nora Ellis Consulting</div>
-          <div class="bg-quote">"I spent 12 years building marketing agencies for other people before I realized I was solving the wrong problem. The real gap was not execution. It was clarity. Every founder I worked with had the skills. None of them had the positioning."</div>
-          <div class="bg-row">
-            <div class="bg-card">
-              <div class="bg-card-label">Core Worldview</div>
-              <div class="bg-card-val">Most service businesses fail at marketing because they skip positioning. You cannot out execute a confused message.</div>
-            </div>
-            <div class="bg-card">
-              <div class="bg-card-label">Brand Voice</div>
-              <div class="bg-card-val">Direct. No fluff. Conversational but never casual. Speaks like someone who has been in the room, not read about it.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Ideal Avatar -->
-        <div class="bg-page">
-          <div class="bg-page-num">Section 02 of 11</div>
-          <div class="bg-page-title">Ideal Client Avatar</div>
-          <div class="bg-page-sub">A vivid portrait, not a demographics list</div>
-          <div class="bg-row">
-            <div class="bg-card">
-              <div class="bg-card-label">Meet "Marcus"</div>
-              <div class="bg-card-val"><strong>Marcus Chen, 41, Portland.</strong> Runs a consulting practice doing $180K/yr. Has 6 years of experience and strong client results but cannot articulate why someone should choose him over 50 other consultants.</div>
-            </div>
-            <div class="bg-card">
-              <div class="bg-card-label">Internal Dialogue</div>
-              <div class="bg-card-val">"I know I am good at this. I just cannot explain it in a way that makes people want to pay what it is worth. Every time I write my website copy it sounds generic."</div>
-            </div>
-          </div>
-          <div class="bg-quote">"His trigger event: He just lost a $40K contract to a competitor with half his experience but a sharper message. That is when he starts searching."</div>
-        </div>
-
-        <!-- Niche Analysis -->
-        <div class="bg-page">
-          <div class="bg-page-num">Section 03 of 11</div>
-          <div class="bg-page-title">Niche Domination Analysis</div>
-          <div class="bg-page-sub">Competitor pricing, positioning gaps, credibility score</div>
-          <div class="bg-card" style="margin-bottom:16px;">
-            <div class="bg-card-label">Positioning Statement</div>
-            <div class="bg-card-val">"I help service business founders who have the skills but not the message turn their buried expertise into a premium brand that books clients without chasing."</div>
-          </div>
-          <div class="bg-card">
-            <div class="bg-card-label">Credibility Score</div>
-            <div class="bg-score-wrap">
-              <div class="bg-score-bar"><div class="bg-score-fill" style="width:72%"></div></div>
-              <div class="bg-score-num">7.2</div>
-            </div>
-            <div class="bg-card-val" style="margin-top:10px;">Strong client results and real experience. Gap: no public thought leadership, no signature framework name, website undersells by 60%.</div>
-          </div>
-          <div class="bg-quote">"Competitor A charges $4,500 with a 6 week timeline. Competitor B charges $2,200 but delivers a template. You sit in the middle with deeper methodology but zero visibility."</div>
-        </div>
-
-        <!-- Offer Structure -->
-        <div class="bg-page">
-          <div class="bg-page-num">Section 04 of 11</div>
-          <div class="bg-page-title">Three Tier Offer Structure</div>
-          <div class="bg-page-sub">Named, priced, and built with ascension logic</div>
-          <div class="bg-tier-row">
-            <div class="bg-tier">
-              <div class="bg-tier-label">Tier 1</div>
-              <div class="bg-tier-price">$12,000</div>
-              <div class="bg-tier-name">The Full Rebrand</div>
-            </div>
-            <div class="bg-tier">
-              <div class="bg-tier-label">Tier 2</div>
-              <div class="bg-tier-price">$3,500</div>
-              <div class="bg-tier-name">Positioning Sprint</div>
-            </div>
-            <div class="bg-tier">
-              <div class="bg-tier-label">Tier 3</div>
-              <div class="bg-tier-price">$497</div>
-              <div class="bg-tier-name">Brand Clarity Audit</div>
-            </div>
-          </div>
-          <div class="bg-quote">"Each tier is designed so the entry offer proves enough value to make Tier 2 an obvious next step."</div>
-        </div>
-
-        <!-- Website Copy -->
-        <div class="bg-page">
-          <div class="bg-page-num">Section 05 of 11</div>
-          <div class="bg-page-title">Website Blueprint</div>
-          <div class="bg-page-sub">Actual copy, not wireframes</div>
-          <div class="bg-row">
-            <div class="bg-card">
-              <div class="bg-card-label">Hero Headline</div>
-              <div class="bg-card-val">"Stop Competing on Price. Start Owning Your Category."</div>
-            </div>
-            <div class="bg-card">
-              <div class="bg-card-label">Problem Section</div>
-              <div class="bg-card-val">"You have the results. The case studies. The testimonials. But when someone asks what you do, the answer still does not land."</div>
-            </div>
-          </div>
-          <div class="bg-quote">"CTA: 'Book a Brand Clarity Call' — not 'Schedule a Consultation.' Every word chosen to lower the commitment threshold and raise curiosity."</div>
-        </div>
-
-        <!-- Gap Analysis -->
-        <div class="bg-page">
-          <div class="bg-page-num">Section 06 of 11</div>
-          <div class="bg-page-title">Gap Analysis &amp; 90 Day Roadmap</div>
-          <div class="bg-page-sub">What is missing, ranked by urgency</div>
-          <div class="bg-row">
-            <div class="bg-card">
-              <div class="bg-card-label">Priority 1 — Urgency 9/10</div>
-              <div class="bg-card-val"><strong>Zero LinkedIn presence for target keywords.</strong> Publish 3x/week for 90 days. Reposition headline and about section within 48 hours.</div>
-            </div>
-            <div class="bg-card">
-              <div class="bg-card-label">Priority 2 — Urgency 8/10</div>
-              <div class="bg-card-val"><strong>No email nurture sequence.</strong> Build a 5 email welcome series using brand voice from Section 01.</div>
-            </div>
-          </div>
-          <div class="bg-quote">"Top 10 actions ranked by impact. Each one tied to a specific section of this document so nothing lives in a vacuum."</div>
-        </div>
-
-        <!-- Headlines -->
-        <div class="bg-page">
-          <div class="bg-page-num">Section 07 of 11</div>
-          <div class="bg-page-title">Headlines &amp; Positioning</div>
-          <div class="bg-page-sub">Five options in your voice</div>
-          <div class="bg-card">
-            <div class="bg-card-label">The One Liner</div>
-            <div class="bg-card-val" style="font-size:16px;color:rgba(255,255,255,.85);font-weight:600;">"I help service businesses turn buried expertise into a brand that books premium clients."</div>
-          </div>
-          <div class="bg-quote">"The 30 second pitch that actually sounds like you — not a LinkedIn bio generator."</div>
-        </div>
-
-      </div>
-      <div class="sample-scroll-fade-bottom"></div>
+    <div style="padding:0;display:flex;justify-content:center;background:#F7F4F0;">
+      <img src="sample-brand-guide-scroll.gif" alt="Sample Brand Guide scrolling through all sections" style="width:100%;max-width:800px;display:block;" loading="lazy">
     </div>
-    <div class="sample-caption">A fictional example built the exact same way yours will be. 11 sections. Every word comes from the conversation. Nothing is templated.</div>
+    <div class="sample-caption">A fictional example built the exact same way yours will be. 11 sections including SWOT analysis, competitor grading, revenue model, content pillars, and a 90 day authority roadmap. Every word comes from the conversation. Nothing is templated.</div>
   </div>
 </div>
 
@@ -1126,7 +1005,7 @@
       </div>
       <div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 28px;">
         <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">This is not for you if</div>
-        <p style="font-size:14.5px;line-height:1.8;color:var(--muted);">You want someone else to do the thinking for you. You are brand new and have not worked with any clients yet. You need logo design, color palettes, or visual identity work. This is strategic positioning, not graphic design.</p>
+        <p style="font-size:14.5px;line-height:1.8;color:var(--muted);">You are looking for a done for you branding agency. You want someone else to do the thinking. You are brand new and have not worked with any clients yet. You need logo design, color palettes, or visual identity work. This is strategic positioning, not graphic design.</p>
       </div>
     </div>
 
@@ -1396,13 +1275,26 @@
       + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Blueprint</div><div class="op-item-desc">2hr AI positioning session + full blueprint</div></div>'
       + '<div class="op-item-price">$67</div>'
       + '</div>'
-      + ''
+      + '<div class="op-bump" id="bump-site">'
+      + '<input type="checkbox" id="cb-site">'
+      + '<div class="op-bump-tag">Most Popular</div>'
+      + '<div class="op-bump-title">Add a Done For You Website</div>'
+      + '<div class="op-bump-desc">After your session, AI takes your blueprint and builds your entire site with real copy, real structure, and deploys it live. No code. No designers. No waiting weeks.</div>'
+      + '<div class="op-bump-price">+ $130</div>'
+      + '</div>'
+      + '<div class="op-bump" id="bump-call">'
+      + '<input type="checkbox" id="cb-call">'
+      + '<div class="op-bump-tag">Go Deeper</div>'
+      + '<div class="op-bump-title">Add a 1:1 Call with James</div>'
+      + '<div class="op-bump-desc">Private strategy session to walk through your blueprint, pressure test your offers, and map your first 90 days. The same call founders paid $5,000 for.</div>'
+      + '<div class="op-bump-price">+ $130</div>'
+      + '</div>'
       + '</div>'
       + '<div class="op-footer">'
       + '<div class="op-divider"></div>'
       + '<div class="op-total-row">'
-      + '<div><div class="op-total-label">Total today</div></div>'
-      + '<div style="text-align:right"><span class="op-total-amount" id="op-total">$67</span></div>'
+      + '<div><div class="op-total-label">Total today</div><span class="op-total-savings" id="op-savings">Save $134</span></div>'
+      + '<div style="text-align:right"><span class="op-total-original" id="op-original"></span><span class="op-total-amount" id="op-total">$67</span></div>'
       + '</div>'
       + '<button class="op-pay-btn" id="op-pay">Complete Purchase</button>'
       + '<div class="op-guarantee">7 day satisfaction guarantee. If the process does not deliver, email James and he will make it right.</div>'
@@ -1443,15 +1335,47 @@
     document.body.appendChild(popup);
 
     // ── Pricing ─────────────────────────────────────────────────────────────
-    var BASE = 67;
+    var BASE = 67, BUMP_SITE = 130, BUMP_CALL = 130, FULL_SITE = 197, FULL_CALL = 197;
+    var cbSite   = document.getElementById('cb-site');
+    var cbCall   = document.getElementById('cb-call');
+    var bumpSite = document.getElementById('bump-site');
+    var bumpCall = document.getElementById('bump-call');
     var totalEl  = document.getElementById('op-total');
+    var originalEl = document.getElementById('op-original');
+    var savingsEl  = document.getElementById('op-savings');
 
-    function getTotal() { return BASE; }
-    function updateTotal() { totalEl.textContent = '$' + BASE; }
+    function getTotal() {
+      var t = BASE;
+      if (cbSite.checked) t += BUMP_SITE;
+      if (cbCall.checked) t += BUMP_CALL;
+      return t;
+    }
+
+    function updateTotal() {
+      var total = getTotal();
+      totalEl.textContent = '$' + total;
+      if (cbSite.checked && cbCall.checked) {
+        originalEl.textContent = '$' + (BASE + FULL_SITE + FULL_CALL);
+        originalEl.style.display = 'inline';
+        savingsEl.style.display = 'inline-block';
+      } else {
+        originalEl.style.display = 'none';
+        savingsEl.style.display = 'none';
+      }
+      bumpSite.classList.toggle('checked', cbSite.checked);
+      bumpCall.classList.toggle('checked', cbCall.checked);
+    }
+
+    bumpSite.addEventListener('click', function(e) { if (e.target !== cbSite) cbSite.checked = !cbSite.checked; updateTotal(); });
+    bumpCall.addEventListener('click', function(e) { if (e.target !== cbCall) cbCall.checked = !cbCall.checked; updateTotal(); });
+    cbSite.addEventListener('change', updateTotal);
+    cbCall.addEventListener('change', updateTotal);
 
     // ── Popup open / close ───────────────────────────────────────────────────
     function openPopup(e) {
       if (e) e.preventDefault();
+      cbSite.checked = false;
+      cbCall.checked = false;
       updateTotal();
       showStep('order');
       backdrop.style.display = 'block';
@@ -1536,11 +1460,16 @@
     // ── "Complete Purchase" → go to payment step ─────────────────────────────
     document.getElementById('op-pay').addEventListener('click', function() {
       var tiers = ['blueprint'];
+      if (cbSite.checked) tiers.push('site');
+      if (cbCall.checked) tiers.push('call');
       currentTiers = tiers;
 
       // Update order summary bar
+      var labels = ['Deep Work Blueprint'];
+      if (cbSite.checked) labels.push('+ Website');
+      if (cbCall.checked) labels.push('+ Strategy Call');
       var totalText = '$' + getTotal();
-      document.getElementById('op-order-bar-label').textContent = 'Deep Work Blueprint';
+      document.getElementById('op-order-bar-label').textContent = labels.join(' ');
       document.getElementById('op-order-bar-price').textContent = totalText;
       document.querySelector('#op-pay-submit .btn-text').textContent = 'Pay ' + totalText;
 
@@ -2077,4 +2006,21 @@
     }
   }
 
-  sendBtn.addEventListener('cli
+  sendBtn.addEventListener('click', send);
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      send();
+    }
+  });
+
+  // Auto-resize textarea
+  input.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+  });
+})();
+
+  </script>
+</body>
+</html>
