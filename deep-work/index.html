@@ -66,7 +66,7 @@
     .nav-btn:hover { background: #c4703f; color: #fff !important; }
 
     /* HERO DESKTOP */
-    .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: hidden; z-index: 2; }
+    .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: visible; z-index: 2; }
     .hero-photo { position: absolute; left: 36%; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
     .hero-photo img { max-height: 100%; width: auto; display: block; }
     .hero-photo-fade { position: absolute; left: 0; top: 0; bottom: 0; width: 45%; background: linear-gradient(to right, var(--bg) 20%, transparent 100%); pointer-events: none; z-index: 1; }
@@ -75,7 +75,7 @@
     @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
     .vid-float { position: absolute; bottom: 4%; right: 5%; left: auto; transform: none; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
     .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
-    .hero-arrow-label { position: absolute; bottom: 22%; right: 8%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .hero-arrow-label { position: absolute; bottom: 42%; right: 4%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
     .hero-arrow-label svg { width: 52px; opacity: 0.85; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
@@ -84,11 +84,11 @@
     .hero-trust { display: flex; gap: 32px; padding-top: 24px; margin-top: 8px; border-top: 1px solid var(--border); }
     .hero-trust-num { font-family: 'Outfit',sans-serif; font-size: 24px; font-weight: 700; }
     .hero-trust-label { font-size: 11px; color: #999; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
-    /* Mobile hero photo styles */
+    /* Mobile hero photo styles — Option O Compact */
     .mobile-hero-photo { display: none; }
-    .mobile-hero-img-wrap { position: relative; width: 100%; overflow: hidden; max-height: 340px; }
-    .mobile-hero-img-wrap img { width: 100%; height: 340px; object-fit: cover; object-position: top center; display: block; }
-    .mobile-hero-img-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, var(--bg)); pointer-events: none; }
+    .mobile-hero-img-wrap { position: relative; width: 100%; overflow: hidden; max-height: 240px; }
+    .mobile-hero-img-wrap img { width: 100%; height: 240px; object-fit: cover; object-position: top center; display: block; }
+    .mobile-hero-img-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to bottom, transparent, var(--bg)); pointer-events: none; }
 
     /* Shared text styles */
     .eyebrow { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
@@ -118,10 +118,10 @@
     .mobile-vid-player video { width: 100%; display: block; aspect-ratio: 16/9; }
     .mobile-vid-caption { background: rgba(0,0,0,.9); color: rgba(255,255,255,.8); text-align: center; padding: 8px; font-size: .68rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .mobile-bottom-fade { height: 24px; background: linear-gradient(to bottom, #0d0c0b, var(--bg)); }
-    .mobile-hero-text { padding: 12px 20px 24px; }
-    .mobile-hero-text h1 { font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; }
-    .mobile-hero-text .hero-sub { font-size: 15px; margin-bottom: 16px; }
-    .mobile-hero-text .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 12px; }
+    .mobile-hero-text { padding: 0 20px 24px; }
+    .mobile-hero-text h1 { font-size: clamp(24px, 6.5vw, 34px); margin-bottom: 10px; }
+    .mobile-hero-text .hero-sub { font-size: 13px; margin-bottom: 16px; }
+    .mobile-hero-text .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 10px; padding: 14px 28px; font-size: 14px; }
 
     /* CREDIBILITY */
     .cred-section { position: relative; z-index: 2; padding: 72px 48px; background: #eeeae4; }
@@ -635,10 +635,10 @@
   </div>
   <div class="hero-arrow-label">
     <span>Hear my story</span>
-    <svg viewBox="0 0 55 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8,6 C10,18 18,38 28,55 C34,65 40,72 48,78" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
-      <path d="M48,78 L37,74" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
-      <path d="M48,78 L46,66" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+    <svg viewBox="0 0 50 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M25,6 C22,24 20,42 22,58 C23,68 26,76 30,84" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+      <path d="M30,84 L22,76" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+      <path d="M30,84 L36,75" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
     </svg>
   </div>
   <div class="hero-text-wrap">
@@ -648,7 +648,7 @@
       <h1>You're great at what you do. The world just doesn't <em>know it yet.</em></h1>
       <p class="hero-sub">In 90 minutes, walk away with the positioning, the language, and the complete brand blueprint that finally makes your expertise impossible to ignore.</p>
       <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
-      <p class="price-note"><s style="color:#ccc;">$5,000</s>&nbsp; <strong>$67</strong> launch week</p>
+      <p class="price-note">Previously $5,000 per session · <strong>$67</strong> launch week</p>
       <div class="hero-trust">
         <div>
           <div class="hero-trust-num">132</div>
@@ -667,18 +667,17 @@
   </div>
 </section>
 
-<!-- HERO MOBILE — photo hero, no video -->
+<!-- HERO MOBILE — Option O Compact: photo top, everything above the fold -->
 <div class="mobile-hero-photo">
   <div class="mobile-hero-img-wrap">
     <img src="images/james-hero.png" alt="James Guldan" loading="eager">
     <div class="mobile-hero-img-fade"></div>
   </div>
   <div class="mobile-hero-text">
-    <div class="eyebrow">Deep Work Process</div>
-    <h1>You're great at what you do. The world just doesn't <em>know it yet.</em></h1>
-    <p class="hero-sub">In 90 minutes, walk away with the positioning, the language, and the complete brand blueprint that finally makes your expertise impossible to ignore.</p>
+    <h1>Does your business not <em>feel like you</em> anymore?</h1>
+    <p class="hero-sub">In 90 minutes, get the positioning, the language, and the complete brand blueprint that makes your expertise impossible to ignore.</p>
     <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
-    <p class="price-note"><s style="color:#ccc;">$5,000</s>&nbsp; <strong>$67</strong> launch week</p>
+    <p class="price-note">Previously $5,000 per session · <strong>$67</strong> launch week</p>
     <div class="mobile-trust">
       <div>
         <div class="mobile-trust-num">132</div>
