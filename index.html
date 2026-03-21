@@ -150,7 +150,7 @@
           "name": "What is the Deep Work Interview?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A two hour AI guided interview that produces a complete brand strategy blueprint. It covers your story, expertise, beliefs, ideal clients, market positioning, offer structure, website content, and gap analysis. It's the same process I used to charge $5,000 for, now powered by AI."
+            "text": "Eight focused sessions that produce a complete brand strategy blueprint. It covers your story, expertise, beliefs, ideal clients, market positioning, offer structure, website content, and gap analysis. It's the same process I used to charge $5,000 for, now powered by AI."
           }
         },
         {
@@ -158,7 +158,7 @@
           "name": "How is this different from a brand strategist?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A brand strategist gives you a PDF after 3 meetings. The Deep Work Interview gives you a working blueprint in 2 hours, with real competitor research, actual pricing data, and copy you can use today. And if you want a strategist after that, I'm right here."
+            "text": "A brand strategist gives you a PDF after 3 meetings. The Deep Work Interview gives you a working blueprint in eight focused sessions, with real competitor research, actual pricing data, and copy you can use today. And if you want a strategist after that, I'm right here."
           }
         },
         {
@@ -1007,10 +1007,12 @@
             .coi-left h3 { font-size: 1.3rem; }
             .coi-right { padding: 40px 28px; }
             /* Shift mobile */
-            .shift-columns { grid-template-columns: 1fr; gap: 0; }
-            .shift-col { border-radius: 20px 20px 0 0; padding: 32px 28px; }
-            .shift-col.right-col { border-radius: 0 0 20px 20px; border-left: 1px solid var(--border); }
-            .shift-bottom { padding: 28px; }
+            .shift-section { padding: 72px 0; }
+            .shift-headline { font-size: clamp(1.3rem, 5.5vw, 1.7rem); }
+            .shift-columns { grid-template-columns: 1fr; gap: 0; margin-top: 36px; }
+            .shift-col { border-radius: 16px 16px 0 0; padding: 28px 24px; }
+            .shift-col p { font-size: 0.88rem; line-height: 1.75; }
+            .shift-col.right-col { border-radius: 0 0 16px 16px; border-left: none; border-top: 1px solid var(--border); }
             /* Timeline mobile */
             .cases-timeline { padding-left: 32px; }
             .cases-card { flex-direction: column; gap: 20px; padding: 28px; }
@@ -1030,6 +1032,8 @@
             }
             .pattern-symptom.flip .pattern-symptom-inner { direction: ltr; }
             .pattern-symptom { padding: 48px 24px; }
+            /* Show symptom description BEFORE the chat card on mobile */
+            .pattern-sym-content { order: -1; }
             .problem-truth { margin: 0 16px 56px; padding: 0 0; }
             .pattern-diag-card { margin: 0; }
         }
@@ -2303,6 +2307,10 @@
             .proof-bottom-row { padding: 20px 16px 24px; }
             /* Container padding mobile */
             .container { padding: 0 20px; }
+            /* Shift section tighter on small screens */
+            .shift-col { padding: 24px 20px; }
+            .shift-col-label { font-size: 0.5rem; margin-bottom: 14px; padding-bottom: 10px; }
+            .shift-inner { padding: 0 16px; }
         }
 
         /* Deep Work Interview Preview Section */
@@ -2574,7 +2582,7 @@
                 <div class="hero-content fade-in">
                     <h1>Your business is successful. So why doesn't it <span class="serif-italic accent">feel like yours</span> anymore?</h1>
                     <p class="hero-subtitle">
-                        You built something real. But somewhere along the way, your brand stopped reflecting who you actually are. In two hours, you'll have the positioning, the language, and the blueprint to fix it.
+                        You built something real. But somewhere along the way, your brand stopped reflecting who you actually are. In eight focused sessions, you'll have the positioning, the language, and the blueprint to fix it.
                     </p>
                     <a href="/deep-work/" class="hero-cta">
                         Start the Deep Work Interview
@@ -3120,7 +3128,7 @@
                 <div class="offer-card featured" style="text-align: center;">
                     <div class="offer-price" style="font-size: 3rem; margin-bottom: 8px;">$67</div>
                     <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 24px; letter-spacing: 0.05em;">PREVIOUSLY $5,000 PER SESSION</p>
-                    <p class="offer-description" style="font-size: 1.05rem; line-height: 1.8; max-width: 540px; margin: 0 auto;">A two hour AI guided interview that pulls apart your entire business and gives you empirical, researched answers. Named competitors. Pricing data. A credibility score. Three structured offers. A full website blueprint.</p>
+                    <p class="offer-description" style="font-size: 1.05rem; line-height: 1.8; max-width: 540px; margin: 0 auto;">Eight focused sessions that pull apart your entire business and give you empirical, researched answers. Named competitors. Pricing data. A credibility score. Three structured offers. A full website blueprint.</p>
                     <a href="https://buy.stripe.com/dRmfZh4KG5COapN9mx6c005" class="offer-cta" style="margin: 0 auto;">Start the Deep Work Interview →</a>
                 </div>
             </div>
@@ -3162,11 +3170,11 @@
             <div class="faq-grid">
                 <div class="faq-item">
                     <div class="faq-question">What is the Deep Work Interview?</div>
-                    <div class="faq-answer">A two hour AI guided interview that produces a complete brand strategy blueprint. It covers your story, expertise, beliefs, ideal clients, market positioning, offer structure, website content, and gap analysis. It's the same process I used to charge $5,000 for, now powered by AI.</div>
+                    <div class="faq-answer">Eight focused sessions that produce a complete brand strategy blueprint. It covers your story, expertise, beliefs, ideal clients, market positioning, offer structure, website content, and gap analysis. It's the same process I used to charge $5,000 for, now powered by AI.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How is this different from a brand strategist?</div>
-                    <div class="faq-answer">A brand strategist gives you a PDF after 3 meetings. The Deep Work Interview gives you a working blueprint in 2 hours, with real competitor research, actual pricing data, and copy you can use today. And if you want a strategist after that, I'm right here.</div>
+                    <div class="faq-answer">A brand strategist gives you a PDF after 3 meetings. The Deep Work Interview gives you a working blueprint in eight focused sessions, with real competitor research, actual pricing data, and copy you can use today. And if you want a strategist after that, I'm right here.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">What kind of entrepreneurs does this work for?</div>
@@ -3240,23 +3248,23 @@
 
         let userAcknowledged = false;
 
-        revenueSelect.addEventListener('change', function() {
+        if (revenueSelect) revenueSelect.addEventListener('change', function() {
             if (this.value === 'Under $1M' && !userAcknowledged) {
                 revenueWarning.classList.add('active');
             }
         });
 
-        understandBtn.addEventListener('click', function() {
+        if (understandBtn) understandBtn.addEventListener('click', function() {
             userAcknowledged = true;
             revenueWarning.classList.remove('active');
         });
 
-        cancelBtn.addEventListener('click', function() {
+        if (cancelBtn) cancelBtn.addEventListener('click', function() {
             revenueWarning.classList.remove('active');
             revenueSelect.value = '';
         });
 
-        revenueWarning.addEventListener('click', function(e) {
+        if (revenueWarning) revenueWarning.addEventListener('click', function(e) {
             if (e.target === revenueWarning) {
                 revenueWarning.classList.remove('active');
                 if (!userAcknowledged) {
@@ -3265,7 +3273,7 @@
             }
         });
 
-        form.addEventListener('submit', async function(e) {
+        if (form) form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             if (revenueSelect.value === 'Under $1M' && !userAcknowledged) {
