@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Site in Sixty | Own Your Site. Never Wait on a Developer Again.</title>
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0M8CE72F2L"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -14,13 +13,10 @@
   gtag('config', 'G-0M8CE72F2L');
 </script>
 
-<!-- SEO Meta -->
 <meta name="description" content="Stop waiting on developers. Stop writing checks every time you want to change a headline. Site in Sixty teaches business owners to own and run their own site with AI. $197.">
 <meta name="author" content="James Guldan">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://jamesguldan.com/site-in-sixty/">
-
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jamesguldan.com/site-in-sixty/">
 <meta property="og:title" content="Site in Sixty | Own Your Site. Never Wait on a Developer Again.">
@@ -29,22 +25,17 @@
 <meta property="og:image" content="https://siteinsixty.com/og-image.svg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Site in Sixty | Own Your Site. Never Wait on a Developer Again.">
 <meta name="twitter:description" content="Stop depending on developers for every small change. Site in Sixty gives you the skill to own your web presence forever. $197.">
 <meta name="twitter:image" content="https://siteinsixty.com/og-image.svg">
 
-<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23BF6D2A' rx='20' width='100' height='100'/><text x='50' y='68' font-size='50' font-family='system-ui' font-weight='bold' text-anchor='middle' fill='white'>60</text></svg>">
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
 
-<!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -64,15 +55,16 @@
 <style>
   :root {
     --accent: #BF6D2A;
-    --accent-hover: #D4883F;
-    --bg-primary: #0A0A0A;
-    --bg-secondary: #111111;
-    --bg-card: #161616;
-    --text-primary: #F5F0EB;
-    --text-secondary: #A89F95;
-    --text-muted: #6B6560;
+    --accent-hover: #A85D1F;
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F7F4F1;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1612;
+    --text-secondary: #5C534A;
+    --text-muted: #9B9189;
     --border: rgba(191, 109, 42, 0.15);
-    --max-width: 720px;
+    --border-solid: #EDE8E2;
+    --max-width: 760px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -91,70 +83,77 @@
     padding: 0 24px;
   }
 
-  /* ---- HERO ---- */
+  /* ---- HERO (Option A: Centered Minimal, light) ---- */
   .hero {
-    padding: 100px 0 80px;
+    padding: 108px 0 88px;
     text-align: center;
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
   }
-
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 500px;
+    background: radial-gradient(ellipse, rgba(191,109,42,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
   .hero-eyebrow {
     font-family: 'Outfit', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 24px;
+    margin-bottom: 28px;
+    position: relative;
   }
-
   .hero h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-size: clamp(2.6rem, 5.5vw, 3.8rem);
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.08;
     color: var(--text-primary);
-    margin-bottom: 12px;
+    margin-bottom: 20px;
+    position: relative;
   }
-
   .hero h1 em {
     font-family: 'Fraunces', serif;
     font-style: italic;
     color: var(--accent);
     font-weight: 600;
   }
-
   .hero-sub {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
     color: var(--text-secondary);
-    max-width: 580px;
+    max-width: 560px;
     margin: 0 auto 40px;
-    line-height: 1.7;
+    line-height: 1.75;
+    position: relative;
   }
-
   .hero-price {
     display: inline-flex;
     align-items: baseline;
     gap: 10px;
     margin-bottom: 28px;
+    position: relative;
   }
-
   .hero-price .amount {
     font-family: 'Outfit', sans-serif;
     font-size: 2.8rem;
     font-weight: 700;
     color: var(--text-primary);
   }
-
   .hero-price .context {
     font-size: 0.95rem;
     color: var(--text-muted);
   }
-
   .cta-button {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 18px 40px;
+    padding: 18px 42px;
     background: var(--accent);
     color: #fff;
     font-family: 'Outfit', sans-serif;
@@ -165,329 +164,515 @@
     text-decoration: none;
     cursor: pointer;
     transition: all 0.25s ease;
+    position: relative;
   }
-
   .cta-button:hover {
     background: var(--accent-hover);
     transform: translateY(-1px);
-    box-shadow: 0 8px 30px rgba(191, 109, 42, 0.3);
+    box-shadow: 0 8px 30px rgba(191, 109, 42, 0.25);
   }
-
   .cta-note {
     margin-top: 14px;
     font-size: 0.82rem;
     color: var(--text-muted);
+    position: relative;
   }
 
-  /* ---- SECTIONS ---- */
-  section {
-    padding: 80px 0;
-  }
-
+  /* ---- DIVIDER ---- */
   .section-divider {
     width: 40px;
     height: 2px;
     background: var(--accent);
-    margin: 0 auto 60px;
-    opacity: 0.5;
+    margin: 0 auto 56px;
+    opacity: 0.45;
   }
 
-  h2 {
+  /* ---- BRIDGE (Option B: Pain vs Promise Split) ---- */
+  .bridge {
+    padding: 88px 0;
+    background: var(--bg-secondary);
+  }
+  .bridge h2 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 24px;
+    margin-bottom: 44px;
+    text-align: center;
   }
-
-  h2 em {
+  .bridge h2 em {
     font-family: 'Fraunces', serif;
     font-style: italic;
     color: var(--accent);
     font-weight: 600;
   }
-
-  /* ---- BRIDGE SECTION ---- */
-  .bridge {
-    background: var(--bg-secondary);
+  .bridge-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 36px;
   }
-
-  .bridge p {
-    font-size: 1.05rem;
-    color: var(--text-secondary);
+  .pain-side {
+    background: rgba(220,38,38,0.03);
+    border: 1px solid rgba(220,38,38,0.12);
+    border-radius: 16px;
+    padding: 36px;
+  }
+  .promise-side {
+    background: rgba(191,109,42,0.04);
+    border: 1px solid rgba(191,109,42,0.18);
+    border-radius: 16px;
+    padding: 36px;
+  }
+  .side-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
     margin-bottom: 20px;
   }
-
-  .bridge p:last-child {
-    margin-bottom: 0;
+  .pain-side .side-label { color: #C53030; }
+  .promise-side .side-label { color: var(--accent); }
+  .side-item {
+    font-size: 0.93rem;
+    color: var(--text-secondary);
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
   }
-
+  .side-item:last-child { border-bottom: none; }
+  .side-item::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .pain-side .side-item::before { background: #C53030; opacity: 0.5; }
+  .promise-side .side-item::before { background: var(--accent); opacity: 0.7; }
   .bridge-callout {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 32px;
-    margin-top: 32px;
-    font-size: 1.1rem;
-    color: var(--text-primary);
+    border-radius: 14px;
+    padding: 28px 36px;
     text-align: center;
     font-family: 'Outfit', sans-serif;
+    font-size: 1.08rem;
     font-weight: 500;
+    color: var(--text-primary);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
   }
-
   .bridge-callout em {
     font-family: 'Fraunces', serif;
     color: var(--accent);
   }
 
-  /* ---- REALITY CHECK QUOTES ---- */
-  .reality-quotes {
-    background: var(--bg-card);
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    padding: 32px;
-    margin-top: 32px;
+  /* ---- DELIVERABLES (Option B: Timeline) ---- */
+  .deliverables {
+    padding: 88px 0;
+    background: var(--bg-primary);
   }
-
-  .reality-quote {
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(191, 109, 42, 0.1);
-    font-size: 0.98rem;
-    color: var(--text-secondary);
+  .deliverables h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 52px;
+  }
+  .deliverables h2 em {
+    font-family: 'Fraunces', serif;
     font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .timeline {
+    position: relative;
+    padding-left: 52px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 12px;
+    bottom: 12px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent) 0%, rgba(191,109,42,0.08) 100%);
+  }
+  .tl-item {
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(191,109,42,0.12);
+  }
+  .tl-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 4px;
+  }
+  .tl-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .tl-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
     line-height: 1.7;
   }
 
-  .reality-quote:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  /* ---- WHAT YOU GET ---- */
-  .deliverables-list {
-    list-style: none;
-    padding: 0;
-  }
-
-  .deliverables-list li {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
-
-  .deliverables-list li:last-child {
-    border-bottom: none;
-  }
-
-  .deliverable-num {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--accent);
-    min-width: 28px;
-    padding-top: 3px;
-  }
-
-  .deliverable-content strong {
-    display: block;
-    font-family: 'Outfit', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-  }
-
-  .deliverable-content span {
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-  }
-
-  /* ---- SOCIAL PROOF ---- */
+  /* ---- SOCIAL PROOF (Option B: Masonry with photos) ---- */
   .proof {
+    padding: 88px 0;
     background: var(--bg-secondary);
   }
-
-  .testimonial-block {
-    padding: 32px;
+  .proof h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 44px;
+    text-align: center;
+  }
+  .proof h2 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .masonry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .t-card {
     background: var(--bg-card);
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    margin-bottom: 24px;
+    border: 1px solid var(--border-solid);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
   }
-
-  .testimonial-block:last-child {
-    margin-bottom: 0;
+  .t-card.tall {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-
-  .testimonial-quote {
-    font-size: 1.05rem;
+  .t-stars {
+    color: var(--accent);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .t-quote {
+    font-size: 0.95rem;
     color: var(--text-secondary);
     font-style: italic;
     line-height: 1.8;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    flex-grow: 1;
   }
-
-  .testimonial-attr {
+  .t-person {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-solid);
+  }
+  .t-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--bg-secondary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Outfit', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--accent);
+    border: 2px solid var(--border);
+    overflow: hidden;
   }
-
-  .testimonial-attr span {
-    font-weight: 400;
+  .t-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .t-name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-primary);
+  }
+  .t-role {
+    font-size: 0.78rem;
     color: var(--text-muted);
-    display: block;
-    font-size: 0.8rem;
-    margin-top: 2px;
+    margin-top: 1px;
   }
 
-  /* ---- HOW IT WORKS ---- */
+  /* ---- HOW IT WORKS (Option A: Visual Timeline) ---- */
   .steps {
-    counter-reset: step;
+    padding: 88px 0;
+    background: var(--bg-primary);
   }
-
-  .step {
-    padding: 24px 0;
-    border-bottom: 1px solid var(--border);
+  .steps h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 56px;
+    text-align: center;
   }
-
-  .step:last-child {
-    border-bottom: none;
+  .steps h2 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
   }
-
-  .step h3 {
+  .steps-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .step-row {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    padding-bottom: 44px;
+    position: relative;
+  }
+  .step-row::after {
+    content: '';
+    position: absolute;
+    left: 31px;
+    top: 52px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border-solid);
+  }
+  .step-row:last-child::after { display: none; }
+  .step-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    background: rgba(191,109,42,0.06);
+    border: 1px solid rgba(191,109,42,0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .step-body h3 {
     font-family: 'Outfit', sans-serif;
     font-size: 1.05rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 6px;
+    padding-top: 10px;
   }
-
-  .step h3::before {
-    counter-increment: step;
-    content: counter(step) ". ";
-    color: var(--accent);
-  }
-
-  .step p {
-    font-size: 0.92rem;
+  .step-body p {
+    font-size: 0.9rem;
     color: var(--text-secondary);
+    line-height: 1.75;
   }
 
-  /* ---- COMPARISON ---- */
+  /* ---- COMPARISON (Option A: Side-by-side columns) ---- */
   .comparison {
+    padding: 88px 0;
     background: var(--bg-secondary);
   }
-
-  .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 24px;
-  }
-
-  .comparison-table th {
+  .comparison h2 {
     font-family: 'Outfit', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    text-align: left;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 44px;
+    text-align: center;
   }
-
-  .comparison-table td {
-    padding: 14px 16px;
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .comparison-table td:last-child {
+  .comparison h2 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
     color: var(--accent);
     font-weight: 600;
   }
-
-  /* ---- MATH BLOCK ---- */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 36px;
+  }
+  .comp-col {
+    border-radius: 16px;
+    padding: 36px;
+  }
+  .comp-col.old {
+    background: var(--bg-card);
+    border: 1px solid var(--border-solid);
+  }
+  .comp-col.new {
+    background: rgba(191,109,42,0.04);
+    border: 1px solid rgba(191,109,42,0.2);
+  }
+  .comp-col-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+  }
+  .comp-col.old .comp-col-label { color: var(--text-muted); }
+  .comp-col.new .comp-col-label { color: var(--accent); }
+  .comp-row {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .comp-col.new .comp-row {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  .comp-row:last-child { border-bottom: none; }
   .math-block {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 32px;
-    margin-top: 32px;
+    border-radius: 14px;
+    padding: 36px;
     text-align: center;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
   }
-
-  .math-block .math-label {
+  .math-label {
     font-family: 'Outfit', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--text-muted);
     margin-bottom: 16px;
   }
-
-  .math-block .math-line {
-    font-size: 1rem;
+  .math-line {
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    margin-bottom: 8px;
-    line-height: 1.6;
+    margin-bottom: 6px;
   }
-
-  .math-block .math-result {
+  .math-result {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--accent);
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-solid);
   }
 
-  /* ---- FAQ ---- */
-  .faq-item {
-    padding: 24px 0;
-    border-bottom: 1px solid var(--border);
+  /* ---- FAQ (Option B: Two-Column Card Grid) ---- */
+  .faq {
+    padding: 88px 0;
+    background: var(--bg-primary);
   }
-
-  .faq-item:last-child {
-    border-bottom: none;
+  .faq h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    font-weight: 700;
+    margin-bottom: 44px;
+    text-align: center;
   }
-
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .faq-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-solid);
+    border-radius: 14px;
+    padding: 26px;
+    transition: border-color 0.2s;
+  }
+  .faq-card:hover {
+    border-color: rgba(191,109,42,0.3);
+  }
   .faq-q {
     font-family: 'Outfit', sans-serif;
-    font-size: 1rem;
+    font-size: 0.93rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
-
   .faq-a {
-    font-size: 0.92rem;
+    font-size: 0.87rem;
     color: var(--text-secondary);
     line-height: 1.7;
   }
 
-  /* ---- FINAL CTA ---- */
+  /* ---- FINAL CTA (Option A: Gradient Background) ---- */
   .final-cta {
+    padding: 120px 0;
     text-align: center;
-    padding: 100px 0;
-    background: var(--bg-secondary);
+    background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(191,109,42,0.05) 50%, var(--bg-primary) 100%);
+    position: relative;
+    overflow: hidden;
   }
-
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(191,109,42,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
   .final-cta h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
     margin-bottom: 16px;
+    position: relative;
   }
-
-  .final-cta p {
-    color: var(--text-secondary);
-    margin-bottom: 32px;
+  .final-cta h2 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .final-cta .cta-sub {
     font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+    position: relative;
   }
 
   /* ---- FOOTER ---- */
@@ -496,29 +681,30 @@
     padding: 40px 0;
     font-size: 0.8rem;
     color: var(--text-muted);
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-solid);
   }
-
   footer a {
     color: var(--text-muted);
     text-decoration: none;
   }
-
-  footer a:hover {
-    color: var(--accent);
-  }
+  footer a:hover { color: var(--accent); }
 
   /* ---- RESPONSIVE ---- */
-  @media (max-width: 640px) {
-    .hero { padding: 72px 0 60px; }
-    section { padding: 60px 0; }
-    .hero-price .amount { font-size: 2.2rem; }
-    .cta-button { padding: 16px 32px; font-size: 1rem; width: 100%; justify-content: center; }
-    .testimonial-block { padding: 24px; }
-    .comparison-table { font-size: 0.85rem; }
-    .comparison-table th, .comparison-table td { padding: 10px 8px; }
-    .bridge-callout { padding: 20px; font-size: 1rem; }
-    .reality-quotes { padding: 24px; }
-    .math-block { padding: 24px; }
+  @media (max-width: 720px) {
+    .hero { padding: 80px 0 68px; }
+    .bridge-split { grid-template-columns: 1fr; }
+    .masonry { grid-template-columns: 1fr; }
+    .t-card.tall { grid-row: auto; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .step-row { grid-template-columns: 48px 1fr; gap: 16px; }
+    .step-icon { width: 48px; height: 48px; font-size: 1rem; border-radius: 10px; }
+    .step-row::after { left: 23px; top: 40px; }
+    .cta-button { width: 100%; justify-content: center; }
+    .timeline { padding-left: 40px; }
+    .timeline::before { left: 14px; }
+    .tl-item::before { left: -30px; }
   }
 </style>
 </head>
@@ -543,188 +729,192 @@
   </div>
 </section>
 
-<!-- BRIDGE / PROBLEM -->
+<!-- BRIDGE: Pain vs. Promise -->
 <section class="bridge">
   <div class="container">
     <div class="section-divider"></div>
     <h2>You know what you want to say.<br>Your site <em>doesn't reflect it.</em></h2>
-    <p>Most business owners are stuck in the same loop. You have a developer, or a designer, or a Squarespace subscription you half understand. Every time you want to change something — a headline, a price, an offer — it goes on a list. That list goes to someone else. Two weeks later, maybe it gets done. You pay for it either way.</p>
-    <p>The business owners who move fastest are the ones who own their digital real estate. Not because they learned to code. Because they learned to direct. You tell Claude what you want. Claude builds it. You review it. You ship it. The whole process takes minutes, not weeks. And you never have to wait on anyone's schedule but your own.</p>
-    <p>Site in Sixty is the system that makes you that person.</p>
-
-    <div class="reality-quotes">
-      <div class="reality-quote">"I waited three weeks for my developer to change a single line of copy on my homepage. Then got an invoice for $280."</div>
-      <div class="reality-quote">"Every time I launch a new offer I have to brief someone, wait for it to be built, approve revisions, and hope it comes out right. My momentum dies in the middle of that gap."</div>
-      <div class="reality-quote">"I have a perfectly good Squarespace site that's eight months out of date because updating it means filing a support ticket with myself."</div>
+    <div class="bridge-split">
+      <div class="pain-side">
+        <div class="side-label">The Loop You're In</div>
+        <div class="side-item">Waiting 2+ weeks for simple text changes</div>
+        <div class="side-item">$150 to $300 invoices for headline swaps</div>
+        <div class="side-item">Momentum dies between idea and execution</div>
+        <div class="side-item">Your site is months behind your actual positioning</div>
+        <div class="side-item">Locked into platforms or someone else's schedule</div>
+      </div>
+      <div class="promise-side">
+        <div class="side-label">What Independence Looks Like</div>
+        <div class="side-item">Change anything in minutes, not weeks</div>
+        <div class="side-item">$0 per change, forever</div>
+        <div class="side-item">New offer? Live before lunch</div>
+        <div class="side-item">Your site always matches who you are right now</div>
+        <div class="side-item">You own every file. Zero lock-in.</div>
+      </div>
     </div>
-
     <div class="bridge-callout">
       The skill isn't learning to code.<br>The skill is knowing <em>what you want</em> and having a system to ship it.
     </div>
   </div>
 </section>
 
-<!-- WHAT YOU GET -->
-<section>
+<!-- WHAT YOU GET: Timeline -->
+<section class="deliverables">
   <div class="container">
     <div class="section-divider"></div>
     <h2>What you get access to<br>the moment you <em>purchase.</em></h2>
-    <ul class="deliverables-list">
-      <li>
-        <span class="deliverable-num">01</span>
-        <div class="deliverable-content">
-          <strong>The Independence System: Full Video Walkthrough</strong>
-          <span>Five modules that take you from zero to live site, recorded so you can follow along at your own pace. Not a lecture. An over-the-shoulder build where you watch every click and replicate it in real time. By the end of module one, you understand the system. By the end of module five, you own it.</span>
-        </div>
-      </li>
-      <li>
-        <span class="deliverable-num">02</span>
-        <div class="deliverable-content">
-          <strong>The Claude Build Workflow</strong>
-          <span>The exact prompts, process, and structure to take your positioning, copy, and voice and have Claude generate a complete, professional site. Not a generic template. Not Lorem Ipsum. A site that sounds like you because every word came from you. You are the creative director. Claude is your tech team.</span>
-        </div>
-      </li>
-      <li>
-        <span class="deliverable-num">03</span>
-        <div class="deliverable-content">
-          <strong>Free Hosting. No Monthly Fees. Ever.</strong>
-          <span>Your site deploys to Cloudflare Pages. Zero monthly cost. Automatic global CDN. SSL included. Your site loads under a second anywhere in the world and it costs you nothing to keep it running. Most coaches are paying $25 to $50 per month for slower, worse hosting on platforms that lock you in. This is better and it's free.</span>
-        </div>
-      </li>
-      <li>
-        <span class="deliverable-num">04</span>
-        <div class="deliverable-content">
-          <strong>Custom Domain Setup</strong>
-          <span>Your name, your URL. Full walkthrough for buying a domain and connecting it so your site looks professional from day one. If you already have a domain, we connect it. If you need a new one, we pick it together.</span>
-        </div>
-      </li>
-      <li>
-        <span class="deliverable-num">05</span>
-        <div class="deliverable-content">
-          <strong>Real Sites to Learn From</strong>
-          <span>See exactly what finished sites built with this method look like. Use them as inspiration, use the structure directly, or build something entirely your own. Either way you're starting from something real instead of starting from zero.</span>
-        </div>
-      </li>
-      <li>
-        <span class="deliverable-num">06</span>
-        <div class="deliverable-content">
-          <strong>Indexed, Tracked, and SEO-Ready From Launch</strong>
-          <span>Your site goes live with Google Analytics, proper meta tags, Open Graph images, and heading structure already in place. You're visible and measurable from the first minute. No extra setup required.</span>
-        </div>
-      </li>
-      <li>
-        <span class="deliverable-num">07</span>
-        <div class="deliverable-content">
-          <strong>Direct Email Support From James</strong>
-          <span>Get stuck anywhere? Email james@jamesguldan.com and you get a real answer from the person who built this. Not a help desk. Not a bot. A human being who will help you cross the finish line.</span>
-        </div>
-      </li>
-    </ul>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-num">01</div>
+        <div class="tl-title">The Independence System: Full Video Walkthrough</div>
+        <div class="tl-desc">Five modules that take you from zero to live site, recorded so you can follow along at your own pace. Not a lecture. An over-the-shoulder build where you watch every click and replicate it in real time. By the end of module one, you understand the system. By the end of module five, you own it.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">02</div>
+        <div class="tl-title">The Claude Build Workflow</div>
+        <div class="tl-desc">The exact prompts, process, and structure to take your positioning, copy, and voice and have Claude generate a complete, professional site. Not a generic template. A site that sounds like you because every word came from you. You are the creative director. Claude is your tech team.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">03</div>
+        <div class="tl-title">Free Hosting. No Monthly Fees. Ever.</div>
+        <div class="tl-desc">Your site deploys to Cloudflare Pages. Zero monthly cost. Automatic global CDN. SSL included. Your site loads under a second anywhere in the world and it costs you nothing to keep it running. Most coaches pay $25 to $50 per month for slower, worse hosting on platforms that lock you in. This is better and it's free.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">04</div>
+        <div class="tl-title">Custom Domain Setup</div>
+        <div class="tl-desc">Your name, your URL. Full walkthrough for buying a domain and connecting it so your site looks professional from day one. If you already have a domain, we connect it. If you need a new one, we pick it together.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">05</div>
+        <div class="tl-title">Real Sites to Learn From</div>
+        <div class="tl-desc">See exactly what finished sites built with this method look like. Use them as inspiration, use the structure directly, or build something entirely your own. Either way you're starting from something real instead of zero.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">06</div>
+        <div class="tl-title">Indexed, Tracked, and SEO-Ready From Launch</div>
+        <div class="tl-desc">Google Analytics, proper meta tags, Open Graph images, and heading structure already in place. Visible and measurable from the first minute. No extra setup required.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-num">07</div>
+        <div class="tl-title">Direct Email Support From James</div>
+        <div class="tl-desc">Get stuck anywhere? Email james@jamesguldan.com and you get a real answer from the person who built this. Not a help desk. Not a bot. A human being who will help you cross the finish line.</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- SOCIAL PROOF -->
+<!-- SOCIAL PROOF: Masonry with photos -->
 <section class="proof">
   <div class="container">
     <div class="section-divider"></div>
     <h2>What happens when you own<br>your <em>digital real estate.</em></h2>
-
-    <div class="testimonial-block">
-      <p class="testimonial-quote">"The things I don't understand, I don't need to understand. That's your world. In two weeks James built our entire revenue engine: landing pages, assessment tools, a cost calculator, customer journey map, and tiered partnership packages. We went from $9K engagements to $36K to $150K annually."</p>
-      <div class="testimonial-attr">
-        Megan Hunter
-        <span>CEO of High Conflict Institute</span>
+    <div class="masonry">
+      <div class="t-card tall">
+        <div>
+          <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="t-quote">"The things I don't understand, I don't need to understand. That's your world. In two weeks James built our entire revenue engine: landing pages, assessment tools, a cost calculator, customer journey map, and tiered partnership packages. We went from $9K engagements to $36K to $150K annually."</p>
+        </div>
+        <div class="t-person">
+          <div class="t-avatar">MH</div>
+          <div>
+            <div class="t-name">Megan Hunter</div>
+            <div class="t-role">CEO of High Conflict Institute</div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="testimonial-block">
-      <p class="testimonial-quote">"One of the most talented creative minds I've ever worked with. James built the brand strategy and site for my company. He basically took things that I was saying and feeling and turned it into something that people could experience."</p>
-      <div class="testimonial-attr">
-        Re Perez
-        <span>Founder of Branding For The People, Forbes featured</span>
+      <div class="t-card">
+        <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="t-quote">"One of the most talented creative minds I've ever worked with. He basically took things that I was saying and feeling and turned it into something that people could experience."</p>
+        <div class="t-person">
+          <div class="t-avatar">
+            <img src="/deep-work/images/re-perez.jpg" alt="Re Perez" onerror="this.parentElement.textContent='RP'">
+          </div>
+          <div>
+            <div class="t-name">Re Perez</div>
+            <div class="t-role">Founder, Branding For The People</div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="testimonial-block">
-      <p class="testimonial-quote">"I had to pause because I started crying going through my story. And that was only like 3 questions in. When the blueprint came out, I finally understood how to talk about what I do. Having a site that actually says that is something I've wanted for years."</p>
-      <div class="testimonial-attr">
-        Chelsey
-        <span>Coach and Consultant</span>
+      <div class="t-card">
+        <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="t-quote">"I had to pause because I started crying going through my story. When the blueprint came out, I finally understood how to talk about what I do. Having a site that actually says that is something I've wanted for years."</p>
+        <div class="t-person">
+          <div class="t-avatar">C</div>
+          <div>
+            <div class="t-name">Chelsey</div>
+            <div class="t-role">Coach and Consultant</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section>
+<!-- HOW IT WORKS: Visual Timeline -->
+<section class="steps">
   <div class="container">
     <div class="section-divider"></div>
     <h2>How you go from dependent<br>to <em>independent in 60 minutes.</em></h2>
-    <div class="steps">
-      <div class="step">
+  </div>
+  <div class="steps-inner">
+    <div class="step-row">
+      <div class="step-icon">01</div>
+      <div class="step-body">
         <h3>Bring your strategy (Deep Work helps here)</h3>
         <p>If you've done the Deep Work Interview, you're arriving with positioning, copy, offers, and your voice already dialed in. If you haven't, you can still build a site. But the blueprint is what makes the site worth building. Most people do the Interview first. Site in Sixty is where they take it live.</p>
       </div>
-      <div class="step">
+    </div>
+    <div class="step-row">
+      <div class="step-icon">02</div>
+      <div class="step-body">
         <h3>Follow the build walkthrough</h3>
-        <p>Five video modules. Every click recorded. You watch. You replicate. By the end of the first module you've set up free hosting that would cost most businesses $30 to $50 per month. By the end of module three, your site is live. By the end of module five, you understand how to run it yourself from here on out.</p>
+        <p>Five video modules. Every click recorded. You watch. You replicate. By the end of the first module you've set up free hosting that would cost most businesses $30 to $50 per month. By the end of module three, your site is live. By module five, you understand how to run it yourself.</p>
       </div>
-      <div class="step">
+    </div>
+    <div class="step-row">
+      <div class="step-icon">03</div>
+      <div class="step-body">
         <h3>Deploy to Cloudflare for free</h3>
         <p>One command. Your site is live. Free hosting. Free SSL. Global CDN. Your site loads in under a second anywhere in the world. No monthly bills. No renewal reminders. No hosting platform that locks you in. You own the files outright.</p>
       </div>
-      <div class="step">
+    </div>
+    <div class="step-row">
+      <div class="step-icon">04</div>
+      <div class="step-body">
         <h3>Make changes yourself. Forever.</h3>
-        <p>New offer? Update it in 10 minutes. New testimonial? Two minutes. Completely redesign a section? Tell Claude what you want and you're done before you could have even emailed a developer to describe the request. This is what independence feels like. Every change is yours to make, on your timeline, at no additional cost.</p>
+        <p>New offer? Update it in 10 minutes. New testimonial? Two minutes. Completely redesign a section? Tell Claude what you want and you're done before you could have even emailed a developer to describe the request. This is what independence feels like.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COMPARISON -->
+<!-- COMPARISON: Side-by-side columns + math -->
 <section class="comparison">
   <div class="container">
     <div class="section-divider"></div>
     <h2>What dependence actually<br><em>costs you.</em></h2>
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>Dependent on a Developer</th>
-          <th>Site in Sixty</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Initial build: $3,000 to $10,000</td>
-          <td>$197 one time</td>
-        </tr>
-        <tr>
-          <td>$25 to $50 per month hosting</td>
-          <td>Free. Forever.</td>
-        </tr>
-        <tr>
-          <td>$150 to $300 per hour for changes</td>
-          <td>Make any change yourself in minutes</td>
-        </tr>
-        <tr>
-          <td>2 to 4 week build timeline</td>
-          <td>Under 60 minutes</td>
-        </tr>
-        <tr>
-          <td>Generic template, stock copy</td>
-          <td>Built from your positioning. Sounds like you.</td>
-        </tr>
-        <tr>
-          <td>Locked into their platform or workflow</td>
-          <td>You own every file. Zero lock-in.</td>
-        </tr>
-        <tr>
-          <td>Waiting on someone else's schedule</td>
-          <td>Ship when you're ready. On your timeline.</td>
-        </tr>
-      </tbody>
-    </table>
-
+    <div class="comp-grid">
+      <div class="comp-col old">
+        <div class="comp-col-label">Dependent on a Developer</div>
+        <div class="comp-row">Initial build: $3,000 to $10,000</div>
+        <div class="comp-row">$25 to $50 per month hosting</div>
+        <div class="comp-row">$150 to $300 per hour for changes</div>
+        <div class="comp-row">2 to 4 week build timeline</div>
+        <div class="comp-row">Generic template, stock copy</div>
+        <div class="comp-row">Locked into their platform or workflow</div>
+        <div class="comp-row">Waiting on someone else's schedule</div>
+      </div>
+      <div class="comp-col new">
+        <div class="comp-col-label">Site in Sixty</div>
+        <div class="comp-row">$197 one time</div>
+        <div class="comp-row">Free. Forever.</div>
+        <div class="comp-row">Make any change yourself in minutes</div>
+        <div class="comp-row">Under 60 minutes</div>
+        <div class="comp-row">Built from your positioning. Sounds like you.</div>
+        <div class="comp-row">You own every file. Zero lock-in.</div>
+        <div class="comp-row">Ship when you're ready. Your timeline.</div>
+      </div>
+    </div>
     <div class="math-block">
       <div class="math-label">The math on your developer relationship</div>
       <div class="math-line">Average developer hourly rate: $150/hr</div>
@@ -736,59 +926,53 @@
   </div>
 </section>
 
-<!-- FAQ -->
-<section>
+<!-- FAQ: Two-column cards -->
+<section class="faq">
   <div class="container">
     <div class="section-divider"></div>
     <h2>Common questions.</h2>
-
-    <div class="faq-item">
-      <div class="faq-q">Do I need to do the Deep Work Interview first?</div>
-      <div class="faq-a">You don't have to, but you'll get dramatically better results if you do. The Deep Work Interview ($67) produces the positioning, copy, and offers that your site is built from. Without it, you're building a site without a strategy. With it, every word on your site is backed by 90 minutes of deep brand work specific to you. Most people do the Interview first and then immediately move to Site in Sixty. The two products are designed to work together.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">I already have a developer. Why would I do this myself?</div>
-      <div class="faq-a">Because your developer is a bottleneck. Every idea you have that touches your site has to go through them. Every small change costs time and money. Every time you want to test a new offer or update your copy you're on their schedule. Site in Sixty doesn't replace your developer for complex custom projects. It makes you independent for everything else. The 90% of changes you shouldn't need to pay someone $150 an hour to make.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Do I need any coding experience?</div>
-      <div class="faq-a">None. The video modules show you every click. Claude handles the code. You direct the outcome. If you can write an email and copy and paste text, you have everything you need. The skill this teaches isn't coding. It's knowing what you want and how to communicate it to a tool that builds it for you.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Is the free hosting actually free? What's the catch?</div>
-      <div class="faq-a">Cloudflare Pages gives you free hosting with unlimited bandwidth. They make their money from large enterprise customers. There is no catch, no storage cap for a standard site, no bandwidth overage, no surprise bills after year one. Your site runs for free indefinitely. We've been using it for years without ever paying a hosting fee.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What if I already have a website?</div>
-      <div class="faq-a">Then you probably have a site that doesn't represent who you are anymore, and you're paying monthly to keep it running. Site in Sixty lets you build something that actually reflects your current positioning, deploy it for free, and cancel your existing hosting. You'll save the cost of this course within the first few months on hosting alone.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Can I make changes to the site after it's live?</div>
-      <div class="faq-a">Yes. That's the entire point. You own every file. You can open them in any text editor, tell Claude what to change, swap images, add pages, update copy. There's no locked editor, no proprietary system, no approval process. You make the change and redeploy. Takes about 30 seconds once you know the workflow.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">How is this different from Squarespace or Wix?</div>
-      <div class="faq-a">Those platforms charge you every month, lock you into their ecosystem, and give you templates that look like everyone else's site. Site in Sixty builds a custom site that loads in under a second, costs nothing to host, and is built entirely from your own voice and positioning. You own the code outright. If Squarespace shuts down tomorrow, your site still runs. That's real ownership.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What if it doesn't work for me?</div>
-      <div class="faq-a">Follow the modules and the steps. If your site isn't live and functional, email james@jamesguldan.com for a full refund within 30 days. No questions asked. But the people who buy this and follow the steps get their site live the same day they start. That's not marketing copy. That's just what happens when the process is clear.</div>
+    <div class="faq-grid">
+      <div class="faq-card">
+        <div class="faq-q">Do I need to do the Deep Work Interview first?</div>
+        <div class="faq-a">You don't have to, but you'll get dramatically better results if you do. The Interview produces the positioning, copy, and offers that your site is built from. Most people do the Interview first and then immediately move to Site in Sixty.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">I already have a developer. Why would I do this myself?</div>
+        <div class="faq-a">Because your developer is a bottleneck. Site in Sixty makes you independent for the 90% of changes you shouldn't need to pay someone $150 an hour to make.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">Do I need any coding experience?</div>
+        <div class="faq-a">None. The video modules show you every click. Claude handles the code. You direct the outcome. If you can write an email and copy and paste text, you have everything you need.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">Is the free hosting actually free? What's the catch?</div>
+        <div class="faq-a">Cloudflare Pages gives you free hosting with unlimited bandwidth. No catch, no storage cap, no surprise bills after year one. We've been using it for years without ever paying a hosting fee.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">What if I already have a website?</div>
+        <div class="faq-a">Then you probably have a site that doesn't represent who you are anymore, and you're paying monthly to keep it running. Build something that actually reflects your current positioning and cancel your existing hosting.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">Can I make changes to the site after it's live?</div>
+        <div class="faq-a">Yes. That's the entire point. You own every file. Tell Claude what to change, redeploy. Takes about 30 seconds once you know the workflow.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">How is this different from Squarespace or Wix?</div>
+        <div class="faq-a">Custom site, under a second load, zero monthly cost, you own the code outright. If Squarespace shuts down tomorrow, your site still runs. That's real ownership.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-q">What if it doesn't work for me?</div>
+        <div class="faq-a">Follow the modules. If your site isn't live and functional, email james@jamesguldan.com for a full refund within 30 days. No questions asked.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
+<!-- FINAL CTA: Gradient Bold -->
 <section class="final-cta">
   <div class="container">
     <h2>An hour from now, you own<br>your <em>digital real estate.</em></h2>
-    <p>Your brand has a voice. Give it a home you actually control.</p>
+    <p class="cta-sub">Your brand has a voice. Give it a home you actually control.</p>
     <a href="https://buy.stripe.com/00wfZh5OK4yKgObbuF6c007" class="cta-button">
       Get Independent. $197.
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
