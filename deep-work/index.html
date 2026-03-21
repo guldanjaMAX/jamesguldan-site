@@ -64,6 +64,7 @@
     .nav-links a:hover { color: var(--text); }
     .nav-btn { display: inline-block; background: var(--text); color: #fff !important; border: none; padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Inter',sans-serif; transition: all .25s ease; text-decoration: none !important; }
     .nav-btn:hover { background: #c4703f; color: #fff !important; }
+    .mobile-nav-btn { display: none; }
 
     /* HERO DESKTOP */
     .hero { position: relative; height: calc(100vh - var(--nav-h)); overflow: visible; z-index: 2; }
@@ -435,7 +436,9 @@
       .before-decide-section { padding: 60px 28px !important; }
     }
     @media (max-width: 860px) {
-      nav { padding: 0 20px; } .nav-links { display: none; }
+      nav { padding: 0 16px; height: 56px; } .nav-links { display: none; }
+      .mobile-nav-btn { display: inline-block; padding: 8px 18px; font-size: 12px; }
+      .nav-logo { font-size: 12px; letter-spacing: 2px; }
       .hero { display: none; }
       .mobile-hero-photo { display: block; }
       .mobile-hero-video { display: none; }
@@ -604,6 +607,7 @@
     <li><a href="#stories">Stories</a></li>
     <li><a href="#checkout" data-checkout="blueprint" class="nav-btn" style="text-decoration:none;">Get Clear Now</a></li>
   </ul>
+  <a href="#checkout" data-checkout="blueprint" class="nav-btn mobile-nav-btn" style="text-decoration:none;">Get Clear Now</a>
 </nav>
 
 <!-- HERO DESKTOP -->
