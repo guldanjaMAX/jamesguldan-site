@@ -186,7 +186,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -197,13 +197,13 @@
             --text-primary: #1A1A1A;
             --text-secondary: #555555;
             --text-muted: #999999;
-            --accent: #BF6D2A;
-            --accent-hover: #A85D22;
-            --accent-soft: rgba(191, 109, 42, 0.08);
-            --accent-glow: rgba(191, 109, 42, 0.06);
+            --accent: #c4703f;
+            --accent-hover: #a85d2f;
+            --accent-soft: rgba(196, 112, 63, 0.08);
+            --accent-glow: rgba(196, 112, 63, 0.06);
             --border: rgba(0, 0, 0, 0.07);
-            --border-accent: rgba(191, 109, 42, 0.2);
-            --gradient-warm: linear-gradient(135deg, #BF6D2A, #D4954A);
+            --border-accent: rgba(196, 112, 63, 0.2);
+            --gradient-warm: linear-gradient(135deg, #c4703f, #d4954a);
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
             --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.03);
             --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
@@ -491,6 +491,17 @@
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
+
+        /* Video float card + halos (matching deep work page) */
+        .vid-halo { position: absolute; bottom: 5%; right: 4%; width: 336px; height: 214px; border: 1px solid rgba(196,112,63,.22); border-radius: 16px; animation: halo 3.2s ease-in-out infinite; pointer-events: none; z-index: 3; }
+        .vid-halo2 { position: absolute; bottom: 3.5%; right: 2.2%; width: 374px; height: 244px; border: 1px solid rgba(196,112,63,.12); border-radius: 20px; animation: halo 3.2s ease-in-out infinite .75s; pointer-events: none; z-index: 3; }
+        @keyframes halo { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(1.03);} }
+        .vid-float { position: absolute; bottom: 4%; right: 5%; z-index: 4; width: 180px; border-radius: 12px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 12px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08); }
+        .vid-float video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; }
+        .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: 0.7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
+        .hero-arrow-label { position: absolute; bottom: 42%; right: 12%; z-index: 6; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: var(--accent); display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
+        .hero-arrow-label svg { width: 52px; opacity: 0.85; }
 
         .hero-meta-proof {
             padding: 14px 0;
@@ -1767,6 +1778,10 @@
             .hero-bg-photo::before {
                 width: 65%;
             }
+            .vid-float { width: 150px; }
+            .vid-halo { width: 280px; height: 178px; }
+            .vid-halo2 { width: 310px; height: 204px; }
+            .hero-arrow-label { right: 5%; bottom: 38%; }
         }
         @media (max-width: 900px) {
             .hero {
@@ -1789,6 +1804,7 @@
             .hero-bg-photo::before {
                 display: none;
             }
+            .vid-float, .vid-halo, .vid-halo2, .hero-arrow-label { display: none; }
             .hero-content {
                 text-align: center;
                 max-width: 100%;
@@ -2089,20 +2105,35 @@
     <section class="hero">
         <div class="hero-bg-photo fade-in delay-2">
             <img src="james-hero.png" alt="James Guldan - Deep Work for Entrepreneurs">
+            <div class="vid-halo"></div>
+            <div class="vid-halo2"></div>
+            <div class="vid-float">
+                <video controls preload="metadata">
+                    <source src="deep-work/videos/james-deepwork-v3.mp4" type="video/mp4">
+                </video>
+                <div class="vid-label">3 min · my story</div>
+            </div>
+        </div>
+        <div class="hero-arrow-label">
+            <span>Hear my story</span>
+            <svg viewBox="0 0 50 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25,6 C22,24 20,42 22,58 C23,68 26,76 30,84" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+                <path d="M30,84 L22,76" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+                <path d="M30,84 L36,75" stroke="#c4703f" stroke-width="2.3" stroke-linecap="round"/>
+            </svg>
         </div>
         <div class="container">
             <div class="hero-inner">
                 <div class="hero-content fade-in">
-                    <div class="hero-eyebrow">Deep Work</div>
-                    <h1>You know what's broken. <span class="serif-italic accent">You've known for a while.</span></h1>
+                    <h1>Your business is successful. So why doesn't it <span class="serif-italic accent">feel like yours</span> anymore?</h1>
                     <p class="hero-subtitle">
-                        Your business doesn't match who you've become. The positioning is off. The offers don't land. And nobody around you can see it clearly enough to tell you what's actually wrong. Two hours from now, you'll know exactly what to fix and how.
+                        You built something real. But somewhere along the way, your brand stopped reflecting who you actually are. In two hours, you'll have the positioning, the language, and the blueprint to fix it.
                     </p>
                     <a href="/deep-work/" class="hero-cta">
                         Start the Deep Work Interview
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-secondary); font-family: 'DM Sans', sans-serif;">$67. Two hours. The same process I used to charge $5,000 for.</p>
+                    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-secondary); font-family: 'Inter', sans-serif;">Previously $5,000 per session · <strong style="color:var(--text-primary);">$67</strong> launch week</p>
                 </div>
             </div>
         </div>
