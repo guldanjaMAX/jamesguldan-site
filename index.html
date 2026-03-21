@@ -859,52 +859,63 @@
             position: relative; z-index: 2;
         }
 
-        /* Split Reveal Quote Section */
-        .split-reveal {
-            display: flex;
-            align-items: center;
-            max-width: 880px;
+        /* Cinematic Quote Section */
+        .split-reveal-wrap {
+            max-width: 1060px;
             margin: 0 auto;
             padding: 0 24px;
             position: relative;
             z-index: 2;
         }
 
+        .split-reveal {
+            display: flex;
+            align-items: stretch;
+            background: linear-gradient(135deg, #F0EDE8 0%, #E8E4DD 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            min-height: 440px;
+        }
+
         .split-reveal-photo {
-            flex: 0 0 240px;
-            position: relative;
+            flex: 0 0 340px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-top: 40px;
+            background: linear-gradient(180deg, rgba(196,112,63,0.03) 0%, rgba(196,112,63,0.07) 100%);
         }
 
         .split-reveal-photo img {
-            width: 240px;
+            width: 280px;
             height: auto;
             display: block;
-            filter: drop-shadow(0 12px 40px rgba(26, 26, 26, 0.08));
+            filter: drop-shadow(0 -8px 40px rgba(26,26,26,0.06));
         }
 
         .split-reveal-content {
             flex: 1;
-            padding: 0 0 0 52px;
-            border-left: 2px solid rgba(196, 112, 63, 0.15);
-            margin-left: 52px;
-            padding-left: 48px;
+            padding: 64px 56px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .split-reveal-eyebrow {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.58rem;
+            font-size: 0.55rem;
             font-weight: 500;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--accent);
-            opacity: 0.6;
-            margin-bottom: 20px;
+            opacity: 0.5;
+            margin-bottom: 24px;
         }
 
         .split-reveal-text {
             font-family: 'Playfair Display', Georgia, serif;
             font-style: italic;
-            font-size: clamp(1rem, 1.4vw, 1.15rem);
+            font-size: clamp(1.05rem, 1.5vw, 1.25rem);
             line-height: 1.8;
             color: rgba(26, 26, 26, 0.5);
             margin-bottom: 28px;
@@ -912,82 +923,89 @@
 
         .split-reveal-name {
             font-family: 'Outfit', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--accent);
-            opacity: 0.6;
+            opacity: 0.55;
         }
 
-        .split-reveal-accent-line {
-            display: none;
-        }
+        .split-reveal-accent-line { display: none; }
 
-        @media (max-width: 768px) {
-            .split-reveal {
-                flex-direction: column;
-                text-align: center;
-                gap: 36px;
-                padding: 0 32px;
-            }
-            .split-reveal-photo { flex: none; }
-            .split-reveal-photo img { width: 180px; margin: 0 auto; }
-            .split-reveal-content {
-                padding: 0;
-                border-left: none;
-                margin-left: 0;
-                border-top: 2px solid rgba(196, 112, 63, 0.15);
-                padding-top: 32px;
-            }
-        }
-
-        /* Testimonial Quote */
+        /* Testimonial Strip */
         .problem-truth {
-            max-width: 680px; margin: 0 auto 80px;
-            text-align: center; padding: 60px 48px;
+            max-width: 1060px; margin: 0 auto 80px;
+            padding: 0 24px;
             position: relative; z-index: 2;
         }
 
+        .truth-strip {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-top: 36px;
+            padding: 32px 40px;
+            background: rgba(196,112,63,0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(196,112,63,0.08);
+        }
+
         .truth-photo {
-            width: 72px; height: 72px;
+            width: 60px; height: 60px;
             border-radius: 50%;
             overflow: hidden;
-            margin: 0 auto 28px;
+            flex-shrink: 0;
             border: 2px solid rgba(196,112,63,0.15);
         }
 
         .truth-photo img {
             width: 100%; height: 100%;
             object-fit: cover;
+            object-position: center 15%;
         }
 
-        .truth-content { }
+        .truth-content { flex: 1; }
 
-        .truth-label {
-            font-size: 0.55rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.22em; color: var(--accent);
-            margin-bottom: 24px; opacity: 0.5;
-            font-family: 'JetBrains Mono', monospace;
-        }
+        .truth-label { display: none; }
 
         .problem-truth h3 {
             font-family: 'Playfair Display', Georgia, serif;
             font-style: italic; font-weight: 400;
-            font-size: clamp(1.15rem, 2vw, 1.45rem);
-            color: rgba(26,26,26,0.45); line-height: 1.7;
-            margin: 0 auto;
-            max-width: 560px;
+            font-size: clamp(1rem, 1.4vw, 1.1rem);
+            color: rgba(26,26,26,0.4); line-height: 1.7;
+            margin: 0;
         }
 
         .truth-attribution {
-            font-size: 0.7rem; color: rgba(26,26,26,0.3);
-            margin-top: 24px; font-family: 'Outfit', sans-serif;
+            font-size: 0.65rem; color: rgba(26,26,26,0.3);
+            margin-top: 10px; font-family: 'Outfit', sans-serif;
             font-weight: 600; letter-spacing: 0.12em;
             text-transform: uppercase;
         }
 
         .truth-attribution span { color: var(--accent); opacity: 0.7; }
+
+        @media (max-width: 768px) {
+            .split-reveal {
+                flex-direction: column;
+                min-height: auto;
+                border-radius: 16px;
+            }
+            .split-reveal-photo {
+                flex: none;
+                height: 280px;
+                padding-top: 24px;
+            }
+            .split-reveal-photo img { width: 200px; }
+            .split-reveal-content { padding: 40px 28px 48px; }
+            .truth-strip {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+                padding: 28px 24px;
+            }
+        }
 
         /* Mobile: stack symptom rows */
         @media (max-width: 900px) {
@@ -998,7 +1016,7 @@
             }
             .pattern-symptom.flip .pattern-symptom-inner { direction: ltr; }
             .pattern-symptom { padding: 48px 24px; }
-            .problem-truth { margin: 0 24px 56px; padding: 40px 20px; }
+            .problem-truth { margin: 0 16px 56px; padding: 0 0; }
             .pattern-diag-card { margin: 0; }
         }
 
@@ -2491,26 +2509,28 @@
             </div>
         </div>
 
-        <div class="split-reveal">
-            <div class="split-reveal-photo">
-                <img src="james-pink-shirt-cutout.png" alt="James Guldan" />
-            </div>
-            <div class="split-reveal-content">
-                <div class="split-reveal-eyebrow">Why I See It</div>
-                <p class="split-reveal-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</p>
-                <div class="split-reveal-accent-line"></div>
-                <div class="split-reveal-name">James Guldan</div>
+        <div class="split-reveal-wrap">
+            <div class="split-reveal">
+                <div class="split-reveal-photo">
+                    <img src="james-pink-shirt-cutout.png" alt="James Guldan" />
+                </div>
+                <div class="split-reveal-content">
+                    <div class="split-reveal-eyebrow">Why I See It</div>
+                    <p class="split-reveal-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</p>
+                    <div class="split-reveal-name">James Guldan</div>
+                </div>
             </div>
         </div>
 
         <div class="problem-truth">
-            <div class="truth-photo">
-                <img src="testimonials/joshua-b-lee.jpg" alt="Joshua B Lee" />
-            </div>
-            <div class="truth-content">
-                <div class="truth-label">What They Say</div>
-                <h3>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</h3>
-                <div class="truth-attribution"><span>Joshua B Lee</span></div>
+            <div class="truth-strip">
+                <div class="truth-photo">
+                    <img src="testimonials/joshua-b-lee.jpg" alt="Joshua B Lee" />
+                </div>
+                <div class="truth-content">
+                    <h3>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</h3>
+                    <div class="truth-attribution"><span>Joshua B Lee</span></div>
+                </div>
             </div>
         </div>
     </section>
