@@ -765,12 +765,12 @@
         .pattern-diag-card {
             background: #0e0e12;
             border: 1px solid rgba(255,255,255,0.04);
-            border-radius: 16px; overflow: hidden;
+            border-radius: 12px; overflow: hidden;
             position: relative;
         }
         .pattern-diag-card::before {
             content: ''; position: absolute; inset: 0;
-            border-radius: 16px;
+            border-radius: 12px;
             border: 1px solid transparent;
             background: linear-gradient(135deg, rgba(196,112,63,0.15), transparent 40%, transparent 60%, rgba(196,112,63,0.08)) border-box;
             mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
@@ -779,45 +779,46 @@
         }
         .diag-header {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 20px 32px;
+            padding: 14px 22px;
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
         .diag-title {
-            font-family: 'JetBrains Mono', 'DM Sans', monospace; font-size: 0.7rem;
-            font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-            color: rgba(253,252,250,0.5);
+            font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+            font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+            color: rgba(253,252,250,0.4);
         }
         .diag-case {
-            font-family: 'JetBrains Mono', 'DM Sans', monospace; font-size: 0.65rem;
-            font-weight: 500; color: var(--accent); opacity: 0.8;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+            font-weight: 500; color: var(--accent); opacity: 0.7;
         }
-        .diag-body { padding: 36px 32px; }
-        .diag-msg { margin-bottom: 28px; }
+        .diag-body { padding: 22px 22px; }
+        .diag-msg { margin-bottom: 18px; }
         .diag-msg:last-child { margin-bottom: 0; }
         .diag-sender {
-            font-family: 'JetBrains Mono', 'DM Sans', monospace; font-size: 0.7rem;
-            font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-            margin-bottom: 10px;
+            font-family: 'Inter', sans-serif; font-size: 0.6rem;
+            font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            margin-bottom: 4px;
         }
         .diag-sender.ai { color: var(--accent); opacity: 1; }
-        .diag-sender.client { color: rgba(253,252,250,0.55); }
+        .diag-sender.client { color: rgba(253,252,250,0.45); }
         .diag-text {
-            font-family: 'Playfair Display', Georgia, serif; font-style: italic;
-            font-size: 1.25rem; line-height: 1.8; color: rgba(253,252,250,0.88);
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-size: 0.88rem; line-height: 1.65; color: rgba(253,252,250,0.8);
+            font-weight: 400;
         }
-        .diag-sender.ai + .diag-text { color: #FDFCFA; }
+        .diag-sender.ai + .diag-text { color: rgba(253,252,250,0.95); }
         .diag-pause {
-            text-align: center; padding: 14px 0;
-            font-size: 0.7rem; letter-spacing: 0.3em;
-            color: rgba(253,252,250,0.25);
+            text-align: center; padding: 8px 0;
+            font-size: 0.6rem; letter-spacing: 0.3em;
+            color: rgba(253,252,250,0.2);
         }
         .diag-footer {
-            padding: 14px 24px;
+            padding: 12px 22px;
             border-top: 1px solid rgba(255,255,255,0.04);
             display: flex; align-items: center; gap: 8px;
         }
         .diag-pulse {
-            width: 6px; height: 6px; border-radius: 50%;
+            width: 5px; height: 5px; border-radius: 50%;
             background: var(--accent);
             animation: diagPulse 2s ease-in-out infinite;
         }
@@ -826,7 +827,7 @@
             50% { opacity: 0.8; transform: scale(1.3); }
         }
         .diag-status {
-            font-family: 'JetBrains Mono', 'DM Sans', monospace; font-size: 0.55rem;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.5rem;
             letter-spacing: 0.1em; color: rgba(253,252,250,0.2);
         }
 
