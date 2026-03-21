@@ -862,117 +862,99 @@
         /* Split Reveal Quote Section */
         .split-reveal {
             display: flex;
-            align-items: stretch;
-            max-width: 1000px;
+            align-items: center;
+            max-width: 880px;
             margin: 0 auto;
-            background: #0e0e12;
-            border-radius: 16px;
-            overflow: hidden;
-            min-height: 420px;
+            padding: 0 24px;
             position: relative;
             z-index: 2;
         }
 
         .split-reveal-photo {
-            flex: 0 0 38%;
+            flex: 0 0 240px;
             position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            background: linear-gradient(180deg, #0e0e12 0%, #1a1a22 100%);
         }
 
         .split-reveal-photo img {
-            width: 100%;
-            max-width: 320px;
+            width: 240px;
             height: auto;
             display: block;
-            object-fit: contain;
-            object-position: bottom center;
-            filter: drop-shadow(0 0 40px rgba(196, 112, 63, 0.15));
+            filter: drop-shadow(0 12px 40px rgba(26, 26, 26, 0.08));
         }
 
         .split-reveal-content {
             flex: 1;
-            padding: 64px 56px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding: 0 0 0 52px;
+            border-left: 2px solid rgba(196, 112, 63, 0.15);
+            margin-left: 52px;
+            padding-left: 48px;
         }
 
         .split-reveal-eyebrow {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
+            font-size: 0.58rem;
             font-weight: 500;
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--accent);
-            opacity: 0.7;
-            margin-bottom: 28px;
+            opacity: 0.6;
+            margin-bottom: 20px;
         }
 
         .split-reveal-text {
-            font-family: 'Inter', -apple-system, sans-serif;
-            font-size: clamp(0.95rem, 1.3vw, 1.08rem);
-            line-height: 1.85;
-            color: rgba(253, 252, 250, 0.8);
-            margin-bottom: 36px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: clamp(1rem, 1.4vw, 1.15rem);
+            line-height: 1.8;
+            color: rgba(26, 26, 26, 0.5);
+            margin-bottom: 28px;
         }
 
         .split-reveal-name {
             font-family: 'Outfit', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: rgba(253, 252, 250, 0.5);
+            color: var(--accent);
+            opacity: 0.6;
         }
 
         .split-reveal-accent-line {
-            width: 40px;
-            height: 2px;
-            background: var(--accent);
-            opacity: 0.4;
-            margin-bottom: 16px;
+            display: none;
         }
 
         @media (max-width: 768px) {
             .split-reveal {
                 flex-direction: column;
-                border-radius: 12px;
-                margin: 0 16px;
+                text-align: center;
+                gap: 36px;
+                padding: 0 32px;
             }
-            .split-reveal-photo {
-                flex: none;
-                height: 280px;
-                align-items: flex-end;
-            }
-            .split-reveal-photo img {
-                max-width: 220px;
-            }
+            .split-reveal-photo { flex: none; }
+            .split-reveal-photo img { width: 180px; margin: 0 auto; }
             .split-reveal-content {
-                padding: 40px 28px 48px;
+                padding: 0;
+                border-left: none;
+                margin-left: 0;
+                border-top: 2px solid rgba(196, 112, 63, 0.15);
+                padding-top: 32px;
             }
         }
 
-        /* Testimonial Card — with photo */
+        /* Testimonial Quote */
         .problem-truth {
-            max-width: 800px; margin: 0 auto 100px;
-            display: flex; align-items: center; gap: 40px;
-            padding: 48px 56px;
-            background: rgba(196,112,63,0.04);
-            border: 1px solid rgba(196,112,63,0.12);
-            border-radius: 20px; position: relative; z-index: 2;
+            max-width: 680px; margin: 0 auto 80px;
+            text-align: center; padding: 60px 48px;
+            position: relative; z-index: 2;
         }
 
         .truth-photo {
-            flex: 0 0 90px;
-            width: 90px; height: 90px;
+            width: 72px; height: 72px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid rgba(196,112,63,0.2);
-            box-shadow: 0 4px 20px rgba(196,112,63,0.08);
+            margin: 0 auto 28px;
+            border: 2px solid rgba(196,112,63,0.15);
         }
 
         .truth-photo img {
@@ -980,33 +962,32 @@
             object-fit: cover;
         }
 
-        .truth-content {
-            flex: 1;
-        }
+        .truth-content { }
 
         .truth-label {
-            font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.2em; color: var(--accent);
-            margin-bottom: 16px; opacity: 0.6;
+            font-size: 0.55rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.22em; color: var(--accent);
+            margin-bottom: 24px; opacity: 0.5;
             font-family: 'JetBrains Mono', monospace;
         }
 
         .problem-truth h3 {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: 'Playfair Display', Georgia, serif;
             font-style: italic; font-weight: 400;
-            font-size: clamp(1.05rem, 1.6vw, 1.2rem);
-            color: rgba(26,26,26,0.65); line-height: 1.75;
-            margin: 0;
+            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            color: rgba(26,26,26,0.45); line-height: 1.7;
+            margin: 0 auto;
+            max-width: 560px;
         }
 
         .truth-attribution {
-            font-size: 0.75rem; color: rgba(26,26,26,0.35);
-            margin-top: 16px; font-family: 'Outfit', sans-serif;
-            font-weight: 600; letter-spacing: 0.1em;
+            font-size: 0.7rem; color: rgba(26,26,26,0.3);
+            margin-top: 24px; font-family: 'Outfit', sans-serif;
+            font-weight: 600; letter-spacing: 0.12em;
             text-transform: uppercase;
         }
 
-        .truth-attribution span { color: var(--accent); }
+        .truth-attribution span { color: var(--accent); opacity: 0.7; }
 
         /* Mobile: stack symptom rows */
         @media (max-width: 900px) {
@@ -1017,8 +998,7 @@
             }
             .pattern-symptom.flip .pattern-symptom-inner { direction: ltr; }
             .pattern-symptom { padding: 48px 24px; }
-            .problem-truth { margin: 0 24px 72px; padding: 36px 24px; flex-direction: column; text-align: center; gap: 24px; }
-            .truth-photo { flex: none; }
+            .problem-truth { margin: 0 24px 56px; padding: 40px 20px; }
             .pattern-diag-card { margin: 0; }
         }
 
