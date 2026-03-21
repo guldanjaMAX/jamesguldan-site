@@ -1005,6 +1005,22 @@
                 gap: 16px;
                 padding: 28px 24px;
             }
+            /* Cost of Inaction mobile */
+            .coi-panel { flex-direction: column; }
+            .coi-left { flex: none; padding: 40px 28px; }
+            .coi-left h3 { font-size: 1.3rem; }
+            .coi-right { padding: 40px 28px; }
+            /* Shift mobile */
+            .shift-columns { grid-template-columns: 1fr; gap: 32px; }
+            .shift-bottom { padding: 24px 28px; }
+            /* Timeline mobile */
+            .cases-timeline { padding-left: 32px; }
+            .cases-card { flex-direction: column; gap: 20px; padding: 28px; }
+            .cases-card::before { left: -24px; top: 32px; width: 10px; height: 10px; }
+            .cases-card-photo { flex: none; }
+            /* About mobile */
+            .about-content { grid-template-columns: 1fr; gap: 40px; }
+            .about-candid { aspect-ratio: 3/2; max-width: 100%; }
         }
 
         /* Mobile: stack symptom rows */
@@ -1134,59 +1150,148 @@
             color: var(--accent);
         }
 
-        /* The Shift Section */
-        /* Cost of Inaction */
+        /* Cost of Inaction — Split Panel */
         .cost-of-inaction {
-            padding: 80px 0;
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .cost-of-inaction .container {
-            max-width: 700px;
-        }
-
-        .cost-of-inaction p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            text-align: center;
-        }
-
-        .cost-of-inaction p + p {
-            margin-top: 20px;
-        }
-
-        .cost-of-inaction .cost-highlight {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(1.15rem, 2vw, 1.35rem);
-            font-weight: 600;
-            color: var(--text-primary);
-            text-align: center;
-            margin-top: 32px;
-            line-height: 1.4;
-        }
-
-        .shift-section {
-            padding: 120px 0;
-            text-align: center;
-        }
-
-        .shift-content {
-            max-width: 750px;
+            padding: 80px 24px;
+            max-width: 1060px;
             margin: 0 auto;
         }
+        .coi-panel {
+            display: flex;
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 380px;
+        }
+        .coi-left {
+            flex: 0 0 340px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2520 100%);
+            padding: 56px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .coi-left .section-eyebrow { color: var(--accent); opacity: 0.8; }
+        .coi-left h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.3;
+            margin-top: 12px;
+        }
+        .coi-items {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .coi-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+        }
+        .coi-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+        .coi-right {
+            flex: 1;
+            background: linear-gradient(135deg, #F5F3F0 0%, #EDE9E3 100%);
+            padding: 56px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 24px;
+        }
+        .coi-right p {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text-secondary);
+        }
+        .coi-right .coi-closing {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: rgba(26,26,26,0.4);
+            line-height: 1.7;
+            border-left: 3px solid var(--accent);
+            padding-left: 24px;
+        }
 
+        /* The Shift — Before/After Columns */
+        .shift-section {
+            padding: 110px 0;
+            background: linear-gradient(180deg, #F5F3F0 0%, var(--bg-primary) 100%);
+        }
+        .shift-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
         .shift-headline {
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
-            font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+            font-size: clamp(1.6rem, 2.8vw, 2.2rem);
             color: var(--text-primary);
             line-height: 1.3;
             letter-spacing: -0.02em;
-            margin-bottom: 32px;
         }
+        .shift-headline em {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            color: var(--accent);
+            display: block;
+            margin-top: 4px;
+        }
+        .shift-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-top: 56px;
+            text-align: left;
+        }
+        .shift-col-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .shift-col p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        .shift-col p + p { margin-top: 16px; }
+        .shift-col.right-col p { color: var(--text-primary); }
+        .shift-bottom {
+            margin-top: 56px;
+            padding: 32px 40px;
+            background: rgba(196,112,63,0.04);
+            border-radius: 16px;
+            border: 1px solid rgba(196,112,63,0.1);
+            text-align: left;
+        }
+        .shift-bottom p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .shift-content { display: none; }
+        .shift-detail { display: none; }
 
         .shift-detail {
             font-size: 1.05rem;
@@ -1316,6 +1421,82 @@
             background: var(--accent);
             margin: 48px 0;
             opacity: 0.3;
+        }
+
+        /* Timeline case studies */
+        .cases-timeline {
+            position: relative;
+            padding-left: 48px;
+        }
+        .cases-timeline::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), rgba(196,112,63,0.1));
+            border-radius: 2px;
+        }
+        .cases-card {
+            position: relative;
+            background: var(--bg-primary);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+        .cases-card::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 44px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-secondary);
+        }
+        .cases-card-photo {
+            flex: 0 0 80px;
+        }
+        .cases-card-photo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(196,112,63,0.15);
+        }
+        .cases-card-body { flex: 1; }
+        .cases-card-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+        .cases-card p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        .cases-card p + p { margin-top: 14px; }
+        .cases-result {
+            margin-top: 20px;
+            padding: 16px 20px;
+            background: rgba(196,112,63,0.04);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent);
+        }
+        .cases-result p {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-primary) !important;
         }
 
         .case-study-box {
@@ -1627,86 +1808,70 @@
         }
 
         /* About section - full width hero style */
+        /* About — Cinematic Wide */
         .about-section {
             position: relative;
-            padding: 120px 0;
-            background: linear-gradient(to right, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.82) 40%, rgba(10,10,10,0.55) 75%, rgba(10,10,10,0.4) 100%), url('james-speaking-stage.jpg') center center/cover no-repeat;
-            color: #fff;
+            padding: 110px 0;
+            background: var(--bg-primary);
         }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-photos {
-            display: none;
-        }
-
-        .about-photo {
-            flex: 1;
-            position: relative;
-        }
-
-        .about-photo img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .about-photo-caption {
-            display: none;
-        }
-
-        .about-text .section-eyebrow {
-            color: var(--accent);
-        }
-
-        .about-text h2 {
-            margin-bottom: 24px;
-            color: #fff;
-        }
-
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(ellipse at 70% 50%, transparent 30%, rgba(10,10,10,0.3) 100%);
-            pointer-events: none;
-            z-index: 0;
-        }
+        .about-section::before { display: none; }
         .about-section > .container {
             position: relative;
             z-index: 1;
         }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 72px;
+            align-items: center;
+            max-width: 1060px;
+        }
+        .about-photos { display: none; }
+        .about-photo { display: none; }
+        .about-photo img { display: none; }
+        .about-photo-caption { display: none; }
 
-        .about-text h2 em.serif-italic.accent {
+        .about-text .section-eyebrow {
             color: var(--accent);
         }
-
+        .about-text h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.5rem, 2.2vw, 1.8rem);
+            font-weight: 600;
+            line-height: 1.35;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+        .about-text h2 em.serif-italic.accent {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            color: var(--accent);
+        }
         .about-text p {
             margin-bottom: 18px;
             font-size: 0.95rem;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.8);
+            line-height: 1.85;
+            color: var(--text-secondary);
         }
-
         .about-candid {
-            display: none;
-            border-radius: 16px;
+            display: block;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+            aspect-ratio: 4/5;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.08);
         }
-
         .about-candid img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 100px 0;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
         }
 
         /* FAQ */
@@ -2536,48 +2701,95 @@
     </section>
 
     <div class="cost-of-inaction">
-        <div class="container">
-            <p>Every week you operate with the wrong positioning, you lose deals you never even see. The prospect who Googled you and left. The referral who couldn't explain what you do. The client who said "I need to think about it" because your offer didn't match your value.</p>
-            <p>That gap has a dollar amount. And it compounds.</p>
+        <div class="coi-panel">
+            <div class="coi-left">
+                <div class="section-eyebrow">The Invisible Losses</div>
+                <h3>What you're not seeing</h3>
+                <div class="coi-items">
+                    <div class="coi-item"><div class="coi-dot"></div>The prospect who Googled you and left</div>
+                    <div class="coi-item"><div class="coi-dot"></div>The referral who couldn't explain what you do</div>
+                    <div class="coi-item"><div class="coi-dot"></div>The client who needed to "think about it"</div>
+                    <div class="coi-item"><div class="coi-dot"></div>The deal that should have closed but didn't</div>
+                    <div class="coi-item"><div class="coi-dot"></div>The price you quoted that was half your value</div>
+                </div>
+            </div>
+            <div class="coi-right">
+                <p>Every week you operate with the wrong positioning, you lose deals you never even see.</p>
+                <p>That gap has a dollar amount. And it compounds.</p>
+                <p class="coi-closing">Most founders never count what they never see.</p>
+            </div>
         </div>
     </div>
 
     <section class="shift-section">
-        <div class="container">
-            <div class="shift-content">
-                <h2 class="shift-headline">You don't need another strategy. <em class="serif-italic accent">You need the truth about yours.</em></h2>
-                <p class="shift-detail">You've probably tried the agencies, the courses, the masterminds. And they probably helped, a little. But something still feels off. The brand doesn't quite fit. The offers don't reflect what you actually do best. And you can feel it in every sales conversation that should have closed but didn't.</p>
-                <p class="shift-detail" style="margin-top: 20px;">That gap between who you are and how your business shows up in the world? That's the thing nobody can see from the inside. It's why your coach keeps saying "you're undercharging" but can't tell you what to charge for. It's why your website feels wrong even though the copy is "good."</p>
-                <p class="shift-detail" style="margin-top: 20px;">That's why the Deep Work Interview pulls apart your entire business in two hours and gives you empirical, researched answers about what niche you could dominate. Named competitors. Pricing data. A credibility score. Three structured offers. Not theory. Not inspiration. Answers you can act on today. And if you want someone to sit next to you and actually build the thing? I do that too.</p>
+        <div class="shift-inner">
+            <div class="section-eyebrow" style="text-align: center;">The Shift</div>
+            <h2 class="shift-headline">You don't need another strategy. <em>You need the truth about yours.</em></h2>
+
+            <div class="shift-columns">
+                <div class="shift-col">
+                    <div class="shift-col-label">What you've tried</div>
+                    <p>The agencies. The courses. The masterminds. They probably helped, a little. But something still feels off. The brand doesn't quite fit. The offers don't reflect what you actually do best.</p>
+                    <p>Your coach keeps saying "you're undercharging" but can't tell you what to charge for. Your website feels wrong even though the copy is "good."</p>
+                </div>
+                <div class="shift-col right-col">
+                    <div class="shift-col-label">What actually works</div>
+                    <p>Pulling apart your entire business in two hours and giving you empirical, researched answers about what niche you could dominate.</p>
+                    <p>Named competitors. Pricing data. A credibility score. Three structured offers. Not theory. Not inspiration. Answers you can act on today.</p>
+                </div>
+            </div>
+
+            <div class="shift-bottom">
+                <p>That gap between who you are and how your business shows up in the world? That's the thing nobody can see from the inside. And if you want someone to sit next to you and actually build the thing? I do that too.</p>
             </div>
         </div>
     </section>
 
-    <!-- What Changes — case studies moved up for stronger conversion arc -->
+    <!-- What Changes — Timeline with photos -->
     <section class="third-option-section">
         <div class="container">
             <div class="third-option-inner">
                 <div class="section-eyebrow">What Changes</div>
+                <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(1.6rem, 2.5vw, 2rem); font-weight: 600; line-height: 1.3; margin-bottom: 56px;">This is what happens when you stop guessing and start building from who you actually are.</h2>
 
-                <p class="narrative-text bold-intro">This is what happens when you stop guessing and start building from who you actually are.</p>
+                <div class="cases-timeline">
+                    <div class="cases-card">
+                        <div class="cases-card-photo">
+                            <img src="testimonials/megan-hunter.jpg" alt="Megan Hunter" loading="lazy">
+                        </div>
+                        <div class="cases-card-body">
+                            <div class="cases-card-name">Megan Hunter, CEO of High Conflict Institute</div>
+                            <p>Megan had spoken at Microsoft, the Israeli Knesset, the Scottish Parliament, and Boston Children's Hospital. She'd authored multiple books. But she was selling $9K consulting engagements one at a time, having totally different conversations with every prospect, with no system underneath any of it.</p>
+                            <p>In two weeks, we built the entire revenue engine: landing pages, assessment tools, a cost calculator, customer journey map, and tiered partnership packages from $36K to $150K annually.</p>
+                            <div class="cases-result">
+                                <p>She went from selling her time to selling a system. That's the difference between a practice and a business.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="case-study-box">
-                    <div class="cs-label">Megan Hunter, CEO of High Conflict Institute</div>
-                    <p>Megan had spoken at Microsoft, the Israeli Knesset, the Scottish Parliament, and Boston Children's Hospital. She'd authored multiple books. But she was selling $9K consulting engagements one at a time, having totally different conversations with every prospect, with no system underneath any of it.</p>
-                    <p>In two weeks, we built the entire revenue engine: landing pages, assessment tools, a cost calculator, customer journey map, and tiered partnership packages from $36K to $150K annually. Her own words: "The things I don't understand, I don't need to understand. That's your world. I completely put that in your hands."</p>
-                    <p><span class="accent">She went from selling her time to selling a system. That's the difference between a practice and a business.</span></p>
-                </div>
+                    <div class="cases-card">
+                        <div class="cases-card-photo">
+                            <img src="testimonials/re-perez.jpg" alt="Re Perez" loading="lazy">
+                        </div>
+                        <div class="cases-card-body">
+                            <div class="cases-card-name">Re Perez, Founder of Higher Love Summit</div>
+                            <p>Re had run a branding agency for 20+ years and worked with thousands of founders. But after the Deep Work process, he realized he'd been operating at 70% alignment. The clarity didn't just change his strategy. It gave him the conviction to write the most vulnerable post of his career, publicly share his cancer diagnosis, launch a brand new event for gay male entrepreneurs, and go all in on the thing he was actually meant to build.</p>
+                            <p>That post became his most engaged content of the year. Higher Love Summit is filling up with founding members at $7,500 each.</p>
+                            <div class="cases-result">
+                                <p>Same person, same skills. Different alignment. Completely different trajectory.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="case-study-box" style="margin-top: 32px;">
-                    <div class="cs-label">Re Perez, Founder of Higher Love Summit</div>
-                    <p>Re had run a branding agency for 20+ years and worked with thousands of founders. But after the Deep Work process, he realized he'd been operating at 70% alignment. The clarity didn't just change his strategy. It gave him the conviction to write the most vulnerable post of his career, publicly share his cancer diagnosis, launch a brand new event for gay male entrepreneurs, and go all in on the thing he was actually meant to build.</p>
-                    <p>That post became his most engaged content of the year. Higher Love Summit is filling up with founding members at $7,500 each. <span class="accent">Same person, same skills. Different alignment. Completely different trajectory.</span></p>
-                </div>
-
-                <div class="case-study-box" style="margin-top: 32px;">
-                    <div class="cs-label">From Repositioning to Necker Island</div>
-                    <p>One client got so clear on his positioning and the unique value of his craft that he was invited to Necker Island to work directly with Richard Branson's team, for free, in a room where people pay $35,000 for the week. Another client, after doing this same work, had the confidence to ask Richard Branson himself for a testimonial and a social media share for their event. And got it.</p>
-                    <p><span class="accent">When your positioning is dialed in, the world starts pulling you toward opportunities instead of you chasing them.</span></p>
+                    <div class="cases-card">
+                        <div class="cases-card-body">
+                            <div class="cases-card-name">From Repositioning to Necker Island</div>
+                            <p>One client got so clear on his positioning and the unique value of his craft that he was invited to Necker Island to work directly with Richard Branson's team, for free, in a room where people pay $35,000 for the week. Another client, after doing this same work, had the confidence to ask Richard Branson himself for a testimonial and a social media share for their event. And got it.</p>
+                            <div class="cases-result">
+                                <p>When your positioning is dialed in, the world starts pulling you toward opportunities instead of you chasing them.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <p class="narrative-text" style="margin-top: 48px;">Most founders think the answer is more: more ads, more content, a new funnel, another launch. But the real problem is almost never the execution. It's the foundation underneath it. If your positioning doesn't match who you've become, nothing built on top of it will work the way it should.</p>
@@ -2869,7 +3081,7 @@
                     <p>I live in Scottsdale with my son. I used to run sixteen hour days building businesses for other people. Now I produce more good work in four focused hours than I used to in sixteen scattered ones. That shift changed everything about how I think about business, and it's built into everything I teach.</p>
                 </div>
                 <div class="about-candid">
-                    <img src="james-candid-event.jpg" alt="James Guldan at a business event in Scottsdale" loading="lazy">
+                    <img src="james-about-portrait.jpg" alt="James Guldan, brand strategist" loading="lazy">
                 </div>
             </div>
         </div>
@@ -2912,6 +3124,17 @@
     </section>
 
     
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container" style="max-width: 620px; text-align: center;">
+            <div class="section-eyebrow" style="text-align: center;">Ready?</div>
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2.2vw, 1.7rem); font-weight: 600; line-height: 1.35;">If you read this far, <em class="serif-italic accent">you already know.</em></h2>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 12px; line-height: 1.6;">No pitch. No upsell sequence. Just the answers you've been looking for.</p>
+            <a href="/deep-work/" class="hero-cta" style="display: inline-flex; margin-top: 32px;">Start the Deep Work Interview <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <p style="margin-top: 16px; font-size: 0.8rem; color: var(--text-muted);">$67. Previously $5,000 per session.</p>
+        </div>
+    </section>
 
     <!-- Revenue Warning Modal -->
     <div class="revenue-warning" id="revenueWarning">
