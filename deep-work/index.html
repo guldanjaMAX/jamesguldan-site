@@ -1726,7 +1726,7 @@
       + '<div class="op-pay-error" id="op-pay-error"></div>'
       + '<form id="op-pay-form"><button type="submit" class="op-pay-btn" id="op-pay-submit"><span id="op-pay-spinner" class="btn-spinner" style="display:none"></span><span class="btn-text">Pay $67</span></button></form>'
       + '<div class="op-guarantee">7 day guarantee &middot; Cancel anytime &middot; Instant access</div>'
-      + '<button class="op-back-btn" id="op-back-btn">← Change order</button>'
+      + '<button class="op-back-btn" id="op-back-btn">Cancel</button>'
       + '</div>'
       + '</div>'
 
@@ -1757,11 +1757,16 @@
     // ── Popup open / close ───────────────────────────────────────────────────
     function openPopup(e) {
       if (e) e.preventDefault();
-      updateTotal();
-      showStep('order');
+      // Skip order selection — go straight to payment (no upsells)
+      currentTiers = ['blueprint'];
+      document.getElementById('op-order-bar-label').textContent = 'Deep Work Blueprint';
+      document.getElementById('op-order-bar-price').textContent = '$67';
+      document.querySelector('#op-pay-submit .btn-text').textContent = 'Pay $67';
+      showStep('payment');
       backdrop.style.display = 'block';
       popup.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      initStripePaymentElement(currentTiers);
       requestAnimationFrame(function() {
         backdrop.classList.add('visible');
         popup.classList.add('visible');
@@ -1860,10 +1865,9 @@
       initStripePaymentElement(tiers);
     });
 
-    // ── Back button ──────────────────────────────────────────────────────────
+    // ── Back button — closes popup since there is no order step ─────────────
     document.getElementById('op-back-btn').addEventListener('click', function() {
-      showStep('order');
-      resetPaymentView();
+      closePopup();
     });
 
     // ── Init Stripe Payment Element ──────────────────────────────────────────
