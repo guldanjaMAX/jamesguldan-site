@@ -527,7 +527,7 @@
         /* Proof bar — redesigned */
         .proof-bar {
             padding: 0;
-            background: #0d0c0b;
+            background: #0e0e12;
             position: relative;
             overflow: hidden;
         }
@@ -536,14 +536,14 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(196,112,63,0.06) 0%, transparent 70%);
+            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196,112,63,0.04) 0%, transparent 70%);
             pointer-events: none;
         }
 
         .proof-top-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            max-width: 1120px;
+            max-width: 960px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -551,32 +551,27 @@
 
         .proof-item {
             text-align: center;
-            padding: 52px 24px 44px;
-            border-right: 1px solid rgba(255,255,255,0.06);
+            padding: 44px 20px 36px;
             position: relative;
         }
-
-        .proof-item:last-child { border-right: none; }
 
         .proof-item::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 20%; right: 20%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(196,112,63,0.2), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            top: 25%; bottom: 25%; right: 0;
+            width: 1px;
+            background: rgba(255,255,255,0.06);
         }
 
-        .proof-item:hover::after { opacity: 1; }
+        .proof-item:last-child::after { display: none; }
 
         .proof-number {
             font-family: 'Outfit', sans-serif;
-            font-size: clamp(2.5rem, 4vw, 3.25rem);
+            font-size: clamp(2.2rem, 3.5vw, 2.8rem);
             font-weight: 800;
             color: #FDFCFA;
             line-height: 1;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             letter-spacing: -0.03em;
         }
 
@@ -585,29 +580,35 @@
         }
 
         .proof-label {
-            font-size: 0.72rem;
-            color: rgba(253,252,250,0.4);
-            letter-spacing: 0.08em;
+            font-size: 0.68rem;
+            color: rgba(253,252,250,0.35);
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             font-weight: 500;
             line-height: 1.5;
         }
 
+        .proof-divider-line {
+            height: 1px;
+            max-width: 960px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.06) 80%, transparent);
+        }
+
         .proof-bottom-row {
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding: 36px 24px;
+            padding: 28px 24px 32px;
             text-align: center;
             position: relative;
             z-index: 1;
         }
 
         .proof-bottom-label {
-            font-size: 0.65rem;
-            font-weight: 700;
+            font-size: 0.6rem;
+            font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(253,252,250,0.2);
-            margin-bottom: 20px;
+            color: rgba(253,252,250,0.18);
+            margin-bottom: 16px;
         }
 
         .proof-names {
@@ -615,31 +616,32 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px 32px;
-            max-width: 800px;
+            gap: 0;
+            max-width: 780px;
             margin: 0 auto;
         }
 
         .proof-name {
             font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: rgba(253,252,250,0.28);
+            color: rgba(253,252,250,0.3);
+            padding: 0 20px;
+            position: relative;
             transition: color 0.3s ease;
             cursor: default;
         }
 
         .proof-name:hover {
-            color: var(--accent);
+            color: rgba(253,252,250,0.55);
         }
 
         .proof-name-sep {
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            background: rgba(253,252,250,0.15);
+            width: 1px;
+            height: 12px;
+            background: rgba(253,252,250,0.1);
             flex-shrink: 0;
         }
 
@@ -1912,9 +1914,10 @@
             .proof-top-row {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .proof-item { padding: 36px 16px 28px; }
-            .proof-item:nth-child(2) { border-right: none; }
+            .proof-item { padding: 32px 16px 24px; }
+            .proof-item:nth-child(2)::after { display: none; }
             .proof-item:nth-child(1), .proof-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+            .proof-item:nth-child(3)::after, .proof-item:nth-child(4)::after { top: 20%; bottom: 20%; }
             .pillars-grid,
             .themes-grid,
             .offers-grid {
@@ -2252,7 +2255,7 @@
                 <div class="proof-label">Grew 1,000%+ After</div>
             </div>
             <div class="proof-item">
-                <div class="proof-number">2<span style="font-size:0.6em; opacity:0.5; margin-left:2px;">hrs</span></div>
+                <div class="proof-number">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
                 <div class="proof-label">To Total Clarity</div>
             </div>
             <div class="proof-item">
@@ -2260,6 +2263,7 @@
                 <div class="proof-label">Client Revenue Generated</div>
             </div>
         </div>
+        <div class="proof-divider-line"></div>
         <div class="proof-bottom-row">
             <div class="proof-bottom-label">Built positioning for</div>
             <div class="proof-names">
@@ -2305,16 +2309,16 @@
                         </div>
                         <div class="diag-msg">
                             <div class="diag-sender client">Client</div>
-                            <div class="diag-text">"I give them the elevator pitch from three years ago. And every time I say it, I feel like I'm lying. Not because it's wrong. Because it's small."</div>
+                            <div class="diag-text">"I freeze. Because I want to tell them what I'm building, where I'm going. But that's not what I actually do yet. So I just say the old thing and it feels like I'm shrinking myself."</div>
                         </div>
                         <div class="diag-pause">· · ·</div>
                         <div class="diag-msg">
                             <div class="diag-sender ai">The Interview</div>
-                            <div class="diag-text">"So the brand is accurate. It's just not you anymore."</div>
+                            <div class="diag-text">"You're describing your vision to yourself every day. But the brand still speaks in the old language."</div>
                         </div>
                         <div class="diag-msg">
                             <div class="diag-sender client">Client</div>
-                            <div class="diag-text">"Exactly. And I don't know how to say the new thing yet."</div>
+                            <div class="diag-text">"Exactly. The thing I want to become has no words yet. So I just keep explaining something I've already outgrown."</div>
                         </div>
                     </div>
                     <div class="diag-footer">
@@ -2385,20 +2389,20 @@
                     <div class="diag-body">
                         <div class="diag-msg">
                             <div class="diag-sender ai">The Interview</div>
-                            <div class="diag-text">"When's the last time someone in your life told you an idea was bad?"</div>
+                            <div class="diag-text">"When's the last time someone told you an idea wasn't going to work?"</div>
                         </div>
                         <div class="diag-msg">
                             <div class="diag-sender client">Client</div>
-                            <div class="diag-text">"I honestly can't remember. Everyone just says 'that's amazing, you should do it.'"</div>
+                            <div class="diag-text">"Nobody does. My team agrees with everything. My friends hype me up. Even the AI just tells me what I want to hear. Everyone's being nice. Nobody's being kind."</div>
                         </div>
                         <div class="diag-pause">· · ·</div>
                         <div class="diag-msg">
                             <div class="diag-sender ai">The Interview</div>
-                            <div class="diag-text">"So you're surrounded by people who love you. And none of them are useful."</div>
+                            <div class="diag-text">"So you have a hundred people cheering, and not one person willing to say the thing you actually need to hear."</div>
                         </div>
                         <div class="diag-msg">
                             <div class="diag-sender client">Client</div>
-                            <div class="diag-text">"That's the loneliest sentence I've ever agreed with."</div>
+                            <div class="diag-text">"That's exactly it. And the lonelier it gets, the more I know something's off."</div>
                         </div>
                     </div>
                     <div class="diag-footer">
@@ -3026,8 +3030,17 @@
                 entries.forEach(function(e) {
                     if (e.isIntersecting) { animateCounter(); obs.disconnect(); }
                 });
-            }, { threshold: 0.3, rootMargin: '0px 0px -50px 0px' });
+            }, { threshold: 0.05 });
             obs.observe(introHeading);
+            // Fallback: if element is already in viewport when JS runs, fire immediately
+            var rect = introHeading.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                animateCounter();
+                obs.disconnect();
+            }
+        } else if (introHeading) {
+            // No IntersectionObserver support — just animate on load
+            animateCounter();
         }
 
         // Fade-in symptom rows on scroll
