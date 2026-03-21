@@ -2009,6 +2009,8 @@
             msg = result.error.message || 'Please check your card details and try again.';
           showPayError(msg);
         } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+          // Use the PI ID directly from Stripe's response — more reliable than currentPiId
+          if (result.paymentIntent.id) currentPiId = result.paymentIntent.id;
           fulfillAndShowSuccess(email);
         } else if (result.paymentIntent && result.paymentIntent.status === 'requires_action') {
           // 3DS mid-flow — confirmPayment should handle this, but just in case
