@@ -79,8 +79,8 @@
     .hero-arrow-label span { font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 600; color: #c4703f; display: block; transform: rotate(-6deg); white-space: nowrap; text-shadow: 0 1px 4px rgba(255,255,255,0.4); }
     .hero-arrow-label svg { width: 52px; opacity: 0.85; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
-    .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
-    .hero-text { max-width: 520px; }
+    .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; }
+    .hero-text { max-width: 520px; padding-bottom: 24px; }
     .hero-trust { display: flex; gap: 32px; padding-top: 24px; margin-top: 8px; border-top: 1px solid var(--border); }
     .hero-trust-num { font-family: 'Outfit',sans-serif; font-size: 24px; font-weight: 700; }
     .hero-trust-label { font-size: 11px; color: #999; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -404,16 +404,19 @@
     @media (min-width: 861px) and (max-width: 1100px) {
       nav { padding: 0 28px; }
       .nav-links { gap: 20px; }
-      .hero-text-wrap { padding: 0 28px; }
-      .hero-text { max-width: 440px; }
-      h1 { font-size: clamp(30px, 3.2vw, 44px); }
+      /* Tablet A: Split Layout — photo left 40%, text right 60% */
+      .hero { display: flex; flex-direction: row; height: auto; min-height: 540px; overflow: visible; }
+      .hero-photo { position: relative; left: auto; right: auto; top: auto; bottom: auto; width: 40%; flex-shrink: 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+      .hero-photo img { max-height: 100%; width: auto; display: block; }
+      .hero-photo-fade { width: 50%; left: auto; right: 0; background: linear-gradient(to left, var(--bg) 10%, transparent 100%); }
+      .vid-float { display: none; }
+      .vid-halo { display: none; }
+      .vid-halo2 { display: none; }
+      .hero-arrow-label { display: none; }
+      .hero-text-wrap { position: relative; width: 60%; display: flex; align-items: center; padding: 40px 32px; }
+      .hero-text { max-width: none; padding-bottom: 0; }
+      h1 { font-size: clamp(28px, 3vw, 40px); }
       .hero-sub { font-size: 15px; }
-      .hero-photo { left: 40%; }
-      .vid-float { width: 160px; }
-      .vid-halo { width: 290px; height: 184px; }
-      .vid-halo2 { width: 320px; height: 210px; }
-      .hero-arrow-label { right: 5%; bottom: 24%; }
-      .hero-arrow-label span { font-size: 1rem; }
       .hero-trust { gap: 24px; }
       .hero-trust-num { font-size: 20px; }
       .cred-section { padding: 56px 28px; }
@@ -645,7 +648,7 @@
       <h1>You're great at what you do. The world just doesn't <em>know it yet.</em></h1>
       <p class="hero-sub">In 90 minutes, walk away with the positioning, the language, and the complete brand blueprint that finally makes your expertise impossible to ignore.</p>
       <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
-      <p class="price-note"><s style="color:#ccc;">$297</s>&nbsp; <strong>$67</strong> launch week</p>
+      <p class="price-note"><s style="color:#ccc;">$5,000</s>&nbsp; <strong>$67</strong> launch week</p>
       <div class="hero-trust">
         <div>
           <div class="hero-trust-num">132</div>
@@ -675,7 +678,7 @@
     <h1>You're great at what you do. The world just doesn't <em>know it yet.</em></h1>
     <p class="hero-sub">In 90 minutes, walk away with the positioning, the language, and the complete brand blueprint that finally makes your expertise impossible to ignore.</p>
     <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
-    <p class="price-note"><s style="color:#ccc;">$297</s>&nbsp; <strong>$67</strong> launch week</p>
+    <p class="price-note"><s style="color:#ccc;">$5,000</s>&nbsp; <strong>$67</strong> launch week</p>
     <div class="mobile-trust">
       <div>
         <div class="mobile-trust-num">132</div>
