@@ -859,62 +859,153 @@
             position: relative; z-index: 2;
         }
 
-        /* Personal anchor */
-        .pattern-personal {
-            max-width: 600px; margin: 0 auto;
-            text-align: center; padding: 80px 24px 72px;
+        /* Cinematic Quote Section */
+        .split-reveal-wrap {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .split-reveal {
+            display: flex;
+            align-items: stretch;
+            background: linear-gradient(135deg, #F0EDE8 0%, #E8E4DD 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            min-height: 440px;
+        }
+
+        .split-reveal-photo {
+            flex: 0 0 340px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-top: 40px;
+            background: linear-gradient(180deg, rgba(196,112,63,0.03) 0%, rgba(196,112,63,0.07) 100%);
+        }
+
+        .split-reveal-photo img {
+            width: 280px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 -8px 40px rgba(26,26,26,0.06));
+        }
+
+        .split-reveal-content {
+            flex: 1;
+            padding: 64px 56px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .split-reveal-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.55rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            opacity: 0.5;
+            margin-bottom: 24px;
+        }
+
+        .split-reveal-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+            line-height: 1.8;
+            color: rgba(26, 26, 26, 0.5);
+            margin-bottom: 28px;
+        }
+
+        .split-reveal-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            opacity: 0.55;
+        }
+
+        .split-reveal-accent-line { display: none; }
+
+        /* Testimonial Strip */
+        .problem-truth {
+            max-width: 1060px; margin: 0 auto 80px;
+            padding: 0 24px;
             position: relative; z-index: 2;
         }
 
-        .pattern-personal::before {
-            content: ''; display: block; width: 48px; height: 2px;
-            background: var(--accent); margin: 0 auto 36px; opacity: 0.3;
+        .truth-strip {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-top: 36px;
+            padding: 32px 40px;
+            background: rgba(196,112,63,0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(196,112,63,0.08);
         }
 
-        .pattern-personal-text {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic;
-            font-size: clamp(1rem, 1.4vw, 1.15rem);
-            line-height: 1.85; color: rgba(26,26,26,0.4);
+        .truth-photo {
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid rgba(196,112,63,0.15);
         }
 
-        /* Quote box — light theme */
-        .problem-truth {
-            max-width: 800px; margin: 0 auto 100px;
-            text-align: center; padding: 72px 56px;
-            background: rgba(196,112,63,0.04);
-            border: 1px solid rgba(196,112,63,0.12);
-            border-radius: 32px; position: relative; z-index: 2;
+        .truth-photo img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center 0%;
         }
 
-        .problem-truth::before {
-            content: '\201C'; position: absolute; top: 20px; left: 40px;
-            font-family: 'Playfair Display', serif;
-            font-size: 6rem; color: rgba(196,112,63,0.1); line-height: 1;
-        }
+        .truth-content { flex: 1; }
 
-        .truth-label {
-            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.25em; color: var(--accent);
-            margin-bottom: 28px; opacity: 0.6;
-            font-family: 'Outfit', sans-serif;
-        }
+        .truth-label { display: none; }
 
         .problem-truth h3 {
             font-family: 'Playfair Display', Georgia, serif;
             font-style: italic; font-weight: 400;
-            font-size: clamp(1.3rem, 2.2vw, 1.65rem);
-            max-width: 560px; margin: 0 auto;
-            color: rgba(26,26,26,0.7); line-height: 1.65;
+            font-size: clamp(1rem, 1.4vw, 1.1rem);
+            color: rgba(26,26,26,0.4); line-height: 1.7;
+            margin: 0;
         }
 
         .truth-attribution {
-            font-size: 0.8rem; color: rgba(26,26,26,0.35);
-            margin-top: 24px; font-family: 'Outfit', sans-serif;
-            letter-spacing: 0.08em;
+            font-size: 0.65rem; color: rgba(26,26,26,0.3);
+            margin-top: 10px; font-family: 'Outfit', sans-serif;
+            font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
-        .truth-attribution span { color: var(--accent); }
+        .truth-attribution span { color: var(--accent); opacity: 0.7; }
+
+        @media (max-width: 768px) {
+            .split-reveal {
+                flex-direction: column;
+                min-height: auto;
+                border-radius: 16px;
+            }
+            .split-reveal-photo {
+                flex: none;
+                height: 280px;
+                padding-top: 24px;
+            }
+            .split-reveal-photo img { width: 200px; }
+            .split-reveal-content { padding: 40px 28px 48px; }
+            .truth-strip {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+                padding: 28px 24px;
+            }
+        }
 
         /* Mobile: stack symptom rows */
         @media (max-width: 900px) {
@@ -925,8 +1016,7 @@
             }
             .pattern-symptom.flip .pattern-symptom-inner { direction: ltr; }
             .pattern-symptom { padding: 48px 24px; }
-            .problem-truth { margin: 0 24px 72px; padding: 48px 28px; }
-            .problem-truth::before { font-size: 4rem; left: 20px; }
+            .problem-truth { margin: 0 16px 56px; padding: 0 0; }
             .pattern-diag-card { margin: 0; }
         }
 
@@ -2419,14 +2509,29 @@
             </div>
         </div>
 
-        <div class="pattern-personal">
-            <p class="pattern-personal-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</p>
+        <div class="split-reveal-wrap">
+            <div class="split-reveal">
+                <div class="split-reveal-photo">
+                    <img src="james-pink-shirt-cutout.png" alt="James Guldan" />
+                </div>
+                <div class="split-reveal-content">
+                    <div class="split-reveal-eyebrow">Why I See It</div>
+                    <p class="split-reveal-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</p>
+                    <div class="split-reveal-name">James Guldan</div>
+                </div>
+            </div>
         </div>
 
         <div class="problem-truth">
-            <div class="truth-label">What They Say</div>
-            <h3>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</h3>
-            <div class="truth-attribution"><span>Joshua B Lee</span></div>
+            <div class="truth-strip">
+                <div class="truth-photo">
+                    <img src="testimonials/joshua-b-lee.jpg" alt="Joshua B Lee" />
+                </div>
+                <div class="truth-content">
+                    <h3>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</h3>
+                    <div class="truth-attribution"><span>Joshua B Lee</span></div>
+                </div>
+            </div>
         </div>
     </section>
 
