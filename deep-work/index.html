@@ -1665,6 +1665,17 @@
       '.op-session-spinner{width:48px;height:48px;border:3px solid #e5e7eb;border-top-color:#c4703f;border-radius:50%;animation:opspin .8s linear infinite;flex-shrink:0}',
       '.op-loading-view h3{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;color:#1a1a1a;margin:0}',
       '.op-loading-view p{font-size:14px;color:#888;margin:0;line-height:1.65}',
+      /* ── Congrats view ── */
+      '.op-congrats-view{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0}',
+      '.op-congrats-inner{display:flex;flex-direction:column;align-items:center;text-align:center;padding:44px 36px 48px;width:100%}',
+      '.op-congrats-check{width:72px;height:72px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:32px;color:#22c55e;animation:opcheckbounce .5s cubic-bezier(.2,.9,.3,1) .1s both}',
+      '.op-congrats-title{font-family:Outfit,sans-serif;font-size:26px;font-weight:700;color:#1a1a1a;margin:0 0 10px}',
+      '.op-congrats-sub{font-size:14px;color:#666;margin:0 0 28px;line-height:1.65;max-width:280px}',
+      '.op-progress-wrap{width:100%;background:#f0ece6;border-radius:999px;height:8px;overflow:hidden;margin-bottom:14px}',
+      '.op-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#c4703f,#e8955a);border-radius:999px;transition:width .4s cubic-bezier(.4,0,.2,1)}',
+      '.op-progress-label{font-size:12px;color:#aaa;font-family:Outfit,sans-serif;margin:0 0 20px}',
+      '.op-congrats-fallback{font-size:13px;color:#888;margin:8px 0 0;line-height:1.65}',
+      '.op-congrats-fallback a{color:#c4703f;font-weight:600;text-decoration:underline}',
     ].join('');
     document.head.appendChild(style);
 
@@ -1719,20 +1730,20 @@
       + '</div>'
       + '</div>'
 
-      /* ── STEP 3: Loading (magic link generation) ── */
-      + '<div class="op-loading-view" id="op-loading-view">'
-      + '<div class="op-session-spinner"></div>'
-      + '<h3>Securing your session&#8230;</h3>'
-      + '<p>Generating your personal magic link.<br>This only takes a moment.</p>'
+      /* ── STEP 3: Congratulations + progress bar ── */
+      + '<div class="op-congrats-view" id="op-congrats-view">'
+      + '<div class="op-congrats-inner">'
+      + '<div class="op-congrats-check">&#10003;</div>'
+      + '<h2 class="op-congrats-title">Congratulations!</h2>'
+      + '<p class="op-congrats-sub">Your payment is confirmed. Setting up your personal Deep Work session&#8230;</p>'
+      + '<div class="op-progress-wrap">'
+      + '<div class="op-progress-bar" id="op-progress-bar"></div>'
       + '</div>'
-
-      /* ── STEP 4: Success ── */
-      + '<div class="op-success-view" id="op-success-view">'
-      + '<div class="op-success-icon">✓</div>'
-      + '<h3>You&#39;re in!</h3>'
-      + '<p id="op-success-headline">Taking you to your session now&#8230;</p>'
-      + '<a href="https://love.jamesguldan.com/app" id="op-start-session" class="op-success-cta" target="_blank" rel="noopener">Start the Interview &#8594;</a>'
-      + '<p class="op-success-sub">Your magic link is on its way to <span class="op-success-email" id="op-success-email">your email</span> so you can return anytime.</p>'
+      + '<p class="op-progress-label" id="op-progress-label">Creating your account&#8230;</p>'
+      + '<p class="op-congrats-fallback" id="op-congrats-fallback" style="display:none">'
+      + 'Taking longer than expected. <a href="https://love.jamesguldan.com/app" id="op-congrats-link">Click here to enter &#8594;</a>'
+      + '</p>'
+      + '</div>'
       + '</div>';
     document.body.appendChild(popup);
 
@@ -1776,18 +1787,20 @@
 
     // ── Step management ──────────────────────────────────────────────────────
     function showStep(step) {
-      var orderBody   = document.getElementById('op-order-body');
-      var paymentView = document.getElementById('op-payment-view');
-      var loadingView = document.getElementById('op-loading-view');
-      var successView = document.getElementById('op-success-view');
-      var header      = document.getElementById('op-header');
-      var headerTitle = document.getElementById('op-header-title');
-      var headerSub   = document.getElementById('op-header-sub');
+      var orderBody    = document.getElementById('op-order-body');
+      var paymentView  = document.getElementById('op-payment-view');
+      var loadingView  = document.getElementById('op-loading-view');
+      var successView  = document.getElementById('op-success-view');
+      var congratsView = document.getElementById('op-congrats-view');
+      var header       = document.getElementById('op-header');
+      var headerTitle  = document.getElementById('op-header-title');
+      var headerSub    = document.getElementById('op-header-sub');
 
-      orderBody.style.display   = step === 'order'   ? 'flex' : 'none';
-      paymentView.style.display = step === 'payment' ? 'flex' : 'none';
-      loadingView.style.display = step === 'loading' ? 'flex' : 'none';
-      successView.style.display = step === 'success' ? 'flex' : 'none';
+      orderBody.style.display    = step === 'order'    ? 'flex' : 'none';
+      paymentView.style.display  = step === 'payment'  ? 'flex' : 'none';
+      if (loadingView)  loadingView.style.display  = step === 'loading'  ? 'flex' : 'none';
+      if (successView)  successView.style.display  = step === 'success'  ? 'flex' : 'none';
+      if (congratsView) congratsView.style.display = step === 'congrats' ? 'flex' : 'none';
 
       if (step === 'order') {
         header.style.display = '';
@@ -1796,13 +1809,16 @@
       } else if (step === 'payment') {
         header.style.display = '';
         headerTitle.textContent = 'Secure Checkout';
-        headerSub.textContent   = '256-bit encryption · Powered by Stripe';
+        headerSub.textContent   = '256-bit encryption \xb7 Powered by Stripe';
       } else if (step === 'loading') {
         header.style.display = 'none';
         canClosePopup = false;
       } else if (step === 'success') {
         header.style.display = 'none';
-        canClosePopup = false; // prevent accidental close after payment
+        canClosePopup = false;
+      } else if (step === 'congrats') {
+        header.style.display = 'none';
+        canClosePopup = false;
       }
     }
 
@@ -1813,6 +1829,7 @@
     var currentPiId      = null;
     var currentPiEmail   = '';
     var currentTiers     = ['blueprint'];
+    var currentPhone     = '';
 
     function resetPaymentView() {
       canClosePopup = true;
@@ -1942,6 +1959,7 @@
 
       var phoneInput = document.getElementById('op-phone');
       var phone = phoneInput ? phoneInput.value.trim() : '';
+      currentPhone = phone;
       if (!phone) {
         if (phoneInput) { phoneInput.classList.add('error'); phoneInput.focus(); }
         showPayError('Please enter your phone number so we can send reminders and help if you get stuck.');
@@ -2018,33 +2036,70 @@
 
     // ── Fulfillment + success ────────────────────────────────────────────────
     function fulfillAndShowSuccess(email) {
-      // Show a brief "you're in" screen while we call fulfill
-      showStep('loading');
       setPayLoading(false);
-      var loadingH3 = document.querySelector('#op-loading-view h3');
-      var loadingP  = document.querySelector('#op-loading-view p');
-      if (loadingH3) loadingH3.textContent = 'Payment confirmed!';
-      if (loadingP)  loadingP.textContent  = 'Setting up your session\u2026';
+
+      // Show the congratulations view immediately
+      showStep('congrats');
+
+      var bar      = document.getElementById('op-progress-bar');
+      var label    = document.getElementById('op-progress-label');
+      var fallback = document.getElementById('op-congrats-fallback');
+
+      // Animate bar from 0% to 82% over ~3.5s while the API call runs
+      var progress = 0;
+      var targetFill = 82;
+      var fillDuration = 3500; // ms
+      var startTime = Date.now();
+      var fillTimer = setInterval(function() {
+        var elapsed = Date.now() - startTime;
+        var pct = Math.min(targetFill, Math.round((elapsed / fillDuration) * targetFill));
+        if (bar) bar.style.width = pct + '%';
+        if (pct >= targetFill) clearInterval(fillTimer);
+      }, 50);
+
+      // Show fallback link after 18s in case something hangs
+      var fallbackTimer = setTimeout(function() {
+        if (fallback) fallback.style.display = 'block';
+        if (label) label.textContent = 'Almost there\u2026';
+      }, 18000);
 
       fetch('https://love.jamesguldan.com/api/fulfill-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ paymentIntentId: currentPiId, email: email, phone: phone, tiers: currentTiers })
+        body: JSON.stringify({ paymentIntentId: currentPiId, email: email, phone: currentPhone, tiers: currentTiers })
       })
       .then(function(r) { return r.json(); })
       .then(function(data) {
+        clearInterval(fillTimer);
+        clearTimeout(fallbackTimer);
         if (data.sessionUrl) {
-          // Go straight into the app — no intermediate popup
-          window.location.href = data.sessionUrl;
+          // Snap bar to 100% then redirect after a beat so they see it complete
+          if (bar) bar.style.width = '100%';
+          if (label) label.textContent = 'All set! Taking you in\u2026';
+          setTimeout(function() {
+            window.location.href = data.sessionUrl;
+          }, 800);
         } else {
-          // Fallback: show manual button if we didn't get a session URL
-          showSuccess(email, null, false);
+          // No session URL — show manual fallback
+          if (bar) bar.style.width = '100%';
+          if (label) label.textContent = 'Account created!';
+          if (fallback) {
+            document.getElementById('op-congrats-link').href = 'https://love.jamesguldan.com/app';
+            fallback.style.display = 'block';
+          }
         }
       })
       .catch(function(err) {
-        // Payment succeeded — show manual button as fallback
+        // Payment succeeded on Stripe — webhook will handle fulfillment
+        clearInterval(fillTimer);
+        clearTimeout(fallbackTimer);
         console.error('Fulfill error (webhook backup active):', err);
-        showSuccess(email, null, false);
+        if (bar) bar.style.width = '100%';
+        if (label) label.textContent = 'Payment confirmed!';
+        if (fallback) {
+          document.getElementById('op-congrats-link').href = 'https://love.jamesguldan.com/app';
+          fallback.style.display = 'block';
+        }
       });
     }
 
@@ -2108,7 +2163,8 @@
             currentPiEmail = data.email || '';
             currentTiers   = (data.tiers || 'blueprint').split(',');
             if (data.sessionUrl) {
-              showSuccess(data.email || '', data.sessionUrl);
+              // Session already created — go straight in
+              window.location.href = data.sessionUrl;
             } else {
               fulfillAndShowSuccess(data.email || '');
             }
