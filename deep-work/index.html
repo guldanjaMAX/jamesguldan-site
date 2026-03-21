@@ -1708,6 +1708,7 @@
       + '<div class="op-pay-scroll">'
       + '<div class="op-order-bar"><span class="op-order-bar-label" id="op-order-bar-label">Deep Work Blueprint</span><span class="op-order-bar-price" id="op-order-bar-price">$67</span></div>'
       + '<div class="op-field"><label for="op-email">Email address</label><input type="email" id="op-email" placeholder="you@example.com" autocomplete="email" required /></div>'
+      + '<div class="op-field"><label for="op-phone">Phone number <span style="color:#c0392b">*</span></label><input type="tel" id="op-phone" placeholder="+1 (555) 000-0000" autocomplete="tel" required /></div>'
       + '<div id="stripe-element"></div>'
       + '</div>'
       + '<div class="op-pay-footer">'
@@ -1938,6 +1939,16 @@
         return;
       }
       emailInput.classList.remove('error');
+
+      var phoneInput = document.getElementById('op-phone');
+      var phone = phoneInput ? phoneInput.value.trim() : '';
+      if (!phone) {
+        if (phoneInput) { phoneInput.classList.add('error'); phoneInput.focus(); }
+        showPayError('Please enter your phone number so we can send reminders and help if you get stuck.');
+        return;
+      }
+      if (phoneInput) phoneInput.classList.remove('error');
+
       currentPiEmail = email;
 
       setPayLoading(true);
@@ -2014,7 +2025,7 @@
       fetch('https://love.jamesguldan.com/api/fulfill-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ paymentIntentId: currentPiId, email: email, tiers: currentTiers })
+        body: JSON.stringify({ paymentIntentId: currentPiId, email: email, phone: phone, tiers: currentTiers })
       })
       .then(function(r) { return r.json(); })
       .then(function(data) {
