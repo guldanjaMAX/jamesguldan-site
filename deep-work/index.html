@@ -105,14 +105,14 @@
     .mobile-ring { position: absolute; border-radius: 20px; border: 1px solid rgba(196,112,63,.25); animation: mring 3s ease-in-out infinite; }
     .mobile-ring:nth-child(2) { animation-delay: .8s; border-color: rgba(196,112,63,.12); }
     @keyframes mring { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.2;transform:scale(1.03);} }
-    .mobile-vid-inner { position: relative; z-index: 2; padding: 16px 20px 0; }
+    .mobile-vid-inner { position: relative; z-index: 2; padding: 12px 16px 0; }
     .mobile-vid-player { border-radius: 14px; overflow: hidden; background: #000; border: 2px solid rgba(255,255,255,.12); box-shadow: 0 20px 80px rgba(0,0,0,.6); }
     .mobile-vid-player video { width: 100%; display: block; aspect-ratio: 16/9; }
     .mobile-vid-caption { background: rgba(0,0,0,.9); color: rgba(255,255,255,.8); text-align: center; padding: 8px; font-size: .68rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .mobile-bottom-fade { height: 24px; background: linear-gradient(to bottom, #0d0c0b, var(--bg)); }
-    .mobile-hero-text { padding: 16px 20px 28px; }
-    .mobile-hero-text h1 { font-size: clamp(28px, 8vw, 40px); margin-bottom: 12px; }
-    .mobile-hero-text .hero-sub { font-size: 15px; margin-bottom: 20px; }
+    .mobile-hero-text { padding: 12px 20px 24px; }
+    .mobile-hero-text h1 { font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; }
+    .mobile-hero-text .hero-sub { font-size: 15px; margin-bottom: 16px; }
     .mobile-hero-text .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 12px; }
 
     /* CREDIBILITY */
@@ -161,29 +161,29 @@
     .session-quote em { color: var(--accent); font-style: italic; }
     .session-footer { font-size: 11px; color: rgba(255,255,255,.2); text-align: center; padding-top: 20px; margin-top: 8px; letter-spacing: 1.5px; }
 
-    /* SAMPLE OUTPUT */
-    .sample-output { margin-top: 72px; background: #0d0c0b; border-radius: 24px; overflow: hidden; }
-    .sample-output-header { background: #1a1917; padding: 16px 28px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    /* SAMPLE OUTPUT — Warm Cream */
+    .sample-output { margin-top: 72px; background: #F7F4F0; border-radius: 24px; overflow: hidden; border: 1px solid #EAE7E2; }
+    .sample-output-header { background: #EFEBE5; padding: 16px 28px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #DDD8D0; }
     .sample-traffic-lights { display: flex; gap: 7px; }
     .stl { width: 12px; height: 12px; border-radius: 50%; }
-    .sample-file-name { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: rgba(255,255,255,.3); text-transform: uppercase; margin-left: 8px; }
+    .sample-file-name { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: rgba(26,26,26,.35); text-transform: uppercase; margin-left: 8px; }
     .sample-doc { padding: 48px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
     .sample-block { border-left: 2px solid rgba(196,112,63,.4); padding-left: 20px; margin-bottom: 32px; }
     .sample-block:last-child { margin-bottom: 0; }
-    .sample-block-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 10px; }
-    .sample-block-content { font-size: 13.5px; line-height: 1.7; color: rgba(255,255,255,.65); }
-    .sample-block-content strong { color: rgba(255,255,255,.9); font-weight: 600; }
-    .sample-divider { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 28px 0; }
+    .sample-block-label { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.85); margin-bottom: 10px; }
+    .sample-block-content { font-size: 13.5px; line-height: 1.7; color: rgba(26,26,26,.6); }
+    .sample-block-content strong { color: var(--text); font-weight: 600; }
+    .sample-divider { border: none; border-top: 1px solid #DDD8D0; margin: 28px 0; }
     .sample-score-row { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
-    .sample-score-bar { flex: 1; height: 4px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; }
+    .sample-score-bar { flex: 1; height: 4px; background: rgba(0,0,0,.06); border-radius: 2px; overflow: hidden; }
     .sample-score-fill { height: 100%; background: linear-gradient(to right, var(--accent), #e8956a); border-radius: 2px; }
     .sample-score-num { font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 700; color: var(--accent); }
     .sample-offer-row { display: flex; gap: 12px; margin-top: 12px; }
-    .sample-offer-pill { background: rgba(196,112,63,.12); border: 1px solid rgba(196,112,63,.25); border-radius: 8px; padding: 10px 14px; flex: 1; }
-    .sample-offer-tier { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 4px; }
-    .sample-offer-price { font-family: 'Outfit',sans-serif; font-size: 18px; font-weight: 700; color: #fff; }
-    .sample-offer-name { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 3px; }
-    .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(255,255,255,.2); border-top: 1px solid rgba(255,255,255,.05); font-style: italic; }
+    .sample-offer-pill { background: rgba(196,112,63,.08); border: 1px solid rgba(196,112,63,.2); border-radius: 8px; padding: 10px 14px; flex: 1; }
+    .sample-offer-tier { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,112,63,.85); margin-bottom: 4px; }
+    .sample-offer-price { font-family: 'Outfit',sans-serif; font-size: 18px; font-weight: 700; color: var(--text); }
+    .sample-offer-name { font-size: 11px; color: rgba(26,26,26,.4); margin-top: 3px; }
+    .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(26,26,26,.35); border-top: 1px solid #DDD8D0; font-style: italic; }
 
     /* PROCESS V3 — Transcript Chat */
     .proc3-section { position: relative; z-index: 2; padding: 120px 48px; background: var(--bg); }
@@ -319,6 +319,35 @@
     @media (max-width: 1024px) {
       .phases-grid { grid-template-columns: repeat(2,1fr); }
       .deliverables-grid { grid-template-columns: 1fr 1fr; }
+    }
+    /* TABLET */
+    @media (min-width: 861px) and (max-width: 1100px) {
+      nav { padding: 0 28px; }
+      .nav-links { gap: 20px; }
+      .hero-text-wrap { padding: 0 28px; }
+      .hero-text { max-width: 440px; }
+      h1 { font-size: clamp(30px, 3.2vw, 44px); }
+      .hero-sub { font-size: 15px; }
+      .hero-photo { left: 40%; }
+      .vid-float { width: 160px; }
+      .vid-halo { width: 290px; height: 184px; }
+      .vid-halo2 { width: 320px; height: 210px; }
+      .hero-arrow-label { right: 5%; bottom: 24%; }
+      .hero-arrow-label span { font-size: 1rem; }
+      .cred-section { padding: 56px 28px; }
+      .stat-num { font-size: 40px; }
+      .wti-section { padding: 80px 28px; }
+      .wti-inner { gap: 48px; }
+      .proc3-section { padding: 80px 28px; }
+      .wyg-section { padding: 80px 28px; }
+      .ann-wrap { grid-template-columns: 48% 1fr; gap: 0 32px; }
+      .test-section { padding: 80px 28px; }
+      .test-video-content { padding: 28px 24px; }
+      .test-video-quote { font-size: 14px; }
+      .how-section { padding: 80px 28px; }
+      .wnjc-section { padding: 80px 28px; }
+      .final-cta { padding: 80px 28px; }
+      .before-decide-section { padding: 60px 28px !important; }
     }
     @media (max-width: 860px) {
       nav { padding: 0 20px; } .nav-links { display: none; }
@@ -468,7 +497,7 @@
     <div class="vid-halo2"></div>
     <div class="vid-float">
       <video controls preload="metadata">
-        <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
+        <source src="videos/james-deepwork-v3.mp4" type="video/mp4">
       </video>
       <div class="vid-label">5 min · The Deep Work Process explained</div>
     </div>
@@ -504,7 +533,7 @@
     <div class="mobile-vid-inner">
       <div class="mobile-vid-player">
         <video controls preload="metadata">
-          <source src="https://pub-d080c466f8504291b98ad793f9eb1f30.r2.dev/james-deepwork-v2.mp4" type="video/mp4">
+          <source src="videos/james-deepwork-v3.mp4" type="video/mp4">
         </video>
         <div class="mobile-vid-caption">5 min · The Deep Work Process explained</div>
       </div>
@@ -806,7 +835,7 @@
       </div>
       <span class="sample-file-name">Brand Guide — Nora Ellis Consulting — Deep Work Interview Output</span>
     </div>
-    <div style="padding:0;display:flex;justify-content:center;background:#0d0c0b;">
+    <div style="padding:0;display:flex;justify-content:center;background:#F7F4F0;">
       <img src="sample-brand-guide-scroll.gif" alt="Sample Brand Guide scrolling through all sections" style="width:100%;max-width:800px;display:block;" loading="lazy">
     </div>
     <div class="sample-caption">A fictional example built the exact same way yours will be. 11 sections including SWOT analysis, competitor grading, revenue model, content pillars, and a 90 day authority roadmap. Every word comes from the conversation. Nothing is templated.</div>
