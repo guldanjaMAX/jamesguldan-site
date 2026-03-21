@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Site in Sixty | Own Your Site. Never Wait on a Developer Again.</title>
 
+<script src="https://js.stripe.com/v3/" async></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0M8CE72F2L"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -944,7 +945,7 @@
       <span class="context">one time</span>
     </div>
     <br>
-    <a href="https://buy.stripe.com/00wfZh5OK4yKgObbuF6c007" class="cta-button">
+    <a href="#checkout" data-checkout="site-in-sixty" class="cta-button">
       Get Independent
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
@@ -1299,7 +1300,7 @@
   <div class="container">
     <h2>An hour from now, you own<br>your <em>digital real estate.</em></h2>
     <p class="cta-sub">Your brand has a voice. Give it a home you actually control.</p>
-    <a href="https://buy.stripe.com/00wfZh5OK4yKgObbuF6c007" class="cta-button">
+    <a href="#checkout" data-checkout="site-in-sixty" class="cta-button">
       Get Independent. $197.
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
@@ -1312,6 +1313,524 @@
     &copy; 2026 James Guldan &middot; <a href="https://jamesguldan.com">jamesguldan.com</a> &middot; <a href="https://siteinsixty.com/privacy/">Privacy</a> &middot; <a href="https://siteinsixty.com/terms/">Terms</a> &middot; <a href="https://siteinsixty.com/refund/">Refund Policy</a>
   </div>
 </footer>
+
+<script>
+  // ── STRIPE CHECKOUT POPUP ──────────────────────────────────
+  (function() {
+    // Inject popup styles
+    var style = document.createElement('style');
+    style.textContent = [
+      '#order-backdrop{display:none;position:fixed;inset:0;z-index:9998;background:rgba(26,26,26,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .3s ease;opacity:0}',
+      '#order-backdrop.visible{opacity:1}',
+      '#order-popup{display:none;position:fixed;z-index:9999;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);max-width:520px;width:92%;max-height:90vh;background:#fff;border-radius:16px;box-shadow:0 32px 80px rgba(0,0,0,.35);font-family:Inter,sans-serif;transition:transform .35s cubic-bezier(.2,.9,.3,1),opacity .3s ease;opacity:0;flex-direction:column;overflow:hidden}',
+      '#order-popup.visible{transform:translate(-50%,-50%) scale(1);opacity:1;display:flex}',
+      '.op-header{padding:28px 32px 0;text-align:center;flex-shrink:0}',
+      '.op-header h3{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 4px}',
+      '.op-header p{font-size:13px;color:#888;margin:0;font-weight:400}',
+      '.op-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;color:#aaa;cursor:pointer;padding:4px 8px;line-height:1;transition:color .2s}',
+      '.op-close:hover{color:#1a1a1a}',
+      '.op-body{display:flex;flex-direction:column;overflow:hidden;flex:1;min-height:0}',
+      '.op-scroll{overflow-y:auto;flex:1;min-height:0;padding:20px 32px 0}',
+      '.op-footer{flex-shrink:0;padding:0 32px 24px;background:#fff}',
+      '.op-main-item{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:#faf8f5;border-radius:10px;margin-bottom:16px;border:2px solid #c4703f}',
+      '.op-main-item .op-item-name{font-weight:700;font-size:15px;color:#1a1a1a}',
+      '.op-main-item .op-item-desc{font-size:12px;color:#777;margin-top:2px}',
+      '.op-main-item .op-item-price{font-weight:800;font-size:20px;color:#1a1a1a;white-space:nowrap}',
+      '.op-main-item .op-included{font-size:10px;font-weight:700;color:#c4703f;text-transform:uppercase;letter-spacing:1.5px}',
+      '.op-divider{height:1px;background:#eee;margin:20px 0}',
+      '.op-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}',
+      '.op-total-label{font-size:14px;color:#888;font-weight:500}',
+      '.op-total-amount{font-family:Outfit,sans-serif;font-size:28px;font-weight:800;color:#1a1a1a}',
+      '.op-pay-btn{display:block;width:100%;padding:18px;background:#1a1a1a;color:#fff;border:none;border-radius:50px;font-size:16px;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;transition:all .25s ease;letter-spacing:.3px;box-shadow:0 4px 20px rgba(0,0,0,.15)}',
+      '.op-pay-btn:hover{background:#c4703f;transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,112,63,.35)}',
+      '.op-pay-btn.loading{pointer-events:none;opacity:.7}',
+      '.op-pay-btn .btn-spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:opspin .7s linear infinite;vertical-align:middle;margin-right:8px}',
+      '@keyframes opspin{to{transform:rotate(360deg)}}',
+      '.op-trust{text-align:center;margin-top:14px;font-size:11px;color:#bbb;font-weight:400}',
+      '.op-guarantee{text-align:center;margin-top:10px;font-size:11.5px;color:#999;font-weight:500}',
+      '@media(max-width:560px){#order-popup{width:96%;border-radius:12px}.op-header{padding:22px 20px 0}.op-scroll{padding:14px 20px 0}.op-footer{padding:0 20px 20px}.op-main-item{padding:14px 14px}}',
+      /* Payment view */
+      '.op-payment-view{display:none;flex-direction:column;overflow:hidden;flex:1;min-height:0}',
+      '.op-pay-scroll{overflow-y:auto;flex:1;min-height:0;padding:20px 32px 0}',
+      '.op-pay-footer{flex-shrink:0;padding:0 32px 24px;background:#fff}',
+      '.op-order-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#faf8f5;border-radius:10px;margin-bottom:18px;border:1.5px solid #e8e2d9}',
+      '.op-order-bar-label{font-size:13px;color:#777;font-weight:500}',
+      '.op-order-bar-price{font-weight:800;font-size:18px;color:#1a1a1a;font-family:Outfit,sans-serif}',
+      '.op-field{margin-bottom:16px}',
+      '.op-field label{display:block;font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}',
+      '.op-field input{width:100%;box-sizing:border-box;padding:13px 14px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:15px;font-family:Outfit,sans-serif;color:#1a1a1a;outline:none;transition:border-color .2s,box-shadow .2s}',
+      '.op-field input:focus{border-color:#c4703f;box-shadow:0 0 0 3px rgba(196,112,63,.12)}',
+      '.op-field input.error{border-color:#e53e3e}',
+      '#stripe-element{min-height:44px;margin-bottom:4px}',
+      '.op-pay-error{background:#fff5f5;border:1px solid #fed7d7;color:#c53030;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:14px;line-height:1.5;display:none}',
+      '.op-back-btn{background:none;border:none;color:#bbb;font-size:12px;cursor:pointer;padding:6px 0 0;width:100%;text-align:center;font-family:Outfit,sans-serif;transition:color .2s;display:block}',
+      '.op-back-btn:hover{color:#c4703f}',
+      /* Success view */
+      '.op-success-view{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 32px 36px;flex:1}',
+      '.op-success-icon{width:68px;height:68px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:30px}',
+      '.op-success-view h3{font-family:Outfit,sans-serif;font-size:24px;font-weight:700;color:#1a1a1a;margin:0 0 10px}',
+      '.op-success-view p{font-size:14px;color:#555;margin:0 0 6px;line-height:1.65}',
+      '.op-success-view .op-success-email{font-weight:700;color:#1a1a1a}',
+      /* Congrats view */
+      '.op-congrats-view{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0;position:relative;overflow:hidden}',
+      '.op-confetti-canvas{position:absolute;inset:0;pointer-events:none;z-index:0}',
+      '.op-congrats-inner{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 36px 44px;width:100%;position:relative;z-index:1}',
+      '@keyframes opcheckpop{0%{transform:scale(0) rotate(-20deg);opacity:0}60%{transform:scale(1.25) rotate(5deg);opacity:1}80%{transform:scale(.92) rotate(-2deg)}100%{transform:scale(1) rotate(0deg);opacity:1}}',
+      '@keyframes opglow{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}50%{box-shadow:0 0 0 12px rgba(34,197,94,.15)}}',
+      '@keyframes opfadeslide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}',
+      '@keyframes opshimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}',
+      '.op-congrats-check{width:80px;height:80px;background:linear-gradient(135deg,#bbf7d0,#4ade80);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.15);animation:opcheckpop .6s cubic-bezier(.2,.9,.3,1) .1s both,opglow 2s ease-in-out 1s infinite;flex-shrink:0}',
+      '.op-congrats-title{font-family:Outfit,sans-serif;font-size:28px;font-weight:800;color:#1a1a1a;margin:0 0 6px;animation:opfadeslide .4s ease .5s both;letter-spacing:-.3px}',
+      '.op-congrats-tagline{font-family:Outfit,sans-serif;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#c4703f;margin:0 0 14px;animation:opfadeslide .4s ease .65s both}',
+      '.op-congrats-sub{font-size:14px;color:#666;margin:0 0 28px;line-height:1.7;max-width:270px;animation:opfadeslide .4s ease .75s both}',
+      '.op-congrats-fallback{font-size:13px;color:#888;margin:18px 0 0;line-height:1.65;animation:opfadeslide .3s ease both}',
+      '.op-congrats-fallback a{color:#c4703f;font-weight:600;text-decoration:underline}',
+    ].join('');
+    document.head.appendChild(style);
+
+    // Create backdrop
+    var backdrop = document.createElement('div');
+    backdrop.id = 'order-backdrop';
+    document.body.appendChild(backdrop);
+
+    // Create popup
+    var popup = document.createElement('div');
+    popup.id = 'order-popup';
+    popup.innerHTML = '<button class="op-close" aria-label="Close" id="op-close-btn">&times;</button>'
+
+      /* STEP 1: Payment form (skip order selection, go straight to payment) */
+      + '<div class="op-header" id="op-header">'
+      + '<h3 id="op-header-title">Secure Checkout</h3>'
+      + '<p id="op-header-sub">256-bit encryption \xb7 Powered by Stripe</p>'
+      + '</div>'
+      + '<div class="op-payment-view" id="op-payment-view" style="display:flex">'
+      + '<div class="op-pay-scroll">'
+      + '<div class="op-order-bar"><span class="op-order-bar-label" id="op-order-bar-label">Site In Sixty</span><span class="op-order-bar-price" id="op-order-bar-price">$197</span></div>'
+      + '<div class="op-field"><label for="op-email">Email address</label><input type="email" id="op-email" placeholder="you@example.com" autocomplete="email" required /></div>'
+      + '<div class="op-field"><label for="op-phone">Phone number <span style="color:#c0392b">*</span></label><input type="tel" id="op-phone" placeholder="+1 (555) 000-0000" autocomplete="tel" required /></div>'
+      + '<div id="stripe-element"></div>'
+      + '</div>'
+      + '<div class="op-pay-footer">'
+      + '<div class="op-pay-error" id="op-pay-error"></div>'
+      + '<form id="op-pay-form"><button type="submit" class="op-pay-btn" id="op-pay-submit"><span id="op-pay-spinner" class="btn-spinner" style="display:none"></span><span class="btn-text">Pay $197</span></button></form>'
+      + '<div class="op-guarantee">30 day money back guarantee. Instant access. Lifetime updates.</div>'
+      + '<div class="op-trust">Powered by Stripe &middot; 256 bit encryption</div>'
+      + '<button class="op-back-btn" id="op-back-btn">Cancel</button>'
+      + '</div>'
+      + '</div>'
+
+      /* STEP 2: Congratulations + confetti */
+      + '<div class="op-congrats-view" id="op-congrats-view">'
+      + '<canvas class="op-confetti-canvas" id="op-confetti-canvas"></canvas>'
+      + '<div class="op-congrats-inner">'
+      + '<div class="op-congrats-check">&#10003;</div>'
+      + '<h2 class="op-congrats-title">You\'re in.</h2>'
+      + '<p class="op-congrats-tagline">Independence starts now</p>'
+      + '<p class="op-congrats-sub">Check your email for instant access to Site In Sixty. You\'ll be building your site in minutes.</p>'
+      + '<p class="op-congrats-fallback" id="op-congrats-fallback" style="display:none">'
+      + 'Didn\'t get the email? Check spam or reach out to <a href="mailto:james@jamesguldan.com">james@jamesguldan.com</a>'
+      + '</p>'
+      + '</div>'
+      + '</div>';
+    document.body.appendChild(popup);
+
+    // ── Pricing ─────────────────────────────────────────────────────────────
+    var BASE = 197;
+
+    // ── Popup open / close ───────────────────────────────────────────────────
+    function openPopup(e) {
+      if (e) e.preventDefault();
+      currentTiers = ['site-in-sixty'];
+      showStep('payment');
+      backdrop.style.display = 'block';
+      popup.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      initStripePaymentElement(currentTiers);
+      requestAnimationFrame(function() {
+        backdrop.classList.add('visible');
+        popup.classList.add('visible');
+      });
+    }
+
+    var canClosePopup = true;
+    function closePopup() {
+      if (!canClosePopup) return;
+      backdrop.classList.remove('visible');
+      popup.classList.remove('visible');
+      document.body.style.overflow = '';
+      setTimeout(function() {
+        backdrop.style.display = 'none';
+        popup.style.display = 'none';
+        resetPaymentView();
+      }, 350);
+    }
+
+    document.getElementById('op-close-btn').addEventListener('click', closePopup);
+    backdrop.addEventListener('click', closePopup);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
+
+    // ── Step management ──────────────────────────────────────────────────────
+    function showStep(step) {
+      var paymentView  = document.getElementById('op-payment-view');
+      var congratsView = document.getElementById('op-congrats-view');
+      var header       = document.getElementById('op-header');
+
+      paymentView.style.display  = step === 'payment'  ? 'flex' : 'none';
+      if (congratsView) congratsView.style.display = step === 'congrats' ? 'flex' : 'none';
+
+      if (step === 'payment') {
+        header.style.display = '';
+      } else if (step === 'congrats') {
+        header.style.display = 'none';
+        canClosePopup = false;
+        requestAnimationFrame(function() { launchConfetti(); });
+      }
+    }
+
+    // ── Confetti burst ────────────────────────────────────────────────────────
+    function launchConfetti() {
+      var canvas = document.getElementById('op-confetti-canvas');
+      if (!canvas) return;
+      var W = canvas.offsetWidth, H = canvas.offsetHeight;
+      canvas.width = W; canvas.height = H;
+      var ctx = canvas.getContext('2d');
+      var colors = ['#c4703f','#f0a06a','#22c55e','#4ade80','#facc15','#fb923c','#a78bfa','#38bdf8'];
+      var pieces = [];
+      for (var i = 0; i < 90; i++) {
+        pieces.push({
+          x: W * 0.5 + (Math.random() - 0.5) * W * 0.3,
+          y: H * 0.28,
+          vx: (Math.random() - 0.5) * 9,
+          vy: -Math.random() * 8 - 3,
+          rot: Math.random() * 360,
+          rspeed: (Math.random() - 0.5) * 8,
+          w: Math.random() * 8 + 4,
+          h: Math.random() * 4 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1
+        });
+      }
+      var frame = 0;
+      var maxFrames = 90;
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (var j = 0; j < pieces.length; j++) {
+          var p = pieces[j];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.28;
+          p.vx *= 0.99;
+          p.rot += p.rspeed;
+          p.alpha = Math.max(0, 1 - frame / maxFrames);
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot * Math.PI / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        }
+        frame++;
+        if (frame < maxFrames) requestAnimationFrame(draw);
+        else ctx.clearRect(0, 0, W, H);
+      }
+      draw();
+    }
+
+    // ── Stripe state ─────────────────────────────────────────────────────────
+    var stripeInstance   = null;
+    var stripeElements   = null;
+    var stripePayEl      = null;
+    var currentPiId      = null;
+    var currentPiEmail   = '';
+    var currentTiers     = ['site-in-sixty'];
+    var currentPhone     = '';
+
+    function resetPaymentView() {
+      canClosePopup = true;
+      if (stripePayEl) { try { stripePayEl.unmount(); } catch(e){} }
+      stripePayEl    = null;
+      stripeElements = null;
+      currentPiId    = null;
+      currentPiEmail = '';
+      document.getElementById('op-email').value = '';
+      document.getElementById('op-phone').value = '';
+      document.getElementById('stripe-element').innerHTML = '';
+      hidePayError();
+      setPayLoading(false);
+    }
+
+    // ── Back button closes popup ─────────────────────────────────────────────
+    document.getElementById('op-back-btn').addEventListener('click', function() {
+      closePopup();
+    });
+
+    // ── Init Stripe Payment Element ──────────────────────────────────────────
+    function initStripePaymentElement(tiers) {
+      var mountEl = document.getElementById('stripe-element');
+      mountEl.innerHTML = '<div style="text-align:center;padding:24px 0;color:#aaa;font-size:13px">'
+        + '<span style="display:inline-block;width:20px;height:20px;border:2px solid #e5e7eb;border-top-color:#c4703f;border-radius:50%;animation:opspin .7s linear infinite;vertical-align:middle;margin-right:8px"></span>'
+        + 'Loading payment form\u2026</div>';
+
+      fetch('https://love.jamesguldan.com/api/create-payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tiers: tiers })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data.clientSecret) throw new Error(data.error || 'Could not initialize payment');
+        currentPiId = data.paymentIntentId;
+
+        if (!stripeInstance) {
+          if (!data.publishableKey) throw new Error('Payment provider not configured. Please contact support.');
+          stripeInstance = Stripe(data.publishableKey);
+        }
+
+        var appearance = {
+          theme: 'flat',
+          variables: {
+            colorPrimary:     '#c4703f',
+            colorBackground:  '#ffffff',
+            colorText:        '#1a1a1a',
+            colorDanger:      '#e53e3e',
+            fontFamily:       '"Outfit", "Inter", system-ui, sans-serif',
+            borderRadius:     '8px',
+            spacingUnit:      '4px',
+            fontSizeBase:     '15px',
+          },
+          rules: {
+            '.Input': { border: '1.5px solid #e5e7eb', boxShadow: 'none', padding: '12px 14px', fontSize: '15px' },
+            '.Input:focus': { border: '1.5px solid #c4703f', boxShadow: '0 0 0 3px rgba(196,112,63,.12)' },
+            '.Input--invalid': { border: '1.5px solid #e53e3e' },
+            '.Label': { fontWeight: '600', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.8px', color: '#555', marginBottom: '6px' },
+            '.Tab': { border: '1.5px solid #e5e7eb', boxShadow: 'none' },
+            '.Tab--selected': { border: '1.5px solid #c4703f', color: '#c4703f', boxShadow: 'none' },
+            '.Tab--selected:focus': { boxShadow: '0 0 0 3px rgba(196,112,63,.12)' },
+            '.Error': { fontSize: '12.5px', marginTop: '6px' },
+          }
+        };
+
+        var prefillEmail = (document.getElementById('op-email') || {}).value || '';
+        stripeElements = stripeInstance.elements({
+          clientSecret: data.clientSecret,
+          appearance: appearance,
+          fonts: [{ cssSrc: 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap' }],
+          defaultValues: prefillEmail ? { billingDetails: { email: prefillEmail } } : undefined,
+        });
+
+        mountEl.innerHTML = '';
+        stripePayEl = stripeElements.create('payment', {
+          layout: { type: 'accordion', defaultCollapsed: false, radios: false, spacedAccordionItems: false },
+          fields: { billingDetails: { email: 'never' } },
+          wallets: { applePay: 'auto', googlePay: 'auto' },
+        });
+        stripePayEl.mount(mountEl);
+
+        stripePayEl.on('loaderstart', function() {
+          setTimeout(function() { document.getElementById('op-email').focus(); }, 150);
+        });
+      })
+      .catch(function(err) {
+        console.error('Stripe init error:', err);
+        mountEl.innerHTML = '';
+        showPayError(err.message || 'Failed to load payment form. Please refresh and try again.');
+      });
+    }
+
+    // ── Pay form submit ───────────────────────────────────────────────────────
+    document.getElementById('op-pay-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!stripeElements || !stripeInstance) {
+        showPayError('Payment form is still loading. Please wait a moment and try again.');
+        return;
+      }
+
+      var emailInput = document.getElementById('op-email');
+      var email = emailInput.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailInput.classList.add('error');
+        emailInput.focus();
+        showPayError('Please enter a valid email address so we can send your access link.');
+        return;
+      }
+      emailInput.classList.remove('error');
+
+      var phoneInput = document.getElementById('op-phone');
+      var phone = phoneInput ? phoneInput.value.trim() : '';
+      currentPhone = phone;
+      if (!phone) {
+        if (phoneInput) { phoneInput.classList.add('error'); phoneInput.focus(); }
+        showPayError('Please enter your phone number so we can send reminders and help if you get stuck.');
+        return;
+      }
+      if (phoneInput) phoneInput.classList.remove('error');
+
+      currentPiEmail = email;
+
+      setPayLoading(true);
+      hidePayError();
+
+      stripeInstance.confirmPayment({
+        elements: stripeElements,
+        confirmParams: {
+          return_url: window.location.origin + window.location.pathname + '?pi_return=1&pi=' + (currentPiId || ''),
+          payment_method_data: { billing_details: { email: email } },
+        },
+        redirect: 'if_required',
+      })
+      .then(function(result) {
+        if (result.error) {
+          setPayLoading(false);
+          var code = result.error.code || '';
+          var type = result.error.type || '';
+          var msg = result.error.message || 'Payment failed. Please try a different card.';
+          if (code === 'card_declined' || code === 'do_not_honor' || code === 'generic_decline')
+            msg = 'Your card was declined. Please try a different payment method.';
+          if (code === 'insufficient_funds')
+            msg = 'Insufficient funds on this card. Please try a different one.';
+          if (code === 'expired_card')
+            msg = 'Your card has expired. Please use an updated card.';
+          if (code === 'incorrect_cvc' || code === 'invalid_cvc')
+            msg = 'Incorrect security code (CVC). Please double-check and try again.';
+          if (code === 'incorrect_number' || code === 'invalid_number')
+            msg = 'Your card number doesn\'t look right. Please check it and try again.';
+          if (code === 'processing_error')
+            msg = 'Your bank had a temporary issue processing this. Please try again in a moment.';
+          if (code === 'card_velocity_exceed')
+            msg = 'Too many attempts on this card. Please wait a few minutes or try a different card.';
+          if (type === 'validation_error')
+            msg = result.error.message || 'Please check your card details and try again.';
+          showPayError(msg);
+        } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+          if (result.paymentIntent.id) currentPiId = result.paymentIntent.id;
+          fulfillAndShowSuccess(email);
+        } else if (result.paymentIntent && result.paymentIntent.status === 'requires_action') {
+          setPayLoading(false);
+          showPayError('Your bank requires additional verification. Please follow the prompt.');
+        } else {
+          setPayLoading(false);
+          showPayError('Unexpected payment state. Please contact james@jamesguldan.com if you were charged.');
+        }
+      })
+      .catch(function(err) {
+        setPayLoading(false);
+        var msg = 'An unexpected error occurred. Please try again.';
+        if (err && (err.message || '').toLowerCase().includes('network'))
+          msg = 'Network error \u2014 please check your connection and try again.';
+        showPayError(msg);
+        console.error('confirmPayment error:', err);
+      });
+    });
+
+    // Clear error styling on email re-type
+    document.getElementById('op-email').addEventListener('input', function() {
+      this.classList.remove('error');
+      hidePayError();
+      if (stripeElements && this.value.trim()) {
+        try { stripeElements.update({ defaultValues: { billingDetails: { email: this.value.trim() } } }); } catch(e) {}
+      }
+    });
+
+    // ── Fulfillment + success ────────────────────────────────────────────────
+    function fulfillAndShowSuccess(email) {
+      setPayLoading(false);
+      showStep('congrats');
+
+      var fallback = document.getElementById('op-congrats-fallback');
+
+      // Show fallback after 12s
+      var fallbackTimer = setTimeout(function() {
+        if (fallback) fallback.style.display = 'block';
+      }, 12000);
+
+      fetch('https://love.jamesguldan.com/api/fulfill-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paymentIntentId: currentPiId, email: email, phone: currentPhone, tiers: currentTiers })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        clearTimeout(fallbackTimer);
+        // For Site In Sixty, no redirect. Show fallback email helper after a beat.
+        setTimeout(function() {
+          if (fallback) fallback.style.display = 'block';
+        }, 4000);
+      })
+      .catch(function(err) {
+        clearTimeout(fallbackTimer);
+        console.error('Fulfill error (webhook backup active):', err);
+        if (fallback) fallback.style.display = 'block';
+      });
+    }
+
+    // ── Helpers ──────────────────────────────────────────────────────────────
+    function showPayError(msg) {
+      var err = document.getElementById('op-pay-error');
+      err.textContent = msg;
+      err.style.display = 'block';
+      err.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hidePayError() {
+      var err = document.getElementById('op-pay-error');
+      err.style.display = 'none';
+      err.textContent = '';
+    }
+
+    function setPayLoading(loading) {
+      var btn     = document.getElementById('op-pay-submit');
+      var spinner = document.getElementById('op-pay-spinner');
+      var text    = btn.querySelector('.btn-text');
+      btn.disabled = loading;
+      btn.style.pointerEvents = loading ? 'none' : '';
+      spinner.style.display   = loading ? 'inline-block' : 'none';
+      text.textContent = loading ? 'Processing\u2026' : 'Pay $' + BASE;
+    }
+
+    // ── Handle 3DS / bank redirect return ────────────────────────────────────
+    (function checkPiReturn() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('pi_return') !== '1') return;
+      var piId = params.get('pi') || '';
+      window.history.replaceState({}, '', window.location.pathname);
+      if (!piId) return;
+      fetch('https://love.jamesguldan.com/api/payment-status?pi=' + piId)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.status === 'succeeded') {
+            backdrop.style.display = 'block';
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            backdrop.classList.add('visible');
+            popup.classList.add('visible');
+            currentPiId    = piId;
+            currentPiEmail = data.email || '';
+            currentTiers   = (data.tiers || 'site-in-sixty').split(',');
+            fulfillAndShowSuccess(data.email || '');
+          } else if (data.status === 'requires_payment_method') {
+            backdrop.style.display = 'block';
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            backdrop.classList.add('visible');
+            popup.classList.add('visible');
+            currentPiId  = piId;
+            currentTiers = (data.tiers || 'site-in-sixty').split(',');
+            showStep('payment');
+            showPayError('Authentication failed or was cancelled. Please try again.');
+          }
+        })
+        .catch(function(e) {
+          console.error('pi_return check failed:', e);
+        });
+    })();
+
+    // ── Attach CTA buttons ───────────────────────────────────────────────────
+    document.querySelectorAll('a[data-checkout]').forEach(function(btn) {
+      btn.addEventListener('click', openPopup);
+    });
+  })();
+</script>
 
 </body>
 </html>
