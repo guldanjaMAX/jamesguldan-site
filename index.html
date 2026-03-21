@@ -871,7 +871,7 @@
         .split-reveal {
             display: flex;
             align-items: stretch;
-            background: linear-gradient(135deg, #F0EDE8 0%, #E8E4DD 100%);
+            background: linear-gradient(135deg, #1a1714 0%, #0d0c0b 100%);
             border-radius: 24px;
             overflow: hidden;
             min-height: 440px;
@@ -883,14 +883,14 @@
             align-items: flex-end;
             justify-content: center;
             padding-top: 40px;
-            background: linear-gradient(180deg, rgba(196,112,63,0.03) 0%, rgba(196,112,63,0.07) 100%);
+            background: linear-gradient(180deg, rgba(196,112,63,0.04) 0%, rgba(196,112,63,0.1) 100%);
         }
 
         .split-reveal-photo img {
             width: 280px;
             height: auto;
             display: block;
-            filter: drop-shadow(0 -8px 40px rgba(26,26,26,0.06));
+            filter: drop-shadow(0 -8px 40px rgba(0,0,0,0.3));
         }
 
         .split-reveal-content {
@@ -899,6 +899,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            border-left: 1px solid rgba(255,255,255,0.06);
         }
 
         .split-reveal-eyebrow {
@@ -908,7 +909,7 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--accent);
-            opacity: 0.5;
+            opacity: 0.7;
             margin-bottom: 24px;
         }
 
@@ -917,7 +918,7 @@
             font-style: normal;
             font-size: clamp(1rem, 1.4vw, 1.15rem);
             line-height: 1.85;
-            color: rgba(26, 26, 26, 0.75);
+            color: rgba(255, 255, 255, 0.82);
             margin-bottom: 28px;
         }
 
@@ -928,7 +929,7 @@
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--accent);
-            opacity: 0.55;
+            opacity: 0.7;
         }
 
         .split-reveal-accent-line { display: none; }
@@ -1300,10 +1301,10 @@
             font-size: 0.55rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.35);
+            color: rgba(255,255,255,0.65);
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
         }
         .shift-col.right-col .shift-col-label {
             color: var(--accent);
@@ -1312,7 +1313,7 @@
         .shift-col p {
             font-size: 0.95rem;
             line-height: 1.8;
-            color: rgba(255,255,255,0.82);
+            color: rgba(255,255,255,0.92);
         }
         .shift-col p + p { margin-top: 16px; }
         .shift-col.right-col p { color: var(--text-primary); font-weight: 450; }
@@ -2769,17 +2770,6 @@
             </div>
         </div>
 
-        <div class="problem-truth">
-            <div class="truth-strip">
-                <div class="truth-photo">
-                    <img src="testimonials/joshua-b-lee-avatar.svg" alt="Joshua B Lee" />
-                </div>
-                <div class="truth-content">
-                    <h3>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</h3>
-                    <div class="truth-attribution"><span>Joshua B Lee</span></div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <div class="cost-of-inaction">
