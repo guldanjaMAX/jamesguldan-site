@@ -752,10 +752,10 @@
             display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
         }
 
-        .pattern-symptom:nth-child(even) .pattern-symptom-inner {
+        .pattern-symptom.flip .pattern-symptom-inner {
             direction: rtl;
         }
-        .pattern-symptom:nth-child(even) .pattern-symptom-inner > * {
+        .pattern-symptom.flip .pattern-symptom-inner > * {
             direction: ltr;
         }
 
@@ -920,7 +920,7 @@
             .pattern-symptom-inner {
                 grid-template-columns: 1fr; gap: 32px;
             }
-            .pattern-symptom:nth-child(even) .pattern-symptom-inner { direction: ltr; }
+            .pattern-symptom.flip .pattern-symptom-inner { direction: ltr; }
             .pattern-symptom { padding: 48px 24px; }
             .problem-truth { margin: 0 24px 72px; padding: 48px 28px; }
             .problem-truth::before { font-size: 4rem; left: 20px; }
@@ -2333,7 +2333,7 @@
         <div class="pattern-divider"></div>
 
         <!-- Symptom 2 — problem left, diagnosis card right (alternates) -->
-        <div class="pattern-symptom">
+        <div class="pattern-symptom flip">
             <div class="pattern-symptom-inner">
                 <div class="pattern-diag-card">
                     <div class="diag-header">
