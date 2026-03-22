@@ -14,9 +14,9 @@
     </script>
 
     <!-- Primary Meta Tags -->
-    <title>James Guldan | Deep Work for Entrepreneurs Who've Outgrown Their Business</title>
-    <meta name="title" content="James Guldan | Deep Work for Entrepreneurs Who've Outgrown Their Business">
-    <meta name="description" content="I sit with entrepreneurs who've outgrown their business and rebuild it around who they actually are. Brand strategy, offer architecture, and the hard conversations nobody else will have with you.">
+    <title>James Guldan | Deep Work for Entrepreneurs</title>
+    <meta name="title" content="James Guldan | Deep Work for Entrepreneurs">
+    <meta name="description" content="Brand strategy for entrepreneurs who've outgrown their business. Positioning, offer architecture, and the hard conversations nobody else will have with you.">
     <meta name="author" content="James Guldan">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://jamesguldan.com/">
@@ -83,7 +83,7 @@
       "familyName": "Guldan",
       "url": "https://jamesguldan.com",
       "image": "https://jamesguldan.com/hero-image.jpg",
-      "description": "Brand strategist for entrepreneurs who've outgrown their business. Positioning, offer architecture, and strategic advisory for founders. 15+ years of experience, $1B+ in client revenue.",
+      "description": "Brand strategist for entrepreneurs who've outgrown their business. Positioning, offer architecture, and strategic advisory for founders. 15+ years of experience, 132+ entrepreneurs served.",
       "jobTitle": "Brand Strategist & Positioning Expert",
       "knowsAbout": [
         "Brand Strategy",
@@ -150,7 +150,7 @@
           "name": "What is the Deep Work Interview?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A two hour AI guided interview that produces a complete brand strategy blueprint. It covers your story, expertise, beliefs, ideal clients, market positioning, offer structure, website content, and gap analysis. It's the same process I used to charge $5,000 for, now powered by AI."
+            "text": "Eight focused sessions that produce a complete brand strategy blueprint. It covers your story, expertise, beliefs, ideal clients, market positioning, offer structure, website content, and gap analysis. It's the same process I used to charge $5,000 for, now powered by AI."
           }
         },
         {
@@ -158,7 +158,7 @@
           "name": "How is this different from a brand strategist?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A brand strategist gives you a PDF after 3 meetings. The Deep Work Interview gives you a working blueprint in 2 hours, with real competitor research, actual pricing data, and copy you can use today. And if you want a strategist after that, I'm right here."
+            "text": "A brand strategist gives you a PDF after 3 meetings. The Deep Work Interview gives you a working blueprint in eight focused sessions, with real competitor research, actual pricing data, and copy you can use today. And if you want a strategist after that, I'm right here."
           }
         },
         {
@@ -859,79 +859,83 @@
             position: relative; z-index: 2;
         }
 
-        /* Cinematic Quote Section */
-        .split-reveal-wrap {
-            max-width: 1060px;
-            margin: 0 auto;
-            padding: 0 24px;
+        /* Why I See It — Centered Stack */
+        .why-see-it {
+            padding: 80px 24px;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #F3EDE6 100%);
+            text-align: center;
             position: relative;
             z-index: 2;
         }
-
-        .split-reveal {
-            display: flex;
-            align-items: stretch;
-            background: linear-gradient(135deg, #F0EDE8 0%, #E8E4DD 100%);
-            border-radius: 24px;
-            overflow: hidden;
-            min-height: 440px;
+        .why-see-it-inner {
+            max-width: 640px;
+            margin: 0 auto;
         }
-
-        .split-reveal-photo {
-            flex: 0 0 340px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-top: 40px;
-            background: linear-gradient(180deg, rgba(196,112,63,0.03) 0%, rgba(196,112,63,0.07) 100%);
+        .why-photo-wrap {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 36px;
         }
-
-        .split-reveal-photo img {
-            width: 280px;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 -8px 40px rgba(26,26,26,0.06));
+        .why-photo-wrap img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top center;
+            position: relative;
+            z-index: 1;
         }
-
-        .split-reveal-content {
-            flex: 1;
-            padding: 64px 56px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .why-ring {
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 1px solid rgba(196,112,63,0.2);
         }
-
-        .split-reveal-eyebrow {
+        .why-ring2 {
+            position: absolute;
+            inset: -18px;
+            border-radius: 50%;
+            border: 1px solid rgba(196,112,63,0.08);
+        }
+        .why-eyebrow {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.55rem;
             font-weight: 500;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--accent);
-            opacity: 0.5;
-            margin-bottom: 24px;
+            opacity: 0.6;
+            margin-bottom: 20px;
         }
-
-        .split-reveal-text {
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
-            font-size: clamp(1rem, 1.4vw, 1.15rem);
-            line-height: 1.85;
-            color: rgba(26, 26, 26, 0.75);
+        .why-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
             margin-bottom: 28px;
         }
-
-        .split-reveal-name {
+        .why-dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.3;
+        }
+        .why-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 1.4vw, 1.1rem);
+            line-height: 1.9;
+            color: rgba(26,26,26,0.72);
+            margin-bottom: 28px;
+        }
+        .why-name {
             font-family: 'Outfit', sans-serif;
             font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--accent);
-            opacity: 0.55;
+            opacity: 0.6;
         }
-
-        .split-reveal-accent-line { display: none; }
 
         /* Testimonial Strip */
         .problem-truth {
@@ -987,18 +991,10 @@
         .truth-attribution span { color: var(--accent); opacity: 0.7; }
 
         @media (max-width: 768px) {
-            .split-reveal {
-                flex-direction: column;
-                min-height: auto;
-                border-radius: 16px;
-            }
-            .split-reveal-photo {
-                flex: none;
-                height: 280px;
-                padding-top: 24px;
-            }
-            .split-reveal-photo img { width: 200px; }
-            .split-reveal-content { padding: 40px 28px 48px; }
+            .why-see-it { padding: 56px 20px; }
+            .why-photo-wrap img { width: 90px; height: 90px; }
+            .why-ring { inset: -6px; }
+            .why-ring2 { inset: -14px; }
             .truth-strip {
                 flex-direction: column;
                 text-align: center;
@@ -1011,10 +1007,12 @@
             .coi-left h3 { font-size: 1.3rem; }
             .coi-right { padding: 40px 28px; }
             /* Shift mobile */
-            .shift-columns { grid-template-columns: 1fr; gap: 0; }
-            .shift-col { border-radius: 20px 20px 0 0; padding: 32px 28px; }
-            .shift-col.right-col { border-radius: 0 0 20px 20px; border-left: 1px solid var(--border); }
-            .shift-bottom { padding: 28px; }
+            .shift-section { padding: 72px 0; }
+            .shift-headline { font-size: clamp(1.3rem, 5.5vw, 1.7rem); }
+            .shift-columns { grid-template-columns: 1fr; gap: 0; margin-top: 36px; }
+            .shift-col { border-radius: 16px 16px 0 0; padding: 28px 24px; }
+            .shift-col p { font-size: 0.88rem; line-height: 1.75; }
+            .shift-col.right-col { border-radius: 0 0 16px 16px; border-left: none; border-top: 1px solid var(--border); }
             /* Timeline mobile */
             .cases-timeline { padding-left: 32px; }
             .cases-card { flex-direction: column; gap: 20px; padding: 28px; }
@@ -1034,6 +1032,8 @@
             }
             .pattern-symptom.flip .pattern-symptom-inner { direction: ltr; }
             .pattern-symptom { padding: 48px 24px; }
+            /* Show symptom description BEFORE the chat card on mobile */
+            .pattern-sym-content { order: -1; }
             .problem-truth { margin: 0 16px 56px; padding: 0 0; }
             .pattern-diag-card { margin: 0; }
         }
@@ -1300,10 +1300,10 @@
             font-size: 0.55rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.35);
+            color: rgba(255,255,255,0.65);
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
         }
         .shift-col.right-col .shift-col-label {
             color: var(--accent);
@@ -1312,7 +1312,7 @@
         .shift-col p {
             font-size: 0.95rem;
             line-height: 1.8;
-            color: rgba(255,255,255,0.82);
+            color: rgba(255,255,255,0.92);
         }
         .shift-col p + p { margin-top: 16px; }
         .shift-col.right-col p { color: var(--text-primary); font-weight: 450; }
@@ -1906,13 +1906,27 @@
             line-height: 1.85;
             color: var(--text-secondary);
         }
+        .about-candid-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .about-geo-canvas {
+            position: absolute;
+            inset: -40px;
+            z-index: 0;
+            pointer-events: none;
+        }
         .about-candid {
+            position: relative;
+            z-index: 1;
             display: flex;
             align-items: flex-end;
             justify-content: center;
             border-radius: 20px;
-            overflow: hidden;
-            background: linear-gradient(180deg, rgba(196,112,63,0.03) 0%, rgba(196,112,63,0.08) 100%);
+            overflow: visible;
+            background: none;
         }
         .about-candid img {
             width: 90%;
@@ -2242,7 +2256,7 @@
                 gap: 40px;
             }
             .about-section {
-                background: linear-gradient(to bottom, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.8) 50%, rgba(10,10,10,0.7) 100%), url('james-speaking-stage.jpg') 65% center/cover no-repeat;
+                background: var(--bg-primary);
             }
             .testimonial-screenshots {
                 grid-template-columns: 1fr;
@@ -2278,9 +2292,15 @@
             footer p { margin-top: 20px; }
             /* Coaching seed mobile */
             .coaching-seed { padding: 24px 20px !important; margin-top: 36px !important; }
-            /* About candid photo mobile */
-            .about-candid { max-height: 400px; border-radius: 16px; }
-            .about-candid img { max-width: 260px; }
+            /* About section mobile */
+            .about-section { padding: 64px 0; }
+            .about-content { gap: 28px; }
+            .about-text h2 { font-size: clamp(1.2rem, 4.5vw, 1.45rem); margin-bottom: 18px; line-height: 1.35; }
+            .about-text p { font-size: 0.88rem; line-height: 1.75; margin-bottom: 14px; }
+            .about-candid-wrap { order: -1; }
+            .about-candid { max-height: 320px; border-radius: 16px; }
+            .about-candid img { max-width: 220px; }
+            .about-geo-canvas { display: none; }
             /* Timeline cards mobile */
             .cases-card-photo img { width: 64px; height: 64px; }
             .cases-card-name { font-size: 0.95rem; }
@@ -2293,6 +2313,10 @@
             .proof-bottom-row { padding: 20px 16px 24px; }
             /* Container padding mobile */
             .container { padding: 0 20px; }
+            /* Shift section tighter on small screens */
+            .shift-col { padding: 24px 20px; }
+            .shift-col-label { font-size: 0.5rem; margin-bottom: 14px; padding-bottom: 10px; }
+            .shift-inner { padding: 0 16px; }
         }
 
         /* Deep Work Interview Preview Section */
@@ -2564,7 +2588,7 @@
                 <div class="hero-content fade-in">
                     <h1>Your business is successful. So why doesn't it <span class="serif-italic accent">feel like yours</span> anymore?</h1>
                     <p class="hero-subtitle">
-                        You built something real. But somewhere along the way, your brand stopped reflecting who you actually are. In two hours, you'll have the positioning, the language, and the blueprint to fix it.
+                        You built something real. But somewhere along the way, your brand stopped reflecting who you actually are. In eight focused sessions, you'll have the positioning, the language, and the blueprint to fix it.
                     </p>
                     <a href="/deep-work/" class="hero-cta">
                         Start the Deep Work Interview
@@ -2575,6 +2599,15 @@
             </div>
         </div>
     </section>
+
+    <!-- CREDIBILITY BAR (4B) -->
+    <div style="display: flex; justify-content: center; gap: 40px; padding: 18px 36px; background: #F5F1EC; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div style="text-align: center;"><div style="font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 800; color: var(--text-primary, #1a1a1a);">$67</div><div style="font-size: 10px; color: #999; text-transform: uppercase; letter-spacing: 1px;">one time</div></div>
+      <div style="width: 1px; background: var(--border);"></div>
+      <div style="text-align: center;"><div style="font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 800; color: var(--text-primary, #1a1a1a);">132+</div><div style="font-size: 10px; color: #999; text-transform: uppercase; letter-spacing: 1px;">entrepreneurs</div></div>
+      <div style="width: 1px; background: var(--border);"></div>
+      <div style="text-align: center;"><div style="font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 800; color: var(--text-primary, #1a1a1a);">4.9★</div><div style="font-size: 10px; color: #999; text-transform: uppercase; letter-spacing: 1px;">avg rating</div></div>
+    </div>
 
     <div class="hero-meta-proof">
         <div class="container">
@@ -2756,30 +2789,24 @@
             </div>
         </div>
 
-        <div class="split-reveal-wrap">
-            <div class="split-reveal">
-                <div class="split-reveal-photo">
+        <div class="why-see-it">
+            <div class="why-see-it-inner">
+                <div class="why-photo-wrap">
+                    <div class="why-ring"></div>
+                    <div class="why-ring2"></div>
                     <img src="james-pink-shirt-cutout.png" alt="James Guldan" />
                 </div>
-                <div class="split-reveal-content">
-                    <div class="split-reveal-eyebrow">Why I See It</div>
-                    <p class="split-reveal-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it.</p>
-                    <div class="split-reveal-name">James Guldan</div>
+                <div class="why-eyebrow">Why I See It</div>
+                <div class="why-dots">
+                    <div class="why-dot"></div>
+                    <div class="why-dot"></div>
+                    <div class="why-dot"></div>
                 </div>
+                <p class="why-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it.</p>
+                <div class="why-name">James Guldan</div>
             </div>
         </div>
 
-        <div class="problem-truth">
-            <div class="truth-strip">
-                <div class="truth-photo">
-                    <img src="testimonials/joshua-b-lee-avatar.svg" alt="Joshua B Lee" />
-                </div>
-                <div class="truth-content">
-                    <h3>"Your ability to simplify without shrinking someone's ambition is rare. It's not just strategy. It's stewardship."</h3>
-                    <div class="truth-attribution"><span>Joshua B Lee</span></div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <div class="cost-of-inaction">
@@ -2805,6 +2832,13 @@
                 <p class="coi-closing">Most founders never count what they never see. The ones who do? That's when everything changes.</p>
             </div>
         </div>
+    </div>
+
+    <!-- POST-PROBLEM CTA (2A: Empathetic Bridge) -->
+    <div style="padding: 56px 36px; text-align: center; background: #F5F1EC;">
+      <div style="font-family: 'Outfit',sans-serif; font-size: 24px; font-weight: 700; color: var(--text-primary, #1a1a1a); margin-bottom: 10px; line-height: 1.3;">Sound familiar?</div>
+      <p style="font-size: 14px; color: var(--text-secondary, #666); max-width: 420px; margin: 0 auto 24px; line-height: 1.7;">Most founders carry this feeling for years. The Deep Work Interview names it in eight focused sessions.</p>
+      <a href="/deep-work/" style="display: inline-flex; align-items: center; gap: 10px; background: var(--text-primary, #1a1a1a); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 15px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: background .25s;" onmouseover="this.style.background='#c4703f'" onmouseout="this.style.background='var(--text-primary, #1a1a1a)'">Start the Deep Work Interview <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
 
     <section class="shift-section">
@@ -2891,7 +2925,7 @@
             <div class="section-header" style="text-align: left;">
                 <div class="section-eyebrow">Inside the Interview</div>
                 <h2>These are the questions <em class="serif-italic" style="color: var(--accent);">nobody else will ask you.</em></h2>
-                <p class="dwi-subtitle">Two hours. No small talk. No warm up exercises. Just the questions that cut straight to the thing you've been avoiding about your business.</p>
+                <p class="dwi-subtitle">Eight focused sessions. No small talk. No warm up exercises. Just the questions that cut straight to the thing you've been avoiding about your business.</p>
             </div>
 
             <div class="dwi-layout">
@@ -2982,7 +3016,7 @@
 
             <div class="dwi-cta-row">
                 <a href="/deep-work/" class="hero-cta" style="display: inline-flex;">Start the Deep Work Interview <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                <p class="dwi-note">$67. Two hours. The same process I used to charge $5,000 for.</p>
+                <p class="dwi-note">$67. Eight focused sessions. The same process I used to charge $5,000 for.</p>
             </div>
         </div>
     </section>
@@ -3102,8 +3136,16 @@
                     </div>
                 </div>
             </div>
+            <p style="text-align:center; font-size:11px; color:var(--text-secondary); opacity:0.5; margin-top:32px; line-height:1.5; max-width:500px; margin-left:auto; margin-right:auto;">Individual results vary based on background, effort, market conditions, and implementation.</p>
         </div>
     </section>
+
+    <!-- POST-TESTIMONIALS CTA (6A: Bold Banner) -->
+    <div style="padding: 48px 36px; text-align: center; background: linear-gradient(180deg, #FDFCFA 0%, #F5F1EC 100%);">
+      <div style="font-family: 'Outfit',sans-serif; font-size: clamp(20px, 2.5vw, 24px); font-weight: 700; color: var(--text-primary, #1a1a1a); margin-bottom: 16px; line-height: 1.3;">Ready to find out what they found out?</div>
+      <a href="/deep-work/" style="display: inline-flex; align-items: center; gap: 10px; background: var(--text-primary, #1a1a1a); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 15px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: background .25s;" onmouseover="this.style.background='#c4703f'" onmouseout="this.style.background='var(--text-primary, #1a1a1a)'">Start the Deep Work Interview <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <div style="font-size: 12px; color: #aaa; margin-top: 12px;">$67 one time · Instant access · 30 day guarantee</div>
+    </div>
 
     <section id="ways-in" class="bg-dark">
         <div class="container">
@@ -3116,12 +3158,12 @@
                 <div class="offer-card featured" style="text-align: center;">
                     <div class="offer-price" style="font-size: 3rem; margin-bottom: 8px;">$67</div>
                     <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 24px; letter-spacing: 0.05em;">PREVIOUSLY $5,000 PER SESSION</p>
-                    <p class="offer-description" style="font-size: 1.05rem; line-height: 1.8; max-width: 540px; margin: 0 auto;">A two hour AI guided interview that pulls apart your entire business and gives you empirical, researched answers. Named competitors. Pricing data. A credibility score. Three structured offers. A full website blueprint.</p>
+                    <p class="offer-description" style="font-size: 1.05rem; line-height: 1.8; max-width: 540px; margin: 0 auto;">Eight focused sessions that pull apart your entire business and give you empirical, researched answers. Named competitors. Pricing data. A credibility score. Three structured offers. A full website blueprint.</p>
                     <a href="https://buy.stripe.com/dRmfZh4KG5COapN9mx6c005" class="offer-cta" style="margin: 0 auto;">Start the Deep Work Interview →</a>
                 </div>
             </div>
 
-            <div class="coaching-seed" style="max-width: 540px; margin: 48px auto 0; text-align: center; padding: 32px 40px; border: 1px solid rgba(196,112,63,0.3); border-radius: 16px; background: rgba(196,112,63,0.07);">
+            <div class="coaching-seed" style="max-width: 540px; margin: 48px auto 0; text-align: center; padding: 32px 40px; border: 1px solid rgba(196,112,63,0.25); border-radius: 16px; background: #1a1714;">
                 <p style="font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.7; margin: 0;">Want me to build it with you? I take on a small number of clients as a fractional brand strategist. Starts at $5,000/month.</p>
                 <a href="/apply" style="display: inline-block; margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(196,112,63,0.5); padding-bottom: 2px;">Apply to work with me →</a>
             </div>
@@ -3138,8 +3180,11 @@
                     <p>But the work I'm most proud of is the founder who finally charged what she was worth. The consultant who stopped taking bad clients for the first time in his career. The branding expert who realized he was operating at 70% and launched the thing he was actually meant to build. The thing every single one of my clients would tell you is the same: he sees the thing you can't see, and he tells you the truth about it.</p>
                     <p>I live in Phoenix with my son. I used to run sixteen hour days building businesses for other people. Now I produce more good work in four focused hours than I used to in sixteen scattered ones. That shift changed everything about how I think about business, and it's built into everything I teach.</p>
                 </div>
-                <div class="about-candid">
-                    <img src="james-about-henley.png" alt="James Guldan, brand strategist" loading="lazy">
+                <div class="about-candid-wrap">
+                    <canvas class="about-geo-canvas" id="aboutGeo"></canvas>
+                    <div class="about-candid">
+                        <img src="james-about-henley.png" alt="James Guldan, brand strategist" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
@@ -3155,11 +3200,11 @@
             <div class="faq-grid">
                 <div class="faq-item">
                     <div class="faq-question">What is the Deep Work Interview?</div>
-                    <div class="faq-answer">A two hour AI guided interview that produces a complete brand strategy blueprint. It covers your story, expertise, beliefs, ideal clients, market positioning, offer structure, website content, and gap analysis. It's the same process I used to charge $5,000 for, now powered by AI.</div>
+                    <div class="faq-answer">Eight focused sessions that produce a complete brand strategy blueprint. It covers your story, expertise, beliefs, ideal clients, market positioning, offer structure, website content, and gap analysis. It's the same process I used to charge $5,000 for, now powered by AI.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How is this different from a brand strategist?</div>
-                    <div class="faq-answer">A brand strategist gives you a PDF after 3 meetings. The Deep Work Interview gives you a working blueprint in 2 hours, with real competitor research, actual pricing data, and copy you can use today. And if you want a strategist after that, I'm right here.</div>
+                    <div class="faq-answer">A brand strategist gives you a PDF after 3 meetings. The Deep Work Interview gives you a working blueprint in eight focused sessions, with real competitor research, actual pricing data, and copy you can use today. And if you want a strategist after that, I'm right here.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">What kind of entrepreneurs does this work for?</div>
@@ -3175,7 +3220,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">What if I'm not sure I'm ready?</div>
-                    <div class="faq-answer">The Interview is $67 and takes two hours. You'll walk away with a complete positioning blueprint whether you ever work with me or not. There's no pitch at the end, no upsell sequence, no manufactured urgency. If the Interview reveals something you want help building, I'm here. If not, you still leave with more clarity than most founders get from a $10,000 branding engagement. The risk of doing nothing is a lot higher than the risk of spending two hours finding out.</div>
+                    <div class="faq-answer">The Interview is $67 and runs across eight focused sessions of about 10 minutes each. You'll walk away with a complete positioning blueprint whether you ever work with me or not. There's no pitch at the end, no upsell sequence, no manufactured urgency. If the Interview reveals something you want help building, I'm here. If not, you still leave with more clarity than most founders get from a $10,000 branding engagement. The risk of doing nothing is a lot higher than the risk of finding out.</div>
                 </div>
             </div>
         </div>
@@ -3219,6 +3264,7 @@
                 <a href="terms.html">Terms &amp; Refund Policy</a>
             </div>
             <p>&copy; 2026 James Guldan / Align Growth LLC. All rights reserved.</p>
+            <p style="margin-top:8px; font-size:11px; opacity:0.5; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.6;">Results vary. Testimonials reflect individual experiences and are not a guarantee of outcome. Individual results depend on your background, effort, and implementation.</p>
         </div>
     </footer>
 
@@ -3233,23 +3279,23 @@
 
         let userAcknowledged = false;
 
-        revenueSelect.addEventListener('change', function() {
+        if (revenueSelect) revenueSelect.addEventListener('change', function() {
             if (this.value === 'Under $1M' && !userAcknowledged) {
                 revenueWarning.classList.add('active');
             }
         });
 
-        understandBtn.addEventListener('click', function() {
+        if (understandBtn) understandBtn.addEventListener('click', function() {
             userAcknowledged = true;
             revenueWarning.classList.remove('active');
         });
 
-        cancelBtn.addEventListener('click', function() {
+        if (cancelBtn) cancelBtn.addEventListener('click', function() {
             revenueWarning.classList.remove('active');
             revenueSelect.value = '';
         });
 
-        revenueWarning.addEventListener('click', function(e) {
+        if (revenueWarning) revenueWarning.addEventListener('click', function(e) {
             if (e.target === revenueWarning) {
                 revenueWarning.classList.remove('active');
                 if (!userAcknowledged) {
@@ -3258,7 +3304,7 @@
             }
         });
 
-        form.addEventListener('submit', async function(e) {
+        if (form) form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             if (revenueSelect.value === 'Under $1M' && !userAcknowledged) {
@@ -3379,8 +3425,8 @@
         if (symptoms.length && 'IntersectionObserver' in window) {
             symptoms.forEach(function(s) {
                 s.style.opacity = '0';
-                s.style.transform = 'translateY(40px)';
-                s.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.23,1,0.32,1)';
+                s.style.transform = 'translateY(24px)';
+                s.style.transition = 'opacity 0.45s ease, transform 0.45s cubic-bezier(0.23,1,0.32,1)';
             });
             var symObs = new IntersectionObserver(function(entries) {
                 entries.forEach(function(e) {
@@ -3402,7 +3448,7 @@
                 msgs.forEach(function(msg, i) {
                     msg.style.opacity = '0';
                     msg.style.transform = 'translateY(14px)';
-                    msg.style.transition = 'opacity 0.6s cubic-bezier(0.23,1,0.32,1) ' + (i * 0.3 + 0.2) + 's, transform 0.6s cubic-bezier(0.23,1,0.32,1) ' + (i * 0.3 + 0.2) + 's';
+                    msg.style.transition = 'opacity 0.35s cubic-bezier(0.23,1,0.32,1) ' + (i * 0.15 + 0.1) + 's, transform 0.35s cubic-bezier(0.23,1,0.32,1) ' + (i * 0.15 + 0.1) + 's';
                 });
             });
             var diagObs = new IntersectionObserver(function(entries) {
@@ -3422,6 +3468,127 @@
     })();
     </script>
 
+    <script>
+    // Sacred geometry animation for About photo
+    (function() {
+        var canvas = document.getElementById('aboutGeo');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var w, h, cx, cy;
+        var accent = [196, 112, 63];
+
+        function resize() {
+            var rect = canvas.parentElement.getBoundingClientRect();
+            w = canvas.width = rect.width + 80;
+            h = canvas.height = rect.height + 80;
+            cx = w / 2;
+            cy = h / 2;
+        }
+
+        // Draw a Seed of Life pattern (7 overlapping circles)
+        function drawSeedOfLife(x, y, r, opacity, rot) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rot);
+            ctx.strokeStyle = 'rgba(' + accent.join(',') + ',' + opacity + ')';
+            ctx.lineWidth = 0.6;
+            // Center circle
+            ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.stroke();
+            // 6 surrounding circles
+            for (var i = 0; i < 6; i++) {
+                var angle = (Math.PI / 3) * i;
+                ctx.beginPath();
+                ctx.arc(Math.cos(angle) * r, Math.sin(angle) * r, r, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        // Draw Metatron's Cube connecting lines
+        function drawMetatronLines(x, y, r, opacity, rot) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rot);
+            ctx.strokeStyle = 'rgba(' + accent.join(',') + ',' + opacity + ')';
+            ctx.lineWidth = 0.4;
+            // 13 points: center, inner 6, outer 6
+            var pts = [[0, 0]];
+            for (var i = 0; i < 6; i++) {
+                var a = (Math.PI / 3) * i - Math.PI / 6;
+                pts.push([Math.cos(a) * r * 0.5, Math.sin(a) * r * 0.5]);
+                pts.push([Math.cos(a) * r, Math.sin(a) * r]);
+            }
+            // Connect all points
+            for (var j = 0; j < pts.length; j++) {
+                for (var k = j + 1; k < pts.length; k++) {
+                    ctx.beginPath();
+                    ctx.moveTo(pts[j][0], pts[j][1]);
+                    ctx.lineTo(pts[k][0], pts[k][1]);
+                    ctx.stroke();
+                }
+            }
+            ctx.restore();
+        }
+
+        // Flower of Life (multiple overlapping Seed of Life)
+        function drawFlowerRing(x, y, r, opacity, rot) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rot);
+            ctx.strokeStyle = 'rgba(' + accent.join(',') + ',' + opacity + ')';
+            ctx.lineWidth = 0.5;
+            // Center + 6 inner + 12 outer = 19 circles
+            ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.stroke();
+            for (var ring = 0; ring < 2; ring++) {
+                var count = ring === 0 ? 6 : 12;
+                var dist = ring === 0 ? r : r * 1.73;
+                for (var i = 0; i < count; i++) {
+                    var a = (Math.PI * 2 / count) * i + (ring === 1 ? Math.PI / 12 : 0);
+                    ctx.beginPath();
+                    ctx.arc(Math.cos(a) * dist, Math.sin(a) * dist, r, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+            }
+            ctx.restore();
+        }
+
+        function draw(t) {
+            ctx.clearRect(0, 0, w, h);
+            var slowRot = t * 0.00008;
+            var pulse = 0.5 + Math.sin(t * 0.0006) * 0.15;
+
+            // Large Flower of Life behind photo, slowly rotating
+            drawFlowerRing(cx, cy - 20, 52, 0.045 + pulse * 0.02, slowRot);
+
+            // Metatron's cube, upper left, rotating opposite
+            drawMetatronLines(cx - 120, cy - 140, 70, 0.05 + Math.sin(t * 0.0008) * 0.02, -slowRot * 1.3);
+
+            // Seed of Life, lower right
+            drawSeedOfLife(cx + 100, cy + 120, 36, 0.06 + Math.sin(t * 0.0007 + 1) * 0.025, slowRot * 0.8);
+
+            // Small seed, upper right
+            drawSeedOfLife(cx + 140, cy - 100, 20, 0.05 + Math.sin(t * 0.0009 + 2) * 0.02, -slowRot * 1.5);
+
+            // Subtle Metatron, lower left
+            drawMetatronLines(cx - 100, cy + 80, 45, 0.035 + Math.sin(t * 0.0005 + 3) * 0.015, slowRot * 1.1);
+
+            // Scattered small circles (vesica piscis dots)
+            ctx.fillStyle = 'rgba(' + accent.join(',') + ',' + (0.12 + Math.sin(t * 0.001) * 0.04) + ')';
+            for (var d = 0; d < 8; d++) {
+                var dx = cx + Math.cos(slowRot * 2 + d * 0.785) * (80 + d * 25);
+                var dy = cy + Math.sin(slowRot * 2 + d * 0.785) * (60 + d * 20);
+                ctx.beginPath(); ctx.arc(dx, dy, 1.5 + Math.sin(t * 0.001 + d) * 0.5, 0, Math.PI * 2); ctx.fill();
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        resize();
+        window.addEventListener('resize', resize);
+        requestAnimationFrame(draw);
+    })();
+
+    </script>
     <script src="https://web3forms.com/client/script.js" async defer></script>
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69b8c7cec0c16f06497b8408"></script></body>
 </html>
