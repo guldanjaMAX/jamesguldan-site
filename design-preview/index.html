@@ -234,9 +234,22 @@ body {
   position: relative;
   width: 100%;
   max-width: 420px;
-  background: linear-gradient(180deg, #f5f0ea 0%, #ffffff 100%);
-  border-radius: 20px;
-  overflow: hidden;
+}
+.hero-photo-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -5%; bottom: 0; width: 50%;
+  background: linear-gradient(to right, #ffffff 15%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+.hero-photo-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 30%;
+  background: linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 .hero-photo-wrap img {
   width: 100%;
