@@ -170,13 +170,13 @@
     /* Session Questions Panel */
     .session-panel { background: #0d0c0b; border-radius: 20px; padding: 32px 28px; overflow: hidden; }
     .session-eyebrow { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,112,63,.7); display: block; margin-bottom: 28px; }
-    .session-q { margin-bottom: 0; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .session-q { margin-bottom: 0; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
     .session-q:first-of-type { padding-top: 0; }
     .session-q:last-of-type { border-bottom: none; padding-bottom: 0; }
-    .session-label { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 10px; }
+    .session-label { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 10px; }
     .session-quote { font-family: 'Playfair Display',serif; font-style: italic; font-size: clamp(15px, 1.5vw, 18px); line-height: 1.55; color: rgba(255,255,255,.82); }
     .session-quote em { color: var(--accent); font-style: italic; }
-    .session-footer { font-size: 11px; color: rgba(255,255,255,.2); text-align: center; padding-top: 20px; margin-top: 8px; letter-spacing: 1.5px; }
+    .session-footer { font-size: 11px; color: rgba(255,255,255,.55); text-align: center; padding-top: 20px; margin-top: 8px; letter-spacing: 1.5px; }
 
     /* SAMPLE OUTPUT — Scrolling Blueprint */
     .sample-output { margin-top: 72px; background: #1a1a1a; border-radius: 24px; overflow: hidden; border: 1px solid #333; }
@@ -274,7 +274,7 @@
     .bp-offer-items { text-align: left; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
     .bp-offer-item { font-size: 11px; line-height: 1.5; color: #555; padding: 3px 0 3px 18px; position: relative; }
     .bp-offer-item::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
-    .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(255,255,255,.4); border-top: 1px solid #333; font-style: italic; }
+    .sample-caption { text-align: center; padding: 20px 28px; font-size: 11px; color: rgba(255,255,255,.65); border-top: 1px solid #333; font-style: italic; }
 
     /* PROCESS V3 — Transcript Chat */
     .proc3-section { position: relative; z-index: 2; padding: 120px 48px; background: var(--bg); }
@@ -314,10 +314,10 @@
     .wyg-section { position: relative; z-index: 2; padding: 120px 0; background: #0d0c0b; overflow: hidden; }
     .wyg-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
     .wyg-header { text-align: center; margin-bottom: 80px; }
-    .wyg-header .section-eyebrow { color: rgba(196,112,63,.8); }
+    .wyg-header .section-eyebrow { color: rgba(196,112,63,1); }
     .wyg-header h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px, 2.8vw, 42px); font-weight: 700; color: #fff; }
     .wyg-header h2 em { font-family: 'Playfair Display',serif; font-style: italic; color: var(--accent); }
-    .wyg-header p { font-size: 16px; color: rgba(255,255,255,.4); margin-top: 12px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .wyg-header p { font-size: 16px; color: rgba(255,255,255,.75); margin-top: 12px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7; }
 
     /* ANNOTATION LAYOUT */
     .ann-wrap { position: relative; display: grid; grid-template-columns: 52% 1fr; gap: 0 56px; align-items: start; }
@@ -325,7 +325,7 @@
     .ann-doc { background: #222120; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.06); position: relative; z-index: 2; }
     .ann-doc-chrome { display: flex; align-items: center; gap: 7px; padding: 14px 18px; background: #2a2826; border-bottom: 1px solid rgba(255,255,255,.08); }
     .ann-chrome-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
-    .ann-doc-label-text { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.35); margin-left: 8px; }
+    .ann-doc-label-text { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.65); margin-left: 8px; }
     .ann-doc-section { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.08); }
     .ann-doc-section:last-child { border-bottom: none; }
     .ann-ds-label { font-family: 'Outfit',sans-serif; font-size: 8.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #c4703f; margin-bottom: 5px; }
@@ -356,7 +356,7 @@
     .test-video-stars { color: var(--accent); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
     .test-video-quote { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,.82); font-style: italic; margin-bottom: 28px; font-family: 'Playfair Display',serif; }
     .test-video-name { font-weight: 700; font-size: 15px; color: #fff; font-family: 'Outfit',sans-serif; }
-    .test-video-title { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 3px; }
+    .test-video-title { font-size: 12px; color: rgba(255,255,255,.7); margin-top: 3px; }
     .test-video-result { font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(196,112,63,.25); line-height: 1.6; }
     .test-inner { max-width: 1100px; margin: 0 auto; }
     .test-header { text-align: center; margin-bottom: 64px; }
@@ -395,17 +395,17 @@
     .final-sub { font-size: 13px; color: rgba(255,255,255,.35); margin-bottom: 32px; }
     .cta-btn-light { background: #fff; color: var(--text); padding: 20px 48px; border-radius: 50px; font-size: 16px; font-weight: 700; border: none; cursor: pointer; display: inline-block; transition: all .25s ease; font-family: 'Inter',sans-serif; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 4px 24px rgba(255,255,255,.15); }
     .cta-btn-light:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(255,255,255,.3); background: #c4703f; color: #fff; }
-    .final-trust { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 16px; }
+    .final-trust { font-size: 12px; color: rgba(255,255,255,.6); margin-top: 16px; }
     .anchor-price-wrap { margin-bottom: 8px; }
     .anchor-price-original { font-family: 'Outfit',sans-serif; font-size: 22px; color: rgba(255,255,255,.3); text-decoration: line-through; margin-bottom: 4px; display: block; }
     .launch-badge { display: inline-block; background: rgba(196,112,63,.25); border: 1px solid rgba(196,112,63,.5); color: var(--accent); font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 16px; }
 
     /* FOOTER */
     footer { position: relative; z-index: 2; padding: 32px 48px; background: #0a0909; display: flex; justify-content: space-between; align-items: center; }
-    .footer-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; color: rgba(255,255,255,.5); }
+    .footer-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; color: rgba(255,255,255,.8); }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 12px; color: rgba(255,255,255,.3); }
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,.2); }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,.65); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.55); }
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
