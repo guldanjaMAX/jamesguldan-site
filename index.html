@@ -1967,14 +1967,47 @@
             font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 12px;
-            cursor: default;
+            margin-bottom: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            user-select: none;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: var(--accent);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-question::after {
+            content: '−';
         }
 
         .faq-answer {
             font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.75;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding-top: 0;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+            padding-top: 12px;
         }
 
         /* Form */
@@ -2237,12 +2270,10 @@
                 margin-right: auto;
             }
             .proof-top-row {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr) !important;
             }
-            .proof-item { padding: 32px 16px 24px; }
-            .proof-item:nth-child(2)::after { display: none; }
-            .proof-item:nth-child(1), .proof-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
-            .proof-item:nth-child(3)::after, .proof-item:nth-child(4)::after { top: 20%; bottom: 20%; }
+            .proof-item { padding: 24px 12px 20px; }
+            .proof-number { font-size: clamp(1.4rem, 5vw, 2rem) !important; }
             .pillars-grid,
             .themes-grid,
             .offers-grid {
@@ -2269,9 +2300,12 @@
             .hero-content { padding: 24px 0 32px; }
             .hero-bg-photo { height: 280px; }
             h1 { font-size: 1.75rem; }
-            .proof-top-row { grid-template-columns: repeat(2, 1fr); }
-            .proof-names { gap: 10px 20px; }
-            .proof-name { font-size: 0.68rem; letter-spacing: 0.12em; }
+            .proof-top-row { grid-template-columns: repeat(3, 1fr) !important; }
+            .proof-item { padding: 18px 8px 14px !important; }
+            .proof-number { font-size: clamp(1.2rem, 4.5vw, 1.6rem) !important; }
+            .proof-label { font-size: 0.55rem !important; letter-spacing: 0.03em !important; }
+            .proof-names { gap: 8px 16px; }
+            .proof-name { font-size: 0.6rem; letter-spacing: 0.08em; }
             .warning-buttons { flex-direction: column; }
             .about-photos { flex-direction: column; }
             .about-photo img { height: 250px; }
@@ -2600,42 +2634,42 @@
         </div>
     </section>
 
-    <!-- CREDIBILITY BAR (4B) -->
-    <div style="display: flex; justify-content: center; gap: 40px; padding: 18px 36px; background: #F5F1EC; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-      <div style="text-align: center;"><div style="font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 800; color: var(--text-primary, #1a1a1a);">$67</div><div style="font-size: 10px; color: #999; text-transform: uppercase; letter-spacing: 1px;">one time</div></div>
-      <div style="width: 1px; background: var(--border);"></div>
-      <div style="text-align: center;"><div style="font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 800; color: var(--text-primary, #1a1a1a);">132+</div><div style="font-size: 10px; color: #999; text-transform: uppercase; letter-spacing: 1px;">entrepreneurs</div></div>
-      <div style="width: 1px; background: var(--border);"></div>
-      <div style="text-align: center;"><div style="font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 800; color: var(--text-primary, #1a1a1a);">4.9★</div><div style="font-size: 10px; color: #999; text-transform: uppercase; letter-spacing: 1px;">avg rating</div></div>
-    </div>
-
-    <div class="hero-meta-proof">
-        <div class="container">
-            <p>* This site, its copy, and its positioning were all built using <span>the Deep Work Interview process.</span></p>
-        </div>
-    </div>
-
+    <!-- UNIFIED PROOF BAR -->
     <div class="proof-bar">
-        <div class="proof-top-row">
+        <div class="proof-top-row" style="grid-template-columns: repeat(3, 1fr);">
             <div class="proof-item">
-                <div class="proof-number"><span class="accent-num">132</span></div>
-                <div class="proof-label">Entrepreneurs Repositioned</div>
+                <div class="proof-number" style="color: var(--accent);">$67</div>
+                <div class="proof-label" style="color: rgba(253,252,250,0.5);">One Time Investment</div>
             </div>
             <div class="proof-item">
-                <div class="proof-number">13</div>
-                <div class="proof-label">Grew 1,000%+ After</div>
+                <div class="proof-number"><span class="accent-num">132</span><span style="font-size:0.5em; opacity:0.5; margin-left:2px;">+</span></div>
+                <div class="proof-label" style="color: rgba(253,252,250,0.5);">Entrepreneurs Repositioned</div>
             </div>
             <div class="proof-item">
-                <div class="proof-number">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
-                <div class="proof-label">To Total Clarity</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number">40<span class="accent-num">+</span></div>
-                <div class="proof-label">Industries Repositioned</div>
+                <div class="proof-number">4.9<span style="font-size:0.6em; opacity:0.5; margin-left:2px;">★</span></div>
+                <div class="proof-label" style="color: rgba(253,252,250,0.5);">Average Rating</div>
             </div>
         </div>
         <div class="proof-divider-line"></div>
-        <div class="proof-bottom-row">
+        <div class="proof-top-row" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="proof-item" style="padding: 28px 20px 24px;">
+                <div class="proof-number" style="font-size: clamp(1.6rem, 2.5vw, 2rem);">13</div>
+                <div class="proof-label">Grew 1,000%+ After</div>
+            </div>
+            <div class="proof-item" style="padding: 28px 20px 24px;">
+                <div class="proof-number" style="font-size: clamp(1.6rem, 2.5vw, 2rem);">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
+                <div class="proof-label">To Total Clarity</div>
+            </div>
+            <div class="proof-item" style="padding: 28px 20px 24px;">
+                <div class="proof-number" style="font-size: clamp(1.6rem, 2.5vw, 2rem);">40<span class="accent-num">+</span></div>
+                <div class="proof-label">Industries Served</div>
+            </div>
+        </div>
+        <div class="proof-divider-line"></div>
+        <div style="padding: 16px 24px 10px; text-align: center; position: relative; z-index: 1;">
+            <div style="font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(253,252,250,0.2); margin-bottom: 4px;">This site was built using the Deep Work Interview process</div>
+        </div>
+        <div class="proof-bottom-row" style="padding-top: 0;">
             <div class="proof-bottom-label">Built positioning for</div>
             <div class="proof-names">
                 <span class="proof-name">Tony Robbins</span>
@@ -2679,15 +2713,6 @@
                     <div style="margin-bottom: 18px; padding-left: 20px; border-left: 2px solid var(--border);">
                         <div style="font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(26,26,26,.35); margin-bottom: 6px;">Client</div>
                         <div style="font-size: 14px; line-height: 1.7; color: #1a1a1a; font-style: italic;">"I know exactly what it looks like. I've pitched it a hundred times. I just... I keep going back to the old thing because it still pays the bills."</div>
-                    </div>
-                    <div style="text-align: center; color: rgba(26,26,26,.15); font-size: 18px; letter-spacing: 6px; padding: 4px 0 18px;">· · ·</div>
-                    <div style="margin-bottom: 18px;">
-                        <div style="font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px;">The Interview</div>
-                        <div style="font-size: 14px; line-height: 1.7; color: #1a1a1a;">"What if the old thing is the reason the new thing can't breathe?"</div>
-                    </div>
-                    <div style="padding-left: 20px; border-left: 2px solid var(--border);">
-                        <div style="font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(26,26,26,.35); margin-bottom: 6px;">Client</div>
-                        <div style="font-size: 14px; line-height: 1.7; color: #1a1a1a; font-style: italic;">"...Yeah. I think I've known that for a while."</div>
                     </div>
                 </div>
                 <div style="padding: 10px 22px; border-top: 1px solid var(--border); background: rgba(253,252,250,.6); display: flex; align-items: center; gap: 8px;">
@@ -2835,6 +2860,15 @@
             </div>
         </div>
     </section>
+
+    <!-- POST-TIMELINE CTA (Inline Clarity CTA) -->
+    <div style="padding: 40px 36px; text-align: center; background: var(--bg-primary);">
+      <div style="max-width: 520px; margin: 0 auto;">
+        <p style="font-size: 15px; color: var(--text-secondary, #666); line-height: 1.7; margin-bottom: 20px;">These three started with the same eight sessions you're about to take.</p>
+        <a href="/deep-work/" style="display: inline-flex; align-items: center; gap: 10px; background: var(--text-primary, #1a1a1a); color: #fff; padding: 14px 28px; border-radius: 50px; font-size: 14px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: background .25s;" onmouseover="this.style.background='#c4703f'" onmouseout="this.style.background='var(--text-primary, #1a1a1a)'">Start the Deep Work Interview <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <div style="font-size: 12px; color: #aaa; margin-top: 12px;">$67 one time · Instant access · 30 day guarantee</div>
+      </div>
+    </div>
 
     <!-- Deep Work Interview Preview -->
     <section class="dwi-preview">
@@ -3292,6 +3326,18 @@
                 }
             });
         });
+    </script>
+
+    <!-- FAQ Accordion -->
+    <script>
+    document.querySelectorAll('.faq-question').forEach(function(q) {
+        q.addEventListener('click', function() {
+            var item = this.closest('.faq-item');
+            var wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+            if (!wasOpen) item.classList.add('open');
+        });
+    });
     </script>
 
     <!-- Pattern counter + scroll animations -->
