@@ -62,7 +62,7 @@
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
     #geo { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
     a { text-decoration: none; color: inherit; }
-    h1, h2, h3 { text-wrap: pretty; }
+    h1, h2, h3 { text-wrap: balance; }
 
     /* NAV */
     nav { position: sticky; top: 0; z-index: 100; height: var(--nav-h); display: flex; justify-content: space-between; align-items: center; padding: 0 48px; background: #fff; border-bottom: 1px solid var(--border); }
@@ -765,7 +765,7 @@
   <div class="wti-inner">
     <div class="wti-left">
       <div class="section-eyebrow">What This Is</div>
-      <h2>You don't have a strategy problem. You have a <em>mirror&nbsp;problem.</em></h2>
+      <h2>You don't have a strategy problem. You have a&nbsp;<em>mirror&nbsp;problem.</em></h2>
       <p>Every coach and consultant I've ever talked to knows exactly what's broken. They can feel it in their chest every time a prospect goes quiet. Every time a sales call doesn't close. Every time they refresh their inbox hoping today is different.</p>
       <p>The problem isn't strategy. The problem is that nobody in your life will sit with you and ask the right questions without an agenda. Without trying to sell you something. Without filtering you through their own framework.</p>
       <p>I built this process working with some of the most well-known coaches and experts in the world — people who paid $5,000 for the output you can have today for less than the cost of a dinner out. One honest conversation, in the privacy of your home, to get the truth you know you need to hear. Named competitors, pricing data, a credibility score from 1 to 10, and the exact market opportunity your background sets you up for.</p>
@@ -1394,7 +1394,7 @@
 <!-- POST-TESTIMONIAL CTA (1A: Bold Banner) -->
 <div style="padding: 56px 36px; text-align: center; background: linear-gradient(180deg, #FDFCFA 0%, #F5F1EC 100%);">
   <div style="font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;">Ready?</div>
-  <h2 style="font-family: 'Outfit',sans-serif; font-size: clamp(22px,3vw,28px); font-weight: 700; color: var(--text); line-height: 1.2; max-width: 480px; margin: 0 auto 8px;">Your blueprint starts with one <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);font-weight:400;">conversation.</em></h2>
+  <h2 style="font-family: 'Outfit',sans-serif; font-size: clamp(22px,3vw,28px); font-weight: 700; color: var(--text); line-height: 1.2; max-width: 480px; margin: 0 auto 8px;">Your blueprint starts with one&nbsp;<em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);font-weight:400;">conversation.</em></h2>
   <p style="font-size: 14px; color: var(--muted); max-width: 420px; margin: 0 auto 24px; line-height: 1.7;">Eight focused sessions. Walk away with positioning, messaging, three priced offers, and a full website outline.</p>
   <a href="#checkout" data-checkout="blueprint" style="display: inline-flex; align-items: center; gap: 10px; background: var(--text); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 15px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: background .25s;" onmouseover="this.style.background='#c4703f'" onmouseout="this.style.background='var(--text)'">Get Clear Now. $67. <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   <div style="font-size: 12px; color: #aaa; margin-top: 12px;">30 day guarantee · Instant access · No subscription</div>
@@ -1471,7 +1471,7 @@
 <section class="before-decide-section" style="position:relative;z-index:2;padding:80px 48px;background:var(--bg);">
   <div style="max-width:800px;margin:0 auto;">
     <div class="section-eyebrow" style="text-align:center;margin-bottom:12px;">Before You Decide</div>
-    <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:700;color:var(--text);line-height:1.25;text-align:center;margin-bottom:48px;">This is built for a specific kind of person. <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);font-weight:400;">Here's how to know if that's you.</em></h2>
+    <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:700;color:var(--text);line-height:1.25;text-align:center;margin-bottom:48px;">This is built for a specific kind of person. <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);font-weight:400;">Here's how to know if&nbsp;that's&nbsp;you.</em></h2>
 
     <div class="before-decide-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;">
       <div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 28px;">
@@ -2623,6 +2623,248 @@
   });
 })();
 
+  </script>
+
+  <!-- GA4 Event Tracking Layer -->
+  <script>
+  (function() {
+    if (typeof gtag !== 'function') return;
+    var page = 'deep_work';
+
+    // 1. CTA Click Tracking
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a, button');
+      if (!el) return;
+      var href = el.getAttribute('href') || '';
+      var text = (el.textContent || '').trim().substring(0, 60);
+
+      // Checkout CTAs (data-checkout="blueprint" or href="#checkout")
+      if (el.getAttribute('data-checkout') === 'blueprint' || href === '#checkout') {
+        var section = getSection(el);
+        gtag('event', 'begin_checkout', {
+          event_category: 'conversion',
+          event_label: text,
+          cta_location: section,
+          currency: 'USD',
+          value: 67,
+          page_source: page
+        });
+      }
+
+      // Deploy CTA (free deploy offer)
+      if (text.indexOf('Deploy') > -1 && text.indexOf('Free') > -1) {
+        gtag('event', 'cta_click', {
+          event_category: 'conversion',
+          event_label: 'deploy_free_cta',
+          cta_location: getSection(el),
+          cta_destination: 'deploy',
+          page_source: page
+        });
+      }
+
+      // Site in Sixty upsell clicks
+      if (href === '/site-in-sixty/' || href.indexOf('site-in-sixty') > -1) {
+        gtag('event', 'cta_click', {
+          event_category: 'upsell',
+          event_label: text,
+          cta_location: getSection(el),
+          cta_destination: 'site_in_sixty',
+          page_source: page
+        });
+      }
+
+      // External links
+      if (href.indexOf('http') === 0 && href.indexOf('jamesguldan.com') === -1 && href.indexOf('stripe.com') === -1) {
+        gtag('event', 'outbound_click', {
+          event_category: 'engagement',
+          event_label: href.substring(0, 100),
+          link_text: text,
+          page_source: page
+        });
+      }
+    });
+
+    // 2. Checkout Overlay Events
+    var checkoutObserver = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        var popup = document.getElementById('op-checkout-popup');
+        if (popup && popup.style.display === 'flex' && !popup._tracked) {
+          popup._tracked = true;
+          gtag('event', 'checkout_opened', {
+            event_category: 'conversion',
+            event_label: 'overlay_visible',
+            page_source: page
+          });
+        }
+      });
+    });
+    setTimeout(function() {
+      var popup = document.getElementById('op-checkout-popup');
+      if (popup) checkoutObserver.observe(popup, { attributes: true, attributeFilter: ['style', 'class'] });
+    }, 1000);
+
+    // Track form field interactions in checkout
+    document.addEventListener('focus', function(e) {
+      var el = e.target;
+      if (!el || !el.id) return;
+      if (el.id === 'op-email') {
+        gtag('event', 'checkout_email_focus', { event_category: 'conversion', page_source: page });
+      }
+      if (el.id === 'op-phone') {
+        gtag('event', 'checkout_phone_focus', { event_category: 'conversion', page_source: page });
+      }
+    }, true);
+
+    // Track checkout submit button clicks
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('#op-pay-submit');
+      if (el) {
+        gtag('event', 'checkout_submit', {
+          event_category: 'conversion',
+          event_label: 'pay_button_clicked',
+          currency: 'USD',
+          value: 67,
+          page_source: page
+        });
+      }
+      // Track checkout close
+      var closeBtn = e.target.closest('#op-close-btn');
+      if (closeBtn) {
+        gtag('event', 'checkout_abandoned', {
+          event_category: 'conversion',
+          event_label: 'overlay_closed',
+          page_source: page
+        });
+      }
+    });
+
+    // 3. Scroll Depth Tracking
+    var scrollMarks = { 25: false, 50: false, 75: false, 90: false };
+    var scrollTimer = null;
+    window.addEventListener('scroll', function() {
+      if (scrollTimer) return;
+      scrollTimer = setTimeout(function() {
+        scrollTimer = null;
+        var scrollPct = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+        [25, 50, 75, 90].forEach(function(mark) {
+          if (scrollPct >= mark && !scrollMarks[mark]) {
+            scrollMarks[mark] = true;
+            gtag('event', 'scroll_depth', {
+              event_category: 'engagement',
+              event_label: mark + '_percent',
+              scroll_depth: mark,
+              page_source: page
+            });
+          }
+        });
+      }, 200);
+    });
+
+    // 4. Section Visibility Tracking
+    if ('IntersectionObserver' in window) {
+      var sectionsSeen = {};
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id || entry.target.className.split(' ')[0] || '';
+            if (id && !sectionsSeen[id]) {
+              sectionsSeen[id] = true;
+              gtag('event', 'section_view', {
+                event_category: 'engagement',
+                event_label: id,
+                page_source: page
+              });
+            }
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('section, .sis-bridge, .before-decide-section, .final-cta').forEach(function(el) {
+        observer.observe(el);
+      });
+    }
+
+    // 5. Video Play Tracking
+    document.querySelectorAll('video').forEach(function(video) {
+      video.addEventListener('play', function() {
+        gtag('event', 'video_play', {
+          event_category: 'engagement',
+          event_label: 'testimonial_video',
+          page_source: page
+        });
+      });
+    });
+
+    // 6. FAQ Accordion Tracking
+    document.querySelectorAll('.faq-question').forEach(function(q) {
+      q.addEventListener('click', function() {
+        var text = (this.textContent || '').trim().substring(0, 80);
+        gtag('event', 'faq_click', {
+          event_category: 'engagement',
+          event_label: text,
+          page_source: page
+        });
+      });
+    });
+
+    // 7. Time on Page Tracking
+    var timeMarks = [30, 60, 120, 300];
+    var timeIdx = 0;
+    var startTime = Date.now();
+    setInterval(function() {
+      if (timeIdx >= timeMarks.length) return;
+      var elapsed = Math.floor((Date.now() - startTime) / 1000);
+      if (elapsed >= timeMarks[timeIdx]) {
+        gtag('event', 'time_on_page', {
+          event_category: 'engagement',
+          event_label: timeMarks[timeIdx] + '_seconds',
+          time_seconds: timeMarks[timeIdx],
+          page_source: page
+        });
+        timeIdx++;
+      }
+    }, 5000);
+
+    // 8. Exit Intent
+    var exitFired = false;
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY < 5 && !exitFired) {
+        exitFired = true;
+        gtag('event', 'exit_intent', {
+          event_category: 'engagement',
+          event_label: 'mouse_leave_top',
+          scroll_position: Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100),
+          page_source: page
+        });
+      }
+    });
+
+    // 9. Purchase Complete (listen for congrats view)
+    var purchaseTracked = false;
+    setInterval(function() {
+      var congratsView = document.getElementById('op-congrats-view');
+      if (congratsView && congratsView.style.display !== 'none' && !purchaseTracked) {
+        purchaseTracked = true;
+        gtag('event', 'purchase', {
+          event_category: 'conversion',
+          event_label: 'deep_work_blueprint',
+          transaction_id: 'dwi_' + Date.now(),
+          currency: 'USD',
+          value: 67,
+          items: [{ item_name: 'Deep Work Blueprint', price: 67, quantity: 1 }]
+        });
+      }
+    }, 500);
+
+    // Helper
+    function getSection(el) {
+      var section = el.closest('section, .sis-bridge, .before-decide-section, .final-cta');
+      if (section) {
+        return section.id || section.className.split(' ')[0] || 'unknown_section';
+      }
+      return 'unknown_section';
+    }
+  })();
   </script>
 </body>
 </html>
