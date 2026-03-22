@@ -4,13 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Tag Manager (replace GTM-XXXXXXX with your container ID) -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCD0E6KVCV"></script>
     <script>
@@ -242,7 +235,6 @@
             font-weight: 600;
             color: var(--text-primary);
             line-height: 1.15;
-            text-wrap: balance;
             letter-spacing: -0.03em;
         }
 
@@ -588,11 +580,11 @@
         }
 
         .proof-label {
-            font-size: 0.78rem;
-            color: rgba(253,252,250,0.65);
-            letter-spacing: 0.08em;
+            font-size: 0.68rem;
+            color: rgba(253,252,250,0.35);
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 500;
             line-height: 1.5;
         }
 
@@ -611,11 +603,11 @@
         }
 
         .proof-bottom-label {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(253,252,250,0.4);
+            color: rgba(253,252,250,0.18);
             margin-bottom: 16px;
         }
 
@@ -631,11 +623,11 @@
 
         .proof-name {
             font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: rgba(253,252,250,0.5);
+            color: rgba(253,252,250,0.3);
             padding: 0 20px;
             position: relative;
             transition: color 0.3s ease;
@@ -1975,47 +1967,14 @@
             font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 0;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            user-select: none;
-            transition: color 0.2s;
-        }
-
-        .faq-question:hover {
-            color: var(--accent);
-        }
-
-        .faq-question::after {
-            content: '+';
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 300;
-            color: var(--text-muted);
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.open .faq-question::after {
-            content: '−';
+            margin-bottom: 12px;
+            cursor: default;
         }
 
         .faq-answer {
             font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.75;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease, padding 0.35s ease;
-            padding-top: 0;
-        }
-
-        .faq-item.open .faq-answer {
-            max-height: 500px;
-            padding-top: 12px;
         }
 
         /* Form */
@@ -2278,10 +2237,12 @@
                 margin-right: auto;
             }
             .proof-top-row {
-                grid-template-columns: repeat(3, 1fr) !important;
+                grid-template-columns: repeat(2, 1fr);
             }
-            .proof-item { padding: 24px 12px 20px; }
-            .proof-number { font-size: clamp(1.4rem, 5vw, 2rem) !important; }
+            .proof-item { padding: 32px 16px 24px; }
+            .proof-item:nth-child(2)::after { display: none; }
+            .proof-item:nth-child(1), .proof-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+            .proof-item:nth-child(3)::after, .proof-item:nth-child(4)::after { top: 20%; bottom: 20%; }
             .pillars-grid,
             .themes-grid,
             .offers-grid {
@@ -2308,12 +2269,9 @@
             .hero-content { padding: 24px 0 32px; }
             .hero-bg-photo { height: 280px; }
             h1 { font-size: 1.75rem; }
-            .proof-top-row { grid-template-columns: repeat(3, 1fr) !important; }
-            .proof-item { padding: 18px 8px 14px !important; }
-            .proof-number { font-size: clamp(1.2rem, 4.5vw, 1.6rem) !important; }
-            .proof-label { font-size: 0.55rem !important; letter-spacing: 0.03em !important; }
-            .proof-names { gap: 8px 16px; }
-            .proof-name { font-size: 0.6rem; letter-spacing: 0.08em; }
+            .proof-top-row { grid-template-columns: repeat(2, 1fr); }
+            .proof-names { gap: 10px 20px; }
+            .proof-name { font-size: 0.68rem; letter-spacing: 0.12em; }
             .warning-buttons { flex-direction: column; }
             .about-photos { flex-direction: column; }
             .about-photo img { height: 250px; }
@@ -2593,8 +2551,6 @@
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <nav>
         <div class="container">
@@ -2609,7 +2565,7 @@
 
     <section class="hero">
         <div class="hero-bg-photo fade-in delay-2">
-            <img src="james-hero-opt.jpg" alt="James Guldan - Deep Work for Entrepreneurs">
+            <img src="james-hero.png" alt="James Guldan - Deep Work for Entrepreneurs">
             <div class="vid-halo"></div>
             <div class="vid-halo2"></div>
             <div class="vid-float">
@@ -2630,7 +2586,7 @@
         <div class="container">
             <div class="hero-inner">
                 <div class="hero-content fade-in">
-                    <h1>Your business is successful. So why doesn't it <span class="serif-italic accent">feel like yours</span>&nbsp;anymore?</h1>
+                    <h1>Your business is successful. So why doesn't it <span class="serif-italic accent">feel like yours</span> anymore?</h1>
                     <p class="hero-subtitle">
                         You built something real. But somewhere along the way, your brand stopped reflecting who you actually are. In eight focused sessions, you'll have the positioning, the language, and the blueprint to fix it.
                     </p>
@@ -2644,42 +2600,33 @@
         </div>
     </section>
 
-    <!-- UNIFIED PROOF BAR -->
-    <div class="proof-bar">
-        <div class="proof-top-row" style="grid-template-columns: repeat(3, 1fr);">
-            <div class="proof-item">
-                <div class="proof-number" style="color: var(--accent);">$67</div>
-                <div class="proof-label" style="color: rgba(253,252,250,0.7);">One Time Investment</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number"><span class="accent-num">132</span><span style="font-size:0.5em; opacity:0.5; margin-left:2px;">+</span></div>
-                <div class="proof-label" style="color: rgba(253,252,250,0.7);">Entrepreneurs Repositioned</div>
-            </div>
-            <div class="proof-item">
-                <div class="proof-number">4.9<span style="font-size:0.6em; opacity:0.5; margin-left:2px;">★</span></div>
-                <div class="proof-label" style="color: rgba(253,252,250,0.7);">Average Rating</div>
-            </div>
+    <div class="hero-meta-proof">
+        <div class="container">
+            <p>* This site, its copy, and its positioning were all built using <span>the Deep Work Interview process.</span></p>
         </div>
-        <div class="proof-divider-line"></div>
-        <div class="proof-top-row" style="grid-template-columns: repeat(3, 1fr);">
-            <div class="proof-item" style="padding: 28px 20px 24px;">
-                <div class="proof-number" style="font-size: clamp(1.6rem, 2.5vw, 2rem);">13</div>
+    </div>
+
+    <div class="proof-bar">
+        <div class="proof-top-row">
+            <div class="proof-item">
+                <div class="proof-number"><span class="accent-num">132</span></div>
+                <div class="proof-label">Entrepreneurs Repositioned</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">13</div>
                 <div class="proof-label">Grew 1,000%+ After</div>
             </div>
-            <div class="proof-item" style="padding: 28px 20px 24px;">
-                <div class="proof-number" style="font-size: clamp(1.6rem, 2.5vw, 2rem);">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
+            <div class="proof-item">
+                <div class="proof-number">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
                 <div class="proof-label">To Total Clarity</div>
             </div>
-            <div class="proof-item" style="padding: 28px 20px 24px;">
-                <div class="proof-number" style="font-size: clamp(1.6rem, 2.5vw, 2rem);">40<span class="accent-num">+</span></div>
-                <div class="proof-label">Industries Served</div>
+            <div class="proof-item">
+                <div class="proof-number">40<span class="accent-num">+</span></div>
+                <div class="proof-label">Industries Repositioned</div>
             </div>
         </div>
         <div class="proof-divider-line"></div>
-        <div style="padding: 16px 24px 10px; text-align: center; position: relative; z-index: 1;">
-            <div style="font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(253,252,250,0.4); margin-bottom: 4px;">This site was built using the Deep Work Interview process</div>
-        </div>
-        <div class="proof-bottom-row" style="padding-top: 0;">
+        <div class="proof-bottom-row">
             <div class="proof-bottom-label">Built positioning for</div>
             <div class="proof-names">
                 <span class="proof-name">Tony Robbins</span>
@@ -2701,62 +2648,154 @@
         <div class="pattern-orb pattern-orb-3"></div>
         <div class="pattern-grain"></div>
 
-        <!-- Pattern Intro -->
         <div class="pattern-intro">
             <div class="section-eyebrow">The Pattern</div>
             <h2>I've had this conversation<br><em><span class="pattern-counter" data-target="132">0</span> times.</em></h2>
             <p class="pattern-lead">Different name, different industry, different revenue number. Same feeling. You're not the first person to feel this.</p>
         </div>
 
-        <!-- Featured Transcript (Symptom 2: Stuck Between Identities) -->
-        <div style="padding: 0 48px 48px; position: relative; z-index: 2;">
-            <div style="max-width: 620px; margin: 0 auto; background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 40px rgba(0,0,0,.05);">
-                <div style="padding: 14px 22px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(253,252,250,.9);">
-                    <span style="font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(26,26,26,.4);">Deep Work Session</span>
-                    <span style="font-size: 10px; color: rgba(26,26,26,.25);">Case #002</span>
-                </div>
-                <div style="padding: 24px 28px;">
-                    <div style="margin-bottom: 18px;">
-                        <div style="font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px;">The Interview</div>
-                        <div style="font-size: 14px; line-height: 1.7; color: #1a1a1a;">"Tell me about the version of your business you keep describing to people but haven't built yet."</div>
+        <div class="pattern-divider"></div>
+
+        <!-- Symptom 1 — diagnosis card left, problem right -->
+        <div class="pattern-symptom">
+            <div class="pattern-symptom-inner">
+                <div class="pattern-diag-card">
+                    <div class="diag-header">
+                        <span class="diag-title">Deep Work Session</span>
+                        <span class="diag-case">Case #001</span>
                     </div>
-                    <div style="margin-bottom: 18px; padding-left: 20px; border-left: 2px solid var(--border);">
-                        <div style="font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(26,26,26,.35); margin-bottom: 6px;">Client</div>
-                        <div style="font-size: 14px; line-height: 1.7; color: #1a1a1a; font-style: italic;">"I know exactly what it looks like. I've pitched it a hundred times. I just... I keep going back to the old thing because it still pays the bills."</div>
+                    <div class="diag-body">
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"Walk me through what happens when someone asks what you do."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"I freeze. Because I want to tell them what I'm building, where I'm going. But that's not what I actually do yet. So I just say the old thing and it feels like I'm shrinking myself."</div>
+                        </div>
+                        <div class="diag-pause">· · ·</div>
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"You're describing your vision to yourself every day. But the brand still speaks in the old language."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"Exactly. The thing I want to become has no words yet. So I just keep explaining something I've already outgrown."</div>
+                        </div>
+                    </div>
+                    <div class="diag-footer">
+                        <div class="diag-pulse"></div>
+                        <span class="diag-status">Session recording active</span>
                     </div>
                 </div>
-                <div style="padding: 10px 22px; border-top: 1px solid var(--border); background: rgba(253,252,250,.6); display: flex; align-items: center; gap: 8px;">
-                    <div style="width: 6px; height: 6px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,.5);"></div>
-                    <span style="font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(26,26,26,.25);">Session recording active</span>
+                <div class="pattern-sym-content">
+                    <div class="pattern-sym-step">Symptom One</div>
+                    <div class="pattern-sym-title">You've Outgrown Your Brand</div>
+                    <div class="pattern-sym-desc">You built something that worked. Then you grew. Now your website, your offers, and your positioning reflect the person you were two years ago. Not who you are now.</div>
                 </div>
             </div>
         </div>
 
-        <!-- Three Symptoms as compact numbered list -->
-        <div style="padding: 48px 48px 56px; position: relative; z-index: 2;">
-            <div style="max-width: 780px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px;">
-                <div>
-                    <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(196,112,63,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;"><span style="font-family:'Outfit',sans-serif; font-size: 12px; font-weight: 800; color: var(--accent);">1</span></div>
-                    <div style="font-family: 'Outfit',sans-serif; font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.3;">You've outgrown your brand</div>
-                    <p style="font-size: 13px; color: rgba(26,26,26,.45); line-height: 1.65;">Your positioning reflects who you were two years ago. Not who you are now.</p>
+        <div class="pattern-divider"></div>
+
+        <!-- Symptom 2 — problem left, diagnosis card right (alternates) -->
+        <div class="pattern-symptom flip">
+            <div class="pattern-symptom-inner">
+                <div class="pattern-diag-card">
+                    <div class="diag-header">
+                        <span class="diag-title">Deep Work Session</span>
+                        <span class="diag-case">Case #002</span>
+                    </div>
+                    <div class="diag-body">
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"Tell me about the version of your business you keep describing to people but haven't built yet."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"I know exactly what it looks like. I've pitched it a hundred times. I just... I keep going back to the old thing because it still pays the bills."</div>
+                        </div>
+                        <div class="diag-pause">· · ·</div>
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"What if the old thing is the reason the new thing can't breathe?"</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"...Yeah. I think I've known that for a while."</div>
+                        </div>
+                    </div>
+                    <div class="diag-footer">
+                        <div class="diag-pulse"></div>
+                        <span class="diag-status">Session recording active</span>
+                    </div>
                 </div>
-                <div>
-                    <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(196,112,63,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;"><span style="font-family:'Outfit',sans-serif; font-size: 12px; font-weight: 800; color: var(--accent);">2</span></div>
-                    <div style="font-family: 'Outfit',sans-serif; font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.3;">You're stuck between identities</div>
-                    <p style="font-size: 13px; color: rgba(26,26,26,.45); line-height: 1.65;">The new version is clear in your head but has no words yet. So you keep explaining the old thing.</p>
-                </div>
-                <div>
-                    <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(196,112,63,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;"><span style="font-family:'Outfit',sans-serif; font-size: 12px; font-weight: 800; color: var(--accent);">3</span></div>
-                    <div style="font-family: 'Outfit',sans-serif; font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.3;">Nobody will tell you the truth</div>
-                    <p style="font-size: 13px; color: rgba(26,26,26,.45); line-height: 1.65;">Everyone cheers. Nobody sits across from you and says "that's the thing that's broken."</p>
+                <div class="pattern-sym-content">
+                    <div class="pattern-sym-step">Symptom Two</div>
+                    <div class="pattern-sym-title">You're Stuck Between Identities</div>
+                    <div class="pattern-sym-desc">The old you built the business. The new you knows it needs to change. But you can't see what comes next because you're standing too close to it.</div>
                 </div>
             </div>
         </div>
 
-        <!-- Why I See It (compact) -->
-        <div style="padding: 36px 48px 48px; position: relative; z-index: 2; text-align: center; border-top: 1px solid rgba(26,26,26,.06);">
-            <p style="font-size: 15px; color: rgba(26,26,26,.4); max-width: 580px; margin: 0 auto; line-height: 1.8; font-style: italic;">"I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside."</p>
-            <p style="font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 10px; font-family: 'Outfit',sans-serif;">James Guldan</p>
+        <div class="pattern-divider"></div>
+
+        <!-- Symptom 3 — diagnosis card left, problem right -->
+        <div class="pattern-symptom">
+            <div class="pattern-symptom-inner">
+                <div class="pattern-diag-card">
+                    <div class="diag-header">
+                        <span class="diag-title">Deep Work Session</span>
+                        <span class="diag-case">Case #003</span>
+                    </div>
+                    <div class="diag-body">
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"When's the last time someone told you an idea wasn't going to work?"</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"Nobody does. My team agrees with everything. My friends hype me up. Even the AI just tells me what I want to hear. Everyone's being nice. Nobody's being kind."</div>
+                        </div>
+                        <div class="diag-pause">· · ·</div>
+                        <div class="diag-msg">
+                            <div class="diag-sender ai">The Interview</div>
+                            <div class="diag-text">"So you have a hundred people cheering, and not one person willing to say the thing you actually need to hear."</div>
+                        </div>
+                        <div class="diag-msg">
+                            <div class="diag-sender client">Client</div>
+                            <div class="diag-text">"That's exactly it. And the lonelier it gets, the more I know something's off."</div>
+                        </div>
+                    </div>
+                    <div class="diag-footer">
+                        <div class="diag-pulse"></div>
+                        <span class="diag-status">Session recording active</span>
+                    </div>
+                </div>
+                <div class="pattern-sym-content">
+                    <div class="pattern-sym-step">Symptom Three</div>
+                    <div class="pattern-sym-title">Nobody Will Tell You The Truth</div>
+                    <div class="pattern-sym-desc">Your team agrees with you. Your friends encourage you. Your coach validates you. Nobody sits across from you and says "that's the thing that's broken."</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="why-see-it">
+            <div class="why-see-it-inner">
+                <div class="why-photo-wrap">
+                    <div class="why-ring"></div>
+                    <div class="why-ring2"></div>
+                    <img src="james-pink-shirt-cutout.png" alt="James Guldan" />
+                </div>
+                <div class="why-eyebrow">Why I See It</div>
+                <div class="why-dots">
+                    <div class="why-dot"></div>
+                    <div class="why-dot"></div>
+                    <div class="why-dot"></div>
+                </div>
+                <p class="why-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it.</p>
+                <div class="why-name">James Guldan</div>
+            </div>
         </div>
 
     </section>
@@ -2786,17 +2825,10 @@
         </div>
     </div>
 
-    <!-- POST-PROBLEM CTA (2A: Empathetic Bridge) -->
-    <div style="padding: 56px 36px; text-align: center; background: #F5F1EC;">
-      <div style="font-family: 'Outfit',sans-serif; font-size: 24px; font-weight: 700; color: var(--text-primary, #1a1a1a); margin-bottom: 10px; line-height: 1.3;">Sound familiar?</div>
-      <p style="font-size: 14px; color: var(--text-secondary, #666); max-width: 420px; margin: 0 auto 24px; line-height: 1.7;">Most founders carry this feeling for years. The Deep Work Interview names it in eight focused sessions.</p>
-      <a href="/deep-work/" style="display: inline-flex; align-items: center; gap: 10px; background: var(--text-primary, #1a1a1a); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 15px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: background .25s;" onmouseover="this.style.background='#c4703f'" onmouseout="this.style.background='var(--text-primary, #1a1a1a)'">Start the Deep Work Interview <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-
     <section class="shift-section">
         <div class="shift-inner">
             <div class="section-eyebrow" style="text-align: center;">The Shift</div>
-            <h2 class="shift-headline">You don't need another strategy. <em>You need the truth about&nbsp;yours.</em></h2>
+            <h2 class="shift-headline">You don't need another strategy. <em>You need the truth about yours.</em></h2>
 
             <div class="shift-columns">
                 <div class="shift-col">
@@ -2871,21 +2903,12 @@
         </div>
     </section>
 
-    <!-- POST-TIMELINE CTA (Inline Clarity CTA) -->
-    <div style="padding: 40px 36px; text-align: center; background: var(--bg-primary);">
-      <div style="max-width: 520px; margin: 0 auto;">
-        <p style="font-size: 15px; color: var(--text-secondary, #666); line-height: 1.7; margin-bottom: 20px;">These three started with the same eight sessions you're about to take.</p>
-        <a href="/deep-work/" style="display: inline-flex; align-items: center; gap: 10px; background: var(--text-primary, #1a1a1a); color: #fff; padding: 14px 28px; border-radius: 50px; font-size: 14px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: background .25s;" onmouseover="this.style.background='#c4703f'" onmouseout="this.style.background='var(--text-primary, #1a1a1a)'">Start the Deep Work Interview <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        <div style="font-size: 12px; color: #aaa; margin-top: 12px;">$67 one time · Instant access · 30 day guarantee</div>
-      </div>
-    </div>
-
     <!-- Deep Work Interview Preview -->
     <section class="dwi-preview">
         <div class="container">
             <div class="section-header" style="text-align: left;">
                 <div class="section-eyebrow">Inside the Interview</div>
-                <h2>These are the questions <em class="serif-italic" style="color: var(--accent);">nobody else will ask&nbsp;you.</em></h2>
+                <h2>These are the questions <em class="serif-italic" style="color: var(--accent);">nobody else will ask you.</em></h2>
                 <p class="dwi-subtitle">Eight focused sessions. No small talk. No warm up exercises. Just the questions that cut straight to the thing you've been avoiding about your business.</p>
             </div>
 
@@ -3101,13 +3124,6 @@
         </div>
     </section>
 
-    <!-- POST-TESTIMONIALS CTA (6A: Bold Banner) -->
-    <div style="padding: 48px 36px; text-align: center; background: linear-gradient(180deg, #FDFCFA 0%, #F5F1EC 100%);">
-      <div style="font-family: 'Outfit',sans-serif; font-size: clamp(20px, 2.5vw, 24px); font-weight: 700; color: var(--text-primary, #1a1a1a); margin-bottom: 16px; line-height: 1.3;">Ready to find out what they found out?</div>
-      <a href="/deep-work/" style="display: inline-flex; align-items: center; gap: 10px; background: var(--text-primary, #1a1a1a); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 15px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: background .25s;" onmouseover="this.style.background='#c4703f'" onmouseout="this.style.background='var(--text-primary, #1a1a1a)'">Start the Deep Work Interview <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <div style="font-size: 12px; color: #aaa; margin-top: 12px;">$67 one time · Instant access · 30 day guarantee</div>
-    </div>
-
     <section id="ways-in" class="bg-dark">
         <div class="container">
             <div class="section-header">
@@ -3136,7 +3152,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <div class="section-eyebrow">About James</div>
-                    <h2>I've done this for Tony Robbins, Dean Graziosi, and Frank Kern. <em class="serif-italic accent">Now I do it for founders like&nbsp;you.</em></h2>
+                    <h2>I've done this for Tony Robbins, Dean Graziosi, and Frank Kern. <em class="serif-italic accent">Now I do it for founders like you.</em></h2>
                     <p>I built my first seven figure company with my co-founder Dmitriy by the time we were 26. Ran a positioning and brand strategy agency for over a decade. Helped 13 companies hit 1,000%+ growth. I've sat in rooms with Peter Diamandis, spoken at masterminds alongside the biggest names in the industry, and built the positioning behind offers that have generated eight and nine figures.</p>
                     <p>But the work I'm most proud of is the founder who finally charged what she was worth. The consultant who stopped taking bad clients for the first time in his career. The branding expert who realized he was operating at 70% and launched the thing he was actually meant to build. The thing every single one of my clients would tell you is the same: he sees the thing you can't see, and he tells you the truth about it.</p>
                     <p>I live in Phoenix with my son. I used to run sixteen hour days building businesses for other people. Now I produce more good work in four focused hours than I used to in sixteen scattered ones. That shift changed everything about how I think about business, and it's built into everything I teach.</p>
@@ -3144,7 +3160,7 @@
                 <div class="about-candid-wrap">
                     <canvas class="about-geo-canvas" id="aboutGeo"></canvas>
                     <div class="about-candid">
-                        <img src="james-about-henley-opt.jpg" alt="James Guldan, brand strategist" loading="lazy">
+                        <img src="james-about-henley.png" alt="James Guldan, brand strategist" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -3193,7 +3209,7 @@
     <section class="final-cta">
         <div class="container" style="max-width: 620px; text-align: center;">
             <div class="section-eyebrow" style="text-align: center;">Ready?</div>
-            <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2.2vw, 1.7rem); font-weight: 600; line-height: 1.35;">If you read this far, <em class="serif-italic accent">you already&nbsp;know.</em></h2>
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2.2vw, 1.7rem); font-weight: 600; line-height: 1.35;">If you read this far, <em class="serif-italic accent">you already know.</em></h2>
             <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 12px; line-height: 1.6;">No pitch. No upsell sequence. Just the answers you've been looking for.</p>
             <a href="/deep-work/" class="hero-cta" style="display: inline-flex; margin-top: 32px;">Start the Deep Work Interview <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             <p style="margin-top: 16px; font-size: 0.8rem; color: var(--text-muted);">$67. Previously $5,000 per session.</p>
@@ -3336,18 +3352,6 @@
                 }
             });
         });
-    </script>
-
-    <!-- FAQ Accordion -->
-    <script>
-    document.querySelectorAll('.faq-question').forEach(function(q) {
-        q.addEventListener('click', function() {
-            var item = this.closest('.faq-item');
-            var wasOpen = item.classList.contains('open');
-            document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
-            if (!wasOpen) item.classList.add('open');
-        });
-    });
     </script>
 
     <!-- Pattern counter + scroll animations -->
@@ -3563,165 +3567,5 @@
 
     </script>
     <script src="https://web3forms.com/client/script.js" async defer></script>
-
-    <!-- GA4 Event Tracking Layer -->
-    <script>
-    (function() {
-      if (typeof gtag !== 'function') return;
-      var page = 'homepage';
-
-      // 1. CTA Click Tracking
-      document.addEventListener('click', function(e) {
-        var el = e.target.closest('a, button');
-        if (!el) return;
-        var href = el.getAttribute('href') || '';
-        var text = (el.textContent || '').trim().substring(0, 60);
-
-        // Deep Work Interview CTAs
-        if (href === '/deep-work/' || href.indexOf('/deep-work') > -1) {
-          var section = getSection(el);
-          gtag('event', 'cta_click', {
-            event_category: 'engagement',
-            event_label: text,
-            cta_location: section,
-            cta_destination: 'deep_work_page',
-            page_source: page
-          });
-        }
-
-        // Apply / coaching CTAs
-        if (href === '/apply' || href === '/apply/' || href.indexOf('apply') > -1) {
-          gtag('event', 'cta_click', {
-            event_category: 'engagement',
-            event_label: text,
-            cta_location: getSection(el),
-            cta_destination: 'apply_page',
-            page_source: page
-          });
-        }
-
-        // External links (Stripe, testimonials, etc.)
-        if (href.indexOf('http') === 0 && href.indexOf('jamesguldan.com') === -1) {
-          gtag('event', 'outbound_click', {
-            event_category: 'engagement',
-            event_label: href.substring(0, 100),
-            link_text: text,
-            page_source: page
-          });
-        }
-      });
-
-      // 2. Scroll Depth Tracking (25%, 50%, 75%, 90%)
-      var scrollMarks = { 25: false, 50: false, 75: false, 90: false };
-      var scrollTimer = null;
-      window.addEventListener('scroll', function() {
-        if (scrollTimer) return;
-        scrollTimer = setTimeout(function() {
-          scrollTimer = null;
-          var scrollPct = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
-          [25, 50, 75, 90].forEach(function(mark) {
-            if (scrollPct >= mark && !scrollMarks[mark]) {
-              scrollMarks[mark] = true;
-              gtag('event', 'scroll_depth', {
-                event_category: 'engagement',
-                event_label: mark + '_percent',
-                scroll_depth: mark,
-                page_source: page
-              });
-            }
-          });
-        }, 200);
-      });
-
-      // 3. Section Visibility Tracking
-      if ('IntersectionObserver' in window) {
-        var sectionsSeen = {};
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              var id = entry.target.id || entry.target.getAttribute('data-track') || '';
-              if (id && !sectionsSeen[id]) {
-                sectionsSeen[id] = true;
-                gtag('event', 'section_view', {
-                  event_category: 'engagement',
-                  event_label: id,
-                  page_source: page
-                });
-              }
-            }
-          });
-        }, { threshold: 0.3 });
-
-        document.querySelectorAll('section[id], [data-track]').forEach(function(el) {
-          observer.observe(el);
-        });
-      }
-
-      // 4. Video Play Tracking
-      document.querySelectorAll('video').forEach(function(video) {
-        video.addEventListener('play', function() {
-          gtag('event', 'video_play', {
-            event_category: 'engagement',
-            event_label: this.closest('section')?.id || 'unknown',
-            page_source: page
-          });
-        });
-      });
-
-      // 5. FAQ Accordion Tracking
-      document.querySelectorAll('.faq-question').forEach(function(q) {
-        q.addEventListener('click', function() {
-          var text = (this.textContent || '').trim().substring(0, 80);
-          gtag('event', 'faq_click', {
-            event_category: 'engagement',
-            event_label: text,
-            page_source: page
-          });
-        });
-      });
-
-      // 6. Time on Page Tracking (30s, 60s, 120s, 300s)
-      var timeMarks = [30, 60, 120, 300];
-      var timeIdx = 0;
-      var startTime = Date.now();
-      setInterval(function() {
-        if (timeIdx >= timeMarks.length) return;
-        var elapsed = Math.floor((Date.now() - startTime) / 1000);
-        if (elapsed >= timeMarks[timeIdx]) {
-          gtag('event', 'time_on_page', {
-            event_category: 'engagement',
-            event_label: timeMarks[timeIdx] + '_seconds',
-            time_seconds: timeMarks[timeIdx],
-            page_source: page
-          });
-          timeIdx++;
-        }
-      }, 5000);
-
-      // 7. Page Exit Intent (mouse leaves viewport on desktop)
-      var exitFired = false;
-      document.addEventListener('mouseleave', function(e) {
-        if (e.clientY < 5 && !exitFired) {
-          exitFired = true;
-          gtag('event', 'exit_intent', {
-            event_category: 'engagement',
-            event_label: 'mouse_leave_top',
-            scroll_position: Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100),
-            page_source: page
-          });
-        }
-      });
-
-      // Helper: determine which section an element is in
-      function getSection(el) {
-        var section = el.closest('section');
-        if (section) {
-          return section.id || section.getAttribute('data-track') || section.querySelector('.section-eyebrow, .eyebrow')?.textContent?.trim()?.substring(0, 40) || 'unknown_section';
-        }
-        return 'unknown_section';
-      }
-    })();
-    </script>
-
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69b8c7cec0c16f06497b8408"></script></body>
 </html>
