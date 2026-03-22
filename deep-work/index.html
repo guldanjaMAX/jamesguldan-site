@@ -585,63 +585,67 @@
       .before-decide-section { padding: 60px 20px !important; }
     }
 
-    /* PRODUCT JOURNEY – Three Steps */
+    /* PRODUCT JOURNEY – Vertical Timeline (Option B) */
     .journey-section { padding: 100px 48px; background: #F5F1EC; position: relative; z-index: 2; }
-    .journey-inner { max-width: 960px; margin: 0 auto; text-align: center; }
-    .journey-inner h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px,3vw,42px); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
-    .journey-inner h2 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
-    .journey-intro { font-size: 16px; line-height: 1.8; color: var(--muted); max-width: 560px; margin: 0 auto 56px; }
+    .journey-inner { max-width: 720px; margin: 0 auto; }
+    .journey-header { text-align: center; margin-bottom: 64px; }
+    .journey-header h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px,3vw,42px); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+    .journey-header h2 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
+    .journey-header p { font-size: 16px; line-height: 1.8; color: var(--muted); max-width: 480px; margin: 0 auto; }
 
-    /* Step connector line */
-    .journey-steps { display: flex; gap: 20px; align-items: stretch; position: relative; }
-    .journey-steps::before { content: ''; position: absolute; top: 38px; left: 80px; right: 80px; height: 2px; background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 33%, var(--border) 33%, var(--border) 66%, #4a9e6e 66%); opacity: 0.3; z-index: 0; }
+    /* Timeline spine */
+    .jb-timeline { position: relative; padding-left: 48px; }
+    .jb-timeline::before { content: ''; position: absolute; left: 18px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent) 0%, var(--accent) 33%, var(--border) 33%, var(--border) 66%, #4a9e6e 66%); }
 
-    /* Step cards */
-    .j-step { flex: 1; background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 32px 24px 28px; text-align: left; position: relative; z-index: 1; display: flex; flex-direction: column; }
-    .j-step-num { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Outfit',sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 20px; flex-shrink: 0; }
-    .j-step-tag { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-    .j-step-name { font-family: 'Outfit',sans-serif; font-size: 18px; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 10px; }
-    .j-step-desc { font-size: 13.5px; line-height: 1.75; color: var(--muted); margin-bottom: 16px; flex-grow: 1; }
-    .j-step-deliverables { list-style: none; padding: 0; margin: 0 0 20px; }
-    .j-step-deliverables li { font-size: 12.5px; line-height: 1.6; color: var(--text); padding: 4px 0 4px 20px; position: relative; }
-    .j-step-deliverables li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; font-size: 12px; }
-    .j-step-price { font-family: 'Outfit',sans-serif; font-weight: 700; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); }
-    .j-step-cta { display: inline-block; padding: 10px 20px; border-radius: 50px; font-size: 13px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: all .25s; margin-top: 12px; }
+    .jb-step { position: relative; margin-bottom: 40px; }
+    .jb-step:last-child { margin-bottom: 0; }
 
-    /* Step 1: DWI (you are here) */
-    .j-step-1 { border-color: var(--accent); box-shadow: 0 8px 32px rgba(196,112,63,0.1); }
-    .j-step-1 .j-step-num { background: var(--accent); color: #fff; }
-    .j-step-1 .j-step-tag { color: var(--accent); }
-    .j-step-1 .j-step-cta { background: var(--text); color: #fff; }
-    .j-step-1 .j-step-cta:hover { background: var(--accent); }
+    .jb-dot { position: absolute; left: -48px; top: 28px; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Outfit',sans-serif; font-size: 14px; font-weight: 700; z-index: 2; border: 3px solid #F5F1EC; }
+    .jb-step-1 .jb-dot { background: var(--accent); color: #fff; }
+    .jb-step-2 .jb-dot { background: #fff; color: var(--accent); border-color: var(--accent); }
+    .jb-step-3 .jb-dot { background: #fff; color: #4a9e6e; border-color: #4a9e6e; }
 
-    /* Step 2: Deploy */
-    .j-step-2 .j-step-num { background: rgba(196,112,63,0.08); color: var(--accent); }
-    .j-step-2 .j-step-tag { color: #999; }
+    .jb-card { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 32px; }
+    .jb-step-1 .jb-card { border-color: var(--accent); box-shadow: 0 8px 32px rgba(196,112,63,0.1); }
 
-    /* Step 3: Site in Sixty */
-    .j-step-3 .j-step-num { background: rgba(74,158,110,0.08); color: #4a9e6e; }
-    .j-step-3 .j-step-tag { color: #4a9e6e; }
-    .j-step-3 .j-step-cta { background: #fff; color: var(--text); border: 1px solid var(--border); }
-    .j-step-3 .j-step-cta:hover { border-color: #4a9e6e; color: #4a9e6e; }
+    .jb-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; gap: 16px; flex-wrap: wrap; }
+    .jb-top-left { flex: 1; }
+    .jb-top-right { text-align: right; flex-shrink: 0; }
 
-    /* "You are here" indicator */
-    .j-here-badge { display: inline-block; background: var(--accent); color: #fff; font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
-    .j-free-badge { display: inline-block; background: rgba(196,112,63,0.1); color: var(--accent); font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-left: 6px; }
-    .j-step-price-struck { font-size: 14px; color: #999; text-decoration: line-through; margin-right: 6px; }
-    .j-step-price-value { font-size: 20px; color: var(--accent); }
-    .j-step-price-note { font-size: 11px; color: #999; font-weight: 500; display: block; margin-top: 2px; }
+    .jb-tag { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+    .jb-step-1 .jb-tag { color: var(--accent); }
+    .jb-step-2 .jb-tag { color: #999; }
+    .jb-step-3 .jb-tag { color: #4a9e6e; }
 
-    @media (max-width: 860px) {
+    .jb-name { font-family: 'Outfit',sans-serif; font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.2; }
+    .jb-desc { font-size: 14px; line-height: 1.8; color: var(--muted); margin-bottom: 20px; }
+
+    .jb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 20px; }
+    .jb-grid-item { font-size: 13px; color: var(--text); padding-left: 18px; position: relative; line-height: 1.5; }
+    .jb-grid-item::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; font-size: 11px; }
+
+    .jb-price-big { font-family: 'Outfit',sans-serif; font-size: 28px; font-weight: 700; }
+    .jb-price-note { font-size: 11px; color: #999; font-weight: 500; }
+    .jb-badge-here { display: inline-block; background: var(--accent); color: #fff; font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+    .jb-badge-free { display: inline-block; background: rgba(196,112,63,0.1); color: var(--accent); font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-left: 6px; }
+    .jb-struck { font-size: 16px; color: #999; text-decoration: line-through; margin-right: 8px; }
+
+    .jb-cta { display: inline-block; padding: 12px 24px; border-radius: 50px; font-size: 14px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: all .25s; }
+    .jb-cta-primary { background: var(--text); color: #fff; }
+    .jb-cta-primary:hover { background: var(--accent); }
+    .jb-cta-secondary { background: #fff; color: var(--text); border: 1px solid var(--border); }
+    .jb-cta-secondary:hover { border-color: #4a9e6e; color: #4a9e6e; }
+
+    .jb-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 20px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+
+    .journey-footer { text-align: center; font-size: 13px; color: var(--muted); margin-top: 48px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 700px) {
       .journey-section { padding: 72px 20px; }
-      .journey-steps { flex-direction: column; gap: 16px; }
-      .journey-steps::before { display: none; }
-    }
-    @media (max-width: 600px) {
-      .journey-section { padding: 60px 20px; }
-      .journey-intro { font-size: 15px; margin-bottom: 40px; }
-      .j-step { padding: 24px 20px; border-radius: 16px; }
-      .j-step-name { font-size: 16px; }
+      .jb-grid { grid-template-columns: 1fr; }
+      .jb-top { flex-direction: column; }
+      .jb-top-right { text-align: left; }
+      .jb-bottom { flex-direction: column; align-items: flex-start; }
     }
     </style>
   <script type="application/ld+json">
@@ -1519,80 +1523,106 @@
 </section>
 
 
-<!-- THE FULL JOURNEY: DWI → DEPLOY → SITE IN SIXTY -->
+<!-- THE FULL JOURNEY: DWI → DEPLOY → SITE IN SIXTY (Option B: Vertical Timeline) -->
 <section class="journey-section">
   <div class="journey-inner">
-    <div class="section-eyebrow">The Full Journey</div>
-    <h2>Three products. One clear&nbsp;<em>path.</em></h2>
-    <p class="journey-intro">Each step builds on the last. Start with clarity, see it come to life, then build the real thing. You choose how far&nbsp;you&nbsp;go.</p>
+    <div class="journey-header">
+      <div class="section-eyebrow">The Full Journey</div>
+      <h2>Get clear. See it. <em>Build&nbsp;it.</em></h2>
+      <p>Three products that take you from "I know something's off" to a live website that finally sounds like you. Each one stands on its own. You choose how far&nbsp;you&nbsp;go.</p>
+    </div>
 
-    <div class="journey-steps">
+    <div class="jb-timeline">
 
-      <!-- STEP 1: Deep Work Interview -->
-      <div class="j-step j-step-1">
-        <div class="j-here-badge">You Are Here</div>
-        <div class="j-step-num">1</div>
-        <div class="j-step-tag">Get Clear</div>
-        <div class="j-step-name">Deep Work Interview</div>
-        <p class="j-step-desc">Eight focused sessions that pull the strategy out of your head and onto paper. You walk away knowing exactly what to say, who to say it to, and how to price&nbsp;it.</p>
-        <ul class="j-step-deliverables">
-          <li>Complete brand positioning</li>
-          <li>Three structured, priced offers</li>
-          <li>Named competitor research</li>
-          <li>Full website copy and outline</li>
-          <li>90 day action roadmap</li>
-        </ul>
-        <div class="j-step-price">
-          <span class="j-step-price-value" style="color: var(--text);">$67</span>
-          <span class="j-step-price-note">One time. Keep everything forever.</span>
-        </div>
-        <a href="#checkout" data-checkout="blueprint" class="j-step-cta">Get Clear Now &rarr;</a>
-      </div>
-
-      <!-- STEP 2: Deploy -->
-      <div class="j-step j-step-2">
-        <div class="j-step-num">2</div>
-        <div class="j-step-tag">See It</div>
-        <div class="j-step-name">Deploy</div>
-        <p class="j-step-desc">Your blueprint, visualized as a real website. A working preview you can share with your web team, show your partners, or use to decide if you want to build the real thing&nbsp;yourself.</p>
-        <ul class="j-step-deliverables">
-          <li>Live preview of your site</li>
-          <li>Built from your blueprint copy</li>
-          <li>Shareable link for 30 days</li>
-          <li>Hand off to any developer</li>
-          <li>Or take the next step below</li>
-        </ul>
-        <div class="j-step-price">
-          <span class="j-step-price-struck">$97</span>
-          <span class="j-step-price-value">Free</span>
-          <span class="j-free-badge">Launch</span>
-          <span class="j-step-price-note">Included with your Interview. Available for 30&nbsp;days.</span>
+      <!-- Step 1: DWI -->
+      <div class="jb-step jb-step-1">
+        <div class="jb-dot">1</div>
+        <div class="jb-card">
+          <div class="jb-badge-here">You Are Here</div>
+          <div class="jb-top">
+            <div class="jb-top-left">
+              <div class="jb-tag">Get Clear</div>
+              <div class="jb-name">Deep Work Interview</div>
+            </div>
+            <div class="jb-top-right">
+              <div class="jb-price-big" style="color:var(--text);">$67</div>
+              <div class="jb-price-note">One time</div>
+            </div>
+          </div>
+          <p class="jb-desc">Eight focused sessions that pull the strategy out of your head and onto paper. You walk away knowing exactly what to say, who to say it to, and how to price it.</p>
+          <div class="jb-grid">
+            <div class="jb-grid-item">Complete brand positioning</div>
+            <div class="jb-grid-item">Three structured, priced offers</div>
+            <div class="jb-grid-item">Named competitor research</div>
+            <div class="jb-grid-item">Full website copy and outline</div>
+            <div class="jb-grid-item">90 day action roadmap</div>
+            <div class="jb-grid-item">Keep everything forever</div>
+          </div>
+          <div class="jb-bottom">
+            <a href="#checkout" data-checkout="blueprint" class="jb-cta jb-cta-primary">Get Clear Now &rarr;</a>
+            <span style="font-size:12px;color:#999;">About 2 hours across 8 sessions</span>
+          </div>
         </div>
       </div>
 
-      <!-- STEP 3: Site in Sixty -->
-      <div class="j-step j-step-3">
-        <div class="j-step-num">3</div>
-        <div class="j-step-tag">Build It</div>
-        <div class="j-step-name">Site in Sixty</div>
-        <p class="j-step-desc">Turn that preview into a permanent, professional website you own and control. Five video modules showing every click. Custom domain. Free hosting forever. Direct support from&nbsp;James.</p>
-        <ul class="j-step-deliverables">
-          <li>5 over the shoulder video modules</li>
-          <li>Custom domain setup</li>
-          <li>Analytics, SEO, and meta tags built in</li>
-          <li>Free hosting on Cloudflare (forever)</li>
-          <li>Email support from James</li>
-        </ul>
-        <div class="j-step-price">
-          <span class="j-step-price-value" style="color: #4a9e6e;">$197</span>
-          <span class="j-step-price-note">One time. No monthly fees. Own every file.</span>
+      <!-- Step 2: Deploy -->
+      <div class="jb-step jb-step-2">
+        <div class="jb-dot">2</div>
+        <div class="jb-card">
+          <div class="jb-top">
+            <div class="jb-top-left">
+              <div class="jb-tag">See It</div>
+              <div class="jb-name">Deploy</div>
+            </div>
+            <div class="jb-top-right">
+              <div><span class="jb-struck">$97</span><span class="jb-price-big" style="color:var(--accent);">Free</span><span class="jb-badge-free">Launch</span></div>
+              <div class="jb-price-note">Included with your Interview</div>
+            </div>
+          </div>
+          <p class="jb-desc">Your blueprint, visualized as a real website. A working preview you can share with your web team, show partners, or use to decide your next move. Not a permanent site. A proof of concept built from your&nbsp;words.</p>
+          <div class="jb-grid">
+            <div class="jb-grid-item">Live preview of your site</div>
+            <div class="jb-grid-item">Built from your actual blueprint</div>
+            <div class="jb-grid-item">Shareable link for 30 days</div>
+            <div class="jb-grid-item">Hand off to any developer</div>
+          </div>
+          <div style="font-size: 12px; color: #999; font-style: italic; padding-top: 12px; border-top: 1px solid var(--border);">Preview available for 30 days after your Interview completes.</div>
         </div>
-        <a href="/site-in-sixty/" class="j-step-cta">Learn More &rarr;</a>
+      </div>
+
+      <!-- Step 3: Site in Sixty -->
+      <div class="jb-step jb-step-3">
+        <div class="jb-dot">3</div>
+        <div class="jb-card">
+          <div class="jb-top">
+            <div class="jb-top-left">
+              <div class="jb-tag">Build It</div>
+              <div class="jb-name">Site in Sixty</div>
+            </div>
+            <div class="jb-top-right">
+              <div class="jb-price-big" style="color:#4a9e6e;">$197</div>
+              <div class="jb-price-note">One time. No monthly fees.</div>
+            </div>
+          </div>
+          <p class="jb-desc">Turn that preview into a permanent website you own and control. Five video modules showing every click over the shoulder. Custom domain. Free hosting forever. Built in support when you get&nbsp;stuck.</p>
+          <div class="jb-grid">
+            <div class="jb-grid-item">5 over the shoulder video modules</div>
+            <div class="jb-grid-item">Custom domain setup</div>
+            <div class="jb-grid-item">Analytics, SEO, and meta tags</div>
+            <div class="jb-grid-item">Free Cloudflare hosting (forever)</div>
+            <div class="jb-grid-item">Built in help when you need it</div>
+            <div class="jb-grid-item">Own every file. Zero lock in.</div>
+          </div>
+          <div class="jb-bottom">
+            <a href="/site-in-sixty/" class="jb-cta jb-cta-secondary">Learn About Site in Sixty &rarr;</a>
+            <span style="font-size:12px;color:#999;">Under 60 minutes to a live site</span>
+          </div>
+        </div>
       </div>
 
     </div>
 
-    <p style="font-size: 13px; color: var(--muted); margin-top: 40px; line-height: 1.7; max-width: 520px; margin-left: auto; margin-right: auto;">Most people start with the Interview and decide what's next after they see their blueprint. There is no pressure to continue. Each product stands completely on&nbsp;its&nbsp;own.</p>
+    <p class="journey-footer">Most people start with the Interview and decide what's next after they see their blueprint. There is no pressure to continue. Each product stands completely on&nbsp;its&nbsp;own.</p>
   </div>
 </section>
 
