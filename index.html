@@ -193,7 +193,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -532,125 +532,121 @@
             .hero-meta-proof { display: none; }
         }
 
-        /* Proof bar — redesigned */
+        /* Evidence Wall — proof bar */
         .proof-bar {
             padding: 0;
-            background: #0e0e12;
+            background: #FDFCFA;
             position: relative;
             overflow: hidden;
         }
 
-        .proof-bar::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196,112,63,0.04) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .proof-top-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            max-width: 960px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .proof-item {
+        .ew-eyebrow {
             text-align: center;
-            padding: 44px 20px 36px;
-            position: relative;
-        }
-
-        .proof-item::after {
-            content: '';
-            position: absolute;
-            top: 25%; bottom: 25%; right: 0;
-            width: 1px;
-            background: rgba(255,255,255,0.06);
-        }
-
-        .proof-item:last-child::after { display: none; }
-
-        .proof-number {
             font-family: 'Outfit', sans-serif;
-            font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #c4703f;
+            padding: 40px 24px 0;
+        }
+
+        .ew-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid #e8e5e0;
+            border-left: 1px solid #e8e5e0;
+            max-width: 880px;
+            margin: 32px auto 0;
+        }
+
+        .ew-stat {
+            border-right: 1px solid #e8e5e0;
+            border-bottom: 1px solid #e8e5e0;
+            padding: 32px 28px;
+            text-align: center;
+        }
+
+        .ew-stat-number {
+            font-family: 'Outfit', sans-serif;
             font-weight: 800;
-            color: #FDFCFA;
+            font-size: clamp(2rem, 3.5vw, 2.4rem);
+            letter-spacing: -0.03em;
+            color: #1A1A1A;
             line-height: 1;
             margin-bottom: 8px;
-            letter-spacing: -0.03em;
         }
 
-        .proof-number .accent-num {
-            color: var(--accent);
+        .ew-stat-number .copper {
+            color: #c4703f;
         }
 
-        .proof-label {
-            font-size: 0.78rem;
-            color: rgba(253,252,250,0.65);
-            letter-spacing: 0.08em;
+        .ew-stat-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            font-weight: 600;
-            line-height: 1.5;
+            color: #86868B;
         }
 
-        .proof-divider-line {
-            height: 1px;
-            max-width: 960px;
-            margin: 0 auto;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.06) 80%, transparent);
+        .ew-divider {
+            width: 40px;
+            height: 2px;
+            background: #c4703f;
+            margin: 32px auto 20px;
         }
 
-        .proof-bottom-row {
-            padding: 28px 24px 32px;
+        .ew-clients-label {
             text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .proof-bottom-label {
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(253,252,250,0.4);
-            margin-bottom: 16px;
-        }
-
-        .proof-names {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0;
-            max-width: 780px;
-            margin: 0 auto;
-        }
-
-        .proof-name {
             font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.6rem;
             font-weight: 600;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: rgba(253,252,250,0.5);
-            padding: 0 20px;
-            position: relative;
-            transition: color 0.3s ease;
-            cursor: default;
+            color: #86868B;
+            margin-bottom: 14px;
         }
 
-        .proof-name:hover {
-            color: rgba(253,252,250,0.55);
+        .ew-clients {
+            text-align: center;
+            padding: 0 24px;
         }
 
-        .proof-name-sep {
-            width: 1px;
-            height: 12px;
-            background: rgba(253,252,250,0.1);
-            flex-shrink: 0;
+        .ew-client-name {
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #1A1A1A;
+        }
+
+        .ew-client-sep {
+            color: #c4703f;
+            margin: 0 12px;
+            font-size: 0.7rem;
+        }
+
+        .ew-footer {
+            text-align: center;
+            padding: 24px 24px 36px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #aca8a0;
+        }
+
+        @media (max-width: 600px) {
+            .ew-grid { grid-template-columns: 1fr 1fr; }
+            .ew-stat { padding: 20px 14px; }
+            .ew-stat-number { font-size: clamp(1.4rem, 5vw, 1.8rem); }
+            .ew-stat-label { font-size: 0.55rem; letter-spacing: 0.03em; }
+            .ew-client-name { font-size: 0.7rem; letter-spacing: 0.12em; }
+            .ew-client-sep { margin: 0 8px; }
+            .ew-eyebrow { font-size: 9px; padding-top: 28px; }
         }
 
         /* Sections */
@@ -2308,10 +2304,7 @@
             .hero-content { padding: 24px 0 32px; }
             .hero-bg-photo { height: 280px; }
             h1 { font-size: 1.75rem; }
-            .proof-top-row { grid-template-columns: repeat(3, 1fr) !important; }
-            .proof-item { padding: 18px 8px 14px !important; }
-            .proof-number { font-size: clamp(1.2rem, 4.5vw, 1.6rem) !important; }
-            .proof-label { font-size: 0.55rem !important; letter-spacing: 0.03em !important; }
+            /* Evidence Wall handles its own responsive via .ew-grid */
             .proof-names { gap: 8px 16px; }
             .proof-name { font-size: 0.6rem; letter-spacing: 0.08em; }
             .warning-buttons { flex-direction: column; }
@@ -2644,55 +2637,41 @@
         </div>
     </section>
 
-    <!-- UNIFIED PROOF BAR -->
+    <!-- EVIDENCE WALL -->
     <div class="proof-bar">
-        <div class="proof-top-row" style="grid-template-columns: repeat(3, 1fr);">
-            <div class="proof-item">
-                <div class="proof-number" style="color: var(--accent);">$67</div>
-                <div class="proof-label" style="color: rgba(253,252,250,0.7);">One Time Investment</div>
+        <div class="ew-eyebrow">This Site Was Built Using the Deep Work Interview Process</div>
+        <div class="ew-grid">
+            <div class="ew-stat">
+                <div class="ew-stat-number"><span class="copper">$</span>67</div>
+                <div class="ew-stat-label">One Time Investment</div>
             </div>
-            <div class="proof-item">
-                <div class="proof-number"><span class="accent-num">132</span><span style="font-size:0.5em; opacity:0.5; margin-left:2px;">+</span></div>
-                <div class="proof-label" style="color: rgba(253,252,250,0.7);">Entrepreneurs Repositioned</div>
+            <div class="ew-stat">
+                <div class="ew-stat-number">132<span class="copper">+</span></div>
+                <div class="ew-stat-label">Entrepreneurs Repositioned</div>
             </div>
-            <div class="proof-item">
-                <div class="proof-number">4.9<span style="font-size:0.6em; opacity:0.5; margin-left:2px;">★</span></div>
-                <div class="proof-label" style="color: rgba(253,252,250,0.7);">Average Rating</div>
+            <div class="ew-stat">
+                <div class="ew-stat-number">4.9<span class="copper">★</span></div>
+                <div class="ew-stat-label">Average Rating</div>
             </div>
-        </div>
-        <div class="proof-divider-line"></div>
-        <div class="proof-top-row" style="grid-template-columns: repeat(3, 1fr);">
-            <div class="proof-item" style="padding: 28px 20px 24px;">
-                <div class="proof-number" style="font-size: clamp(1.6rem, 2.5vw, 2rem);">13</div>
-                <div class="proof-label">Grew 1,000%+ After</div>
+            <div class="ew-stat">
+                <div class="ew-stat-number">13</div>
+                <div class="ew-stat-label">Grew 1,000%+ After</div>
             </div>
-            <div class="proof-item" style="padding: 28px 20px 24px;">
-                <div class="proof-number" style="font-size: clamp(1.6rem, 2.5vw, 2rem);">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
-                <div class="proof-label">To Total Clarity</div>
+            <div class="ew-stat">
+                <div class="ew-stat-number">2<span class="copper">hrs</span></div>
+                <div class="ew-stat-label">To Total Clarity</div>
             </div>
-            <div class="proof-item" style="padding: 28px 20px 24px;">
-                <div class="proof-number" style="font-size: clamp(1.6rem, 2.5vw, 2rem);">40<span class="accent-num">+</span></div>
-                <div class="proof-label">Industries Served</div>
+            <div class="ew-stat">
+                <div class="ew-stat-number">40<span class="copper">+</span></div>
+                <div class="ew-stat-label">Industries Served</div>
             </div>
         </div>
-        <div class="proof-divider-line"></div>
-        <div style="padding: 16px 24px 10px; text-align: center; position: relative; z-index: 1;">
-            <div style="font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(253,252,250,0.4); margin-bottom: 4px;">This site was built using the Deep Work Interview process</div>
+        <div class="ew-divider"></div>
+        <div class="ew-clients-label">Built Positioning For</div>
+        <div class="ew-clients">
+            <span class="ew-client-name">Tony Robbins</span><span class="ew-client-sep">·</span><span class="ew-client-name">Abundance360</span><span class="ew-client-sep">·</span><span class="ew-client-name">Dean Graziosi</span><span class="ew-client-sep">·</span><span class="ew-client-name">Frank Kern</span><span class="ew-client-sep">·</span><span class="ew-client-name">The Dalai Lama</span>
         </div>
-        <div class="proof-bottom-row" style="padding-top: 0;">
-            <div class="proof-bottom-label">Built positioning for</div>
-            <div class="proof-names">
-                <span class="proof-name">Tony Robbins</span>
-                <span class="proof-name-sep"></span>
-                <span class="proof-name">Abundance360</span>
-                <span class="proof-name-sep"></span>
-                <span class="proof-name">Dean Graziosi</span>
-                <span class="proof-name-sep"></span>
-                <span class="proof-name">Frank Kern</span>
-                <span class="proof-name-sep"></span>
-                <span class="proof-name">The Dalai Lama</span>
-            </div>
-        </div>
+        <div class="ew-footer">Deep Work Interview™</div>
     </div>
 
     <section class="problem-section" id="pattern-section">

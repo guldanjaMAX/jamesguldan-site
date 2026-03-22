@@ -133,19 +133,20 @@
     .mobile-hero-text .cta-btn { display: block; width: 100%; text-align: center; margin-bottom: 10px; padding: 14px 28px; font-size: 14px; }
 
     /* CREDIBILITY */
-    .cred-section { position: relative; z-index: 2; padding: 72px 48px; background: #eeeae4; }
+    .cred-section { position: relative; z-index: 2; padding: 0; background: #FDFCFA; }
     .cred-inner { max-width: 1080px; margin: 0 auto; }
-    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); margin-bottom: 0; }
-    .stat-item { padding: 36px 28px; text-align: center; border-right: 1px solid rgba(0,0,0,0.1); }
-    .stat-item:last-child { border-right: none; }
-    .stat-num { font-family: 'Outfit',sans-serif; font-size: 52px; font-weight: 700; line-height: 1; margin-bottom: 10px; color: var(--text); }
-    .stat-num span { color: var(--accent); }
-    .stat-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; line-height: 1.6; }
-    .logos-row { text-align: center; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 44px; margin-top: 44px; }
-    .logos-intro { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 22px; }
-    .logos-list { display: flex; justify-content: center; align-items: center; gap: 56px; flex-wrap: wrap; }
-    .logo-name { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #b0a89e; transition: color .25s; }
-    .logo-name:hover { color: var(--text); }
+    .ew-eyebrow { text-align: center; font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #c4703f; padding: 48px 24px 0; }
+    .ew-grid { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid #e8e5e0; border-left: 1px solid #e8e5e0; max-width: 960px; margin: 32px auto 0; }
+    .ew-stat { border-right: 1px solid #e8e5e0; border-bottom: 1px solid #e8e5e0; padding: 32px 28px; text-align: center; }
+    .ew-stat-number { font-family: 'Outfit',sans-serif; font-weight: 800; font-size: clamp(2rem, 3.5vw, 2.6rem); letter-spacing: -0.03em; color: #1A1A1A; line-height: 1; margin-bottom: 8px; }
+    .ew-stat-number .copper { color: #c4703f; }
+    .ew-stat-label { font-family: 'Inter',sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #86868B; line-height: 1.6; }
+    .ew-divider { width: 40px; height: 2px; background: #c4703f; margin: 32px auto 20px; }
+    .ew-clients-label { text-align: center; font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #86868B; margin-bottom: 14px; }
+    .ew-clients { text-align: center; padding: 0 24px; }
+    .ew-client-name { font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #1A1A1A; }
+    .ew-client-sep { color: #c4703f; margin: 0 12px; font-size: 11px; }
+    /* logo-name styles moved to .ew-client-name */
     .cred-proof { max-width: 720px; margin: 48px auto 0; text-align: center; }
     .cred-proof-quote { font-family: 'Playfair Display',serif; font-style: italic; font-size: clamp(16px, 1.6vw, 20px); line-height: 1.65; color: var(--text); margin-bottom: 16px; }
     .cred-proof-attr { display: flex; align-items: center; justify-content: center; gap: 12px; font-family: 'Outfit',sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: var(--muted); }
@@ -431,8 +432,7 @@
       .hero-sub { font-size: 15px; }
       .hero-trust { gap: 24px; }
       .hero-trust-num { font-size: 20px; }
-      .cred-section { padding: 56px 28px; }
-      .stat-num { font-size: 40px; }
+      .cred-section { padding: 0; }
       .wti-section { padding: 80px 28px; }
       .wti-inner { gap: 48px; }
       .proc3-section { padding: 80px 28px; }
@@ -458,14 +458,15 @@
       .mobile-trust { display: flex; gap: 24px; padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--border); justify-content: center; text-align: center; }
       .mobile-trust-num { font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 700; }
       .mobile-trust-label { font-size: 10px; color: #999; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
-      .cred-section { padding: 48px 20px; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .stat-item:nth-child(2) { border-right: none; }
-      .stat-item:nth-child(3),
-      .stat-item:nth-child(4) { border-top: 1px solid rgba(0,0,0,.1); }
-      .stat-item:nth-child(4) { border-right: none; }
-      .logos-list { gap: 12px 24px; }
-      .logo-name { font-size: 13px; letter-spacing: 2px; color: var(--text); background: rgba(196,112,63,0.08); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(196,112,63,0.15); }
+      .cred-section { padding: 0; }
+      .ew-grid { grid-template-columns: 1fr 1fr; }
+      .ew-stat { padding: 20px 14px; }
+      .ew-stat-number { font-size: clamp(1.4rem, 5vw, 1.8rem); }
+      .ew-stat-label { font-size: 9px; letter-spacing: 0.03em; }
+      .ew-client-name { font-size: 11px; letter-spacing: 0.12em; }
+      .ew-client-sep { margin: 0 8px; }
+      .ew-eyebrow { font-size: 9px; padding-top: 32px; }
+      /* ew-client-name handles mobile styling */
       .cred-proof { margin-top: 36px; }
       .cred-proof-quote { font-size: 17px; }
       .wti-section { padding: 64px 20px; }
@@ -760,24 +761,22 @@
   </div>
 </div>
 
-<!-- CREDIBILITY -->
+<!-- EVIDENCE WALL -->
 <section class="cred-section">
   <div class="cred-inner">
-    <div class="stats-grid">
-      <div class="stat-item"><div class="stat-num">15<span>yrs</span></div><div class="stat-label">Building 7 Figure Businesses for Service Founders</div></div>
-      <div class="stat-item"><div class="stat-num">132</div><div class="stat-label">Entrepreneurs Who Found Their Niche</div></div>
-      <div class="stat-item"><div class="stat-num">13</div><div class="stat-label">Companies Grew 1,000%+ After Repositioning</div></div>
-      <div class="stat-item"><div class="stat-num">4.9<span>★</span></div><div class="stat-label">Average Client Rating</div></div>
+    <div class="ew-eyebrow">Built Using the Deep Work Interview Process</div>
+    <div class="ew-grid">
+      <div class="ew-stat"><div class="ew-stat-number">15<span class="copper">yrs</span></div><div class="ew-stat-label">Building 7 Figure Businesses</div></div>
+      <div class="ew-stat"><div class="ew-stat-number">132<span class="copper">+</span></div><div class="ew-stat-label">Entrepreneurs Repositioned</div></div>
+      <div class="ew-stat"><div class="ew-stat-number">13</div><div class="ew-stat-label">Grew 1,000%+ After</div></div>
+      <div class="ew-stat"><div class="ew-stat-number">4.9<span class="copper">★</span></div><div class="ew-stat-label">Average Client Rating</div></div>
     </div>
-    <div class="logos-row">
-      <div class="logos-intro">Positioned brands alongside</div>
-      <div class="logos-list">
-        <span class="logo-name">Tony Robbins</span>
-        <span class="logo-name">Abundance360</span>
-        <span class="logo-name">Dean Graziosi</span>
-        <span class="logo-name">Frank Kern</span>
-      </div>
+    <div class="ew-divider"></div>
+    <div class="ew-clients-label">Positioned Brands Alongside</div>
+    <div class="ew-clients">
+      <span class="ew-client-name">Tony Robbins</span><span class="ew-client-sep">·</span><span class="ew-client-name">Abundance360</span><span class="ew-client-sep">·</span><span class="ew-client-name">Dean Graziosi</span><span class="ew-client-sep">·</span><span class="ew-client-name">Frank Kern</span>
     </div>
+    <div style="height: 12px;"></div>
     <div class="cred-proof">
       <div class="cred-proof-quote">"It felt like I'd paid for a one on one session with Tony Robbins. We went deep and the outcome was stellar."</div>
       <div class="cred-proof-attr"><img src="images/ross-tompkins.jpg" alt="Ross Tompkins" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2792%27%20height%3D%2792%27%20viewBox%3D%270%200%2092%2092%27%3E%3Crect%20width%3D%2792%27%20height%3D%2792%27%20rx%3D%2746%27%20fill%3D%27%23c4703f%27/%3E%3Ctext%20x%3D%2746%27%20y%3D%2757%27%20font-family%3D%27system-ui%2Csans-serif%27%20font-size%3D%2732%27%20font-weight%3D%27600%27%20fill%3D%27%23fff%27%20text-anchor%3D%27middle%27%3ERT%3C/text%3E%3C/svg%3E'">Ross Tompkins <span>&mdash;</span> Coach &amp; Business Strategist</div>
