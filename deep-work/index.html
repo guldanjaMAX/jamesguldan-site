@@ -7,6 +7,13 @@
   <!-- Stripe.js (load early for fastest checkout) -->
   <script src="https://js.stripe.com/v3/" async></script>
 
+  <!-- Google Tag Manager (replace GTM-XXXXXXX with your container ID) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCD0E6KVCV"></script>
   <script>
@@ -55,9 +62,10 @@
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
     #geo { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
     a { text-decoration: none; color: inherit; }
+    h1, h2, h3 { text-wrap: balance; }
 
     /* NAV */
-    nav { position: sticky; top: 0; z-index: 100; height: var(--nav-h); display: flex; justify-content: space-between; align-items: center; padding: 0 48px; background: rgba(253,252,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    nav { position: sticky; top: 0; z-index: 100; height: var(--nav-h); display: flex; justify-content: space-between; align-items: center; padding: 0 48px; background: rgba(253,252,250,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
     .nav-logo { font-family: 'Outfit',sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 2.5px; text-transform: uppercase; }
     .nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
     .nav-links a { color: var(--muted); font-size: 13px; font-weight: 500; transition: color .2s; }
@@ -81,8 +89,8 @@
     .hero-arrow-label svg { width: 52px; opacity: 0.85; }
     .vid-label { background: rgba(0,0,0,0.88); color: rgba(255,255,255,0.9); text-align: center; padding: 8px 12px; font-size: .7rem; font-family: 'Outfit',sans-serif; font-weight: 500; letter-spacing: .04em; }
     .hero-text-wrap { position: relative; z-index: 3; display: flex; align-items: center; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; }
-    .hero-text { max-width: 520px; padding-bottom: 24px; }
-    .hero-trust { display: flex; gap: 32px; padding-top: 24px; margin-top: 8px; border-top: 1px solid var(--border); }
+    .hero-text { max-width: 520px; padding-bottom: 0; }
+    .hero-trust { display: flex; gap: 32px; padding-top: 16px; margin-top: 6px; border-top: 1px solid var(--border); }
     .hero-trust-num { font-family: 'Outfit',sans-serif; font-size: 24px; font-weight: 700; }
     .hero-trust-label { font-size: 11px; color: #999; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
     /* Mobile hero photo styles — Option O Compact */
@@ -97,10 +105,10 @@
     .geo-line { height: 1px; width: 36px; background: rgba(196,112,63,0.35); }
     .geo-diamond { width: 10px; height: 10px; border: 1.5px solid var(--accent); transform: rotate(45deg); opacity: 0.75; flex-shrink: 0; }
     .geo-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; flex-shrink: 0; }
-    h1 { font-family: 'Outfit',sans-serif; font-size: clamp(36px, 3.8vw, 56px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+    h1 { font-family: 'Outfit',sans-serif; font-size: clamp(36px, 3.8vw, 56px); font-weight: 700; line-height: 1.15; margin-bottom: 14px; }
     h1 em, h2 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
-    .hero-sub { font-size: 16px; line-height: 1.75; color: #555; margin-bottom: 36px; }
-    .cta-btn { display: inline-block; background: var(--text); color: #fff; padding: 18px 40px; border-radius: 50px; font-size: 15px; font-weight: 700; border: none; cursor: pointer; margin-bottom: 14px; transition: all .25s ease; font-family: 'Inter',sans-serif; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 4px 20px rgba(0,0,0,.15); }
+    .hero-sub { font-size: 15px; line-height: 1.7; color: #555; margin-bottom: 22px; }
+    .cta-btn { display: inline-block; background: var(--text); color: #fff; padding: 16px 36px; border-radius: 50px; font-size: 15px; font-weight: 700; border: none; cursor: pointer; margin-bottom: 10px; transition: all .25s ease; font-family: 'Inter',sans-serif; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 4px 20px rgba(0,0,0,.15); }
     .cta-btn:hover { background: #c4703f; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(196,112,63,.35); color: #fff; }
     .price-note { font-size: 13px; color: #777; }
     .price-note strong { color: var(--text); }
@@ -314,14 +322,14 @@
     /* ANNOTATION LAYOUT */
     .ann-wrap { position: relative; display: grid; grid-template-columns: 52% 1fr; gap: 0 56px; align-items: start; }
     .ann-svg { position: absolute; inset: 0; pointer-events: none; z-index: 3; overflow: visible; }
-    .ann-doc { background: #1b1a18; border: 1px solid rgba(255,255,255,.1); border-radius: 16px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.04); position: relative; z-index: 2; }
-    .ann-doc-chrome { display: flex; align-items: center; gap: 7px; padding: 14px 18px; background: #252320; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .ann-doc { background: #222120; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.06); position: relative; z-index: 2; }
+    .ann-doc-chrome { display: flex; align-items: center; gap: 7px; padding: 14px 18px; background: #2a2826; border-bottom: 1px solid rgba(255,255,255,.08); }
     .ann-chrome-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
-    .ann-doc-label-text { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.18); margin-left: 8px; }
-    .ann-doc-section { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.05); }
+    .ann-doc-label-text { font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.35); margin-left: 8px; }
+    .ann-doc-section { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.08); }
     .ann-doc-section:last-child { border-bottom: none; }
-    .ann-ds-label { font-family: 'Outfit',sans-serif; font-size: 8.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(196,112,63,.7); margin-bottom: 5px; }
-    .ann-ds-content { font-size: 11px; line-height: 1.6; color: rgba(255,255,255,.28); }
+    .ann-ds-label { font-family: 'Outfit',sans-serif; font-size: 8.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #c4703f; margin-bottom: 5px; }
+    .ann-ds-content { font-size: 11.5px; line-height: 1.7; color: rgba(255,255,255,.62); }
     .ann-labels { display: flex; flex-direction: column; padding-top: 44px; position: relative; z-index: 2; gap: 0; }
     .ann-label { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.04); }
     .ann-label:last-child { border-bottom: none; }
@@ -340,6 +348,7 @@
     .video-overlay-play { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1.5px solid rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; transition: transform .25s, background .25s; }
     .video-overlay:hover .video-overlay-play { transform: scale(1.08); background: rgba(255,255,255,.2); }
     .video-overlay-play svg { width: 28px; height: 28px; fill: #fff; margin-left: 3px; }
+    @keyframes pulse-play { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.25); } 50% { box-shadow: 0 0 0 14px rgba(255,255,255,0); } }
     .video-overlay-label { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; color: rgba(255,255,255,.55); margin-bottom: 4px; }
     .video-overlay-name { font-family: 'Playfair Display',serif; font-size: 18px; color: #fff; font-weight: 600; margin-bottom: 6px; }
     .video-overlay-tag { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); background: rgba(196,112,63,.13); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(196,112,63,.22); }
@@ -574,7 +583,71 @@
       .compare-msg { font-size: 12.5px; padding: 12px 14px; }
       .before-decide-grid { grid-template-columns: 1fr !important; }
       .before-decide-section { padding: 60px 20px !important; }
-    }</style>
+    }
+
+    /* PRODUCT JOURNEY – Vertical Timeline (Option B) */
+    .journey-section { padding: 100px 48px; background: #F5F1EC; position: relative; z-index: 2; }
+    .journey-inner { max-width: 720px; margin: 0 auto; }
+    .journey-header { text-align: center; margin-bottom: 64px; }
+    .journey-header h2 { font-family: 'Outfit',sans-serif; font-size: clamp(28px,3vw,42px); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+    .journey-header h2 em { font-family: 'Playfair Display',serif; font-style: italic; font-weight: 400; color: var(--accent); }
+    .journey-header p { font-size: 16px; line-height: 1.8; color: var(--muted); max-width: 480px; margin: 0 auto; }
+
+    /* Timeline spine */
+    .jb-timeline { position: relative; padding-left: 48px; }
+    .jb-timeline::before { content: ''; position: absolute; left: 18px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent) 0%, var(--accent) 33%, var(--border) 33%, var(--border) 66%, #4a9e6e 66%); }
+
+    .jb-step { position: relative; margin-bottom: 40px; }
+    .jb-step:last-child { margin-bottom: 0; }
+
+    .jb-dot { position: absolute; left: -48px; top: 28px; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Outfit',sans-serif; font-size: 14px; font-weight: 700; z-index: 2; border: 3px solid #F5F1EC; }
+    .jb-step-1 .jb-dot { background: var(--accent); color: #fff; }
+    .jb-step-2 .jb-dot { background: #fff; color: var(--accent); border-color: var(--accent); }
+    .jb-step-3 .jb-dot { background: #fff; color: #4a9e6e; border-color: #4a9e6e; }
+
+    .jb-card { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 32px; }
+    .jb-step-1 .jb-card { border-color: var(--accent); box-shadow: 0 8px 32px rgba(196,112,63,0.1); }
+
+    .jb-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; gap: 16px; flex-wrap: wrap; }
+    .jb-top-left { flex: 1; }
+    .jb-top-right { text-align: right; flex-shrink: 0; }
+
+    .jb-tag { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+    .jb-step-1 .jb-tag { color: var(--accent); }
+    .jb-step-2 .jb-tag { color: #999; }
+    .jb-step-3 .jb-tag { color: #4a9e6e; }
+
+    .jb-name { font-family: 'Outfit',sans-serif; font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.2; }
+    .jb-desc { font-size: 14px; line-height: 1.8; color: var(--muted); margin-bottom: 20px; }
+
+    .jb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 20px; }
+    .jb-grid-item { font-size: 13px; color: var(--text); padding-left: 18px; position: relative; line-height: 1.5; }
+    .jb-grid-item::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; font-size: 11px; }
+
+    .jb-price-big { font-family: 'Outfit',sans-serif; font-size: 28px; font-weight: 700; }
+    .jb-price-note { font-size: 11px; color: #999; font-weight: 500; }
+    .jb-badge-here { display: inline-block; background: var(--accent); color: #fff; font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+    .jb-badge-free { display: inline-block; background: rgba(196,112,63,0.1); color: var(--accent); font-family: 'Outfit',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-left: 6px; }
+    .jb-struck { font-size: 16px; color: #999; text-decoration: line-through; margin-right: 8px; }
+
+    .jb-cta { display: inline-block; padding: 12px 24px; border-radius: 50px; font-size: 14px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: all .25s; }
+    .jb-cta-primary { background: var(--text); color: #fff; }
+    .jb-cta-primary:hover { background: var(--accent); }
+    .jb-cta-secondary { background: #fff; color: var(--text); border: 1px solid var(--border); }
+    .jb-cta-secondary:hover { border-color: #4a9e6e; color: #4a9e6e; }
+
+    .jb-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 20px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+
+    .journey-footer { text-align: center; font-size: 13px; color: var(--muted); margin-top: 48px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 700px) {
+      .journey-section { padding: 72px 20px; }
+      .jb-grid { grid-template-columns: 1fr; }
+      .jb-top { flex-direction: column; }
+      .jb-top-right { text-align: left; }
+      .jb-bottom { flex-direction: column; align-items: flex-start; }
+    }
+    </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -603,6 +676,8 @@
   </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <canvas id="geo"></canvas>
 
 <!-- NAV -->
@@ -642,8 +717,8 @@
   </div>
   <div class="hero-text-wrap">
     <div class="hero-text">
-      <h1>You're great at what you do. The world just doesn't <em>know it yet.</em></h1>
-      <p class="hero-sub">In 90 minutes, walk away with the positioning, the language, and the complete brand blueprint that finally makes your expertise impossible to ignore.</p>
+      <h1>You're great at what you do. The world just doesn't <em>know it&nbsp;yet.</em></h1>
+      <p class="hero-sub">Eight focused sessions. Walk away with the positioning, the language, and the complete brand blueprint that finally makes your expertise impossible to ignore.</p>
       <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
       <p class="price-note">Previously $5,000 per session · <strong>$67</strong> launch week</p>
       <div class="hero-trust">
@@ -652,8 +727,8 @@
           <div class="hero-trust-label">Entrepreneurs</div>
         </div>
         <div>
-          <div class="hero-trust-num">$1B+</div>
-          <div class="hero-trust-label">Revenue Represented</div>
+          <div class="hero-trust-num">13</div>
+          <div class="hero-trust-label">Companies 1,000%+ Growth</div>
         </div>
         <div>
           <div class="hero-trust-num">4.9 ★</div>
@@ -671,8 +746,8 @@
     <div class="mobile-hero-img-fade"></div>
   </div>
   <div class="mobile-hero-text">
-    <h1>Does your business not <em>feel like you</em> anymore?</h1>
-    <p class="hero-sub">In 90 minutes, get the positioning, the language, and the complete brand blueprint that makes your expertise impossible to ignore.</p>
+    <h2 style="font-size:clamp(24px,6.5vw,34px);margin-bottom:10px;">Does your business not <em>feel like you</em> anymore?</h2>
+    <p class="hero-sub">Eight focused sessions. Get the positioning, the language, and the complete brand blueprint that makes your expertise impossible to ignore.</p>
     <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
     <p class="price-note">Previously $5,000 per session · <strong>$67</strong> launch week</p>
     <div class="mobile-trust">
@@ -681,8 +756,8 @@
         <div class="mobile-trust-label">Entrepreneurs</div>
       </div>
       <div>
-        <div class="mobile-trust-num">$1B+</div>
-        <div class="mobile-trust-label">Revenue</div>
+        <div class="mobile-trust-num">13</div>
+        <div class="mobile-trust-label">Companies 1,000%+ Growth</div>
       </div>
       <div>
         <div class="mobile-trust-num">4.9 ★</div>
@@ -699,7 +774,7 @@
       <div class="stat-item"><div class="stat-num">15<span>yrs</span></div><div class="stat-label">Building 7 Figure Businesses for Service Founders</div></div>
       <div class="stat-item"><div class="stat-num">132</div><div class="stat-label">Entrepreneurs Who Found Their Niche</div></div>
       <div class="stat-item"><div class="stat-num">13</div><div class="stat-label">Companies Grew 1,000%+ After Repositioning</div></div>
-      <div class="stat-item"><div class="stat-num">$1<span>B+</span></div><div class="stat-label">In Client Revenue Generated</div></div>
+      <div class="stat-item"><div class="stat-num">4.9<span>★</span></div><div class="stat-label">Average Client Rating</div></div>
     </div>
     <div class="logos-row">
       <div class="logos-intro">Positioned brands alongside</div>
@@ -725,9 +800,9 @@
   <div class="wti-inner">
     <div class="wti-left">
       <div class="section-eyebrow">What This Is</div>
-      <h2>You don't have a strategy problem. You have a <em>mirror problem.</em></h2>
+      <h2>You don't have a strategy problem. You have a&nbsp;<em>mirror&nbsp;problem.</em></h2>
       <p>Every coach and consultant I've ever talked to knows exactly what's broken. They can feel it in their chest every time a prospect goes quiet. Every time a sales call doesn't close. Every time they refresh their inbox hoping today is different.</p>
-      <p>The problem isn't strategy. The problem is that nobody in your life will sit with you for two uninterrupted hours and ask you the right questions without an agenda. Without trying to sell you something. Without filtering you through their own framework.</p>
+      <p>The problem isn't strategy. The problem is that nobody in your life will sit with you and ask the right questions without an agenda. Without trying to sell you something. Without filtering you through their own framework.</p>
       <p>I built this process working with some of the most well-known coaches and experts in the world — people who paid $5,000 for the output you can have today for less than the cost of a dinner out. One honest conversation, in the privacy of your home, to get the truth you know you need to hear. Named competitors, pricing data, a credibility score from 1 to 10, and the exact market opportunity your background sets you up for.</p>
       <div class="wti-quote">
         <p>"I spent all day on this. Better than working with business coaches I've paid to talk with me on the phone. I have real clarity on the next direction."</p>
@@ -763,7 +838,7 @@
           <div class="session-label">Deep Dive</div>
           <div class="session-quote">"Name the three competitors you secretly respect. Now tell me what they do <em>that you don't.</em>"</div>
         </div>
-        <div class="session-footer">8 phases &nbsp;·&nbsp; 50+ questions &nbsp;·&nbsp; 2 hours</div>
+        <div class="session-footer">8 phases &nbsp;·&nbsp; 50+ questions &nbsp;·&nbsp; ~10 min each</div>
       </div>
     </div>
   </div>
@@ -862,7 +937,7 @@
   <div class="wyg-inner">
     <div class="wyg-header">
       <div class="section-eyebrow">What You Walk Away With</div>
-      <h2>A complete blueprint. Not a <em>summary.</em></h2>
+      <h2>A complete blueprint. <span style="white-space:nowrap">Not a <em>summary.</em></span></h2>
       <p>Seven distinct documents. Each one specific to your story, your market, and your exact positioning gap.</p>
     </div>
 
@@ -964,6 +1039,12 @@
   </div>
 </section>
 
+<!-- POST-DELIVERABLES MICRO CTA -->
+<div style="padding: 32px 36px 0; text-align: center; background: var(--bg);">
+  <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px; line-height: 1.6;">All seven sections. Built from your words. Ready in about two hours.</p>
+  <a href="#checkout" data-checkout="blueprint" style="font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; font-family: 'Inter',sans-serif; border-bottom: 1px solid rgba(196,112,63,.3); padding-bottom: 2px; transition: border-color .25s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(196,112,63,.3)'">Get your blueprint for $67 →</a>
+</div>
+
 <!-- SAMPLE OUTPUT PREVIEW — Scrolling Blueprint -->
 <div style="max-width:1100px;margin:64px auto 0;padding:0 48px;">
   <div class="section-eyebrow" style="text-align:center;margin-bottom:12px;">Sample Output</div>
@@ -985,7 +1066,7 @@
           <div class="bp-cover-sub">Brand &amp; Positioning Blueprint</div>
           <div class="bp-cover-line"></div>
           <div class="bp-cover-meta">
-            Prepared from a 94 minute Deep Work session<br>
+            Prepared from a Deep Work session<br>
             March 2026<br><br>
             <span style="color:var(--accent);font-weight:600;">11 Sections · 28 Pages · Built from your words</span>
           </div>
@@ -1256,23 +1337,33 @@
   </div>
 </div>
 
+<!-- POST-BLUEPRINT CTA (3A: Value Prop Card) -->
+<div style="padding: 40px 36px; background: var(--bg);">
+  <div style="max-width: 560px; margin: 0 auto; padding: 32px; border: 1.5px solid var(--border); border-radius: 16px; text-align: center;">
+    <div style="font-family: 'Outfit',sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 6px;">This is what yours will look like.</div>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.6;">Seven sections. Built from your story. Ready when you're done.</p>
+    <a href="#checkout" data-checkout="blueprint" style="display: inline-flex; align-items: center; gap: 10px; background: var(--text); color: #fff; padding: 14px 28px; border-radius: 50px; font-size: 14px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: background .25s;" onmouseover="this.style.background='#c4703f'" onmouseout="this.style.background='var(--text)'">Get Yours. $67. <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div style="font-size: 12px; color: #aaa; margin-top: 12px;">Instant access · 30 day guarantee</div>
+  </div>
+</div>
+
 <!-- TESTIMONIALS -->
 <section class="test-section" id="stories">
   <div class="test-inner">
     <div class="test-header">
       <div class="section-eyebrow">Stories</div>
-      <h2>People who coach for a living say this exercise changed <em>their life.</em></h2>
+      <h2>People who coach for a living say this exercise changed <em>their&nbsp;life.</em></h2>
     </div>
     <!-- GREG PIGNATARO — FEATURED VIDEO TESTIMONIAL (filmed on Necker Island) -->
     <div class="test-featured-video">
       <div class="test-video-wrap">
         <div class="video-overlay" onclick="var v=this.parentElement.querySelector('video');this.classList.add('hidden');v.play();">
-          <div class="video-overlay-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-          <div class="video-overlay-label">Watch Testimonial</div>
+          <div class="video-overlay-play" style="animation: pulse-play 2s ease-in-out infinite;"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+          <div class="video-overlay-label">Watch 60 Seconds</div>
           <div class="video-overlay-name">Greg Pignataro</div>
           <div class="video-overlay-tag">Filmed on Necker Island</div>
         </div>
-        <video controls preload="metadata">
+        <video controls preload="metadata" poster="images/greg-pignataro-poster.jpg">
           <source src="videos/greg-pignataro-testimonial.mp4" type="video/mp4">
         </video>
       </div>
@@ -1292,7 +1383,7 @@
         <div class="test-stars">★★★★★</div>
         <p class="test-quote">"It was definitely a commitment, but worth every minute. I've done extensive interviews like this for clients as I was building their branding and messaging, but I enjoyed having this thread myself. Not only did I get to see the dots connect in real time, but I had the thread to continue to add to and work with. This tool was very valuable."</p>
         <div class="test-author">
-          <img class="test-photo" src="images/juliet-wright.jpg" alt="Juliet Wright" style="object-fit:cover;" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2792%27%20height%3D%2792%27%20viewBox%3D%270%200%2092%2092%27%3E%3Crect%20width%3D%2792%27%20height%3D%2792%27%20rx%3D%2746%27%20fill%3D%27%23EAE7E2%27/%3E%3Ctext%20x%3D%2746%27%20y%3D%2757%27%20font-family%3D%27system-ui%2Csans-serif%27%20font-size%3D%2732%27%20font-weight%3D%27600%27%20fill%3D%27%23555%27%20text-anchor%3D%27middle%27%3EJW%3C/text%3E%3C/svg%3E'">
+          <img class="test-photo" src="images/juliet-wright-opt.jpg" alt="Juliet Wright" style="object-fit:cover;" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2792%27%20height%3D%2792%27%20viewBox%3D%270%200%2092%2092%27%3E%3Crect%20width%3D%2792%27%20height%3D%2792%27%20rx%3D%2746%27%20fill%3D%27%23EAE7E2%27/%3E%3Ctext%20x%3D%2746%27%20y%3D%2757%27%20font-family%3D%27system-ui%2Csans-serif%27%20font-size%3D%2732%27%20font-weight%3D%27600%27%20fill%3D%27%23555%27%20text-anchor%3D%27middle%27%3EJW%3C/text%3E%3C/svg%3E'">
           <div><div class="test-name">Juliet Wright</div><div class="test-title">Branding &amp; Messaging Consultant</div></div>
         </div>
       </div>
@@ -1322,7 +1413,7 @@
       </div>
       <div class="test-card">
         <div class="test-stars">★★★★★</div>
-        <p class="test-quote">"It felt like I&rsquo;d paid for a one on one session with Tony Robbins. We went deep and the outcome was stellar with some rewording and reimagining of my key offer. Thank you."</p>
+        <p class="test-quote">"Phenomenal prompt engineering. It felt like I&rsquo;d paid for a one on one session with Tony Robbins. We went deep and the outcome was stellar with some rewording and reimagining of my key offer. Thank you."</p>
         <div class="test-author">
           <img class="test-photo" src="images/ross-tompkins.jpg" alt="Ross Tompkins" style="object-fit:cover;">
           <div><div class="test-name">Ross Tompkins</div><div class="test-title">Coach &amp; Business Strategist</div></div>
@@ -1335,16 +1426,25 @@
   </div>
 </section>
 
+<!-- POST-TESTIMONIAL CTA (1A: Bold Banner) -->
+<div style="padding: 56px 36px; text-align: center; background: linear-gradient(180deg, #FDFCFA 0%, #F5F1EC 100%);">
+  <div style="font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;">Ready?</div>
+  <h2 style="font-family: 'Outfit',sans-serif; font-size: clamp(22px,3vw,28px); font-weight: 700; color: var(--text); line-height: 1.2; max-width: 480px; margin: 0 auto 8px;">Your blueprint starts with one&nbsp;<em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);font-weight:400;">conversation.</em></h2>
+  <p style="font-size: 14px; color: var(--muted); max-width: 420px; margin: 0 auto 24px; line-height: 1.7;">Eight focused sessions. Walk away with positioning, messaging, three priced offers, and a full website outline.</p>
+  <a href="#checkout" data-checkout="blueprint" style="display: inline-flex; align-items: center; gap: 10px; background: var(--text); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 15px; font-weight: 600; font-family: 'Inter',sans-serif; text-decoration: none; transition: background .25s;" onmouseover="this.style.background='#c4703f'" onmouseout="this.style.background='var(--text)'">Get Clear Now. $67. <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <div style="font-size: 12px; color: #aaa; margin-top: 12px;">30 day guarantee · Instant access · No subscription</div>
+</div>
+
 <!-- HOW TO DO IT -->
 <section class="how-section">
   <div class="how-inner">
     <div class="how-header">
       <div class="section-eyebrow">How It Works</div>
-      <h2>Three steps. About 10 minutes each. <em>One clear path.</em></h2>
+      <h2>Three steps. About 10 minutes each. <em>One clear&nbsp;path.</em></h2>
     </div>
     <div class="how-step">
       <div class="step-num">1</div>
-      <div class="step-content"><h3>Purchase and Start Immediately</h3><p>The moment your payment completes, you are taken directly into your personal Deep Work session. No downloads. No setup. No extra accounts to create. Just you and a two hour conversation that changes everything.</p></div>
+      <div class="step-content"><h3>Purchase and Start Immediately</h3><p>The moment your payment completes, you are taken directly into your personal Deep Work session. No downloads. No setup. No extra accounts to create. Just you and a focused conversation that changes everything.</p></div>
     </div>
     <div class="how-step">
       <div class="step-num">2</div>
@@ -1357,26 +1457,23 @@
   </div>
 </section>
 
-<!-- A FAIR QUESTION — Transcript Comparison -->
-<section class="wnjc-section">
+<!-- A FAIR QUESTION — Condensed Comparison -->
+<section class="wnjc-section" style="padding: 64px 0;">
   <div class="wnjc-inner">
     <div class="wnjc-header">
       <div class="section-eyebrow">A Fair Question</div>
-      <h2>"Can't I just do this in <em>Claude?</em>"</h2>
-      <p>You could. Here's what the two conversations actually look like side by side.</p>
+      <h2><span style="white-space:nowrap">"Can't I just do this in <em>Claude?"</em></span></h2>
     </div>
 
     <div class="compare-wrap">
       <div class="compare-col compare-generic">
         <div class="compare-label">You + Claude (blank session)</div>
         <div class="compare-chat">
-          <div class="compare-msg compare-user-msg">"Help me with my personal brand positioning as a coach"</div>
-          <div class="compare-msg compare-ai-msg">Sure! Let's start with some basics. What kind of coaching do you do? Who is your target audience? What makes you different from other coaches?</div>
-          <div class="compare-msg compare-user-msg">"I help business owners with leadership and strategy"</div>
-          <div class="compare-msg compare-ai-msg">Great! Here are 5 positioning statement templates you can customize:<br>1. "I help [audience] achieve [result] through [method]"<br>2. "The [niche] coach for [specific audience]"<br>...</div>
+          <div class="compare-msg compare-user-msg">"Help me with my brand positioning"</div>
+          <div class="compare-msg compare-ai-msg">Here are 5 positioning templates you can customize: "I help [audience] achieve [result]..."</div>
           <div class="compare-verdict">
             <span class="compare-verdict-icon">⚠️</span>
-            <span>20 minutes later you have a template. You still do not know what to put in it.</span>
+            <span>You get a template. You still don't know what to put in it.</span>
           </div>
         </div>
       </div>
@@ -1384,20 +1481,19 @@
       <div class="compare-col compare-deep">
         <div class="compare-label">The Deep Work Process</div>
         <div class="compare-chat">
-          <div class="compare-msg compare-ai-msg">Tell me about a moment when you realized your old career was over. Not when you decided to leave. When you knew.</div>
-          <div class="compare-msg compare-user-msg">"It was a Tuesday. My biggest client told me I'd saved their company, and I felt nothing. That's when I knew."</div>
-          <div class="compare-msg compare-ai-msg">That numbness is the signal. You were already a strategist who could save companies, but the identity attached to it had expired. That gap between competence and meaning is exactly what your future clients are living in right now. Let's build from there.</div>
+          <div class="compare-msg compare-ai-msg">Tell me about the moment you realized your old career was over. Not when you decided. When you knew.</div>
+          <div class="compare-msg compare-ai-msg" style="margin-top:8px; opacity:.85;">That gap between competence and meaning is exactly what your future clients are living in. Let's build from there.</div>
           <div class="compare-verdict">
             <span class="compare-verdict-icon">✦</span>
-            <span>90 minutes later you have an 11 section Brand Guide with positioning, offers, competitor analysis, a SWOT, content pillars, and a 90 day roadmap. Built from your actual words.</span>
+            <span>Eight sessions. 11 section Brand Guide. Positioning, offers, competitors, pricing, website copy, and a 90 day roadmap. From your actual words.</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="wnjc-bottom" style="margin-top:40px;">
+    <div class="wnjc-bottom" style="margin-top:28px;">
       <div class="wnjc-bottom-text">
-        <p>The difference is not the AI. The difference is the process behind it. <strong>15 years of positioning methodology, hundreds of real interviews, and a question sequence designed to pull out material you did not know you had.</strong> You could spend hours figuring out what to ask. Or you could answer honestly for 90 minutes and walk away with everything.</p>
+        <p>The difference is not the AI. It's <strong>15 years of positioning methodology and a question sequence designed to pull out material you didn't know you had.</strong></p>
       </div>
       <div class="wnjc-bottom-cta">
         <a href="#checkout" data-checkout="blueprint" class="cta-btn-light">Get Clear Now →</a>
@@ -1410,12 +1506,12 @@
 <section class="before-decide-section" style="position:relative;z-index:2;padding:80px 48px;background:var(--bg);">
   <div style="max-width:800px;margin:0 auto;">
     <div class="section-eyebrow" style="text-align:center;margin-bottom:12px;">Before You Decide</div>
-    <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:700;color:var(--text);line-height:1.25;text-align:center;margin-bottom:48px;">This is built for a specific kind of person. <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);font-weight:400;">Here's how to know if that's you.</em></h2>
+    <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:700;color:var(--text);line-height:1.25;text-align:center;margin-bottom:48px;">This is built for a specific kind of person. <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);font-weight:400;">Here's how to know if&nbsp;that's&nbsp;you.</em></h2>
 
     <div class="before-decide-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;">
       <div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 28px;">
         <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#22c55e;margin-bottom:16px;">This is for you if</div>
-        <p style="font-size:14.5px;line-height:1.8;color:var(--muted);">You are a coach, consultant, or service provider who knows your work is excellent but struggles to articulate why someone should choose you over everyone else. You have been in business long enough to know the basics but cannot seem to nail the positioning. You are willing to be honest with yourself for 90 minutes.</p>
+        <p style="font-size:14.5px;line-height:1.8;color:var(--muted);">You are a coach, consultant, or service provider who knows your work is excellent but struggles to articulate why someone should choose you over everyone else. You have been in business long enough to know the basics but cannot seem to nail the positioning. You are willing to be honest with yourself across eight focused sessions.</p>
       </div>
       <div style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 28px;">
         <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">This is not for you if</div>
@@ -1430,12 +1526,116 @@
   </div>
 </section>
 
+
+<!-- THE FULL JOURNEY: DWI → DEPLOY → SITE IN SIXTY (Option B: Vertical Timeline) -->
+<section class="journey-section">
+  <div class="journey-inner">
+    <div class="journey-header">
+      <div class="section-eyebrow">The Full Journey</div>
+      <h2>Get clear. See it. <em>Build&nbsp;it.</em></h2>
+      <p>Three products that take you from "I know something's off" to a live website that finally sounds like you. Each one stands on its own. You choose how far&nbsp;you&nbsp;go.</p>
+    </div>
+
+    <div class="jb-timeline">
+
+      <!-- Step 1: DWI -->
+      <div class="jb-step jb-step-1">
+        <div class="jb-dot">1</div>
+        <div class="jb-card">
+          <div class="jb-badge-here">You Are Here</div>
+          <div class="jb-top">
+            <div class="jb-top-left">
+              <div class="jb-tag">Get Clear</div>
+              <div class="jb-name">Deep Work Interview</div>
+            </div>
+            <div class="jb-top-right">
+              <div class="jb-price-big" style="color:var(--text);">$67</div>
+              <div class="jb-price-note">One time</div>
+            </div>
+          </div>
+          <p class="jb-desc">Eight focused sessions that pull the strategy out of your head and onto paper. You walk away knowing exactly what to say, who to say it to, and how to price it.</p>
+          <div class="jb-grid">
+            <div class="jb-grid-item">Complete brand positioning</div>
+            <div class="jb-grid-item">Three structured, priced offers</div>
+            <div class="jb-grid-item">Named competitor research</div>
+            <div class="jb-grid-item">Full website copy and outline</div>
+            <div class="jb-grid-item">90 day action roadmap</div>
+            <div class="jb-grid-item">Keep everything forever</div>
+          </div>
+          <div class="jb-bottom">
+            <a href="#checkout" data-checkout="blueprint" class="jb-cta jb-cta-primary">Get Clear Now &rarr;</a>
+            <span style="font-size:12px;color:#999;">About 2 hours across 8 sessions</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Deploy -->
+      <div class="jb-step jb-step-2">
+        <div class="jb-dot">2</div>
+        <div class="jb-card">
+          <div class="jb-top">
+            <div class="jb-top-left">
+              <div class="jb-tag">See It</div>
+              <div class="jb-name">Deploy</div>
+            </div>
+            <div class="jb-top-right">
+              <div><span class="jb-struck">$97</span><span class="jb-price-big" style="color:var(--accent);">Free</span><span class="jb-badge-free">Launch</span></div>
+              <div class="jb-price-note">Included with your Interview</div>
+            </div>
+          </div>
+          <p class="jb-desc">Your blueprint, visualized as a real website. A working preview you can share with your web team, show partners, or use to decide your next move. Not a permanent site. A proof of concept built from your&nbsp;words.</p>
+          <div class="jb-grid">
+            <div class="jb-grid-item">Live preview of your site</div>
+            <div class="jb-grid-item">Built from your actual blueprint</div>
+            <div class="jb-grid-item">Shareable link for 30 days</div>
+            <div class="jb-grid-item">Hand off to any developer</div>
+          </div>
+          <div style="font-size: 12px; color: #999; font-style: italic; padding-top: 12px; border-top: 1px solid var(--border);">Preview available for 30 days after your Interview completes.</div>
+        </div>
+      </div>
+
+      <!-- Step 3: Site in Sixty -->
+      <div class="jb-step jb-step-3">
+        <div class="jb-dot">3</div>
+        <div class="jb-card">
+          <div class="jb-top">
+            <div class="jb-top-left">
+              <div class="jb-tag">Build It</div>
+              <div class="jb-name">Site in Sixty</div>
+            </div>
+            <div class="jb-top-right">
+              <div class="jb-price-big" style="color:#4a9e6e;">$197</div>
+              <div class="jb-price-note">One time. No monthly fees.</div>
+            </div>
+          </div>
+          <p class="jb-desc">Turn that preview into a permanent website you own and control. Five video modules showing every click over the shoulder. Custom domain. Free hosting forever. Built in support when you get&nbsp;stuck.</p>
+          <div class="jb-grid">
+            <div class="jb-grid-item">5 over the shoulder video modules</div>
+            <div class="jb-grid-item">Custom domain setup</div>
+            <div class="jb-grid-item">Analytics, SEO, and meta tags</div>
+            <div class="jb-grid-item">Free Cloudflare hosting (forever)</div>
+            <div class="jb-grid-item">Built in help when you need it</div>
+            <div class="jb-grid-item">Own every file. Zero lock in.</div>
+          </div>
+          <div class="jb-bottom">
+            <a href="/site-in-sixty/" class="jb-cta jb-cta-secondary">Learn About Site in Sixty &rarr;</a>
+            <span style="font-size:12px;color:#999;">Under 60 minutes to a live site</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="journey-footer">Most people start with the Interview and decide what's next after they see their blueprint. There is no pressure to continue. Each product stands completely on&nbsp;its&nbsp;own.</p>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="final-cta" id="final-cta">
   <canvas id="cta-canvas"></canvas>
   <div class="final-cta-inner">
     <div class="section-eyebrow" style="color:rgba(196,112,63,.7)">Get Clear</div>
-    <h2>Start one section tonight. Leave with a plan that makes everything <em>clear.</em></h2>
+    <h2>Start one section tonight. Leave with a plan that makes <em>everything&nbsp;clear.</em></h2>
     <p>You'll have a complete brand blueprint, three priced offers, a full website outline with real copy, and a roadmap that finally makes the next step obvious.</p>
     <div class="anchor-price-wrap">
       <span class="anchor-price-original">$297</span>
@@ -1665,6 +1865,23 @@
       '.op-session-spinner{width:48px;height:48px;border:3px solid #e5e7eb;border-top-color:#c4703f;border-radius:50%;animation:opspin .8s linear infinite;flex-shrink:0}',
       '.op-loading-view h3{font-family:Outfit,sans-serif;font-size:22px;font-weight:700;color:#1a1a1a;margin:0}',
       '.op-loading-view p{font-size:14px;color:#888;margin:0;line-height:1.65}',
+      /* ── Congrats view ── */
+      '.op-congrats-view{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0;position:relative;overflow:hidden}',
+      '.op-confetti-canvas{position:absolute;inset:0;pointer-events:none;z-index:0}',
+      '.op-congrats-inner{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 36px 44px;width:100%;position:relative;z-index:1}',
+      '@keyframes opcheckpop{0%{transform:scale(0) rotate(-20deg);opacity:0}60%{transform:scale(1.25) rotate(5deg);opacity:1}80%{transform:scale(.92) rotate(-2deg)}100%{transform:scale(1) rotate(0deg);opacity:1}}',
+      '@keyframes opglow{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}50%{box-shadow:0 0 0 12px rgba(34,197,94,.15)}}',
+      '@keyframes opfadeslide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}',
+      '@keyframes opshimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}',
+      '.op-congrats-check{width:80px;height:80px;background:linear-gradient(135deg,#bbf7d0,#4ade80);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.15);animation:opcheckpop .6s cubic-bezier(.2,.9,.3,1) .1s both,opglow 2s ease-in-out 1s infinite;flex-shrink:0}',
+      '.op-congrats-title{font-family:Outfit,sans-serif;font-size:28px;font-weight:800;color:#1a1a1a;margin:0 0 6px;animation:opfadeslide .4s ease .5s both;letter-spacing:-.3px}',
+      '.op-congrats-tagline{font-family:Outfit,sans-serif;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#c4703f;margin:0 0 14px;animation:opfadeslide .4s ease .65s both}',
+      '.op-congrats-sub{font-size:14px;color:#666;margin:0 0 28px;line-height:1.7;max-width:270px;animation:opfadeslide .4s ease .75s both}',
+      '.op-progress-wrap{width:100%;background:#f0ece6;border-radius:999px;height:10px;overflow:hidden;margin-bottom:12px;animation:opfadeslide .4s ease .85s both}',
+      '.op-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#c4703f 0%,#f0a06a 50%,#c4703f 100%);background-size:200% 100%;border-radius:999px;transition:width .4s cubic-bezier(.4,0,.2,1);animation:opshimmer 2s linear .9s infinite}',
+      '.op-progress-label{font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:#bbb;font-family:Outfit,sans-serif;margin:0 0 0;animation:opfadeslide .4s ease .9s both}',
+      '.op-congrats-fallback{font-size:13px;color:#888;margin:18px 0 0;line-height:1.65;animation:opfadeslide .3s ease both}',
+      '.op-congrats-fallback a{color:#c4703f;font-weight:600;text-decoration:underline}',
     ].join('');
     document.head.appendChild(style);
 
@@ -1686,7 +1903,7 @@
       + '<div class="op-body" id="op-order-body">'
       + '<div class="op-scroll">'
       + '<div class="op-main-item">'
-      + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Blueprint</div><div class="op-item-desc">2hr AI positioning session + full blueprint</div></div>'
+      + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Blueprint</div><div class="op-item-desc">AI positioning session + full blueprint</div></div>'
       + '<div class="op-item-price">$67</div>'
       + '</div>'
       + ''
@@ -1708,30 +1925,33 @@
       + '<div class="op-pay-scroll">'
       + '<div class="op-order-bar"><span class="op-order-bar-label" id="op-order-bar-label">Deep Work Blueprint</span><span class="op-order-bar-price" id="op-order-bar-price">$67</span></div>'
       + '<div class="op-field"><label for="op-email">Email address</label><input type="email" id="op-email" placeholder="you@example.com" autocomplete="email" required /></div>'
+      + '<div class="op-field"><label for="op-phone">Phone number <span style="color:#c0392b">*</span></label><input type="tel" id="op-phone" placeholder="+1 (555) 000-0000" autocomplete="tel" required /></div>'
       + '<div id="stripe-element"></div>'
       + '</div>'
       + '<div class="op-pay-footer">'
       + '<div class="op-pay-error" id="op-pay-error"></div>'
       + '<form id="op-pay-form"><button type="submit" class="op-pay-btn" id="op-pay-submit"><span id="op-pay-spinner" class="btn-spinner" style="display:none"></span><span class="btn-text">Pay $67</span></button></form>'
       + '<div class="op-guarantee">7 day guarantee &middot; Cancel anytime &middot; Instant access</div>'
-      + '<button class="op-back-btn" id="op-back-btn">← Change order</button>'
+      + '<button class="op-back-btn" id="op-back-btn">Cancel</button>'
       + '</div>'
       + '</div>'
 
-      /* ── STEP 3: Loading (magic link generation) ── */
-      + '<div class="op-loading-view" id="op-loading-view">'
-      + '<div class="op-session-spinner"></div>'
-      + '<h3>Securing your session&#8230;</h3>'
-      + '<p>Generating your personal magic link.<br>This only takes a moment.</p>'
+      /* ── STEP 3: Congratulations + progress bar ── */
+      + '<div class="op-congrats-view" id="op-congrats-view">'
+      + '<canvas class="op-confetti-canvas" id="op-confetti-canvas"></canvas>'
+      + '<div class="op-congrats-inner">'
+      + '<div class="op-congrats-check">&#10003;</div>'
+      + '<h2 class="op-congrats-title">You\'re in.</h2>'
+      + '<p class="op-congrats-tagline">Your adventure starts now</p>'
+      + '<p class="op-congrats-sub">Your Deep Work session is being prepared. In minutes you\'ll have total clarity on your brand, your message, and your next move.</p>'
+      + '<div class="op-progress-wrap">'
+      + '<div class="op-progress-bar" id="op-progress-bar"></div>'
       + '</div>'
-
-      /* ── STEP 4: Success ── */
-      + '<div class="op-success-view" id="op-success-view">'
-      + '<div class="op-success-icon">✓</div>'
-      + '<h3>You&#39;re in!</h3>'
-      + '<p id="op-success-headline">Taking you to your session now&#8230;</p>'
-      + '<a href="https://app.jamesguldan.com" id="op-start-session" class="op-success-cta" target="_blank" rel="noopener">Start the Interview &#8594;</a>'
-      + '<p class="op-success-sub">Your magic link is on its way to <span class="op-success-email" id="op-success-email">your email</span> so you can return anytime.</p>'
+      + '<p class="op-progress-label" id="op-progress-label">Building your session&#8230;</p>'
+      + '<p class="op-congrats-fallback" id="op-congrats-fallback" style="display:none">'
+      + 'Taking a moment longer&#8230; <a href="https://love.jamesguldan.com/app" id="op-congrats-link">Click here to begin &#8594;</a>'
+      + '</p>'
+      + '</div>'
       + '</div>';
     document.body.appendChild(popup);
 
@@ -1745,11 +1965,16 @@
     // ── Popup open / close ───────────────────────────────────────────────────
     function openPopup(e) {
       if (e) e.preventDefault();
-      updateTotal();
-      showStep('order');
+      // Skip order selection — go straight to payment (no upsells)
+      currentTiers = ['blueprint'];
+      document.getElementById('op-order-bar-label').textContent = 'Deep Work Blueprint';
+      document.getElementById('op-order-bar-price').textContent = '$67';
+      document.querySelector('#op-pay-submit .btn-text').textContent = 'Pay $67';
+      showStep('payment');
       backdrop.style.display = 'block';
       popup.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      initStripePaymentElement(currentTiers);
       requestAnimationFrame(function() {
         backdrop.classList.add('visible');
         popup.classList.add('visible');
@@ -1775,18 +2000,20 @@
 
     // ── Step management ──────────────────────────────────────────────────────
     function showStep(step) {
-      var orderBody   = document.getElementById('op-order-body');
-      var paymentView = document.getElementById('op-payment-view');
-      var loadingView = document.getElementById('op-loading-view');
-      var successView = document.getElementById('op-success-view');
-      var header      = document.getElementById('op-header');
-      var headerTitle = document.getElementById('op-header-title');
-      var headerSub   = document.getElementById('op-header-sub');
+      var orderBody    = document.getElementById('op-order-body');
+      var paymentView  = document.getElementById('op-payment-view');
+      var loadingView  = document.getElementById('op-loading-view');
+      var successView  = document.getElementById('op-success-view');
+      var congratsView = document.getElementById('op-congrats-view');
+      var header       = document.getElementById('op-header');
+      var headerTitle  = document.getElementById('op-header-title');
+      var headerSub    = document.getElementById('op-header-sub');
 
-      orderBody.style.display   = step === 'order'   ? 'flex' : 'none';
-      paymentView.style.display = step === 'payment' ? 'flex' : 'none';
-      loadingView.style.display = step === 'loading' ? 'flex' : 'none';
-      successView.style.display = step === 'success' ? 'flex' : 'none';
+      orderBody.style.display    = step === 'order'    ? 'flex' : 'none';
+      paymentView.style.display  = step === 'payment'  ? 'flex' : 'none';
+      if (loadingView)  loadingView.style.display  = step === 'loading'  ? 'flex' : 'none';
+      if (successView)  successView.style.display  = step === 'success'  ? 'flex' : 'none';
+      if (congratsView) congratsView.style.display = step === 'congrats' ? 'flex' : 'none';
 
       if (step === 'order') {
         header.style.display = '';
@@ -1795,14 +2022,69 @@
       } else if (step === 'payment') {
         header.style.display = '';
         headerTitle.textContent = 'Secure Checkout';
-        headerSub.textContent   = '256-bit encryption · Powered by Stripe';
+        headerSub.textContent   = '256-bit encryption \xb7 Powered by Stripe';
       } else if (step === 'loading') {
         header.style.display = 'none';
         canClosePopup = false;
       } else if (step === 'success') {
         header.style.display = 'none';
-        canClosePopup = false; // prevent accidental close after payment
+        canClosePopup = false;
+      } else if (step === 'congrats') {
+        header.style.display = 'none';
+        canClosePopup = false;
+        // Fire confetti burst
+        requestAnimationFrame(function() { launchConfetti(); });
       }
+    }
+
+    // ── Confetti burst ────────────────────────────────────────────────────────
+    function launchConfetti() {
+      var canvas = document.getElementById('op-confetti-canvas');
+      if (!canvas) return;
+      var W = canvas.offsetWidth, H = canvas.offsetHeight;
+      canvas.width = W; canvas.height = H;
+      var ctx = canvas.getContext('2d');
+      var colors = ['#c4703f','#f0a06a','#22c55e','#4ade80','#facc15','#fb923c','#a78bfa','#38bdf8'];
+      var pieces = [];
+      for (var i = 0; i < 90; i++) {
+        pieces.push({
+          x: W * 0.5 + (Math.random() - 0.5) * W * 0.3,
+          y: H * 0.28,
+          vx: (Math.random() - 0.5) * 9,
+          vy: -Math.random() * 8 - 3,
+          rot: Math.random() * 360,
+          rspeed: (Math.random() - 0.5) * 8,
+          w: Math.random() * 8 + 4,
+          h: Math.random() * 4 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1
+        });
+      }
+      var frame = 0;
+      var maxFrames = 90;
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (var j = 0; j < pieces.length; j++) {
+          var p = pieces[j];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.28;
+          p.vx *= 0.99;
+          p.rot += p.rspeed;
+          p.alpha = Math.max(0, 1 - frame / maxFrames);
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot * Math.PI / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        }
+        frame++;
+        if (frame < maxFrames) requestAnimationFrame(draw);
+        else ctx.clearRect(0, 0, W, H);
+      }
+      draw();
     }
 
     // ── Stripe state ─────────────────────────────────────────────────────────
@@ -1812,6 +2094,7 @@
     var currentPiId      = null;
     var currentPiEmail   = '';
     var currentTiers     = ['blueprint'];
+    var currentPhone     = '';
 
     function resetPaymentView() {
       canClosePopup = true;
@@ -1842,10 +2125,9 @@
       initStripePaymentElement(tiers);
     });
 
-    // ── Back button ──────────────────────────────────────────────────────────
+    // ── Back button — closes popup since there is no order step ─────────────
     document.getElementById('op-back-btn').addEventListener('click', function() {
-      showStep('order');
-      resetPaymentView();
+      closePopup();
     });
 
     // ── Init Stripe Payment Element ──────────────────────────────────────────
@@ -1855,7 +2137,7 @@
         + '<span style="display:inline-block;width:20px;height:20px;border:2px solid #e5e7eb;border-top-color:#c4703f;border-radius:50%;animation:opspin .7s linear infinite;vertical-align:middle;margin-right:8px"></span>'
         + 'Loading payment form…</div>';
 
-      fetch('https://app.jamesguldan.com/api/create-payment-intent', {
+      fetch('https://love.jamesguldan.com/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tiers: tiers })
@@ -1904,7 +2186,7 @@
 
         mountEl.innerHTML = '';
         stripePayEl = stripeElements.create('payment', {
-          layout: { type: 'tabs', defaultCollapsed: false },
+          layout: { type: 'accordion', defaultCollapsed: false, radios: false, spacedAccordionItems: false },
           fields: { billingDetails: { email: 'never' } },
           wallets: { applePay: 'auto', googlePay: 'auto' },
         });
@@ -1938,6 +2220,17 @@
         return;
       }
       emailInput.classList.remove('error');
+
+      var phoneInput = document.getElementById('op-phone');
+      var phone = phoneInput ? phoneInput.value.trim() : '';
+      currentPhone = phone;
+      if (!phone) {
+        if (phoneInput) { phoneInput.classList.add('error'); phoneInput.focus(); }
+        showPayError('Please enter your phone number so we can send reminders and help if you get stuck.');
+        return;
+      }
+      if (phoneInput) phoneInput.classList.remove('error');
+
       currentPiEmail = email;
 
       setPayLoading(true);
@@ -1976,6 +2269,8 @@
             msg = result.error.message || 'Please check your card details and try again.';
           showPayError(msg);
         } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+          // Use the PI ID directly from Stripe's response — more reliable than currentPiId
+          if (result.paymentIntent.id) currentPiId = result.paymentIntent.id;
           fulfillAndShowSuccess(email);
         } else if (result.paymentIntent && result.paymentIntent.status === 'requires_action') {
           // 3DS mid-flow — confirmPayment should handle this, but just in case
@@ -2007,32 +2302,70 @@
 
     // ── Fulfillment + success ────────────────────────────────────────────────
     function fulfillAndShowSuccess(email) {
-      // Show loading spinner while we generate the magic link
-      showStep('loading');
       setPayLoading(false);
 
-      fetch('https://app.jamesguldan.com/api/fulfill-payment', {
+      // Show the congratulations view immediately
+      showStep('congrats');
+
+      var bar      = document.getElementById('op-progress-bar');
+      var label    = document.getElementById('op-progress-label');
+      var fallback = document.getElementById('op-congrats-fallback');
+
+      // Animate bar from 0% to 82% over ~3.5s while the API call runs
+      var progress = 0;
+      var targetFill = 82;
+      var fillDuration = 3500; // ms
+      var startTime = Date.now();
+      var fillTimer = setInterval(function() {
+        var elapsed = Date.now() - startTime;
+        var pct = Math.min(targetFill, Math.round((elapsed / fillDuration) * targetFill));
+        if (bar) bar.style.width = pct + '%';
+        if (pct >= targetFill) clearInterval(fillTimer);
+      }, 50);
+
+      // Show fallback link after 18s in case something hangs
+      var fallbackTimer = setTimeout(function() {
+        if (fallback) fallback.style.display = 'block';
+        if (label) label.textContent = 'Almost there\u2026';
+      }, 18000);
+
+      fetch('https://love.jamesguldan.com/api/fulfill-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ paymentIntentId: currentPiId, email: email, tiers: currentTiers })
+        body: JSON.stringify({ paymentIntentId: currentPiId, email: email, phone: currentPhone, tiers: currentTiers })
       })
       .then(function(r) { return r.json(); })
       .then(function(data) {
+        clearInterval(fillTimer);
+        clearTimeout(fallbackTimer);
         if (data.sessionUrl) {
-          // Got the magic link — show success briefly then auto-redirect
-          showSuccess(email, data.sessionUrl, true);
+          // Snap bar to 100% then redirect after a beat so they see it complete
+          if (bar) bar.style.width = '100%';
+          if (label) label.textContent = 'All set! Taking you in\u2026';
           setTimeout(function() {
             window.location.href = data.sessionUrl;
-          }, 2500);
+          }, 800);
         } else {
-          // No session URL — show success with manual button as fallback
-          showSuccess(email, null, false);
+          // No session URL — show manual fallback
+          if (bar) bar.style.width = '100%';
+          if (label) label.textContent = 'Account created!';
+          if (fallback) {
+            document.getElementById('op-congrats-link').href = 'https://love.jamesguldan.com/app';
+            fallback.style.display = 'block';
+          }
         }
       })
       .catch(function(err) {
-        // Payment succeeded — webhook handles fulfillment as backup
+        // Payment succeeded on Stripe — webhook will handle fulfillment
+        clearInterval(fillTimer);
+        clearTimeout(fallbackTimer);
         console.error('Fulfill error (webhook backup active):', err);
-        showSuccess(email, null, false);
+        if (bar) bar.style.width = '100%';
+        if (label) label.textContent = 'Payment confirmed!';
+        if (fallback) {
+          document.getElementById('op-congrats-link').href = 'https://love.jamesguldan.com/app';
+          fallback.style.display = 'block';
+        }
       });
     }
 
@@ -2082,7 +2415,7 @@
       window.history.replaceState({}, '', window.location.pathname);
       if (!piId) return;
       // Open popup in payment view → show loading → fulfill
-      fetch('https://app.jamesguldan.com/api/payment-status?pi=' + piId)
+      fetch('https://love.jamesguldan.com/api/payment-status?pi=' + piId)
         .then(function(r) { return r.json(); })
         .then(function(data) {
           if (data.status === 'succeeded') {
@@ -2096,7 +2429,8 @@
             currentPiEmail = data.email || '';
             currentTiers   = (data.tiers || 'blueprint').split(',');
             if (data.sessionUrl) {
-              showSuccess(data.email || '', data.sessionUrl);
+              // Session already created — go straight in
+              window.location.href = data.sessionUrl;
             } else {
               fulfillAndShowSuccess(data.email || '');
             }
@@ -2386,6 +2720,248 @@
   });
 })();
 
+  </script>
+
+  <!-- GA4 Event Tracking Layer -->
+  <script>
+  (function() {
+    if (typeof gtag !== 'function') return;
+    var page = 'deep_work';
+
+    // 1. CTA Click Tracking
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a, button');
+      if (!el) return;
+      var href = el.getAttribute('href') || '';
+      var text = (el.textContent || '').trim().substring(0, 60);
+
+      // Checkout CTAs (data-checkout="blueprint" or href="#checkout")
+      if (el.getAttribute('data-checkout') === 'blueprint' || href === '#checkout') {
+        var section = getSection(el);
+        gtag('event', 'begin_checkout', {
+          event_category: 'conversion',
+          event_label: text,
+          cta_location: section,
+          currency: 'USD',
+          value: 67,
+          page_source: page
+        });
+      }
+
+      // Deploy CTA (free deploy offer)
+      if (text.indexOf('Deploy') > -1 && text.indexOf('Free') > -1) {
+        gtag('event', 'cta_click', {
+          event_category: 'conversion',
+          event_label: 'deploy_free_cta',
+          cta_location: getSection(el),
+          cta_destination: 'deploy',
+          page_source: page
+        });
+      }
+
+      // Site in Sixty upsell clicks
+      if (href === '/site-in-sixty/' || href.indexOf('site-in-sixty') > -1) {
+        gtag('event', 'cta_click', {
+          event_category: 'upsell',
+          event_label: text,
+          cta_location: getSection(el),
+          cta_destination: 'site_in_sixty',
+          page_source: page
+        });
+      }
+
+      // External links
+      if (href.indexOf('http') === 0 && href.indexOf('jamesguldan.com') === -1 && href.indexOf('stripe.com') === -1) {
+        gtag('event', 'outbound_click', {
+          event_category: 'engagement',
+          event_label: href.substring(0, 100),
+          link_text: text,
+          page_source: page
+        });
+      }
+    });
+
+    // 2. Checkout Overlay Events
+    var checkoutObserver = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        var popup = document.getElementById('op-checkout-popup');
+        if (popup && popup.style.display === 'flex' && !popup._tracked) {
+          popup._tracked = true;
+          gtag('event', 'checkout_opened', {
+            event_category: 'conversion',
+            event_label: 'overlay_visible',
+            page_source: page
+          });
+        }
+      });
+    });
+    setTimeout(function() {
+      var popup = document.getElementById('op-checkout-popup');
+      if (popup) checkoutObserver.observe(popup, { attributes: true, attributeFilter: ['style', 'class'] });
+    }, 1000);
+
+    // Track form field interactions in checkout
+    document.addEventListener('focus', function(e) {
+      var el = e.target;
+      if (!el || !el.id) return;
+      if (el.id === 'op-email') {
+        gtag('event', 'checkout_email_focus', { event_category: 'conversion', page_source: page });
+      }
+      if (el.id === 'op-phone') {
+        gtag('event', 'checkout_phone_focus', { event_category: 'conversion', page_source: page });
+      }
+    }, true);
+
+    // Track checkout submit button clicks
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('#op-pay-submit');
+      if (el) {
+        gtag('event', 'checkout_submit', {
+          event_category: 'conversion',
+          event_label: 'pay_button_clicked',
+          currency: 'USD',
+          value: 67,
+          page_source: page
+        });
+      }
+      // Track checkout close
+      var closeBtn = e.target.closest('#op-close-btn');
+      if (closeBtn) {
+        gtag('event', 'checkout_abandoned', {
+          event_category: 'conversion',
+          event_label: 'overlay_closed',
+          page_source: page
+        });
+      }
+    });
+
+    // 3. Scroll Depth Tracking
+    var scrollMarks = { 25: false, 50: false, 75: false, 90: false };
+    var scrollTimer = null;
+    window.addEventListener('scroll', function() {
+      if (scrollTimer) return;
+      scrollTimer = setTimeout(function() {
+        scrollTimer = null;
+        var scrollPct = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+        [25, 50, 75, 90].forEach(function(mark) {
+          if (scrollPct >= mark && !scrollMarks[mark]) {
+            scrollMarks[mark] = true;
+            gtag('event', 'scroll_depth', {
+              event_category: 'engagement',
+              event_label: mark + '_percent',
+              scroll_depth: mark,
+              page_source: page
+            });
+          }
+        });
+      }, 200);
+    });
+
+    // 4. Section Visibility Tracking
+    if ('IntersectionObserver' in window) {
+      var sectionsSeen = {};
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id || entry.target.className.split(' ')[0] || '';
+            if (id && !sectionsSeen[id]) {
+              sectionsSeen[id] = true;
+              gtag('event', 'section_view', {
+                event_category: 'engagement',
+                event_label: id,
+                page_source: page
+              });
+            }
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('section, .sis-bridge, .before-decide-section, .final-cta').forEach(function(el) {
+        observer.observe(el);
+      });
+    }
+
+    // 5. Video Play Tracking
+    document.querySelectorAll('video').forEach(function(video) {
+      video.addEventListener('play', function() {
+        gtag('event', 'video_play', {
+          event_category: 'engagement',
+          event_label: 'testimonial_video',
+          page_source: page
+        });
+      });
+    });
+
+    // 6. FAQ Accordion Tracking
+    document.querySelectorAll('.faq-question').forEach(function(q) {
+      q.addEventListener('click', function() {
+        var text = (this.textContent || '').trim().substring(0, 80);
+        gtag('event', 'faq_click', {
+          event_category: 'engagement',
+          event_label: text,
+          page_source: page
+        });
+      });
+    });
+
+    // 7. Time on Page Tracking
+    var timeMarks = [30, 60, 120, 300];
+    var timeIdx = 0;
+    var startTime = Date.now();
+    setInterval(function() {
+      if (timeIdx >= timeMarks.length) return;
+      var elapsed = Math.floor((Date.now() - startTime) / 1000);
+      if (elapsed >= timeMarks[timeIdx]) {
+        gtag('event', 'time_on_page', {
+          event_category: 'engagement',
+          event_label: timeMarks[timeIdx] + '_seconds',
+          time_seconds: timeMarks[timeIdx],
+          page_source: page
+        });
+        timeIdx++;
+      }
+    }, 5000);
+
+    // 8. Exit Intent
+    var exitFired = false;
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY < 5 && !exitFired) {
+        exitFired = true;
+        gtag('event', 'exit_intent', {
+          event_category: 'engagement',
+          event_label: 'mouse_leave_top',
+          scroll_position: Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100),
+          page_source: page
+        });
+      }
+    });
+
+    // 9. Purchase Complete (listen for congrats view)
+    var purchaseTracked = false;
+    setInterval(function() {
+      var congratsView = document.getElementById('op-congrats-view');
+      if (congratsView && congratsView.style.display !== 'none' && !purchaseTracked) {
+        purchaseTracked = true;
+        gtag('event', 'purchase', {
+          event_category: 'conversion',
+          event_label: 'deep_work_blueprint',
+          transaction_id: 'dwi_' + Date.now(),
+          currency: 'USD',
+          value: 67,
+          items: [{ item_name: 'Deep Work Blueprint', price: 67, quantity: 1 }]
+        });
+      }
+    }, 500);
+
+    // Helper
+    function getSection(el) {
+      var section = el.closest('section, .sis-bridge, .before-decide-section, .final-cta');
+      if (section) {
+        return section.id || section.className.split(' ')[0] || 'unknown_section';
+      }
+      return 'unknown_section';
+    }
+  })();
   </script>
 </body>
 </html>
