@@ -715,6 +715,7 @@
       <p class="hero-sub">Eight focused sessions. Walk away with the positioning, the language, and the complete brand blueprint that finally makes your expertise impossible to ignore.</p>
       <a href="#checkout" data-checkout="blueprint" class="cta-btn">Get Clear Now →</a>
       <p class="price-note">Previously $5,000 per session · <strong>$67</strong> launch week</p>
+      <p style="font-size: 12px; color: #86868B; font-weight: 500; letter-spacing: 0.04em; margin-top: 8px; margin-bottom: 16px;">Backed by a <strong style="color: #1A1A1A; font-weight: 700;">7 day money back guarantee</strong>. No questions asked.</p>
       <div class="hero-trust">
         <div>
           <div class="hero-trust-num">132</div>
@@ -1622,6 +1623,49 @@
   </div>
 </section>
 
+
+<!-- SOCIAL PROOF ABOVE FINAL CTA -->
+<section style="padding: 48px 0 0; background: var(--bg);">
+  <div style="max-width: 700px; margin: 0 auto; padding: 0 24px;">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <p style="font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);">From People Who Did the Work</p>
+    </div>
+    <!-- GREG PIGNATARO — FEATURED VIDEO TESTIMONIAL (filmed on Necker Island) -->
+    <div class="test-featured-video">
+      <div class="test-video-wrap">
+        <div class="video-overlay" onclick="var v=this.parentElement.querySelector('video');this.classList.add('hidden');v.play();">
+          <div class="video-overlay-play" style="animation: pulse-play 2s ease-in-out infinite;"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+          <div class="video-overlay-label">Watch 60 Seconds</div>
+          <div class="video-overlay-name">Greg Pignataro</div>
+          <div class="video-overlay-tag">Filmed on Necker Island</div>
+        </div>
+        <video controls preload="metadata" poster="images/greg-pignataro-poster.jpg">
+          <source src="videos/greg-pignataro-testimonial.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="test-video-content">
+        <div class="test-video-stars">★★★★★</div>
+        <p class="test-video-quote">"I had never intended to do any sort of personal brand work. No sooner after James and I completed the initial process than I spontaneously received an invitation to be a guest facilitator at a retreat on Necker Island. Pretty powerful lining up of opportunities."</p>
+        <div>
+          <div class="test-video-name">Greg Pignataro</div>
+          <div class="test-video-title">Entrepreneur &amp; Guest Facilitator</div>
+          <div class="test-video-result">Direct result: Invited to facilitate at Richard Branson&rsquo;s Necker Island retreat — within weeks of completing the process.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-grid" style="margin-top: 20px;">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"The Deep Work process gave me clarity and conviction. It confirmed what I suspected about my positioning and gave me the language I was missing to articulate it. Worth every minute."</p>
+        <div class="test-author">
+          <img class="test-photo" src="images/re-perez.jpg" alt="Re Perez" style="object-fit:cover;" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2792%27%20height%3D%2792%27%20viewBox%3D%270%200%2092%2092%27%3E%3Crect%20width%3D%2792%27%20height%3D%2792%27%20rx%3D%2746%27%20fill%3D%27%23EAE7E2%27/%3E%3Ctext%20x%3D%2746%27%20y%3D%2757%27%20font-family%3D%27system-ui%2Csans-serif%27%20font-size%3D%2732%27%20font-weight%3D%27600%27%20fill%3D%27%23555%27%20text-anchor%3D%27middle%27%3ERP%3C/text%3E%3C/svg%3E'">
+          <div><div class="test-name">Re Perez</div><div class="test-title">Founder, Higher Love</div></div>
+
+    </div>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="final-cta" id="final-cta">
   <canvas id="cta-canvas"></canvas>
@@ -1917,7 +1961,7 @@
       + '<div class="op-pay-scroll">'
       + '<div class="op-order-bar"><span class="op-order-bar-label" id="op-order-bar-label">Deep Work Blueprint</span><span class="op-order-bar-price" id="op-order-bar-price">$67</span></div>'
       + '<div class="op-field"><label for="op-email">Email address</label><input type="email" id="op-email" placeholder="you@example.com" autocomplete="email" required /></div>'
-      + '<div class="op-field"><label for="op-phone">Phone number <span style="color:#c0392b">*</span></label><input type="tel" id="op-phone" placeholder="+1 (555) 000-0000" autocomplete="tel" required /></div>'
+      + '<div class="op-field"><label for="op-phone">Phone number <span style="font-weight:400;color:#aaa;font-size:11px">(optional, for text updates)</span></label><input type="tel" id="op-phone" placeholder="+1 (555) 000-0000" autocomplete="tel" /></div>'
       + '<div id="stripe-element"></div>'
       + '</div>'
       + '<div class="op-pay-footer">'
@@ -2216,7 +2260,7 @@
       var phoneInput = document.getElementById('op-phone');
       var phone = phoneInput ? phoneInput.value.trim() : '';
       currentPhone = phone;
-      if (!phone) {
+      if (false) {
         if (phoneInput) { phoneInput.classList.add('error'); phoneInput.focus(); }
         showPayError('Please enter your phone number so we can send reminders and help if you get stuck.');
         return;
