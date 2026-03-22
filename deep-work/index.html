@@ -7,6 +7,13 @@
   <!-- Stripe.js (load early for fastest checkout) -->
   <script src="https://js.stripe.com/v3/" async></script>
 
+  <!-- Google Tag Manager (replace GTM-XXXXXXX with your container ID) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCD0E6KVCV"></script>
   <script>
@@ -638,6 +645,8 @@
   </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <canvas id="geo"></canvas>
 
 <!-- NAV -->
@@ -652,7 +661,7 @@
 <!-- HERO DESKTOP -->
 <section class="hero">
   <div class="hero-photo">
-    <img src="images/james-hero.png" alt="James Guldan" loading="eager">
+    <img src="images/james-hero-opt.jpg" alt="James Guldan" loading="eager">
     <div class="hero-photo-fade"></div>
     <div class="vid-halo"></div>
     <div class="vid-halo2"></div>
@@ -698,7 +707,7 @@
 <!-- HERO MOBILE — Option O Compact: photo top, everything above the fold -->
 <div class="mobile-hero-photo">
   <div class="mobile-hero-img-wrap">
-    <img src="images/james-hero.png" alt="James Guldan" loading="eager">
+    <img src="images/james-hero-opt.jpg" alt="James Guldan" loading="eager">
     <div class="mobile-hero-img-fade"></div>
   </div>
   <div class="mobile-hero-text">
@@ -1339,7 +1348,7 @@
         <div class="test-stars">★★★★★</div>
         <p class="test-quote">"It was definitely a commitment, but worth every minute. I've done extensive interviews like this for clients as I was building their branding and messaging, but I enjoyed having this thread myself. Not only did I get to see the dots connect in real time, but I had the thread to continue to add to and work with. This tool was very valuable."</p>
         <div class="test-author">
-          <img class="test-photo" src="images/juliet-wright.jpg" alt="Juliet Wright" style="object-fit:cover;" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2792%27%20height%3D%2792%27%20viewBox%3D%270%200%2092%2092%27%3E%3Crect%20width%3D%2792%27%20height%3D%2792%27%20rx%3D%2746%27%20fill%3D%27%23EAE7E2%27/%3E%3Ctext%20x%3D%2746%27%20y%3D%2757%27%20font-family%3D%27system-ui%2Csans-serif%27%20font-size%3D%2732%27%20font-weight%3D%27600%27%20fill%3D%27%23555%27%20text-anchor%3D%27middle%27%3EJW%3C/text%3E%3C/svg%3E'">
+          <img class="test-photo" src="images/juliet-wright-opt.jpg" alt="Juliet Wright" style="object-fit:cover;" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2792%27%20height%3D%2792%27%20viewBox%3D%270%200%2092%2092%27%3E%3Crect%20width%3D%2792%27%20height%3D%2792%27%20rx%3D%2746%27%20fill%3D%27%23EAE7E2%27/%3E%3Ctext%20x%3D%2746%27%20y%3D%2757%27%20font-family%3D%27system-ui%2Csans-serif%27%20font-size%3D%2732%27%20font-weight%3D%27600%27%20fill%3D%27%23555%27%20text-anchor%3D%27middle%27%3EJW%3C/text%3E%3C/svg%3E'">
           <div><div class="test-name">Juliet Wright</div><div class="test-title">Branding &amp; Messaging Consultant</div></div>
         </div>
       </div>
@@ -1483,35 +1492,44 @@
 </section>
 
 
-<!-- SITE IN SIXTY BRIDGE -->
+<!-- DEPLOY YOUR BLUEPRINT (FREE) + SITE IN SIXTY UPSELL -->
 <section class="sis-bridge">
   <div class="sis-bridge-inner">
     <div class="section-eyebrow">What comes next</div>
-    <h2>Your blueprint is done.<br>Now give it <em>a home you actually own.</em></h2>
-    <p class="sis-bridge-intro">The blueprint tells you exactly what to say. But once you have it, the next question is always the same: how do I get this live without spending $5,000 on a developer or waiting six weeks for someone to misinterpret my vision?</p>
+    <h2>Your blueprint is done.<br>Now <em>deploy it.</em></h2>
+    <p class="sis-bridge-intro">You just built the entire strategy. The positioning, the offers, the copy. Now take that blueprint and turn it into a real site you own and control. No developer. No waiting. No compromises.</p>
 
     <div class="timeline-flow">
       <div class="tf-card">
         <div class="tf-num">1</div>
-        <div class="tf-label">The old way</div>
-        <p>Brief a developer. Wait 3 weeks. Get revisions wrong. Pay $3,000. Update one headline. Pay $200. Wait another week. Your momentum is gone before your site is live.</p>
+        <div class="tf-label">Your blueprint</div>
+        <p>Eight sessions of deep work gave you positioning, three priced offers, competitor research, and a full website outline with real copy. That is your foundation.</p>
         <div class="tf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg></div>
       </div>
       <div class="tf-card">
         <div class="tf-num">2</div>
-        <div class="tf-label">The new way</div>
-        <p>You are the creative director. Claude is your technical co-founder. Site in Sixty walks you through building a professional, indexed website from your blueprint in under 60 minutes. Free hosting. Zero developer invoices. Forever independent.</p>
+        <div class="tf-label">Deploy it</div>
+        <p>Take your blueprint and build it into a live, professional website. You are the creative director. Claude is your technical co-founder. Free hosting. Zero developer invoices. Forever independent.</p>
         <div class="tf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg></div>
       </div>
       <div class="tf-card">
         <div class="tf-num">3</div>
-        <div class="tf-label">The result</div>
+        <div class="tf-label">Go live</div>
         <p>A site that sounds like you because every word came from you. The ability to change anything, anytime, in minutes. And no one standing between your ideas and your audience.</p>
       </div>
     </div>
 
-    <a href="/site-in-sixty/" class="cta-btn" style="text-decoration:none;">Learn About Site in Sixty &nbsp;&rarr;</a>
-    <div class="sis-price-line">$197 one time &nbsp;&middot;&nbsp; under 60 minutes &nbsp;&middot;&nbsp; free hosting forever</div>
+    <div style="margin-bottom: 20px;">
+      <span style="font-family: 'Outfit',sans-serif; font-size: 14px; font-weight: 600; color: #999; text-decoration: line-through;">$97</span>
+      <span style="font-family: 'Outfit',sans-serif; font-size: 22px; font-weight: 700; color: var(--accent); margin-left: 8px;">Free</span>
+      <span style="display: inline-block; background: rgba(196,112,63,0.12); color: var(--accent); font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-left: 10px; vertical-align: middle;">Launch Period</span>
+    </div>
+    <a href="/site-in-sixty/" class="cta-btn" style="text-decoration:none;">Deploy Your Blueprint for Free &nbsp;&rarr;</a>
+    <div class="sis-price-line">Included after your Deep Work Interview &nbsp;&middot;&nbsp; No credit card required</div>
+
+    <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border);">
+      <p style="font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 520px; margin: 0 auto;">Want hands on guidance building your site? <a href="/site-in-sixty/" style="color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(196,112,63,.3);">Site in Sixty</a> walks you through the entire build with premium templates, custom domain setup, and direct support. <span style="font-weight: 600; color: var(--text);">$197 one time.</span></p>
+    </div>
   </div>
 </section>
 
