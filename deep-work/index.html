@@ -341,6 +341,7 @@
     .video-overlay-play { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.12); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1.5px solid rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; transition: transform .25s, background .25s; }
     .video-overlay:hover .video-overlay-play { transform: scale(1.08); background: rgba(255,255,255,.2); }
     .video-overlay-play svg { width: 28px; height: 28px; fill: #fff; margin-left: 3px; }
+    @keyframes pulse-play { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.25); } 50% { box-shadow: 0 0 0 14px rgba(255,255,255,0); } }
     .video-overlay-label { font-family: 'Outfit',sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2.5px; color: rgba(255,255,255,.55); margin-bottom: 4px; }
     .video-overlay-name { font-family: 'Playfair Display',serif; font-size: 18px; color: #fff; font-weight: 600; margin-bottom: 6px; }
     .video-overlay-tag { font-family: 'Outfit',sans-serif; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); background: rgba(196,112,63,.13); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(196,112,63,.22); }
@@ -994,6 +995,12 @@
   </div>
 </section>
 
+<!-- POST-DELIVERABLES MICRO CTA -->
+<div style="padding: 32px 36px 0; text-align: center; background: var(--bg);">
+  <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px; line-height: 1.6;">All seven sections. Built from your words. Ready in about two hours.</p>
+  <a href="#checkout" data-checkout="blueprint" style="font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; font-family: 'Inter',sans-serif; border-bottom: 1px solid rgba(196,112,63,.3); padding-bottom: 2px; transition: border-color .25s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(196,112,63,.3)'">Get your blueprint for $67 →</a>
+</div>
+
 <!-- SAMPLE OUTPUT PREVIEW — Scrolling Blueprint -->
 <div style="max-width:1100px;margin:64px auto 0;padding:0 48px;">
   <div class="section-eyebrow" style="text-align:center;margin-bottom:12px;">Sample Output</div>
@@ -1307,8 +1314,8 @@
     <div class="test-featured-video">
       <div class="test-video-wrap">
         <div class="video-overlay" onclick="var v=this.parentElement.querySelector('video');this.classList.add('hidden');v.play();">
-          <div class="video-overlay-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-          <div class="video-overlay-label">Watch Testimonial</div>
+          <div class="video-overlay-play" style="animation: pulse-play 2s ease-in-out infinite;"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+          <div class="video-overlay-label">Watch 60 Seconds</div>
           <div class="video-overlay-name">Greg Pignataro</div>
           <div class="video-overlay-tag">Filmed on Necker Island</div>
         </div>
@@ -1406,26 +1413,23 @@
   </div>
 </section>
 
-<!-- A FAIR QUESTION — Transcript Comparison -->
-<section class="wnjc-section">
+<!-- A FAIR QUESTION — Condensed Comparison -->
+<section class="wnjc-section" style="padding: 64px 0;">
   <div class="wnjc-inner">
     <div class="wnjc-header">
       <div class="section-eyebrow">A Fair Question</div>
       <h2><span style="white-space:nowrap">"Can't I just do this in <em>Claude?"</em></span></h2>
-      <p>You could. Here's what the two conversations actually look like side by side.</p>
     </div>
 
     <div class="compare-wrap">
       <div class="compare-col compare-generic">
         <div class="compare-label">You + Claude (blank session)</div>
         <div class="compare-chat">
-          <div class="compare-msg compare-user-msg">"Help me with my personal brand positioning as a coach"</div>
-          <div class="compare-msg compare-ai-msg">Sure! Let's start with some basics. What kind of coaching do you do? Who is your target audience? What makes you different from other coaches?</div>
-          <div class="compare-msg compare-user-msg">"I help business owners with leadership and strategy"</div>
-          <div class="compare-msg compare-ai-msg">Great! Here are 5 positioning statement templates you can customize:<br>1. "I help [audience] achieve [result] through [method]"<br>2. "The [niche] coach for [specific audience]"<br>...</div>
+          <div class="compare-msg compare-user-msg">"Help me with my brand positioning"</div>
+          <div class="compare-msg compare-ai-msg">Here are 5 positioning templates you can customize: "I help [audience] achieve [result]..."</div>
           <div class="compare-verdict">
             <span class="compare-verdict-icon">⚠️</span>
-            <span>20 minutes later you have a template. You still do not know what to put in it.</span>
+            <span>You get a template. You still don't know what to put in it.</span>
           </div>
         </div>
       </div>
@@ -1433,20 +1437,19 @@
       <div class="compare-col compare-deep">
         <div class="compare-label">The Deep Work Process</div>
         <div class="compare-chat">
-          <div class="compare-msg compare-ai-msg">Tell me about a moment when you realized your old career was over. Not when you decided to leave. When you knew.</div>
-          <div class="compare-msg compare-user-msg">"It was a Tuesday. My biggest client told me I'd saved their company, and I felt nothing. That's when I knew."</div>
-          <div class="compare-msg compare-ai-msg">That numbness is the signal. You were already a strategist who could save companies, but the identity attached to it had expired. That gap between competence and meaning is exactly what your future clients are living in right now. Let's build from there.</div>
+          <div class="compare-msg compare-ai-msg">Tell me about the moment you realized your old career was over. Not when you decided. When you knew.</div>
+          <div class="compare-msg compare-ai-msg" style="margin-top:8px; opacity:.85;">That gap between competence and meaning is exactly what your future clients are living in. Let's build from there.</div>
           <div class="compare-verdict">
             <span class="compare-verdict-icon">✦</span>
-            <span>After eight focused sessions you have an 11 section Brand Guide with positioning, offers, competitor analysis, a SWOT, content pillars, and a 90 day roadmap. Built from your actual words.</span>
+            <span>Eight sessions. 11 section Brand Guide. Positioning, offers, competitors, pricing, website copy, and a 90 day roadmap. From your actual words.</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="wnjc-bottom" style="margin-top:40px;">
+    <div class="wnjc-bottom" style="margin-top:28px;">
       <div class="wnjc-bottom-text">
-        <p>The difference is not the AI. The difference is the process behind it. <strong>15 years of positioning methodology, hundreds of real interviews, and a question sequence designed to pull out material you did not know you had.</strong> You could spend hours figuring out what to ask. Or you could answer honestly across eight focused sessions and walk away with everything.</p>
+        <p>The difference is not the AI. It's <strong>15 years of positioning methodology and a question sequence designed to pull out material you didn't know you had.</strong></p>
       </div>
       <div class="wnjc-bottom-cta">
         <a href="#checkout" data-checkout="blueprint" class="cta-btn-light">Get Clear Now →</a>
