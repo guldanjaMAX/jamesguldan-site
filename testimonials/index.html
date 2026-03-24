@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Entrepreneurs Say | James Guldan</title>
+<meta name="description" content="Real results from entrepreneurs who've done the Deep Work. 75+ testimonials from founders, consultants, and business owners.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fdFCFA;
+  --bg-card: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #6b6560;
+  --text-muted: #9e9894;
+  --accent: #c4703f;
+  --accent-light: rgba(196,112,63,0.1);
+  --border: rgba(26,26,26,0.08);
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-hover: 0 8px 32px rgba(0,0,0,0.11);
+  --radius: 16px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253,252,250,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  padding: 80px 32px 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.hero-stat-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.hero-stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hero-stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+}
+
+/* FILTERS */
+.filters-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 20px;
+  border-radius: 100px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.filter-btn.active {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+.filter-btn .count {
+  font-size: 0.72rem;
+  background: rgba(107,101,96,0.15);
+  border-radius: 100px;
+  padding: 1px 7px;
+  font-weight: 600;
+  transition: background 0.18s;
+}
+.filter-btn.active .count {
+  background: rgba(255,255,255,0.2);
+}
+.filter-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-right: 4px;
+}
+
+/* GRID */
+.grid-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 100px;
+}
+.t-grid {
+  columns: 3;
+  column-gap: 20px;
+}
+.t-card {
+  break-inside: avoid;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.22s, transform 0.22s;
+  display: inline-block;
+  width: 100%;
+}
+.t-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.t-card.hidden { display: none; }
+
+/* Stars */
+.t-stars {
+  color: #f5a623;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+/* Quote */
+.t-quote {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 20px;
+  position: relative;
+}
+.t-quote::before {
+  content: '\201C';
+  font-family: 'Fraunces', serif;
+  font-size: 3.5rem;
+  line-height: 0;
+  vertical-align: -0.55em;
+  color: var(--accent);
+  opacity: 0.35;
+  margin-right: 2px;
+}
+
+/* Author */
+.t-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.t-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  flex-shrink: 0;
+  background: var(--accent-light);
+}
+.t-avatar-initials {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.t-author-info { flex: 1; min-width: 0; }
+.t-name {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.t-title-line {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.t-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 100px;
+  margin-top: 14px;
+}
+.t-badge-dwi {
+  background: rgba(196,112,63,0.1);
+  color: var(--accent);
+}
+.t-badge-sis {
+  background: rgba(74,111,165,0.1);
+  color: #4a6fa5;
+}
+.t-badge-general {
+  background: rgba(26,26,26,0.06);
+  color: var(--text-secondary);
+}
+
+/* VIDEO CARD */
+.t-video-wrap {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+  margin-bottom: 20px;
+  aspect-ratio: 9/16;
+  max-height: 320px;
+  cursor: pointer;
+}
+.t-video-wrap.landscape { aspect-ratio: 16/9; max-height: none; }
+.t-video-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.t-video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.2) 100%);
+  transition: opacity 0.2s;
+}
+.t-video-overlay:hover { opacity: 0.85; }
+.t-play-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  transition: transform 0.2s;
+}
+.t-video-overlay:hover .t-play-btn { transform: scale(1.08); }
+.t-play-btn svg { margin-left: 3px; }
+.t-video-label {
+  margin-top: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+.t-video-el {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+  background: #000;
+}
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 80px 32px;
+  color: var(--text-muted);
+}
+.empty-state p { font-size: 1rem; }
+
+/* LOADING */
+.loading-state {
+  text-align: center;
+  padding: 80px 32px;
+}
+.loading-dots {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.3;
+  animation: dot-pulse 1.2s ease-in-out infinite;
+}
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dot-pulse { 0%,100%{opacity:0.3;transform:scale(1)} 50%{opacity:1;transform:scale(1.2)} }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 32px;
+  text-align: center;
+}
+footer p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .t-grid { columns: 2; }
+  .hero { padding: 60px 24px 44px; }
+  .hero h1 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+  .filters-wrap { padding: 0 24px 32px; }
+  .grid-wrap { padding: 0 24px 80px; }
+}
+@media (max-width: 600px) {
+  .t-grid { columns: 1; }
+  .nav-inner { padding: 0 20px; }
+  .hero { padding: 44px 20px 36px; }
+  .hero-stats { gap: 20px; }
+  .hero-stat-divider { display: none; }
+  .filters-wrap { padding: 0 20px 28px; }
+  .grid-wrap { padding: 0 20px 60px; }
+  .t-card { padding: 22px 20px; }
+  .nav-cta { padding: 9px 18px; font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">James Guldan</a>
+    <a href="/deep-work/" class="nav-cta">
+      Start the Deep Work
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Social Proof</div>
+  <h1>What entrepreneurs say<br>about the <em>Deep Work</em></h1>
+  <p class="hero-sub">Real results from founders, consultants, and business owners who did the work and came out the other side clearer.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num" id="stat-total">75+</span>
+      <span class="hero-stat-label">Testimonials</span>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">132+</span>
+      <span class="hero-stat-label">Entrepreneurs</span>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">15+</span>
+      <span class="hero-stat-label">Years Experience</span>
+    </div>
+  </div>
+</div>
+
+<div class="filters-wrap">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-filter="all">
+    All <span class="count" id="count-all">75</span>
+  </button>
+  <button class="filter-btn" data-filter="dwi">
+    Deep Work Interview <span class="count" id="count-dwi">15</span>
+  </button>
+  <button class="filter-btn" data-filter="sis">
+    Site in Sixty <span class="count" id="count-sis">2</span>
+  </button>
+  <button class="filter-btn" data-filter="general">
+    General <span class="count" id="count-general">58</span>
+  </button>
+</div>
+
+<div class="grid-wrap">
+  <div id="t-grid" class="t-grid">
+    <div class="loading-state">
+      <div class="loading-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Every testimonial is real and unedited. Names and details used with permission.</p>
+  <p><a href="/">Back to jamesguldan.com</a> &nbsp;&middot;&nbsp; <a href="/deep-work/">Start the Deep Work Interview &rarr;</a></p>
+</footer>
+
+<script>
+const API = 'https://testimonials-worker.james-d13.workers.dev/testimonials';
+let allTestimonials = [];
+let activeFilter = 'all';
+
+const BADGE_LABELS = { dwi: 'Deep Work Interview', sis: 'Site in Sixty', general: 'General' };
+
+function initials(name) {
+  return (name || '').split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+}
+
+function productBadge(product) {
+  const cls = 't-badge t-badge-' + (product || 'general');
+  const label = BADGE_LABELS[product] || 'Testimonial';
+  return `<span class="${cls}">${label}</span>`;
+}
+
+function avatarEl(t) {
+  if (t.file_r2 && t.format === 'image') {
+    return `<img class="t-avatar" src="${t.file_r2}" alt="${t.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="t-avatar-initials" style="display:none">${initials(t.name)}</div>`;
+  }
+  return `<div class="t-avatar-initials">${initials(t.name)}</div>`;
+}
+
+function authorLine(t) {
+  const parts = [t.title, t.company].filter(Boolean);
+  return parts.length ? `<span class="t-title-line">${parts.join(', ')}</span>` : '';
+}
+
+function videoCard(t) {
+  const isPortrait = !t.file_r2 || t.file_r2.includes('sarah') || t.file_r2.includes('gareth') || t.file_r2.includes('necker');
+  const aspectClass = isPortrait ? '' : ' landscape';
+  const uid = 'vid-' + t.id;
+
+  // Use image file_r2 from the same person if video card has no poster
+  // For now just show a dark placeholder
+  return `
+    <div class="t-card" data-product="${t.product || 'general'}">
+      <div class="t-video-wrap${aspectClass}" onclick="playVideo('${uid}', '${t.file_r2 || ''}', this)" id="wrap-${uid}">
+        <div class="t-video-overlay" id="overlay-${uid}">
+          <div class="t-play-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#1a1a1a"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+          <div class="t-video-label">Watch &middot; ~1 min</div>
+        </div>
+        <video id="${uid}" class="t-video-el" controls preload="none">
+          <source src="${t.file_r2 || ''}" type="video/mp4">
+        </video>
+      </div>
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="t-quote">${t.quote || ''}</p>
+      <div class="t-author">
+        <div class="t-avatar-initials">${initials(t.name)}</div>
+        <div class="t-author-info">
+          <strong class="t-name">${t.name || ''}</strong>
+          ${authorLine(t)}
+        </div>
+      </div>
+      ${productBadge(t.product)}
+    </div>`;
+}
+
+function imageCard(t) {
+  return `
+    <div class="t-card" data-product="${t.product || 'general'}">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="t-quote">${t.quote || ''}</p>
+      <div class="t-author">
+        ${avatarEl(t)}
+        <div class="t-author-info">
+          <strong class="t-name">${t.name || ''}</strong>
+          ${authorLine(t)}
+        </div>
+      </div>
+      ${productBadge(t.product)}
+    </div>`;
+}
+
+function renderCard(t) {
+  if (t.format === 'video' && t.file_r2) return videoCard(t);
+  return imageCard(t);
+}
+
+function playVideo(uid, src, wrap) {
+  const overlay = document.getElementById('overlay-' + uid);
+  const video = document.getElementById(uid);
+  if (!overlay || !video) return;
+  overlay.style.display = 'none';
+  video.style.display = 'block';
+  video.play();
+}
+
+function renderGrid(filter) {
+  const grid = document.getElementById('t-grid');
+  const list = filter === 'all' ? allTestimonials : allTestimonials.filter(t => t.product === filter);
+
+  if (!list.length) {
+    grid.innerHTML = '<div class="empty-state"><p>No testimonials found.</p></div>';
+    return;
+  }
+
+  grid.innerHTML = list.map(renderCard).join('');
+}
+
+function updateCounts(testimonials) {
+  const counts = { all: testimonials.length, dwi: 0, sis: 0, general: 0 };
+  testimonials.forEach(t => { if (counts[t.product] !== undefined) counts[t.product]++; });
+  Object.keys(counts).forEach(k => {
+    const el = document.getElementById('count-' + k);
+    if (el) el.textContent = counts[k];
+  });
+  const statTotal = document.getElementById('stat-total');
+  if (statTotal) statTotal.textContent = testimonials.length + '+';
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    renderGrid(activeFilter);
+  });
+});
+
+// Fetch
+async function loadTestimonials() {
+  try {
+    const res = await fetch(API);
+    if (!res.ok) throw new Error('API error ' + res.status);
+    const data = await res.json();
+    allTestimonials = data.testimonials || data || [];
+    // Sort: videos first, then image, then text — within each group by id desc
+    allTestimonials.sort((a, b) => {
+      const fOrder = { video: 0, image: 1, text: 2 };
+      const fa = fOrder[a.format] ?? 2, fb = fOrder[b.format] ?? 2;
+      if (fa !== fb) return fa - fb;
+      return b.id - a.id;
+    });
+    updateCounts(allTestimonials);
+    renderGrid(activeFilter);
+  } catch (err) {
+    document.getElementById('t-grid').innerHTML =
+      '<div class="empty-state"><p>Could not load testimonials. Please try refreshing.</p></div>';
+    console.error(err);
+  }
+}
+
+loadTestimonials();
+
+// make playVideo global
+window.playVideo = playVideo;
+</script>
+</body>
+</html>
