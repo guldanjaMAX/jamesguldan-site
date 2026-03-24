@@ -899,16 +899,16 @@ function renderCards(testimonials) {
 
     let videoThumb = '';
     if (isVideo) {
-      if (t.file_r2) {
-        videoThumb = `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
-          <video controls preload="metadata" style="width:100%;display:block;border-radius:8px;max-height:240px;">
-            <source src="${t.file_r2}" type="video/mp4">
-          </video>
-        </div>`;
-      } else if (t.source_url && t.source_url.includes('drive.google.com')) {
+      if (t.source_url && t.source_url.includes('drive.google.com')) {
         const embedUrl = t.source_url.replace('/view', '/preview').replace('/edit', '/preview');
         videoThumb = `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
           <iframe src="${embedUrl}" allow="autoplay" style="width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:8px;" title="${t.name} testimonial video"></iframe>
+        </div>`;
+      } else if (t.source_url) {
+        videoThumb = `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
+          <video controls preload="metadata" style="width:100%;display:block;border-radius:8px;max-height:240px;">
+            <source src="${t.source_url}" type="video/mp4">
+          </video>
         </div>`;
       }
     }
