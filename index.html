@@ -1011,15 +1011,7 @@
             .coi-left h3 { font-size: 1.3rem; }
             .coi-right { padding: 40px 28px; }
             /* Shift mobile — keep side by side */
-            /* Symptoms 3-col grid */
-        .symptoms-outer { padding: 48px 48px 56px; position: relative; z-index: 2; }
-        .symptoms-grid { max-width: 780px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; }
-        @media (max-width: 600px) {
-            .symptoms-outer { padding: 32px 20px 40px; }
-            .symptoms-grid { gap: 14px; }
-        }
-        /* end symptoms */
-        .shift-section { padding: 72px 0; }
+            .shift-section { padding: 72px 0; }
             .shift-headline { font-size: clamp(1.3rem, 5.5vw, 1.7rem); }
             .shift-columns { grid-template-columns: 1fr 1fr; gap: 0; margin-top: 36px; }
             .shift-col { border-radius: 20px 0 0 20px; padding: 20px 14px; }
@@ -2464,6 +2456,9 @@
             .shift-col-label { font-size: 0.45rem; margin-bottom: 10px; padding-bottom: 8px; }
             .shift-col p { font-size: 0.72rem; line-height: 1.65; }
             .shift-inner { padding: 0 16px; }
+            /* Symptoms mobile — keep gap tighter */
+            .symptoms-outer { padding: 32px 20px 40px; }
+            .symptoms-grid { gap: 14px; }
         }
 
         @media (max-width: 400px) {
@@ -2765,6 +2760,11 @@
                 display: flex;
             }
         }
+
+
+        /* Symptoms 3-col grid — base styles */
+        .symptoms-outer { padding: 48px 48px 56px; position: relative; z-index: 2; }
+        .symptoms-grid { max-width: 780px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; }
 
 </style>
 </head>
