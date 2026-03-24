@@ -677,7 +677,7 @@
   <button class="filter-btn" data-filter="sis" onclick="setFilter('sis', this)">SIS</button>
   <button class="filter-btn" data-filter="general" onclick="setFilter('general', this)">General</button>
   <button class="filter-btn" data-filter="video" onclick="setFilter('video', this)">Video only</button>
-  <button class="filter-btn" data-filter="image" onclick="setFilter('screenshot', this)">Screenshots</button>
+  <button class="filter-btn" data-filter="screenshot" onclick="setFilter('screenshot', this)">Screenshots</button>
   <button class="filter-btn" data-filter="pending" onclick="setFilter('pending', this)">Pending</button>
 </div>
 
@@ -704,7 +704,7 @@
         <select id="f-format">
           <option value="text">Text</option>
           <option value="video">Video</option>
-          <option value="image">Screenshot</option>
+          <option value="screenshot">Screenshot</option>
           <option value="audio">Audio</option>
         </select>
       </div>
@@ -850,7 +850,7 @@ function getFilteredTestimonials() {
   else if (activeFilter === 'sis') list = list.filter(t => t.product === 'sis' || t.funnel_stages.some(s => s.startsWith('sis')));
   else if (activeFilter === 'general') list = list.filter(t => t.product === 'general');
   else if (activeFilter === 'video') list = list.filter(t => t.format === 'video');
-  else if (activeFilter === 'image') list = list.filter(t => t.format === 'image');
+  else if (activeFilter === 'screenshot') list = list.filter(t => t.format === 'image');
   else if (activeFilter === 'pending') list = list.filter(t => t.format !== 'image' && (!t.quote || t.quote.trim() === '' || t.tags.includes('pending-approval') || t.tags.includes('needs-screenshot')));
   return list;
 }
@@ -870,25 +870,21 @@ function renderCards(testimonials) {
     const pending = isPending(t);
     const placed = isPlaced(t);
     const isVideo = t.format === 'video';
-    const isScreenshot = t.format === 'image';
-    const photo = PHOTOS[t.name] || (t.file_r2 && t.format !== 'image' ? t.file_r2 : null);
+    const isImage = t.format === 'image';
 
-    if (isScreenshot && t.file_r2) {
-      return `<div class="card" style="padding:0;overflow:hidden;">
-        <img src="${t.file_r2}" alt="Facebook testimonial screenshot" loading="lazy" style="width:100%;height:auto;display:block;" onerror="this.closest('.card').style.display='none'">
-      </div>`;
-    }
+    // Use headshot_url from DB first, then legacy PHOTOS lookup, then initials
+    const photoSrc = t.headshot_url || PHOTOS[t.name] || null;
+    const avatarInner = photoSrc
+      ? `<img src="${photoSrc}" alt="${t.name}" onerror="this.parentElement.innerHTML='${initials(t.name)}'">`
+      : initials(t.name);
 
     const badges = [
       isVideo ? `<span class="badge badge-video">▶ Video</span>` : '',
+      isImage ? `<span class="badge" style="background:rgba(100,180,100,0.15);color:#7dc87d;border:1px solid rgba(100,180,100,0.2);">FB Post</span>` : '',
       pending ? `<span class="badge badge-pending">Pending Approval</span>` : '',
       placed ? `<span class="badge badge-placed">✓ Live</span>` : '',
       `<span class="badge badge-product">${t.product.toUpperCase()}</span>`,
     ].filter(Boolean).join('');
-
-    const avatarInner = photo
-      ? `<img src="${photo}" alt="${t.name}" onerror="this.parentElement.innerHTML='${initials(t.name)}'">`
-      : initials(t.name);
 
     const quoteSection = pending
       ? `<div class="pending-quote">⏳ ${t.placement_notes?.split('.')[0] || 'Quote pending — needs follow-up.'}</div>`
@@ -896,6 +892,14 @@ function renderCards(testimonials) {
 
     const resultSection = t.result && !pending
       ? `<div class="result-callout">→ ${t.result}</div>` : '';
+
+    // For image testimonials: show screenshot thumbnail above the quote
+    let screenshotThumb = '';
+    if (isImage && t.file_r2) {
+      screenshotThumb = `<div style="margin-bottom:14px;border-radius:8px;overflow:hidden;border:1px solid var(--border-soft);">
+        <img src="${t.file_r2}" alt="Facebook post by ${t.name}" loading="lazy" style="width:100%;height:auto;display:block;max-height:180px;object-fit:cover;object-position:top;" onerror="this.closest('div').style.display='none'">
+      </div>`;
+    }
 
     let videoThumb = '';
     if (isVideo) {
@@ -927,6 +931,7 @@ function renderCards(testimonials) {
     return `<div class="card ${pending ? 'pending' : ''} ${isVideo ? 'video' : ''}">
       <div class="card-badges">${badges}</div>
       ${videoThumb}
+      ${screenshotThumb}
       ${quoteSection}
       ${resultSection}
       <div class="card-author">
