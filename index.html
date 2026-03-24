@@ -1010,13 +1010,21 @@
             .coi-left { flex: none; padding: 40px 28px; }
             .coi-left h3 { font-size: 1.3rem; }
             .coi-right { padding: 40px 28px; }
-            /* Shift mobile */
-            .shift-section { padding: 72px 0; }
+            /* Shift mobile — keep side by side */
+            /* Symptoms 3-col grid */
+        .symptoms-outer { padding: 48px 48px 56px; position: relative; z-index: 2; }
+        .symptoms-grid { max-width: 780px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; }
+        @media (max-width: 600px) {
+            .symptoms-outer { padding: 32px 20px 40px; }
+            .symptoms-grid { gap: 14px; }
+        }
+        /* end symptoms */
+        .shift-section { padding: 72px 0; }
             .shift-headline { font-size: clamp(1.3rem, 5.5vw, 1.7rem); }
-            .shift-columns { grid-template-columns: 1fr; gap: 0; margin-top: 36px; }
-            .shift-col { border-radius: 16px 16px 0 0; padding: 28px 24px; }
-            .shift-col p { font-size: 0.88rem; line-height: 1.75; }
-            .shift-col.right-col { border-radius: 0 0 16px 16px; border-left: none; border-top: 1px solid var(--border); }
+            .shift-columns { grid-template-columns: 1fr 1fr; gap: 0; margin-top: 36px; }
+            .shift-col { border-radius: 20px 0 0 20px; padding: 20px 14px; }
+            .shift-col p { font-size: 0.78rem; line-height: 1.7; }
+            .shift-col.right-col { border-radius: 0 20px 20px 0; border-left: none; border-top: none; }
             /* Timeline mobile */
             .cases-timeline { padding-left: 32px; }
             .cases-card { flex-direction: column; gap: 20px; padding: 28px; }
@@ -2450,8 +2458,9 @@
             /* Container padding mobile */
             .container { padding: 0 20px; }
             /* Shift section tighter on small screens */
-            .shift-col { padding: 24px 20px; }
-            .shift-col-label { font-size: 0.5rem; margin-bottom: 14px; padding-bottom: 10px; }
+            .shift-col { padding: 14px 10px; }
+            .shift-col-label { font-size: 0.45rem; margin-bottom: 10px; padding-bottom: 8px; }
+            .shift-col p { font-size: 0.72rem; line-height: 1.65; }
             .shift-inner { padding: 0 16px; }
         }
 
@@ -2877,8 +2886,8 @@
         </div>
 
         <!-- Three Symptoms as compact numbered list -->
-        <div style="padding: 48px 48px 56px; position: relative; z-index: 2;">
-            <div style="max-width: 780px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px;">
+        <div class="symptoms-outer">
+            <div class="symptoms-grid">
                 <div>
                     <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(196,112,63,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;"><span style="font-family:'Outfit',sans-serif; font-size: 12px; font-weight: 800; color: var(--accent);">1</span></div>
                     <div style="font-family: 'Outfit',sans-serif; font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.3;">You've outgrown your brand</div>
@@ -3268,7 +3277,7 @@
                 <div class="testimonial-card">
                     <p class="testimonial-text">"I've watched you sit with founders in the messy middle... the place where momentum slows, the offers sprawl, and the business starts drifting away from the person who built it. And you don't add more. You remove the noise until the truth shows up. Anyone who gets to work with you walks away clearer, lighter, and more grounded in what actually matters."</p>
                     <div class="testimonial-author">
-                        <img src="https://assets.jamesguldan.com/testimonials/joshua-b-lee-face.jpg" alt="Joshua B Lee" loading="lazy">
+                        <img src="https://assets.jamesguldan.com/testimonials/joshua-b-lee-v4.jpg" alt="Joshua B Lee" loading="lazy">
                         <div class="testimonial-author-info">
                             <strong>Joshua B Lee</strong>
                             <span>Founder, StandOut Authority</span>
