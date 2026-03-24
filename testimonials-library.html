@@ -677,7 +677,7 @@
   <button class="filter-btn" data-filter="sis" onclick="setFilter('sis', this)">SIS</button>
   <button class="filter-btn" data-filter="general" onclick="setFilter('general', this)">General</button>
   <button class="filter-btn" data-filter="video" onclick="setFilter('video', this)">Video only</button>
-  <button class="filter-btn" data-filter="screenshot" onclick="setFilter('screenshot', this)">Screenshots</button>
+  <button class="filter-btn" data-filter="image" onclick="setFilter('screenshot', this)">Screenshots</button>
   <button class="filter-btn" data-filter="pending" onclick="setFilter('pending', this)">Pending</button>
 </div>
 
@@ -704,7 +704,7 @@
         <select id="f-format">
           <option value="text">Text</option>
           <option value="video">Video</option>
-          <option value="screenshot">Screenshot</option>
+          <option value="image">Screenshot</option>
           <option value="audio">Audio</option>
         </select>
       </div>
@@ -828,9 +828,9 @@ function renderStageGrid(counts) {
 }
 
 function renderStats(testimonials) {
-  const screenshots = testimonials.filter(t => t.format === 'screenshot').length;
-  const text = testimonials.filter(t => t.format !== 'screenshot' && t.active && t.quote).length;
-  const pending = testimonials.filter(t => t.format !== 'screenshot' && (!t.quote || t.quote.trim() === '')).length;
+  const screenshots = testimonials.filter(t => t.format === 'image').length;
+  const text = testimonials.filter(t => t.format !== 'image' && t.active && t.quote).length;
+  const pending = testimonials.filter(t => t.format !== 'image' && (!t.quote || t.quote.trim() === '')).length;
   const videos = testimonials.filter(t => t.format === 'video').length;
   document.getElementById('statsBar').innerHTML = `
     <div class="stat"><span class="stat-dot active"></span> <strong>${text}</strong> text/video</div>
@@ -850,8 +850,8 @@ function getFilteredTestimonials() {
   else if (activeFilter === 'sis') list = list.filter(t => t.product === 'sis' || t.funnel_stages.some(s => s.startsWith('sis')));
   else if (activeFilter === 'general') list = list.filter(t => t.product === 'general');
   else if (activeFilter === 'video') list = list.filter(t => t.format === 'video');
-  else if (activeFilter === 'screenshot') list = list.filter(t => t.format === 'screenshot');
-  else if (activeFilter === 'pending') list = list.filter(t => t.format !== 'screenshot' && (!t.quote || t.quote.trim() === '' || t.tags.includes('pending-approval') || t.tags.includes('needs-screenshot')));
+  else if (activeFilter === 'image') list = list.filter(t => t.format === 'image');
+  else if (activeFilter === 'pending') list = list.filter(t => t.format !== 'image' && (!t.quote || t.quote.trim() === '' || t.tags.includes('pending-approval') || t.tags.includes('needs-screenshot')));
   return list;
 }
 
@@ -863,19 +863,19 @@ function renderCards(testimonials) {
     return;
   }
 
-  const isPending = t => t.format !== 'screenshot' && (!t.quote || t.quote.trim() === '' || t.tags.includes('needs-screenshot') || t.tags.includes('needs-content'));
+  const isPending = t => t.format !== 'image' && (!t.quote || t.quote.trim() === '' || t.tags.includes('needs-screenshot') || t.tags.includes('needs-content'));
   const isPlaced = t => t.tags.includes('currently-placed');
 
   const cards = testimonials.map(t => {
     const pending = isPending(t);
     const placed = isPlaced(t);
     const isVideo = t.format === 'video';
-    const isScreenshot = t.format === 'screenshot';
-    const photo = PHOTOS[t.name];
+    const isScreenshot = t.format === 'image';
+    const photo = PHOTOS[t.name] || (t.file_r2 && t.format !== 'image' ? t.file_r2 : null);
 
-    if (isScreenshot && t.file_repo) {
+    if (isScreenshot && t.file_r2) {
       return `<div class="card" style="padding:0;overflow:hidden;">
-        <img src="https://jamesguldan.com/${t.file_repo}" alt="Facebook testimonial screenshot" loading="lazy" style="width:100%;height:auto;display:block;" onerror="this.closest('.card').style.display='none'">
+        <img src="${t.file_r2}" alt="Facebook testimonial screenshot" loading="lazy" style="width:100%;height:auto;display:block;" onerror="this.closest('.card').style.display='none'">
       </div>`;
     }
 
@@ -899,10 +899,10 @@ function renderCards(testimonials) {
 
     let videoThumb = '';
     if (isVideo) {
-      if (t.file_repo) {
+      if (t.file_r2) {
         videoThumb = `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
           <video controls preload="metadata" style="width:100%;display:block;border-radius:8px;max-height:240px;">
-            <source src="https://jamesguldan.com/${t.file_repo}" type="video/mp4">
+            <source src="${t.file_r2}" type="video/mp4">
           </video>
         </div>`;
       } else if (t.source_url && t.source_url.includes('drive.google.com')) {
