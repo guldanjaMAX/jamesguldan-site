@@ -1010,13 +1010,13 @@
             .coi-left { flex: none; padding: 40px 28px; }
             .coi-left h3 { font-size: 1.3rem; }
             .coi-right { padding: 40px 28px; }
-            /* Shift mobile */
+            /* Shift mobile — keep side by side */
             .shift-section { padding: 72px 0; }
             .shift-headline { font-size: clamp(1.3rem, 5.5vw, 1.7rem); }
-            .shift-columns { grid-template-columns: 1fr; gap: 0; margin-top: 36px; }
-            .shift-col { border-radius: 16px 16px 0 0; padding: 28px 24px; }
-            .shift-col p { font-size: 0.88rem; line-height: 1.75; }
-            .shift-col.right-col { border-radius: 0 0 16px 16px; border-left: none; border-top: 1px solid var(--border); }
+            .shift-columns { grid-template-columns: 1fr 1fr; gap: 0; margin-top: 36px; }
+            .shift-col { border-radius: 20px 0 0 20px; padding: 20px 14px; }
+            .shift-col p { font-size: 0.78rem; line-height: 1.7; }
+            .shift-col.right-col { border-radius: 0 20px 20px 0; border-left: none; border-top: none; }
             /* Timeline mobile */
             .cases-timeline { padding-left: 32px; }
             .cases-card { flex-direction: column; gap: 20px; padding: 28px; }
@@ -2396,10 +2396,12 @@
             /* FIX 6: Tighter spacing rhythm on small screens */
             section { padding: 56px 0; }
             .pattern-symptom { padding: 40px 20px; }
-            /* FIX 1: Hero at 600px — smaller photo height */
-            .hero-content { padding: 20px 0 36px; }
-            .hero-bg-photo { height: 220px; }
-            h1 { font-size: 1.75rem; }
+            /* Hero at 600px — compact above-fold */
+            .hero-bg-photo { height: 140px; }
+            .hero-content { padding: 14px 0 24px; }
+            h1 { font-size: 1.5rem; }
+            .hero-subtitle { font-size: 0.88rem; line-height: 1.65; margin-bottom: 20px; }
+            .hero-cta { padding: 14px 26px; font-size: 0.92rem; }
             /* FIX 5: Proof bar — white card treatment for 2x2 grid */
             .ew-stat {
                 background: #fff;
@@ -2450,9 +2452,20 @@
             /* Container padding mobile */
             .container { padding: 0 20px; }
             /* Shift section tighter on small screens */
-            .shift-col { padding: 24px 20px; }
-            .shift-col-label { font-size: 0.5rem; margin-bottom: 14px; padding-bottom: 10px; }
+            .shift-col { padding: 14px 10px; }
+            .shift-col-label { font-size: 0.45rem; margin-bottom: 10px; padding-bottom: 8px; }
+            .shift-col p { font-size: 0.72rem; line-height: 1.65; }
             .shift-inner { padding: 0 16px; }
+            /* Symptoms mobile — keep gap tighter */
+            .symptoms-outer { padding: 32px 20px 40px; }
+            .symptoms-grid { gap: 14px; }
+        }
+
+        @media (max-width: 400px) {
+            .hero-bg-photo { height: 110px; }
+            h1 { font-size: 1.35rem; }
+            .hero-subtitle { font-size: 0.83rem; margin-bottom: 16px; }
+            .hero-cta { padding: 13px 22px; font-size: 0.88rem; }
         }
 
         /* Deep Work Interview Preview Section */
@@ -2748,6 +2761,11 @@
             }
         }
 
+
+        /* Symptoms 3-col grid — base styles */
+        .symptoms-outer { padding: 48px 48px 56px; position: relative; z-index: 2; }
+        .symptoms-grid { max-width: 780px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; }
+
 </style>
 </head>
 <body>
@@ -2877,8 +2895,8 @@
         </div>
 
         <!-- Three Symptoms as compact numbered list -->
-        <div style="padding: 48px 48px 56px; position: relative; z-index: 2;">
-            <div style="max-width: 780px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px;">
+        <div class="symptoms-outer">
+            <div class="symptoms-grid">
                 <div>
                     <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(196,112,63,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;"><span style="font-family:'Outfit',sans-serif; font-size: 12px; font-weight: 800; color: var(--accent);">1</span></div>
                     <div style="font-family: 'Outfit',sans-serif; font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.3;">You've outgrown your brand</div>
@@ -3003,6 +3021,31 @@
                             <p>One client got so clear on his positioning and the unique value of his craft that he was invited to Necker Island to work directly with Richard Branson's team, for free, in a room where people pay $35,000 for the week. Another client, after doing this same work, had the confidence to ask Richard Branson himself for a testimonial and a social media share for their event. And got it.</p>
                             <div class="cases-result">
                                 <p>When your positioning is dialed in, the world starts pulling you toward opportunities instead of you chasing them.</p>
+                            </div>
+                            <!-- BRANSON VIDEO HIDDEN — pending permission from Yanik/Maverick -->
+                            <div style="display:none; margin-top: 20px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(196,112,63,.2); background: #000;">
+                                <div style="padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(196,112,63,.25); background: rgba(253,252,250,.06);">
+                                    <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 6px rgba(196,112,63,.6);"></span>
+                                    <span style="font-family:'Outfit',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent);">Richard Branson&rsquo;s Message &mdash; Unprompted</span>
+                                </div>
+                                <div style="position: relative; width: 100%; max-width: 340px; margin: 0 auto; aspect-ratio: 9/16; overflow: hidden;" id="branson-wrap">
+                                    <img src="https://assets.jamesguldan.com/videos/branson-poster.jpg"
+                                        style="width:100%; height:100%; object-fit:cover; display:block;" alt="Richard Branson on Necker Island">
+                                    <div id="branson-overlay" onclick="
+                                        document.getElementById('branson-overlay').style.display='none';
+                                        var v=document.getElementById('branson-video');
+                                        v.style.display='block';v.play();"
+                                        style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:linear-gradient(to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,.1) 50%, rgba(0,0,0,.25) 100%);">
+                                        <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,.4);transition:transform .2s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+                                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#1a1a1a"><polygon points="8,5 19,12 8,19"/></svg>
+                                        </div>
+                                        <div style="margin-top:14px;font-family:'Outfit',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.85);">Watch Video</div>
+                                    </div>
+                                    <video id="branson-video" controls preload="none"
+                                        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;background:#000;">
+                                        <source src="https://assets.jamesguldan.com/videos/branson-necker.mp4" type="video/mp4">
+                                    </video>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -3150,7 +3193,7 @@
             </div>
 
             <div class="testimonials-link">
-                <a href="testimonials.html">
+                <a href="/testimonials/">
                     Read all 132 unedited Facebook testimonials
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -3237,6 +3280,28 @@
                         <div class="testimonial-author-info">
                             <strong>Dean Pohlman</strong>
                             <span>Founder of Man Flow Yoga, 1,000%+ Growth Client</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've watched you sit with founders in the messy middle... the place where momentum slows, the offers sprawl, and the business starts drifting away from the person who built it. And you don't add more. You remove the noise until the truth shows up. Anyone who gets to work with you walks away clearer, lighter, and more grounded in what actually matters."</p>
+                    <div class="testimonial-author">
+                        <img src="https://assets.jamesguldan.com/testimonials/joshua-b-lee-v4.jpg" alt="Joshua B Lee" loading="lazy">
+                        <div class="testimonial-author-info">
+                            <strong>Joshua B Lee</strong>
+                            <span>Founder, StandOut Authority</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"James is the absolute best in the world at his craft. Thanks to his help, we raised 1.1 million dollars for a solo, never-before-attempted coast-to-coast crossing of Antarctica. He literally helped me achieve the impossible."</p>
+                    <div class="testimonial-author">
+                        <img src="https://assets.jamesguldan.com/testimonials/akshay-nanavati-real.jpg" alt="Akshay Nanavati" loading="lazy">
+                        <div class="testimonial-author-info">
+                            <strong>Akshay Nanavati</strong>
+                            <span>Extreme Athlete &amp; Author, Fearvana</span>
                         </div>
                     </div>
                 </div>
@@ -3380,7 +3445,7 @@
                 <a href="https://www.linkedin.com/in/jamesguldan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="/deep-work/" target="_blank" rel="noopener noreferrer">Deep Work Interview</a>
                 <a href="/site-in-sixty/" target="_blank" rel="noopener noreferrer">Site In Sixty</a>
-                <a href="testimonials.html">Testimonials</a>
+                <a href="/testimonials/">Testimonials</a>
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms &amp; Refund Policy</a>
             </div>
