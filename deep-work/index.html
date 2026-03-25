@@ -2207,6 +2207,13 @@
         + '<span style="display:inline-block;width:20px;height:20px;border:2px solid #e5e7eb;border-top-color:#c4703f;border-radius:50%;animation:opspin .7s linear infinite;vertical-align:middle;margin-right:8px"></span>'
         + 'Loading payment form…</div>';
 
+      // Disable pay button while Stripe loads so users can't submit before it's ready
+      var payBtn = document.getElementById('op-pay-submit');
+      payBtn.disabled = true;
+      payBtn.style.opacity = '0.5';
+      payBtn.style.pointerEvents = 'none';
+      document.querySelector('#op-pay-submit .btn-text').textContent = 'Loading…';
+
       fetch('https://love.jamesguldan.com/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -2265,10 +2272,28 @@
         stripePayEl.on('loaderstart', function() {
           setTimeout(function() { document.getElementById('op-email').focus(); }, 150);
         });
+
+        // Re-enable the pay button once Stripe Elements has fully rendered
+        stripePayEl.on('ready', function() {
+          var btn = document.getElementById('op-pay-submit');
+          var priceText = (document.getElementById('op-order-bar-price') || {}).textContent || '$67';
+          btn.disabled = false;
+          btn.style.opacity = '';
+          btn.style.pointerEvents = '';
+          document.querySelector('#op-pay-submit .btn-text').textContent = 'Pay ' + priceText;
+        });
       })
       .catch(function(err) {
         console.error('Stripe init error:', err);
         mountEl.innerHTML = '';
+        // Re-enable button so they can retry
+        var btn = document.getElementById('op-pay-submit');
+        if (btn) {
+          btn.disabled = false;
+          btn.style.opacity = '';
+          btn.style.pointerEvents = '';
+          document.querySelector('#op-pay-submit .btn-text').textContent = 'Try Again';
+        }
         showPayError(err.message || 'Failed to load payment form. Please refresh and try again.');
       });
     }
