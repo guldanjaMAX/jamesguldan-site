@@ -2032,7 +2032,9 @@
       payBtn.style.pointerEvents = 'none';
       document.querySelector('#op-pay-submit .btn-text').textContent = 'Loading…';
 
-      fetch('https://love.jamesguldan.com/api/create-payment-intent', {
+      var stripeMode = new URLSearchParams(window.location.search).get('stripe_mode');
+      var paymentApiUrl = 'https://love.jamesguldan.com/api/create-payment-intent' + (stripeMode ? '?stripe_mode=' + stripeMode : '');
+      fetch(paymentApiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tiers: tiers })
@@ -2244,7 +2246,8 @@
         if (label) label.textContent = 'Almost there\u2026';
       }, 18000);
 
-      fetch('https://love.jamesguldan.com/api/fulfill-payment', {
+      var fulfillApiUrl = 'https://love.jamesguldan.com/api/fulfill-payment' + (stripeMode ? '?stripe_mode=' + stripeMode : '');
+      fetch(fulfillApiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ paymentIntentId: currentPiId, email: email, phone: currentPhone, tiers: currentTiers, smsConsent: currentSmsConsent })
@@ -2330,7 +2333,7 @@
       window.history.replaceState({}, '', window.location.pathname);
       if (!piId) return;
       // Open popup in payment view → show loading → fulfill
-      fetch('https://love.jamesguldan.com/api/payment-status?pi=' + piId)
+      fetch('https://love.jamesguldan.com/api/payment-status?pi=' + piId + (stripeMode ? '&stripe_mode=' + stripeMode : ''))
         .then(function(r) { return r.json(); })
         .then(function(data) {
           if (data.status === 'succeeded') {
