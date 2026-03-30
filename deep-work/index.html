@@ -24,7 +24,7 @@
   </script>
 
   <!-- Primary Meta Tags -->
-  <title>Deep Work Blueprint — Get Clear | James Guldan</title>
+  <title>Deep Work Interview — Get Clear | James Guldan</title>
   <meta name="title" content="Deep Work Process — Get Clear in Sections | James Guldan">
   <meta name="description" content="One conversation. Eight sections. A complete brand blueprint — built from your story, delivered when you're done. The same process coaches paid $5,000 for — now $67.">
   <meta name="author" content="James Guldan">
@@ -1789,7 +1789,7 @@
       + '<div class="op-body" id="op-order-body">'
       + '<div class="op-scroll">'
       + '<div class="op-main-item">'
-      + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Blueprint</div><div class="op-item-desc">AI positioning session + full blueprint</div></div>'
+      + '<div><div class="op-included">Included</div><div class="op-item-name">Deep Work Interview</div><div class="op-item-desc">AI positioning session + full blueprint</div></div>'
       + '<div class="op-item-price">$67</div>'
       + '</div>'
       + ''
@@ -1809,7 +1809,7 @@
       /* ── STEP 2: Payment form ── */
       + '<div class="op-payment-view" id="op-payment-view">'
       + '<div class="op-pay-scroll">'
-      + '<div class="op-order-bar"><span class="op-order-bar-label" id="op-order-bar-label">Deep Work Blueprint</span><span class="op-order-bar-price" id="op-order-bar-price">$67</span></div>'
+      + '<div class="op-order-bar"><span class="op-order-bar-label" id="op-order-bar-label">Deep Work Interview</span><span class="op-order-bar-price" id="op-order-bar-price">$67</span></div>'
       + '<div class="op-field"><label for="op-email">Email address</label><input type="email" id="op-email" placeholder="you@example.com" autocomplete="email" required /></div>'
       + '<div class="op-field"><label for="op-phone">Phone number <span style="font-weight:400;color:#aaa;font-size:11px">(optional, for text updates)</span></label><input type="tel" id="op-phone" placeholder="+1 (555) 000-0000" autocomplete="tel" /></div>'
       + '<div class="op-sms-card"><div class="op-sms-header"><div class="op-sms-icon">&#128172;</div><div class="op-sms-header-text"><div class="op-sms-title">Order Updates via Text</div><div class="op-sms-subtitle">Stay in the loop after purchase</div></div></div><div class="op-sms-body"><ul class="op-sms-benefits"><li><span class="op-sms-check-icon">&#10003;</span> Instant order confirmation sent to your phone</li><li><span class="op-sms-check-icon">&#10003;</span> Product access link delivered immediately</li><li><span class="op-sms-check-icon">&#10003;</span> Onboarding guidance at the right moment</li></ul><div class="op-sms-check-row"><input type="checkbox" class="op-sms-checkbox" id="op-sms-consent" name="smsConsent" /><label class="op-sms-check-label" for="op-sms-consent">I consent to receive order confirmation and product access text messages from James Guldan. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to unsubscribe, HELP for help. Optional &mdash; not required to purchase. <a href="/privacy" target="_blank">Privacy Policy</a> &middot; <a href="/terms" target="_blank">SMS Terms</a>.</label></div></div></div>'
@@ -1854,7 +1854,7 @@
       if (e) e.preventDefault();
       // Skip order selection — go straight to payment (no upsells)
       currentTiers = ['blueprint'];
-      document.getElementById('op-order-bar-label').textContent = 'Deep Work Blueprint';
+      document.getElementById('op-order-bar-label').textContent = 'Deep Work Interview';
       document.getElementById('op-order-bar-price').textContent = '$67';
       document.querySelector('#op-pay-submit .btn-text').textContent = 'Pay $67';
       showStep('payment');
@@ -2003,7 +2003,7 @@
       currentTiers = tiers;
 
       // Update order summary bar
-      var labels = ['Deep Work Blueprint'];
+      var labels = ['Deep Work Interview'];
       var totalText = '$' + getTotal();
       document.getElementById('op-order-bar-label').textContent = labels.join(' ');
       document.getElementById('op-order-bar-price').textContent = totalText;
@@ -2863,7 +2863,7 @@
           transaction_id: 'dwi_' + Date.now(),
           currency: 'USD',
           value: 67,
-          items: [{ item_name: 'Deep Work Blueprint', price: 67, quantity: 1 }]
+          items: [{ item_name: 'Deep Work Interview', price: 67, quantity: 1 }]
         });
       }
     }, 500);
