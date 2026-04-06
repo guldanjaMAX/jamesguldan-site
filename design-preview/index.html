@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jamesguldan.com — Design Direction Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #f0f0f0;
+  color: #1d1d1f;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* META FRAME */
+.meta-header {
+  background: #1d1d1f;
+  color: #fff;
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.meta-header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.meta-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c4703f;
+}
+.meta-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+.meta-subtitle {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+}
+.meta-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  max-width: 320px;
+  line-height: 1.6;
+  text-align: right;
+}
+
+/* SECTION WRAPPER */
+.preview-section {
+  background: #fff;
+  margin: 32px auto;
+  max-width: 1200px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+}
+
+.section-label {
+  background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.section-label-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+.section-label-note {
+  font-size: 12px;
+  color: #86868b;
+}
+
+/* ══════════════════════════════════════
+   NAV — fix #1: logo + CTA only
+══════════════════════════════════════ */
+.site-nav {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid #f0f0f0;
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #1d1d1f;
+  text-decoration: none;
+}
+.nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #c4703f;
+  color: #fff;
+  padding: 11px 24px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-cta-btn:hover { background: #b5643a; transform: translateY(-1px); }
+
+/* ══════════════════════════════════════
+   HERO — fix #2: full-bleed photo, flat white bg
+══════════════════════════════════════ */
+.site-hero {
+  background: #ffffff;
+  position: relative;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Right-side photo background */
+.hero-photo-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 62%;
+  height: 100%;
+  background: url('https://jamesguldan.com/james-hero-opt.jpg') center top / cover no-repeat;
+  z-index: 0;
+}
+
+/* White gradient fading left edge of the photo */
+.hero-photo-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 55%;
+  background: linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%);
+  z-index: 1;
+}
+
+/* Bottom fade so photo doesn't hard-stop */
+.hero-photo-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 28%;
+  background: linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
+}
+
+/* Left content column */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 100px 0 80px 56px;
+  max-width: 540px;
+}
+
+.hero-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c4703f;
+  margin-bottom: 20px;
+}
+.hero-h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+  font-weight: 800;
+  color: #1d1d1f;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  text-wrap: balance;
+}
+.hero-h1 em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #c4703f;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  color: #86868b;
+  line-height: 1.75;
+  max-width: 420px;
+  margin-bottom: 40px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 44px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1d1d1f;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+.btn-primary:hover { background: #c4703f; transform: translateY(-1px); }
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-trust span {
+  font-size: 11px;
+  color: #b0b0b0;
+  letter-spacing: 0.02em;
+}
+.trust-dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: #d8d8d8;
+}
+
+/* Floating video card */
+.vid-wrap {
+  position: absolute;
+  bottom: 52px;
+  right: 48px;
+  z-index: 3;
+}
+
+/* Animated halo rings */
+.vid-halo, .vid-halo2 {
+  position: absolute;
+  border-radius: 20px;
+  border: 1.5px solid rgba(196,112,63,0.25);
+  pointer-events: none;
+  animation: halo-pulse 3s ease-in-out infinite;
+}
+.vid-halo {
+  inset: -10px;
+}
+.vid-halo2 {
+  inset: -22px;
+  border-color: rgba(196,112,63,0.12);
+  animation-delay: 0.5s;
+}
+@keyframes halo-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.015); }
+}
+
+.vid-float {
+  width: 240px;
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+  overflow: hidden;
+  background: #000;
+  position: relative;
+}
+.vid-float video {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+}
+
+/* "Hear my story" handwritten label */
+.hero-arrow-label {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Caveat', cursive;
+  font-size: 17px;
+  color: #c4703f;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-arrow-label svg {
+  transform: rotate(25deg) scaleX(-1);
+  opacity: 0.7;
+}
+
+/* ══════════════════════════════════════
+   PROOF BAR — fix #3: keep exactly as is
+══════════════════════════════════════ */
+.site-proof {
+  background: #fafafa;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 52px 48px;
+}
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 760px;
+  margin: 0 auto 40px;
+  gap: 0;
+}
+.proof-item {
+  text-align: center;
+  padding: 0 32px;
+  position: relative;
+}
+.proof-item + .proof-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10%; bottom: 10%;
+  width: 1px;
+  background: #ebebeb;
+}
+.proof-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #1d1d1f;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.proof-num span {
+  color: #c4703f;
+}
+.proof-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #86868b;
+  margin-top: 8px;
+}
+.proof-clients {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.proof-client-name {
+  font-size: 11px;
+  color: #b0b0b0;
+  letter-spacing: 0.04em;
+}
+.proof-client-sep {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: #ddd;
+}
+
+/* ══════════════════════════════════════
+   PROBLEM — fix #4: current live copy, same design
+══════════════════════════════════════ */
+.site-problem {
+  padding: 100px 56px;
+  background: #ffffff;
+}
+.problem-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c4703f;
+  margin-bottom: 20px;
+}
+.problem-h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: #1d1d1f;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  max-width: 720px;
+  margin-bottom: 16px;
+}
+.problem-h2 em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #c4703f;
+}
+.problem-sub {
+  font-size: 1.05rem;
+  color: #86868b;
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+/* Transcript card */
+.transcript-card {
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 32px 36px;
+  max-width: 740px;
+  margin: 0 auto 56px;
+}
+.transcript-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.transcript-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c4703f;
+  background: rgba(196,112,63,0.08);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.transcript-case {
+  font-size: 11px;
+  color: #b0b0b0;
+  letter-spacing: 0.06em;
+}
+.transcript-quote {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.75;
+  border-left: 3px solid rgba(196,112,63,0.3);
+  padding-left: 20px;
+}
+
+/* Symptom cards */
+.symptom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 52px;
+}
+.symptom-card {
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.2s;
+}
+.symptom-card:hover {
+  border-color: rgba(196,112,63,0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+}
+.symptom-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #c4703f;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+.symptom-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.symptom-body {
+  font-size: 0.9rem;
+  color: #86868b;
+  line-height: 1.65;
+}
+
+/* James quote inside problem section */
+.james-quote-block {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 40px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.james-quote-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #e8ddd6;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #c4703f;
+}
+.james-quote-text {
+  font-size: 1.05rem;
+  color: #1d1d1f;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.james-quote-attr {
+  font-size: 12px;
+  color: #86868b;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ══════════════════════════════════════
+   TESTIMONIALS — fix #5: real photos, no italics
+══════════════════════════════════════ */
+.site-testimonials {
+  padding: 100px 56px;
+  background: #fafafa;
+  border-top: 1px solid #f0f0f0;
+}
+.testimonials-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c4703f;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.testimonials-h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 800;
+  color: #1d1d1f;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-align: center;
+  margin-bottom: 56px;
+}
+.testimonials-h2 em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #c4703f;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+.t-card {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: all 0.2s;
+}
+.t-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+  border-color: rgba(196,112,63,0.15);
+}
+.t-stars {
+  display: flex;
+  gap: 4px;
+}
+.t-star {
+  color: #c4703f;
+  font-size: 14px;
+}
+/* NO italic on quotes — fix #5 */
+.t-quote {
+  font-size: 0.97rem;
+  color: #444;
+  line-height: 1.75;
+  flex: 1;
+  font-style: normal;
+}
+.t-person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+.t-photo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  background: #e8ddd6;
+  flex-shrink: 0;
+}
+.t-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1d1d1f;
+}
+.t-title {
+  font-size: 11px;
+  color: #86868b;
+  margin-top: 2px;
+}
+
+/* ══════════════════════════════════════
+   FINAL CTA — fix #6: keep exactly as is
+══════════════════════════════════════ */
+.site-final-cta {
+  padding: 120px 56px;
+  background: #1d1d1f;
+  text-align: center;
+}
+.final-cta-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(196,112,63,0.8);
+  margin-bottom: 24px;
+}
+.final-cta-h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+}
+.final-cta-h2 em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #c4703f;
+}
+.final-cta-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.5);
+  max-width: 480px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+}
+.btn-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #c4703f;
+  color: #fff;
+  padding: 20px 44px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: all 0.25s;
+  box-shadow: 0 8px 32px rgba(196,112,63,0.3);
+}
+.btn-cta-primary:hover {
+  background: #b5643a;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(196,112,63,0.4);
+}
+.final-cta-price {
+  margin-top: 24px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.04em;
+}
+.final-cta-price strong {
+  color: rgba(255,255,255,0.6);
+}
+</style>
+</head>
+<body>
+
+<!-- META HEADER -->
+<div class="meta-header">
+  <div class="meta-header-left">
+    <div>
+      <div class="meta-badge">Design Preview</div>
+      <div class="meta-title">jamesguldan.com — Concept Direction</div>
+      <div class="meta-subtitle">7 key sections — pure white, Playfair, breathing room</div>
+    </div>
+  </div>
+  <div class="meta-note">Review each section below. Real copy and real photos throughout.</div>
+</div>
+
+
+<!-- ═══ SECTION 1: NAV ═══ -->
+<div class="preview-section">
+  <div class="section-label">
+    <span class="section-label-name">01 — Navigation</span>
+    <span class="section-label-note">Logo + CTA only. Clean.</span>
+  </div>
+  <nav class="site-nav">
+    <a class="nav-logo" href="#">James Guldan</a>
+    <a class="nav-cta-btn" href="#">Get Clear Now →</a>
+  </nav>
+</div>
+
+
+<!-- ═══ SECTION 2: HERO ═══ -->
+<div class="preview-section">
+  <div class="section-label">
+    <span class="section-label-name">02 — Hero</span>
+    <span class="section-label-note">Full-bleed photo right, flat white background, floating video card</span>
+  </div>
+  <section class="site-hero">
+
+    <!-- Full-bleed right photo (with gradient overlay built into CSS) -->
+    <div class="hero-photo-bg"></div>
+
+    <!-- Left content -->
+    <div class="hero-content">
+      <p class="hero-eyebrow">Deep Work Interview</p>
+      <h1 class="hero-h1">
+        Your business is successful.<br>
+        So why doesn't it feel like<br>
+        <em>yours</em> anymore?
+      </h1>
+      <p class="hero-sub">
+        You built something real. But somewhere along the way, the story you're telling about yourself stopped fitting the person you've actually become.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#">
+          Start the Deep Work Interview
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="hero-trust">
+        <span>$67 one-time</span>
+        <div class="trust-dot"></div>
+        <span>132+ entrepreneurs repositioned</span>
+        <div class="trust-dot"></div>
+        <span>4.9★ average</span>
+      </div>
+    </div>
+
+    <!-- Floating video card with halo rings -->
+    <div class="vid-wrap">
+      <div class="hero-arrow-label">
+        <svg width="20" height="20" fill="none" stroke="#c4703f" stroke-width="2" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        Hear my story
+      </div>
+      <div class="vid-halo"></div>
+      <div class="vid-halo2"></div>
+      <div class="vid-float">
+        <video
+          src="https://jamesguldan.com/deep-work/videos/james-deepwork-v3.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+
+<!-- ═══ SECTION 3: PROOF BAR ═══ -->
+<div class="preview-section">
+  <div class="section-label">
+    <span class="section-label-name">03 — Proof Bar</span>
+    <span class="section-label-note">Loved it. Keeping exactly as-is.</span>
+  </div>
+  <section class="site-proof">
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-num"><span>$</span>67</div>
+        <div class="proof-label">One Time Investment</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">132<span>+</span></div>
+        <div class="proof-label">Entrepreneurs Repositioned</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">4.9<span>★</span></div>
+        <div class="proof-label">Average Rating</div>
+      </div>
+    </div>
+    <div class="proof-clients">
+      <span class="proof-client-name">Mike Dillard</span>
+      <div class="proof-client-sep"></div>
+      <span class="proof-client-name">Louis Massaro</span>
+      <div class="proof-client-sep"></div>
+      <span class="proof-client-name">Dean Pohlman</span>
+      <div class="proof-client-sep"></div>
+      <span class="proof-client-name">Tommy Rosen</span>
+      <div class="proof-client-sep"></div>
+      <span class="proof-client-name">Raj Jana</span>
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══ SECTION 4: PROBLEM ═══ -->
+<div class="preview-section">
+  <div class="section-label">
+    <span class="section-label-name">04 — Problem Section</span>
+    <span class="section-label-note">Current live copy (updated yesterday), same design</span>
+  </div>
+  <section class="site-problem">
+    <p class="problem-eyebrow">Sound Familiar?</p>
+    <h2 class="problem-h2">
+      Most successful founders are stuck in a story<br>
+      that <em>no longer fits</em> who they've become.
+    </h2>
+    <p class="problem-sub">
+      The positioning that got you here is holding you back from where you're going. And no one around you is going to tell you that.
+    </p>
+
+    <!-- Transcript card -->
+    <div class="transcript-card">
+      <div class="transcript-header">
+        <span class="transcript-badge">Client Session</span>
+        <span class="transcript-case">Case #002</span>
+      </div>
+      <p class="transcript-quote">
+        "I kept getting on calls and leading with the same intro I'd been using for three years. It worked fine. I'd built a real business with it. But every time I said it out loud I felt like I was wearing someone else's suit. James helped me see that the story wasn't wrong, it just stopped being true."
+      </p>
+    </div>
+
+    <!-- 3 symptom cards -->
+    <div class="symptom-grid">
+      <div class="symptom-card">
+        <div class="symptom-num">01</div>
+        <div class="symptom-title">You've outgrown your brand</div>
+        <div class="symptom-body">
+          The business is bigger. The vision is clearer. But the way you describe yourself still sounds like who you were three years ago, not who you are today.
+        </div>
+      </div>
+      <div class="symptom-card">
+        <div class="symptom-num">02</div>
+        <div class="symptom-title">You're stuck between two identities</div>
+        <div class="symptom-body">
+          Part of you wants to go deeper, own a bigger idea, be known for something more meaningful. But you can't quite articulate what that is or how to make the transition without losing what you've built.
+        </div>
+      </div>
+      <div class="symptom-card">
+        <div class="symptom-num">03</div>
+        <div class="symptom-title">Nobody in your circle will tell you the truth</div>
+        <div class="symptom-body">
+          Your team needs you confident. Your clients respect you. Your peers don't want to rock the boat. There's no one in your life who will sit across from you and say: here's exactly what's off and here's why.
+        </div>
+      </div>
+    </div>
+
+    <!-- James quote (no italics per fix #4/#5) -->
+    <div class="james-quote-block">
+      <div class="james-quote-avatar">J</div>
+      <div>
+        <p class="james-quote-text">
+          "I spent years helping people with their messaging and positioning before I realized the real problem was never the words. It was that they'd never actually examined the story underneath the words. That's what the Deep Work Interview fixes."
+        </p>
+        <p class="james-quote-attr">James Guldan, Founder of Deep Work Interview</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══ SECTION 5: TESTIMONIALS ═══ -->
+<div class="preview-section">
+  <div class="section-label">
+    <span class="section-label-name">05 — Testimonials</span>
+    <span class="section-label-note">Real photos for all 3 people. Zero italics on quotes.</span>
+  </div>
+  <section class="site-testimonials">
+    <p class="testimonials-eyebrow">What They Said Afterward</p>
+    <h2 class="testimonials-h2">
+      The founders who've<br><em>done the work</em>
+    </h2>
+    <div class="testimonial-grid">
+
+      <!-- Mike Dillard -->
+      <div class="t-card">
+        <div class="t-stars">
+          <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+        </div>
+        <p class="t-quote">
+          "I've been through branding processes that took months and cost tens of thousands of dollars. James figured out what was off and handed me the answer in one conversation. The clarity I got was worth more than all of those combined."
+        </p>
+        <div class="t-person">
+          <img class="t-photo" src="https://jamesguldan.com/mikedillard.jpg" alt="Mike Dillard">
+          <div>
+            <div class="t-name">Mike Dillard</div>
+            <div class="t-title">Founder, Self Made Man</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Louis Massaro -->
+      <div class="t-card">
+        <div class="t-stars">
+          <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+        </div>
+        <p class="t-quote">
+          "I went into this thinking I needed better copy. What I walked out with was a completely different understanding of who I actually am and what I should be building toward. That shift changed everything downstream."
+        </p>
+        <div class="t-person">
+          <img class="t-photo" src="https://jamesguldan.com/testimonials/louis-massaro.jpg" alt="Louis Massaro">
+          <div>
+            <div class="t-name">Louis Massaro</div>
+            <div class="t-title">CEO, Moving Mastery</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dean Pohlman -->
+      <div class="t-card">
+        <div class="t-stars">
+          <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+        </div>
+        <p class="t-quote">
+          "There's a version of yourself you can feel but can't quite put words to. James pulls that out of you. I've recommended this to every founder I know who's hit a wall with their brand story."
+        </p>
+        <div class="t-person">
+          <img class="t-photo" src="https://jamesguldan.com/testimonials/dean-pohlman.jpg" alt="Dean Pohlman">
+          <div>
+            <div class="t-name">Dean Pohlman</div>
+            <div class="t-title">Founder, Man Flow Yoga</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══ SECTION 6: FINAL CTA ═══ -->
+<div class="preview-section" style="margin-bottom: 48px;">
+  <div class="section-label">
+    <span class="section-label-name">06 — Final CTA</span>
+    <span class="section-label-note">Loved it. Keeping exactly as-is.</span>
+  </div>
+  <section class="site-final-cta">
+    <p class="final-cta-eyebrow">One Conversation. Total Clarity.</p>
+    <h2 class="final-cta-h2">
+      Ready?
+    </h2>
+    <p class="final-cta-sub">
+      If you read this far, you already know.<br>
+      No pitch. No upsell sequence. Just the answers you've been looking for.
+    </p>
+    <a class="btn-cta-primary" href="#">
+      Start the Deep Work Interview
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <p class="final-cta-price"><strong>$67.</strong> Previously $5,000 per session.</p>
+  </section>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Work Blueprint — Loading Screen: Light Mode</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+body {
+  background: #FDFCFA;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #FDFCFA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ============================================================
+   BACKGROUND — warm cream with soft radials
+   ============================================================ */
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bg-nebula {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(140vw, 140vh);
+  height: min(140vw, 140vh);
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(196,112,63,0.08) 0%,
+    rgba(196,112,63,0.04) 20%,
+    rgba(196,112,63,0.015) 40%,
+    transparent 65%
+  );
+  animation: nebulaPulse 3.2s ease-in-out infinite;
+}
+@keyframes nebulaPulse {
+  0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.8; }
+  15% { transform: translate(-50%,-50%) scale(1.04); opacity: 1; }
+  25% { transform: translate(-50%,-50%) scale(1.01); opacity: 0.9; }
+  35% { transform: translate(-50%,-50%) scale(1.03); opacity: 0.95; }
+  50% { transform: translate(-50%,-50%) scale(1); opacity: 0.8; }
+}
+
+.bg-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(160vw, 160vh);
+  height: max(160vw, 160vh);
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    transparent 25%,
+    rgba(196,112,63,0.008) 40%,
+    rgba(196,112,63,0.004) 60%,
+    transparent 80%
+  );
+  animation: haloRotate 120s linear infinite;
+}
+@keyframes haloRotate { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+.bg-accent {
+  position: absolute;
+  top: 30%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,112,63,0.03) 0%, transparent 70%);
+  animation: accentDrift 20s ease-in-out infinite alternate;
+}
+@keyframes accentDrift {
+  0% { transform: translate(-50%,-50%) translate(0, 0); }
+  100% { transform: translate(-50%,-50%) translate(-5vw, 3vh); }
+}
+
+.bg-accent-2 {
+  position: absolute;
+  top: 70%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,112,63,0.02) 0%, transparent 65%);
+  animation: accentDrift2 25s ease-in-out infinite alternate;
+}
+@keyframes accentDrift2 {
+  0% { transform: translate(-50%,-50%) translate(0, 0); }
+  100% { transform: translate(-50%,-50%) translate(4vw, -2vh); }
+}
+
+/* Soft grain texture */
+.bg-grain {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  animation: grainShift 0.5s steps(4) infinite;
+}
+@keyframes grainShift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-5%, -5%); }
+  50% { transform: translate(5%, 0); }
+  75% { transform: translate(0, 5%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ============================================================
+   OUTER GEOMETRY — copper/warm on cream
+   ============================================================ */
+.outer-geometry {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100vw, 100vh);
+  height: max(100vw, 100vh);
+  pointer-events: none;
+}
+
+.outer-mandala {
+  position: absolute;
+  inset: 0;
+  animation: outerMandalaSpin 150s linear infinite;
+  opacity: 0.08;
+}
+.outer-mandala svg { width: 100%; height: 100%; }
+@keyframes outerMandalaSpin { to { transform: rotate(360deg); } }
+
+.outer-mandala-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 75%;
+  animation: outerMandalaSpin2 110s linear infinite reverse;
+  opacity: 0.06;
+}
+.outer-mandala-2 svg { width: 100%; height: 100%; }
+@keyframes outerMandalaSpin2 { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+.outer-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+}
+.outer-ring.or1 {
+  width: 90%; height: 90%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(196,112,63,0.06);
+  animation: ringSpin 80s linear infinite;
+}
+.outer-ring.or2 {
+  width: 75%; height: 75%;
+  transform: translate(-50%, -50%);
+  border: 1px dashed rgba(196,112,63,0.04);
+  animation: ringSpin 65s linear infinite reverse;
+}
+.outer-ring.or3 {
+  width: 60%; height: 60%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(196,112,63,0.07);
+  animation: ringSpin 50s linear infinite;
+}
+.outer-ring.or4 {
+  width: 48%; height: 48%;
+  transform: translate(-50%, -50%);
+  border: 1px dotted rgba(196,112,63,0.05);
+  animation: ringSpin 40s linear infinite reverse;
+}
+
+.outer-hex-shape {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.outer-hex-shape.oh1 {
+  width: 65%; height: 65%;
+  border: 1px solid rgba(196,112,63,0.05);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: hexSpin1 50s linear infinite;
+}
+.outer-hex-shape.oh2 {
+  width: 50%; height: 50%;
+  border: 1px solid rgba(196,112,63,0.06);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: hexSpin2 38s linear infinite reverse;
+}
+
+.corner-node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(196,112,63,0.15);
+  box-shadow: 0 0 15px rgba(196,112,63,0.08), 0 0 30px rgba(196,112,63,0.04);
+}
+.corner-node::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(196,112,63,0.08);
+  border-radius: 50%;
+  animation: nodeRing 4s ease-in-out infinite;
+}
+@keyframes nodeRing {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.5); opacity: 0; }
+}
+.cn1 { top: 12%; left: 18%; animation: nodePulse 5s ease-in-out infinite 0s; }
+.cn2 { top: 8%; right: 22%; animation: nodePulse 5s ease-in-out infinite 1.2s; }
+.cn3 { bottom: 15%; left: 14%; animation: nodePulse 5s ease-in-out infinite 2.5s; }
+.cn4 { bottom: 10%; right: 16%; animation: nodePulse 5s ease-in-out infinite 3.8s; }
+.cn5 { top: 50%; left: 5%; animation: nodePulse 5s ease-in-out infinite 0.7s; }
+.cn6 { top: 50%; right: 5%; animation: nodePulse 5s ease-in-out infinite 2s; }
+.cn7 { top: 22%; left: 50%; animation: nodePulse 5s ease-in-out infinite 1.5s; }
+.cn8 { bottom: 22%; left: 50%; animation: nodePulse 5s ease-in-out infinite 3s; }
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.thread-line {
+  position: absolute;
+  top: 50%; left: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,112,63,0.04), transparent);
+  transform-origin: left center;
+}
+.tl1 { width: 45vw; transform: translate(-50%, 0) rotate(-25deg); animation: threadPulse 8s ease-in-out infinite; }
+.tl2 { width: 40vw; transform: translate(-50%, 0) rotate(35deg); animation: threadPulse 8s ease-in-out infinite 2s; }
+.tl3 { width: 50vw; transform: translate(-50%, 0) rotate(-60deg); animation: threadPulse 8s ease-in-out infinite 4s; }
+.tl4 { width: 38vw; transform: translate(-50%, 0) rotate(70deg); animation: threadPulse 8s ease-in-out infinite 6s; }
+.tl5 { width: 42vw; transform: translate(-50%, 0) rotate(10deg); animation: threadPulse 8s ease-in-out infinite 1s; }
+.tl6 { width: 46vw; transform: translate(-50%, 0) rotate(-45deg); animation: threadPulse 8s ease-in-out infinite 3s; }
+@keyframes threadPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* ============================================================
+   PARTICLES — copper on cream
+   ============================================================ */
+.particles { position: absolute; inset: 0; pointer-events: none; }
+.particle {
+  position: absolute;
+  background: #C4703F;
+  border-radius: 50%;
+  opacity: 0;
+}
+.particle.s { width: 1.5px; height: 1.5px; }
+.particle.m { width: 3px; height: 3px; box-shadow: 0 0 6px rgba(196,112,63,0.3); }
+.particle.l { width: 4px; height: 4px; box-shadow: 0 0 10px rgba(196,112,63,0.4), 0 0 20px rgba(196,112,63,0.15); }
+.particle.xl { width: 2px; height: 2px; box-shadow: 0 0 6px rgba(196,112,63,0.25); }
+
+.particle.p1  { left: 35%; top: 72%; animation: pFloat 8s ease-in-out infinite 0s; }
+.particle.p2  { left: 42%; top: 68%; animation: pFloat 10s ease-in-out infinite 1.2s; }
+.particle.p3  { left: 50%; top: 80%; animation: pFloat 7s ease-in-out infinite 2.8s; }
+.particle.p4  { left: 58%; top: 72%; animation: pFloat 9s ease-in-out infinite 0.6s; }
+.particle.p5  { left: 55%; top: 65%; animation: pFloat 11s ease-in-out infinite 3.5s; }
+.particle.p6  { left: 45%; top: 78%; animation: pFloat 8.5s ease-in-out infinite 1.8s; }
+.particle.p7  { left: 25%; top: 60%; animation: pFloat 10s ease-in-out infinite 4.2s; }
+.particle.p8  { left: 75%; top: 62%; animation: pFloat 9s ease-in-out infinite 2.1s; }
+.particle.p9  { left: 30%; top: 85%; animation: pFloat 7.5s ease-in-out infinite 5s; }
+.particle.p10 { left: 70%; top: 82%; animation: pFloat 12s ease-in-out infinite 0.3s; }
+.particle.p11 { left: 20%; top: 50%; animation: pFloat 9s ease-in-out infinite 3.8s; }
+.particle.p12 { left: 80%; top: 55%; animation: pFloat 11s ease-in-out infinite 1.5s; }
+.particle.p13 { left: 5%;  top: 70%; animation: pFloatWide 14s ease-in-out infinite 4.5s; }
+.particle.p14 { left: 95%; top: 65%; animation: pFloatWide 13s ease-in-out infinite 2.5s; }
+.particle.p15 { left: 3%;  top: 45%; animation: pFloatWide 15s ease-in-out infinite 0.8s; }
+.particle.p16 { left: 97%; top: 40%; animation: pFloatWide 12s ease-in-out infinite 3.2s; }
+.particle.p17 { left: 10%; top: 85%; animation: pFloatWide 11s ease-in-out infinite 5.5s; }
+.particle.p18 { left: 90%; top: 80%; animation: pFloatWide 10s ease-in-out infinite 1s; }
+.particle.p19 { left: 8%;  top: 30%; animation: pFloatWide 13s ease-in-out infinite 2s; }
+.particle.p20 { left: 92%; top: 25%; animation: pFloatWide 14s ease-in-out infinite 4s; }
+.particle.p21 { left: 15%; top: 15%; animation: pFloatWide 16s ease-in-out infinite 1.5s; }
+.particle.p22 { left: 85%; top: 90%; animation: pFloatWide 12s ease-in-out infinite 3.5s; }
+.particle.p23 { left: 50%; top: 92%; animation: pFloat 9s ease-in-out infinite 0.5s; }
+.particle.p24 { left: 40%; top: 20%; animation: pFloatWide 15s ease-in-out infinite 2.8s; }
+
+@keyframes pFloat {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  6%   { opacity: 0.5; }
+  30%  { opacity: 0.3; transform: translateY(-80px) translateX(15px) scale(1.2); }
+  60%  { opacity: 0.1; }
+  100% { transform: translateY(-280px) translateX(40px) scale(0.6); opacity: 0; }
+}
+@keyframes pFloatWide {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  8%   { opacity: 0.35; }
+  35%  { opacity: 0.18; transform: translateY(-120px) translateX(25px) scale(1.1); }
+  65%  { opacity: 0.06; }
+  100% { transform: translateY(-350px) translateX(50px) scale(0.4); opacity: 0; }
+}
+
+/* ============================================================
+   CORE GEOMETRY — rich copper on cream
+   ============================================================ */
+.geometry-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.mandala-ring {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  animation: mandalaSpin 90s linear infinite;
+  opacity: 0.18;
+}
+.mandala-ring svg { width: 100%; height: 100%; }
+.mandala-ring circle, .mandala-ring line { stroke: #C4703F; fill: none; }
+@keyframes mandalaSpin { to { transform: rotate(360deg); } }
+
+.flower-of-life {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  animation: flowerSpin 70s linear infinite, flowerBreathe 3.2s ease-in-out infinite;
+  opacity: 0.2;
+  filter: drop-shadow(0 0 3px rgba(196,112,63,0.15));
+}
+.flower-of-life circle {
+  fill: none;
+  stroke: #C4703F;
+  stroke-width: 0.5;
+}
+@keyframes flowerSpin { to { transform: rotate(360deg); } }
+@keyframes flowerBreathe {
+  0%, 100% { opacity: 0.15; transform: rotate(0deg) scale(1); }
+  15% { opacity: 0.28; transform: rotate(0.5deg) scale(1.03); }
+  35% { opacity: 0.22; }
+  50% { opacity: 0.15; transform: rotate(0deg) scale(1); }
+}
+
+.sacred-ring { position: absolute; border-radius: 50%; }
+.sacred-ring.r1 { width: 340px; height: 340px; border: 1px solid rgba(196,112,63,0.15); animation: ringSpin 45s linear infinite; }
+.sacred-ring.r2 { width: 280px; height: 280px; border: 1px dashed rgba(196,112,63,0.1); animation: ringSpin 35s linear infinite reverse; }
+.sacred-ring.r3 { width: 220px; height: 220px; border: 1px solid rgba(196,112,63,0.18); animation: ringSpin 55s linear infinite; box-shadow: 0 0 30px rgba(196,112,63,0.04) inset; }
+.sacred-ring.r4 { width: 160px; height: 160px; border: 1px dotted rgba(196,112,63,0.12); animation: ringSpin 25s linear infinite reverse; }
+.sacred-ring.r5 { width: 110px; height: 110px; border: 1px solid rgba(196,112,63,0.25); animation: ringSpin 20s linear infinite; box-shadow: 0 0 20px rgba(196,112,63,0.06) inset; }
+@keyframes ringSpin { to { transform: rotate(360deg); } }
+
+.hex-ring { position: absolute; display: flex; align-items: center; justify-content: center; }
+.hex-shape { clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); animation: hexBreathe 3.2s ease-in-out infinite; }
+.hex-shape.h1 { width: 230px; height: 230px; border: 1.5px solid rgba(196,112,63,0.18); animation: hexSpin1 30s linear infinite, hexBreathe 3.2s ease-in-out infinite; }
+.hex-shape.h2 { width: 170px; height: 170px; border: 1.5px solid rgba(196,112,63,0.13); animation: hexSpin2 22s linear infinite reverse, hexBreathe 3.2s ease-in-out infinite 0.4s; }
+.hex-shape.h3 { width: 115px; height: 115px; border: 1.5px solid rgba(196,112,63,0.25); animation: hexSpin3 16s linear infinite, hexBreathe 3.2s ease-in-out infinite 0.8s; }
+@keyframes hexSpin1 { to { transform: rotate(360deg); } }
+@keyframes hexSpin2 { to { transform: rotate(360deg); } }
+@keyframes hexSpin3 { to { transform: rotate(360deg); } }
+@keyframes hexBreathe {
+  0%, 100% { opacity: 0.7; }
+  15% { opacity: 1; }
+  35% { opacity: 0.85; }
+  50% { opacity: 0.7; }
+}
+
+.golden-spiral {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  animation: spiralSpin 100s linear infinite reverse;
+  opacity: 0.08;
+}
+.golden-spiral svg { width: 100%; height: 100%; }
+@keyframes spiralSpin { to { transform: rotate(360deg); } }
+
+/* ============================================================
+   THE HEART — warm copper glow on cream
+   ============================================================ */
+.heart-core {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-glow-outer {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,112,63,0.12) 0%, rgba(196,112,63,0.04) 40%, transparent 70%);
+  animation: heartGlowOuter 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes heartGlowOuter {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  15% { transform: scale(1.5); opacity: 0.8; }
+  25% { transform: scale(1.2); opacity: 0.5; }
+  35% { transform: scale(1.4); opacity: 0.7; }
+  50% { transform: scale(1); opacity: 0.4; }
+}
+
+.heart-glow-inner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,112,63,0.25) 0%, rgba(196,112,63,0.1) 35%, transparent 65%);
+  animation: heartGlowInner 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes heartGlowInner {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  15% { transform: scale(1.3); opacity: 1; }
+  25% { transform: scale(1.1); opacity: 0.75; }
+  35% { transform: scale(1.25); opacity: 0.95; }
+  50% { transform: scale(1); opacity: 0.6; }
+}
+
+.heart-ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(196,112,63,0.2);
+  width: 60px; height: 60px;
+  animation: rippleExpand 3.2s ease-out infinite;
+}
+.heart-ripple.rip2 { animation-delay: 0.25s; border-color: rgba(196,112,63,0.12); }
+.heart-ripple.rip3 { animation-delay: 0.5s; border-color: rgba(196,112,63,0.06); width: 50px; height: 50px; }
+@keyframes rippleExpand {
+  0% { transform: scale(1); opacity: 0.7; }
+  15% { transform: scale(2); opacity: 0.35; }
+  35% { transform: scale(3); opacity: 0.08; }
+  60% { transform: scale(3.5); opacity: 0; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+
+.heart-icon {
+  position: relative;
+  z-index: 3;
+  animation: heartBeat 3.2s ease-in-out infinite;
+  filter:
+    drop-shadow(0 0 6px rgba(196,112,63,0.7))
+    drop-shadow(0 0 18px rgba(196,112,63,0.35))
+    drop-shadow(0 0 40px rgba(196,112,63,0.12));
+}
+.heart-icon svg { width: 56px; height: 56px; }
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.2); }
+  25% { transform: scale(1.06); }
+  35% { transform: scale(1.16); }
+  50% { transform: scale(1); }
+}
+
+/* ============================================================
+   TEXT + PROGRESS — dark text on cream
+   ============================================================ */
+.loading-text {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.loading-message {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: #1A1A1A;
+  max-width: 420px;
+  line-height: 1.55;
+  min-height: 64px;
+  transition: opacity 0.5s ease;
+}
+
+.loading-stage-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+.loading-stage {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #C4703F;
+}
+
+.loading-progress {
+  display: flex;
+  gap: 5px;
+  margin-top: 18px;
+  justify-content: center;
+}
+.progress-segment {
+  width: 48px;
+  height: 3px;
+  background: rgba(196,112,63,0.12);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-segment.active { background: rgba(196,112,63,0.18); }
+.progress-segment.active .progress-fill { display: block; }
+.progress-fill {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #C4703F, #D4884F);
+  border-radius: 3px;
+  animation: segmentPulse 3.2s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(196,112,63,0.4);
+}
+.progress-segment.complete .progress-fill {
+  display: block;
+  animation: none;
+  opacity: 0.7;
+}
+@keyframes segmentPulse {
+  0%, 100% { opacity: 0.4; transform: scaleX(0.5); transform-origin: left; }
+  15% { opacity: 1; transform: scaleX(1); }
+  50% { opacity: 0.5; transform: scaleX(0.7); }
+}
+
+.loading-timer {
+  font-size: 12px;
+  color: rgba(0,0,0,0.3);
+  margin-top: 22px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .outer-geometry { display: none; }
+  .corner-node { display: none; }
+  .thread-line { display: none; }
+}
+
+@media (max-width: 480px) {
+  .geometry-container { width: 300px; height: 300px; }
+  .flower-of-life { width: 240px; height: 240px; }
+  .mandala-ring { width: 280px; height: 280px; }
+  .golden-spiral { width: 220px; height: 220px; }
+  .hex-shape.h1 { width: 180px; height: 180px; }
+  .hex-shape.h2 { width: 130px; height: 130px; }
+  .hex-shape.h3 { width: 90px; height: 90px; }
+  .sacred-ring.r1 { width: 260px; height: 260px; }
+  .sacred-ring.r2 { width: 210px; height: 210px; }
+  .sacred-ring.r3 { width: 170px; height: 170px; }
+  .sacred-ring.r4 { width: 130px; height: 130px; }
+  .sacred-ring.r5 { width: 90px; height: 90px; }
+  .heart-icon svg { width: 44px; height: 44px; }
+  .loading-message { font-size: 18px; max-width: 300px; }
+  .loading-text { margin-top: 40px; }
+}
+
+@media (min-width: 1200px) {
+  .outer-mandala { opacity: 0.1; }
+  .outer-mandala-2 { opacity: 0.07; }
+  .outer-ring.or1 { border-color: rgba(196,112,63,0.07); }
+  .outer-ring.or3 { border-color: rgba(196,112,63,0.08); }
+  .thread-line { background: linear-gradient(90deg, transparent, rgba(196,112,63,0.05), transparent); }
+}
+</style>
+</head>
+<body>
+
+<div class="loading-screen">
+  <div class="bg-layer">
+    <div class="bg-halo"></div>
+    <div class="bg-nebula"></div>
+    <div class="bg-accent"></div>
+    <div class="bg-accent-2"></div>
+    <div class="bg-grain"></div>
+  </div>
+
+  <div class="outer-geometry">
+    <svg class="outer-mandala" viewBox="0 0 1000 1000">
+      <circle cx="500" cy="500" r="480" stroke="#C4703F" stroke-width="0.5" fill="none"/>
+      <circle cx="500" cy="500" r="460" stroke="#C4703F" stroke-width="0.3" fill="none" stroke-dasharray="6 12"/>
+      <circle cx="500" cy="500" r="420" stroke="#C4703F" stroke-width="0.3" fill="none"/>
+      <line x1="500" y1="20" x2="500" y2="980" stroke="#C4703F" stroke-width="0.25"/>
+      <line x1="20" y1="500" x2="980" y2="500" stroke="#C4703F" stroke-width="0.25"/>
+      <line x1="146" y1="146" x2="854" y2="854" stroke="#C4703F" stroke-width="0.25"/>
+      <line x1="854" y1="146" x2="146" y2="854" stroke="#C4703F" stroke-width="0.25"/>
+      <line x1="260" y1="25" x2="740" y2="975" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="740" y1="25" x2="260" y2="975" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="25" y1="260" x2="975" y2="740" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="25" y1="740" x2="975" y2="260" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="72" y1="330" x2="928" y2="670" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="72" y1="670" x2="928" y2="330" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="330" y1="72" x2="670" y2="928" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="670" y1="72" x2="330" y2="928" stroke="#C4703F" stroke-width="0.15"/>
+      <circle cx="500" cy="20" r="3" fill="rgba(196,112,63,0.2)" stroke="none"/>
+      <circle cx="500" cy="980" r="3" fill="rgba(196,112,63,0.2)" stroke="none"/>
+      <circle cx="20" cy="500" r="3" fill="rgba(196,112,63,0.2)" stroke="none"/>
+      <circle cx="980" cy="500" r="3" fill="rgba(196,112,63,0.2)" stroke="none"/>
+      <circle cx="146" cy="146" r="3" fill="rgba(196,112,63,0.15)" stroke="none"/>
+      <circle cx="854" cy="854" r="3" fill="rgba(196,112,63,0.15)" stroke="none"/>
+      <circle cx="854" cy="146" r="3" fill="rgba(196,112,63,0.15)" stroke="none"/>
+      <circle cx="146" cy="854" r="3" fill="rgba(196,112,63,0.15)" stroke="none"/>
+    </svg>
+    <svg class="outer-mandala-2" viewBox="0 0 800 800">
+      <circle cx="400" cy="400" r="380" stroke="#C4703F" stroke-width="0.4" fill="none" stroke-dasharray="3 10"/>
+      <circle cx="400" cy="400" r="340" stroke="#C4703F" stroke-width="0.25" fill="none"/>
+      <line x1="400" y1="20" x2="400" y2="780" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="20" y1="400" x2="780" y2="400" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="120" y1="120" x2="680" y2="680" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="680" y1="120" x2="120" y2="680" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="200" y1="28" x2="600" y2="772" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="600" y1="28" x2="200" y2="772" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="28" y1="200" x2="772" y2="600" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="28" y1="600" x2="772" y2="200" stroke="#C4703F" stroke-width="0.15"/>
+    </svg>
+    <div class="outer-ring or1"></div>
+    <div class="outer-ring or2"></div>
+    <div class="outer-ring or3"></div>
+    <div class="outer-ring or4"></div>
+    <div class="outer-hex-shape oh1"></div>
+    <div class="outer-hex-shape oh2"></div>
+    <div class="thread-line tl1"></div>
+    <div class="thread-line tl2"></div>
+    <div class="thread-line tl3"></div>
+    <div class="thread-line tl4"></div>
+    <div class="thread-line tl5"></div>
+    <div class="thread-line tl6"></div>
+  </div>
+
+  <div class="corner-node cn1"></div>
+  <div class="corner-node cn2"></div>
+  <div class="corner-node cn3"></div>
+  <div class="corner-node cn4"></div>
+  <div class="corner-node cn5"></div>
+  <div class="corner-node cn6"></div>
+  <div class="corner-node cn7"></div>
+  <div class="corner-node cn8"></div>
+
+  <div class="particles">
+    <div class="particle s p1"></div>
+    <div class="particle m p2"></div>
+    <div class="particle s p3"></div>
+    <div class="particle l p4"></div>
+    <div class="particle s p5"></div>
+    <div class="particle m p6"></div>
+    <div class="particle s p7"></div>
+    <div class="particle m p8"></div>
+    <div class="particle l p9"></div>
+    <div class="particle s p10"></div>
+    <div class="particle m p11"></div>
+    <div class="particle s p12"></div>
+    <div class="particle xl p13"></div>
+    <div class="particle xl p14"></div>
+    <div class="particle s p15"></div>
+    <div class="particle xl p16"></div>
+    <div class="particle m p17"></div>
+    <div class="particle xl p18"></div>
+    <div class="particle s p19"></div>
+    <div class="particle m p20"></div>
+    <div class="particle xl p21"></div>
+    <div class="particle s p22"></div>
+    <div class="particle l p23"></div>
+    <div class="particle xl p24"></div>
+  </div>
+
+  <div class="geometry-container">
+    <svg class="mandala-ring" viewBox="0 0 400 400">
+      <circle cx="200" cy="200" r="185" stroke-width="0.5"/>
+      <circle cx="200" cy="200" r="175" stroke-width="0.3" stroke-dasharray="4 8"/>
+      <line x1="200" y1="15" x2="200" y2="385" stroke-width="0.3"/>
+      <line x1="15" y1="200" x2="385" y2="200" stroke-width="0.3"/>
+      <line x1="64" y1="64" x2="336" y2="336" stroke-width="0.3"/>
+      <line x1="336" y1="64" x2="64" y2="336" stroke-width="0.3"/>
+      <line x1="104" y1="18" x2="296" y2="382" stroke-width="0.2"/>
+      <line x1="296" y1="18" x2="104" y2="382" stroke-width="0.2"/>
+      <line x1="18" y1="104" x2="382" y2="296" stroke-width="0.2"/>
+      <line x1="18" y1="296" x2="382" y2="104" stroke-width="0.2"/>
+      <circle cx="200" cy="15" r="2" fill="rgba(196,112,63,0.4)" stroke="none"/>
+      <circle cx="200" cy="385" r="2" fill="rgba(196,112,63,0.4)" stroke="none"/>
+      <circle cx="15" cy="200" r="2" fill="rgba(196,112,63,0.4)" stroke="none"/>
+      <circle cx="385" cy="200" r="2" fill="rgba(196,112,63,0.4)" stroke="none"/>
+      <circle cx="64" cy="64" r="2" fill="rgba(196,112,63,0.3)" stroke="none"/>
+      <circle cx="336" cy="336" r="2" fill="rgba(196,112,63,0.3)" stroke="none"/>
+      <circle cx="336" cy="64" r="2" fill="rgba(196,112,63,0.3)" stroke="none"/>
+      <circle cx="64" cy="336" r="2" fill="rgba(196,112,63,0.3)" stroke="none"/>
+    </svg>
+    <svg class="flower-of-life" viewBox="0 0 300 300">
+      <circle cx="150" cy="150" r="50"/><circle cx="150" cy="100" r="50"/><circle cx="193.3" cy="125" r="50"/><circle cx="193.3" cy="175" r="50"/><circle cx="150" cy="200" r="50"/><circle cx="106.7" cy="175" r="50"/><circle cx="106.7" cy="125" r="50"/><circle cx="150" cy="50" r="50"/><circle cx="193.3" cy="75" r="50"/><circle cx="236.6" cy="100" r="50"/><circle cx="236.6" cy="150" r="50"/><circle cx="236.6" cy="200" r="50"/><circle cx="193.3" cy="225" r="50"/><circle cx="150" cy="250" r="50"/><circle cx="106.7" cy="225" r="50"/><circle cx="63.4" cy="200" r="50"/><circle cx="63.4" cy="150" r="50"/><circle cx="63.4" cy="100" r="50"/><circle cx="106.7" cy="75" r="50"/>
+    </svg>
+    <svg class="golden-spiral" viewBox="0 0 300 300">
+      <path d="M150,150 Q150,80 210,80 Q280,80 280,150 Q280,240 190,240 Q90,240 90,140 Q90,30 200,30" fill="none" stroke="#C4703F" stroke-width="0.6"/>
+      <path d="M150,150 Q150,110 180,110 Q220,110 220,150 Q220,200 170,200 Q110,200 110,145 Q110,70 185,70" fill="none" stroke="#C4703F" stroke-width="0.4"/>
+    </svg>
+    <div class="sacred-ring r1"></div><div class="sacred-ring r2"></div><div class="sacred-ring r3"></div><div class="sacred-ring r4"></div><div class="sacred-ring r5"></div>
+    <div class="hex-ring"><div class="hex-shape h1"></div></div><div class="hex-ring"><div class="hex-shape h2"></div></div><div class="hex-ring"><div class="hex-shape h3"></div></div>
+    <div class="heart-core">
+      <div class="heart-glow-outer"></div>
+      <div class="heart-glow-inner"></div>
+      <div class="heart-ripple"></div>
+      <div class="heart-ripple rip2"></div>
+      <div class="heart-ripple rip3"></div>
+      <div class="heart-icon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <!-- outer heart — primary line -->
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                stroke="#C4703F" stroke-width="1.1" stroke-linejoin="round"/>
+          <!-- middle heart — inset at 70% -->
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                stroke="#C4703F" stroke-width="0.55" stroke-linejoin="round"
+                transform="translate(12,12) scale(0.68) translate(-12,-12)" opacity="0.5"/>
+          <!-- inner heart — inset at 40% -->
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                stroke="#C4703F" stroke-width="0.4" stroke-linejoin="round"
+                transform="translate(12,12) scale(0.40) translate(-12,-12)" opacity="0.25"/>
+          <!-- center axis -->
+          <line x1="12" y1="3.5" x2="12" y2="21.35" stroke="#C4703F" stroke-width="0.25" opacity="0.18"/>
+          <!-- convergence dot at bottom point -->
+          <circle cx="12" cy="21.35" r="0.75" fill="#C4703F" opacity="0.85"/>
+          <!-- top notch marker -->
+          <circle cx="12" cy="7" r="0.55" fill="none" stroke="#C4703F" stroke-width="0.3" opacity="0.35"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading-text">
+    <div class="loading-message" id="loadingMsg">Brewing something strong for your brand...</div>
+    <div class="loading-stage-row">
+      <div class="loading-stage" id="loadingStage">Step 1 of 4</div>
+    </div>
+    <div class="loading-progress">
+      <div class="progress-segment active" id="seg1"><div class="progress-fill"></div></div>
+      <div class="progress-segment" id="seg2"><div class="progress-fill"></div></div>
+      <div class="progress-segment" id="seg3"><div class="progress-fill"></div></div>
+      <div class="progress-segment" id="seg4"><div class="progress-fill"></div></div>
+    </div>
+    <div class="loading-timer" id="loadingTimer">This typically takes 2 to 4 minutes</div>
+  </div>
+</div>
+
+<script>
+const MESSAGES = [
+  "Brewing something strong for your brand...",
+  "Reading between your lines...",
+  "Sharpening the questions that matter...",
+  "Finding the words you did not know you needed...",
+  "Tuning the frequency to your specific flavor of genius...",
+  "Your brand is already forming. We just need to pull it out...",
+  "Calibrating for depth. Shallow is for swimming pools...",
+  "Loading 10,000 hours of brand strategy into 90 minutes...",
+  "Assembling the interview that will change how you see your business...",
+  "Almost there. The good stuff takes a second...",
+];
+const STAGES = [
+  { label: "Step 1 of 4 — Synthesizing", seg: 1 },
+  { label: "Step 2 of 4 — Generating brand images", seg: 2 },
+  { label: "Step 3 of 4 — Writing your story", seg: 3 },
+  { label: "Step 4 of 4 — Final polish", seg: 4 },
+];
+const shuffled = [...MESSAGES].sort(() => Math.random() - 0.5);
+let msgIdx = 0;
+const msgEl = document.getElementById('loadingMsg');
+const stageEl = document.getElementById('loadingStage');
+setInterval(() => {
+  msgIdx = (msgIdx + 1) % shuffled.length;
+  msgEl.style.opacity = '0';
+  setTimeout(() => { msgEl.textContent = shuffled[msgIdx]; msgEl.style.opacity = '1'; }, 500);
+}, 4500);
+let stageIdx = 0;
+function advanceStage() {
+  if (stageIdx >= STAGES.length) return;
+  const stage = STAGES[stageIdx];
+  stageEl.textContent = stage.label;
+  for (let i = 1; i < stage.seg; i++) { const prev = document.getElementById('seg' + i); prev.classList.remove('active'); prev.classList.add('complete'); }
+  const curr = document.getElementById('seg' + stage.seg);
+  curr.classList.add('active');
+  stageIdx++;
+  if (stageIdx < STAGES.length) setTimeout(advanceStage, 8000 + Math.random() * 4000);
+}
+setTimeout(() => advanceStage(), 6000);
+</script>
+</body>
+</html>

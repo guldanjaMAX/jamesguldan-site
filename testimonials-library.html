@@ -828,9 +828,9 @@ function renderStageGrid(counts) {
 }
 
 function renderStats(testimonials) {
-  const screenshots = testimonials.filter(t => t.format === 'screenshot').length;
-  const text = testimonials.filter(t => t.format !== 'screenshot' && t.active && t.quote).length;
-  const pending = testimonials.filter(t => t.format !== 'screenshot' && (!t.quote || t.quote.trim() === '')).length;
+  const screenshots = testimonials.filter(t => t.format === 'image').length;
+  const text = testimonials.filter(t => t.format !== 'image' && t.active && t.quote).length;
+  const pending = testimonials.filter(t => t.format !== 'image' && (!t.quote || t.quote.trim() === '')).length;
   const videos = testimonials.filter(t => t.format === 'video').length;
   document.getElementById('statsBar').innerHTML = `
     <div class="stat"><span class="stat-dot active"></span> <strong>${text}</strong> text/video</div>
@@ -850,8 +850,8 @@ function getFilteredTestimonials() {
   else if (activeFilter === 'sis') list = list.filter(t => t.product === 'sis' || t.funnel_stages.some(s => s.startsWith('sis')));
   else if (activeFilter === 'general') list = list.filter(t => t.product === 'general');
   else if (activeFilter === 'video') list = list.filter(t => t.format === 'video');
-  else if (activeFilter === 'screenshot') list = list.filter(t => t.format === 'screenshot');
-  else if (activeFilter === 'pending') list = list.filter(t => t.format !== 'screenshot' && (!t.quote || t.quote.trim() === '' || t.tags.includes('pending-approval') || t.tags.includes('needs-screenshot')));
+  else if (activeFilter === 'screenshot') list = list.filter(t => t.format === 'image');
+  else if (activeFilter === 'pending') list = list.filter(t => t.format !== 'image' && (!t.quote || t.quote.trim() === '' || t.tags.includes('pending-approval') || t.tags.includes('needs-screenshot')));
   return list;
 }
 
@@ -863,32 +863,28 @@ function renderCards(testimonials) {
     return;
   }
 
-  const isPending = t => t.format !== 'screenshot' && (!t.quote || t.quote.trim() === '' || t.tags.includes('needs-screenshot') || t.tags.includes('needs-content'));
+  const isPending = t => t.format !== 'image' && (!t.quote || t.quote.trim() === '' || t.tags.includes('needs-screenshot') || t.tags.includes('needs-content'));
   const isPlaced = t => t.tags.includes('currently-placed');
 
   const cards = testimonials.map(t => {
     const pending = isPending(t);
     const placed = isPlaced(t);
     const isVideo = t.format === 'video';
-    const isScreenshot = t.format === 'screenshot';
-    const photo = PHOTOS[t.name];
+    const isImage = t.format === 'image';
 
-    if (isScreenshot && t.file_repo) {
-      return `<div class="card" style="padding:0;overflow:hidden;">
-        <img src="https://jamesguldan.com/${t.file_repo}" alt="Facebook testimonial screenshot" loading="lazy" style="width:100%;height:auto;display:block;" onerror="this.closest('.card').style.display='none'">
-      </div>`;
-    }
+    // Use headshot_url from DB first, then legacy PHOTOS lookup, then initials
+    const photoSrc = t.headshot_url || PHOTOS[t.name] || null;
+    const avatarInner = photoSrc
+      ? `<img src="${photoSrc}" alt="${t.name}" onerror="this.parentElement.innerHTML='${initials(t.name)}'">`
+      : initials(t.name);
 
     const badges = [
       isVideo ? `<span class="badge badge-video">▶ Video</span>` : '',
+      isImage ? `<span class="badge" style="background:rgba(100,180,100,0.15);color:#7dc87d;border:1px solid rgba(100,180,100,0.2);">FB Post</span>` : '',
       pending ? `<span class="badge badge-pending">Pending Approval</span>` : '',
       placed ? `<span class="badge badge-placed">✓ Live</span>` : '',
       `<span class="badge badge-product">${t.product.toUpperCase()}</span>`,
     ].filter(Boolean).join('');
-
-    const avatarInner = photo
-      ? `<img src="${photo}" alt="${t.name}" onerror="this.parentElement.innerHTML='${initials(t.name)}'">`
-      : initials(t.name);
 
     const quoteSection = pending
       ? `<div class="pending-quote">⏳ ${t.placement_notes?.split('.')[0] || 'Quote pending — needs follow-up.'}</div>`
@@ -897,18 +893,26 @@ function renderCards(testimonials) {
     const resultSection = t.result && !pending
       ? `<div class="result-callout">→ ${t.result}</div>` : '';
 
+    // For image testimonials: show screenshot thumbnail above the quote
+    let screenshotThumb = '';
+    if (isImage && t.file_r2) {
+      screenshotThumb = `<div style="margin-bottom:14px;border-radius:8px;overflow:hidden;border:1px solid var(--border-soft);">
+        <img src="${t.file_r2}" alt="Facebook post by ${t.name}" loading="lazy" style="width:100%;height:auto;display:block;max-height:180px;object-fit:cover;object-position:top;" onerror="this.closest('div').style.display='none'">
+      </div>`;
+    }
+
     let videoThumb = '';
     if (isVideo) {
-      if (t.file_repo) {
-        videoThumb = `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
-          <video controls preload="metadata" style="width:100%;display:block;border-radius:8px;max-height:240px;">
-            <source src="https://jamesguldan.com/${t.file_repo}" type="video/mp4">
-          </video>
-        </div>`;
-      } else if (t.source_url && t.source_url.includes('drive.google.com')) {
+      if (t.source_url && t.source_url.includes('drive.google.com')) {
         const embedUrl = t.source_url.replace('/view', '/preview').replace('/edit', '/preview');
         videoThumb = `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
           <iframe src="${embedUrl}" allow="autoplay" style="width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:8px;" title="${t.name} testimonial video"></iframe>
+        </div>`;
+      } else if (t.source_url) {
+        videoThumb = `<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;">
+          <video controls preload="metadata" style="width:100%;display:block;border-radius:8px;max-height:240px;">
+            <source src="${t.source_url}" type="video/mp4">
+          </video>
         </div>`;
       }
     }
@@ -927,6 +931,7 @@ function renderCards(testimonials) {
     return `<div class="card ${pending ? 'pending' : ''} ${isVideo ? 'video' : ''}">
       <div class="card-badges">${badges}</div>
       ${videoThumb}
+      ${screenshotThumb}
       ${quoteSection}
       ${resultSection}
       <div class="card-author">
