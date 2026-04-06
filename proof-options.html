@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Proof Bar Options — James Guldan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #FDFCFA;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page-header {
+            text-align: center;
+            padding: 60px 24px 40px;
+        }
+        .page-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .page-header p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        .option-label {
+            text-align: center;
+            padding: 32px 24px 0;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #c4703f;
+        }
+        .option-sublabel {
+            text-align: center;
+            padding: 6px 24px 20px;
+            font-size: 0.8rem;
+            color: #999;
+        }
+        .proof-bar {
+            background: #0e0e12;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto 48px;
+            max-width: 1000px;
+            border-radius: 12px;
+        }
+        .proof-top-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .proof-item {
+            text-align: center;
+            padding: 44px 20px 36px;
+            position: relative;
+        }
+        .proof-item::after {
+            content: '';
+            position: absolute;
+            top: 25%; bottom: 25%; right: 0;
+            width: 1px;
+            background: rgba(255,255,255,0.06);
+        }
+        .proof-item:last-child::after { display: none; }
+        .proof-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: #FDFCFA;
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+        }
+        .proof-number .accent-num { color: #c4703f; }
+        .proof-label {
+            font-size: 0.68rem;
+            color: rgba(253,252,250,0.35);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        .proof-divider-line {
+            height: 1px;
+            max-width: 960px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.06) 80%, transparent);
+        }
+        .proof-bottom-row {
+            padding: 28px 24px 32px;
+            text-align: center;
+        }
+        .proof-bottom-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(253,252,250,0.18);
+            margin-bottom: 16px;
+        }
+        .proof-names {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .proof-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(253,252,250,0.3);
+            padding: 0 20px;
+        }
+        .proof-name-sep {
+            width: 1px;
+            height: 12px;
+            background: rgba(253,252,250,0.1);
+            flex-shrink: 0;
+        }
+        .highlight-stat {
+            position: relative;
+        }
+        .highlight-stat .proof-number {
+            color: #c4703f;
+        }
+        @media (max-width: 700px) {
+            .proof-top-row { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-header">
+    <h1>Proof Bar: Pick Your 4th Stat</h1>
+    <p>The first three stats stay the same. Compare the 4th slot options below.</p>
+</div>
+
+<!-- OPTION A -->
+<div class="option-label">Option A</div>
+<div class="option-sublabel">Years of experience. Simple. Unchallengeable.</div>
+<div class="proof-bar">
+    <div class="proof-top-row">
+        <div class="proof-item">
+            <div class="proof-number"><span class="accent-num">132</span></div>
+            <div class="proof-label">Entrepreneurs Repositioned</div>
+        </div>
+        <div class="proof-item">
+            <div class="proof-number">13</div>
+            <div class="proof-label">Grew 1,000%+ After</div>
+        </div>
+        <div class="proof-item">
+            <div class="proof-number">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
+            <div class="proof-label">To Total Clarity</div>
+        </div>
+        <div class="proof-item highlight-stat">
+            <div class="proof-number">15<span class="accent-num">+</span></div>
+            <div class="proof-label">Years Deep in the Trenches</div>
+        </div>
+    </div>
+    <div class="proof-divider-line"></div>
+    <div class="proof-bottom-row">
+        <div class="proof-bottom-label">Built positioning for</div>
+        <div class="proof-names">
+            <span class="proof-name">Tony Robbins</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Abundance360</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Dean Graziosi</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Frank Kern</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">The Dalai Lama</span>
+        </div>
+    </div>
+</div>
+
+<!-- OPTION B -->
+<div class="option-label">Option B</div>
+<div class="option-sublabel">Breadth across industries. Shows pattern recognition, not niche dependency.</div>
+<div class="proof-bar">
+    <div class="proof-top-row">
+        <div class="proof-item">
+            <div class="proof-number"><span class="accent-num">132</span></div>
+            <div class="proof-label">Entrepreneurs Repositioned</div>
+        </div>
+        <div class="proof-item">
+            <div class="proof-number">13</div>
+            <div class="proof-label">Grew 1,000%+ After</div>
+        </div>
+        <div class="proof-item">
+            <div class="proof-number">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
+            <div class="proof-label">To Total Clarity</div>
+        </div>
+        <div class="proof-item highlight-stat">
+            <div class="proof-number">40<span class="accent-num">+</span></div>
+            <div class="proof-label">Industries Repositioned</div>
+        </div>
+    </div>
+    <div class="proof-divider-line"></div>
+    <div class="proof-bottom-row">
+        <div class="proof-bottom-label">Built positioning for</div>
+        <div class="proof-names">
+            <span class="proof-name">Tony Robbins</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Abundance360</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Dean Graziosi</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Frank Kern</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">The Dalai Lama</span>
+        </div>
+    </div>
+</div>
+
+<!-- OPTION C -->
+<div class="option-label">Option C</div>
+<div class="option-sublabel">Global reach. The names already imply it. This makes it explicit.</div>
+<div class="proof-bar">
+    <div class="proof-top-row">
+        <div class="proof-item">
+            <div class="proof-number"><span class="accent-num">132</span></div>
+            <div class="proof-label">Entrepreneurs Repositioned</div>
+        </div>
+        <div class="proof-item">
+            <div class="proof-number">13</div>
+            <div class="proof-label">Grew 1,000%+ After</div>
+        </div>
+        <div class="proof-item">
+            <div class="proof-number">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
+            <div class="proof-label">To Total Clarity</div>
+        </div>
+        <div class="proof-item highlight-stat">
+            <div class="proof-number">5</div>
+            <div class="proof-label">Continents Served</div>
+        </div>
+    </div>
+    <div class="proof-divider-line"></div>
+    <div class="proof-bottom-row">
+        <div class="proof-bottom-label">Built positioning for</div>
+        <div class="proof-names">
+            <span class="proof-name">Tony Robbins</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Abundance360</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Dean Graziosi</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Frank Kern</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">The Dalai Lama</span>
+        </div>
+    </div>
+</div>
+
+<!-- OPTION D -->
+<div class="option-label">Option D</div>
+<div class="option-sublabel">Flip from a claim about others to a statement about your value. Positions premium.</div>
+<div class="proof-bar">
+    <div class="proof-top-row">
+        <div class="proof-item">
+            <div class="proof-number"><span class="accent-num">132</span></div>
+            <div class="proof-label">Entrepreneurs Repositioned</div>
+        </div>
+        <div class="proof-item">
+            <div class="proof-number">13</div>
+            <div class="proof-label">Grew 1,000%+ After</div>
+        </div>
+        <div class="proof-item">
+            <div class="proof-number">2<span style="font-size:0.55em; opacity:0.4; margin-left:2px; font-weight:600;">hrs</span></div>
+            <div class="proof-label">To Total Clarity</div>
+        </div>
+        <div class="proof-item highlight-stat">
+            <div class="proof-number"><span style="font-size:0.75em;">$</span>5K<span style="font-size:0.5em; opacity:0.5;">/mo</span></div>
+            <div class="proof-label">Starting Investment</div>
+        </div>
+    </div>
+    <div class="proof-divider-line"></div>
+    <div class="proof-bottom-row">
+        <div class="proof-bottom-label">Built positioning for</div>
+        <div class="proof-names">
+            <span class="proof-name">Tony Robbins</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Abundance360</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Dean Graziosi</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">Frank Kern</span>
+            <span class="proof-name-sep"></span>
+            <span class="proof-name">The Dalai Lama</span>
+        </div>
+    </div>
+</div>
+
+<div style="height: 80px;"></div>
+
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Quote Background Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #FDFCFA;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page-header {
+            text-align: center;
+            padding: 60px 24px 20px;
+        }
+        .page-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .page-header p { color: #777; font-size: 0.9rem; }
+        .option-label {
+            text-align: center;
+            padding: 48px 24px 0;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #c4703f;
+        }
+        .option-sublabel {
+            text-align: center;
+            padding: 6px 24px 28px;
+            font-size: 0.8rem;
+            color: #999;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           OPTION A — Woods photo, heavy dark overlay, centered text
+           ============================================ */
+        .quote-bg-a {
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .quote-bg-a .bg-img {
+            position: absolute;
+            inset: 0;
+            background: url('james-woods.jpg') center/cover no-repeat;
+        }
+        .quote-bg-a .bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(14,14,18,0.85) 0%, rgba(14,14,18,0.92) 100%);
+        }
+        .quote-bg-a .content {
+            position: relative; z-index: 1;
+            max-width: 640px;
+            text-align: center;
+            padding: 60px 32px;
+        }
+        .quote-bg-a .quote-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: rgba(253,252,250,0.88);
+            margin-bottom: 28px;
+        }
+        .quote-bg-a .quote-line {
+            width: 40px; height: 2px;
+            background: #c4703f; opacity: 0.4;
+            margin: 0 auto 16px;
+        }
+        .quote-bg-a .quote-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: rgba(253,252,250,0.45);
+        }
+
+        /* ============================================
+           OPTION B — Stage photo, gradient from right, text left
+           ============================================ */
+        .quote-bg-b {
+            position: relative;
+            min-height: 440px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .quote-bg-b .bg-img {
+            position: absolute;
+            inset: 0;
+            background: url('james-speaking-stage.jpg') 65% center/cover no-repeat;
+        }
+        .quote-bg-b .bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(14,14,18,0.95) 0%, rgba(14,14,18,0.88) 45%, rgba(14,14,18,0.4) 100%);
+        }
+        .quote-bg-b .content {
+            position: relative; z-index: 1;
+            max-width: 520px;
+            padding: 60px 60px;
+        }
+        .quote-bg-b .quote-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: rgba(253,252,250,0.88);
+            margin-bottom: 28px;
+        }
+        .quote-bg-b .quote-accent {
+            width: 32px; height: 2px;
+            background: #c4703f; opacity: 0.5;
+            margin-bottom: 16px;
+        }
+        .quote-bg-b .quote-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: #c4703f; opacity: 0.6;
+        }
+
+        /* ============================================
+           OPTION C — Woods photo, lighter overlay, big italic quote
+           ============================================ */
+        .quote-bg-c {
+            position: relative;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .quote-bg-c .bg-img {
+            position: absolute;
+            inset: 0;
+            background: url('james-woods.jpg') center top/cover no-repeat;
+            filter: grayscale(0.3);
+        }
+        .quote-bg-c .bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(14,14,18,0.6) 0%, rgba(14,14,18,0.8) 50%, rgba(14,14,18,0.93) 100%);
+        }
+        .quote-bg-c .content {
+            position: relative; z-index: 1;
+            max-width: 680px;
+            text-align: center;
+            padding: 80px 32px 60px;
+        }
+        .quote-bg-c .open-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #c4703f;
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .quote-bg-c .quote-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: rgba(253,252,250,0.92);
+            margin-bottom: 32px;
+        }
+        .quote-bg-c .quote-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            color: rgba(253,252,250,0.4);
+        }
+
+        /* ============================================
+           OPTION D — Headshot visible, split design
+           ============================================ */
+        .quote-bg-d {
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: #0e0e12;
+        }
+        .quote-bg-d .bg-img {
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 45%;
+            background: url('JAMES_AUGUST_2024.jpg') center top/cover no-repeat;
+        }
+        .quote-bg-d .bg-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, #0e0e12 0%, rgba(14,14,18,0.7) 40%, rgba(14,14,18,0.2) 100%);
+        }
+        .quote-bg-d .content {
+            position: relative; z-index: 1;
+            max-width: 520px;
+            padding: 60px 60px;
+        }
+        .quote-bg-d .quote-eyebrow {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.6rem; font-weight: 600;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: #c4703f; opacity: 0.6;
+            margin-bottom: 20px;
+        }
+        .quote-bg-d .quote-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: rgba(253,252,250,0.85);
+            margin-bottom: 24px;
+        }
+        .quote-bg-d .quote-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: rgba(253,252,250,0.35);
+        }
+
+        /* ============================================
+           OPTION E — Woods, you visible through lighter overlay
+           ============================================ */
+        .quote-bg-e {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .quote-bg-e .bg-img {
+            position: absolute;
+            inset: 0;
+            background: url('james-woods.jpg') center 20%/cover no-repeat;
+        }
+        .quote-bg-e .bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(14,14,18,0.15) 0%, rgba(14,14,18,0.45) 40%, rgba(14,14,18,0.92) 75%, rgba(14,14,18,0.97) 100%);
+        }
+        .quote-bg-e .content {
+            position: relative; z-index: 1;
+            max-width: 640px;
+            text-align: center;
+            padding: 0 32px 56px;
+        }
+        .quote-bg-e .quote-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: rgba(253,252,250,0.9);
+            margin-bottom: 20px;
+        }
+        .quote-bg-e .quote-line {
+            width: 32px; height: 2px;
+            background: #c4703f; opacity: 0.4;
+            margin: 0 auto 12px;
+        }
+        .quote-bg-e .quote-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: rgba(253,252,250,0.4);
+        }
+
+        @media (max-width: 700px) {
+            .quote-bg-b .content,
+            .quote-bg-d .content { padding: 40px 24px; }
+            .quote-bg-d .bg-img { width: 100%; opacity: 0.3; }
+            .quote-bg-d .bg-img::after {
+                background: linear-gradient(to right, rgba(14,14,18,0.8) 0%, rgba(14,14,18,0.6) 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-header">
+    <h1>Quote Section: Photo Background Options</h1>
+    <p>Your photo as the background, your words on top. Five treatments.</p>
+</div>
+
+<!-- OPTION A -->
+<div class="option-label">Option A: Dark Centered</div>
+<div class="option-sublabel">Woods photo with heavy dark overlay. You're a subtle presence behind the words. Clean and centered.</div>
+<div class="quote-bg-a">
+    <div class="bg-img"></div>
+    <div class="bg-overlay"></div>
+    <div class="content">
+        <div class="quote-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</div>
+        <div class="quote-line"></div>
+        <div class="quote-name">James Guldan</div>
+    </div>
+</div>
+
+<!-- OPTION B -->
+<div class="option-label">Option B: Stage Gradient</div>
+<div class="option-sublabel">Speaking on stage, gradient fading from dark left to visible photo right. Text anchored left. Authority meets vulnerability.</div>
+<div class="quote-bg-b">
+    <div class="bg-img"></div>
+    <div class="bg-overlay"></div>
+    <div class="content">
+        <div class="quote-accent"></div>
+        <div class="quote-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</div>
+        <div class="quote-name">James Guldan</div>
+    </div>
+</div>
+
+<!-- OPTION C -->
+<div class="option-label">Option C: Visible Through</div>
+<div class="option-sublabel">Woods photo showing through a lighter overlay. You're clearly visible. Big italic quote on top. The most cinematic.</div>
+<div class="quote-bg-c">
+    <div class="bg-img"></div>
+    <div class="bg-overlay"></div>
+    <div class="content">
+        <div class="open-quote">"</div>
+        <div class="quote-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</div>
+        <div class="quote-name">James Guldan</div>
+    </div>
+</div>
+
+<!-- OPTION D -->
+<div class="option-label">Option D: Split Reveal</div>
+<div class="option-sublabel">Your headshot fading in from the right side. Text on the left. Like you're stepping into the frame.</div>
+<div class="quote-bg-d">
+    <div class="bg-img"></div>
+    <div class="content">
+        <div class="quote-eyebrow">Why I built this</div>
+        <div class="quote-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</div>
+        <div class="quote-name">James Guldan</div>
+    </div>
+</div>
+
+<!-- OPTION E -->
+<div class="option-label">Option E: Fade Up</div>
+<div class="option-sublabel">Woods photo fully visible at the top, fading to dark at the bottom where the quote lives. You're looking out, the words ground it.</div>
+<div class="quote-bg-e">
+    <div class="bg-img"></div>
+    <div class="bg-overlay"></div>
+    <div class="content">
+        <div class="quote-text">I know this pattern because I lived it. I built a business that looked successful from the outside and felt hollow from the inside. I sat in the gap between who I was and what my brand said about me for years before I figured out how to close it. That's why I can see it in you in the first five minutes.</div>
+        <div class="quote-line"></div>
+        <div class="quote-name">James Guldan</div>
+    </div>
+</div>
+
+<div style="height: 80px;"></div>
+
+</body>
+</html>
