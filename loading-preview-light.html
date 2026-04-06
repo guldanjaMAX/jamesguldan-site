@@ -463,9 +463,9 @@ body {
   z-index: 3;
   animation: heartBeat 3.2s ease-in-out infinite;
   filter:
-    drop-shadow(0 0 12px rgba(196,112,63,0.5))
-    drop-shadow(0 0 28px rgba(196,112,63,0.25))
-    drop-shadow(0 0 50px rgba(196,112,63,0.1));
+    drop-shadow(0 0 6px rgba(196,112,63,0.7))
+    drop-shadow(0 0 18px rgba(196,112,63,0.35))
+    drop-shadow(0 0 40px rgba(196,112,63,0.12));
 }
 .heart-icon svg { width: 56px; height: 56px; }
 @keyframes heartBeat {
@@ -730,8 +730,23 @@ body {
       <div class="heart-ripple rip3"></div>
       <div class="heart-icon">
         <svg viewBox="0 0 24 24" fill="none">
-          <defs><radialGradient id="heartGrad" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#D4884F"/><stop offset="100%" stop-color="#B05E30"/></radialGradient></defs>
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#heartGrad)"/>
+          <!-- outer heart — primary line -->
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                stroke="#C4703F" stroke-width="1.1" stroke-linejoin="round"/>
+          <!-- middle heart — inset at 70% -->
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                stroke="#C4703F" stroke-width="0.55" stroke-linejoin="round"
+                transform="translate(12,12) scale(0.68) translate(-12,-12)" opacity="0.5"/>
+          <!-- inner heart — inset at 40% -->
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                stroke="#C4703F" stroke-width="0.4" stroke-linejoin="round"
+                transform="translate(12,12) scale(0.40) translate(-12,-12)" opacity="0.25"/>
+          <!-- center axis -->
+          <line x1="12" y1="3.5" x2="12" y2="21.35" stroke="#C4703F" stroke-width="0.25" opacity="0.18"/>
+          <!-- convergence dot at bottom point -->
+          <circle cx="12" cy="21.35" r="0.75" fill="#C4703F" opacity="0.85"/>
+          <!-- top notch marker -->
+          <circle cx="12" cy="7" r="0.55" fill="none" stroke="#C4703F" stroke-width="0.3" opacity="0.35"/>
         </svg>
       </div>
     </div>
