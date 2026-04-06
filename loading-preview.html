@@ -26,7 +26,7 @@ body {
 }
 
 /* ============================================================
-   DEEP BACKGROUND LAYERS — stacked radials for cosmic depth
+   DEEP BACKGROUND — cosmic depth filling entire viewport
    ============================================================ */
 .bg-layer {
   position: absolute;
@@ -34,52 +34,87 @@ body {
   pointer-events: none;
 }
 
-/* Core warm nebula */
+/* Core warm nebula — massive on desktop */
 .bg-nebula {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 900px;
-  height: 900px;
+  width: min(140vw, 140vh);
+  height: min(140vw, 140vh);
   border-radius: 50%;
   background: radial-gradient(circle,
-    rgba(196,112,63,0.12) 0%,
-    rgba(196,112,63,0.05) 25%,
-    rgba(140,70,30,0.03) 45%,
-    rgba(80,30,10,0.015) 65%,
-    transparent 80%
+    rgba(196,112,63,0.14) 0%,
+    rgba(196,112,63,0.06) 20%,
+    rgba(140,70,30,0.035) 40%,
+    rgba(80,30,10,0.018) 60%,
+    transparent 78%
   );
   animation: nebulaPulse 3.2s ease-in-out infinite;
 }
 @keyframes nebulaPulse {
   0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.8; }
-  15% { transform: translate(-50%,-50%) scale(1.06); opacity: 1; }
-  25% { transform: translate(-50%,-50%) scale(1.02); opacity: 0.9; }
-  35% { transform: translate(-50%,-50%) scale(1.05); opacity: 0.95; }
+  15% { transform: translate(-50%,-50%) scale(1.04); opacity: 1; }
+  25% { transform: translate(-50%,-50%) scale(1.01); opacity: 0.9; }
+  35% { transform: translate(-50%,-50%) scale(1.03); opacity: 0.95; }
   50% { transform: translate(-50%,-50%) scale(1); opacity: 0.8; }
 }
 
-/* Secondary cool halo for contrast */
+/* Secondary rotating halo — fills screen */
 .bg-halo {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1100px;
-  height: 1100px;
+  width: max(160vw, 160vh);
+  height: max(160vw, 160vh);
   border-radius: 50%;
   background: radial-gradient(circle,
-    transparent 30%,
-    rgba(196,112,63,0.015) 50%,
-    rgba(100,60,30,0.008) 70%,
-    transparent 90%
+    transparent 25%,
+    rgba(196,112,63,0.012) 40%,
+    rgba(100,60,30,0.008) 60%,
+    rgba(60,30,15,0.004) 80%,
+    transparent 95%
   );
   animation: haloRotate 120s linear infinite;
 }
 @keyframes haloRotate { to { transform: translate(-50%,-50%) rotate(360deg); } }
 
-/* Film grain for texture */
+/* Tertiary warm accent glow — offset for asymmetry */
+.bg-accent {
+  position: absolute;
+  top: 30%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,112,63,0.025) 0%, transparent 70%);
+  animation: accentDrift 20s ease-in-out infinite alternate;
+}
+@keyframes accentDrift {
+  0% { transform: translate(-50%,-50%) translate(0, 0); }
+  100% { transform: translate(-50%,-50%) translate(-5vw, 3vh); }
+}
+
+/* Second accent — opposite corner */
+.bg-accent-2 {
+  position: absolute;
+  top: 70%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,112,63,0.018) 0%, transparent 65%);
+  animation: accentDrift2 25s ease-in-out infinite alternate;
+}
+@keyframes accentDrift2 {
+  0% { transform: translate(-50%,-50%) translate(0, 0); }
+  100% { transform: translate(-50%,-50%) translate(4vw, -2vh); }
+}
+
+/* Film grain */
 .bg-grain {
   position: absolute;
   inset: -50%;
@@ -98,7 +133,169 @@ body {
 }
 
 /* ============================================================
-   PARTICLE FIELD — more particles, brighter, varied sizes
+   OUTER GEOMETRY FIELD — fills entire desktop viewport
+   These layers sit behind the core geometry container
+   ============================================================ */
+.outer-geometry {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100vw, 100vh);
+  height: max(100vw, 100vh);
+  pointer-events: none;
+}
+
+/* Massive outer mandala ring — viewport-spanning */
+.outer-mandala {
+  position: absolute;
+  inset: 0;
+  animation: outerMandalaSpin 150s linear infinite;
+  opacity: 0.05;
+}
+.outer-mandala svg { width: 100%; height: 100%; }
+@keyframes outerMandalaSpin { to { transform: rotate(360deg); } }
+
+/* Second outer mandala — counter-rotating */
+.outer-mandala-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 75%;
+  animation: outerMandalaSpin2 110s linear infinite reverse;
+  opacity: 0.04;
+}
+.outer-mandala-2 svg { width: 100%; height: 100%; }
+@keyframes outerMandalaSpin2 { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+/* Outer concentric rings — extend to edges */
+.outer-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+}
+.outer-ring.or1 {
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(196,112,63,0.035);
+  animation: ringSpin 80s linear infinite;
+}
+.outer-ring.or2 {
+  width: 75%;
+  height: 75%;
+  transform: translate(-50%, -50%);
+  border: 1px dashed rgba(196,112,63,0.025);
+  animation: ringSpin 65s linear infinite reverse;
+}
+.outer-ring.or3 {
+  width: 60%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(196,112,63,0.04);
+  animation: ringSpin 50s linear infinite;
+}
+.outer-ring.or4 {
+  width: 48%;
+  height: 48%;
+  transform: translate(-50%, -50%);
+  border: 1px dotted rgba(196,112,63,0.03);
+  animation: ringSpin 40s linear infinite reverse;
+}
+
+/* Outer hexagons — large, faint, rotating */
+.outer-hex {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outer-hex-shape {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.outer-hex-shape.oh1 {
+  width: 65%;
+  height: 65%;
+  border: 1px solid rgba(196,112,63,0.03);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: hexSpin1 50s linear infinite;
+}
+.outer-hex-shape.oh2 {
+  width: 50%;
+  height: 50%;
+  border: 1px solid rgba(196,112,63,0.04);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: hexSpin2 38s linear infinite reverse;
+}
+
+/* Corner node clusters — placed at compass points */
+.corner-node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(196,112,63,0.08);
+  box-shadow: 0 0 20px rgba(196,112,63,0.04), 0 0 40px rgba(196,112,63,0.02);
+}
+.corner-node::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(196,112,63,0.04);
+  border-radius: 50%;
+  animation: nodeRing 4s ease-in-out infinite;
+}
+@keyframes nodeRing {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.5); opacity: 0; }
+}
+.cn1 { top: 12%; left: 18%; animation: nodePulse 5s ease-in-out infinite 0s; }
+.cn2 { top: 8%; right: 22%; animation: nodePulse 5s ease-in-out infinite 1.2s; }
+.cn3 { bottom: 15%; left: 14%; animation: nodePulse 5s ease-in-out infinite 2.5s; }
+.cn4 { bottom: 10%; right: 16%; animation: nodePulse 5s ease-in-out infinite 3.8s; }
+.cn5 { top: 50%; left: 5%; animation: nodePulse 5s ease-in-out infinite 0.7s; }
+.cn6 { top: 50%; right: 5%; animation: nodePulse 5s ease-in-out infinite 2s; }
+.cn7 { top: 22%; left: 50%; animation: nodePulse 5s ease-in-out infinite 1.5s; }
+.cn8 { bottom: 22%; left: 50%; animation: nodePulse 5s ease-in-out infinite 3s; }
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.3); }
+}
+
+/* Connecting lines between nodes — faint threads */
+.thread-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,112,63,0.025), transparent);
+  transform-origin: left center;
+}
+.tl1 { width: 45vw; transform: translate(-50%, 0) rotate(-25deg); animation: threadPulse 8s ease-in-out infinite; }
+.tl2 { width: 40vw; transform: translate(-50%, 0) rotate(35deg); animation: threadPulse 8s ease-in-out infinite 2s; }
+.tl3 { width: 50vw; transform: translate(-50%, 0) rotate(-60deg); animation: threadPulse 8s ease-in-out infinite 4s; }
+.tl4 { width: 38vw; transform: translate(-50%, 0) rotate(70deg); animation: threadPulse 8s ease-in-out infinite 6s; }
+.tl5 { width: 42vw; transform: translate(-50%, 0) rotate(10deg); animation: threadPulse 8s ease-in-out infinite 1s; }
+.tl6 { width: 46vw; transform: translate(-50%, 0) rotate(-45deg); animation: threadPulse 8s ease-in-out infinite 3s; }
+@keyframes threadPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+
+/* ============================================================
+   PARTICLE FIELD — spread across full viewport
    ============================================================ */
 .particles { position: absolute; inset: 0; pointer-events: none; }
 .particle {
@@ -107,31 +304,39 @@ body {
   border-radius: 50%;
   opacity: 0;
 }
-/* Small particles */
 .particle.s { width: 1.5px; height: 1.5px; }
-/* Medium particles */
 .particle.m { width: 3px; height: 3px; box-shadow: 0 0 6px rgba(196,112,63,0.5); }
-/* Large particles */
 .particle.l { width: 4px; height: 4px; box-shadow: 0 0 12px rgba(196,112,63,0.6), 0 0 24px rgba(196,112,63,0.2); }
+/* Extra large for edges */
+.particle.xl { width: 2px; height: 2px; box-shadow: 0 0 8px rgba(196,112,63,0.4); }
 
-.particle.p1  { left: 8%;  top: 75%; animation: pFloat 8s ease-in-out infinite 0s; }
-.particle.p2  { left: 15%; top: 68%; animation: pFloat 10s ease-in-out infinite 1.2s; }
-.particle.p3  { left: 25%; top: 80%; animation: pFloat 7s ease-in-out infinite 2.8s; }
-.particle.p4  { left: 35%; top: 72%; animation: pFloat 9s ease-in-out infinite 0.6s; }
-.particle.p5  { left: 45%; top: 78%; animation: pFloat 11s ease-in-out infinite 3.5s; }
-.particle.p6  { left: 55%; top: 65%; animation: pFloat 8.5s ease-in-out infinite 1.8s; }
-.particle.p7  { left: 65%; top: 74%; animation: pFloat 10s ease-in-out infinite 4.2s; }
-.particle.p8  { left: 75%; top: 70%; animation: pFloat 9s ease-in-out infinite 2.1s; }
-.particle.p9  { left: 85%; top: 76%; animation: pFloat 7.5s ease-in-out infinite 5s; }
-.particle.p10 { left: 20%; top: 85%; animation: pFloat 12s ease-in-out infinite 0.3s; }
-.particle.p11 { left: 40%; top: 60%; animation: pFloat 9s ease-in-out infinite 3.8s; }
-.particle.p12 { left: 60%; top: 82%; animation: pFloat 11s ease-in-out infinite 1.5s; }
-.particle.p13 { left: 80%; top: 63%; animation: pFloat 8s ease-in-out infinite 4.5s; }
-.particle.p14 { left: 50%; top: 88%; animation: pFloat 10s ease-in-out infinite 2.5s; }
-.particle.p15 { left: 30%; top: 55%; animation: pFloat 13s ease-in-out infinite 0.8s; }
-.particle.p16 { left: 70%; top: 58%; animation: pFloat 9.5s ease-in-out infinite 3.2s; }
-.particle.p17 { left: 10%; top: 60%; animation: pFloat 11s ease-in-out infinite 5.5s; }
-.particle.p18 { left: 90%; top: 70%; animation: pFloat 8s ease-in-out infinite 1s; }
+/* Center cluster */
+.particle.p1  { left: 35%; top: 72%; animation: pFloat 8s ease-in-out infinite 0s; }
+.particle.p2  { left: 42%; top: 68%; animation: pFloat 10s ease-in-out infinite 1.2s; }
+.particle.p3  { left: 50%; top: 80%; animation: pFloat 7s ease-in-out infinite 2.8s; }
+.particle.p4  { left: 58%; top: 72%; animation: pFloat 9s ease-in-out infinite 0.6s; }
+.particle.p5  { left: 55%; top: 65%; animation: pFloat 11s ease-in-out infinite 3.5s; }
+.particle.p6  { left: 45%; top: 78%; animation: pFloat 8.5s ease-in-out infinite 1.8s; }
+/* Mid-field */
+.particle.p7  { left: 25%; top: 60%; animation: pFloat 10s ease-in-out infinite 4.2s; }
+.particle.p8  { left: 75%; top: 62%; animation: pFloat 9s ease-in-out infinite 2.1s; }
+.particle.p9  { left: 30%; top: 85%; animation: pFloat 7.5s ease-in-out infinite 5s; }
+.particle.p10 { left: 70%; top: 82%; animation: pFloat 12s ease-in-out infinite 0.3s; }
+.particle.p11 { left: 20%; top: 50%; animation: pFloat 9s ease-in-out infinite 3.8s; }
+.particle.p12 { left: 80%; top: 55%; animation: pFloat 11s ease-in-out infinite 1.5s; }
+/* Far edges — desktop only visible */
+.particle.p13 { left: 5%;  top: 70%; animation: pFloatWide 14s ease-in-out infinite 4.5s; }
+.particle.p14 { left: 95%; top: 65%; animation: pFloatWide 13s ease-in-out infinite 2.5s; }
+.particle.p15 { left: 3%;  top: 45%; animation: pFloatWide 15s ease-in-out infinite 0.8s; }
+.particle.p16 { left: 97%; top: 40%; animation: pFloatWide 12s ease-in-out infinite 3.2s; }
+.particle.p17 { left: 10%; top: 85%; animation: pFloatWide 11s ease-in-out infinite 5.5s; }
+.particle.p18 { left: 90%; top: 80%; animation: pFloatWide 10s ease-in-out infinite 1s; }
+.particle.p19 { left: 8%;  top: 30%; animation: pFloatWide 13s ease-in-out infinite 2s; }
+.particle.p20 { left: 92%; top: 25%; animation: pFloatWide 14s ease-in-out infinite 4s; }
+.particle.p21 { left: 15%; top: 15%; animation: pFloatWide 16s ease-in-out infinite 1.5s; }
+.particle.p22 { left: 85%; top: 90%; animation: pFloatWide 12s ease-in-out infinite 3.5s; }
+.particle.p23 { left: 50%; top: 92%; animation: pFloat 9s ease-in-out infinite 0.5s; }
+.particle.p24 { left: 40%; top: 20%; animation: pFloatWide 15s ease-in-out infinite 2.8s; }
 
 @keyframes pFloat {
   0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
@@ -140,9 +345,16 @@ body {
   60%  { opacity: 0.15; }
   100% { transform: translateY(-280px) translateX(40px) scale(0.6); opacity: 0; }
 }
+@keyframes pFloatWide {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  8%   { opacity: 0.5; }
+  35%  { opacity: 0.25; transform: translateY(-120px) translateX(25px) scale(1.1); }
+  65%  { opacity: 0.08; }
+  100% { transform: translateY(-350px) translateX(50px) scale(0.4); opacity: 0; }
+}
 
 /* ============================================================
-   SACRED GEOMETRY — layered, high contrast
+   CORE SACRED GEOMETRY — center container
    ============================================================ */
 .geometry-container {
   position: relative;
@@ -151,9 +363,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 5;
 }
 
-/* Outer mandala ring (new) */
+/* Core mandala ring */
 .mandala-ring {
   position: absolute;
   width: 380px;
@@ -165,7 +378,7 @@ body {
 .mandala-ring circle, .mandala-ring line { stroke: #C4703F; fill: none; }
 @keyframes mandalaSpin { to { transform: rotate(360deg); } }
 
-/* Flower of Life — brighter, with glow */
+/* Flower of Life */
 .flower-of-life {
   position: absolute;
   width: 320px;
@@ -187,11 +400,8 @@ body {
   50% { opacity: 0.12; transform: rotate(0deg) scale(1); }
 }
 
-/* Concentric sacred rings — higher opacity, varied styles */
-.sacred-ring {
-  position: absolute;
-  border-radius: 50%;
-}
+/* Concentric sacred rings */
+.sacred-ring { position: absolute; border-radius: 50%; }
 .sacred-ring.r1 {
   width: 340px; height: 340px;
   border: 1px solid rgba(196,112,63,0.12);
@@ -221,7 +431,7 @@ body {
 }
 @keyframes ringSpin { to { transform: rotate(360deg); } }
 
-/* Hexagonal system — higher contrast, glowing borders */
+/* Hexagonal system */
 .hex-ring {
   position: absolute;
   display: flex;
@@ -259,7 +469,7 @@ body {
   50% { opacity: 0.7; }
 }
 
-/* Golden ratio spiral (new layer) */
+/* Golden ratio spiral */
 .golden-spiral {
   position: absolute;
   width: 300px;
@@ -271,7 +481,7 @@ body {
 @keyframes spiralSpin { to { transform: rotate(360deg); } }
 
 /* ============================================================
-   THE HEART — dramatic glow, deep pulse
+   THE HEART
    ============================================================ */
 .heart-core {
   position: relative;
@@ -281,7 +491,6 @@ body {
   justify-content: center;
 }
 
-/* Multi-layered glow */
 .heart-glow-outer {
   position: absolute;
   width: 200px;
@@ -324,7 +533,6 @@ body {
   50% { transform: scale(1); opacity: 0.6; }
 }
 
-/* Pulse ripples — 3 layers, staggered */
 .heart-ripple {
   position: absolute;
   border-radius: 50%;
@@ -351,7 +559,6 @@ body {
   100% { transform: scale(3.5); opacity: 0; }
 }
 
-/* The heart itself — larger, more dramatic */
 .heart-icon {
   position: relative;
   z-index: 3;
@@ -361,10 +568,7 @@ body {
     drop-shadow(0 0 35px rgba(196,112,63,0.35))
     drop-shadow(0 0 60px rgba(196,112,63,0.15));
 }
-.heart-icon svg {
-  width: 56px;
-  height: 56px;
-}
+.heart-icon svg { width: 56px; height: 56px; }
 @keyframes heartBeat {
   0%, 100% { transform: scale(1); }
   15% { transform: scale(1.2); }
@@ -374,7 +578,7 @@ body {
 }
 
 /* ============================================================
-   TEXT + PROGRESS — high contrast, luminous
+   TEXT + PROGRESS
    ============================================================ */
 .loading-text {
   position: relative;
@@ -411,7 +615,6 @@ body {
   color: rgba(196,112,63,0.7);
 }
 
-/* Progress bar — glowing segments */
 .loading-progress {
   display: flex;
   gap: 5px;
@@ -458,8 +661,16 @@ body {
 }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — mobile gets compact, desktop gets expanded
    ============================================================ */
+
+/* Hide outer geometry on small screens */
+@media (max-width: 768px) {
+  .outer-geometry { display: none; }
+  .corner-node { display: none; }
+  .thread-line { display: none; }
+}
+
 @media (max-width: 480px) {
   .geometry-container { width: 300px; height: 300px; }
   .flower-of-life { width: 240px; height: 240px; }
@@ -476,7 +687,15 @@ body {
   .heart-icon svg { width: 44px; height: 44px; }
   .loading-message { font-size: 18px; max-width: 300px; }
   .loading-text { margin-top: 40px; }
-  .bg-nebula { width: 600px; height: 600px; }
+}
+
+/* Large desktop: boost outer geometry visibility */
+@media (min-width: 1200px) {
+  .outer-mandala { opacity: 0.06; }
+  .outer-mandala-2 { opacity: 0.05; }
+  .outer-ring.or1 { border-color: rgba(196,112,63,0.04); }
+  .outer-ring.or3 { border-color: rgba(196,112,63,0.05); }
+  .thread-line { background: linear-gradient(90deg, transparent, rgba(196,112,63,0.03), transparent); }
 }
 </style>
 </head>
@@ -488,8 +707,84 @@ body {
   <div class="bg-layer">
     <div class="bg-halo"></div>
     <div class="bg-nebula"></div>
+    <div class="bg-accent"></div>
+    <div class="bg-accent-2"></div>
     <div class="bg-grain"></div>
   </div>
+
+  <!-- Outer geometry field — fills desktop -->
+  <div class="outer-geometry">
+    <!-- Massive outer mandala -->
+    <svg class="outer-mandala" viewBox="0 0 1000 1000">
+      <circle cx="500" cy="500" r="480" stroke="#C4703F" stroke-width="0.4" fill="none"/>
+      <circle cx="500" cy="500" r="460" stroke="#C4703F" stroke-width="0.3" fill="none" stroke-dasharray="6 12"/>
+      <circle cx="500" cy="500" r="420" stroke="#C4703F" stroke-width="0.2" fill="none"/>
+      <!-- 24 radial lines -->
+      <line x1="500" y1="20" x2="500" y2="980" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="20" y1="500" x2="980" y2="500" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="146" y1="146" x2="854" y2="854" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="854" y1="146" x2="146" y2="854" stroke="#C4703F" stroke-width="0.2"/>
+      <line x1="260" y1="25" x2="740" y2="975" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="740" y1="25" x2="260" y2="975" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="25" y1="260" x2="975" y2="740" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="25" y1="740" x2="975" y2="260" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="72" y1="330" x2="928" y2="670" stroke="#C4703F" stroke-width="0.1"/>
+      <line x1="72" y1="670" x2="928" y2="330" stroke="#C4703F" stroke-width="0.1"/>
+      <line x1="330" y1="72" x2="670" y2="928" stroke="#C4703F" stroke-width="0.1"/>
+      <line x1="670" y1="72" x2="330" y2="928" stroke="#C4703F" stroke-width="0.1"/>
+      <!-- Node dots at outer ring intersections -->
+      <circle cx="500" cy="20" r="3" fill="rgba(196,112,63,0.15)"/>
+      <circle cx="500" cy="980" r="3" fill="rgba(196,112,63,0.15)"/>
+      <circle cx="20" cy="500" r="3" fill="rgba(196,112,63,0.15)"/>
+      <circle cx="980" cy="500" r="3" fill="rgba(196,112,63,0.15)"/>
+      <circle cx="146" cy="146" r="3" fill="rgba(196,112,63,0.1)"/>
+      <circle cx="854" cy="854" r="3" fill="rgba(196,112,63,0.1)"/>
+      <circle cx="854" cy="146" r="3" fill="rgba(196,112,63,0.1)"/>
+      <circle cx="146" cy="854" r="3" fill="rgba(196,112,63,0.1)"/>
+    </svg>
+
+    <!-- Counter-rotating inner mandala -->
+    <svg class="outer-mandala-2" viewBox="0 0 800 800">
+      <circle cx="400" cy="400" r="380" stroke="#C4703F" stroke-width="0.3" fill="none" stroke-dasharray="3 10"/>
+      <circle cx="400" cy="400" r="340" stroke="#C4703F" stroke-width="0.2" fill="none"/>
+      <line x1="400" y1="20" x2="400" y2="780" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="20" y1="400" x2="780" y2="400" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="120" y1="120" x2="680" y2="680" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="680" y1="120" x2="120" y2="680" stroke="#C4703F" stroke-width="0.15"/>
+      <line x1="200" y1="28" x2="600" y2="772" stroke="#C4703F" stroke-width="0.1"/>
+      <line x1="600" y1="28" x2="200" y2="772" stroke="#C4703F" stroke-width="0.1"/>
+      <line x1="28" y1="200" x2="772" y2="600" stroke="#C4703F" stroke-width="0.1"/>
+      <line x1="28" y1="600" x2="772" y2="200" stroke="#C4703F" stroke-width="0.1"/>
+    </svg>
+
+    <!-- Outer concentric rings -->
+    <div class="outer-ring or1"></div>
+    <div class="outer-ring or2"></div>
+    <div class="outer-ring or3"></div>
+    <div class="outer-ring or4"></div>
+
+    <!-- Outer hexagons -->
+    <div class="outer-hex-shape oh1"></div>
+    <div class="outer-hex-shape oh2"></div>
+
+    <!-- Thread lines radiating from center -->
+    <div class="thread-line tl1"></div>
+    <div class="thread-line tl2"></div>
+    <div class="thread-line tl3"></div>
+    <div class="thread-line tl4"></div>
+    <div class="thread-line tl5"></div>
+    <div class="thread-line tl6"></div>
+  </div>
+
+  <!-- Corner nodes -->
+  <div class="corner-node cn1"></div>
+  <div class="corner-node cn2"></div>
+  <div class="corner-node cn3"></div>
+  <div class="corner-node cn4"></div>
+  <div class="corner-node cn5"></div>
+  <div class="corner-node cn6"></div>
+  <div class="corner-node cn7"></div>
+  <div class="corner-node cn8"></div>
 
   <!-- Particle field -->
   <div class="particles">
@@ -505,22 +800,25 @@ body {
     <div class="particle s p10"></div>
     <div class="particle m p11"></div>
     <div class="particle s p12"></div>
-    <div class="particle m p13"></div>
-    <div class="particle l p14"></div>
+    <div class="particle xl p13"></div>
+    <div class="particle xl p14"></div>
     <div class="particle s p15"></div>
-    <div class="particle m p16"></div>
-    <div class="particle s p17"></div>
-    <div class="particle m p18"></div>
+    <div class="particle xl p16"></div>
+    <div class="particle m p17"></div>
+    <div class="particle xl p18"></div>
+    <div class="particle s p19"></div>
+    <div class="particle m p20"></div>
+    <div class="particle xl p21"></div>
+    <div class="particle s p22"></div>
+    <div class="particle l p23"></div>
+    <div class="particle xl p24"></div>
   </div>
 
-  <!-- Sacred geometry system -->
+  <!-- Core sacred geometry -->
   <div class="geometry-container">
-
-    <!-- Outer mandala (12-point star pattern) -->
     <svg class="mandala-ring" viewBox="0 0 400 400">
       <circle cx="200" cy="200" r="185" stroke-width="0.5"/>
       <circle cx="200" cy="200" r="175" stroke-width="0.3" stroke-dasharray="4 8"/>
-      <!-- 12 radial lines -->
       <line x1="200" y1="15" x2="200" y2="385" stroke-width="0.3"/>
       <line x1="15" y1="200" x2="385" y2="200" stroke-width="0.3"/>
       <line x1="64" y1="64" x2="336" y2="336" stroke-width="0.3"/>
@@ -529,7 +827,6 @@ body {
       <line x1="296" y1="18" x2="104" y2="382" stroke-width="0.2"/>
       <line x1="18" y1="104" x2="382" y2="296" stroke-width="0.2"/>
       <line x1="18" y1="296" x2="382" y2="104" stroke-width="0.2"/>
-      <!-- Node circles at intersections -->
       <circle cx="200" cy="15" r="2" fill="rgba(196,112,63,0.3)" stroke="none"/>
       <circle cx="200" cy="385" r="2" fill="rgba(196,112,63,0.3)" stroke="none"/>
       <circle cx="15" cy="200" r="2" fill="rgba(196,112,63,0.3)" stroke="none"/>
@@ -540,7 +837,6 @@ body {
       <circle cx="64" cy="336" r="2" fill="rgba(196,112,63,0.2)" stroke="none"/>
     </svg>
 
-    <!-- Flower of Life -->
     <svg class="flower-of-life" viewBox="0 0 300 300">
       <circle cx="150" cy="150" r="50"/>
       <circle cx="150" cy="100" r="50"/>
@@ -563,25 +859,21 @@ body {
       <circle cx="106.7" cy="75" r="50"/>
     </svg>
 
-    <!-- Golden ratio spiral -->
     <svg class="golden-spiral" viewBox="0 0 300 300">
       <path d="M150,150 Q150,80 210,80 Q280,80 280,150 Q280,240 190,240 Q90,240 90,140 Q90,30 200,30" fill="none" stroke="#C4703F" stroke-width="0.6"/>
       <path d="M150,150 Q150,110 180,110 Q220,110 220,150 Q220,200 170,200 Q110,200 110,145 Q110,70 185,70" fill="none" stroke="#C4703F" stroke-width="0.4"/>
     </svg>
 
-    <!-- Concentric sacred rings -->
     <div class="sacred-ring r1"></div>
     <div class="sacred-ring r2"></div>
     <div class="sacred-ring r3"></div>
     <div class="sacred-ring r4"></div>
     <div class="sacred-ring r5"></div>
 
-    <!-- Hexagonal Metatron system -->
     <div class="hex-ring"><div class="hex-shape h1"></div></div>
     <div class="hex-ring"><div class="hex-shape h2"></div></div>
     <div class="hex-ring"><div class="hex-shape h3"></div></div>
 
-    <!-- Heart at center -->
     <div class="heart-core">
       <div class="heart-glow-outer"></div>
       <div class="heart-glow-inner"></div>
@@ -600,7 +892,6 @@ body {
         </svg>
       </div>
     </div>
-
   </div>
 
   <!-- Text + Progress -->
