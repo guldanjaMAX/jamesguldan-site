@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meet Your Guide · Three Design Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f;
+  --bg-2:#111118;
+  --bg-3:#16161f;
+  --line:#1f1f2c;
+  --line-2:#2a2a38;
+  --muted:#7c7c8c;
+  --mid:#a5a5b3;
+  --high:#e4e4ee;
+  --white:#f7f7fb;
+  --paper:#f7f2e7;
+  --paper-2:#ede2c8;
+  --paper-3:#d8caa6;
+  --ink:#1b1612;
+  --gold:#d89a2a;
+  --gold-bright:#f2c940;
+  --burnt:#b8471f;
+  --rose:#c8557f;
+  --green:#6b8e4e;
+  --plum:#3a1f3c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--high);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.serif{font-family:'Fraunces',serif}
+.mono{font-family:'Space Grotesk',monospace}
+.hand{font-family:'Caveat',cursive}
+.eyebrow{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(10,10,15,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;max-width:1240px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;color:var(--mid);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 3px rgba(242,201,64,.18)}
+.topbar .meta{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid)}
+.topbar .meta b{color:var(--gold-bright)}
+
+/* masthead */
+.mast{padding:96px 0 56px;border-bottom:1px solid var(--line)}
+.mast .eyebrow{color:var(--gold-bright)}
+.mast h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(52px,7vw,108px);line-height:.98;letter-spacing:-.02em;color:var(--white);margin:20px 0 22px}
+.mast h1 em{font-style:italic;color:var(--gold-bright)}
+.mast-sub{color:var(--mid);font-size:19px;line-height:1.65;max-width:62ch}
+.mast-meta{margin-top:44px;padding-top:28px;border-top:1px dashed var(--line-2);display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.meta-cell .k{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.meta-cell .v{font-family:'Fraunces',serif;font-size:18px;color:var(--white);margin-top:6px;line-height:1.4}
+
+/* analysis */
+.analysis{padding:72px 0 48px;border-bottom:1px solid var(--line)}
+.analysis-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
+.lens{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:22px;transition:border-color .4s}
+.lens:hover{border-color:var(--line-2)}
+.lens .tag{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.lens h4{font-family:'Fraunces',serif;font-weight:400;font-size:19px;color:var(--white);margin-bottom:8px;line-height:1.3}
+.lens p{color:var(--mid);font-size:13.5px;line-height:1.55}
+
+/* options intro */
+.intro{padding:56px 0 32px}
+.intro h2{font-family:'Fraunces',serif;font-weight:300;font-size:40px;color:var(--white);letter-spacing:-.01em;margin-bottom:14px}
+.intro h2 em{color:var(--gold-bright);font-style:italic}
+.intro p{color:var(--mid);font-size:17px;max-width:70ch;line-height:1.65}
+
+/* option cards */
+.options{padding:12px 0 96px;display:flex;flex-direction:column;gap:64px}
+.opt{background:linear-gradient(180deg,var(--bg-2) 0%,var(--bg-3) 100%);border:1px solid var(--line);border-radius:24px;overflow:hidden;position:relative}
+.opt-head{padding:36px 44px 22px;display:grid;grid-template-columns:1fr auto;gap:40px;border-bottom:1px dashed var(--line-2);align-items:end}
+.opt-head .num{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.opt-head h3{font-family:'Fraunces',serif;font-weight:300;font-size:56px;line-height:1;letter-spacing:-.02em;color:var(--white)}
+.opt-head h3 em{font-style:italic;color:var(--gold-bright)}
+.opt-head .tagline{color:var(--mid);font-size:17px;line-height:1.55;max-width:60ch;margin-top:16px}
+.confidence{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:110px}
+.ring{width:96px;height:96px;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring .pct{position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:28px;font-weight:400;color:var(--white)}
+.conf-label{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+/* mockup */
+.mock{padding:36px 44px;border-bottom:1px dashed var(--line-2);background:var(--bg-3)}
+.mock-frame{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:#000;min-height:540px;position:relative}
+
+/* Option 1 mockup: Open Journal spread */
+.j-spread{display:grid;grid-template-columns:1fr 1fr;min-height:540px;background:linear-gradient(180deg,#3a3027,#2a2019);position:relative}
+.j-spread::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.2));transform:translateX(-50%);z-index:2}
+.j-page{background:
+  radial-gradient(circle at 20% 30%, rgba(120,90,50,.12) 0 60%, transparent 60%),
+  radial-gradient(circle at 85% 75%, rgba(140,100,60,.1) 0 40%, transparent 40%),
+  repeating-linear-gradient(180deg, transparent 0 39px, rgba(60,40,20,.05) 39px 40px),
+  var(--paper);
+  padding:28px;position:relative;color:var(--ink);font-family:'Fraunces',serif;overflow:hidden}
+.j-page.left{transform:rotateZ(-.5deg)}
+.j-page.right{transform:rotateZ(.4deg)}
+.j-tape{position:absolute;width:90px;height:22px;background:rgba(216,154,42,.5);top:18px;left:40%;transform:rotate(-6deg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.j-polaroid{background:#fafafa;padding:10px 10px 38px;box-shadow:0 12px 22px rgba(0,0,0,.35), 0 2px 4px rgba(0,0,0,.25);transform:rotate(-4deg);width:170px;margin:12px auto 0;position:relative}
+.j-polaroid img{width:100%;height:170px;object-fit:cover;object-position:center top}
+.j-polaroid .cap{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-family:'Caveat',cursive;font-size:14px;color:#2a2018}
+.j-stub{background:#e7d5a8;padding:6px 10px;display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#3a2a18;margin-top:14px;border:1px dashed rgba(0,0,0,.3);position:absolute;bottom:22px;left:22px;transform:rotate(-3deg)}
+.j-stub b{color:var(--burnt)}
+.j-hand{font-family:'Caveat',cursive;color:#4a3020;font-size:20px;line-height:1.15;transform:rotate(-2deg);position:absolute;top:34px;right:32px;max-width:160px;text-align:right}
+.j-hand.blue{color:#3e4a7a}
+.j-title{font-family:'Caveat',cursive;font-size:34px;color:var(--burnt);line-height:1;margin-bottom:14px;transform:rotate(-1.5deg)}
+.j-body{font-family:'Fraunces',serif;font-size:13px;line-height:1.55;color:#2a1f16;max-width:95%}
+.j-body p{margin-bottom:8px}
+.j-body em{font-style:italic;color:var(--burnt);font-weight:500}
+.j-sign{font-family:'Caveat',cursive;font-size:24px;color:#2a1f16;margin-top:14px;transform:rotate(-2deg)}
+.j-arrow{position:absolute;font-family:'Caveat',cursive;color:var(--burnt);font-size:22px;line-height:1}
+.j-badge{position:absolute;top:22px;left:22px;font-family:'Space Grotesk',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#8a6a3a;border:1px dashed #8a6a3a;padding:4px 8px;border-radius:4px;background:rgba(255,255,255,.4)}
+
+/* Option 2 mockup: Tattoo full bleed */
+.t-bleed{display:grid;grid-template-columns:1fr 1fr;min-height:540px;background:#070707;position:relative}
+.t-img{background-image:url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/tattoo-cosmic-sloth.jpg');background-size:cover;background-position:center;position:relative;filter:saturate(.85) contrast(1.05)}
+.t-img::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 30%,rgba(0,0,0,.55) 100%),linear-gradient(90deg,rgba(0,0,0,0) 65%,rgba(0,0,0,.9) 100%)}
+.t-copy{padding:56px 44px;display:flex;flex-direction:column;justify-content:space-between;color:#e8e0d0;position:relative}
+.t-copy .kicker{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:24px}
+.t-copy h2{font-family:'Fraunces',serif;font-weight:300;font-size:52px;line-height:1.02;letter-spacing:-.02em;color:#f2ead7;margin-bottom:20px}
+.t-copy h2 em{font-style:italic;color:var(--gold-bright)}
+.t-copy .lede{font-family:'Fraunces',serif;font-size:17px;line-height:1.55;color:#d0c6b0;max-width:40ch;font-style:italic}
+.t-copy .sign{font-family:'Caveat',cursive;font-size:30px;color:var(--gold-bright);margin-top:28px}
+.t-copy .stats{display:flex;gap:28px;margin-top:36px;padding-top:20px;border-top:1px solid rgba(242,201,64,.18)}
+.t-copy .stat{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8a8070}
+.t-copy .stat b{display:block;font-family:'Fraunces',serif;font-size:22px;font-weight:400;color:var(--gold-bright);letter-spacing:0;text-transform:none;margin-top:4px}
+.t-anno{position:absolute;font-family:'Caveat',cursive;color:var(--gold-bright);font-size:18px;line-height:1.15;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.t-anno.a1{top:40px;left:60px;max-width:140px}
+.t-anno.a2{bottom:60px;left:30px;max-width:180px}
+.t-line{position:absolute;stroke:var(--gold-bright);stroke-width:1;fill:none;opacity:.5}
+
+/* Option 3 mockup: Cinema portrait + editorial */
+.c-cinema{min-height:540px;position:relative;background:#0f0d0a}
+.c-hero{height:340px;background-image:url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-landscape.webp');background-size:cover;background-position:center 35%;position:relative}
+.c-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.3) 60%,rgba(15,13,10,1) 100%)}
+.c-hero .c-over{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:40px 44px;z-index:2}
+.c-hero .c-label{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:10px}
+.c-hero h2{font-family:'Fraunces',serif;font-weight:300;font-size:44px;line-height:1.05;letter-spacing:-.02em;color:#f7f2e7;max-width:20ch}
+.c-hero h2 em{font-style:italic;color:var(--gold-bright)}
+.c-body{padding:40px 44px 44px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+.c-letter{color:#e4dcc8;font-family:'Fraunces',serif;font-size:14px;line-height:1.7;position:relative}
+.c-letter .drop{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:54px;float:left;line-height:.9;margin:6px 10px -4px 0;color:var(--gold-bright)}
+.c-letter p{margin-bottom:12px;color:#c8c0ac}
+.c-letter em{color:var(--gold-bright);font-style:italic}
+.c-side{display:flex;flex-direction:column;gap:16px}
+.c-pull{font-family:'Caveat',cursive;font-size:24px;line-height:1.15;color:var(--gold-bright);padding:20px 22px;border-left:2px solid var(--gold-bright);background:rgba(216,154,42,.08)}
+.c-fact{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed var(--line-2);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.c-fact b{color:#f2ead7;font-family:'Fraunces',serif;font-size:15px;font-weight:400;text-transform:none;letter-spacing:0}
+
+/* body blocks */
+.opt-body{padding:36px 44px;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+.dd h5, .rat h5, .spec h5{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.dd p, .rat p{color:var(--high);font-size:15.5px;line-height:1.68;margin-bottom:14px}
+.dd p:last-child, .rat p:last-child{margin-bottom:0}
+.dd strong, .rat strong{color:var(--white);font-weight:500}
+.spec{background:#0d0d14;border:1px solid var(--line);border-radius:12px;padding:22px}
+.spec-row{display:flex;flex-direction:column;padding:12px 0;border-bottom:1px solid var(--line)}
+.spec-row:last-child{border-bottom:none;padding-bottom:0}
+.spec-row:first-child{padding-top:0}
+.spec-row .k{font-family:'Space Grotesk',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.spec-row .v{font-family:'Fraunces',serif;font-size:14px;color:var(--high);line-height:1.5}
+.swatch-row{display:flex;gap:6px;margin-top:8px}
+.swatch{width:28px;height:28px;border-radius:6px;border:1px solid rgba(255,255,255,.08);position:relative}
+.swatch .h{position:absolute;bottom:-18px;left:0;font-family:'Space Grotesk',monospace;font-size:8.5px;color:var(--muted);letter-spacing:.05em;white-space:nowrap}
+
+/* footer / decision matrix */
+.matrix{padding:72px 0 96px;border-top:1px solid var(--line)}
+.matrix h2{font-family:'Fraunces',serif;font-weight:300;font-size:44px;color:var(--white);letter-spacing:-.01em;margin-bottom:8px}
+.matrix h2 em{color:var(--gold-bright);font-style:italic}
+.matrix .sub{color:var(--mid);font-size:17px;margin-bottom:40px;max-width:60ch}
+.matrix table{width:100%;border-collapse:collapse;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.matrix th{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);padding:18px 22px;text-align:left;background:var(--bg-3);border-bottom:1px solid var(--line);font-weight:500}
+.matrix td{padding:20px 22px;border-bottom:1px solid var(--line);font-size:14px;color:var(--high);vertical-align:top;line-height:1.55}
+.matrix tr:last-child td{border-bottom:none}
+.matrix .name{font-family:'Fraunces',serif;font-size:17px;color:var(--white);font-weight:400}
+.matrix .name em{color:var(--gold-bright);font-style:italic}
+.matrix .score{font-family:'Fraunces',serif;font-size:20px;color:var(--gold-bright);font-weight:400}
+
+.verdict{margin-top:44px;padding:28px 32px;background:linear-gradient(135deg,rgba(216,154,42,.12),rgba(184,71,31,.08));border:1px solid rgba(216,154,42,.3);border-radius:16px}
+.verdict .tag{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:12px}
+.verdict p{color:var(--high);font-size:17px;line-height:1.65;max-width:75ch}
+.verdict p em{color:var(--gold-bright);font-style:italic}
+
+.foot{padding:40px 0 64px;color:var(--muted);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:flex;justify-content:space-between;border-top:1px solid var(--line)}
+
+@media (max-width: 900px){
+  .analysis-grid{grid-template-columns:1fr 1fr}
+  .opt-body{grid-template-columns:1fr;gap:28px}
+  .mast-meta{grid-template-columns:1fr 1fr}
+  .j-spread, .t-bleed, .c-body{grid-template-columns:1fr}
+  .opt-head{grid-template-columns:1fr;gap:20px}
+  .confidence{align-self:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand"><span class="dot"></span>Yanik Silver Design Studio</div>
+    <div class="meta">Section 03 / <b>Meet Your Guide</b> / Three Options</div>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="eyebrow">Design brief · Section 03</div>
+    <h1>Meet your <em>guide</em>.</h1>
+    <p class="mast-sub">This is not an about section. It is a campfire introduction. The reader has just walked through the myth and the manifesto. They have seen the testimonials. Now they ask the only question that actually matters. Who is this man, and why should I keep reading. The design has to translate a person, not a product.</p>
+    <div class="mast-meta">
+      <div class="meta-cell">
+        <div class="k">Myth beat</div>
+        <div class="v">The Sloth wakes.</div>
+      </div>
+      <div class="meta-cell">
+        <div class="k">Emotional target</div>
+        <div class="v">Trust at a campfire.</div>
+      </div>
+      <div class="meta-cell">
+        <div class="k">Conversion role</div>
+        <div class="v">Belief transfer.</div>
+      </div>
+      <div class="meta-cell">
+        <div class="k">Failure mode</div>
+        <div class="v">Generic about page.</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="analysis">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:22px">Strategic lenses</div>
+    <div class="analysis-grid">
+      <div class="lens">
+        <div class="tag">Functional</div>
+        <h4>Establish authority without resume.</h4>
+        <p>Yanik is not a guru. He is a 30 year operator who draws suns. The section has to convey seven companies, a thousand members, and a clear point of view, without looking like a LinkedIn profile.</p>
+      </div>
+      <div class="lens">
+        <div class="tag">Emotional</div>
+        <h4>Invite, do not sell.</h4>
+        <p>The reader should feel like they have been handed a private notebook, not a pitch. Warmth over polish. Texture over gloss.</p>
+      </div>
+      <div class="lens">
+        <div class="tag">State of mind</div>
+        <h4>Skeptical but curious.</h4>
+        <p>They liked the myth. They are asking, is this guy real, or is he performing real. Design has to deliver evidence, in his hand, unedited.</p>
+      </div>
+      <div class="lens">
+        <div class="tag">Brand tether</div>
+        <h4>Paper, ink, sun gold.</h4>
+        <p>The rest of the site lives in the journal metaphor. This section has to honor that language while standing as its own moment, not a repeat.</p>
+      </div>
+      <div class="lens">
+        <div class="tag">Conversion physics</div>
+        <h4>Polarize cleanly.</h4>
+        <p>The cosmic sloth framing is either a yes or a no. We do not hedge. We pick a register and commit. Skeptics self select out, the right reader leans in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--gold-bright);margin-bottom:18px">Three directions</div>
+    <h2>One <em>brief</em>. Three honest takes.</h2>
+    <p>Each option below is a real, fully formed answer to the brief. They differ in visual metaphor, typographic register, and how much of Yanik's body and handwriting the reader sees. Pick the one that feels most like him to you, and we build it.</p>
+  </div>
+</section>
+
+<section class="options">
+  <div class="wrap">
+
+  <!-- OPTION 1 -->
+  <article class="opt">
+    <div class="opt-head">
+      <div>
+        <div class="num">Option 01 · A plus pick</div>
+        <h3>The <em>Open Journal</em>.</h3>
+        <div class="tagline">A two page spread from Yanik's notebook. Portrait pinned on the left, letter in his hand on the right, polaroids and a ticket stub tucked into the margins. The reader reads over his shoulder.</div>
+      </div>
+      <div class="confidence">
+        <div class="ring">
+          <svg width="96" height="96" viewBox="0 0 96 96">
+            <circle cx="48" cy="48" r="42" fill="none" stroke="#1f1f2c" stroke-width="6"/>
+            <circle cx="48" cy="48" r="42" fill="none" stroke="#d89a2a" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="29" />
+          </svg>
+          <div class="pct">89</div>
+        </div>
+        <div class="conf-label">Confidence</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-frame">
+        <div class="j-spread">
+          <div class="j-page left">
+            <div class="j-badge">Journal · p. 17</div>
+            <div class="j-tape"></div>
+            <div class="j-polaroid" style="margin-top:40px">
+              <img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-portrait.webp" alt="Yanik portrait"/>
+              <div class="cap">me, before coffee. 2024</div>
+            </div>
+            <div class="j-polaroid" style="transform:rotate(5deg);margin-top:18px;width:150px">
+              <img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sun-face.jpg" alt="sun face"/>
+              <div class="cap">the only honest teacher</div>
+            </div>
+            <div class="j-stub"><span>Maverick1000</span> · <b>First ticket · 2015</b></div>
+          </div>
+          <div class="j-page right">
+            <div class="j-title">they call me the sloth.</div>
+            <div class="j-body">
+              <p>I am a maverick, a seeker, a sun one. When I was twenty nine I took the red pill on the whole hustle myth.</p>
+              <p>I sold my first internet company and discovered I had built a cage made out of <em>money</em>. So I tore it down and started drawing suns instead.</p>
+              <p>Since then I have run a community of a thousand entrepreneurs who felt the same itch. The ones who built the thing and got bored of it. The ones who know money is a measuring stick, not a meal.</p>
+              <p>I call them Mavericks because the world kept calling us that anyway.</p>
+            </div>
+            <div class="j-sign">signed, Yanik.</div>
+            <div class="j-hand">this is the page<br>to start with &nbsp;↙</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body">
+      <div class="dd">
+        <h5>Design direction</h5>
+        <p>Full bleed spread of a warm cream paper background with two faintly ruled pages and a gentle center gutter. <strong>The left page is the evidence page</strong>. A black and white portrait printed as a polaroid, paperclipped, with a handwritten caption. Below it, a second polaroid showing one of his sun doodles. A faded Maverick1000 ticket stub in the bottom corner with a real ink handstamp.</p>
+        <p><strong>The right page is his voice.</strong> A handwritten title in burnt orange ink. Below it, typed paragraphs in Fraunces that read like a letter, not a bio. Key phrases ("cage made out of money", "thousand entrepreneurs") are italicized as if he underlined them. His signature lives at the bottom in Caveat.</p>
+        <p>Stage transitions are tactile. Scroll past the spread and a subtle paper curl animation reveals the next page. The whole section is one continuous object, not a grid of cards.</p>
+      </div>
+      <div class="spec">
+        <h5>Visual spec</h5>
+        <div class="spec-row">
+          <div class="k">Type</div>
+          <div class="v">Fraunces 13 to 54px · Caveat 20 to 34px · Space Grotesk 9 to 11px for stamps</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Palette</div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#f7f2e7"></div>
+            <div class="swatch" style="background:#ede2c8"></div>
+            <div class="swatch" style="background:#b8471f"></div>
+            <div class="swatch" style="background:#d89a2a"></div>
+            <div class="swatch" style="background:#1b1612"></div>
+          </div>
+          <div class="v" style="margin-top:28px">Paper cream, deep paper, burnt orange ink, sun gold, ink black.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Layout</div>
+          <div class="v">Two column full bleed. Desktop 1440 by 720 min. Mobile stacks vertical with page turn animation.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Motion</div>
+          <div class="v">Paper grain parallax on scroll, 3px polaroid jitter on hover, signature inks in on reveal.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body" style="padding-top:0">
+      <div class="rat">
+        <h5>Strategic rationale</h5>
+        <p>This is the most on brand, most defensible choice. <strong>It is what the reader already believes the site promised them</strong> from the hero and the myth prologue. The journal metaphor is not new here, it is kept. That continuity is the point.</p>
+        <p>Design psychology: the reader is in a skeptical phase by the time they reach this section. A bio page is where most personal brands break trust by puffing themselves up. The journal spread does the opposite. It makes the reader feel like they are spying on something honest, which paradoxically makes them trust the author more.</p>
+        <p><strong>Risk to manage.</strong> Fidelity trap. If the polaroid edges, paper texture, or ticket stamp feel themed rather than scanned, the whole thing collapses into kitsch. We commission real scans of Yanik's own journal and one real Maverick ticket. No Photoshop texture presets.</p>
+      </div>
+      <div class="rat">
+        <h5>Why this scores 89</h5>
+        <p>It is the highest fidelity translation of the brief. It continues the mythology, uses real assets we already have, and gives the voice section breathing room. It scores 89 and not 95 because it is also the most predictable move, which means it leans on execution quality more than invention. If the paper textures are a hair off, the magic dies.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- OPTION 2 -->
+  <article class="opt">
+    <div class="opt-head">
+      <div>
+        <div class="num">Option 02 · Polarizing pick</div>
+        <h3>The <em>Body of Evidence</em>.</h3>
+        <div class="tagline">Lead with the tattoo. Full bleed macro photograph of the cosmic sloth on his skin. A single sentence. A signature. The rest of the section dares you to keep reading.</div>
+      </div>
+      <div class="confidence">
+        <div class="ring">
+          <svg width="96" height="96" viewBox="0 0 96 96">
+            <circle cx="48" cy="48" r="42" fill="none" stroke="#1f1f2c" stroke-width="6"/>
+            <circle cx="48" cy="48" r="42" fill="none" stroke="#b8471f" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="45" />
+          </svg>
+          <div class="pct">83</div>
+        </div>
+        <div class="conf-label">Confidence</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-frame">
+        <div class="t-bleed">
+          <div class="t-img">
+            <div class="t-anno a1">the sloth.<br>inked 2023.</div>
+            <div class="t-anno a2">a thousand suns.<br>one quiet body.</div>
+          </div>
+          <div class="t-copy">
+            <div>
+              <div class="kicker">Who is this guy</div>
+              <h2>They call me<br>the <em>cosmic sloth</em>.</h2>
+              <p class="lede">I tore down a cage made out of money and started drawing suns instead. A thousand so far. Still counting.</p>
+            </div>
+            <div>
+              <div class="sign">signed, Yanik.</div>
+              <div class="stats">
+                <div class="stat">Companies<b>7</b></div>
+                <div class="stat">Mavericks<b>1000</b></div>
+                <div class="stat">Suns<b>∞</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body">
+      <div class="dd">
+        <h5>Design direction</h5>
+        <p>A single full width cinema plate. <strong>The left 55% is a macro photograph of Yanik's cosmic sloth tattoo</strong>, filling the frame. Low contrast, warm skin tones, deep black backdrop. The tattoo is the hero, not a thumbnail.</p>
+        <p>The right 45% sits in a matte black field. A tiny gold eyebrow. A three line declarative headline set in Fraunces display. One italic word, "cosmic sloth", pulls the eye. A short lede. A signature in Caveat gold, as if he just closed a letter. Three raw stats at the bottom, no chrome, no labels. Seven. One thousand. Infinity.</p>
+        <p>Handwritten annotations float over the tattoo in gold ink, pointing at details the way a museum label points at a brushstroke. "The sloth, inked 2023." "A thousand suns, one quiet body."</p>
+      </div>
+      <div class="spec">
+        <h5>Visual spec</h5>
+        <div class="spec-row">
+          <div class="k">Type</div>
+          <div class="v">Fraunces 300 display 52 to 72px · Caveat 18 to 30px · Space Grotesk 11px caps</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Palette</div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#070707"></div>
+            <div class="swatch" style="background:#1b1612"></div>
+            <div class="swatch" style="background:#d89a2a"></div>
+            <div class="swatch" style="background:#f2c940"></div>
+            <div class="swatch" style="background:#e8e0d0"></div>
+          </div>
+          <div class="v" style="margin-top:28px">Matte black, ink brown, sun gold, gold bright, warm off white.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Layout</div>
+          <div class="v">Asymmetric 55/45 split. No container width. Full viewport cinema. Mobile: tattoo fills full width, copy stacks below.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Motion</div>
+          <div class="v">Slow zoom on tattoo plate, gold annotations fade in staggered, stats count up on enter.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body" style="padding-top:0">
+      <div class="rat">
+        <h5>Strategic rationale</h5>
+        <p>This is the most memorable option. <strong>It makes his body the proof</strong>, not his resume. In his own words, he has the brand tattooed on him, and the site would be wasting time not to lead with it. The tattoo is the single most polarizing, self authenticating asset we have. Every doubt about whether he is performing the cosmic sloth story collapses the moment you see it inked on his skin.</p>
+        <p>Design psychology: skin and ink make a biological claim that copy cannot. When a reader sees a permanent mark on a real body, their brain registers commitment at a different level than reading a bio. This is the same reason tattoo culture shots convert better than stock portraits in editorial branding.</p>
+        <p><strong>Risk to manage.</strong> It is polarizing by design. Some readers will bounce on sight. That is fine, and arguably correct for the brand, but we should ship it knowing the opportunity cost is real.</p>
+      </div>
+      <div class="rat">
+        <h5>Why this scores 83</h5>
+        <p>Highest ceiling, narrower base. If the right reader lands here, they are sold in four seconds. If the wrong reader lands here, they bounce. I score it 83 because its power is also its cost. It is also slightly less rich than Option 1 in terms of giving the reader content to hold onto. We lose the polaroid stack, the ticket stub, the multiple artifacts. We gain one cinema moment in exchange.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- OPTION 3 -->
+  <article class="opt">
+    <div class="opt-head">
+      <div>
+        <div class="num">Option 03 · Editorial pick</div>
+        <h3>The <em>Profile</em>.</h3>
+        <div class="tagline">A magazine feature, not a landing page. Widescreen portrait, a headline pulled from the transcript, a long letter column, a pull quote, a handful of stats. The version your skeptical COO forwards to her friend.</div>
+      </div>
+      <div class="confidence">
+        <div class="ring">
+          <svg width="96" height="96" viewBox="0 0 96 96">
+            <circle cx="48" cy="48" r="42" fill="none" stroke="#1f1f2c" stroke-width="6"/>
+            <circle cx="48" cy="48" r="42" fill="none" stroke="#6b8e4e" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="55" />
+          </svg>
+          <div class="pct">79</div>
+        </div>
+        <div class="conf-label">Confidence</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-frame">
+        <div class="c-cinema">
+          <div class="c-hero">
+            <div class="c-over">
+              <div class="c-label">Section 03 · The Guide</div>
+              <h2>The man who <em>drew himself</em> out of a cage made of money.</h2>
+            </div>
+          </div>
+          <div class="c-body">
+            <div class="c-letter">
+              <p><span class="drop">T</span>hey call him the cosmic sloth, but only because he finally stopped fighting it. Yanik Silver sold his first internet company at twenty nine and discovered he had built, in his own words, <em>a cage made out of money</em>.</p>
+              <p>So he tore it down. He started drawing suns. A thousand so far, and counting. Around those suns he gathered a thousand entrepreneurs who had all hit the same wall he had. They call themselves Mavericks, because the world kept calling them that anyway.</p>
+              <p>He runs seven companies and a monthly community. He journals every morning. He has the brand tattooed on his own body.</p>
+            </div>
+            <div class="c-side">
+              <div class="c-pull">"Money is a measuring stick. It is not a meal."</div>
+              <div class="c-fact"><span>Since</span><b>2000</b></div>
+              <div class="c-fact"><span>Companies</span><b>7</b></div>
+              <div class="c-fact"><span>Community</span><b>Maverick1000</b></div>
+              <div class="c-fact"><span>Practice</span><b>Draw, journal, repeat</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body">
+      <div class="dd">
+        <h5>Design direction</h5>
+        <p><strong>A cinematic landscape portrait fills the top half</strong>, cropped wide, with soft vignette pulling the eye center. A tight gold eyebrow locates the reader. A display headline in third person pulls a line from the actual transcript, treated like a magazine cover. Italic word, "drew himself", does the work.</p>
+        <p>The bottom half is an editorial two column. Left column is the letter, set long form in Fraunces with a drop cap in sun gold. Right column is a pull quote in Caveat gold, followed by a stat panel with tight facts. No buttons, no CTAs. The section ends when the story does.</p>
+        <p>Sparseness is the signature. No polaroids, no tape, no stamps. The design leans on photography and typography alone. It is the version the reader can show to their more conservative friend without having to defend the aesthetic.</p>
+      </div>
+      <div class="spec">
+        <h5>Visual spec</h5>
+        <div class="spec-row">
+          <div class="k">Type</div>
+          <div class="v">Fraunces 14 to 44px · Caveat 24px pull quote · Space Grotesk 11px</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Palette</div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#0f0d0a"></div>
+            <div class="swatch" style="background:#f7f2e7"></div>
+            <div class="swatch" style="background:#d89a2a"></div>
+            <div class="swatch" style="background:#6b8e4e"></div>
+            <div class="swatch" style="background:#c8c0ac"></div>
+          </div>
+          <div class="v" style="margin-top:28px">Near black, paper cream, sun gold, earth green, warm grey.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Layout</div>
+          <div class="v">Hero 60vh landscape plate. Body 1.2 to 1 editorial grid. Max body width 1080px.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Motion</div>
+          <div class="v">Soft ken burns on hero portrait, drop cap ink bleed on reveal, stats fade in line by line.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body" style="padding-top:0">
+      <div class="rat">
+        <h5>Strategic rationale</h5>
+        <p>This is the option a Harvard MBA, a Joe Polish introduction, or a private equity operator forwards to a friend. <strong>It reads as a serious magazine profile</strong>, which is the correct register if we are trying to attract the 1000 entrepreneurs Yanik actually wants, not just the aesthetic tribe.</p>
+        <p>Design psychology: third person framing signals pedigree. When Yanik describes himself, it reads as performance. When a designer frames him in third person, it reads as editorial coverage. We reclaim a pound of authority without losing the voice, because the letter column is still his words.</p>
+        <p><strong>Risk to manage.</strong> It is the least tactile option. Readers arriving from the journal prologue may feel the aesthetic break. We can mitigate by keeping paper cream as the cream note in the pull column and by closing with a handwritten signature, so the reader lands back in the journal before the next section.</p>
+      </div>
+      <div class="rat">
+        <h5>Why this scores 79</h5>
+        <p>Strong, safe, and legible. Scores 79 because it is the most conservative take on the brief. It is also the least differentiated from other founder sites the reader has seen this week. If our audience is already bought into the mythology, this option is slightly too buttoned up. If our audience is a first pass skeptic, it is the option that passes their smell test most easily.</p>
+      </div>
+    </div>
+  </article>
+
+  </div>
+</section>
+
+<section class="matrix">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--gold-bright);margin-bottom:16px">How to choose</div>
+    <h2>Which <em>register</em> is Yanik in today.</h2>
+    <p class="sub">The three options each solve the brief. They are not equivalent. They differ in what they ask of the reader, what they trade for attention, and how far into the mythology they lean. Use the matrix to decide.</p>
+
+    <table>
+      <thead>
+        <tr><th style="width:22%">Option</th><th style="width:11%">Conf.</th><th>Feels like</th><th>Best when</th><th>Trades off</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">01 · The <em>Open Journal</em></td>
+          <td class="score">89</td>
+          <td>Reading over his shoulder in a coffee shop.</td>
+          <td>You want the most on brand, most emotionally warm, most artifact dense answer.</td>
+          <td>Predictable if surrounding sections are also journal themed. Execution risk if textures look themed.</td>
+        </tr>
+        <tr>
+          <td class="name">02 · The <em>Body of Evidence</em></td>
+          <td class="score">83</td>
+          <td>Opening a Wim Wenders portrait film.</td>
+          <td>You want to polarize fast, make the cosmic sloth undeniable in four seconds, and remove any sense of hedge.</td>
+          <td>Less content density. Some readers bounce on the tattoo. Narrower audience fit.</td>
+        </tr>
+        <tr>
+          <td class="name">03 · The <em>Profile</em></td>
+          <td class="score">79</td>
+          <td>Reading a Fast Company feature about him.</td>
+          <td>You want the version your skeptical COO friend can forward. Widest fit. Editorial authority.</td>
+          <td>Least tactile. Least differentiated. Risks aesthetic break from surrounding journal sections.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="verdict">
+      <div class="tag">My recommendation</div>
+      <p>Ship <em>Option 01, The Open Journal</em>, as the main section. It is the highest fidelity, most defensible, and most on brand answer to the brief. <strong>Then steal one move from Option 02</strong>: use the tattoo macro photograph as the last panel of the spread, so the journal metaphor gives way to the body metaphor exactly where the reader is deepest into Yanik's voice. That combination solves the "polarize fast" ask without losing the tactile journal integrity. Confidence in the combined approach, 92.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%">
+    <div>Section 03 · Meet Your Guide · v1</div>
+    <div>Design studio · 2026 04 20</div>
+  </div>
+</footer>
+
+<script>
+// Animate confidence rings on load
+window.addEventListener('load', () => {
+  document.querySelectorAll('.ring circle:nth-child(2)').forEach(c => {
+    const d = c.getAttribute('stroke-dashoffset');
+    c.style.strokeDashoffset = 264;
+    requestAnimationFrame(() => {
+      c.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1)';
+      c.style.strokeDashoffset = d;
+    });
+  });
+});
+</script>
+
+</body>
+</html>
