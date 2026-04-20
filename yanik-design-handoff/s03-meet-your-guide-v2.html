@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meet Your Guide · Three Directions v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a10;
+  --bg-2:#111119;
+  --bg-3:#16161f;
+  --line:#1f1f2c;
+  --line-2:#2a2a38;
+  --muted:#7c7c8c;
+  --mid:#a5a5b3;
+  --high:#e4e4ee;
+  --white:#f7f7fb;
+
+  --paper:#f5eedd;
+  --paper-2:#ead9b8;
+  --paper-edge:#c7b188;
+  --ink:#1d1812;
+  --ink-blue:#263b6a;
+  --gold:#d89a2a;
+  --gold-bright:#f2c940;
+  --burnt:#b8471f;
+  --rose:#c8557f;
+  --green:#6b8e4e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--high);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.serif{font-family:'Fraunces',serif}
+.hand{font-family:'Caveat',cursive}
+.mono{font-family:'Space Grotesk',monospace}
+.eyebrow{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(10,10,16,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;max-width:1240px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;color:var(--mid);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 3px rgba(242,201,64,.18)}
+.topbar .meta{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid)}
+.topbar .meta b{color:var(--gold-bright)}
+
+/* masthead */
+.mast{padding:96px 0 56px;border-bottom:1px solid var(--line)}
+.mast .eyebrow{color:var(--gold-bright)}
+.mast h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(52px,7vw,104px);line-height:.98;letter-spacing:-.02em;color:var(--white);margin:20px 0 22px}
+.mast h1 em{font-style:italic;color:var(--gold-bright)}
+.mast-sub{color:var(--mid);font-size:19px;line-height:1.65;max-width:64ch}
+.mast-meta{margin-top:44px;padding-top:28px;border-top:1px dashed var(--line-2);display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.meta-cell .k{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.meta-cell .v{font-family:'Fraunces',serif;font-size:17px;color:var(--white);margin-top:6px;line-height:1.4}
+
+/* intro strip */
+.shift{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.shift h2{font-family:'Fraunces',serif;font-weight:300;font-size:36px;color:var(--white);letter-spacing:-.01em;margin-bottom:12px}
+.shift h2 em{color:var(--gold-bright);font-style:italic}
+.shift p{color:var(--mid);font-size:16px;max-width:78ch;line-height:1.7}
+.shift p strong{color:var(--high);font-weight:500}
+
+/* option cards */
+.options{padding:64px 0 96px;display:flex;flex-direction:column;gap:72px}
+.opt{background:linear-gradient(180deg,var(--bg-2) 0%,var(--bg-3) 100%);border:1px solid var(--line);border-radius:24px;overflow:hidden;position:relative}
+.opt-head{padding:38px 46px 24px;display:grid;grid-template-columns:1fr auto;gap:40px;border-bottom:1px dashed var(--line-2);align-items:end}
+.opt-head .num{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.opt-head h3{font-family:'Fraunces',serif;font-weight:300;font-size:56px;line-height:1;letter-spacing:-.02em;color:var(--white)}
+.opt-head h3 em{font-style:italic;color:var(--gold-bright)}
+.opt-head .tagline{color:var(--mid);font-size:17px;line-height:1.55;max-width:62ch;margin-top:16px}
+.confidence{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:110px}
+.ring{width:104px;height:104px;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring .pct{position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:30px;font-weight:400;color:var(--white)}
+.conf-label{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+/* mockup frame */
+.mock{padding:38px 46px;border-bottom:1px dashed var(--line-2);background:var(--bg-3)}
+.mock-frame{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:#000;min-height:620px;position:relative}
+
+/* OPTION 1: Letter from Ten Years Ahead */
+.letter-bg{background:
+  radial-gradient(circle at 15% 20%, rgba(180,130,60,.08) 0 50%, transparent 50%),
+  radial-gradient(circle at 88% 82%, rgba(180,130,60,.06) 0 45%, transparent 45%),
+  repeating-linear-gradient(180deg, transparent 0 41px, rgba(80,60,30,.035) 41px 42px),
+  linear-gradient(180deg,#f5eedd 0%,#ead9b8 100%);
+  padding:64px 76px;min-height:620px;position:relative;color:var(--ink);overflow:hidden}
+.letter-bg::before{content:"";position:absolute;top:0;left:0;right:0;height:12px;background:linear-gradient(180deg,rgba(0,0,0,.08),transparent);pointer-events:none}
+.letter-bg::after{content:"";position:absolute;bottom:0;left:0;right:0;height:12px;background:linear-gradient(0deg,rgba(0,0,0,.08),transparent);pointer-events:none}
+.letter-head{display:flex;justify-content:space-between;align-items:flex-start;font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8a6a3a;margin-bottom:34px}
+.letter-head .stamp{border:1px dashed #8a6a3a;padding:6px 12px;border-radius:3px;background:rgba(255,255,255,.3)}
+.letter-photo{float:right;width:200px;margin:0 0 20px 32px;transform:rotate(3deg);box-shadow:0 18px 30px rgba(0,0,0,.25),0 4px 8px rgba(0,0,0,.2);border:10px solid #fafafa;border-bottom-width:40px;position:relative;background:#fafafa}
+.letter-photo img{width:100%;height:220px;object-fit:cover;display:block}
+.letter-photo .cap{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-family:'Caveat',cursive;font-size:16px;color:#3a2a18}
+.letter-greeting{font-family:'Caveat',cursive;font-size:40px;color:var(--burnt);line-height:1;margin-bottom:22px;transform:rotate(-1deg)}
+.letter-body{font-family:'Fraunces',serif;font-size:17px;line-height:1.72;color:#241a10;max-width:58ch}
+.letter-body p{margin-bottom:14px}
+.letter-body em{font-style:italic;color:var(--burnt);font-weight:500}
+.letter-body .under{background:linear-gradient(transparent 70%, rgba(242,201,64,.55) 70%, rgba(242,201,64,.55) 92%, transparent 92%);padding:0 2px}
+.letter-sig{font-family:'Caveat',cursive;font-size:36px;color:#1d1812;margin-top:20px;transform:rotate(-1.5deg);line-height:1}
+.letter-ps{font-family:'Caveat',cursive;font-size:20px;color:#3a2a18;margin-top:22px;padding-top:18px;border-top:1px dashed #8a6a3a;max-width:50ch;line-height:1.3}
+.letter-marginal{position:absolute;font-family:'Caveat',cursive;color:var(--burnt);font-size:22px;line-height:1.15;transform:rotate(-5deg)}
+.letter-marginal.m1{top:40%;left:24px;max-width:90px}
+.letter-arrow{position:absolute;font-family:'Caveat',cursive;color:var(--burnt);font-size:26px}
+
+/* OPTION 2: The Mirror */
+.mirror{display:grid;grid-template-columns:1fr 1fr;min-height:620px;position:relative;background:#0d0b08}
+.mirror::before{content:"";position:absolute;left:50%;top:12%;bottom:12%;width:1px;background:linear-gradient(180deg,transparent,rgba(216,154,42,.5),transparent);transform:translateX(-50%);z-index:3}
+.m-col{padding:56px 48px;position:relative;overflow:hidden}
+.m-col.you{background:linear-gradient(180deg,#14110c 0%,#0f0c08 100%);color:#d8d0bc}
+.m-col.him{background:linear-gradient(180deg,#1a140c 0%,#12100a 100%);color:#e8dec8}
+.m-label{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:18px}
+.m-col.you .m-label{color:#a09580}
+.m-kicker{font-family:'Fraunces',serif;font-weight:300;font-size:34px;line-height:1.1;letter-spacing:-.01em;margin-bottom:26px;color:#f5eedd}
+.m-col.you .m-kicker{color:#c8c0ac}
+.m-kicker em{font-style:italic;color:var(--gold-bright)}
+.m-line{font-family:'Fraunces',serif;font-size:18px;line-height:1.55;margin-bottom:14px;padding-left:18px;position:relative}
+.m-line::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:rgba(216,154,42,.45)}
+.m-col.you .m-line::before{background:rgba(168,160,140,.5)}
+.m-line b{font-weight:500;color:#f5eedd}
+.m-col.you .m-line b{color:#d8d0bc}
+.m-portrait{margin-top:28px;border-radius:8px;overflow:hidden;max-height:180px;position:relative;filter:grayscale(20%) contrast(1.05)}
+.m-portrait img{width:100%;height:180px;object-fit:cover;object-position:center 30%}
+.m-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(15,12,8,.6) 100%)}
+.m-sign{font-family:'Caveat',cursive;font-size:26px;color:var(--gold-bright);margin-top:18px;line-height:1}
+.m-col.you .m-sign{color:#a09580;font-style:italic;font-size:17px;font-family:'Fraunces',serif}
+.m-pivot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;width:124px;height:124px;border-radius:50%;overflow:hidden;border:3px solid var(--gold-bright);box-shadow:0 0 0 10px rgba(13,11,8,1),0 24px 50px rgba(0,0,0,.5)}
+.m-pivot img{width:100%;height:100%;object-fit:cover}
+
+/* OPTION 3: Index Cards */
+.cards{min-height:620px;background:
+  radial-gradient(ellipse at center,#2a2218 0%,#0f0b05 70%);
+  padding:56px 48px;position:relative;overflow:hidden}
+.cards-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;position:relative;z-index:2}
+.card{background:#f7f2e4;border-radius:3px;padding:18px 20px;font-family:'Caveat',cursive;color:#1d1812;min-height:150px;box-shadow:0 12px 22px rgba(0,0,0,.45),0 3px 6px rgba(0,0,0,.3);position:relative;display:flex;flex-direction:column;justify-content:space-between}
+.card::before{content:"";position:absolute;top:0;left:18px;right:18px;height:1px;background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(200,150,80,.3) 4px 8px)}
+.card .n{font-family:'Space Grotesk',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#8a6a3a;margin-bottom:6px}
+.card .t{font-size:22px;line-height:1.15;color:#1d1812}
+.card .t b{color:var(--burnt);font-weight:700}
+.card .t em{color:var(--ink-blue);font-style:italic}
+.card .underline{border-bottom:2px solid rgba(184,71,31,.4);padding-bottom:1px}
+.card.tilt-1{transform:rotate(-2deg)}
+.card.tilt-2{transform:rotate(1.2deg)}
+.card.tilt-3{transform:rotate(-1deg)}
+.card.tilt-4{transform:rotate(2.2deg)}
+.card.tilt-5{transform:rotate(-1.5deg)}
+.card.tilt-6{transform:rotate(.8deg)}
+.card.tilt-7{transform:rotate(-1.8deg)}
+.card.tilt-8{transform:rotate(1.5deg)}
+.card.tilt-9{transform:rotate(-.6deg)}
+.card.w6{grid-column:span 6}
+.card.w4{grid-column:span 4}
+.card.w3{grid-column:span 3}
+.card.w5{grid-column:span 5}
+.card.w8{grid-column:span 8}
+.card.w7{grid-column:span 7}
+.card.photo{padding:0;overflow:hidden;background:#f7f2e4}
+.card.photo img{width:100%;height:100%;object-fit:cover;display:block;min-height:150px}
+.card.photo .ph-cap{position:absolute;bottom:0;left:0;right:0;background:rgba(247,242,228,.94);padding:6px 10px;font-family:'Caveat',cursive;font-size:16px;color:#1d1812;text-align:center}
+.cards-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;color:#c0b596}
+.cards-head .t{font-family:'Fraunces',serif;font-weight:300;font-size:28px;color:#f5eedd}
+.cards-head .t em{color:var(--gold-bright);font-style:italic}
+.cards-head .sub{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8a7e5c}
+
+/* body blocks */
+.opt-body{padding:36px 46px;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+.dd h5, .rat h5, .spec h5{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.dd p, .rat p{color:var(--high);font-size:15.5px;line-height:1.7;margin-bottom:14px}
+.dd p:last-child, .rat p:last-child{margin-bottom:0}
+.dd strong, .rat strong{color:var(--white);font-weight:500}
+.spec{background:#0d0d14;border:1px solid var(--line);border-radius:12px;padding:22px}
+.spec-row{display:flex;flex-direction:column;padding:12px 0;border-bottom:1px solid var(--line)}
+.spec-row:last-child{border-bottom:none;padding-bottom:0}
+.spec-row:first-child{padding-top:0}
+.spec-row .k{font-family:'Space Grotesk',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.spec-row .v{font-family:'Fraunces',serif;font-size:14px;color:var(--high);line-height:1.5}
+.swatch-row{display:flex;gap:6px;margin-top:8px;margin-bottom:20px}
+.swatch{width:26px;height:26px;border-radius:5px;border:1px solid rgba(255,255,255,.08)}
+
+/* matrix */
+.matrix{padding:72px 0 96px;border-top:1px solid var(--line)}
+.matrix h2{font-family:'Fraunces',serif;font-weight:300;font-size:42px;color:var(--white);letter-spacing:-.01em;margin-bottom:10px}
+.matrix h2 em{color:var(--gold-bright);font-style:italic}
+.matrix .sub{color:var(--mid);font-size:17px;margin-bottom:40px;max-width:66ch}
+.matrix table{width:100%;border-collapse:collapse;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.matrix th{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);padding:18px 22px;text-align:left;background:var(--bg-3);border-bottom:1px solid var(--line);font-weight:500}
+.matrix td{padding:20px 22px;border-bottom:1px solid var(--line);font-size:14px;color:var(--high);vertical-align:top;line-height:1.55}
+.matrix tr:last-child td{border-bottom:none}
+.matrix .name{font-family:'Fraunces',serif;font-size:17px;color:var(--white);font-weight:400}
+.matrix .name em{color:var(--gold-bright);font-style:italic}
+.matrix .score{font-family:'Fraunces',serif;font-size:20px;color:var(--gold-bright);font-weight:400}
+.verdict{margin-top:44px;padding:28px 32px;background:linear-gradient(135deg,rgba(216,154,42,.12),rgba(107,142,78,.08));border:1px solid rgba(216,154,42,.3);border-radius:16px}
+.verdict .tag{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:12px}
+.verdict p{color:var(--high);font-size:17px;line-height:1.7;max-width:80ch}
+.verdict p em{color:var(--gold-bright);font-style:italic}
+.foot{padding:40px 0 64px;color:var(--muted);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:flex;justify-content:space-between;border-top:1px solid var(--line)}
+
+@media (max-width: 900px){
+  .opt-body{grid-template-columns:1fr;gap:28px}
+  .mast-meta{grid-template-columns:1fr 1fr}
+  .mirror{grid-template-columns:1fr}
+  .mirror::before, .m-pivot{display:none}
+  .letter-photo{float:none;margin:0 auto 20px;transform:none}
+  .opt-head{grid-template-columns:1fr;gap:20px}
+  .confidence{align-self:flex-start}
+  .cards-grid{grid-template-columns:repeat(6,1fr)}
+  .card.w8,.card.w7,.card.w6{grid-column:span 6}
+  .card.w5,.card.w4{grid-column:span 3}
+  .card.w3{grid-column:span 3}
+  .letter-bg{padding:40px 32px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand"><span class="dot"></span>Yanik Silver Design Studio · v2</div>
+    <div class="meta">Section 03 / <b>Meet Your Guide</b> / Three New Directions</div>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="eyebrow">Design brief · Section 03 · revision 2</div>
+    <h1>Meet your <em>guide</em>.</h1>
+    <p class="mast-sub">Three fresh takes, nothing from the first round carried over. No journal spread, no tattoo macro, no magazine profile. Copy is rewritten without the old money origin story. This section introduces a sun one, a cosmic sloth, a man who runs a thousand entrepreneurs and journals every morning. Not a founder exit story.</p>
+    <div class="mast-meta">
+      <div class="meta-cell">
+        <div class="k">Myth beat</div>
+        <div class="v">The Sloth wakes.</div>
+      </div>
+      <div class="meta-cell">
+        <div class="k">Emotional target</div>
+        <div class="v">Recognition, then trust.</div>
+      </div>
+      <div class="meta-cell">
+        <div class="k">Tonal register</div>
+        <div class="v">Hand written, not headshotted.</div>
+      </div>
+      <div class="meta-cell">
+        <div class="k">Feeling to avoid</div>
+        <div class="v">Founder resume.</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="shift">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--gold-bright);margin-bottom:16px">What changed in this round</div>
+    <h2>New <em>photos</em>. New <em>voice</em>. New <em>shapes</em>.</h2>
+    <p>The first round leaned on two portraits we already had and an origin story that reads as a founder exit. Yanik does not actually live in that story. <strong>He lives in the drawing, the sun, the community, the morning journal, the cacao, the sloth tattoo on his skin.</strong> These three options are built around that version of him. Photos now include the kangaroo moment, the mustache stage shot, the sloth onesie with family, and the Branson interview. Copy draws from his own words in the transcript, not a fictionalized exit.</p>
+  </div>
+</section>
+
+<section class="options">
+  <div class="wrap">
+
+  <!-- OPTION 1: LETTER FROM TEN YEARS AHEAD -->
+  <article class="opt">
+    <div class="opt-head">
+      <div>
+        <div class="num">Option 01 · Letter from ten years ahead</div>
+        <h3>The <em>handoff</em>.</h3>
+        <div class="tagline">One handwritten letter on cream paper, from Yanik to the reader. Not an introduction. A handoff from someone who has walked ten more years of the same path and is quietly leaving you a map.</div>
+      </div>
+      <div class="confidence">
+        <div class="ring">
+          <svg width="104" height="104" viewBox="0 0 104 104">
+            <circle cx="52" cy="52" r="46" fill="none" stroke="#1f1f2c" stroke-width="6"/>
+            <circle cx="52" cy="52" r="46" fill="none" stroke="#d89a2a" stroke-width="6" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="32" />
+          </svg>
+          <div class="pct">89</div>
+        </div>
+        <div class="conf-label">Confidence</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-frame">
+        <div class="letter-bg">
+          <div class="letter-head">
+            <div class="stamp">Potomac · MD · 04.2026</div>
+            <div>page 01 of 01</div>
+          </div>
+          <div class="letter-photo">
+            <img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-kangaroo.jpg" alt="Yanik with kangaroo"/>
+            <div class="cap">me. on a tuesday.</div>
+          </div>
+          <div class="letter-greeting">Dear future sun one,</div>
+          <div class="letter-body">
+            <p>They call me the <em>cosmic sloth</em>. I did not pick it, my mavericks did, and once a thousand people have called you a thing, you may as well buy the hoodie.</p>
+            <p>Here is what I can tell you. The <span class="under">sun is the only honest teacher I have found.</span> It gives without accounting. It shows up without ego. It warms the whole field. It has never once asked me for a pitch deck.</p>
+            <p>I draw one every morning. A thousand so far. I journal. I listen to the cacao. I gather entrepreneurs who feel a particular kind of itch, the ones who have built the thing and still feel like something is missing. I call them Mavericks because the world keeps calling us that anyway.</p>
+            <p>If that last paragraph did not make you put the phone down, keep reading. The rest of this site is for you.</p>
+          </div>
+          <div class="letter-sig">yours, still drawing,<br>Yanik.</div>
+          <div class="letter-ps">p.s. the sloth on the hammock is not a joke. ask me about it when you get here.</div>
+          <div class="letter-marginal m1">↖ this is<br>the one</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body">
+      <div class="dd">
+        <h5>Design direction</h5>
+        <p>Full bleed cream paper fills the whole section, with soft ruled lines faintly showing through. A paper clipped snapshot sits in the top right, at a gentle 3 degree tilt, showing Yanik relaxed and natural with an animal. Below it, a handwritten greeting in burnt orange ink. The body of the letter is set in Fraunces, 17px, long form, like a magazine letter.</p>
+        <p><strong>One highlighted line</strong> does the heavy lifting. "The sun is the only honest teacher I have found." Highlighted in a translucent sun gold wash so it reads as if Yanik had run a highlighter over it while drafting.</p>
+        <p>Signature in Caveat, the same hand as the greeting. A post script at the bottom, set off by a hairline dashed rule, hints at the mythology without explaining it. A single marginal annotation in burnt orange points at the best line.</p>
+      </div>
+      <div class="spec">
+        <h5>Visual spec</h5>
+        <div class="spec-row">
+          <div class="k">Type</div>
+          <div class="v">Fraunces body 17px · Caveat 20 to 40px · Space Grotesk 10px for stamps</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Palette</div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#f5eedd"></div>
+            <div class="swatch" style="background:#ead9b8"></div>
+            <div class="swatch" style="background:#b8471f"></div>
+            <div class="swatch" style="background:#d89a2a"></div>
+            <div class="swatch" style="background:#1d1812"></div>
+          </div>
+          <div class="v">Paper cream, paper shadow, burnt orange ink, sun gold highlight, ink.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Layout</div>
+          <div class="v">Full bleed paper. Inner margin 76px desktop, 32px mobile. Max line length 58 characters.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Motion</div>
+          <div class="v">Letter fades in line by line on scroll. Highlight underline strokes in left to right. Signature ink bleeds on last reveal.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body" style="padding-top:0">
+      <div class="rat">
+        <h5>Strategic rationale</h5>
+        <p><strong>The letter inverts the bio problem.</strong> A bio says, "here is who I am, please care." A letter says, "I already know who you are, and I wrote this for you." The reader is not asked to evaluate Yanik. They are invited into a private message. That shift changes the entire emotional register of the section.</p>
+        <p>Design psychology: letters carry an intimacy that web copy cannot manufacture. Pen ink, paper, greeting, signature, post script. Every element signals a private, personal, uncopyable act. The reader reads more slowly, trusts more deeply, and remembers longer.</p>
+        <p><strong>Why this scores 89.</strong> Highest emotional resonance on the brief. Most on brand continuity with the myth prologue and the journal aesthetic without literally repeating the journal spread pattern. Loses a couple of points to execution risk: if the handwriting is a canned Caveat string and not actually his, the letter collapses into theme. We commission two or three key phrases scanned from Yanik's real hand.</p>
+      </div>
+      <div class="rat">
+        <h5>What this asks the reader</h5>
+        <p>Read me. I wrote this for you. If you hear yourself in it, the rest of the site is for you. If you do not, close the tab and go back to whatever you were doing. No offense taken.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- OPTION 2: THE MIRROR -->
+  <article class="opt">
+    <div class="opt-head">
+      <div>
+        <div class="num">Option 02 · The mirror</div>
+        <h3>The <em>mirror</em>.</h3>
+        <div class="tagline">Split screen. Left is the reader in second person. Right is Yanik in first person. Line for line, they rhyme. The reader sees themself in him before they see him.</div>
+      </div>
+      <div class="confidence">
+        <div class="ring">
+          <svg width="104" height="104" viewBox="0 0 104 104">
+            <circle cx="52" cy="52" r="46" fill="none" stroke="#1f1f2c" stroke-width="6"/>
+            <circle cx="52" cy="52" r="46" fill="none" stroke="#f2c940" stroke-width="6" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="23" />
+          </svg>
+          <div class="pct">92</div>
+        </div>
+        <div class="conf-label">Confidence</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-frame">
+        <div class="mirror">
+          <div class="m-col you">
+            <div class="m-label">You</div>
+            <div class="m-kicker">You built the thing. You got <em>quieter</em> once you did.</div>
+            <div class="m-line">You are good at moving, and you have started to suspect that being good at moving is not the same as knowing where you are going.</div>
+            <div class="m-line">You draw things in the margin of meetings.</div>
+            <div class="m-line">You sense that the next layer is not a business move.</div>
+            <div class="m-line">You have been looking for people who talk like this and not finding enough of them.</div>
+            <div class="m-sign">that itch is why you are on this page.</div>
+          </div>
+          <div class="m-col him">
+            <div class="m-label">Him</div>
+            <div class="m-kicker">I run a <em>thousand</em> people who are you, five years ago and five years ahead.</div>
+            <div class="m-line">They call me the cosmic sloth. I did not pick it, my Mavericks did. <b>I kept it.</b></div>
+            <div class="m-line">I draw a sun every morning. A thousand so far.</div>
+            <div class="m-line">I journal in my own hand, by candle light, with cacao.</div>
+            <div class="m-line">I gathered the other people who felt the same itch and called them what the world already called them.</div>
+            <div class="m-sign">yours, still drawing, Yanik.</div>
+          </div>
+          <div class="m-pivot">
+            <img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-mustache.jpg" alt="Yanik"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body">
+      <div class="dd">
+        <h5>Design direction</h5>
+        <p>Two columns of equal width. Dark, warm, lamplight tones. <strong>Left column speaks to the reader in second person</strong>, "You built the thing. You got quieter once you did." Right column speaks in Yanik's first person, paced so each line rhymes with the line opposite it.</p>
+        <p>A single circular portrait sits at the exact pivot of the two columns, centered on the vertical divider line. Thin gold rule glows faintly between the columns. The portrait anchors the gaze and makes the reader look at Yanik only after they have read themselves in the left column first.</p>
+        <p>Both columns close with a signature line. Left: a gentle "that itch is why you are on this page." Right: "yours, still drawing, Yanik." Signatures meet at the middle. The reader has been introduced to themselves and to him in the same beat.</p>
+      </div>
+      <div class="spec">
+        <h5>Visual spec</h5>
+        <div class="spec-row">
+          <div class="k">Type</div>
+          <div class="v">Fraunces display 30 to 42px · Fraunces body 18px · Caveat 26px signature right, Fraunces italic 17px left</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Palette</div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#0f0c08"></div>
+            <div class="swatch" style="background:#1a140c"></div>
+            <div class="swatch" style="background:#d89a2a"></div>
+            <div class="swatch" style="background:#f2c940"></div>
+            <div class="swatch" style="background:#e8dec8"></div>
+          </div>
+          <div class="v">Ink dark, warmer ink dark, sun gold, gold bright, paper highlight.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Layout</div>
+          <div class="v">50/50 two column. Center circular portrait 124px diameter. Vertical divider 1px gold gradient. Mobile stacks, portrait sits between stacks as a horizontal rule.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Motion</div>
+          <div class="v">Left column reveals on scroll. Right column reveals the same lines, delayed 200ms, so the eye catches the rhyme live. Portrait fades in on both columns complete.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body" style="padding-top:0">
+      <div class="rat">
+        <h5>Strategic rationale</h5>
+        <p><strong>This is the highest conversion play on the page.</strong> Readers do not buy from people whose story impresses them. They buy from people whose story recognizes them. The mirror structure literally forces recognition first and introduction second. By the time they read his name, they have already nodded along three times.</p>
+        <p>Design psychology: the mirror is the single most effective sales pattern in long form copywriting. Gary Halbert's hospital letter, every Basecamp landing page, Morning Brew's founder story. The reason they work is that second person narration turns the page into a diagnostic instrument. The reader reads themselves diagnosed, then reads the person who understands the diagnosis.</p>
+        <p><strong>Why this scores 92.</strong> This is the strongest option. It hits recognition, it hits brand voice, it lets a single well chosen photograph do the heavy lifting, and it sets up the rest of the site to feel like a journey the reader is already on, not a pitch they are considering. It loses a few points because rhyming two columns well is a copy craft problem as much as a design problem. The design holds up even if the copy is average, but the magic only lands if both halves are written in parallel with care.</p>
+      </div>
+      <div class="rat">
+        <h5>What this asks the reader</h5>
+        <p>Look to the left. Then look to the right. If the two sides are describing the same person, welcome home.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- OPTION 3: THE INDEX CARDS -->
+  <article class="opt">
+    <div class="opt-head">
+      <div>
+        <div class="num">Option 03 · Index cards</div>
+        <h3>The <em>confession</em>.</h3>
+        <div class="tagline">A scatter of handwritten index cards on a dark desk. Scroll reveals them one at a time. One line per card. A mix of words and photographs. Reads like a deposition delivered at the kitchen table.</div>
+      </div>
+      <div class="confidence">
+        <div class="ring">
+          <svg width="104" height="104" viewBox="0 0 104 104">
+            <circle cx="52" cy="52" r="46" fill="none" stroke="#1f1f2c" stroke-width="6"/>
+            <circle cx="52" cy="52" r="46" fill="none" stroke="#6b8e4e" stroke-width="6" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="52" />
+          </svg>
+          <div class="pct">82</div>
+        </div>
+        <div class="conf-label">Confidence</div>
+      </div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-frame">
+        <div class="cards">
+          <div class="cards-head">
+            <div class="t">Nine cards, <em>one sitting</em>.</div>
+            <div class="sub">Scroll to reveal · no bio required</div>
+          </div>
+          <div class="cards-grid">
+            <div class="card tilt-1 w4"><div class="n">01</div><div class="t">I am a <b>maverick</b>, a seeker, a <b>sun one</b>.</div></div>
+            <div class="card tilt-2 w5"><div class="n">02</div><div class="t">They call me the <em>cosmic sloth</em>. I kept the name.</div></div>
+            <div class="card tilt-3 w3 photo">
+              <img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-sloth-onesie.jpg" alt="Yanik in sloth onesie"/>
+              <div class="ph-cap">exhibit A. the onesie.</div>
+            </div>
+
+            <div class="card tilt-4 w3"><div class="n">03</div><div class="t">I draw a <span class="underline">sun</span> every morning. A thousand so far.</div></div>
+            <div class="card tilt-5 w5"><div class="n">04</div><div class="t">The sun is the <b>only honest teacher</b> I have found. It gives without accounting.</div></div>
+            <div class="card tilt-6 w4"><div class="n">05</div><div class="t">I run a community of a <em>thousand</em> entrepreneurs who feel the same itch.</div></div>
+
+            <div class="card tilt-7 w6"><div class="n">06</div><div class="t">I call them <b>Mavericks</b> because the world kept calling us that anyway.</div></div>
+            <div class="card tilt-8 w3 photo">
+              <img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-mustache.jpg" alt="Yanik"/>
+              <div class="ph-cap">exhibit B. on stage.</div>
+            </div>
+            <div class="card tilt-9 w3"><div class="n">07</div><div class="t">I journal every <em>morning</em>. In ink. By hand.</div></div>
+
+            <div class="card tilt-1 w5"><div class="n">08</div><div class="t">Earth, air, fire, water, cacao. <b>The symbols are real.</b></div></div>
+            <div class="card tilt-3 w4"><div class="n">09</div><div class="t">If any of this sounds like you, <em>keep reading</em>.</div></div>
+            <div class="card tilt-5 w3"><div class="n">ps</div><div class="t">signed, <b>Yanik.</b></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body">
+      <div class="dd">
+        <h5>Design direction</h5>
+        <p>Dark radial background that reads like a desk lit by a single warm lamp. <strong>Nine handwritten index cards are scattered across a twelve column grid</strong>, each with a slight rotation. Cards alternate between text only and small photographs.</p>
+        <p>Text cards carry one sentence per card in Caveat, with selective emphasis: brand words in burnt orange, italics in ink blue, key phrases with a hand drawn underline. Photo cards use real images with a small handwritten caption strip ("exhibit A. the onesie.") at the bottom.</p>
+        <p>Numbering is monospace stamped in small sepia type. One card per beat. The reader does not read a bio, they watch Yanik place evidence on the table, one card at a time.</p>
+      </div>
+      <div class="spec">
+        <h5>Visual spec</h5>
+        <div class="spec-row">
+          <div class="k">Type</div>
+          <div class="v">Caveat 20 to 24px primary · Space Grotesk 9px card numbers · Fraunces 28px section header</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Palette</div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#2a2218"></div>
+            <div class="swatch" style="background:#0f0b05"></div>
+            <div class="swatch" style="background:#f7f2e4"></div>
+            <div class="swatch" style="background:#b8471f"></div>
+            <div class="swatch" style="background:#263b6a"></div>
+          </div>
+          <div class="v">Dark oak, near black, card cream, burnt orange, ink blue.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Layout</div>
+          <div class="v">12 column grid, 14px gap. Cards span 3 to 8 columns. Rotations ranged minus 2 to plus 2.2 degrees.</div>
+        </div>
+        <div class="spec-row">
+          <div class="k">Motion</div>
+          <div class="v">Cards drop in sequence with a subtle bounce. Shadows grow on hover. Photo cards tilt 1 degree on hover for a micro lift.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opt-body" style="padding-top:0">
+      <div class="rat">
+        <h5>Strategic rationale</h5>
+        <p><strong>The index card form is the most native to how Yanik actually thinks.</strong> He journals. He doodles. He notes. A bio expects to be read linearly. An index card scatter says, read whichever line you want first. That matches the reader who is skimming, and it rewards the reader who stays.</p>
+        <p>Design psychology: fragmentation reads as honesty. The brain processes a complete paragraph as rhetoric, while a set of discrete one liners reads as evidence. Each card becomes a micro commitment. The photograph cards land as proof exhibits in a case he is making about himself.</p>
+        <p><strong>Why this scores 82.</strong> Native to his voice, high texture, most shareable by screenshot. Loses a few points because it is visually busier than the other two, which means if the surrounding sections are also tactile, the reader may hit visual fatigue by the time they arrive. Works best when the sections around it are quieter, like after a calm manifesto and before a spare testimonial rail.</p>
+      </div>
+      <div class="rat">
+        <h5>What this asks the reader</h5>
+        <p>Pick any card first. Read them in any order. You will still end up with the same picture of me.</p>
+      </div>
+    </div>
+  </article>
+
+  </div>
+</section>
+
+<section class="matrix">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--gold-bright);margin-bottom:16px">How to choose</div>
+    <h2>Which <em>shape</em> holds Yanik best.</h2>
+    <p class="sub">All three options answer the brief. They differ in how much of the reader they ask to show up with, how much of Yanik's voice they use, and how much execution risk they carry.</p>
+
+    <table>
+      <thead>
+        <tr><th style="width:24%">Option</th><th style="width:10%">Conf.</th><th>Feels like</th><th>Best when</th><th>Trades off</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">01 · The <em>handoff</em></td>
+          <td class="score">89</td>
+          <td>A private letter slid across a table.</td>
+          <td>You want the warmest, most emotionally generous answer, and a reader willing to slow down and read one page of prose.</td>
+          <td>Requires a few real handwritten phrases scanned from Yanik, not a Caveat swap. Some readers will scroll past long form on a landing page.</td>
+        </tr>
+        <tr>
+          <td class="name">02 · The <em>mirror</em></td>
+          <td class="score">92</td>
+          <td>Finishing someone else's sentence.</td>
+          <td>You want the highest conversion lift and the tightest copy craft. Readers self select in by line three.</td>
+          <td>Demands parallel copy that actually rhymes. Mediocre copy collapses the effect. Requires the single right portrait.</td>
+        </tr>
+        <tr>
+          <td class="name">03 · The <em>confession</em></td>
+          <td class="score">82</td>
+          <td>A desk after midnight, cards laid out.</td>
+          <td>You want the most shareable, most screenshot ready, most Instagrammable section, and a reader who skims.</td>
+          <td>Visually busy. Fights surrounding sections for attention if they are also tactile.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="verdict">
+      <div class="tag">My recommendation</div>
+      <p>Build <em>Option 02, The Mirror</em>. It is the strongest conversion play on the page, the clearest use of Yanik's voice, and the cleanest design solution. <strong>Then plant Option 01's letter as Section 08, a closing letter from him to the reader,</strong> so the mirror is the handshake and the letter is the farewell. Index cards (Option 03) we hold for a smaller section later, probably the About footer strip, where their density will not fight anything.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%">
+    <div>Section 03 · Meet Your Guide · v2</div>
+    <div>Design studio · 2026 04 20</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load', () => {
+  document.querySelectorAll('.ring circle:nth-child(2)').forEach(c => {
+    const d = c.getAttribute('stroke-dashoffset');
+    c.style.strokeDashoffset = 289;
+    requestAnimationFrame(() => {
+      c.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1)';
+      c.style.strokeDashoffset = d;
+    });
+  });
+});
+</script>
+
+</body>
+</html>
