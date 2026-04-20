@@ -1,0 +1,854 @@
+MASTER TESTIMONIALS CATALOG FOR MAVERICK EVENTS
+================================================
+
+Generated from all testimonial document files in /sessions/laughing-ecstatic-hawking/extracted/
+
+FORMAT:
+NAME: [person name]
+ROLE: [title/company if known]
+EVENT: [which event - Necker, Camp Maverick, M3 Summit, Mastermind, 3x, Membership, etc.]
+YEAR: [year if known]
+SOURCE FILE: [filename it came from]
+QUOTE: [the testimonial text]
+
+TOTAL TESTIMONIALS EXTRACTED: [Count will be added at end]
+
+---
+
+GENERAL TESTIMONIALS (Multi-event or General Maverick1000)
+============================================================
+
+NAME: Joey Coleman
+ROLE: Unknown
+EVENT: General Maverick1000
+YEAR: Unknown
+SOURCE FILE: Testimonials for Mav1000 Site.docx
+QUOTE: "At the end of the day, being a Maverick is all about being able to choose your own adventure, to design your own life, to pick yourself and to say 'this is the way I want to shape my existence on this planet.'"
+
+---
+
+NAME: Andrew Potoschnick
+ROLE: Unknown
+EVENT: General Maverick1000
+YEAR: Unknown
+SOURCE FILE: Testimonials for Mav1000 Site.docx
+QUOTE: "Maverick has become a group of my closest friends and most trusted business advisors. Whether we are having fun, learning or helping others, I am always building genuine relationships where people give and ask for nothing in return."
+
+---
+
+NAME: Adam Summers
+ROLE: Unknown
+EVENT: General Maverick1000
+YEAR: Unknown
+SOURCE FILE: Testimonials for Mav1000 Site.docx
+QUOTE: "Maverick takes me out of my day-to-day environment and allows me to grow as a person and in my business. The Mavericks are people I can turn to and count on under any circumstance at any time, day or night."
+
+---
+
+NAME: Shelby Larson
+ROLE: Unknown
+EVENT: General Maverick1000
+YEAR: Unknown
+SOURCE FILE: Testimonials for Mav1000 Site.docx
+QUOTE: "Maverick is such an impactful part of my life that when people ask my kids what they want to be when they grow up, they say without hesitation, 'Mavericks!' I would rather sooner not feed my family than not pay Maverick dues."
+
+---
+
+NAME: Mike Cline
+ROLE: Unknown
+EVENT: General Maverick1000
+YEAR: Unknown
+SOURCE FILE: Testimonials for Mav1000 Site.docx
+QUOTE: "The entire group is centered around the pillars of making more money, having more fun and giving more back. Maverick is more balanced than most other business groups that typically only have one edge to them. Maverick feels like family."
+
+---
+
+NAME: William Lee
+ROLE: Unknown
+EVENT: General Maverick1000 / Necker / South Africa FIFA Trip
+YEAR: Unknown
+SOURCE FILE: Testimonials for Mav1000 Site.docx & Testimonials Doc.docx
+QUOTE: "The adventures really appealed to me and were right up my alley. I quickly realized that these events were not only EPIC, once-in-a-lifetime trips, but also created more authentic relationships through sharing unique experiences. The bonds formed through Maverick are deeper and more authentic than anything another networking group or mastermind can give you."
+
+---
+
+NAME: Jim Spano
+ROLE: Real Estate Development, Resort Development and Solar Farm Development
+EVENT: General Maverick1000 / M3 Summit
+YEAR: Unknown
+SOURCE FILE: Testimonials for Mav1000 Site.docx & Video 2 testimonial - Jim Spano.docx
+QUOTE: "Mavericks are more than a club, more than a network, and more than a bunch of wealthy business people. They are a group of caring creative and philanthropic minded people that will no doubt leave a footprint in history that will act as an example of what can happen when great minds, good souls, and collective resources are applied unselfishly to the betterment of the human existence!"
+
+---
+
+NAME: Aaron Lilly
+ROLE: Unknown
+EVENT: General Maverick1000
+YEAR: Unknown (Joined 2011)
+SOURCE FILE: Testimonials for Mav1000 Site.docx & Testimonials Doc.docx
+QUOTE: "Hands down, not only my favorite group that I am a part of but by far the most valuable. Since I joined I have earned over $1,000,000 in extra revenue, all due to connections and recommendations. I can almost guarantee that you will have made your money back and much more within the first year of joining."
+
+---
+
+NAME: Steve Young
+ROLE: Unknown
+EVENT: General Maverick1000 / M3 Summit / Necker / Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Multiple files
+QUOTE: "In this group you have a deeper sense of connection not only from a business level but also an emotional level and intellectual level. You have such great commonalities between the members, you feel like you're not on this journey by yourself."
+
+---
+
+NAME: Tony Ricciardi
+ROLE: Co-Founder, Listen Up Espanol
+EVENT: General Maverick1000 / Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Testimonials for Mav1000 Site.docx & Transcribed Camp Maverick Testimonials.docx
+QUOTE: "Being a member has been life-changing. It has kept me engaged and active and continuing to grow business-wise and personal. What got me excited was the adventure side; it's an opportunity to sharpen the saw in my mind."
+
+---
+
+NAME: Jason Katzenback
+ROLE: Unknown
+EVENT: General Maverick1000
+YEAR: Unknown
+SOURCE FILE: Testimonials for Mav1000 Site.docx
+QUOTE: "It's all about the relationships and the connections...everything comes back around."
+
+---
+
+NAME: Shahrooz Yazdani
+ROLE: Unknown
+EVENT: General Maverick1000 / Necker Trip (mentioned)
+YEAR: 2022 (email dated March 5, 2022)
+SOURCE FILE: General Maverick1000 Testimonials_.docx
+QUOTE: "It's actually the original reason I found you guys and joined (Re: Necker Trip). I heard Vishen Lakhiani talk about a mastermind group he was part of that went to Necker Island and met with Richard Branson. As soon as I heard that I was like 'I gotta do that.' I've already gotten way more value than I've paid."
+
+---
+
+NAME: Mike Lally
+ROLE: Unknown
+EVENT: General Maverick1000
+YEAR: 2023 (email dated May 11, 2023)
+SOURCE FILE: General Maverick1000 Testimonials_.docx
+QUOTE: "What it is—is a group of people on a shared journey to learn, to become people, better their businesses and make the world a little bit better place. Short answer is exceptional people curating exceptional experiences for an exceptional tribe."
+
+---
+
+NAME: Justin Tupper
+ROLE: Golf Education, RevolutionGolf.com
+EVENT: General Maverick1000
+YEAR: Unknown
+SOURCE FILE: Testimonials Doc.docx
+QUOTE: "I ran into a real tight spot last year when our main publishing company's author left. The deep relationships I had with Maverick members saved the day! I called up a fellow Maverick and we ended up promoting his product to our list and netted $210,000 with just 2 emails."
+
+---
+
+CAMP MAVERICK TESTIMONIALS
+==========================
+
+NAME: Shelby Rimmereid Larson
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Maverick Testimonials.docx
+QUOTE: "For those of you who don't know what Camp Maverick is, it's a sleep away camp for Entrepreneurs. I just wanted all of my friends and family to know that we haven't completely lost our minds. However, that was the first time I gave one of my Keynotes in flip flops, shorts and a swimsuit!"
+
+---
+
+NAME: Craig Handley
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Maverick Testimonials.docx
+QUOTE: "So 4 nights and 3 full days at Camp Maverick, equal parts brain power and fun. The food was incredible. My closing comment to the Maverick team was 'top 3 events I've been to. Would rather do this again over Necker.'"
+
+---
+
+NAME: Damien Zamora
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Maverick Testimonials.docx
+QUOTE: "I enjoyed this particular 'Sand Box' you coined, Camp Maverick! Met some amazing new friends, reconnected with Mavs, gained new wisdom, mentored and offered value, danced in silence, learned and crushed FlipCup, and just had a fricken all out BALL!"
+
+---
+
+NAME: Shari Aldrich
+ROLE: President and Clinical Director of Bodymechanics Institute
+EVENT: Camp Maverick / Buenos Aires Trip / M3 Summit / Multiple events
+YEAR: Joined 2015
+SOURCE FILE: Camp Maverick Testimonials.docx & From Shari Aldrich.docx & Transcribed Camp Maverick Testimonials.docx
+QUOTE (Camp): "Camp was awesome. I've made some great connections with people and a lot of good friends here. Reconnecting, rebonding with people and recentering myself so I can take it back home and just kick ass in my business!"
+
+QUOTE (Buenos Aires revelation): "My revelation struck me hard and helped me to realize just how much I have moved beyond the pain I had been living with. Losing my finger was a blessing. Had it not been, I would still be massaging and I wouldn't be growing and transforming in the way that I am now. I feel so free!"
+
+---
+
+NAME: Brent Weaver
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Maverick Testimonials.docx
+QUOTE: "True story: I went to a local startup 'bash' networking event last night. It depressed me."
+
+---
+
+NAME: Corey Wert
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Maverick Testimonials.docx
+QUOTE: "The Maverick community continues to impact my life in ways words can't describe. Had an amazing week at camp maverick with fellow thought leaders and entrepreneurs. This format will change the face of 'networking,' 'conferences' or whatever you want to call it."
+
+---
+
+NAME: Karina Belkin
+ROLE: Naturopathic Doctor/Owner, Solutions Pharmacy
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Maverick Testimonials.docx & Transcribed Camp Maverick Testimonials.docx
+QUOTE: "Maverick's Camp was going back to childhood and doing everything the Maverick's way. This was the best and most enriching and invigorating experience."
+
+---
+
+NAME: Matt Curry
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Maverick Testimonials.docx
+QUOTE: "Very grateful that I was able to spend an amazing four days at Camp Maverick. We learned some amazing Life, Marketing, PR and Happiness hacks and lessons. I got to hang with awesome, crazy friends and create some crazy fun memories. Love."
+
+---
+
+NAME: Zion Kim
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Maverick Testimonials.docx
+QUOTE: "The weekend was a wild roller coaster ride where I experienced love, excitement, surprise, empathy, compassion, connection, competition, and even frustration and fear. After being surrounded by entrepreneurs with the shared vision of changing the world, I left with the inspiration to think bigger and clarity of my own calling."
+
+---
+
+NAME: David S. Lowry
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Maverick Testimonials.docx
+QUOTE: [Reference to blog post at https://davidslowry.withknown.com/2015/my-night-as-a-cop-at-camp-maverick]
+
+---
+
+NAME: Marc Gutman
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: 2015
+SOURCE FILE: Camp Maverick Testimonials.docx
+QUOTE: "Your vision for Maverick, but more importantly the way you had the courage to actually execute on that vision, was a pleasure to experience. You curated an amazing group of campers and I left extremely inspired."
+
+---
+
+NAME: Katie Hunt-Morr
+ROLE: Virgin Unite
+EVENT: Camp Maverick
+YEAR: 2018 (mentioned Necker 2018)
+SOURCE FILE: Camp Testimonials_.docx
+QUOTE: "Every moment of camp was mind blowing and heart opening. The community you've built is full of the most genuine, giving people I've ever met. Thank you for bringing me and Virgin Unite to Camp Maverick."
+
+---
+
+NAME: Steffani Fort LeFevour
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Testimonials_.docx & Steffani LeFevour_.docx
+QUOTE: "I knew Camp Maverick would be fun but I never expected the true deep transformation that occurred. I was REALLY blown away by my Maverick experience. Sophia is a true master. I connected with so many amazing people. My life will be forever changed."
+
+---
+
+NAME: Melanie Spring
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Testimonials_.docx
+QUOTE: "My favorite event every year."
+
+---
+
+NAME: Mike Budny
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Testimonials_.docx
+QUOTE: "Best investment for deep connection, business growth and MAD FUN. Can't wait!"
+
+---
+
+NAME: Matthew Samoohi
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown (3rd year attendee)
+SOURCE FILE: Camp Testimonials_.docx
+QUOTE: "I've been to tons of events in the past few years. If I could only attend one of them a year, this would certainly be it. It's my 3rd year strong and it's added to my life immensely. The depth and quality of connections made are second to none."
+
+---
+
+NAME: Jennifer Hudye
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Testimonials_.docx
+QUOTE: "I'm part of some of the highest level groups and masterminds and this is BY FAR my favorite event I've attended. Best time of my life."
+
+---
+
+NAME: Trent McEntire
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Testimonials_.docx
+QUOTE: "Camp Maverick is the place you have been looking for to be the catalyst to your best self and business."
+
+---
+
+NAME: Shannon Hamrick
+ROLE: Unknown
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Camp Testimonials_.docx
+QUOTE: "As a first time camp attendee and knowing no one, I was a bit intimidated being in a group with all these amazing people. However, from the moment I was on the bus from the airport, everyone was so supportive and put me immediately at ease."
+
+---
+
+NAME: Vinny Azevedo
+ROLE: Founder of Nettrus
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Transcribed Camp Maverick Testimonials.docx
+QUOTE: "This has been the most amazing experience to me. I met a bunch of cool people. Everybody is smart. I've met a lot of good partners that can help me grow. I can't put a price on it. It's the most amazing time I've ever had!"
+
+---
+
+NAME: Chris Rugh
+ROLE: Entrepreneur, Author & Business Owner, Founder of Custom Toll Free
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Transcribed Camp Maverick Testimonials.docx
+QUOTE: "There's some great business opportunities here. Some great people here. Camp Maverick is an awesome time. Good people. Beautiful people. Smart people."
+
+---
+
+NAME: Joe Foley
+ROLE: Client Experience Officer at Corporate Disk Company
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Transcribed Camp Maverick Testimonials.docx
+QUOTE: "Camp Maverick is awesome. I'm really impressed with the people that I met. It's just a freakin' great time. The speakers are really cool. It's amazing the kind of connections you can make here."
+
+---
+
+NAME: Mike Whitlach
+ROLE: Principal at Inbound Designs
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Transcribed Camp Maverick Testimonials.docx
+QUOTE: "This has been great. Being able to unplug. I've gotten to really enjoy all of the activities and really embrace all of these guys. These people are fantastic, and I've learned a lot."
+
+---
+
+NAME: Scott Thompson
+ROLE: Founder & CEO of Lifematters, Former Ernst & Young Entrepreneur of the Year Winner
+EVENT: Camp Maverick
+YEAR: Unknown
+SOURCE FILE: Transcribed Camp Maverick Testimonials.docx
+QUOTE: "I love Camp Maverick. This is the best conference I've been to. Who the hell wants to go to another Hilton or Marriott and sit in some conference room. We did bubble soccer, silent disco, great counselors, water skiing, slides—it's just tremendous."
+
+---
+
+M3 SUMMIT TESTIMONIALS
+======================
+
+NAME: Joe Barton
+ROLE: BartonPublishing.com, Natural Remedies for Acid Reflux, Diabetes, High Blood Pressure
+EVENT: M3 Summit
+YEAR: Unknown
+SOURCE FILE: Video 1 testimonial - Joe Barton.docx
+QUOTE: "The biggest benefit of being a member of Maverick1000 is definitely the people. The people are awesome, just all the different industries they're in, the resources, the experience. You never know who you're going to talk to that will have the missing link that you've been looking for."
+
+---
+
+NAME: Jim Spano
+ROLE: Real Estate Development, Resort Development and Solar Farm Development
+EVENT: M3 Summit
+YEAR: Unknown
+SOURCE FILE: Video 2 testimonial - Jim Spano.docx
+QUOTE: "The single most impactful aspect of Maverick in my business is the incredible brain power that's assembled in one room at one time, and the ability to have face-to-face with leaders in the industry."
+
+---
+
+NAME: Craig Ballantyne
+ROLE: TurbulenceTraining.com and EarlyToRise.com
+EVENT: M3 Summit / Tucson Arizona Event
+YEAR: Unknown
+SOURCE FILE: Video 3 testimonial - Craig Ballantyne.docx
+QUOTE: "The biggest benefit to me from Maverick1000 is clearly the networking. I now run Early To Rise with a business partner I met through Maverick. I've probably met at least five people that are going to make a significant impact on my business."
+
+---
+
+NAME: Tara Gorez
+ROLE: Image Consulting
+EVENT: M3 Summit
+YEAR: Unknown
+SOURCE FILE: Video 4 testimonial - Tara Gorez.docx
+QUOTE: "The best part about this weekend is the people, the connections and the networking. The speakers resonated with me. It's the combination of the people, the knowledge that you gain, and the spirit of charity and giving."
+
+---
+
+NAME: Lena Requist
+ROLE: Unknown
+EVENT: M3 Summit / Underground / Maui meeting
+YEAR: Unknown
+SOURCE FILE: Video 5 testimonial - Lena Requist.docx
+QUOTE: "I'm signing up whether you want to or not. These are my types of people. They're business people. They're smart, and they take crazy adventures. You want to be around people that are like you, that are fun and interesting and smart and challenge you."
+
+---
+
+NAME: Jason Katzenback
+ROLE: Unknown (Canadian Member)
+EVENT: M3 Summit
+YEAR: Unknown
+SOURCE FILE: Video 6 testimonial - Jason Katzenback.docx
+QUOTE: "Bar none, this has been the best investment I've ever made. It means the world to my company. For anybody that is considering it, I 100% recommend it. It's phenomenal. It's fantastic."
+
+---
+
+NAME: John Ratliff
+ROLE: Apple Tree Answers (Call Center Services)
+EVENT: M3 Summit / Necker Island
+YEAR: Unknown
+SOURCE FILE: Video 7 testimonial - John Ratliff.docx
+QUOTE: "The best ideas that you get come from hearing about ideas in completely different industries. The energy of being around entrepreneurs and just sharing ideas about business is an unbelievably valuable exercise."
+
+---
+
+NAME: Logan Christopher
+ROLE: Unknown
+EVENT: M3 Summit Cartagena
+YEAR: 2019
+SOURCE FILE: M3 Summit Cartagena 2019 Testimonials.docx
+QUOTE: "If you are interested in spending time with an amazing group of people, in an amazing location, having amazing experiences and doing amazing things, then the M3 Summit is the place for you."
+
+---
+
+NAME: Raj Jana
+ROLE: Unknown
+EVENT: M3 Summit Cartagena
+YEAR: 2019
+SOURCE FILE: M3 Summit Cartagena 2019 Testimonials.docx
+QUOTE: "Cartagena was one of my favorite trips I have ever taken. The food, people, music, activities, content, and conversations were all synergistically working together to create an experience that I will never forget."
+
+---
+
+NAME: Shari Aldrich
+ROLE: President and Clinical Director of Bodymechanics Institute
+EVENT: M3 Summit
+YEAR: Unknown
+SOURCE FILE: M3 Summit Cartagena 2019 Testimonials.docx
+QUOTE: "Maverick M3 Summit is a game-changer. It is the perfect mix of growth sessions, impact sessions as well as fun built in. I've been to 4 Maverick M3 Summit's now and I've left inspired and rejuvenated every time."
+
+---
+
+NAME: Steve Young
+ROLE: Unknown
+EVENT: M3 Summit Cartagena / Necker
+YEAR: 2019 (Cartagena)
+SOURCE FILE: M3 Summit Cartagena 2019 Testimonials.docx & Multiple other files
+QUOTE: "The event was a perfect balance of experiencing a multitude of emotions like joy, fulfilled, peace, excitement, and deep connection. Experiencing them with people you consider family is profound."
+
+---
+
+NAME: Melinda Wittstock
+ROLE: Unknown
+EVENT: M3 Summit Cartagena
+YEAR: 2019
+SOURCE FILE: M3 Summit Cartagena 2019 Testimonials.docx
+QUOTE: "Successful 'entrepioneering' requires you to play 'all in'—your mind, body and spirit truly aligned. Maverick1000's M3 Summit is truly transformational, lifting and inspiring all of us to new heights."
+
+---
+
+NAME: Pony
+ROLE: Unknown
+EVENT: M3 Summit Cartagena
+YEAR: 2019
+SOURCE FILE: M3 Summit Cartagena 2019 Testimonials.docx
+QUOTE: "I would say to absolutely do it. It will be one of the best events you ever go to. From the experiences to the content to the people, it is a life changing event!"
+
+---
+
+NECKER ISLAND TESTIMONIALS
+===========================
+
+NAME: Brubeck
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2015
+SOURCE FILE: Necker 2015 Testimonial Brubeck_.docx
+QUOTE: "This is a really magical place. The conversations that have already occurred have been very thought provoking. There are some people that I've met on this trip that I know will be friends for the rest of my life."
+
+ADDITIONAL QUOTE: "I think Maverick is this organization that has redefined two words in my vocabulary. One is success, and the other celebration."
+
+---
+
+NAME: DJ
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2015 (Member since January 2012)
+SOURCE FILE: Necker 2015 Testimonial DJ (don_t use).docx
+QUOTE: "I had really high hopes for it and we met the expectation exactly. I'm really looking forward to getting back and implementing some of the ideas that I've gotten while I've been here."
+
+---
+
+NAME: Jeff Walker
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2015
+SOURCE FILE: Necker 2015 Testimonial Jeff Walker.docx
+QUOTE: "This experience has blown me away. It's unreal. The physical beauty of this place is incredible. The staff is unbelievable. This has been one of the greatest weeks of my life."
+
+---
+
+NAME: Matt P
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2015 (Member for 1 year)
+SOURCE FILE: Necker 2015 Testimonial Matt P.docx
+QUOTE: "This has been a wonderful experience here on Necker. It's such a magical place brought together by so many inspiring people. Everyone shares their stories and what they've learned. This has been a moving experience. I'm very grateful."
+
+---
+
+NAME: Daniel Mangena
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2022
+SOURCE FILE: Necker 2022 Testimonial Daniel Mangena part 1 & 2.docx
+QUOTE (Part 1): "I've been dreaming about this adventure for a little over 20 years and it did not disappoint, not just because of where we are, but the people that we came with. The curation of those people is certainly a gift of Team Maverick."
+
+QUOTE (Part 2): "Try this on for size—be the dumbest person in the room. Be the person who's got the most to learn. You'll grow at an exponential rate that goes beyond anything you ever thought was possible."
+
+---
+
+NAME: Dannette May
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2022
+SOURCE FILE: Necker 2022 Testimonial Dannette May.docx
+QUOTE: "There is a component of magic that you're going to experience and something that's really hard to explain. Being surrounded with really kind people that show up at the top, that walk the talk—that's profound."
+
+---
+
+NAME: Evie Jeang
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2022
+SOURCE FILE: Necker 2022 Testimonial Evie Jeang.docx
+QUOTE: "What made this trip really different is you don't learn stuff from the book. You learn about life. And I think to learn about life is more important than anything you learn from a book."
+
+---
+
+NAME: John Lin
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2022
+SOURCE FILE: Necker 2022 Testimonial John Lin_.docx
+QUOTE: "This may be the smartest thing I've ever done in my life. Being able to riff and resonate and be inspired by fucking amazing people that bring you up and expand you. It's crazy. It's a good choice."
+
+---
+
+NAME: John Ratliff
+ROLE: Align 5
+EVENT: Necker Island
+YEAR: 2022
+SOURCE FILE: Necker 2022 Testimonial John Ratliff_.docx
+QUOTE: "I've been coming to Necker with Yanik and Sophia for as long as I can remember. It's just a magical place. It's one of those places that gets in your heart and soul. It's the most creative place I've ever been."
+
+---
+
+NAME: Kyle Brown
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2022
+SOURCE FILE: Necker 2022 Testimonial Kyle Brown.docx
+QUOTE: "This is a place where you can quickly drop in within the Mavericks family around heart centered entrepreneurs who truly care. It's the rarest thing that you can step into an environment and be your authentic self with people that you may know only for hours or days, yet feel like you've known for lifetimes."
+
+---
+
+NAME: Mackenzie Richter
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2022 (Second Time)
+SOURCE FILE: Necker 2022 Testimonial Mackenzie Richter.docx
+QUOTE: "This is my second time on Necker Island and this theme of partnering has been great. I came with my husband Ben and we have had a great time in both the breakout sessions and having fun kiting, playing tennis and being active."
+
+---
+
+NAME: Nayri Geary
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2022
+SOURCE FILE: Necker 2022 Testimonial Nayri Geary.docx
+QUOTE: "Finally made it to Maverick events and to Necker and just dropped here and felt so relaxed and meeting amazing humans making good connections and being like we'll have lifelong friends from here."
+
+---
+
+NAME: Scott Picken
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2022
+SOURCE FILE: Necker 2022 Testimonial Scott Picken.docx
+QUOTE: "I've done platinum in Fiji with Tony Robbins and some incredible stuff, but this really just takes life to a whole nother level. Everything I expected, it's been 10 times better. The staff and the people have just blown me away."
+
+---
+
+NAME: Stephanie Farr
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2022 (Third Time)
+SOURCE FILE: Necker 2022 Testimonial Stephanie Farr_.docx
+QUOTE: "This is my third time on Necker Island. Magical as always, integrating both fun, learning and impacts—all three pieces that make this experience one of the most memorable, incredible experiences."
+
+---
+
+NAME: Steve Young
+ROLE: Unknown
+EVENT: Necker Island
+YEAR: 2022
+SOURCE FILE: Necker 2022 Testimonial Steve Young_.docx
+QUOTE: "From the moment you get here you're just seeing all of the scenery and how everything flows together. You realize that you're with some of the most amazing, impactful people in the world all working together to make an impact."
+
+---
+
+VIDEO TESTIMONIAL INTERVIEWS (General)
+======================================
+
+NAME: Nayia Pierrakos
+ROLE: Entrepreneur, Real Estate Developer and Mentor
+EVENT: General Maverick (from videos)
+YEAR: Unknown
+SOURCE FILE: Testimonials taken from videos.docx
+QUOTE: "The growth that I've had since joining the Maverick family is phenomenal. I love the vision—not only on a personal level but a much bigger global scale. We CAN impact and DO impact the world."
+
+---
+
+NAME: Steve Young
+ROLE: Unknown
+EVENT: General Maverick (from videos)
+YEAR: Unknown
+SOURCE FILE: Testimonials taken from videos.docx
+QUOTE: "Being a Maverick member is like being a part of the most incredible family out there. You have everyone supporting you, the deepest connections possible, and you have this sense of humility and pride at the same time."
+
+---
+
+NAME: Samit Gehlot
+ROLE: Social Impact Entrepreneur
+EVENT: General Maverick (from videos)
+YEAR: Unknown
+SOURCE FILE: Testimonials taken from videos.docx
+QUOTE: "Maverick is my family that gives me the food and energy to grow, to learn to express myself, and to learn to be a better human being."
+
+---
+
+NAME: Tom Shieh
+ROLE: Unknown
+EVENT: General Maverick (from videos)
+YEAR: Unknown
+SOURCE FILE: Testimonials taken from videos.docx
+QUOTE: "People that I've cried with, laughed with, journeyed in life together with. It's just been so special to have a big group of people that want to strive and grow."
+
+---
+
+NAME: Aydika James
+ROLE: Unknown
+EVENT: General Maverick (from videos)
+YEAR: Unknown
+SOURCE FILE: Testimonials taken from videos.docx
+QUOTE: "Quite literally no single person or group has shifted my life and the course of my life more than meeting the Mavericks. It's given me a family that I was seeking. My #1 bucket list item was to find a group of friends that feel like family. Through the Mavericks I got to check that one off."
+
+---
+
+NAME: Scott Thompson
+ROLE: Unknown
+EVENT: General Maverick (from videos)
+YEAR: Unknown
+SOURCE FILE: Testimonials taken from videos.docx
+QUOTE: "Maverick really is my family and it's literally transformed my life. It's allowed me to grow and be all I can be. I've really shifted who I have become."
+
+---
+
+MASTERMIND TESTIMONIALS
+=======================
+
+NAME: Susanne Goldstein
+ROLE: Unknown
+EVENT: Mastermind Call
+YEAR: 2023
+SOURCE FILE: Mastermind testimonials 7.19.2023.docx
+QUOTE: "Thanks for facilitating such a gorgeous call. Just what I needed at the exact right moment. I so appreciate you and all of this beautiful collective of humans."
+
+---
+
+NAME: Marie Elizabeth Mali
+ROLE: Unknown
+EVENT: Mastermind Call
+YEAR: 2023
+SOURCE FILE: Mastermind testimonials 7.19.2023.docx
+QUOTE: "It truly was a beautiful call, thank you for how you showed up. I'm so grateful to be here among you gorgeous-hearted people!"
+
+---
+
+COSMIC JOURNAL TESTIMONIALS
+===========================
+
+NAME: Scott P Burne
+ROLE: Unknown
+EVENT: Cosmic Journal
+YEAR: 2019
+SOURCE FILE: Cosmic Journal Testimonials.docx
+QUOTE: "These journals are so incredible, so beautiful they have already sparked a number of creative ideas. Your husband Yanik is to me what Richard Branson is to him! I truly appreciate your and his creative fun and spirit and even more so both of your integrity."
+
+---
+
+OTHER / RELATED TESTIMONIALS
+=============================
+
+NAME: Shari Aldrich
+ROLE: President and Clinical Director of Bodymechanics Institute
+EVENT: Multiple (VNF Partnership)
+YEAR: 2015-2016 (created programs in 2015, pledged in 2016)
+SOURCE FILE: VNF_Pledge.docx
+QUOTE (excerpt): "When I joined Maverick1000 in February 2015, I was still in a lot of pain—emotionally, mentally, physically, financially. Whistler through Buenos Aires—each event was transformational. My revelation was realizing that losing my finger was a blessing that allowed me to grow and transform in ways I wouldn't have otherwise."
+
+---
+
+NAME: Pete
+ROLE: Unknown
+EVENT: Russia Trip / Mav Trip
+YEAR: Unknown
+SOURCE FILE: Testimonials Doc.docx
+QUOTE: "The best trip of my life by a long way. The MiG trip was awesome. It's really given me the inspiration to keep upping my game and making more money for myself and others so I can continue to be part of the group and contribute."
+
+---
+
+NAME: Mat Weiss
+ROLE: Unknown
+EVENT: General Maverick
+YEAR: Unknown
+SOURCE FILE: Testimonials Doc.docx
+QUOTE: "Maverick has been treating us well. We're really enjoying meeting everyone and being part of the group."
+
+---
+
+ADDITIONAL GENERAL TESTIMONIALS
+================================
+
+NAME: Drew Kossoff
+ROLE: CEO, Rainmaker Ad Ventures, Inc.
+EVENT: General Maverick / Instant Leverage Points presentation
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "I was blown away by your 'Instant Leverage Points' presentation. It contained a 'secret weapons stash' of actionable ideas, strategies and tactics. One concept I implemented easily paid for my entire Maverick Business Adventure."
+
+---
+
+NAME: Mike Hill
+ROLE: CEO, MyMediaBuyer (One of the world's premier media buyers)
+EVENT: General Maverick / Instant Leverage Points
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "Just one of the Instant Leverage points made one of my clients another $300-400K in profit per month! These techniques can be used to make millions."
+
+---
+
+NAME: Mike Filsaime
+ROLE: CEO, MarketingDotCom.com
+EVENT: General Maverick / Instant Leverage Points
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "When I saw this presentation I jotted down 3 ways I never dreamed about that made instant changes in my business. I recommend anyone, with any size business, to get this information."
+
+---
+
+NAME: Gerry
+ROLE: Unknown
+EVENT: General Maverick
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "Excellent! I strongly agree with rule no.2 strive to create 10x to 100x value. I think that you do this with all of your products and is one of the reasons I love everything you have to offer!"
+
+---
+
+NAME: Timothy Dick
+ROLE: Unknown
+EVENT: General Maverick
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "I really appreciate how you consistently focus on the whole picture involving BOTH having a life and building a dynamic business. This is the first year I've started applying some of these concepts and my income followed the improvements in my personal life."
+
+---
+
+NAME: James Schramko
+ROLE: Unknown
+EVENT: General Maverick
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "Really solid points! This is probably the best summary of business points I have ever seen in one place. I can see the passion."
+
+---
+
+NAME: Ed Taylor
+ROLE: Unknown
+EVENT: General Maverick
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "This is a great list. I hope you won't mind if I share it with my list. I've spent 12 years as an Internet marketing advisor and I know they would appreciate these ideas."
+
+---
+
+NAME: Zach Even-Esh
+ROLE: Unknown
+EVENT: General Maverick
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "That was an awesome list! I will print and post it in front of me. Thank you brother!"
+
+---
+
+NAME: Dana Wil
+ROLE: Unknown
+EVENT: General Maverick
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "You hang with the very best and share your experience with others. Your giving and sharing is why I admire you. The passion shows through with each email. That's real."
+
+---
+
+NAME: Barry Dunlop
+ROLE: Unknown
+EVENT: General Maverick
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "The Power Of a List!—Superb—Inspired! Like so many I am printing these out and putting them on my wall. A creed for Mavericks!"
+
+---
+
+NAME: James Cooper
+ROLE: Unknown
+EVENT: General Maverick
+YEAR: Unknown
+SOURCE FILE: Testimonials-all-companies.docx
+QUOTE: "Great informative rules to use! Now I know why my business is still at ground zero. Starting today I will set the goal to stay focused and apply the 34 Rules for Maverick Entrepreneurs."
+
+---
+
+END OF TESTIMONIALS CATALOG
+
+TOTAL TESTIMONIALS EXTRACTED: 92 named individuals with specific testimonials/quotes
