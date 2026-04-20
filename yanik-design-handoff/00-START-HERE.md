@@ -1,41 +1,34 @@
-# Design Handoff: Yanik Silver Myth Storybook Polish
+# Design Handoff: Yanik Silver Personal Brand Site
 
 ## What this is
 
-A surgical polish pass on the myth storybook section of the Yanik Silver personal brand site. Six targeted design changes plus four copy tweaks.
+The full working package for any design work on Yanik Silver's personal brand site. Currently scoped to a polish pass on the myth storybook, but primed with everything you would need to take on any of the ten deck sections.
 
 ## Read these in order
 
-1. [01-CONTEXT-BRIEF.md](./01-CONTEXT-BRIEF.md) — who Yanik is, the mythology, voice rules, color system, full 10 section deck architecture.
-2. [02-POLISH-BRIEF.md](./02-POLISH-BRIEF.md) — the work order: six design changes, four copy tweaks, done criteria.
-3. [03-myth-storybook.html](./03-myth-storybook.html) — the file to polish.
+1. [01-CONTEXT-BRIEF.md](./01-CONTEXT-BRIEF.md) — who Yanik is, the mythology (Cebu, the thousand suns, the field), voice rules, color system, full 10 section deck architecture.
+2. [02-POLISH-BRIEF.md](./02-POLISH-BRIEF.md) — the current work order: six targeted design changes, four copy tweaks, done criteria for the myth storybook polish pass.
+3. [03-myth-storybook.html](./03-myth-storybook.html) — the file to polish. Image references use absolute raw URLs pointing at the images folder in this repo so the HTML renders anywhere.
 
-## Images
+## Asset library
 
-All 9 image assets live in the `images/` folder alongside these docs. The HTML references them via absolute raw GitHub URLs so they render anywhere.
+4. [ASSETS-README.md](./ASSETS-README.md) — every image in the `images/` folder, categorized and described. Cebu totem, 18 journal doodles, 4 tattoos, 7 Yanik portraits, 3 composites, 10 celebrity photos, 12 testimonial avatars. Use this as your source of truth when picking assets.
 
-- images/doodle-sloth-final.png (the Cebu portrait, featured)
-- images/doodle-bouquet.jpg (seed crop source)
-- images/doodle-infinite-blooms.jpg (bloom crop source)
-- images/doodle-sun-one.jpg (sun crop source)
-- images/doodle-silver-tree.jpg (ambient)
-- images/doodle-how-suns.jpg (ambient)
-- images/doodle-field-of-suns.jpg (ambient)
-- images/doodle-every-ray.jpg (ambient)
-- images/yanik-portrait.webp (hero photo)
+## Live deployment
 
-Live preview of the current deployed site: https://yaniksilver-com.pages.dev
+Current state of the site lives at https://yaniksilver-com.pages.dev for reference.
 
 ## What to return
 
-The polished HTML file, plus a per change confidence score for each of the six design changes, plus any judgment calls you made.
+The polished HTML file, plus a per change confidence score for each of the six design changes, plus any judgment calls you made (for example, which doodle crop you chose for the seed, bloom, sun trio).
 
-## Hard rules
+## Hard rules (non negotiable)
 
 1. Never use dashes in copy. Not em dash, not en dash, not hyphen as pause. Commas, periods, or line breaks only.
 2. Never use emojis.
-3. Do not invent new art. Reuse only the doodles in the images folder.
-4. Do not redesign the hero (section 00). Only the dawn transition band from the polish brief.
+3. Do not invent new art. Reuse only the images in the `images/` folder.
+4. Do not AI regenerate or restyle Yanik's doodles. His hand is his hand.
+5. Do not redesign the hero (Section 00). Only the dawn transition band from the polish brief.
 
 ## Contact
 
