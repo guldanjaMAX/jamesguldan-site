@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Infinite Game · Three Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a10;--bg-2:#111119;--bg-3:#16161f;--line:#1f1f2c;--line-2:#2a2a38;
+  --muted:#7c7c8c;--mid:#a5a5b3;--high:#e4e4ee;--white:#f7f7fb;
+  --paper:#f5eedd;--paper-2:#ead9b8;--paper-edge:#c7b188;
+  --ink:#1d1812;--ink-blue:#263b6a;--gold:#d89a2a;--gold-bright:#f2c940;
+  --burnt:#b8471f;--rose:#c8557f;--green:#6b8e4e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--high);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.serif{font-family:'Fraunces',serif}
+.hand{font-family:'Caveat',cursive}
+.mono{font-family:'Space Grotesk',monospace}
+.eyebrow{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+
+.topbar{position:sticky;top:0;z-index:20;background:rgba(10,10,16,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;max-width:1240px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;color:var(--mid);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 3px rgba(242,201,64,.18)}
+.topbar .meta{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid)}
+.topbar .meta b{color:var(--gold-bright)}
+
+.mast{padding:96px 0 56px;border-bottom:1px solid var(--line)}
+.mast .eyebrow{color:var(--gold-bright)}
+.mast h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(52px,7vw,104px);line-height:.98;letter-spacing:-.02em;color:var(--white);margin:20px 0 22px}
+.mast h1 em{font-style:italic;color:var(--gold-bright)}
+.mast-sub{color:var(--mid);font-size:19px;line-height:1.65;max-width:64ch}
+.mast-meta{margin-top:44px;padding-top:28px;border-top:1px dashed var(--line-2);display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.meta-cell .k{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.meta-cell .v{font-family:'Fraunces',serif;font-size:17px;color:var(--white);margin-top:6px;line-height:1.4}
+
+.shift{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.shift h2{font-family:'Fraunces',serif;font-weight:300;font-size:36px;color:var(--white);letter-spacing:-.01em;margin-bottom:12px}
+.shift h2 em{color:var(--gold-bright);font-style:italic}
+.shift p{color:var(--mid);font-size:16px;max-width:78ch;line-height:1.7}
+.shift p strong{color:var(--high);font-weight:500}
+
+.options{padding:64px 0 96px;display:flex;flex-direction:column;gap:72px}
+.opt{background:linear-gradient(180deg,var(--bg-2) 0%,var(--bg-3) 100%);border:1px solid var(--line);border-radius:24px;overflow:hidden;position:relative}
+.opt-head{padding:38px 46px 24px;display:grid;grid-template-columns:1fr auto;gap:40px;border-bottom:1px dashed var(--line-2);align-items:end}
+.opt-head .num{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.opt-head h3{font-family:'Fraunces',serif;font-weight:300;font-size:56px;line-height:1;letter-spacing:-.02em;color:var(--white)}
+.opt-head h3 em{font-style:italic;color:var(--gold-bright)}
+.opt-head .tagline{color:var(--mid);font-size:17px;line-height:1.55;max-width:62ch;margin-top:16px}
+.confidence{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:110px}
+.ring{width:104px;height:104px;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring .pct{position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:30px;font-weight:400;color:var(--white)}
+.conf-label{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+.opt-body{padding:40px 46px 46px;display:grid;grid-template-columns:1.15fr 1fr;gap:44px}
+.rationale h4,.spec h4{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:14px}
+.rationale p{color:var(--mid);font-size:15.5px;line-height:1.75;margin-bottom:14px}
+.rationale p strong{color:var(--high);font-weight:500}
+.rationale blockquote{border-left:2px solid var(--gold-bright);padding:8px 18px;margin:18px 0;color:var(--high);font-family:'Fraunces',serif;font-style:italic;font-size:17px;line-height:1.55}
+.rationale blockquote cite{display:block;margin-top:8px;font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-style:normal}
+
+.spec-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:11px 0;border-bottom:1px dotted var(--line-2);font-size:14px}
+.spec-row:last-child{border-bottom:none}
+.spec-row dt{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.spec-row dd{color:var(--high);line-height:1.55}
+
+/* mockup */
+.mockup{grid-column:1/-1;margin-top:14px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:14px;padding:44px;position:relative;overflow:hidden;min-height:540px;color:var(--ink)}
+.mockup-lbl{position:absolute;top:14px;right:18px;font-family:'Space Grotesk',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-edge)}
+
+/* A: Hand Drawn Board */
+.board-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(3,1fr);gap:8px;margin-top:10px}
+.tile{aspect-ratio:1;border:1.5px solid var(--ink);border-radius:8px;background:rgba(255,255,255,.25);display:grid;place-items:center;position:relative;transform:rotate(var(--r,0deg))}
+.tile .sym{font-family:'Fraunces',serif;font-size:22px;color:var(--ink)}
+.tile.here{background:var(--burnt);border-color:var(--burnt);box-shadow:0 0 0 4px rgba(184,71,31,.18),0 0 24px rgba(242,201,64,.4)}
+.tile.here .sym{color:var(--paper)}
+.here-tag{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-family:'Caveat',cursive;font-size:18px;color:var(--burnt);white-space:nowrap}
+.board-caption{font-family:'Caveat',cursive;font-size:22px;color:var(--ink);margin-top:22px;text-align:center}
+.pinned-tattoo{position:absolute;width:108px;height:108px;border:6px solid #fff;border-radius:3px;background:#2a2a2a;box-shadow:0 8px 24px rgba(0,0,0,.25);transform:rotate(-6deg);overflow:hidden}
+.pinned-tattoo.tl{top:18px;left:14px;transform:rotate(-8deg)}
+.pinned-tattoo.br{bottom:18px;right:14px;transform:rotate(5deg)}
+.pinned-tattoo img{width:100%;height:100%;object-fit:cover}
+.pin-note{position:absolute;top:118px;left:22px;font-family:'Caveat',cursive;font-size:15px;color:var(--ink);transform:rotate(-6deg);max-width:120px;line-height:1.1}
+
+/* B: Scroll Wall */
+.scroll-wall{display:flex;gap:14px;overflow:hidden;padding:14px 0;align-items:flex-start}
+.scrap{min-width:140px;max-width:140px;background:#fff;border:1px solid var(--paper-edge);padding:10px;transform:rotate(var(--r,-2deg));box-shadow:0 4px 12px rgba(0,0,0,.12);position:relative}
+.scrap .tape{position:absolute;top:-8px;left:50%;transform:translateX(-50%) rotate(-2deg);width:48px;height:18px;background:rgba(241,227,180,.8);border:1px dashed var(--paper-edge)}
+.scrap .sym{font-family:'Fraunces',serif;font-size:28px;text-align:center;padding:18px 0;color:var(--ink)}
+.scrap .lbl{font-family:'Caveat',cursive;font-size:14px;text-align:center;color:var(--ink)}
+.scrap.focus{transform:scale(1.12) rotate(2deg);border:2px solid var(--burnt);box-shadow:0 10px 28px rgba(184,71,31,.25);z-index:3}
+.scrap.focus .lbl{color:var(--burnt);font-weight:600}
+.arrow-hint{display:flex;justify-content:space-between;margin-top:16px;color:var(--paper-edge);font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase}
+
+/* C: Constellation */
+.constellation{position:relative;height:420px;background:radial-gradient(ellipse at center,#1d1812 0%,#0a0a10 100%);border-radius:12px;overflow:hidden}
+.star{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 12px rgba(242,201,64,.6)}
+.star.big{width:22px;height:22px;background:var(--burnt);box-shadow:0 0 28px rgba(184,71,31,.8),0 0 0 3px rgba(242,201,64,.3)}
+.star-label{position:absolute;font-family:'Caveat',cursive;font-size:14px;color:var(--paper);white-space:nowrap;transform:translate(12px,-6px)}
+.star-label.you{color:var(--gold-bright);font-size:18px;font-weight:600}
+.c-line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(242,201,64,.3),transparent);transform-origin:left center}
+
+.verdict{background:linear-gradient(180deg,#0f1320 0%,#0b0e18 100%);border:1px solid var(--line-2);border-radius:20px;padding:40px 46px;margin:40px 0 80px}
+.verdict .eyebrow{color:var(--gold-bright)}
+.verdict h2{font-family:'Fraunces',serif;font-weight:300;font-size:38px;color:var(--white);margin:10px 0 18px}
+.verdict h2 em{color:var(--gold-bright);font-style:italic}
+.verdict p{color:var(--mid);font-size:16px;line-height:1.75;max-width:82ch;margin-bottom:12px}
+.verdict p strong{color:var(--high);font-weight:500}
+.matrix{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.mx{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:14px;padding:22px}
+.mx .mxh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.mx .mxh h5{font-family:'Fraunces',serif;font-size:19px;color:var(--white);font-weight:400}
+.mx .score{font-family:'Space Grotesk',monospace;font-size:11px;color:var(--gold-bright);letter-spacing:.18em}
+.mx ul{list-style:none;padding:0;margin:0}
+.mx ul li{font-size:13px;color:var(--mid);padding:5px 0;line-height:1.5}
+.mx ul li:before{content:"·";color:var(--gold-bright);margin-right:8px}
+
+footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+
+@media(max-width:820px){
+  .opt-body{grid-template-columns:1fr}
+  .board-grid{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(5,1fr)}
+  .mast-meta{grid-template-columns:repeat(2,1fr)}
+  .matrix{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <div class="brand"><span class="dot"></span><span>Yanik Silver · Section 04</span></div>
+  <div class="meta">Options · <b>03</b> / Round 01</div>
+</div></div>
+
+<div class="wrap">
+  <section class="mast">
+    <div class="eyebrow">Section 04 · The Infinite Game</div>
+    <h1>Show them <em>the board</em>, then show them <em>their square</em>.</h1>
+    <p class="mast-sub">Three directions for the Player Map section. The job is to make the reader recognize themselves as a player on Yanik's hand drawn board before anyone explains what the game is. Grounded in the Galactic Game journal pages, the mandala tattoo vocabulary, and Yanik's recurring line that the game is played by how you show up, not what you win.</p>
+    <div class="mast-meta">
+      <div class="meta-cell"><div class="k">Myth Beat</div><div class="v">The game begins</div></div>
+      <div class="meta-cell"><div class="k">Pattern</div><div class="v">Player Map, 7 × 3 board</div></div>
+      <div class="meta-cell"><div class="k">Voice Test</div><div class="v">Hand drawn, not a UI</div></div>
+      <div class="meta-cell"><div class="k">Round</div><div class="v">01 · three directions</div></div>
+    </div>
+  </section>
+
+  <section class="shift">
+    <h2>The shift from v1. <em>Put the reader on the board first.</em></h2>
+    <p>The current v1 player map is correct in structure but reads as a diagram, not an invitation. The fix is to make the reader find their own square before any explanation arrives. Each option below earns that moment differently. All three stay inside Yanik's actual tattoo vocabulary (seeds, suns, blooms, mandala, rays, sloth) and avoid any language about winning, scoring, or beating anyone.</p>
+  </section>
+
+  <div class="options">
+
+    <!-- OPTION 01: HAND DRAWN BOARD -->
+    <article class="opt">
+      <header class="opt-head">
+        <div>
+          <div class="num">Option 01</div>
+          <h3>The <em>Hand Drawn Board</em></h3>
+          <p class="tagline">A 7 × 3 grid sketched in ink on cream paper. Each tile holds one of Yanik's journal symbols. The reader's tile glows burnt orange with a handwritten YOU ARE HERE tag arcing above it. Two tattoo close ups pin the corners like field notes.</p>
+        </div>
+        <div class="confidence">
+          <div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="#1f1f2c" stroke-width="7" fill="none"/><circle cx="52" cy="52" r="44" stroke="#f2c940" stroke-width="7" fill="none" stroke-dasharray="276.46" stroke-dashoffset="24.88" stroke-linecap="round"/></svg><div class="pct">91</div></div>
+          <div class="conf-label">Confidence</div>
+        </div>
+      </header>
+      <div class="opt-body">
+        <div class="rationale">
+          <h4>Why this lands</h4>
+          <p>This option resolves the core risk of the section: a board that reads as a product diagram instead of a guide's drawing. The grid is hand ruled, not CSS ruled. The tiles are not equal rectangles, they are wobbled squares in ink. <strong>One tile is alive</strong>, the rest are waiting. The reader lands on their own square before reading a single word of explanation.</p>
+          <p>The two pinned tattoo photos (sacred geometry mandala and sun face inner wrist) pull the board back into Yanik's body. This is the board he has already tattooed on himself. The reader is not learning a framework, they are being shown a map the guide has lived on for years.</p>
+          <blockquote>I play one game. The game of lighting suns. Every tile on my arm is a reminder that the game keeps going.<cite>Yanik · from the transcript</cite></blockquote>
+        </div>
+        <div class="spec">
+          <h4>Design spec</h4>
+          <dl>
+            <dt>Grid</dt><dd>7 columns × 3 rows, tiles ~88px, hand ruled ink strokes with 1.5px wobble</dd>
+            <dt>Highlight</dt><dd>Row 2, column 4 tile filled burnt orange, glow ring gold, sun pulse 3s ease</dd>
+            <dt>Symbols</dt><dd>Journal vocabulary only: seed, bloom, sun, ray, mandala, spiral, cosmic sloth, silver tree</dd>
+            <dt>Photos</dt><dd>IMG_4734 mandala top left rotated 8deg, IMG_4732 sun wrist bottom right rotated 5deg</dd>
+            <dt>Caption</dt><dd>Caveat 22px centered below the board, one line of Yanik's voice</dd>
+            <dt>Motion</dt><dd>YOU ARE HERE tag writes in on scroll enter, tile pulses every 4s</dd>
+          </dl>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-lbl">Preview 01 · Hand Drawn Board</div>
+          <div style="display:grid;grid-template-columns:1fr;gap:18px;padding-top:20px">
+            <div style="text-align:center;font-family:'Fraunces',serif;font-size:26px;font-style:italic;color:var(--ink)">The Infinite Game</div>
+            <div style="position:relative;padding:22px 130px">
+              <div class="board-grid">
+                <div class="tile" style="--r:-1deg"><span class="sym">◎</span></div>
+                <div class="tile" style="--r:1deg"><span class="sym">✦</span></div>
+                <div class="tile" style="--r:-.5deg"><span class="sym">❀</span></div>
+                <div class="tile" style="--r:1.5deg"><span class="sym">✺</span></div>
+                <div class="tile" style="--r:-1deg"><span class="sym">◉</span></div>
+                <div class="tile" style="--r:.5deg"><span class="sym">♁</span></div>
+                <div class="tile" style="--r:-1.5deg"><span class="sym">☉</span></div>
+                <div class="tile" style="--r:1deg"><span class="sym">❋</span></div>
+                <div class="tile" style="--r:-1deg"><span class="sym">✿</span></div>
+                <div class="tile" style="--r:.5deg"><span class="sym">✹</span></div>
+                <div class="tile here"><span class="sym">☀</span><span class="here-tag">you are here</span></div>
+                <div class="tile" style="--r:-.5deg"><span class="sym">✾</span></div>
+                <div class="tile" style="--r:1.5deg"><span class="sym">❁</span></div>
+                <div class="tile" style="--r:-1deg"><span class="sym">❃</span></div>
+                <div class="tile" style="--r:.5deg"><span class="sym">✦</span></div>
+                <div class="tile" style="--r:-1.5deg"><span class="sym">◎</span></div>
+                <div class="tile" style="--r:1deg"><span class="sym">❀</span></div>
+                <div class="tile" style="--r:-.5deg"><span class="sym">♁</span></div>
+                <div class="tile" style="--r:1.5deg"><span class="sym">☉</span></div>
+                <div class="tile" style="--r:-1deg"><span class="sym">✺</span></div>
+                <div class="tile" style="--r:.5deg"><span class="sym">❁</span></div>
+              </div>
+              <div class="pinned-tattoo tl">
+                <img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-statue.jpg" alt="mandala reference" />
+              </div>
+              <div class="pinned-tattoo br">
+                <img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-sun-pillows.jpg" alt="sun reference" />
+              </div>
+              <div class="pin-note">the same symbols I drew on my arm</div>
+            </div>
+            <div class="board-caption">every tile is a season. yours is the one lit right now.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- OPTION 02: THE SCROLL -->
+    <article class="opt">
+      <header class="opt-head">
+        <div>
+          <div class="num">Option 02</div>
+          <h3>The <em>Living Chart</em></h3>
+          <p class="tagline">A horizontal wall of overlapping journal scraps held together with washi tape. Each scrap is a tile, each tile is a symbol. The center scrap is larger, rotated toward the reader, and labeled in Yanik's hand with "you are here right now". The whole wall moves slowly on scroll like a mural.</p>
+        </div>
+        <div class="confidence">
+          <div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="#1f1f2c" stroke-width="7" fill="none"/><circle cx="52" cy="52" r="44" stroke="#f2c940" stroke-width="7" fill="none" stroke-dasharray="276.46" stroke-dashoffset="35.94" stroke-linecap="round"/></svg><div class="pct">87</div></div>
+          <div class="conf-label">Confidence</div>
+        </div>
+      </header>
+      <div class="opt-body">
+        <div class="rationale">
+          <h4>Why this lands</h4>
+          <p>Option 02 solves a different risk: that the 7 × 3 grid will feel academic on mobile. A horizontal scrap wall compresses beautifully on narrow screens and gives the section a kinetic feel. The mural moves. The reader's tile drifts to center. It feels like a guide unrolling a map on a table.</p>
+          <p>Trade: the grid's geometric clarity is softer here. The reader gets motion and texture but loses the <em>"I am a fixed point on a real board"</em> feeling. This option earns its score on sensory impact, loses points on conceptual precision.</p>
+          <blockquote>The board keeps scrolling whether you play or not. The only choice is which square you show up on today.<cite>Voice derived from the transcript</cite></blockquote>
+        </div>
+        <div class="spec">
+          <h4>Design spec</h4>
+          <dl>
+            <dt>Layout</dt><dd>Horizontal ribbon, ~24 scraps, 140px each, overlapping 18px</dd>
+            <dt>Focus</dt><dd>Center scrap scales to 1.12, rotates +2deg, burnt orange border</dd>
+            <dt>Washi tape</dt><dd>Cream tape 48 × 18px, rotated, across the top of every scrap</dd>
+            <dt>Scroll tie</dt><dd>Horizontal pan on vertical scroll, parallax factor 0.4</dd>
+            <dt>Mobile</dt><dd>Native horizontal swipe, snap points on each scrap</dd>
+            <dt>Caption</dt><dd>One Yanik line floats above the focus scrap in Caveat 20px</dd>
+          </dl>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-lbl">Preview 02 · Living Chart</div>
+          <div style="padding:20px 0">
+            <div style="text-align:center;font-family:'Fraunces',serif;font-size:26px;font-style:italic;color:var(--ink);margin-bottom:22px">The Infinite Game</div>
+            <div class="scroll-wall">
+              <div class="scrap" style="--r:-3deg"><div class="tape"></div><div class="sym">◎</div><div class="lbl">seed</div></div>
+              <div class="scrap" style="--r:2deg"><div class="tape"></div><div class="sym">✦</div><div class="lbl">spark</div></div>
+              <div class="scrap" style="--r:-1deg"><div class="tape"></div><div class="sym">❀</div><div class="lbl">bloom</div></div>
+              <div class="scrap" style="--r:3deg"><div class="tape"></div><div class="sym">✺</div><div class="lbl">mandala</div></div>
+              <div class="scrap" style="--r:-2deg"><div class="tape"></div><div class="sym">☉</div><div class="lbl">sun</div></div>
+              <div class="scrap focus"><div class="tape"></div><div class="sym">★</div><div class="lbl">you are here right now</div></div>
+              <div class="scrap" style="--r:-3deg"><div class="tape"></div><div class="sym">❋</div><div class="lbl">ray</div></div>
+              <div class="scrap" style="--r:2deg"><div class="tape"></div><div class="sym">✿</div><div class="lbl">seed</div></div>
+              <div class="scrap" style="--r:-1deg"><div class="tape"></div><div class="sym">♁</div><div class="lbl">orbit</div></div>
+            </div>
+            <div class="arrow-hint"><span>← earlier seasons</span><span>the game keeps drawing itself →</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- OPTION 03: CONSTELLATION -->
+    <article class="opt">
+      <header class="opt-head">
+        <div>
+          <div class="num">Option 03</div>
+          <h3>The <em>Constellation Map</em></h3>
+          <p class="tagline">Drop the grid entirely. Replace it with a dark paper starfield where each player is a sun at a different brightness. Thin gold lines connect the ones who have lit each other. The reader's sun is the largest, warmest, center of the field. Tap any sun to hear that player's one line.</p>
+        </div>
+        <div class="confidence">
+          <div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="#1f1f2c" stroke-width="7" fill="none"/><circle cx="52" cy="52" r="44" stroke="#f2c940" stroke-width="7" fill="none" stroke-dasharray="276.46" stroke-dashoffset="46.99" stroke-linecap="round"/></svg><div class="pct">83</div></div>
+          <div class="conf-label">Confidence</div>
+        </div>
+      </header>
+      <div class="opt-body">
+        <div class="rationale">
+          <h4>Why this lands</h4>
+          <p>The riskiest option and the most memorable. It trades the Player Map's explicit grid for a field of suns where every named sun is a real Maverick, and connecting lines show who has lit whom. It is the most emotionally direct: the reader's sun is the warmest, which means <strong>"your light matters here before you earn it"</strong>.</p>
+          <p>Risk: it drifts from the current 7 × 3 pattern into something closer to Section 02 Brightest Suns. There is a real danger of the two sections echoing each other. If picked, Section 02 would need a different visual treatment to hold the delta.</p>
+          <blockquote>A sun lights other suns. That is the whole game. Nobody wins, everybody warms.<cite>Yanik · paraphrased from the transcript</cite></blockquote>
+        </div>
+        <div class="spec">
+          <h4>Design spec</h4>
+          <dl>
+            <dt>Background</dt><dd>Cream paper inverted to dark, radial gradient ink blue to deep brown</dd>
+            <dt>Suns</dt><dd>6 to 9 gold dots sized by brightness, 10 to 22px, named on hover</dd>
+            <dt>You sun</dt><dd>Center, 22px burnt orange, gold halo 3 layers, 4s breathing pulse</dd>
+            <dt>Connections</dt><dd>Thin gold lines at 20% opacity between lit pairs</dd>
+            <dt>Interaction</dt><dd>Hover any sun reveals its label and one short quote</dd>
+            <dt>Voice</dt><dd>Caveat labels, Fraunces italic title, no sans serif</dd>
+          </dl>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-lbl">Preview 03 · Constellation</div>
+          <div style="padding:20px 0">
+            <div style="text-align:center;font-family:'Fraunces',serif;font-size:26px;font-style:italic;color:var(--ink);margin-bottom:22px">The Infinite Game</div>
+            <div class="constellation">
+              <div class="c-line" style="top:48%;left:22%;width:28%;transform:rotate(14deg)"></div>
+              <div class="c-line" style="top:52%;left:50%;width:22%;transform:rotate(-10deg)"></div>
+              <div class="c-line" style="top:42%;left:34%;width:22%;transform:rotate(-18deg)"></div>
+              <div class="c-line" style="top:60%;left:40%;width:16%;transform:rotate(22deg)"></div>
+
+              <div class="star" style="top:22%;left:18%"><span class="star-label">branson</span></div>
+              <div class="star" style="top:34%;left:32%"><span class="star-label">polish</span></div>
+              <div class="star" style="top:56%;left:22%"><span class="star-label">blakely</span></div>
+              <div class="star" style="top:28%;left:66%"><span class="star-label">walker</span></div>
+              <div class="star" style="top:58%;left:68%"><span class="star-label">coleman</span></div>
+              <div class="star" style="top:72%;left:52%"><span class="star-label">warner</span></div>
+              <div class="star big" style="top:48%;left:48%"><span class="star-label you">you</span></div>
+            </div>
+            <div style="font-family:'Caveat',cursive;font-size:18px;color:var(--ink);text-align:center;margin-top:18px">your light is in this sky already.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <section class="verdict">
+    <div class="eyebrow">Recommendation</div>
+    <h2>Build <em>Option 01</em> as the live section. Hold 03 for a later microsite.</h2>
+    <p>Option 01 The Hand Drawn Board is the cleanest win. It keeps the 7 × 3 Player Map promise of the A+ deck, it puts the reader on a specific tile inside the first two seconds, and it pulls the tattoo photos back into the section so the board does not feel separate from Yanik's body. Ship this.</p>
+    <p>Option 02 Living Chart is the best mobile story. If the 7 × 3 grid feels too static after a build, swap in the scroll ribbon, keep the same symbols and the same highlight rule.</p>
+    <p>Option 03 Constellation is strong but overlaps with Section 02 Brightest Suns. Save it as a second gesture later, for example a members only map once a reader has accepted the Cosmic Ticket.</p>
+    <div class="matrix">
+      <div class="mx"><div class="mxh"><h5>01 · Hand Drawn Board</h5><div class="score">91</div></div><ul><li>On pattern, on voice, ships fastest</li><li>Grid geometry reads clearly on desktop</li><li>Needs careful mobile collapse to 4 × 5</li></ul></div>
+      <div class="mx"><div class="mxh"><h5>02 · Living Chart</h5><div class="score">87</div></div><ul><li>Best mobile experience</li><li>Most motion, most tactile</li><li>Softer on conceptual clarity</li></ul></div>
+      <div class="mx"><div class="mxh"><h5>03 · Constellation</h5><div class="score">83</div></div><ul><li>Most emotional, most memorable</li><li>Overlaps with Brightest Suns pattern</li><li>Save for a later map, not this slot</li></ul></div>
+    </div>
+  </section>
+
+  <footer>Yanik Silver · Section 04 · Round 01 · Three directions · Pick one · Keep going</footer>
+</div>
+</body>
+</html>
