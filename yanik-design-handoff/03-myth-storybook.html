@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Yanik Silver &mdash; hero + myth + field storybook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6eeda;
+  --ink:#2b2118;
+  --ink-soft:#5a4a38;
+  --accent:#b8471f;
+  --bloom:#c8557f;
+  --sun:#d89a2a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* preview chrome */
+.preview-head{
+  position:relative;z-index:20;
+  max-width:1400px;margin:0 auto;
+  padding:24px 48px;
+  display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+  flex-wrap:wrap;
+  background:var(--paper);
+  border-bottom:1px solid rgba(43,33,24,.08);
+}
+.preview-head .kicker{
+  text-transform:uppercase;letter-spacing:.22em;
+  font-size:11px;color:var(--ink-soft);
+}
+.preview-head .meta{
+  font-size:12px;color:var(--ink-soft);
+  display:flex;gap:14px;align-items:center;
+}
+.preview-head .dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.preview-head .conf{
+  padding:4px 10px;border:1px solid rgba(43,33,24,.25);border-radius:999px;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ================= HERO (Mandala Cosmos) ================= */
+.hero-mandala{
+  --deep:#1a0d2e;--plum:#2f1a4a;--gold:#f2c940;--rose:#e27aa8;--hero-ink:#f4ecd8;
+  position:relative;min-height:760px;
+  background:radial-gradient(ellipse at 68% 55%,var(--plum) 0%,var(--deep) 45%,#0a0512 100%);
+  overflow:hidden;color:var(--hero-ink);
+}
+.hm-stars{position:absolute;inset:0;
+  background:
+    radial-gradient(1.5px 1.5px at 8% 18%,#fff 30%,transparent 31%),
+    radial-gradient(1px 1px at 82% 12%,rgba(255,255,255,.7) 30%,transparent 31%),
+    radial-gradient(1px 1px at 28% 72%,rgba(255,255,255,.8) 30%,transparent 31%),
+    radial-gradient(1px 1px at 92% 68%,#fff 30%,transparent 31%),
+    radial-gradient(1.5px 1.5px at 44% 32%,rgba(242,201,64,.7) 30%,transparent 31%),
+    radial-gradient(1px 1px at 18% 88%,#fff 30%,transparent 31%),
+    radial-gradient(1px 1px at 66% 84%,rgba(255,255,255,.7) 30%,transparent 31%),
+    radial-gradient(1px 1px at 38% 14%,#fff 30%,transparent 31%),
+    radial-gradient(2px 2px at 76% 44%,rgba(242,201,64,.5) 30%,transparent 31%),
+    radial-gradient(1px 1px at 6% 52%,rgba(255,255,255,.6) 30%,transparent 31%),
+    radial-gradient(1.5px 1.5px at 12% 36%,rgba(226,122,168,.55) 30%,transparent 31%);
+  opacity:.9;pointer-events:none;z-index:1;
+}
+.hm-mandala{
+  position:absolute;top:50%;left:68%;transform:translate(-50%,-50%);
+  width:min(92vh,820px);aspect-ratio:1;border-radius:50%;
+  border:1.5px solid rgba(242,201,64,.35);
+  animation:hmSpin 80s linear infinite;pointer-events:none;z-index:1;
+}
+.hm-mandala::before,.hm-mandala::after{content:'';position:absolute;inset:60px;border-radius:50%;border:1px dashed rgba(242,201,64,.25)}
+.hm-mandala::after{inset:120px;border-style:solid;border-color:rgba(242,201,64,.2)}
+.hm-m-inner{position:absolute;inset:180px;border-radius:50%;border:1px dashed rgba(242,201,64,.18)}
+.hm-m-core{position:absolute;inset:240px;border-radius:50%;background:radial-gradient(circle,rgba(242,201,64,.35) 0%,rgba(242,201,64,.08) 40%,transparent 70%);filter:blur(16px)}
+@keyframes hmSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+.hm-portrait{position:absolute;top:0;bottom:0;right:0;width:58%;display:flex;align-items:flex-end;justify-content:center;z-index:2}
+.hm-portrait img{width:100%;height:100%;object-fit:contain;object-position:bottom center;filter:drop-shadow(-8px 0 50px rgba(242,201,64,.22)) drop-shadow(0 0 80px rgba(255,154,92,.12))}
+
+.hm-copy{position:absolute;left:0;top:0;bottom:0;width:52%;display:flex;flex-direction:column;justify-content:center;padding:0 40px 0 80px;z-index:3;gap:26px}
+.hm-eye{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:inline-flex;gap:10px;align-items:center}
+.hm-eye::before{content:'';width:30px;height:1px;background:var(--gold)}
+.hm-eye span{opacity:.55}
+.hm-h{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(48px,5.6vw,92px);line-height:.98;letter-spacing:-.025em;color:var(--hero-ink);margin:0}
+.hm-h em{font-style:italic;color:var(--gold);font-weight:400}
+.hm-sub{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(17px,1.5vw,22px);line-height:1.45;color:rgba(244,236,216,.78);max-width:34ch;font-style:italic;margin:0}
+.hm-sub em{color:var(--gold);font-style:normal;font-weight:500}
+.hm-cta{align-self:flex-start;padding:18px 32px;background:var(--gold);color:var(--deep);border-radius:100px;text-decoration:none;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;display:inline-flex;gap:12px;align-items:center;box-shadow:0 0 42px rgba(242,201,64,.25);transition:transform .25s}
+.hm-cta:hover{transform:translateY(-2px)}
+.hm-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:5;display:inline-flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none}
+.hm-scroll .lbl{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,236,216,.55)}
+.hm-scroll .nxt{font-family:'Fraunces',serif;font-style:italic;font-size:17px;color:var(--gold)}
+.hm-scroll .dn{width:30px;height:30px;border:1px solid rgba(242,201,64,.5);border-radius:50%;display:grid;place-items:center;font-size:13px;color:var(--gold);margin-top:3px;animation:hmBob 2.4s ease-in-out infinite}
+@keyframes hmBob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+@media (max-width:860px){
+  .hero-mandala{min-height:auto;display:block;padding-bottom:80px}
+  .hm-portrait{position:relative;width:100%;height:460px;margin-top:24px}
+  .hm-copy{position:relative;width:100%;padding:56px 32px 10px;text-align:left;gap:22px}
+  .hm-mandala{top:66%;left:50%;width:min(85vw,620px)}
+}
+
+/* ================= STORY SECTIONS ================= */
+.storybook{position:relative;background:var(--paper)}
+.storybook::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(43,33,24,.04) 1px, transparent 1px);
+  background-size:3px 3px;pointer-events:none;
+}
+
+.chapter-wrap{
+  position:relative;z-index:2;
+  max-width:720px;margin:0 auto;
+  padding:120px 32px 80px;
+  text-align:center;
+}
+
+.section-id{
+  font-family:'Space Grotesk',monospace;
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--ink-soft);opacity:.6;
+  margin-bottom:24px;
+}
+
+.chap-eyebrow{
+  font-family:'Caveat',cursive;
+  font-size:22px;color:var(--accent);
+  margin-bottom:12px;
+}
+.chap-h{
+  font-family:'Fraunces',serif;
+  font-weight:300;font-style:italic;
+  font-size:clamp(40px,5.6vw,72px);
+  line-height:1.05;letter-spacing:-.02em;
+  margin:0 0 18px;
+}
+.chap-h em{color:var(--accent);font-style:italic;font-weight:400}
+.chap-lede{
+  font-family:'Fraunces',serif;
+  font-size:17px;color:var(--ink-soft);
+  font-style:italic;margin:0 0 56px;
+}
+
+.chap-wrap p{
+  font-family:'Fraunces',serif;
+  font-weight:300;font-style:italic;
+  font-size:clamp(24px,2.7vw,34px);
+  line-height:1.45;letter-spacing:-.01em;
+  margin:0 0 36px;color:var(--ink);
+}
+.chap-wrap p em{color:var(--accent);font-style:italic;font-weight:400}
+.chap-wrap p.soft{color:var(--ink-soft);font-size:clamp(20px,2.2vw,28px)}
+
+/* cebu portrait */
+.cebu{
+  margin:0 auto 48px;max-width:300px;position:relative;
+}
+.cebu img{display:block;width:100%;height:auto;filter:drop-shadow(0 12px 24px rgba(43,33,24,.15))}
+.cebu .caption{
+  margin-top:16px;font-family:'Caveat',cursive;
+  font-size:22px;color:var(--accent);text-align:center;
+}
+.cebu.small{max-width:180px;margin:32px auto 40px}
+.cebu.small .caption{font-size:18px}
+
+/* small chapter divider */
+.break{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  margin:56px 0 48px;
+}
+.break .ln{flex:1;height:1px;background:var(--ink-soft);max-width:100px;opacity:.3}
+.break .lb{font-family:'Caveat',cursive;font-size:20px;color:var(--accent)}
+
+/* chapter handoff */
+.handoff{
+  margin:72px 0 0;padding-top:48px;
+  border-top:1px solid rgba(43,33,24,.15);
+}
+.handoff p{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:clamp(20px,2vw,26px);color:var(--ink);
+  margin:0 0 28px;
+}
+.handoff .cta{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Inter',sans-serif;
+  font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--accent);padding:12px 22px;
+  border:1px solid var(--accent);border-radius:999px;
+}
+.handoff .cta .arrow{font-family:'Fraunces',serif;font-size:16px;letter-spacing:0}
+
+/* ambient doodles layer - per chapter */
+.bg{position:absolute;z-index:0;pointer-events:none;opacity:.12;mix-blend-mode:multiply}
+.bg img{display:block;width:100%;height:auto}
+
+/* chapter 1 (cebu) bg placements */
+.c1 .bg-1{top:280px;right:-90px;width:240px;transform:rotate(5deg)}
+.c1 .bg-2{top:680px;left:-80px;width:220px;transform:rotate(-6deg)}
+.c1 .bg-3{top:1060px;right:-80px;width:220px;transform:rotate(4deg)}
+.c1 .bg-4{top:1440px;left:-60px;width:210px;transform:rotate(-5deg)}
+
+/* chapter 2 (field) colors and bg */
+.c2{background:linear-gradient(to bottom, var(--paper) 0%, #f2e6c4 100%)}
+.c2 .chap-h em{color:var(--bloom)}
+.c2 .chap-eyebrow{color:var(--bloom)}
+.c2 .break .lb{color:var(--bloom)}
+.c2 .handoff .cta{color:var(--bloom);border-color:var(--bloom)}
+.c2 .chap-wrap p em.seed{color:var(--accent)}
+.c2 .chap-wrap p em.bloom{color:var(--bloom)}
+.c2 .chap-wrap p em.sun{color:var(--sun)}
+.c2 .bg-1{top:260px;left:-80px;width:220px;transform:rotate(-5deg)}
+.c2 .bg-2{top:660px;right:-80px;width:240px;transform:rotate(6deg)}
+.c2 .bg-3{top:1060px;left:-60px;width:200px;transform:rotate(-4deg)}
+
+/* trio motif */
+.trio{
+  display:flex;align-items:flex-end;justify-content:center;gap:32px;
+  margin:48px auto 56px;max-width:620px;
+}
+.trio .step{flex:1;text-align:center}
+.trio .step .icon{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:44px;line-height:1;margin-bottom:12px;
+}
+.trio .step.seed .icon{color:var(--accent)}
+.trio .step.bloom .icon{color:var(--bloom)}
+.trio .step.sun .icon{color:var(--sun)}
+.trio .step .lbl{
+  font-family:'Caveat',cursive;font-size:22px;color:var(--ink-soft);
+}
+.trio .arrow{
+  font-family:'Fraunces',serif;font-size:24px;color:var(--ink-soft);
+  opacity:.5;padding-bottom:18px;
+}
+
+@media (max-width:820px){
+  .preview-head{padding:20px 20px}
+  .chapter-wrap{padding:72px 20px 56px}
+  .chap-wrap p{font-size:22px}
+  .chap-wrap p.soft{font-size:19px}
+  .bg{opacity:.08}
+  .c1 .bg-1,.c1 .bg-2,.c1 .bg-3,.c1 .bg-4,
+  .c2 .bg-1,.c2 .bg-2,.c2 .bg-3{width:150px}
+  .c1 .bg-1{top:160px;right:-50px}
+  .c1 .bg-2{top:520px;left:-40px}
+  .c1 .bg-3{top:880px;right:-50px}
+  .c1 .bg-4{top:1240px;left:-40px}
+  .c2 .bg-1{top:160px;left:-40px}
+  .c2 .bg-2{top:520px;right:-50px}
+  .c2 .bg-3{top:880px;left:-40px}
+  .trio{gap:14px}
+  .trio .step .icon{font-size:32px}
+  .trio .step .lbl{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="preview-head">
+  <div class="kicker">Concept preview &mdash; Hero + Myth + Field (sections 00, 01, 02)</div>
+  <div class="meta">
+    <span>Storybook voice across three sections</span>
+    <span class="dot"></span>
+    <span class="conf">Confidence 93%</span>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero-mandala">
+  <div class="hm-stars"></div>
+  <div class="hm-mandala"><div class="hm-m-inner"></div><div class="hm-m-core"></div></div>
+  <div class="hm-portrait"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-portrait.webp" alt="Yanik Silver inside the mandala"></div>
+  <div class="hm-copy">
+    <div class="hm-eye">Yanik Silver <span>/</span> 1000 suns</div>
+    <h1 class="hm-h">I am a <em>maverick</em>,<br>a seeker,<br>a <em>sun one</em>.</h1>
+    <p class="hm-sub">A living <em>field guide</em> for entrepreneurs on the journey beyond success.</p>
+    <a class="hm-cta" href="#c1">Step inside the field <span class="arrow">&rarr;</span></a>
+  </div>
+  <a class="hm-scroll" href="#c1">
+    <span class="lbl">Keep reading</span>
+    <span class="nxt">The Myth of Yanik Silver</span>
+    <span class="dn">&darr;</span>
+  </a>
+</section>
+
+<!-- ================= CHAPTER 1: CEBU ================= -->
+<div class="storybook">
+<section id="c1" class="chapter-wrap c1">
+
+  <div class="bg bg-1"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-silver-tree.jpg" alt=""></div>
+  <div class="bg bg-2"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sun-one.jpg" alt=""></div>
+  <div class="bg bg-3"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-how-suns.jpg" alt=""></div>
+  <div class="bg bg-4"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-field-of-suns.jpg" alt=""></div>
+
+  <div class="section-id">section 01 &mdash; the myth</div>
+  <div class="chap-eyebrow">an old story, told for a child</div>
+  <h2 class="chap-h">Cebu and the<br/><em>thousand suns.</em></h2>
+  <p class="chap-lede">the cosmic sloth who brought cacao to the world.</p>
+
+  <div class="cebu">
+    <img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sloth-final.png" alt="Cebu, the cosmic sloth">
+    <div class="caption">meet Cebu.</div>
+  </div>
+
+  <div class="chap-wrap">
+    <p>Long ago, the sky was <em>dark</em> and the world was asleep.</p>
+    <p>High in the biggest tree lived a little sloth named <em>Cebu.</em></p>
+    <p>He moved slowly, because when you move slowly, you notice everything.</p>
+    <p>One day he whispered, &ldquo;the world needs <em>light.</em>&rdquo; So he began to climb.</p>
+    <p>At the top of the tree he found a tree full of <em>cacao pods.</em></p>
+    <p>And inside each pod&hellip; a tiny, sleeping sun.</p>
+    <p>He opened one. A warm little sun floated up. He opened another. And another.</p>
+    <p>Each sun lit the next, until <em>a thousand suns</em> were shining back.</p>
+    <p>The cacao fell to the ground and became chocolate for the people.</p>
+    <p class="soft">And Cebu, very slowly, smiled.<br/>His job was never to be the sun. His job was to <em>wake them up.</em></p>
+
+    <div class="break"><span class="ln"></span><span class="lb">now, the real part</span><span class="ln"></span></div>
+
+    <p>There is a man named <em>Yanik Silver.</em></p>
+
+    <div class="cebu small">
+      <img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sloth-final.png" alt="Yanik as Cebu">
+      <div class="caption">this is how he sees himself.</div>
+    </div>
+
+    <p>He is the cosmic sloth Cebu. Same heart. Same job.</p>
+    <p>When he meets someone, he opens them like a cacao pod, so the <em>sun</em> inside them can fly.</p>
+    <p>His goal is not to be rich, or famous, or the brightest light in the room.</p>
+    <p>His goal is <em>a thousand suns.</em></p>
+
+    <div class="handoff">
+      <p>But how does a sun actually <em>wake up?</em></p>
+      <a class="cta" href="#c2"><span>turn the page</span><span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+
+</section>
+</div>
+
+<!-- ================= CHAPTER 2: SEEDS → BLOOMS → SUNS ================= -->
+<div class="storybook">
+<section id="c2" class="chapter-wrap c2">
+
+  <div class="bg bg-1"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-bouquet.jpg" alt=""></div>
+  <div class="bg bg-2"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-every-ray.jpg" alt=""></div>
+  <div class="bg bg-3"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-infinite-blooms.jpg" alt=""></div>
+
+  <div class="section-id">section 02 &mdash; the field</div>
+  <div class="chap-eyebrow">the part that happens inside you</div>
+  <h2 class="chap-h">How a <em>sun</em><br/>wakes up.</h2>
+  <p class="chap-lede">seeds, blooms, suns. and how the field keeps itself alive.</p>
+
+  <div class="trio">
+    <div class="step seed"><div class="icon">&#9679;</div><div class="lbl">seed</div></div>
+    <div class="arrow">&rarr;</div>
+    <div class="step bloom"><div class="icon">&#10022;</div><div class="lbl">bloom</div></div>
+    <div class="arrow">&rarr;</div>
+    <div class="step sun"><div class="icon">&#9728;</div><div class="lbl">sun</div></div>
+  </div>
+
+  <div class="chap-wrap">
+    <p>Every person starts as a <em class="seed">seed.</em></p>
+    <p>Inside every seed, a little sun is sleeping.</p>
+    <p>The seed doesn&rsquo;t know yet. It just feels dark and quiet and small.</p>
+    <p>Then one day, a warm ray lands on it. From a friend. A stranger. A question no one&rsquo;s asked before.</p>
+    <p>And the seed wakes up. It becomes a <em class="bloom">bloom.</em></p>
+    <p>Brave. Wobbly. Learning how to shine.</p>
+    <p>Until, very quietly, the bloom opens all the way up.</p>
+    <p>And a <em class="sun">sun</em> comes out.</p>
+    <p>That sun has rays of its own now. Warm ones. Honest ones. On purpose.</p>
+    <p>And every ray falls on another seed, waking it up.</p>
+    <p class="soft">Seeds become blooms.<br/>Blooms become suns.<br/>Suns wake up more seeds.</p>
+    <p>That&rsquo;s the field. <em>Self-activating.</em> Forever.</p>
+
+    <div class="handoff">
+      <p>So where are you in the field right now?<br/>and who is ready to be woken up?</p>
+      <a class="cta" href="#"><span>meet the thousand suns</span><span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+
+</section>
+</div>
+
+</body>
+</html>
