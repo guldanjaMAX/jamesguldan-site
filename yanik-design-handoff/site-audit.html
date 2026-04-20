@@ -1,0 +1,1418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yanik Silver Site. Current state and what is next.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,200..900,0..100&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6eeda;
+    --paper-2: #efe4c8;
+    --paper-deep: #e8d9b4;
+    --ink: #2b2118;
+    --ink-soft: #574634;
+    --ink-faint: #8a7357;
+    --burnt: #b8471f;
+    --burnt-soft: #d07652;
+    --rose: #c8557f;
+    --sun: #d89a2a;
+    --green: #6b8e4e;
+    --plum: #3a1f3c;
+    --line: rgba(43, 33, 24, 0.18);
+    --line-soft: rgba(43, 33, 24, 0.08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(ellipse at top left, rgba(216, 154, 42, 0.08) 0%, transparent 40%),
+      radial-gradient(ellipse at bottom right, rgba(184, 71, 31, 0.06) 0%, transparent 50%),
+      repeating-linear-gradient(0deg, transparent 0 40px, rgba(43, 33, 24, 0.015) 40px 41px);
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+  .serif { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; font-variation-settings: "SOFT" 50; }
+  .hand { font-family: 'Caveat', cursive; }
+
+  /* Masthead */
+  .mast {
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mast .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 22px;
+  }
+  .mast h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0 0 28px;
+    color: var(--ink);
+  }
+  .mast h1 em { font-style: italic; color: var(--burnt); font-weight: 400; }
+  .mast .lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(18px, 1.5vw, 22px);
+    line-height: 1.5;
+    max-width: 780px;
+    color: var(--ink-soft);
+  }
+  .mast .lede em { font-style: italic; color: var(--ink); }
+  .mast .meta {
+    display: flex;
+    gap: 44px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line-soft);
+    flex-wrap: wrap;
+  }
+  .mast .meta div { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+  .mast .meta div b { display: block; color: var(--ink); font-weight: 500; font-size: 14px; letter-spacing: 0; text-transform: none; margin-top: 4px; }
+
+  /* Legend strip */
+  .legend {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .legend-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .legend-item {
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+  }
+  .legend-item .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .dot-done { background: var(--green); }
+  .dot-polish { background: var(--sun); }
+  .dot-open { background: var(--burnt); }
+  .dot-missing { background: var(--rose); }
+  .legend-item .tag {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .legend-item .desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    line-height: 1.45;
+  }
+
+  /* Summary table */
+  .summary {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .summary h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px;
+  }
+  .summary h2 em { font-style: italic; color: var(--burnt); }
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .summary-table th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--ink-faint);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .summary-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  .summary-table tr:hover { background: rgba(255, 255, 255, 0.35); }
+  .summary-table .sid {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--burnt);
+    font-weight: 300;
+    font-feature-settings: "tnum";
+  }
+  .summary-table .sname {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 400;
+  }
+  .summary-table .sbeat { color: var(--ink-soft); font-size: 13px; font-style: italic; }
+  .summary-table .sstatus {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .summary-table .sconf {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--ink);
+    font-weight: 300;
+  }
+  .summary-table .sconf small { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em; margin-left: 3px; }
+
+  /* Section card */
+  .section-card {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .section-card:nth-child(even) {
+    background: rgba(239, 228, 200, 0.35);
+  }
+  .sc-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .sc-side .num {
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    font-weight: 200;
+    color: var(--burnt);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .sc-side .pattern-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 24px;
+  }
+  .sc-side .pattern {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--ink);
+    margin-top: 4px;
+  }
+  .sc-side .meta-row {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .sc-side .meta-row b { display: block; font-weight: 500; color: var(--ink); margin-bottom: 3px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+  .sc-side .meta-row + .meta-row { margin-top: 14px; padding-top: 14px; }
+
+  .sc-main h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 3.4vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+  .sc-main h3 em { font-style: italic; color: var(--burnt); font-weight: 400; }
+  .sc-main .status-line {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .status-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid transparent;
+  }
+  .status-chip .dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; display: inline-block; }
+  .status-done { background: rgba(107, 142, 78, 0.12); color: var(--green); border-color: rgba(107, 142, 78, 0.3); }
+  .status-polish { background: rgba(216, 154, 42, 0.14); color: #9a6d1a; border-color: rgba(216, 154, 42, 0.4); }
+  .status-open { background: rgba(184, 71, 31, 0.12); color: var(--burnt); border-color: rgba(184, 71, 31, 0.3); }
+  .status-missing { background: rgba(200, 85, 127, 0.12); color: var(--rose); border-color: rgba(200, 85, 127, 0.3); }
+  .conf-chip {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+  .conf-chip b { font-style: normal; color: var(--ink); font-weight: 400; font-size: 16px; }
+
+  .sc-intro {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin: 0 0 32px;
+  }
+
+  /* Wireframe */
+  .wireframe {
+    margin: 32px 0;
+    border: 1px solid var(--line);
+    background: repeating-linear-gradient(
+      135deg,
+      rgba(43, 33, 24, 0.02) 0 12px,
+      transparent 12px 24px
+    );
+    padding: 24px;
+    border-radius: 4px;
+    position: relative;
+  }
+  .wireframe::before {
+    content: "WIREFRAME";
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+  .wf-row {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .wf-row:last-child { margin-bottom: 0; }
+  .wf-col-1 { grid-template-columns: 1fr; }
+  .wf-col-2 { grid-template-columns: 1fr 1fr; }
+  .wf-col-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .wf-col-60-40 { grid-template-columns: 3fr 2fr; }
+  .wf-col-40-60 { grid-template-columns: 2fr 3fr; }
+  .wf-col-30-70 { grid-template-columns: 1fr 2fr; }
+  .wf-box {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px dashed var(--line);
+    border-radius: 3px;
+    padding: 16px;
+    min-height: 60px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    position: relative;
+  }
+  .wf-box.solid { background: rgba(43, 33, 24, 0.05); border-style: solid; }
+  .wf-box.accent { background: rgba(184, 71, 31, 0.06); border-color: var(--burnt-soft); }
+  .wf-box.warm { background: rgba(216, 154, 42, 0.08); border-color: rgba(216, 154, 42, 0.35); }
+  .wf-box.paper { background: var(--paper-2); border: 1px solid var(--line); }
+  .wf-box.night { background: #1a1030; border-color: #3a1f3c; color: #c8a8b8; }
+  .wf-box .label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .wf-box.night .label { color: #8e6f80; }
+  .wf-box .wf-text {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .wf-box.night .wf-text { color: #f6eeda; }
+  .wf-img-placeholder {
+    background-size: cover;
+    background-position: center;
+    min-height: 140px;
+    border-radius: 3px;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+  }
+  .wf-img-placeholder .img-tag {
+    background: rgba(246, 238, 218, 0.92);
+    padding: 4px 10px;
+    border-radius: 2px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .wf-tall { min-height: 180px; }
+  .wf-xtall { min-height: 260px; }
+
+  /* Detail panels */
+  .panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 36px;
+  }
+  .panel {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    padding: 24px 26px;
+  }
+  .panel h4 {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+  .panel h4 .icon {
+    display: inline-block;
+    margin-right: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .panel ul { margin: 0; padding: 0; list-style: none; }
+  .panel li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .panel li:last-child { border-bottom: none; padding-bottom: 0; }
+  .panel li:first-child { padding-top: 0; }
+  .panel li b {
+    font-weight: 500;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .panel li span { color: var(--ink-soft); font-size: 13px; }
+  .panel.missing { background: rgba(200, 85, 127, 0.05); border-color: rgba(200, 85, 127, 0.2); }
+  .panel.missing h4 .icon { background: var(--rose); }
+  .panel.have h4 .icon { background: var(--green); }
+
+  /* Asset grid */
+  .asset-strip {
+    margin-top: 28px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+  }
+  .asset-strip h4 {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+  .asset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+  .asset-thumb {
+    position: relative;
+    aspect-ratio: 1;
+    background: var(--paper-deep);
+    border-radius: 3px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--line-soft);
+  }
+  .asset-thumb .cap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(43, 33, 24, 0.85) 100%);
+    color: var(--paper);
+    padding: 16px 8px 6px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  /* Next move */
+  .next-move {
+    margin-top: 32px;
+    background: rgba(43, 33, 24, 0.04);
+    border-left: 3px solid var(--burnt);
+    padding: 18px 24px;
+    border-radius: 0 4px 4px 0;
+  }
+  .next-move .nm-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--burnt);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .next-move .nm-text {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  /* Priority callout */
+  .priority {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--line);
+    background: rgba(216, 154, 42, 0.06);
+  }
+  .priority h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 4vw, 56px);
+    letter-spacing: -0.015em;
+    margin: 0 0 12px;
+    line-height: 1;
+  }
+  .priority h2 em { font-style: italic; color: var(--burnt); }
+  .priority .lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 19px;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin-bottom: 40px;
+  }
+  .priority-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .priority-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 28px;
+    border-radius: 4px;
+    position: relative;
+  }
+  .priority-card .rank {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 200;
+    color: var(--burnt);
+    line-height: 1;
+  }
+  .priority-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    margin: 12px 0 8px;
+  }
+  .priority-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+  }
+  .priority-card .why {
+    font-family: 'Caveat', cursive;
+    font-size: 17px;
+    color: var(--burnt);
+    padding-top: 14px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  /* Footer */
+  footer {
+    padding: 60px 0 80px;
+    color: var(--ink-faint);
+    font-size: 13px;
+  }
+  footer .hand { font-size: 22px; color: var(--ink); }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .sc-grid { grid-template-columns: 1fr; gap: 32px; }
+    .panels { grid-template-columns: 1fr; }
+    .legend-inner { grid-template-columns: 1fr 1fr; }
+    .priority-list { grid-template-columns: 1fr; }
+    .wf-col-2, .wf-col-3, .wf-col-60-40, .wf-col-40-60, .wf-col-30-70 { grid-template-columns: 1fr; }
+    .summary-table th:nth-child(3), .summary-table td:nth-child(3) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<div class="wrap mast">
+  <div class="kicker">Yanik Silver personal brand site / audit and design plan / April 20 2026</div>
+  <h1>The site, <em>laid out end to end</em>.<br>What we have, what is next.</h1>
+  <p class="lede">Nine sections in scroll order. For each one, the current state, the assets we already own, the questions still open, and the one design move that would move it from <em>built</em> to <em>done</em>. Read top to bottom, or jump to the priority set at the end.</p>
+  <div class="meta">
+    <div>Deck source<b>section-concepts-2026-04-19-A-PLUS</b></div>
+    <div>Assets on hand<b>55 images, 7 categories</b></div>
+    <div>Sections in scroll<b>9 including hero and myth</b></div>
+    <div>Priority polish<b>3 of 7 remaining</b></div>
+  </div>
+</div>
+
+<!-- ============ LEGEND ============ -->
+<div class="wrap legend">
+  <div class="legend-inner">
+    <div class="legend-item">
+      <span class="dot dot-done"></span>
+      <span class="tag">Done</span>
+      <div class="desc">Shipped at A+ polish. Only minor copy tweaks expected.</div>
+    </div>
+    <div class="legend-item">
+      <span class="dot dot-polish"></span>
+      <span class="tag">Needs polish</span>
+      <div class="desc">Built and landed, but visual treatment has not been elevated yet.</div>
+    </div>
+    <div class="legend-item">
+      <span class="dot dot-open"></span>
+      <span class="tag">Open question</span>
+      <div class="desc">A real design call is still unmade. Usually copy or interaction.</div>
+    </div>
+    <div class="legend-item">
+      <span class="dot dot-missing"></span>
+      <span class="tag">Missing asset</span>
+      <div class="desc">A piece of art, quote, or photo we still need to source.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SUMMARY TABLE ============ -->
+<div class="wrap summary">
+  <h2>The whole deck <em>in one table</em>.</h2>
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th style="width:60px">#</th>
+        <th>Section</th>
+        <th>Myth beat</th>
+        <th>Status</th>
+        <th style="width:80px">Confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="sid">00</td>
+        <td><div class="sname">Above the fold</div><div class="sbeat">Single frame hero</div></td>
+        <td class="sbeat">The Sloth appears</td>
+        <td><span class="status-chip status-done"><span class="dot dot-done"></span>Done</span></td>
+        <td class="sconf">92<small>CONF</small></td>
+      </tr>
+      <tr>
+        <td class="sid">0.5</td>
+        <td><div class="sname">The Myth (Prologue)</div><div class="sbeat">How the Sloth brought the suns</div></td>
+        <td class="sbeat">The myth is told</td>
+        <td><span class="status-chip status-polish"><span class="dot dot-polish"></span>Needs polish</span></td>
+        <td class="sconf">94<small>CONF</small></td>
+      </tr>
+      <tr>
+        <td class="sid">01</td>
+        <td><div class="sname">The Thousand Suns</div><div class="sbeat">Manifesto / Luminous Vow</div></td>
+        <td class="sbeat">The suns are scattered</td>
+        <td><span class="status-chip status-polish"><span class="dot dot-polish"></span>Needs polish</span></td>
+        <td class="sconf">90<small>CONF</small></td>
+      </tr>
+      <tr>
+        <td class="sid">02</td>
+        <td><div class="sname">The Brightest Suns</div><div class="sbeat">Inner circle + archive wall</div></td>
+        <td class="sbeat">The brightest ones shine back</td>
+        <td><span class="status-chip status-polish"><span class="dot dot-polish"></span>Needs polish</span></td>
+        <td class="sconf">88<small>CONF</small></td>
+      </tr>
+      <tr>
+        <td class="sid">03</td>
+        <td><div class="sname">Meet Your Guide</div><div class="sbeat">The Open Journal</div></td>
+        <td class="sbeat">The Sloth wakes</td>
+        <td><span class="status-chip status-polish"><span class="dot dot-polish"></span>Needs polish</span></td>
+        <td class="sconf">87<small>CONF</small></td>
+      </tr>
+      <tr>
+        <td class="sid">04</td>
+        <td><div class="sname">The Infinite Game</div><div class="sbeat">Player Map</div></td>
+        <td class="sbeat">The game begins</td>
+        <td><span class="status-chip status-open"><span class="dot dot-open"></span>Open question</span></td>
+        <td class="sconf">82<small>CONF</small></td>
+      </tr>
+      <tr>
+        <td class="sid">05</td>
+        <td><div class="sname">The Field of Blooms</div><div class="sbeat">Studio Wall</div></td>
+        <td class="sbeat">The blooms rise up</td>
+        <td><span class="status-chip status-polish"><span class="dot dot-polish"></span>Needs polish</span></td>
+        <td class="sconf">92<small>CONF</small></td>
+      </tr>
+      <tr>
+        <td class="sid">06</td>
+        <td><div class="sname">Your Invitation</div><div class="sbeat">The Cosmic Ticket</div></td>
+        <td class="sbeat">The guide hands a seat</td>
+        <td><span class="status-chip status-open"><span class="dot dot-open"></span>Open question</span></td>
+        <td class="sconf">84<small>CONF</small></td>
+      </tr>
+      <tr>
+        <td class="sid">07</td>
+        <td><div class="sname">Three Blessings</div><div class="sbeat">Footer / sign off</div></td>
+        <td class="sbeat">The guide says goodbye</td>
+        <td><span class="status-chip status-missing"><span class="dot dot-missing"></span>Missing input</span></td>
+        <td class="sconf">78<small>CONF</small></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ SECTION 00 / HERO ============ -->
+<div class="section-card">
+<div class="wrap"><div class="sc-grid">
+  <div class="sc-side">
+    <div class="num">00</div>
+    <div class="pattern-label">Pattern</div>
+    <div class="pattern">Single frame hero</div>
+    <div class="meta-row"><b>Myth beat</b>The Sloth appears</div>
+    <div class="meta-row"><b>Device</b>Full bleed photo, no hero banner</div>
+    <div class="meta-row"><b>Photography</b>Creature suit composite, plum night field</div>
+  </div>
+  <div class="sc-main">
+    <h3>Above the fold. <em>The creature who wrote the myth.</em></h3>
+    <div class="status-line">
+      <span class="status-chip status-done"><span class="dot dot-done"></span>Done</span>
+      <span class="conf-chip">Confidence <b>92</b></span>
+      <span class="conf-chip">Effort remaining <b>low</b></span>
+    </div>
+    <p class="sc-intro">The public site opens on Yanik already in the creature he draws on himself. A mandala the size of a planet behind him. The cosmic sloth watching from above. No hero banner, no product promise. Just the man inside the myth.</p>
+
+    <div class="wireframe">
+      <div class="wf-row wf-col-1">
+        <div class="wf-box night wf-xtall" style="background-image: linear-gradient(180deg, rgba(26,16,48,0.75), rgba(26,16,48,0.4)), url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cosmic-composite.jpg'); background-size: cover; background-position: center;">
+          <div class="label" style="color: #d89a2a;">Hero frame</div>
+          <div class="wf-text" style="font-family: Fraunces, serif; font-size: 32px; font-weight: 300; line-height: 1; letter-spacing: -0.015em; max-width: 60%; color: #f6eeda;">I am a <em style="font-style: italic;">maverick</em>,<br>a seeker, <em style="font-style: italic; color: #d89a2a;">a sun one</em>.</div>
+          <div style="position: absolute; top: 16px; left: 16px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #f6eeda; opacity: 0.7;">yaniksilver.com</div>
+          <div style="position: absolute; bottom: 16px; right: 16px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #f6eeda; opacity: 0.7;">Step inside the field &rarr;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel have">
+        <h4><span class="icon"></span>What is already there</h4>
+        <ul>
+          <li><b>Composite hero photo</b><span>Yanik in creature onesie, cosmic sloth above, mandala behind. Built and live.</span></li>
+          <li><b>Headline + CTA</b><span>"I am a maverick, a seeker, a sun one." Already final.</span></li>
+          <li><b>Scroll arrow to myth</b><span>Points reader at the prologue, not a product.</span></li>
+        </ul>
+      </div>
+      <div class="panel missing">
+        <h4><span class="icon"></span>What is open</h4>
+        <ul>
+          <li><b>None blocking</b><span>Hero is locked. The only risk is the composite losing impact at very narrow widths, which a focal point tweak handles.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="asset-strip">
+      <h4>Assets in use</h4>
+      <div class="asset-grid">
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cosmic-composite.jpg');"><div class="cap">Cosmic composite</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/hero-creature.webp');"><div class="cap">Creature suit</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sloth-final.png');"><div class="cap">Cosmic sloth</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/tattoo-sacred-geom.jpg');"><div class="cap">Mandala tattoo</div></div>
+      </div>
+    </div>
+
+    <div class="next-move">
+      <div class="nm-label">Next design move</div>
+      <div class="nm-text">Leave it alone. The thesis of Section 00 is that the myth is worn, not described. Any further ornamentation weakens that. If anything breaks, tighten the text position at mobile widths. Nothing else.</div>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<!-- ============ SECTION 0.5 / MYTH PROLOGUE ============ -->
+<div class="section-card">
+<div class="wrap"><div class="sc-grid">
+  <div class="sc-side">
+    <div class="num">0.5</div>
+    <div class="pattern-label">Pattern</div>
+    <div class="pattern">The Myth Storybook</div>
+    <div class="meta-row"><b>Myth beat</b>How the Sloth brought the suns</div>
+    <div class="meta-row"><b>Voice</b>Fable, third person</div>
+    <div class="meta-row"><b>Length</b>Five beats, warm paper</div>
+  </div>
+  <div class="sc-main">
+    <h3>The Prologue. <em>A story told in five beats.</em></h3>
+    <div class="status-line">
+      <span class="status-chip status-polish"><span class="dot dot-polish"></span>Just polished</span>
+      <span class="conf-chip">Confidence <b>94</b></span>
+      <span class="conf-chip">Effort remaining <b>copy review</b></span>
+    </div>
+    <p class="sc-intro">Yanik has a myth. He did not find it in a book. He drew it for a decade and then put the important parts on his skin. The prologue walks the reader through it in five beats. Seeds, suns, tattoos, blooms, sign off. Everything downstream leans on this.</p>
+
+    <div class="wireframe">
+      <div class="wf-row wf-col-1">
+        <div class="wf-box paper"><div class="label">Pull quote, center</div><div class="wf-text" style="font-family: Fraunces, serif; font-size: 22px; font-weight: 300; font-style: italic;">"A Galactic Sloth moved through the night sky carrying a thousand suns on his back. He was never in a hurry. Sloths never are."</div></div>
+      </div>
+      <div class="wf-row wf-col-2">
+        <div class="wf-box paper"><div class="label">Beat i. journal 2019</div><div class="wf-text">He walked the sky. The Sloth carried the suns because no one else would.</div></div>
+        <div class="wf-box" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-how-suns.jpg'); background-size: cover; min-height: 120px;"><div class="label" style="background: rgba(246,238,218,0.88); padding: 3px 8px; display: inline-block;">Sloth doodle</div></div>
+      </div>
+      <div class="wf-row wf-col-2">
+        <div class="wf-box" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/tattoo-sun-face.jpg'); background-size: cover; min-height: 120px;"><div class="label" style="background: rgba(246,238,218,0.88); padding: 3px 8px; display: inline-block;">Sun face tattoo</div></div>
+        <div class="wf-box paper"><div class="label">Beat ii. inner wrist tattoo 01/04</div><div class="wf-text">He wore the sun on his skin. The first light every morning is the one he is carrying.</div></div>
+      </div>
+      <div class="wf-row wf-col-2">
+        <div class="wf-box paper"><div class="label">Beat iii. journal 2021</div><div class="wf-text">He shook the suns loose. A thousand of them. They fell slow and they fell warm.</div></div>
+        <div class="wf-box" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-field-of-suns.jpg'); background-size: cover; min-height: 120px;"><div class="label" style="background: rgba(246,238,218,0.88); padding: 3px 8px; display: inline-block;">Field of suns</div></div>
+      </div>
+      <div class="wf-row wf-col-1">
+        <div class="wf-box solid"><div class="label">Sign off, in his hand</div><div class="wf-text hand" style="font-family: Caveat, cursive; font-size: 20px;">y. silver, 1000 suns / one field</div></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel have">
+        <h4><span class="icon"></span>What is already there</h4>
+        <ul>
+          <li><b>All five beats written</b><span>Voice is locked, quote selection is final.</span></li>
+          <li><b>Polish pass in the repo</b><span>Six targeted design changes and four copy tweaks just shipped.</span></li>
+          <li><b>Paired doodles for each beat</b><span>Each beat has a real asset pulled from the journal library.</span></li>
+        </ul>
+      </div>
+      <div class="panel missing">
+        <h4><span class="icon"></span>What is open</h4>
+        <ul>
+          <li><b>Cosmology line</b><span>Current deck says Cebu. Implementation plan says Bribri Costa Rica. Decide and lock before naming the tribe in copy.</span></li>
+          <li><b>Scroll rhythm</b><span>Design call on whether beats fade in on scroll or sit static. Both valid.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="next-move">
+      <div class="nm-label">Next design move</div>
+      <div class="nm-text">Resolve the cosmology question with Yanik, then hold. The myth is the spine and the spine is set. Any further work here is a mistake until the rest of the site catches up to it.</div>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<!-- ============ SECTION 01 / THOUSAND SUNS MANIFESTO ============ -->
+<div class="section-card">
+<div class="wrap"><div class="sc-grid">
+  <div class="sc-side">
+    <div class="num">01</div>
+    <div class="pattern-label">Pattern</div>
+    <div class="pattern">The Luminous Vow</div>
+    <div class="meta-row"><b>Myth beat</b>The suns are scattered</div>
+    <div class="meta-row"><b>Length</b>Six sentences, no more</div>
+    <div class="meta-row"><b>Signed</b>y. silver, in his hand</div>
+  </div>
+  <div class="sc-main">
+    <h3>The Thousand Suns. <em>Read the suns he left you.</em></h3>
+    <div class="status-line">
+      <span class="status-chip status-polish"><span class="dot dot-polish"></span>Needs polish</span>
+      <span class="conf-chip">Confidence <b>90</b></span>
+      <span class="conf-chip">Effort remaining <b>one pass</b></span>
+    </div>
+    <p class="sc-intro">The manifesto is not copy. It is the thousand suns. Each sentence is one of them, shaken loose from the Sloth's back and laid down on warm paper. The page goes quiet around it. His hand signs it at the bottom. The reader lowers their voice the way you do when someone hands you something warm.</p>
+
+    <div class="wireframe">
+      <div class="wf-row wf-col-1"><div class="wf-box warm" style="text-align:center; padding: 40px;">
+        <div class="label" style="letter-spacing: 0.28em;">A vow in six lines</div>
+        <div class="wf-text" style="font-family: Fraunces, serif; font-size: 17px; font-weight: 300; line-height: 1.75; max-width: 540px; margin: 14px auto 0;">I am not here to sell you a better version of what hurt.<br>I am here to remind you that the sun has always been free.<br>Your work is allowed to be joyful.<br>Money is a byproduct of how brightly you burn.<br>I am here to draw with you, to build with you.<br>If any of this quietly rings true, you are already one of us.</div>
+        <div class="wf-text hand" style="font-family: Caveat, cursive; font-size: 22px; margin-top: 24px; color: var(--burnt);">y. silver</div>
+      </div></div>
+      <div class="wf-row wf-col-3">
+        <div class="wf-box" style="min-height: 80px; background: radial-gradient(circle, rgba(216,154,42,0.4) 0%, transparent 70%);"><div class="label">Sun 01 rising</div></div>
+        <div class="wf-box" style="min-height: 80px; background: radial-gradient(circle, rgba(216,154,42,0.4) 0%, transparent 70%);"><div class="label">Sun 02 rising</div></div>
+        <div class="wf-box" style="min-height: 80px; background: radial-gradient(circle, rgba(216,154,42,0.4) 0%, transparent 70%);"><div class="label">Sun 03 rising</div></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel have">
+        <h4><span class="icon"></span>What is already there</h4>
+        <ul>
+          <li><b>Six line vow, written</b><span>Copy is strong. Voice is Yanik.</span></li>
+          <li><b>Signature treatment decided</b><span>Handwritten y. silver at the bottom, already used in the deck.</span></li>
+          <li><b>Anchor doodle</b><span>"Field of Suns" and "Sun one" doodles ready to pull as the backdrop.</span></li>
+        </ul>
+      </div>
+      <div class="panel missing">
+        <h4><span class="icon"></span>What is open</h4>
+        <ul>
+          <li><b>Reveal rhythm</b><span>Do all six lines land at once, or does the page light them one sun at a time on scroll? Strong argument either way.</span></li>
+          <li><b>Background behavior</b><span>Suns as static field vs. slow rise. Pick one and commit.</span></li>
+          <li><b>Anchor asset</b><span>If we want a signed manuscript look, we need one scan of Yanik's actual handwriting laid under the type. Ask him.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="asset-strip">
+      <h4>Assets ready to pull</h4>
+      <div class="asset-grid">
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-field-of-suns.jpg');"><div class="cap">Field of suns</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sun-one.jpg');"><div class="cap">Sun one</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-xmas-suns.jpg');"><div class="cap">Xmas suns</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-every-ray.jpg');"><div class="cap">Every ray</div></div>
+      </div>
+    </div>
+
+    <div class="next-move">
+      <div class="nm-label">Next design move</div>
+      <div class="nm-text">Take the myth storybook polish pass and apply the same paper, ink, and handwriting treatment to these six lines. Make it feel like a signed page, not a feature block. The entire section is the vow. Everything else is negative space.</div>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<!-- ============ SECTION 02 / BRIGHTEST SUNS ============ -->
+<div class="section-card">
+<div class="wrap"><div class="sc-grid">
+  <div class="sc-side">
+    <div class="num">02</div>
+    <div class="pattern-label">Pattern</div>
+    <div class="pattern">Inner circle + archive wall</div>
+    <div class="meta-row"><b>Myth beat</b>The brightest ones shine back</div>
+    <div class="meta-row"><b>Device</b>Named suns over a wall of pinned cards</div>
+    <div class="meta-row"><b>Pool</b>92 named testimonials available</div>
+  </div>
+  <div class="sc-main">
+    <h3>The Brightest Suns. <em>Named. Filed. Still burning.</em></h3>
+    <div class="status-line">
+      <span class="status-chip status-polish"><span class="dot dot-polish"></span>Needs polish</span>
+      <span class="conf-chip">Confidence <b>88</b></span>
+      <span class="conf-chip">Effort remaining <b>one pass</b></span>
+    </div>
+    <p class="sc-intro">Of the thousand suns the Sloth has scattered, a handful burn bright enough to name. A knighted British billionaire. A Hall of Fame quarterback. A Product Launch teacher. A customer experience author. Around them, hundreds of Mavericks whose names you may not know but whose work you probably use.</p>
+
+    <div class="wireframe">
+      <div class="wf-row wf-col-1"><div class="wf-box"><div class="label">Inner circle. Six large cards.</div></div></div>
+      <div class="wf-row" style="grid-template-columns: repeat(6, 1fr);">
+        <div class="wf-box" style="min-height: 100px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-branson.jpg'); background-size: cover;"><div class="label" style="background: rgba(246,238,218,0.9); padding: 2px 6px; display: inline-block;">Branson</div></div>
+        <div class="wf-box" style="min-height: 100px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-joey.jpg'); background-size: cover;"><div class="label" style="background: rgba(246,238,218,0.9); padding: 2px 6px; display: inline-block;">Polish</div></div>
+        <div class="wf-box" style="min-height: 100px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-walker.jpg'); background-size: cover;"><div class="label" style="background: rgba(246,238,218,0.9); padding: 2px 6px; display: inline-block;">Walker</div></div>
+        <div class="wf-box" style="min-height: 100px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-mycoskie.jpg'); background-size: cover;"><div class="label" style="background: rgba(246,238,218,0.9); padding: 2px 6px; display: inline-block;">Mycoskie</div></div>
+        <div class="wf-box" style="min-height: 100px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-blakely.jpg'); background-size: cover;"><div class="label" style="background: rgba(246,238,218,0.9); padding: 2px 6px; display: inline-block;">Blakely</div></div>
+        <div class="wf-box" style="min-height: 100px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-lakhiani.jpg'); background-size: cover;"><div class="label" style="background: rgba(246,238,218,0.9); padding: 2px 6px; display: inline-block;">Lakhiani</div></div>
+      </div>
+      <div class="wf-row wf-col-1"><div class="wf-box paper"><div class="label">"a pinned testimonial, their real words from the archive"</div><div class="wf-text" style="font-family: Fraunces, serif; font-style: italic; margin-top: 8px;">"At the end of the day, being a Maverick is all about being able to choose your own adventure..." — Joey Coleman</div></div></div>
+      <div class="wf-row" style="grid-template-columns: repeat(8, 1fr);">
+        <div class="wf-box" style="min-height: 70px; padding: 8px;"><div class="label" style="font-size: 8px;">Aaron</div></div>
+        <div class="wf-box" style="min-height: 70px; padding: 8px;"><div class="label" style="font-size: 8px;">Katie</div></div>
+        <div class="wf-box" style="min-height: 70px; padding: 8px;"><div class="label" style="font-size: 8px;">Scott</div></div>
+        <div class="wf-box" style="min-height: 70px; padding: 8px;"><div class="label" style="font-size: 8px;">Mike</div></div>
+        <div class="wf-box" style="min-height: 70px; padding: 8px;"><div class="label" style="font-size: 8px;">Kyle</div></div>
+        <div class="wf-box" style="min-height: 70px; padding: 8px;"><div class="label" style="font-size: 8px;">Shelby</div></div>
+        <div class="wf-box" style="min-height: 70px; padding: 8px;"><div class="label" style="font-size: 8px;">Drew</div></div>
+        <div class="wf-box" style="min-height: 70px; padding: 8px;"><div class="label" style="font-size: 8px;">+76 more</div></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel have">
+        <h4><span class="icon"></span>What is already there</h4>
+        <ul>
+          <li><b>92 named testimonials</b><span>Master catalog on GitHub, organized by event (Camp, M3, Necker, membership).</span></li>
+          <li><b>10 celebrity photos</b><span>Branson, Polish, Walker, Mycoskie, Blakely, Lakhiani, Young, Requist, Filsaime, Ballantyne.</span></li>
+          <li><b>12 member avatar cards</b><span>Ratliff, Katie, Katzenback, Aydika, Shelby, Kyle, Mike, Drew, Spano, Scott, Aaron, Tupper.</span></li>
+          <li><b>139 video testimonials catalogued</b><span>Not embedded yet, but ready to surface if a section wants video.</span></li>
+        </ul>
+      </div>
+      <div class="panel missing">
+        <h4><span class="icon"></span>What is open</h4>
+        <ul>
+          <li><b>Which six names lead</b><span>Currently written around Branson, Polish, Walker, Warner, Mycoskie, Coleman. Lock the six before final layout.</span></li>
+          <li><b>One quote per named sun</b><span>We have quotes for most but not all six. Pull from master catalog and paste the chosen line under each card.</span></li>
+          <li><b>Kurt Warner photo</b><span>Not in the library. If he makes the inner six, we need a photo.</span></li>
+          <li><b>Layout pattern</b><span>Horizontal scroll of big cards vs. zoomable field of suns. Pick one.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="asset-strip">
+      <h4>Celebrity assets ready</h4>
+      <div class="asset-grid">
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-branson.jpg');"><div class="cap">Branson</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-joey.jpg');"><div class="cap">Joe Polish</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-walker.jpg');"><div class="cap">Jeff Walker</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-mycoskie.jpg');"><div class="cap">Mycoskie</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-blakely.jpg');"><div class="cap">Blakely</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-lakhiani.jpg');"><div class="cap">Lakhiani</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-young.jpg');"><div class="cap">Young</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/cel-filsaime.jpg');"><div class="cap">Filsaime</div></div>
+      </div>
+    </div>
+
+    <div class="next-move">
+      <div class="nm-label">Next design move</div>
+      <div class="nm-text">Lock the inner six. Pull their one best line from the master catalog, paste it under each card. Design the wall as pinned index cards on the Studio Wall, not a logo grid. The risk here is logo soup, and the defense is treating every testimonial like a handwritten note.</div>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<!-- ============ SECTION 03 / MEET YOUR GUIDE ============ -->
+<div class="section-card">
+<div class="wrap"><div class="sc-grid">
+  <div class="sc-side">
+    <div class="num">03</div>
+    <div class="pattern-label">Pattern</div>
+    <div class="pattern">The Open Journal</div>
+    <div class="meta-row"><b>Myth beat</b>The Sloth wakes</div>
+    <div class="meta-row"><b>Device</b>Portrait + pinned polaroid + marginalia</div>
+    <div class="meta-row"><b>Voice</b>First person, Yanik</div>
+  </div>
+  <div class="sc-main">
+    <h3>Meet your guide. <em>Not an About section. A campfire.</em></h3>
+    <div class="status-line">
+      <span class="status-chip status-polish"><span class="dot dot-polish"></span>Needs polish</span>
+      <span class="conf-chip">Confidence <b>87</b></span>
+      <span class="conf-chip">Effort remaining <b>one pass</b></span>
+    </div>
+    <p class="sc-intro">Your guide opens his journal and says, they call me the Sloth. Portrait, handwriting, pinned photos, a ticket stub, a line he underlined. The reader reads over his shoulder and decides whether to keep walking with him.</p>
+
+    <div class="wireframe">
+      <div class="wf-row wf-col-40-60">
+        <div class="wf-box" style="min-height: 280px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-portrait.webp'); background-size: cover; background-position: center top;"><div class="label" style="background: rgba(246,238,218,0.9); padding: 3px 8px; display: inline-block;">Portrait, full bleed</div></div>
+        <div class="wf-box paper" style="min-height: 280px;">
+          <div class="label">Page one of many</div>
+          <div class="wf-text" style="font-family: Fraunces, serif; font-size: 15px; line-height: 1.55; font-weight: 300;">I am a <em style="color: var(--burnt);">maverick</em>, a seeker, a sun one. When I was 29 I took the red pill on the hustle myth. Sold my first internet company and discovered I had built a cage made out of money. So I tore it down and started drawing suns instead...</div>
+          <div class="wf-text hand" style="font-family: Caveat, cursive; font-size: 20px; margin-top: 14px; color: var(--burnt);">signed, Yanik</div>
+        </div>
+      </div>
+      <div class="wf-row wf-col-3">
+        <div class="wf-box" style="min-height: 100px; transform: rotate(-2deg); background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-journal.webp'); background-size: cover;"><div class="label" style="background: rgba(246,238,218,0.9); padding: 2px 6px; display: inline-block;">Pinned polaroid</div></div>
+        <div class="wf-box solid" style="min-height: 100px;"><div class="label">Ticket stub</div><div class="wf-text hand" style="font-family: Caveat, cursive; font-size: 18px;">keep this one</div></div>
+        <div class="wf-box" style="min-height: 100px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-idea-factory.jpg'); background-size: cover;"><div class="label" style="background: rgba(246,238,218,0.9); padding: 2px 6px; display: inline-block;">Margin doodle</div></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel have">
+        <h4><span class="icon"></span>What is already there</h4>
+        <ul>
+          <li><b>First person copy</b><span>"I am a maverick..." opener is written and strong.</span></li>
+          <li><b>10 portrait assets</b><span>yanik-portrait, yanik-face, yanik-hero, yanik-landscape, yanik-journal, portrait-bw, plus two alt composites.</span></li>
+          <li><b>60 minute transcript for voice</b><span>If a new line is needed, the transcript on GitHub has every natural line he has said.</span></li>
+        </ul>
+      </div>
+      <div class="panel missing">
+        <h4><span class="icon"></span>What is open</h4>
+        <ul>
+          <li><b>Which portrait is the anchor</b><span>Currently using yanik-portrait.webp. Worth testing against portrait-bw for contrast.</span></li>
+          <li><b>Ticket stub content</b><span>What is on the stub and what does it say. Currently a placeholder.</span></li>
+          <li><b>Marginalia handwriting</b><span>Do we use Caveat font or a real scan of Yanik's hand. Real scan is stronger if available.</span></li>
+          <li><b>Polaroid source</b><span>A real photo of Yanik with one of the brightest suns (Branson candidate) would sell this. Ask for one.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="asset-strip">
+      <h4>Portrait set on hand</h4>
+      <div class="asset-grid">
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-portrait.webp');"><div class="cap">Portrait</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-face.webp');"><div class="cap">Face</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/portrait-bw.jpg');"><div class="cap">BW</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-hero.webp');"><div class="cap">Hero alt</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-landscape.webp');"><div class="cap">Landscape</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/yanik-journal.webp');"><div class="cap">Journal</div></div>
+      </div>
+    </div>
+
+    <div class="next-move">
+      <div class="nm-label">Next design move</div>
+      <div class="nm-text">Ask Yanik for one photo of him with a named sun (Branson, Polish, Walker). That single polaroid makes the whole section land. In parallel, design the page as a two column journal spread with portrait left, first person copy right, one doodle pinned to the margin, and a ticket stub at the bottom. Keep Caveat for captions only, not for the main copy.</div>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<!-- ============ SECTION 04 / INFINITE GAME ============ -->
+<div class="section-card">
+<div class="wrap"><div class="sc-grid">
+  <div class="sc-side">
+    <div class="num">04</div>
+    <div class="pattern-label">Pattern</div>
+    <div class="pattern">The Player Map</div>
+    <div class="meta-row"><b>Myth beat</b>The game begins</div>
+    <div class="meta-row"><b>Device</b>7 by 3 board, YOU ARE HERE tile</div>
+    <div class="meta-row"><b>Source</b>Yanik's Galactic Game journal pages</div>
+  </div>
+  <div class="sc-main">
+    <h3>The Infinite Game. <em>The guide hands you your piece.</em></h3>
+    <div class="status-line">
+      <span class="status-chip status-open"><span class="dot dot-open"></span>Open question</span>
+      <span class="conf-chip">Confidence <b>82</b></span>
+      <span class="conf-chip">Effort remaining <b>structural</b></span>
+    </div>
+    <p class="sc-intro">The Sloth sat down and the game began. Not a game you win. A game you keep playing on purpose. On this page your guide draws you the board. Seven tiles, archetype symbols, sun colored spaces, and a glowing purple tile that says YOU ARE HERE. You recognise yourself as a player before you read a word of explanation.</p>
+
+    <div class="wireframe">
+      <div class="wf-row wf-col-1"><div class="wf-box accent" style="padding: 24px;">
+        <div class="label">The Galactic Game board. 7 columns by 3 rows. 21 tiles.</div>
+        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-top: 16px;">
+          <div style="aspect-ratio: 1; background: rgba(216,154,42,0.4); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 18px;">&#9728;</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9775;</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9733;</div>
+          <div style="aspect-ratio: 1; background: rgba(200,85,127,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#10084;</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9874;</div>
+          <div style="aspect-ratio: 1; background: rgba(216,154,42,0.4); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 18px;">&#9728;</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9969;</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9752;</div>
+          <div style="aspect-ratio: 1; background: rgba(200,85,127,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9829;</div>
+          <div style="aspect-ratio: 1; background: rgba(216,154,42,0.4); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 18px;">&#9728;</div>
+          <div style="aspect-ratio: 1; background: linear-gradient(135deg, #c8557f, #3a1f3c); border-radius: 3px; display: flex; align-items: center; justify-content: center; color: #f6eeda; font-family: Fraunces, serif; font-size: 11px; font-weight: 500; box-shadow: 0 0 16px rgba(200,85,127,0.7);">HERE</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9832;</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9760;</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9881;</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9874;</div>
+          <div style="aspect-ratio: 1; background: rgba(216,154,42,0.4); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 18px;">&#9728;</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9855;</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9873;</div>
+          <div style="aspect-ratio: 1; background: rgba(200,85,127,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 16px;">&#9830;</div>
+          <div style="aspect-ratio: 1; background: rgba(216,154,42,0.4); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 10px; color: var(--burnt);">1000</div>
+          <div style="aspect-ratio: 1; background: rgba(246,238,218,0.8); border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 18px;">&infin;</div>
+        </div>
+      </div></div>
+      <div class="wf-row wf-col-3">
+        <div class="wf-box paper"><div class="label">Archetype 01</div><div class="wf-text">The Maker. builds the thing nobody asked for</div></div>
+        <div class="wf-box paper"><div class="label">Archetype 02</div><div class="wf-text">The Pilgrim. keeps walking past the last sign</div></div>
+        <div class="wf-box paper"><div class="label">Archetype 03</div><div class="wf-text">The Ally. lights the room without asking</div></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel have">
+        <h4><span class="icon"></span>What is already there</h4>
+        <ul>
+          <li><b>Galactic Game journal pages</b><span>Two master pages (IMG_3176, IMG_3203) with the full symbol vocabulary.</span></li>
+          <li><b>Doodle symbols extract</b><span>doodle-symbols.jpg and doodle-galactic-game.jpg ready to pull.</span></li>
+          <li><b>Tattoo reference</b><span>Sacred geometry mandala is the visual source for the board geometry.</span></li>
+        </ul>
+      </div>
+      <div class="panel missing">
+        <h4><span class="icon"></span>What is open</h4>
+        <ul>
+          <li><b>Hand drawn vs. UI clean</b><span>The spec says hand drawn, not Figma. Every pixel matters here. If it looks like a video game HUD we have missed.</span></li>
+          <li><b>Interaction model</b><span>Static board vs. hovering a tile shows its archetype. Pick one.</span></li>
+          <li><b>Archetype copy</b><span>Seven tile labels are drafted, twenty one is not. Do we copy all 21 or highlight 7?</span></li>
+          <li><b>YOU ARE HERE logic</b><span>Does the tile move based on the reader's scroll depth, or stays fixed as a narrative device?</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="asset-strip">
+      <h4>Source art for the board</h4>
+      <div class="asset-grid">
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-galactic-game.jpg');"><div class="cap">Galactic game</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-symbols.jpg');"><div class="cap">Symbols</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-archetypes.jpg');"><div class="cap">Archetypes</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/tattoo-sacred-geom.jpg');"><div class="cap">Mandala tattoo</div></div>
+      </div>
+    </div>
+
+    <div class="next-move">
+      <div class="nm-label">Next design move</div>
+      <div class="nm-text">Before any pixels, decide: hand drawn board or UI board. The answer is hand drawn. Trace tile edges from the Galactic Game doodle. Let them be imperfect. YOU ARE HERE glows purple. Every other tile is paper. If we can sit with that and keep our hands off the "polish" dial, this section becomes the site's second iconic moment.</div>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<!-- ============ SECTION 05 / FIELD OF BLOOMS ============ -->
+<div class="section-card">
+<div class="wrap"><div class="sc-grid">
+  <div class="sc-side">
+    <div class="num">05</div>
+    <div class="pattern-label">Pattern</div>
+    <div class="pattern">The Studio Wall</div>
+    <div class="meta-row"><b>Myth beat</b>The blooms rise up</div>
+    <div class="meta-row"><b>Device</b>Cork pinboard, masking tape captions</div>
+    <div class="meta-row"><b>Library</b>18 doodles live, 400+ available</div>
+  </div>
+  <div class="sc-main">
+    <h3>The Field of Blooms. <em>Walk through his field.</em></h3>
+    <div class="status-line">
+      <span class="status-chip status-polish"><span class="dot dot-polish"></span>Needs polish</span>
+      <span class="conf-chip">Confidence <b>92</b></span>
+      <span class="conf-chip">Effort remaining <b>one pass</b></span>
+    </div>
+    <p class="sc-intro">Where each sun landed, a bloom rose. The blooms are the doodles. Not decoration, not assets. They are what grew when the suns touched the earth. We do not hang them in a polished grid. We pin them up on his studio wall, label them in his hand on torn tape, let them overlap, and leave a coffee ring next to one.</p>
+
+    <div class="wireframe">
+      <div class="wf-row wf-col-1"><div class="wf-box solid" style="padding: 18px;"><div class="label" style="letter-spacing: 0.2em;">Cork pinboard. Overlap on purpose.</div></div></div>
+      <div class="wf-row" style="grid-template-columns: repeat(6, 1fr); gap: 10px;">
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-field-of-suns.jpg'); background-size: cover; transform: rotate(-2deg);"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">f.o.s. 01</div></div>
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-nudge.jpg'); background-size: cover; transform: rotate(1deg); margin-top: 10px;"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">nudge the system</div></div>
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-archetypes.jpg'); background-size: cover; transform: rotate(-1deg);"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">arch 04</div></div>
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-every-ray.jpg'); background-size: cover; transform: rotate(2deg); margin-top: 8px;"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">every ray</div></div>
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-xmas-suns.jpg'); background-size: cover; transform: rotate(-3deg);"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">xmas 24</div></div>
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-visionary.jpg'); background-size: cover; transform: rotate(1deg); margin-top: 4px;"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">visionary</div></div>
+      </div>
+      <div class="wf-row" style="grid-template-columns: repeat(6, 1fr); gap: 10px;">
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-wanted.jpg'); background-size: cover; transform: rotate(2deg);"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">wanted</div></div>
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sun-o-meter.jpg'); background-size: cover; transform: rotate(-2deg); margin-top: 10px;"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">sun o meter</div></div>
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-infinite-blooms.jpg'); background-size: cover; transform: rotate(1deg);"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">infinite blooms</div></div>
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-ice-cream-suns.jpg'); background-size: cover; transform: rotate(-1deg); margin-top: 12px;"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">ice cream</div></div>
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-ask-wisely.jpg'); background-size: cover; transform: rotate(3deg);"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">ask wisely</div></div>
+        <div class="wf-box" style="min-height: 120px; background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-silver-tree.jpg'); background-size: cover; transform: rotate(-2deg); margin-top: 6px;"><div class="label hand" style="background: rgba(246,238,218,0.95); padding: 2px 6px; display: inline-block; font-family: Caveat, cursive; font-size: 14px; color: var(--burnt);">silver tree</div></div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel have">
+        <h4><span class="icon"></span>What is already there</h4>
+        <ul>
+          <li><b>18 journal doodles</b><span>Categorized, captioned, pinned. Highest leverage asset set in the whole project.</span></li>
+          <li><b>Caption voice lock</b><span>Examples already drafted. field of suns 01, nudge the system, every ray counts, xmas 24.</span></li>
+          <li><b>Pattern is stable</b><span>Cork board with masking tape has already been scoped in the deck.</span></li>
+        </ul>
+      </div>
+      <div class="panel missing">
+        <h4><span class="icon"></span>What is open</h4>
+        <ul>
+          <li><b>Scroll direction</b><span>Horizontal studio pan vs. vertical wall. Vertical is safer for mobile.</span></li>
+          <li><b>Click behavior</b><span>Expand on click? Hover caption in margin? Nothing? Pick one.</span></li>
+          <li><b>Coffee ring question</b><span>The deck says leave a coffee ring next to one. We have to actually draw that, or scan a real one. Fun ask.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="next-move">
+      <div class="nm-label">Next design move</div>
+      <div class="nm-text">This is the fastest section to ship at A+. The assets exist. The pattern is right. The only thing between draft and final is committing to three craft decisions: (1) tilt angles stay irregular, not templated, (2) captions are handwriting on torn tape, not Caveat type, and (3) vertical scroll, no horizontal carousel. Ship it confidently at 92 and move on.</div>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<!-- ============ SECTION 06 / COSMIC TICKET ============ -->
+<div class="section-card">
+<div class="wrap"><div class="sc-grid">
+  <div class="sc-side">
+    <div class="num">06</div>
+    <div class="pattern-label">Pattern</div>
+    <div class="pattern">The Cosmic Ticket</div>
+    <div class="meta-row"><b>Myth beat</b>The guide hands you a seat</div>
+    <div class="meta-row"><b>Device</b>Paper ticket, tear line, stub</div>
+    <div class="meta-row"><b>Tone</b>Gatekeeps kindly, does not beg</div>
+  </div>
+  <div class="sc-main">
+    <h3>Your Invitation. <em>Take the ticket.</em></h3>
+    <div class="status-line">
+      <span class="status-chip status-open"><span class="dot dot-open"></span>Open question</span>
+      <span class="conf-chip">Confidence <b>84</b></span>
+      <span class="conf-chip">Effort remaining <b>structural</b></span>
+    </div>
+    <p class="sc-intro">The Sloth watches the field fill up. Then he turns to you, the traveler who has walked this far through the story, and he hands you a warm paper ticket with your name in the Name field. The ticket is not a CTA. It is a seat. Founder pages beg. Your guide does not beg.</p>
+
+    <div class="wireframe">
+      <div class="wf-row wf-col-1"><div class="wf-box night" style="padding: 40px 30px;">
+        <div style="background: var(--paper); border-radius: 6px; padding: 24px; display: grid; grid-template-columns: 3fr 1fr; gap: 20px; position: relative;">
+          <div>
+            <div class="label" style="color: var(--ink-faint); font-size: 10px; letter-spacing: 0.2em;">Admit one / non transferable / paid in presence</div>
+            <div style="font-family: Fraunces, serif; font-size: 24px; font-weight: 300; color: var(--ink); line-height: 1.2; margin: 10px 0 14px;">You are invited to<br>the next chapter.</div>
+            <div style="font-family: Fraunces, serif; font-style: italic; font-size: 13px; color: var(--ink-soft); line-height: 1.5;">No pitch, no funnel, no webinar. A list. A letter. A quiet door you walk through when the work calls for it.</div>
+            <div style="margin-top: 18px; font-size: 11px; color: var(--ink-faint); display: flex; gap: 20px;">
+              <div>Bearer <span style="border-bottom: 1px dashed var(--ink-faint); display: inline-block; width: 100px; margin-left: 6px;">&nbsp;</span></div>
+              <div>Seat <i>circle, row one</i></div>
+              <div>Date <i>when you are ready</i></div>
+            </div>
+          </div>
+          <div style="border-left: 2px dashed var(--ink-faint); padding-left: 20px;">
+            <div class="label" style="color: var(--burnt); font-size: 10px; letter-spacing: 0.2em;">Stub</div>
+            <div style="font-family: Fraunces, serif; font-size: 22px; color: var(--burnt); margin-top: 10px;">N&deg; 1000</div>
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--sun); margin: 10px 0; display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--paper);">&#9728;</div>
+            <div style="font-size: 10px; color: var(--ink-faint); font-style: italic;">Keep this half<br>y. silver</div>
+          </div>
+        </div>
+      </div></div>
+      <div class="wf-row wf-col-1"><div class="wf-box" style="text-align: center; padding: 20px;"><div class="label">Primary CTA below ticket</div><div class="wf-text" style="font-family: Fraunces, serif; font-size: 18px; margin-top: 10px;">Take the &#9728; seat &rarr;</div></div></div>
+    </div>
+
+    <div class="panels">
+      <div class="panel have">
+        <h4><span class="icon"></span>What is already there</h4>
+        <ul>
+          <li><b>Ticket copy drafted</b><span>"Admit one / non transferable / paid in presence" and the invitation line are already strong.</span></li>
+          <li><b>CTA language</b><span>"Take the seat" in place of "join now". Do not regress to the latter.</span></li>
+          <li><b>Sun icon library</b><span>Available for the stub seal.</span></li>
+        </ul>
+      </div>
+      <div class="panel missing">
+        <h4><span class="icon"></span>What is open</h4>
+        <ul>
+          <li><b>Click destination</b><span>Where does Take the seat go? A form, a mailto, a scheduling link, a Calendly? Blocks build.</span></li>
+          <li><b>Name field behavior</b><span>Typographic only (looks like a ticket) or live input (user types name, ticket animates). Input is stronger, harder to build.</span></li>
+          <li><b>Stamp or no stamp</b><span>Does the ticket arrive blank and get stamped when they click, or arrive pre stamped? Small call with big feel.</span></li>
+          <li><b>Serial number logic</b><span>N&deg; 1000 is pointing at Maverick1000. Consider if the number should evolve by reader.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="next-move">
+      <div class="nm-label">Next design move</div>
+      <div class="nm-text">Before designing, answer one question with Yanik. Where does the ticket take the reader? Options: private list signup (mailto), Calendly to a Maverick intro call, or a waitlist form. The answer changes the section. Assume Calendly for now, design the ticket as static art with a primary button below, revisit input animation in a v2.</div>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<!-- ============ SECTION 07 / THREE BLESSINGS ============ -->
+<div class="section-card">
+<div class="wrap"><div class="sc-grid">
+  <div class="sc-side">
+    <div class="num">07</div>
+    <div class="pattern-label">Pattern</div>
+    <div class="pattern">Three blessings for the road</div>
+    <div class="meta-row"><b>Myth beat</b>The guide says goodbye</div>
+    <div class="meta-row"><b>Decision</b>Yanik picks one live</div>
+    <div class="meta-row"><b>Retired</b>Aho. Do not resurrect.</div>
+  </div>
+  <div class="sc-main">
+    <h3>Three Blessings. <em>How do we say goodbye.</em></h3>
+    <div class="status-line">
+      <span class="status-chip status-missing"><span class="dot dot-missing"></span>Missing input from Yanik</span>
+      <span class="conf-chip">Confidence <b>78</b></span>
+      <span class="conf-chip">Effort remaining <b>copy + lock</b></span>
+    </div>
+    <p class="sc-intro">Before the traveler leaves the field, the guide gives a blessing. Aho is retired. In its place, three sign offs drawn from Yanik's own tongue. One about blooms. One about the sloth. One about the sun. He reads them aloud and picks the one that sits lowest in his chest. That is the one we ship.</p>
+
+    <div class="wireframe">
+      <div class="wf-row wf-col-3">
+        <div class="wf-box warm" style="text-align: center; padding: 24px;">
+          <div class="label" style="color: var(--rose);">Option A / the florist</div>
+          <div class="wf-text" style="font-family: Fraunces, serif; font-size: 18px; font-weight: 300; margin: 14px 0; font-style: italic;">"Play with infinite blooms."</div>
+          <div class="wf-text hand" style="font-family: Caveat, cursive; font-size: 18px; color: var(--burnt);">signed, y. silver</div>
+        </div>
+        <div class="wf-box warm" style="text-align: center; padding: 24px;">
+          <div class="label" style="color: var(--burnt);">Option B / the sloth</div>
+          <div class="wf-text" style="font-family: Fraunces, serif; font-size: 18px; font-weight: 300; margin: 14px 0; font-style: italic;">"With love, light, and the occasional nap."</div>
+          <div class="wf-text hand" style="font-family: Caveat, cursive; font-size: 18px; color: var(--burnt);">signed, y. silver</div>
+        </div>
+        <div class="wf-box warm" style="text-align: center; padding: 24px;">
+          <div class="label" style="color: var(--sun);">Option C / the sun</div>
+          <div class="wf-text" style="font-family: Fraunces, serif; font-size: 18px; font-weight: 300; margin: 14px 0; font-style: italic;">"Keep burning brightly. Keep burning free."</div>
+          <div class="wf-text hand" style="font-family: Caveat, cursive; font-size: 18px; color: var(--burnt);">signed, y. silver</div>
+        </div>
+      </div>
+      <div class="wf-row wf-col-1"><div class="wf-box solid" style="text-align: center; padding: 16px;"><div class="label">Final footer locks around the blessing Yanik picks</div></div></div>
+    </div>
+
+    <div class="panels">
+      <div class="panel have">
+        <h4><span class="icon"></span>What is already there</h4>
+        <ul>
+          <li><b>Three candidate blessings drafted</b><span>Florist, Sloth, Sun. All three are written at competitive quality.</span></li>
+          <li><b>Confidence scored</b><span>Option A at 92, Option B at 88, Option C at 90.</span></li>
+          <li><b>Decision owner named</b><span>Yanik picks, live, in a short working call. Not a survey.</span></li>
+        </ul>
+      </div>
+      <div class="panel missing">
+        <h4><span class="icon"></span>What is open</h4>
+        <ul>
+          <li><b>The pick</b><span>Yanik has not yet read all three aloud and picked. This is a 20 minute call, not a design problem.</span></li>
+          <li><b>Small cosmic sloth at the base</b><span>Does the sleeping sloth character sit at the bottom of the footer? If yes, use doodle-sloth-final.png, asleep version.</span></li>
+          <li><b>What sits in the final footer</b><span>Beyond the blessing: email, socials, credits. Draft that scaffold while Yanik thinks.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="asset-strip">
+      <h4>Footer assets on hand</h4>
+      <div class="asset-grid">
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sloth-final.png'); background-color: #1a1030;"><div class="cap">Cosmic sloth</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-infinite-blooms.jpg');"><div class="cap">Infinite blooms</div></div>
+        <div class="asset-thumb" style="background-image: url('https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sun-one.jpg');"><div class="cap">Sun one</div></div>
+      </div>
+    </div>
+
+    <div class="next-move">
+      <div class="nm-label">Next design move</div>
+      <div class="nm-text">Short working call with Yanik. Read the three aloud. He picks. While he thinks, build the footer scaffold with all three mocked up so we can swap the winner in without rebuilding. If this does not happen within two weeks, default to Option A The Florist at 92 and ship.</div>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<!-- ============ PRIORITY CALLOUT ============ -->
+<div class="priority">
+<div class="wrap">
+  <h2>What to <em>do next</em>.</h2>
+  <p class="lede">If you can only design three things before the end of the month, do these in this order. Each one unlocks the next.</p>
+  <div class="priority-list">
+    <div class="priority-card">
+      <div class="rank">01</div>
+      <h3>Section 05 <em>Field of Blooms</em></h3>
+      <p>Highest confidence, richest asset set, clearest pattern. The fastest section on the deck to push from draft to A+ polish. This is where we show the site can feel alive, not just designed.</p>
+      <div class="why">ship this first. it sets the bar.</div>
+    </div>
+    <div class="priority-card">
+      <div class="rank">02</div>
+      <h3>Section 01 <em>Thousand Suns</em></h3>
+      <p>The emotional spine. If the manifesto lands with the same paper and ink treatment as the myth, the whole front half of the site tilts upward. If it feels like a feature block, the whole thing feels like a template.</p>
+      <div class="why">this is the site's second heartbeat.</div>
+    </div>
+    <div class="priority-card">
+      <div class="rank">03</div>
+      <h3>Section 03 <em>Meet Your Guide</em></h3>
+      <p>First real introduction to Yanik the person. A weak one here makes Section 02 Brightest Suns harder to believe. Strong here and the reader stays for the whole rest of the story.</p>
+      <div class="why">ask yanik for one polaroid with a named sun.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="wrap">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+    <div>
+      <div class="hand">one field. one map. no dashes.</div>
+      <div style="margin-top: 6px;">Yanik Silver personal brand site audit. April 20 2026.</div>
+    </div>
+    <div style="font-size: 12px; text-align: right;">
+      <div>Source assets on GitHub</div>
+      <div style="color: var(--ink); font-family: monospace; margin-top: 3px;">guldanjaMAX/jamesguldan-site/yanik-design-handoff</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
