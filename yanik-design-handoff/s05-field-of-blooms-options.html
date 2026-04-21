@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Field of Blooms · Three Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a10;--bg-2:#111119;--bg-3:#16161f;--line:#1f1f2c;--line-2:#2a2a38;--muted:#7c7c8c;--mid:#a5a5b3;--high:#e4e4ee;--white:#f7f7fb;--paper:#f5eedd;--paper-2:#ead9b8;--paper-edge:#c7b188;--ink:#1d1812;--ink-blue:#263b6a;--gold:#d89a2a;--gold-bright:#f2c940;--burnt:#b8471f;--rose:#c8557f;--green:#6b8e4e}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--high);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.serif{font-family:'Fraunces',serif}.hand{font-family:'Caveat',cursive}.mono{font-family:'Space Grotesk',monospace}
+.eyebrow{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(10,10,16,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;max-width:1240px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;color:var(--mid);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 3px rgba(242,201,64,.18)}
+.topbar .meta{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid)}
+.topbar .meta b{color:var(--gold-bright)}
+.mast{padding:96px 0 56px;border-bottom:1px solid var(--line)}
+.mast .eyebrow{color:var(--gold-bright)}
+.mast h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(52px,7vw,104px);line-height:.98;letter-spacing:-.02em;color:var(--white);margin:20px 0 22px}
+.mast h1 em{font-style:italic;color:var(--gold-bright)}
+.mast-sub{color:var(--mid);font-size:19px;line-height:1.65;max-width:64ch}
+.mast-meta{margin-top:44px;padding-top:28px;border-top:1px dashed var(--line-2);display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.meta-cell .k{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.meta-cell .v{font-family:'Fraunces',serif;font-size:17px;color:var(--white);margin-top:6px;line-height:1.4}
+.shift{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.shift h2{font-family:'Fraunces',serif;font-weight:300;font-size:36px;color:var(--white);letter-spacing:-.01em;margin-bottom:12px}
+.shift h2 em{color:var(--gold-bright);font-style:italic}
+.shift p{color:var(--mid);font-size:16px;max-width:78ch;line-height:1.7}
+.options{padding:64px 0 96px;display:flex;flex-direction:column;gap:72px}
+.opt{background:linear-gradient(180deg,var(--bg-2) 0%,var(--bg-3) 100%);border:1px solid var(--line);border-radius:24px;overflow:hidden;position:relative}
+.opt-head{padding:38px 46px 24px;display:grid;grid-template-columns:1fr auto;gap:40px;border-bottom:1px dashed var(--line-2);align-items:end}
+.opt-head .num{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.opt-head h3{font-family:'Fraunces',serif;font-weight:300;font-size:56px;line-height:1;letter-spacing:-.02em;color:var(--white)}
+.opt-head h3 em{font-style:italic;color:var(--gold-bright)}
+.opt-head .tagline{color:var(--mid);font-size:17px;line-height:1.55;max-width:62ch;margin-top:16px}
+.confidence{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:110px}
+.ring{width:104px;height:104px;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring .pct{position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:30px;font-weight:400;color:var(--white)}
+.conf-label{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.opt-body{padding:40px 46px 46px;display:grid;grid-template-columns:1.15fr 1fr;gap:44px}
+.rationale h4,.spec h4{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:14px}
+.rationale p{color:var(--mid);font-size:15.5px;line-height:1.75;margin-bottom:14px}
+.rationale p strong{color:var(--high);font-weight:500}
+.rationale blockquote{border-left:2px solid var(--gold-bright);padding:8px 18px;margin:18px 0;color:var(--high);font-family:'Fraunces',serif;font-style:italic;font-size:17px;line-height:1.55}
+.rationale blockquote cite{display:block;margin-top:8px;font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-style:normal}
+.spec-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:11px 0;border-bottom:1px dotted var(--line-2);font-size:14px}
+.spec-row:last-child{border-bottom:none}
+.spec-row dt{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.spec-row dd{color:var(--high);line-height:1.55}
+.mockup{grid-column:1/-1;margin-top:14px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:14px;padding:44px;position:relative;overflow:hidden;min-height:540px;color:var(--ink)}
+.mockup-lbl{position:absolute;top:14px;right:18px;font-family:'Space Grotesk',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-edge)}
+
+/* Studio Wall */
+.wall{position:relative;min-height:480px;padding:20px}
+.doodle{position:absolute;background:#fff;padding:8px;box-shadow:0 6px 18px rgba(0,0,0,.18);transform:rotate(var(--r,-3deg));cursor:grab;border:1px solid var(--paper-edge)}
+.doodle img{width:100%;height:100%;object-fit:cover;display:block}
+.doodle .cap{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%) rotate(calc(-1*var(--r,-3deg)));font-family:'Caveat',cursive;font-size:14px;color:var(--ink);background:rgba(241,227,180,.9);padding:2px 10px;white-space:nowrap}
+.doodle .tape{position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-2deg);width:56px;height:20px;background:rgba(184,71,31,.18);border:1px dashed rgba(184,71,31,.3)}
+.coffee-ring{position:absolute;width:60px;height:60px;border:3px solid rgba(119,75,32,.4);border-radius:50%;pointer-events:none}
+
+/* Film Scroll */
+.filmstrip{display:flex;gap:10px;overflow:hidden;padding:20px 0;background:rgba(29,24,18,.04);border-top:2px dashed var(--paper-edge);border-bottom:2px dashed var(--paper-edge)}
+.frame{min-width:180px;max-width:180px;aspect-ratio:3/4;background:#fff;padding:10px 10px 28px;border:1px solid var(--paper-edge);position:relative;transform:rotate(var(--r,0deg))}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame.focus{transform:scale(1.08);border:2px solid var(--burnt);box-shadow:0 12px 30px rgba(184,71,31,.25);z-index:4}
+.frame .cap{position:absolute;bottom:4px;left:10px;right:10px;font-family:'Caveat',cursive;font-size:14px;color:var(--ink);text-align:center}
+
+/* Garden Bed */
+.garden{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:10px}
+.plot{aspect-ratio:1;overflow:hidden;border:1px solid var(--paper-edge);background:#fff;position:relative}
+.plot img{width:100%;height:100%;object-fit:cover}
+.plot.big{grid-column:span 2;grid-row:span 2}
+.plot-tag{position:absolute;bottom:4px;left:4px;background:rgba(245,238,221,.92);font-family:'Caveat',cursive;font-size:13px;padding:2px 8px;color:var(--ink);border:1px solid var(--paper-edge)}
+
+.verdict{background:linear-gradient(180deg,#0f1320 0%,#0b0e18 100%);border:1px solid var(--line-2);border-radius:20px;padding:40px 46px;margin:40px 0 80px}
+.verdict .eyebrow{color:var(--gold-bright)}
+.verdict h2{font-family:'Fraunces',serif;font-weight:300;font-size:38px;color:var(--white);margin:10px 0 18px}
+.verdict h2 em{color:var(--gold-bright);font-style:italic}
+.verdict p{color:var(--mid);font-size:16px;line-height:1.75;max-width:82ch;margin-bottom:12px}
+.verdict p strong{color:var(--high);font-weight:500}
+.matrix{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.mx{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:14px;padding:22px}
+.mx .mxh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.mx .mxh h5{font-family:'Fraunces',serif;font-size:19px;color:var(--white);font-weight:400}
+.mx .score{font-family:'Space Grotesk',monospace;font-size:11px;color:var(--gold-bright);letter-spacing:.18em}
+.mx ul{list-style:none;padding:0;margin:0}
+.mx ul li{font-size:13px;color:var(--mid);padding:5px 0;line-height:1.5}
+.mx ul li:before{content:"·";color:var(--gold-bright);margin-right:8px}
+footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+@media(max-width:820px){.opt-body{grid-template-columns:1fr}.mast-meta{grid-template-columns:repeat(2,1fr)}.matrix{grid-template-columns:1fr}.garden{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <div class="brand"><span class="dot"></span><span>Yanik Silver · Section 05</span></div>
+  <div class="meta">Options · <b>03</b> / Round 01</div>
+</div></div>
+
+<div class="wrap">
+  <section class="mast">
+    <div class="eyebrow">Section 05 · The Field of Blooms</div>
+    <h1>Stand in his <em>studio</em> while the ink is <em>still wet</em>.</h1>
+    <p class="mast-sub">Three directions for the doodle gallery. The job is to make the reader feel they walked in while Yanik is still drawing, not that they opened a finished archive. Pulls from the 33 clean scans and the 1000 Suns series. Honors his practice of drawing one sun every morning, every day, since the start.</p>
+    <div class="mast-meta">
+      <div class="meta-cell"><div class="k">Myth Beat</div><div class="v">The blooms rise up</div></div>
+      <div class="meta-cell"><div class="k">Pattern</div><div class="v">Studio wall, not Pinterest</div></div>
+      <div class="meta-cell"><div class="k">Voice Test</div><div class="v">Tape, coffee rings, handwriting</div></div>
+      <div class="meta-cell"><div class="k">Round</div><div class="v">01 · three directions</div></div>
+    </div>
+  </section>
+
+  <section class="shift">
+    <h2>The shift from v1. <em>A wall that is alive, not an archive.</em></h2>
+    <p>The current v1 Doodle Gallery is a clean grid, which is honest but flat. The best work in this section will feel like a guide is still drawing over the scans, like the pieces are held up with tape and might fall. Each option takes a different swing at that tension. None of them call this a gallery.</p>
+  </section>
+
+  <div class="options">
+
+    <!-- OPTION 01: STUDIO WALL -->
+    <article class="opt">
+      <header class="opt-head">
+        <div>
+          <div class="num">Option 01</div>
+          <h3>The <em>Studio Wall</em></h3>
+          <p class="tagline">Nine doodles pinned to an off white wall with washi tape, slight overlap, one coffee ring, handwritten masking tape captions. Feels like you walked into his studio while he stepped out to refill the kettle.</p>
+        </div>
+        <div class="confidence">
+          <div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="#1f1f2c" stroke-width="7" fill="none"/><circle cx="52" cy="52" r="44" stroke="#f2c940" stroke-width="7" fill="none" stroke-dasharray="276.46" stroke-dashoffset="16.59" stroke-linecap="round"/></svg><div class="pct">94</div></div>
+          <div class="conf-label">Confidence</div>
+        </div>
+      </header>
+      <div class="opt-body">
+        <div class="rationale">
+          <h4>Why this lands</h4>
+          <p>Of the three, this is the one Yanik would draw himself. A studio wall is the pattern his own journal pages already use. Overlap is the tell. Pinterest grids do not overlap. <strong>Studio walls overlap because the newest idea covers a corner of the older one.</strong> This section should read like a guide who is more interested in making the next one than protecting the last one.</p>
+          <p>The coffee ring is a deliberate choice, not a joke. Yanik's journal pages have real coffee rings on them. This detail is his, not a stock texture.</p>
+          <blockquote>I draw a sun every morning. A thousand so far. Whichever one is wettest is the one I care about.<cite>Yanik · from the transcript</cite></blockquote>
+        </div>
+        <div class="spec">
+          <h4>Design spec</h4>
+          <dl>
+            <dt>Layout</dt><dd>Absolute positioned doodles on cream wall, 9 to 12 pieces, overlap 15 to 30 percent</dd>
+            <dt>Tape</dt><dd>Cream washi strips, 56 × 20px, rotated per piece, torn edge</dd>
+            <dt>Captions</dt><dd>Caveat 14px on yellowed tape ribbons below each piece</dd>
+            <dt>Coffee ring</dt><dd>One, corner of the wall, semi transparent brown ring</dd>
+            <dt>Motion</dt><dd>Each piece nudges on hover, slight rotation, no lift</dd>
+            <dt>Mobile</dt><dd>Collapse to single column scroll with same tape and captions</dd>
+          </dl>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-lbl">Preview 01 · Studio Wall</div>
+          <div class="wall">
+            <div class="coffee-ring" style="top:12%;right:6%"></div>
+            <div class="doodle" style="top:4%;left:4%;width:170px;height:210px;--r:-4deg"><div class="tape"></div><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-how-suns.jpg" alt="how suns light suns"/><div class="cap">how suns light suns</div></div>
+            <div class="doodle" style="top:2%;left:30%;width:180px;height:220px;--r:3deg"><div class="tape"></div><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-field-of-suns.jpg" alt="field of suns"/><div class="cap">the field</div></div>
+            <div class="doodle" style="top:6%;left:58%;width:175px;height:215px;--r:-2deg"><div class="tape"></div><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-bouquet.jpg" alt="bouquet"/><div class="cap">bouquet</div></div>
+            <div class="doodle" style="top:42%;left:10%;width:170px;height:210px;--r:2deg"><div class="tape"></div><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-every-ray.jpg" alt="every ray"/><div class="cap">every ray</div></div>
+            <div class="doodle" style="top:44%;left:36%;width:180px;height:220px;--r:-3deg"><div class="tape"></div><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-silver-tree.jpg" alt="silver tree"/><div class="cap">the silver tree</div></div>
+            <div class="doodle" style="top:46%;left:62%;width:170px;height:210px;--r:4deg"><div class="tape"></div><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-infinite-blooms.jpg" alt="infinite blooms"/><div class="cap">infinite blooms</div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- OPTION 02: FILM STRIP -->
+    <article class="opt">
+      <header class="opt-head">
+        <div>
+          <div class="num">Option 02</div>
+          <h3>The <em>Filmstrip</em></h3>
+          <p class="tagline">A horizontal filmstrip of doodles, one at a time comes into focus at the center, the rest soft blur at the edges. Scrolls on horizontal swipe. Feels like flipping through his journal one page at a time at the reader's own pace.</p>
+        </div>
+        <div class="confidence">
+          <div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="#1f1f2c" stroke-width="7" fill="none"/><circle cx="52" cy="52" r="44" stroke="#f2c940" stroke-width="7" fill="none" stroke-dasharray="276.46" stroke-dashoffset="38.7" stroke-linecap="round"/></svg><div class="pct">86</div></div>
+          <div class="conf-label">Confidence</div>
+        </div>
+      </header>
+      <div class="opt-body">
+        <div class="rationale">
+          <h4>Why this lands</h4>
+          <p>Fast, focused, kind on mobile. The filmstrip format accepts one piece at a time so every doodle gets its own moment. The reader sets the pace. Good for users who want to digest slowly.</p>
+          <p>Trade: the filmstrip strips away the overlap and the coffee ring. It is more archive than studio. Reads clean but slightly less him.</p>
+          <blockquote>Each one is its own spark. They are not competing, they are just taking turns.<cite>Voice extrapolated from the transcript</cite></blockquote>
+        </div>
+        <div class="spec">
+          <h4>Design spec</h4>
+          <dl>
+            <dt>Layout</dt><dd>Horizontal scroll, 18 frames, 180px wide</dd>
+            <dt>Focus</dt><dd>Center frame scales 1.08, burnt orange border, caption bolds</dd>
+            <dt>Edges</dt><dd>Frames outside focus softened with 40% opacity and 2px blur</dd>
+            <dt>Interaction</dt><dd>Native swipe, arrow keys, scroll snap on each frame</dd>
+            <dt>Captions</dt><dd>Caveat 14px, centered under each frame</dd>
+            <dt>Mobile</dt><dd>Swipe one at a time, larger touch target on focus frame</dd>
+          </dl>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-lbl">Preview 02 · Filmstrip</div>
+          <div style="padding:20px 0">
+            <div style="text-align:center;font-family:'Fraunces',serif;font-size:26px;font-style:italic;color:var(--ink);margin-bottom:22px">The Field of Blooms</div>
+            <div class="filmstrip">
+              <div class="frame" style="--r:-1deg;opacity:.45;filter:blur(1px)"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-how-suns.jpg" alt="prev"/><div class="cap">how suns</div></div>
+              <div class="frame" style="--r:1deg;opacity:.7"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-every-ray.jpg" alt="prev"/><div class="cap">every ray</div></div>
+              <div class="frame focus"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-field-of-suns.jpg" alt="focus"/><div class="cap">a field of suns</div></div>
+              <div class="frame" style="--r:-1deg;opacity:.7"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-bouquet.jpg" alt="next"/><div class="cap">bouquet</div></div>
+              <div class="frame" style="--r:1deg;opacity:.45;filter:blur(1px)"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-silver-tree.jpg" alt="next"/><div class="cap">silver tree</div></div>
+            </div>
+            <div style="margin-top:16px;text-align:center;font-family:'Caveat',cursive;font-size:18px;color:var(--ink)">swipe to see the next one he drew.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- OPTION 03: GARDEN BED -->
+    <article class="opt">
+      <header class="opt-head">
+        <div>
+          <div class="num">Option 03</div>
+          <h3>The <em>Garden Bed</em></h3>
+          <p class="tagline">A mosaic grid where each doodle sits in a plot. Hero plots are 2 × 2. The pieces cluster by theme: suns, blooms, sloth, game. Reads like looking down at a garden bed from above. Curated, composed, a little less alive than the studio wall.</p>
+        </div>
+        <div class="confidence">
+          <div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="#1f1f2c" stroke-width="7" fill="none"/><circle cx="52" cy="52" r="44" stroke="#f2c940" stroke-width="7" fill="none" stroke-dasharray="276.46" stroke-dashoffset="30.41" stroke-linecap="round"/></svg><div class="pct">89</div></div>
+          <div class="conf-label">Confidence</div>
+        </div>
+      </header>
+      <div class="opt-body">
+        <div class="rationale">
+          <h4>Why this lands</h4>
+          <p>Most information density. Shows 12 to 18 doodles at once in a visually organized way. The 2 × 2 hero plots let a few pieces be primary. This option is the best for a reader who wants to scan first and commit second. <strong>It is the most website, the least journal.</strong></p>
+          <p>Risk: gardens look best from above when weeded. Remove the messy, keep the composed, and you lose Yanik's edge. Studio Wall wins on voice, Garden Bed wins on efficiency.</p>
+          <blockquote>Each one is a bloom. Some opened that morning, some still opening.<cite>Voice extrapolated from the transcript</cite></blockquote>
+        </div>
+        <div class="spec">
+          <h4>Design spec</h4>
+          <dl>
+            <dt>Grid</dt><dd>6 columns, plots are 1×1 or 2×2, 12 to 18 pieces total</dd>
+            <dt>Clusters</dt><dd>Suns top, blooms middle, sloth pieces bottom, game anchor right</dd>
+            <dt>Tags</dt><dd>Caveat caption in the bottom left of each plot on tape</dd>
+            <dt>Hover</dt><dd>Plot lifts 2px, shadow softens, caption lightens</dd>
+            <dt>Motion</dt><dd>Staggered reveal on scroll, 80ms delay per plot</dd>
+            <dt>Mobile</dt><dd>3 columns, 2×2 hero stays hero</dd>
+          </dl>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-lbl">Preview 03 · Garden Bed</div>
+          <div style="padding:20px 0">
+            <div style="text-align:center;font-family:'Fraunces',serif;font-size:26px;font-style:italic;color:var(--ink);margin-bottom:22px">The Field of Blooms</div>
+            <div class="garden">
+              <div class="plot big"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-field-of-suns.jpg" alt="field"/><div class="plot-tag">a field of suns</div></div>
+              <div class="plot"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-how-suns.jpg" alt="how"/><div class="plot-tag">how suns</div></div>
+              <div class="plot"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sun-one.jpg" alt="one"/><div class="plot-tag">sun one</div></div>
+              <div class="plot"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-every-ray.jpg" alt="ray"/><div class="plot-tag">every ray</div></div>
+              <div class="plot"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-silver-tree.jpg" alt="tree"/><div class="plot-tag">silver tree</div></div>
+              <div class="plot big"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-infinite-blooms.jpg" alt="blooms"/><div class="plot-tag">infinite blooms</div></div>
+              <div class="plot"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-bouquet.jpg" alt="bouquet"/><div class="plot-tag">bouquet</div></div>
+              <div class="plot"><img src="https://raw.githubusercontent.com/guldanjaMAX/jamesguldan-site/main/yanik-design-handoff/images/doodle-sloth-final.png" alt="sloth"/><div class="plot-tag">the sloth</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <section class="verdict">
+    <div class="eyebrow">Recommendation</div>
+    <h2>Build <em>Option 01 Studio Wall</em>. Hold Garden Bed as a later catalog view.</h2>
+    <p>Option 01 Studio Wall is the highest confidence win in the entire deck (94). It is the only one of the three that sounds like Yanik drew it. Overlap, tape, coffee ring, Caveat labels. Ship this.</p>
+    <p>Option 02 Filmstrip reads clean and mobile first. Keep in reserve if Studio Wall benchmarks noisy on small screens after build.</p>
+    <p>Option 03 Garden Bed is strong for a later archive page. If a visitor wants to see all 33 scans in one view, this is that page. Not the section, a deeper sub page.</p>
+    <div class="matrix">
+      <div class="mx"><div class="mxh"><h5>01 · Studio Wall</h5><div class="score">94</div></div><ul><li>Highest voice match in the deck</li><li>Overlap, tape, coffee ring anchor it in Yanik's world</li><li>Mobile needs a thoughtful fallback</li></ul></div>
+      <div class="mx"><div class="mxh"><h5>02 · Filmstrip</h5><div class="score">86</div></div><ul><li>Cleanest on mobile</li><li>One piece at a time, user sets the pace</li><li>Drops the overlap, drops the coffee ring</li></ul></div>
+      <div class="mx"><div class="mxh"><h5>03 · Garden Bed</h5><div class="score">89</div></div><ul><li>Most pieces visible at once</li><li>Best archive view of the 33 scans</li><li>Too composed for a journal voice</li></ul></div>
+    </div>
+  </section>
+
+  <footer>Yanik Silver · Section 05 · Round 01 · Three directions · Pick one · Keep going</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Cosmic Ticket · Three Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a10;--bg-2:#111119;--bg-3:#16161f;--line:#1f1f2c;--line-2:#2a2a38;--muted:#7c7c8c;--mid:#a5a5b3;--high:#e4e4ee;--white:#f7f7fb;--paper:#f5eedd;--paper-2:#ead9b8;--paper-edge:#c7b188;--ink:#1d1812;--ink-blue:#263b6a;--gold:#d89a2a;--gold-bright:#f2c940;--burnt:#b8471f;--rose:#c8557f;--green:#6b8e4e}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--high);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.serif{font-family:'Fraunces',serif}.hand{font-family:'Caveat',cursive}.mono{font-family:'Space Grotesk',monospace}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(10,10,16,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;max-width:1240px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;color:var(--mid);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--gold-bright);box-shadow:0 0 0 3px rgba(242,201,64,.18)}
+.topbar .meta{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid)}
+.topbar .meta b{color:var(--gold-bright)}
+.eyebrow{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.mast{padding:96px 0 56px;border-bottom:1px solid var(--line)}
+.mast .eyebrow{color:var(--gold-bright)}
+.mast h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(52px,7vw,104px);line-height:.98;letter-spacing:-.02em;color:var(--white);margin:20px 0 22px}
+.mast h1 em{font-style:italic;color:var(--gold-bright)}
+.mast-sub{color:var(--mid);font-size:19px;line-height:1.65;max-width:64ch}
+.mast-meta{margin-top:44px;padding-top:28px;border-top:1px dashed var(--line-2);display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.meta-cell .k{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.meta-cell .v{font-family:'Fraunces',serif;font-size:17px;color:var(--white);margin-top:6px;line-height:1.4}
+.shift{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.shift h2{font-family:'Fraunces',serif;font-weight:300;font-size:36px;color:var(--white);letter-spacing:-.01em;margin-bottom:12px}
+.shift h2 em{color:var(--gold-bright);font-style:italic}
+.shift p{color:var(--mid);font-size:16px;max-width:78ch;line-height:1.7}
+.options{padding:64px 0 96px;display:flex;flex-direction:column;gap:72px}
+.opt{background:linear-gradient(180deg,var(--bg-2) 0%,var(--bg-3) 100%);border:1px solid var(--line);border-radius:24px;overflow:hidden;position:relative}
+.opt-head{padding:38px 46px 24px;display:grid;grid-template-columns:1fr auto;gap:40px;border-bottom:1px dashed var(--line-2);align-items:end}
+.opt-head .num{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.opt-head h3{font-family:'Fraunces',serif;font-weight:300;font-size:56px;line-height:1;letter-spacing:-.02em;color:var(--white)}
+.opt-head h3 em{font-style:italic;color:var(--gold-bright)}
+.opt-head .tagline{color:var(--mid);font-size:17px;line-height:1.55;max-width:62ch;margin-top:16px}
+.confidence{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:110px}
+.ring{width:104px;height:104px;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring .pct{position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:30px;font-weight:400;color:var(--white)}
+.conf-label{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.opt-body{padding:40px 46px 46px;display:grid;grid-template-columns:1.15fr 1fr;gap:44px}
+.rationale h4,.spec h4{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:14px}
+.rationale p{color:var(--mid);font-size:15.5px;line-height:1.75;margin-bottom:14px}
+.rationale p strong{color:var(--high);font-weight:500}
+.rationale blockquote{border-left:2px solid var(--gold-bright);padding:8px 18px;margin:18px 0;color:var(--high);font-family:'Fraunces',serif;font-style:italic;font-size:17px;line-height:1.55}
+.rationale blockquote cite{display:block;margin-top:8px;font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-style:normal}
+.spec-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:11px 0;border-bottom:1px dotted var(--line-2);font-size:14px}
+.spec-row:last-child{border-bottom:none}
+.spec-row dt{font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.spec-row dd{color:var(--high);line-height:1.55}
+.mockup{grid-column:1/-1;margin-top:14px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:14px;padding:44px;position:relative;overflow:hidden;min-height:520px;color:var(--ink)}
+.mockup-lbl{position:absolute;top:14px;right:18px;font-family:'Space Grotesk',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-edge)}
+
+/* Ticket */
+.ticket{display:grid;grid-template-columns:3fr 1fr;gap:0;background:var(--paper-2);border:2px solid var(--ink);border-radius:6px;max-width:760px;margin:30px auto;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.ticket-main{padding:36px 40px;border-right:2px dashed var(--ink);position:relative}
+.ticket-stub{padding:30px 22px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(180deg,rgba(242,201,64,.18) 0%,rgba(242,201,64,.06) 100%)}
+.tkt-eye{font-family:'Space Grotesk',monospace;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--burnt)}
+.tkt-title{font-family:'Fraunces',serif;font-style:italic;font-size:34px;color:var(--ink);margin:12px 0 6px;line-height:1}
+.tkt-sub{font-family:'Caveat',cursive;font-size:20px;color:var(--ink);margin-bottom:24px}
+.tkt-fields{display:grid;gap:14px;margin-top:14px}
+.tkt-field{border-bottom:1.5px solid var(--ink);padding:0 2px 4px}
+.tkt-field .lbl{font-family:'Caveat',cursive;font-size:14px;color:var(--burnt);display:block;margin-bottom:2px}
+.tkt-field .val{font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:var(--ink)}
+.tkt-field .val.blank{color:var(--paper-edge);font-style:normal;font-family:'Caveat',cursive;font-size:18px}
+.tkt-seal{width:72px;height:72px;border:2px solid var(--burnt);border-radius:50%;display:grid;place-items:center;font-family:'Fraunces',serif;font-style:italic;font-size:11px;color:var(--burnt);text-align:center;line-height:1.1;margin:16px auto 0;transform:rotate(-6deg);padding:8px;background:rgba(184,71,31,.04)}
+.tkt-perf{position:absolute;top:0;bottom:0;right:-6px;width:12px;background:radial-gradient(circle at 6px 6px,transparent 4px,var(--paper) 4px) 0 0/12px 12px}
+.tkt-num{font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;color:var(--ink);writing-mode:vertical-rl;transform:rotate(180deg);align-self:center}
+
+/* Stamps animated */
+.stamp-row{display:flex;gap:14px;justify-content:center;margin-top:14px}
+.stamp{padding:8px 14px;border:2px solid var(--burnt);color:var(--burnt);font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;transform:rotate(var(--r,-4deg));background:rgba(184,71,31,.05)}
+
+/* Envelope */
+.envelope{max-width:680px;margin:20px auto;position:relative;padding:40px;background:linear-gradient(180deg,#e8d9b4 0%,#d4c197 100%);border:1px solid var(--paper-edge);box-shadow:0 20px 44px rgba(0,0,0,.22);min-height:340px}
+.env-flap{position:absolute;top:0;left:0;right:0;height:170px;background:linear-gradient(180deg,#d4c197 0%,#c7b188 100%);clip-path:polygon(0 0,50% 100%,100% 0);opacity:.9}
+.env-addr{position:relative;margin-top:80px;text-align:center;font-family:'Caveat',cursive;font-size:26px;color:var(--ink);line-height:1.3}
+.env-addr b{display:block;font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:28px;color:var(--ink)}
+.env-peek{position:absolute;bottom:10px;left:10%;right:10%;height:60px;background:var(--paper);border:2px solid var(--ink);border-radius:4px 4px 0 0;display:flex;align-items:center;padding:0 22px;font-family:'Space Grotesk',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--burnt)}
+
+.verdict{background:linear-gradient(180deg,#0f1320 0%,#0b0e18 100%);border:1px solid var(--line-2);border-radius:20px;padding:40px 46px;margin:40px 0 80px}
+.verdict .eyebrow{color:var(--gold-bright)}
+.verdict h2{font-family:'Fraunces',serif;font-weight:300;font-size:38px;color:var(--white);margin:10px 0 18px}
+.verdict h2 em{color:var(--gold-bright);font-style:italic}
+.verdict p{color:var(--mid);font-size:16px;line-height:1.75;max-width:82ch;margin-bottom:12px}
+.verdict p strong{color:var(--high);font-weight:500}
+.matrix{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.mx{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:14px;padding:22px}
+.mx .mxh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.mx .mxh h5{font-family:'Fraunces',serif;font-size:19px;color:var(--white);font-weight:400}
+.mx .score{font-family:'Space Grotesk',monospace;font-size:11px;color:var(--gold-bright);letter-spacing:.18em}
+.mx ul{list-style:none;padding:0;margin:0}
+.mx ul li{font-size:13px;color:var(--mid);padding:5px 0;line-height:1.5}
+.mx ul li:before{content:"·";color:var(--gold-bright);margin-right:8px}
+footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted);font-family:'Space Grotesk',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+@media(max-width:820px){.opt-body{grid-template-columns:1fr}.mast-meta{grid-template-columns:repeat(2,1fr)}.matrix{grid-template-columns:1fr}.ticket{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <div class="brand"><span class="dot"></span><span>Yanik Silver · Section 06</span></div>
+  <div class="meta">Options · <b>03</b> / Round 01</div>
+</div></div>
+
+<div class="wrap">
+  <section class="mast">
+    <div class="eyebrow">Section 06 · The Cosmic Ticket</div>
+    <h1>Hand them a <em>warm paper ticket</em>, not a call to action.</h1>
+    <p class="mast-sub">Three directions for the invitation section. The job is to give the reader a seat, not to ask them for anything. Grounded in Yanik's Maverick1000 practice of invitation only gatherings, his belief that members "choose their own adventure", and Sophia's note on what a seat actually means once it is in your hand.</p>
+    <div class="mast-meta">
+      <div class="meta-cell"><div class="k">Myth Beat</div><div class="v">The guide hands you a seat</div></div>
+      <div class="meta-cell"><div class="k">Pattern</div><div class="v">Warm paper, not a form</div></div>
+      <div class="meta-cell"><div class="k">Voice Test</div><div class="v">Does not beg. Hands something.</div></div>
+      <div class="meta-cell"><div class="k">Round</div><div class="v">01 · three directions</div></div>
+    </div>
+  </section>
+
+  <section class="shift">
+    <h2>The shift from v1. <em>A CTA that does not feel like one.</em></h2>
+    <p>The current v1 Cosmic Ticket is the strongest concept in the deck and it renders well already. What these three options push is the micro moment: when does the reader realize the ticket is theirs. The answer shapes how the rest of the section breathes. All three keep the paper ticket metaphor and kill any language about signing up, joining, or applying.</p>
+  </section>
+
+  <div class="options">
+
+    <!-- OPTION 01: TORN TICKET -->
+    <article class="opt">
+      <header class="opt-head">
+        <div>
+          <div class="num">Option 01</div>
+          <h3>The <em>Torn Ticket</em></h3>
+          <p class="tagline">A pristine paper ticket arrives already made out. Two fields on it: Name and Seat. The Seat field is pre filled with "one of a thousand suns". The Name field is blank with a handwritten "your name here" hint. A tear line separates the stub. Reader types, ticket signs itself.</p>
+        </div>
+        <div class="confidence">
+          <div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="#1f1f2c" stroke-width="7" fill="none"/><circle cx="52" cy="52" r="44" stroke="#f2c940" stroke-width="7" fill="none" stroke-dasharray="276.46" stroke-dashoffset="27.65" stroke-linecap="round"/></svg><div class="pct">90</div></div>
+          <div class="conf-label">Confidence</div>
+        </div>
+      </header>
+      <div class="opt-body">
+        <div class="rationale">
+          <h4>Why this lands</h4>
+          <p>This option treats the ticket as already cut. The reader does not earn it, they find it already has their seat on it. The Name field is the only thing they have to write themselves. <strong>That single action of typing your own name onto a ticket that is already yours</strong> is the section's hero moment.</p>
+          <p>The tear line is real. The stub has a seat number that is actually meaningful: one of a thousand suns. The perf pattern between the main ticket and the stub is a small but important detail, not decoration.</p>
+          <blockquote>A seat is not a thing you apply for. It is a thing someone saved for you before you walked in.<cite>Yanik voice, derived from the Maverick welcome overview</cite></blockquote>
+        </div>
+        <div class="spec">
+          <h4>Design spec</h4>
+          <dl>
+            <dt>Layout</dt><dd>Ticket 3:1 main to stub, dashed tear line, perforation pattern</dd>
+            <dt>Fields</dt><dd>Name (editable), Seat (pre filled), Signed (Yanik auto sign)</dd>
+            <dt>Seal</dt><dd>Small round burnt stamp reading "paid in presence" top right</dd>
+            <dt>Stub</dt><dd>Vertical seat number, gold gradient background</dd>
+            <dt>Interaction</dt><dd>Type in Name, press enter, ticket briefly flashes, saves locally</dd>
+            <dt>Submit</dt><dd>mailto or slow form modal (no hard page change)</dd>
+          </dl>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-lbl">Preview 01 · Torn Ticket</div>
+          <div style="padding:8px 0">
+            <div style="text-align:center;font-family:'Fraunces',serif;font-size:26px;font-style:italic;color:var(--ink)">Your Cosmic Ticket</div>
+            <div class="ticket">
+              <div class="ticket-main">
+                <div class="tkt-eye">Admit one · non transferable · paid in presence</div>
+                <div class="tkt-title">A Seat at the Table</div>
+                <div class="tkt-sub">for the one who shows up as a sun</div>
+                <div class="tkt-fields">
+                  <div class="tkt-field"><span class="lbl">your name</span><span class="val blank">type it here →</span></div>
+                  <div class="tkt-field"><span class="lbl">your seat</span><span class="val">one of a thousand suns</span></div>
+                  <div class="tkt-field"><span class="lbl">signed</span><span class="val">yanik, still drawing</span></div>
+                </div>
+              </div>
+              <div class="ticket-stub">
+                <div class="tkt-num">no. 0001 of 1000</div>
+                <div class="tkt-seal">paid<br>in<br>presence</div>
+              </div>
+            </div>
+            <div style="text-align:center;font-family:'Caveat',cursive;font-size:18px;color:var(--ink);margin-top:18px">the seat was yours before you asked.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- OPTION 02: STAMP SEQUENCE -->
+    <article class="opt">
+      <header class="opt-head">
+        <div>
+          <div class="num">Option 02</div>
+          <h3>The <em>Stamp Sequence</em></h3>
+          <p class="tagline">The ticket arrives blank. As the reader scrolls or hovers, stamps appear in sequence: YOU ARE A SUN, YOU ARE INVITED, YOUR SEAT IS SAVED. Final stamp animates a signature. Feels like the ticket is validating itself in front of the reader.</p>
+        </div>
+        <div class="confidence">
+          <div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="#1f1f2c" stroke-width="7" fill="none"/><circle cx="52" cy="52" r="44" stroke="#f2c940" stroke-width="7" fill="none" stroke-dasharray="276.46" stroke-dashoffset="41.47" stroke-linecap="round"/></svg><div class="pct">85</div></div>
+          <div class="conf-label">Confidence</div>
+        </div>
+      </header>
+      <div class="opt-body">
+        <div class="rationale">
+          <h4>Why this lands</h4>
+          <p>Option 02 trades pristine for process. The reader watches the ticket get stamped. The drama is in the sequencing. Each stamp is a small moment of recognition. By the time the signature appears, the ticket has earned itself.</p>
+          <p>Risk: stamps can read as gimmicky if overused. The fix is to make each stamp a one time animation, not a loop, and to stop at three. No JavaScript carousel, no retry button, no resetting.</p>
+          <blockquote>Some seats are saved quietly. Some you watch being saved in front of you.<cite>Voice derived from the transcript</cite></blockquote>
+        </div>
+        <div class="spec">
+          <h4>Design spec</h4>
+          <dl>
+            <dt>Layout</dt><dd>Same ticket base as Option 01, stamps layer on top</dd>
+            <dt>Stamps</dt><dd>Three stamps, appear 400ms apart on scroll into view</dd>
+            <dt>Stamp style</dt><dd>Burnt orange stencil border, rotated 4 to 8 degrees, slight smudge</dd>
+            <dt>Signature</dt><dd>SVG path draw of Yanik's signature, 600ms</dd>
+            <dt>Fallback</dt><dd>If reduced motion, all stamps appear at once</dd>
+            <dt>Mobile</dt><dd>Stamps trigger on initial visibility, no scroll parallax</dd>
+          </dl>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-lbl">Preview 02 · Stamp Sequence</div>
+          <div style="padding:8px 0">
+            <div style="text-align:center;font-family:'Fraunces',serif;font-size:26px;font-style:italic;color:var(--ink)">Your Cosmic Ticket</div>
+            <div class="ticket">
+              <div class="ticket-main">
+                <div class="tkt-eye">Admit one · non transferable · paid in presence</div>
+                <div class="tkt-title">A Seat at the Table</div>
+                <div class="tkt-sub">for the one who shows up as a sun</div>
+                <div class="stamp-row">
+                  <div class="stamp" style="--r:-6deg">You are a sun</div>
+                  <div class="stamp" style="--r:3deg">You are invited</div>
+                  <div class="stamp" style="--r:-2deg">Your seat is saved</div>
+                </div>
+                <div style="margin-top:18px;text-align:center;font-family:'Caveat',cursive;font-size:22px;color:var(--burnt)">yanik, still drawing</div>
+              </div>
+              <div class="ticket-stub">
+                <div class="tkt-num">no. 0001 of 1000</div>
+                <div class="tkt-seal">paid<br>in<br>presence</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- OPTION 03: ENVELOPE -->
+    <article class="opt">
+      <header class="opt-head">
+        <div>
+          <div class="num">Option 03</div>
+          <h3>The <em>Envelope</em></h3>
+          <p class="tagline">A cream envelope addressed in Yanik's handwriting to "the sun reading this". The ticket peeks out of the top. Clicking anywhere on the envelope opens it. The opening animation is slow on purpose. The ticket slides out, then the reader fills in their name.</p>
+        </div>
+        <div class="confidence">
+          <div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" stroke="#1f1f2c" stroke-width="7" fill="none"/><circle cx="52" cy="52" r="44" stroke="#f2c940" stroke-width="7" fill="none" stroke-dasharray="276.46" stroke-dashoffset="52.53" stroke-linecap="round"/></svg><div class="pct">81</div></div>
+          <div class="conf-label">Confidence</div>
+        </div>
+      </header>
+      <div class="opt-body">
+        <div class="rationale">
+          <h4>Why this lands</h4>
+          <p>The warmest version. The envelope is addressed <em>to the reader</em> in Yanik's hand before they do anything. Opening it is an act. Then the ticket appears.</p>
+          <p>Risk: it adds a click before the ticket is visible, which is friction. On mobile the opening animation needs to be fast or it reads as gimmicky. Trade off is intimacy for friction. Option 01 already achieves intimacy without the extra step.</p>
+          <blockquote>I still write letters. Every one of them gets a sun in the corner.<cite>Yanik · from the transcript</cite></blockquote>
+        </div>
+        <div class="spec">
+          <h4>Design spec</h4>
+          <dl>
+            <dt>Layout</dt><dd>Single envelope, 680px wide, centered on paper</dd>
+            <dt>Addressing</dt><dd>Caveat 26px, "to the sun reading this" + "care of here and now"</dd>
+            <dt>Flap</dt><dd>Triangle clip path, slight shadow, rotates 165deg on open</dd>
+            <dt>Open action</dt><dd>Click anywhere on envelope, or press enter when focused</dd>
+            <dt>Reveal</dt><dd>Ticket slides up from inside, 900ms ease out</dd>
+            <dt>Reduced motion</dt><dd>Skip animation, ticket appears in place</dd>
+          </dl>
+        </div>
+
+        <div class="mockup">
+          <div class="mockup-lbl">Preview 03 · Envelope</div>
+          <div style="padding:8px 0">
+            <div style="text-align:center;font-family:'Fraunces',serif;font-size:26px;font-style:italic;color:var(--ink)">Your Cosmic Ticket</div>
+            <div class="envelope">
+              <div class="env-flap"></div>
+              <div class="env-addr">
+                <b>to the sun reading this</b>
+                care of here and now
+              </div>
+              <div class="env-peek">click the envelope to open · a ticket is inside</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <section class="verdict">
+    <div class="eyebrow">Recommendation</div>
+    <h2>Build <em>Option 01 Torn Ticket</em> as the primary. Ship Option 02 stamp motion inside it.</h2>
+    <p>Option 01 is the most honest. The reader sees a ticket that already has their seat on it. No stagecraft needed. Ship this as the main treatment.</p>
+    <p>Option 02 is not really a separate option. Use its stamp sequence as the micro animation inside Option 01. When the reader types their name, the ticket stamps itself "paid in presence" as a small reward.</p>
+    <p>Option 03 is a beautiful idea worth holding. A "letter from Yanik" microsite one layer deeper, maybe after someone accepts the ticket, could use the envelope pattern without clashing with this section.</p>
+    <div class="matrix">
+      <div class="mx"><div class="mxh"><h5>01 · Torn Ticket</h5><div class="score">90</div></div><ul><li>Honest, zero friction reveal</li><li>Name field does the emotional work</li><li>Ships cleanly, scales on mobile</li></ul></div>
+      <div class="mx"><div class="mxh"><h5>02 · Stamp Sequence</h5><div class="score">85</div></div><ul><li>Use as sub pattern inside Option 01</li><li>Risk of gimmick if overused</li><li>Great reward for typing a name</li></ul></div>
+      <div class="mx"><div class="mxh"><h5>03 · Envelope</h5><div class="score">81</div></div><ul><li>Most intimate framing</li><li>Adds a click of friction</li><li>Save for a deeper page</li></ul></div>
+    </div>
+  </section>
+
+  <footer>Yanik Silver · Section 06 · Round 01 · Three directions · Pick one · Keep going</footer>
+</div>
+</body>
+</html>
