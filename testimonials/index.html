@@ -325,6 +325,31 @@ nav {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.t-title-link {
+  text-decoration: none;
+  border-bottom: 1px dotted transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.t-title-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.t-result {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  background: var(--accent-light);
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin: 14px 0 18px;
+  border-left: 3px solid var(--accent);
+}
+.t-result-label {
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  margin-right: 6px;
+}
 .t-badge {
   display: inline-flex;
   align-items: center;
@@ -572,16 +597,37 @@ function productBadge(product) {
 }
 
 function avatarEl(t) {
-  if (t.file_r2 && t.format === 'image') {
-    return `<img class="t-avatar" src="${t.file_r2}" alt="${t.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  // Prefer the explicit headshot_url (LinkedIn-style portrait), fall back to
+  // the image-format file_r2 (often a screenshot containing the person's
+  // profile photo), and finally render colored initials when neither exists.
+  const photo = t.headshot_url || (t.format === 'image' ? t.file_r2 : null);
+  if (photo) {
+    return `<img class="t-avatar" src="${photo}" alt="${t.name || 'Testimonial'}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div class="t-avatar-initials" style="display:none">${initials(t.name)}</div>`;
   }
   return `<div class="t-avatar-initials">${initials(t.name)}</div>`;
 }
 
+function escapeAttr(s) {
+  return String(s || '').replace(/"/g, '&quot;');
+}
+
 function authorLine(t) {
-  const parts = [t.title, t.company].filter(Boolean);
-  return parts.length ? `<span class="t-title-line">${parts.join(', ')}</span>` : '';
+  const titleCompany = [t.title, t.company].filter(Boolean).join(', ');
+  if (!titleCompany) return '';
+  // If we have a website link, wrap the title+company in an anchor so the
+  // person's role takes you to their site. Subtle, no underline by default.
+  if (t.website) {
+    return `<a class="t-title-line t-title-link" href="${escapeAttr(t.website)}" target="_blank" rel="noopener">${titleCompany}</a>`;
+  }
+  return `<span class="t-title-line">${titleCompany}</span>`;
+}
+
+function resultLine(t) {
+  // Add a subtle "Outcome:" callout when a structured result is present.
+  // Keeps the quote as the headline; result is the so-what beneath it.
+  if (!t.result) return '';
+  return `<p class="t-result"><span class="t-result-label">Outcome:</span> ${t.result}</p>`;
 }
 
 function videoCard(t) {
@@ -606,8 +652,9 @@ function videoCard(t) {
       </div>
       <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <p class="t-quote">${t.quote || ''}</p>
+      ${resultLine(t)}
       <div class="t-author">
-        <div class="t-avatar-initials">${initials(t.name)}</div>
+        ${avatarEl(t)}
         <div class="t-author-info">
           <strong class="t-name">${t.name || ''}</strong>
           ${authorLine(t)}
@@ -622,6 +669,7 @@ function imageCard(t) {
     <div class="t-card" data-product="${t.product || 'general'}">
       <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <p class="t-quote">${t.quote || ''}</p>
+      ${resultLine(t)}
       <div class="t-author">
         ${avatarEl(t)}
         <div class="t-author-info">
