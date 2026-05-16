@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Notes — Brand &amp; UX Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --paper:#fbfbfa;
+    --ink:#141416;
+    --dim:#6e6e76;
+    --faint:#a2a2aa;
+    --line:rgba(0,0,0,0.13);
+    --line-soft:rgba(0,0,0,0.07);
+    --stage:#f4f4f3;
+    --signal:#000000;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ── background geometry watermark ───────────────────── */
+  .bg-geo{
+    position:fixed;
+    top:-220px;right:-260px;
+    width:760px;height:760px;
+    z-index:0;
+    opacity:0.055;
+    pointer-events:none;
+  }
+  .bg-geo svg{width:100%;height:100%;transform-origin:50% 50%;animation:slowspin 240s linear infinite;}
+  @keyframes breathe{0%,100%{opacity:0.78;}50%{opacity:1;}}
+
+  .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 40px;}
+
+  /* ── header ──────────────────────────────────────────── */
+  header{padding:118px 0 78px;}
+  .eyebrow{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:11px;font-weight:500;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    color:var(--dim);
+    display:flex;align-items:center;gap:16px;
+    margin-bottom:36px;
+  }
+  .eyebrow::before{content:"";width:38px;height:1px;background:var(--ink);display:block;}
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:300;
+    font-size:clamp(42px,6.4vw,86px);
+    line-height:1.02;
+    letter-spacing:-0.035em;
+    margin-bottom:32px;
+  }
+  h1 b{font-weight:500;}
+  .lede{
+    font-size:18px;
+    color:var(--dim);
+    max-width:680px;
+    line-height:1.7;
+    font-weight:300;
+  }
+  .lede strong{color:var(--ink);font-weight:500;}
+
+  /* ── brief analysis grid ─────────────────────────────── */
+  .analysis{
+    margin-top:72px;
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+  }
+  .analysis .cell{
+    background:var(--bg);
+    padding:34px 30px 38px 0;
+  }
+  .analysis .cell:not(:first-child){padding-left:30px;}
+  .cell .k{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--faint);margin-bottom:14px;
+  }
+  .cell .v{font-size:14.5px;color:var(--ink);line-height:1.6;font-weight:300;}
+
+  /* ── section label ───────────────────────────────────── */
+  .section-label{
+    display:flex;align-items:baseline;gap:18px;
+    margin:110px 0 14px;
+  }
+  .section-label .n{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:12px;letter-spacing:0.3em;color:var(--faint);
+  }
+  .section-label .t{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--dim);
+  }
+
+  /* ── concept card ────────────────────────────────────── */
+  .concept{
+    border:1px solid var(--line);
+    background:var(--bg);
+    margin-bottom:40px;
+    box-shadow:0 40px 70px -50px rgba(0,0,0,0.28);
+    opacity:0;
+    transform:translateY(34px);
+    transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);
+  }
+  .concept.in{opacity:1;transform:none;}
+
+  .concept-top{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    padding:44px 48px 36px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .concept-id{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:11px;letter-spacing:0.3em;color:var(--faint);
+    margin-bottom:18px;
+  }
+  .concept-name{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:300;
+    font-size:54px;letter-spacing:-0.03em;line-height:1;
+    margin-bottom:16px;
+  }
+  .concept-tag{font-size:16px;color:var(--dim);max-width:520px;font-weight:300;}
+
+  /* confidence ring */
+  .ring-wrap{text-align:center;flex-shrink:0;padding-left:40px;}
+  .ring{width:118px;height:118px;transform:rotate(-90deg);}
+  .ring .track{fill:none;stroke:rgba(0,0,0,0.10);stroke-width:2;}
+  .ring .arc{fill:none;stroke-width:2;stroke-linecap:round;
+    transition:stroke-dashoffset 1.6s cubic-bezier(.3,.8,.3,1);}
+  .ring-num{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:15px;letter-spacing:0.16em;color:var(--dim);
+    margin-top:14px;
+  }
+  .ring-pct{
+    position:relative;margin-top:-72px;margin-bottom:46px;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:26px;font-weight:400;letter-spacing:-0.02em;
+  }
+
+  /* mockup stage */
+  .stage{
+    padding:48px;
+    background:var(--stage);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .stage-cap{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:10px;letter-spacing:0.24em;text-transform:uppercase;
+    color:var(--faint);margin-bottom:20px;
+  }
+
+  /* ── concept body text ───────────────────────────────── */
+  .concept-body{padding:46px 48px 50px;display:grid;grid-template-columns:1.55fr 1fr;gap:54px;}
+  .block-h{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:11px;letter-spacing:0.24em;text-transform:uppercase;
+    color:var(--faint);margin-bottom:16px;
+  }
+  .block-p{font-size:15px;color:#33333a;line-height:1.72;font-weight:300;}
+  .block-p + .block-h{margin-top:34px;}
+  .spec dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:13.5px;}
+  .spec dt{color:var(--faint);font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding-top:2px;}
+  .spec dd{color:#33333a;font-weight:300;}
+  .swatches{display:flex;gap:0;margin-top:24px;border:1px solid var(--line);}
+  .swatches span{flex:1;height:42px;display:block;}
+
+  /* shared mockup frame */
+  .m{border:1px solid var(--line);position:relative;overflow:hidden;background:#fff;
+     box-shadow:0 18px 40px -32px rgba(0,0,0,0.4);}
+
+  /* ════ MOCKUP 1 — LATTICE ════ */
+  .m1{background:#ffffff;}
+  .m1 .geo-wm{position:absolute;top:-90px;right:-90px;width:300px;height:300px;opacity:0.10;
+    transform-origin:50% 50%;animation:slowspin 300s linear infinite reverse,breathe 14s ease-in-out infinite;}
+  .m1-nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 28px;height:60px;border-bottom:1px solid rgba(0,0,0,0.13);
+    position:relative;z-index:2;
+  }
+  .m1-brand{
+    font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;
+    letter-spacing:0.26em;color:#141416;display:flex;align-items:center;gap:11px;
+  }
+  .m1-brand .gmk{width:14px;height:14px;}
+  .m1-links{display:flex;align-items:center;gap:0;}
+  .m1-links a{
+    font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:400;
+    letter-spacing:0.07em;color:#8a8a90;text-decoration:none;padding:0 18px;
+    display:flex;align-items:center;gap:18px;position:relative;
+  }
+  .m1-links a .node{width:5px;height:5px;flex-shrink:0;}
+  .m1-links a:last-child{padding-right:0;}
+  .m1-links a.on{color:#141416;}
+  .m1-links a.on::after{
+    content:"";position:absolute;left:18px;right:18px;bottom:-21px;height:1px;background:#141416;
+  }
+  .m1-body{padding:30px 28px 34px;position:relative;z-index:2;}
+  .m1-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .m1-tile{border:1px solid rgba(0,0,0,0.14);padding:20px 18px;}
+  .m1-tile .num{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:300;letter-spacing:-0.03em;color:#141416;}
+  .m1-tile .lab{font-size:10.5px;color:#8a8a90;letter-spacing:0.04em;margin-top:6px;}
+
+  /* ════ MOCKUP 2 — ORBIT ════ */
+  .m2{background:#ffffff;height:404px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .m2-mandala{width:340px;height:340px;}
+  .m2-rot{transform-origin:center;animation:slowspin 80s linear infinite;}
+  @keyframes slowspin{to{transform:rotate(360deg);}}
+  .m2-center{
+    position:absolute;text-align:center;
+    font-family:'Syne',sans-serif;
+  }
+  .m2-center .cw{font-size:13px;font-weight:800;letter-spacing:0.16em;color:#141416;}
+  .m2-center .cs{font-size:9px;letter-spacing:0.3em;color:#a2a2aa;margin-top:5px;font-family:'Space Grotesk',sans-serif;}
+  .m2-label{
+    position:absolute;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;
+    letter-spacing:0.08em;color:#9a9aa0;white-space:nowrap;
+  }
+  .m2-label.on{color:#141416;}
+  .m2-label.on::before{
+    content:"";position:absolute;left:-14px;top:50%;width:5px;height:5px;
+    background:#141416;border-radius:50%;transform:translateY(-50%);
+  }
+
+  /* ════ MOCKUP 3 — ATELIER ════ */
+  .m3{background:#ffffff;}
+  .m3-nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 34px;height:72px;border-bottom:1px solid #e6e6e2;
+  }
+  .m3-brand{display:flex;align-items:center;gap:13px;}
+  .m3-brand .seed{width:24px;height:24px;}
+  .m3-brand .bw{font-family:'Fraunces',serif;font-size:21px;font-weight:400;color:#141416;letter-spacing:-0.01em;}
+  .m3-links{display:flex;gap:30px;}
+  .m3-links a{
+    font-family:'Inter',sans-serif;font-size:10.5px;font-weight:500;
+    letter-spacing:0.18em;text-transform:uppercase;color:#9a9a9d;text-decoration:none;
+    padding-bottom:3px;
+  }
+  .m3-links a.on{color:#141416;border-bottom:1px solid #141416;}
+  .m3-body{padding:46px 34px 50px;}
+  .m3-kicker{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:#a6a6a9;margin-bottom:14px;}
+  .m3-h{font-family:'Fraunces',serif;font-size:46px;font-weight:300;color:#141416;letter-spacing:-0.02em;line-height:1.05;}
+  .m3-rule{display:flex;align-items:center;gap:0;margin:30px 0 26px;}
+  .m3-rule .ln{flex:1;height:1px;background:#e0e0db;}
+  .m3-rule .vnode{width:20px;height:20px;margin:0 -1px;}
+  .m3-lines{display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;}
+  .m3-lines .lrow{display:flex;justify-content:space-between;border-bottom:1px solid #ececE7;padding-bottom:9px;}
+  .m3-lines .lrow span:first-child{font-family:'Fraunces',serif;font-size:14px;color:#141416;}
+  .m3-lines .lrow span:last-child{font-size:12px;color:#a6a6a9;}
+
+  /* ── comparison ──────────────────────────────────────── */
+  .compare{margin-top:50px;border:1px solid var(--line);background:var(--bg);}
+  .compare-h{padding:38px 44px 0;}
+  .compare-h .block-h{margin-bottom:10px;}
+  .compare-h h3{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:30px;letter-spacing:-0.02em;}
+  .compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:34px;}
+  .compare-col{background:var(--bg);padding:34px 30px 40px;}
+  .compare-col .cn{font-family:'Space Grotesk',sans-serif;font-size:18px;margin-bottom:4px;}
+  .compare-col .cpct{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:0.18em;color:var(--faint);margin-bottom:20px;}
+  .compare-col .row{font-size:13px;margin-bottom:16px;line-height:1.55;}
+  .compare-col .row b{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);font-weight:500;display:block;margin-bottom:4px;}
+  .compare-col .row span{color:#33333a;font-weight:300;}
+
+  .verdict{
+    margin-top:40px;padding:46px 44px 54px;
+    border:1px solid var(--line);
+    background:var(--paper);
+  }
+  .verdict .block-h{margin-bottom:18px;}
+  .verdict p{font-size:17px;color:#2a2a30;line-height:1.7;max-width:760px;font-weight:300;}
+  .verdict p b{color:#000;font-weight:500;}
+
+  footer{
+    margin-top:90px;padding:46px 0 80px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--faint);
+  }
+
+  @media(max-width:860px){
+    .wrap{padding:0 24px;}
+    .analysis{grid-template-columns:1fr 1fr;}
+    .concept-top{flex-direction:column;}
+    .ring-wrap{padding-left:0;margin-top:30px;}
+    .concept-body{grid-template-columns:1fr;gap:32px;}
+    .stage{padding:24px;}
+    .concept-top,.concept-body{padding-left:26px;padding-right:26px;}
+    .compare-grid{grid-template-columns:1fr;}
+    .m1-links a{padding:0 9px;gap:9px;}
+    .m3-lines{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-geo"><svg id="bgGeo" viewBox="0 0 760 760"></svg></div>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Brand &amp; UX Exploration</div>
+    <h1>Three directions for<br><b>Meeting Notes.</b></h1>
+    <p class="lede">A monochrome rebrand for <strong>notes.jamesguldan.com</strong>, the relational system that holds every person, conversation, and project James touches. The brief: something <strong>incredibly modern</strong>, built on <strong>sacred geometry</strong>, in a strict palette of <strong>black, white, and grey</strong>, set on a <strong>white background</strong>. Below are three distinct ways to take the navigation and the page shell. Each is genuinely different in philosophy, not a recolor of the same idea.</p>
+
+    <div class="analysis">
+      <div class="cell">
+        <div class="k">Functional goal</div>
+        <div class="v">Move fast through a dense tool used dozens of times a day. Navigation must be instant and never in the way.</div>
+      </div>
+      <div class="cell">
+        <div class="k">Emotional goal</div>
+        <div class="v">Feel like a precision instrument. Calm, exact, quietly expensive. Pride of ownership.</div>
+      </div>
+      <div class="cell">
+        <div class="k">Who is looking</div>
+        <div class="v">James daily as a power user, plus prospects on the Showcase page who need one genuine moment of awe.</div>
+      </div>
+      <div class="cell">
+        <div class="k">The constraint</div>
+        <div class="v">White ground, ink and grey only. Geometry must earn its place as structure, not stick on as decoration.</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="section-label">
+    <span class="n">01 — 03</span>
+    <span class="t">The Concepts</span>
+  </div>
+
+  <!-- ════════════ CONCEPT 1 — LATTICE ════════════ -->
+  <article class="concept" id="c1">
+    <div class="concept-top">
+      <div>
+        <div class="concept-id">Direction 01</div>
+        <div class="concept-name">Lattice</div>
+        <div class="concept-tag">The geometry is the grid, not the decoration. Every measurement traces to one system.</div>
+      </div>
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 118 118">
+          <circle class="track" cx="59" cy="59" r="52"></circle>
+          <circle class="arc" data-score="88" cx="59" cy="59" r="52" stroke="#141416"></circle>
+        </svg>
+        <div class="ring-pct">88%</div>
+        <div class="ring-num">Confidence</div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-cap">Navigation &amp; shell — rendered</div>
+      <div class="m m1">
+        <svg class="geo-wm" id="latticeWm" viewBox="0 0 300 300"></svg>
+        <div class="m1-nav">
+          <div class="m1-brand"><svg class="gmk" id="latticeMark" viewBox="0 0 24 24"></svg>MEETING NOTES</div>
+          <nav class="m1-links">
+            <a class="on" href="#"><svg class="node" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="#141416"/></svg>Dashboard</a>
+            <a href="#"><svg class="node" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="none" stroke="#b4b4ba"/></svg>People</a>
+            <a href="#"><svg class="node" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="none" stroke="#b4b4ba"/></svg>Knowledge</a>
+            <a href="#"><svg class="node" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="none" stroke="#b4b4ba"/></svg>Activity</a>
+            <a href="#"><svg class="node" viewBox="0 0 10 10"><polygon points="5,0 10,5 5,10 0,5" fill="none" stroke="#b4b4ba"/></svg>Settings</a>
+          </nav>
+        </div>
+        <div class="m1-body">
+          <div class="m1-tiles">
+            <div class="m1-tile"><div class="num">247</div><div class="lab">people in the network</div></div>
+            <div class="m1-tile"><div class="num">334k</div><div class="lab">messages indexed</div></div>
+            <div class="m1-tile"><div class="num">290</div><div class="lab">documents in RAG</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-body">
+      <div>
+        <div class="block-h">Design Direction</div>
+        <p class="block-p">A clean white canvas where the Flower of Life supplies the proportional system. Column widths, nav spacing, and tile sizes all derive from the same set of intersections, so the layout has one logic rather than arbitrary numbers. The nav is a single hairline bar: wordmark left in a tracked grotesk, destinations right, each separated by a 1px hexagon node. The active item carries a filled vesica glyph and a one pixel underline. A Metatron lattice sits at ten percent opacity, anchored top right, bleeding off canvas. Hover draws a node from a single vertex in 150ms. Everything is hairline, every state change is one signal black.</p>
+        <div class="block-h">Strategic Rationale</div>
+        <p class="block-p">This is a tool opened dozens of times a day, so geometry has to be structure, not ornament. When every measurement traces to one system, the brand reads as rigor and intention rather than styling. The white ground keeps dense CRM data maximally legible and feels like fine stationery, and it modernizes the product without chasing a trend that dates in a year. It is the safest expression of the brief that still feels genuinely designed.</p>
+      </div>
+      <div class="spec">
+        <div class="block-h">Visual Spec</div>
+        <dl>
+          <dt>Display</dt><dd>Space Grotesk, 300 / 400 / 500</dd>
+          <dt>Body</dt><dd>Inter, 300 / 400</dd>
+          <dt>Canvas</dt><dd>#FFFFFF white</dd>
+          <dt>Paper</dt><dd>#FBFBFA off-white panels</dd>
+          <dt>Ink</dt><dd>#141416 over #6E6E76 dim</dd>
+          <dt>Hairline</dt><dd>black at 13% opacity</dd>
+          <dt>Signal</dt><dd>pure #000000, active states only</dd>
+          <dt>Geometry</dt><dd>Flower of Life grid, Metatron watermark at 10%</dd>
+          <dt>Nav</dt><dd>60px bar, 1px rule, hexagon node markers</dd>
+        </dl>
+        <div class="swatches">
+          <span style="background:#141416"></span>
+          <span style="background:#6e6e76"></span>
+          <span style="background:#b4b4ba"></span>
+          <span style="background:#ececec"></span>
+          <span style="background:#ffffff;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)"></span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ════════════ CONCEPT 2 — ORBIT ════════════ -->
+  <article class="concept" id="c2">
+    <div class="concept-top">
+      <div>
+        <div class="concept-id">Direction 02</div>
+        <div class="concept-name">Orbit</div>
+        <div class="concept-tag">Navigation as a mandala. The act of moving through the app becomes the brand.</div>
+      </div>
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 118 118">
+          <circle class="track" cx="59" cy="59" r="52"></circle>
+          <circle class="arc" data-score="79" cx="59" cy="59" r="52" stroke="#9a9aa0"></circle>
+        </svg>
+        <div class="ring-pct" style="color:#6e6e76">79%</div>
+        <div class="ring-num">Confidence</div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-cap">Navigation — radial menu, open state</div>
+      <div class="m m2">
+        <svg class="m2-mandala" id="orbitMandala" viewBox="0 0 340 340"></svg>
+        <div class="m2-center">
+          <div class="cw">MN</div>
+          <div class="cs">INDEX</div>
+        </div>
+        <span class="m2-label on" style="left:50%;top:30px;transform:translateX(-50%)">Dashboard</span>
+        <span class="m2-label" style="right:58px;top:96px">People</span>
+        <span class="m2-label" style="right:50px;bottom:96px">Knowledge</span>
+        <span class="m2-label" style="left:50%;bottom:30px;transform:translateX(-50%)">Activity</span>
+        <span class="m2-label" style="left:64px;bottom:96px">Messages</span>
+        <span class="m2-label" style="left:72px;top:96px">Settings</span>
+      </div>
+    </div>
+
+    <div class="concept-body">
+      <div>
+        <div class="block-h">Design Direction</div>
+        <p class="block-p">A bright white canvas. The primary navigation is radial: pressing the wordmark expands a centered mandala of concentric circles, a hexagram, and an inner hexagon, with the destinations arranged on its orbital ring. The active section sits in full ink; the rest in grey. The default page shell stays deliberately calm, a single centered column inside generous white margin, so the orbital menu is the one signature moment. The mandala turns almost imperceptibly, one revolution every several minutes. Grey does all the modeling, concentric strokes from eight to thirty two percent black.</p>
+        <div class="block-h">Strategic Rationale</div>
+        <p class="block-p">This is the most ambitious and the most memorable. It turns navigating into a small ritual, which is exactly the awe a prospect needs on the Showcase page. The trade is friction: a radial menu is slower than a fixed bar for a tool used all day, so it only works paired with keyboard shortcuts that let power use bypass the orbit entirely. Highest ceiling in the set, and the highest risk.</p>
+      </div>
+      <div class="spec">
+        <div class="block-h">Visual Spec</div>
+        <dl>
+          <dt>Display</dt><dd>Syne, 700 / 800</dd>
+          <dt>Body</dt><dd>Inter, 300 / 400</dd>
+          <dt>Canvas</dt><dd>#FFFFFF white</dd>
+          <dt>Ink</dt><dd>#141416 over greys #6E6E76 to #9A9AA0</dd>
+          <dt>Strokes</dt><dd>black at 8% to 32% opacity</dd>
+          <dt>Geometry</dt><dd>Mandala, hexagram, concentric rings</dd>
+          <dt>Motion</dt><dd>360° per 6 min, ease only on open</dd>
+          <dt>Menu</dt><dd>440px mandala, 6 to 8 orbital labels</dd>
+          <dt>Needs</dt><dd>keyboard shortcuts for power use</dd>
+        </dl>
+        <div class="swatches">
+          <span style="background:#141416"></span>
+          <span style="background:#6e6e76"></span>
+          <span style="background:#9a9aa0"></span>
+          <span style="background:#dcdcdc"></span>
+          <span style="background:#ffffff;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)"></span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ════════════ CONCEPT 3 — ATELIER ════════════ -->
+  <article class="concept" id="c3">
+    <div class="concept-top">
+      <div>
+        <div class="concept-id">Direction 03</div>
+        <div class="concept-name">Atelier</div>
+        <div class="concept-tag">Quiet luxury. A gallery monograph that happens to be software.</div>
+      </div>
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 118 118">
+          <circle class="track" cx="59" cy="59" r="52"></circle>
+          <circle class="arc" data-score="84" cx="59" cy="59" r="52" stroke="#56565c"></circle>
+        </svg>
+        <div class="ring-pct" style="color:#2a2a30">84%</div>
+        <div class="ring-num">Confidence</div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-cap">Navigation &amp; shell — rendered</div>
+      <div class="m m3">
+        <div class="m3-nav">
+          <div class="m3-brand"><svg class="seed" id="atelierSeed" viewBox="0 0 40 40"></svg><span class="bw">Meeting Notes</span></div>
+          <nav class="m3-links">
+            <a class="on" href="#">Today</a>
+            <a href="#">People</a>
+            <a href="#">Knowledge</a>
+            <a href="#">Activity</a>
+            <a href="#">Settings</a>
+          </nav>
+        </div>
+        <div class="m3-body">
+          <div class="m3-kicker">Saturday, the sixteenth</div>
+          <div class="m3-h">Four conversations<br>worth your attention.</div>
+          <div class="m3-rule">
+            <span class="ln"></span>
+            <svg class="vnode" id="atelierVesica" viewBox="0 0 20 20"></svg>
+            <span class="ln"></span>
+          </div>
+          <div class="m3-lines">
+            <div class="lrow"><span>Avery Chen</span><span>back May 18</span></div>
+            <div class="lrow"><span>Jordan Reyes</span><span>call May 19</span></div>
+            <div class="lrow"><span>Sam Okafor</span><span>9 ties</span></div>
+            <div class="lrow"><span>Riley Brooks</span><span>new lead</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-body">
+      <div>
+        <div class="block-h">Design Direction</div>
+        <p class="block-p">Pure white paper, charcoal ink. Sacred geometry appears only as delicate single weight line art: a Seed of Life logomark, hairline dividers that resolve into a vesica node, faint construction lines under headings. The nav is an airy top bar, the wordmark set in a high contrast display serif, destinations as wide tracked small caps over a single hairline rule. Pages breathe like an exhibition catalogue, large quiet headings and a measured reading column. Motion is almost absent, a single rule that draws itself in on load.</p>
+        <div class="block-h">Strategic Rationale</div>
+        <p class="block-p">The most timeless of the three and the most genuinely brand. It reframes a CRM as an editorial artifact, something James is proud to put on a screen in front of a client. Fraunces ties to his existing identity, so it reads as evolution rather than rupture. The risk is real: a dense data tool fights airy whitespace, so this direction only succeeds with disciplined information design that keeps scanning fast. The white palette is the most legible and the least likely to date.</p>
+      </div>
+      <div class="spec">
+        <div class="block-h">Visual Spec</div>
+        <dl>
+          <dt>Display</dt><dd>Fraunces, 300 / 400</dd>
+          <dt>Body</dt><dd>Inter, 300 / 400 / 500</dd>
+          <dt>Canvas</dt><dd>#FFFFFF white</dd>
+          <dt>Surface</dt><dd>#FFFFFF, framed by hairline only</dd>
+          <dt>Ink</dt><dd>#141416 over #6C6C70 dim</dd>
+          <dt>Hairline</dt><dd>#E6E6E2</dd>
+          <dt>Geometry</dt><dd>Seed of Life mark, vesica nodes</dd>
+          <dt>Nav</dt><dd>72px bar, small caps at 0.18em tracking</dd>
+          <dt>Column</dt><dd>720px measured reading width</dd>
+        </dl>
+        <div class="swatches">
+          <span style="background:#141416"></span>
+          <span style="background:#6c6c70"></span>
+          <span style="background:#bcbcb8"></span>
+          <span style="background:#e6e6e2"></span>
+          <span style="background:#ffffff;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)"></span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ════════════ COMPARISON ════════════ -->
+  <div class="section-label">
+    <span class="n">Decision</span>
+    <span class="t">How to choose</span>
+  </div>
+
+  <div class="compare">
+    <div class="compare-h">
+      <div class="block-h">The trade-offs</div>
+      <h3>Each direction optimizes for a different thing.</h3>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="cn">Lattice</div>
+        <div class="cpct">88% confidence</div>
+        <div class="row"><b>Optimizes for</b><span>Daily speed and quiet rigor.</span></div>
+        <div class="row"><b>Best moment</b><span>Every working session, all day.</span></div>
+        <div class="row"><b>Gives up</b><span>The single jaw-drop moment.</span></div>
+        <div class="row"><b>Risk</b><span>Low. Familiar bar, expressed beautifully.</span></div>
+      </div>
+      <div class="compare-col">
+        <div class="cn">Orbit</div>
+        <div class="cpct">79% confidence</div>
+        <div class="row"><b>Optimizes for</b><span>Memorability and showcase awe.</span></div>
+        <div class="row"><b>Best moment</b><span>A prospect seeing it for the first time.</span></div>
+        <div class="row"><b>Gives up</b><span>Raw navigation speed.</span></div>
+        <div class="row"><b>Risk</b><span>Higher. Radial nav needs shortcut backup.</span></div>
+      </div>
+      <div class="compare-col">
+        <div class="cn">Atelier</div>
+        <div class="cpct">84% confidence</div>
+        <div class="row"><b>Optimizes for</b><span>Timelessness and brand pride.</span></div>
+        <div class="row"><b>Best moment</b><span>On screen in front of a client.</span></div>
+        <div class="row"><b>Gives up</b><span>Information density, unless disciplined.</span></div>
+        <div class="row"><b>Risk</b><span>Medium. Whitespace fights dense data.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="block-h">Recommendation</div>
+    <p>Lead with <b>Lattice</b>. It is the only direction that treats sacred geometry as the actual structure of the product rather than a surface that sits on top, and that is what makes it feel modern instead of decorated. It serves the real job, a dense tool used all day, without asking James to trade speed for beauty. The strongest path forward is to ship <b>Lattice</b> as the working system, then borrow the <b>Orbit</b> mandala for the Showcase page alone, where one radial, ceremonial moment earns its awe in front of prospects. <b>Atelier</b> stays in reserve as the direction to revisit if the brand ever moves toward a lighter, more editorial public face.</p>
+  </div>
+
+  <footer>
+    <span>Meeting Notes — Brand Study</span>
+    <span>Three Directions — 2026</span>
+  </footer>
+
+</div>
+
+<script>
+  const NS='http://www.w3.org/2000/svg';
+  function mk(tag,attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
+
+  // Flower of Life: triangular lattice of circles, `rings` deep
+  function flower(svg,cx,cy,r,rings,stroke,sw){
+    const pts=[[0,0]];
+    for(let ring=1;ring<=rings;ring++){
+      for(let i=0;i<6;i++){
+        const a1=Math.PI/3*i, a2=Math.PI/3*(i+1);
+        const c1=[Math.cos(a1),Math.sin(a1)], c2=[Math.cos(a2),Math.sin(a2)];
+        for(let j=0;j<ring;j++){
+          const x=ring*c1[0]+j*(c2[0]-c1[0]);
+          const y=ring*c1[1]+j*(c2[1]-c1[1]);
+          pts.push([x,y]);
+        }
+      }
+    }
+    pts.forEach(([x,y])=>{
+      svg.appendChild(mk('circle',{cx:cx+x*r,cy:cy+y*r,r:r,fill:'none',stroke:stroke,'stroke-width':sw}));
+    });
+  }
+
+  // Seed of Life: 7 circles
+  function seed(svg,cx,cy,r,stroke,sw){
+    svg.appendChild(mk('circle',{cx:cx,cy:cy,r:r,fill:'none',stroke:stroke,'stroke-width':sw}));
+    for(let i=0;i<6;i++){
+      const a=Math.PI/3*i;
+      svg.appendChild(mk('circle',{cx:cx+Math.cos(a)*r,cy:cy+Math.sin(a)*r,r:r,fill:'none',stroke:stroke,'stroke-width':sw}));
+    }
+  }
+
+  // Vesica piscis: two overlapping circles
+  function vesica(svg,cx,cy,r,stroke,sw){
+    svg.appendChild(mk('circle',{cx:cx-r/2,cy:cy,r:r,fill:'none',stroke:stroke,'stroke-width':sw}));
+    svg.appendChild(mk('circle',{cx:cx+r/2,cy:cy,r:r,fill:'none',stroke:stroke,'stroke-width':sw}));
+  }
+
+  // Hexagon points
+  function hexPts(cx,cy,r,rot){
+    let p=[];
+    for(let i=0;i<6;i++){const a=Math.PI/3*i+(rot||0);p.push((cx+Math.cos(a)*r)+','+(cy+Math.sin(a)*r));}
+    return p.join(' ');
+  }
+
+  // Mandala: concentric rings + hexagram + hexagon + spokes
+  function mandala(svg,cx,cy,R){
+    const g=mk('g',{class:'m2-rot'});
+    [1,0.78,0.5,0.24].forEach((f,i)=>{
+      g.appendChild(mk('circle',{cx:cx,cy:cy,r:R*f,fill:'none',stroke:'#141416','stroke-width':0.65,
+        'stroke-opacity':0.09+i*0.05}));
+    });
+    [0,Math.PI].forEach(rot=>{
+      let pts=[];
+      for(let i=0;i<3;i++){const a=Math.PI*2/3*i-Math.PI/2+rot;pts.push((cx+Math.cos(a)*R*0.78)+','+(cy+Math.sin(a)*R*0.78));}
+      g.appendChild(mk('polygon',{points:pts.join(' '),fill:'none',stroke:'#141416','stroke-width':0.65,'stroke-opacity':0.26}));
+    });
+    g.appendChild(mk('polygon',{points:hexPts(cx,cy,R*0.5,Math.PI/6),fill:'none',stroke:'#141416','stroke-width':0.65,'stroke-opacity':0.34}));
+    for(let i=0;i<12;i++){
+      const a=Math.PI/6*i;
+      g.appendChild(mk('line',{x1:cx+Math.cos(a)*R*0.5,y1:cy+Math.sin(a)*R*0.5,
+        x2:cx+Math.cos(a)*R,y2:cy+Math.sin(a)*R,stroke:'#141416','stroke-width':0.65,'stroke-opacity':0.10}));
+    }
+    for(let i=0;i<6;i++){
+      const a=Math.PI/3*i-Math.PI/2;
+      g.appendChild(mk('circle',{cx:cx+Math.cos(a)*R*0.78,cy:cy+Math.sin(a)*R*0.78,r:2.5,
+        fill:'#141416','fill-opacity':0.55}));
+    }
+    svg.appendChild(g);
+    svg.appendChild(mk('circle',{cx:cx,cy:cy,r:R*0.16,fill:'none',stroke:'#141416','stroke-width':0.65,'stroke-opacity':0.36}));
+  }
+
+  // hexagon logomark with inner triangle
+  function hexMark(svg,cx,cy,r,stroke){
+    svg.appendChild(mk('polygon',{points:hexPts(cx,cy,r,Math.PI/6),fill:'none',stroke:stroke,'stroke-width':1}));
+    let t=[];
+    for(let i=0;i<3;i++){const a=Math.PI*2/3*i-Math.PI/2;t.push((cx+Math.cos(a)*r*0.52)+','+(cy+Math.sin(a)*r*0.52));}
+    svg.appendChild(mk('polygon',{points:t.join(' '),fill:stroke,'fill-opacity':0.9}));
+  }
+
+  // draw everything
+  flower(document.getElementById('bgGeo'),380,380,62,3,'#141416',0.55);
+  flower(document.getElementById('latticeWm'),150,150,30,2,'#141416',0.55);
+  hexMark(document.getElementById('latticeMark'),12,12,10,'#141416');
+  mandala(document.getElementById('orbitMandala'),170,170,150);
+  seed(document.getElementById('atelierSeed'),20,20,6.4,'#141416',0.7);
+  vesica(document.getElementById('atelierVesica'),10,10,5,'#141416',0.7);
+
+  // confidence rings
+  const C=2*Math.PI*52;
+  document.querySelectorAll('.ring .arc').forEach(arc=>{
+    const s=+arc.dataset.score;
+    arc.style.strokeDasharray=C;
+    arc.style.strokeDashoffset=C;
+    setTimeout(()=>{arc.style.strokeDashoffset=C*(1-s/100);},250);
+  });
+
+  // fade-in on scroll
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.12});
+  document.querySelectorAll('.concept').forEach(c=>io.observe(c));
+</script>
+
+</body>
+</html>
